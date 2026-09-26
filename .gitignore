@@ -19,3 +19,6 @@ next-env.d.ts
 docs/
 data/reference/
 docker-compose.yml
+
+# local pipeline runs (the committed demo run stays tracked)
+data/runs/run_*
