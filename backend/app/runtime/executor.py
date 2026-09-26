@@ -32,7 +32,7 @@ async def execute(run: Run, agents: list[Agent], sources: list[dict], on_done: C
     if topological_order(agents) is None:
         raise ValueError("agent graph has a cycle")
     started = time.perf_counter()
-    run.emit("run.started", mode=run.mode, agents=[a.spec.public() for a in agents], sources=sources)
+    run.emit("run.started", mode=run.mode, templates=run.templates, agents=[a.spec.public() for a in agents], sources=sources)
     finished = {a.spec.id: asyncio.Event() for a in agents}
     summaries: dict[str, str] = {}
     ctxs: dict[str, Ctx] = {}

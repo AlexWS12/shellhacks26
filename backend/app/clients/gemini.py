@@ -61,6 +61,11 @@ def _transient(e: Exception) -> bool:
     return False
 
 
+def describe(e: Exception) -> str:
+    # "ClientError 429 RESOURCE_EXHAUSTED" for API errors, just the class name otherwise
+    return " ".join(str(x) for x in (type(e).__name__, getattr(e, "code", None), getattr(e, "status", None)) if x)
+
+
 def _retry_after(e: Exception) -> float | None:
     headers = getattr(getattr(e, "response", None), "headers", None)
     try:

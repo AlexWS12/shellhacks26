@@ -18,6 +18,7 @@ class Run:
     mode: str  # live | replay
     pace: float = PACE  # demo delay multiplier, 0 = instant
     source: str | None = None  # replay: the recorded run id
+    templates: bool = True  # False: a Gemini failure fails the agent instead of writing a template
     events: list[Event] = field(default_factory=list)
     finished: bool = False
     board: Board = field(default_factory=Board)

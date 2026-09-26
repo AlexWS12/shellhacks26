@@ -24,8 +24,10 @@ async def _write(ctx: Ctx, system: str, prompt: str, fallback: str) -> tuple[str
             ctx.think(chunk)
         return text.strip(), "gemini"
     except Exception as e:
+        if not ctx.run.templates:
+            raise RuntimeError(f"Gemini failed and template fallback is off: {gemini.describe(e)}") from e
         ctx.think("[Gemini unavailable: template from the facts.]")
-        ctx.log(f"{ctx.spec.name}: Gemini failed ({type(e).__name__}), wrote it from the template.")
+        ctx.log(f"{ctx.spec.name}: Gemini failed ({gemini.describe(e)}), wrote it from the template.")
         return fallback, "template"
 
 

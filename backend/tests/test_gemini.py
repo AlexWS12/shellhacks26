@@ -123,3 +123,23 @@ async def test_cache_key_ignores_which_model_answered(fake, monkeypatch):
     m = fake([])
     res = await gemini.generate_json("s", "p", SCHEMA)
     assert res["cached"] and res["model"] == "fallback" and m.calls == []
+
+
+async def test_agent_fails_when_template_fallback_is_off(fake):
+    from app.agents.coordination import _write
+    from app.runtime.agent import AgentSpec, Ctx
+    from app.runtime.run import new_run
+
+    run = new_run("live")
+    ctx = Ctx(run, AgentSpec("mediator", "Mediator", "", ["gemini"]))
+    fake([err(401)])
+    assert await _write(ctx, "s", "p1", "fallback") == ("fallback", "template")
+    run.templates = False
+    fake([err(401)])
+    with pytest.raises(RuntimeError, match="template fallback is off"):
+        await _write(ctx, "s", "p2", "fallback")
+
+
+def test_describe_shows_status_code():
+    assert gemini.describe(err(429)) == "ClientError 429 X"
+    assert gemini.describe(TimeoutError()) == "TimeoutError"

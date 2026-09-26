@@ -135,6 +135,7 @@ class RunRequest(BaseModel):
     mode: Literal["live", "replay"] = "live"
     replay_of: str | None = None  # recorded run id; default = newest complete recording
     speed: float = 1.0
+    templates: bool = True  # live only: fall back to a template when Gemini fails
 
 
 @app.post("/api/runs")
@@ -144,6 +145,7 @@ async def start_run(req: RunRequest) -> dict:
         if busy:
             return {"run_id": busy[0].id, "joined": True}  # one live run at a time; join it
         run = new_run("live")
+        run.templates = req.templates
         start_background(run_live(run))
         return {"run_id": run.id}
     recs = [r for r in recorded_runs() if r["complete"] and r["ok"]]

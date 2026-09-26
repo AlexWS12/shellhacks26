@@ -20,6 +20,8 @@ interface UIState {
   visibleProjects: number | null;
   health: Health | null;
   basemap: "streets" | "simple";
+  templateFallback: boolean; // live runs: write a template when Gemini fails, instead of failing the agent
+  setTemplateFallback: (on: boolean) => void;
   year: number | null; // timeline: only show work active in this year
   setYear: (y: number | null) => void;
   camera: Camera & { n: number }; // n lets you fly to the same place twice
@@ -40,6 +42,8 @@ export const useUI = create<UIState>((set, get) => ({
   visibleProjects: null,
   health: null,
   basemap: "streets",
+  templateFallback: true,
+  setTemplateFallback: (templateFallback) => set({ templateFallback }),
   year: null,
   setYear: (year) => set({ year }),
   camera: { kind: "us", n: 0 },
@@ -94,7 +98,7 @@ export async function startRun(mode: "live" | "replay"): Promise<void> {
   useUI.setState({ results: null, visibleProjects: null, panel: { kind: "list" }, error: null });
   ui.flyTo({ kind: "border" });
   try {
-    const { run_id } = await api.startRun(mode);
+    const { run_id } = await api.startRun(mode, 1, ui.templateFallback);
     follow(run_id);
   } catch (e) {
     run.phase = "failed";
