@@ -67,10 +67,12 @@ async def execute(run: Run, agents: list[Agent], sources: list[dict], on_done: C
     if on_done and not failed:
         await on_done(run)
     b = run.board
+    texts = [*b.analyses.values(), *(s for brief in b.briefs.values() for s in brief.values())]
     run.emit("run.done", ok=not failed, failed=failed, ms=round((time.perf_counter() - started) * 1000),
              stats={"projects": len(b.projects),
                     "located": sum(1 for p in b.projects.values() if p.lat is not None),
                     "overlaps": len(b.overlaps), "checks": len(b.checks),
-                    "reference_passed": sum(r.passed for r in b.reference), "reference_total": len(b.reference)},
+                    "reference_passed": sum(r.passed for r in b.reference), "reference_total": len(b.reference),
+                    "texts": len(texts), "templates": sum(t["actor"] == "template" for t in texts)},
              total_cost_usd=round(sum(c.cost_usd for c in ctxs.values()), 6),
              judgments=sum(c.judgments for c in ctxs.values()))

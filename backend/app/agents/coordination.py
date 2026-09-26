@@ -23,8 +23,9 @@ async def _write(ctx: Ctx, system: str, prompt: str, fallback: str) -> tuple[str
             text += chunk
             ctx.think(chunk)
         return text.strip(), "gemini"
-    except Exception:
+    except Exception as e:
         ctx.think("[Gemini unavailable: template from the facts.]")
+        ctx.log(f"{ctx.spec.name}: Gemini failed ({type(e).__name__}), wrote it from the template.")
         return fallback, "template"
 
 

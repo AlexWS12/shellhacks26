@@ -97,6 +97,7 @@ class Analyst(Agent):
                     ctx.think(chunk)
             except Exception as e:
                 ctx.think(f"[Gemini unavailable: {type(e).__name__}. Using the template.]")
+                ctx.log(f"Analyst: Gemini failed on #{o.rank} ({type(e).__name__}), wrote it from the template.")
                 text, actor = template_insight(a, g, o, shared), "template"
             bad = unsupported_numbers(text, facts) if actor == "gemini" else set()
             b.analyses[o.id] = {"text": text.strip(), "actor": actor, "unsupported_numbers": sorted(bad)}
