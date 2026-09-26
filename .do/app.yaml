@@ -1,0 +1,41 @@
+# DigitalOcean App Platform spec: one app, two components on one domain.
+#   /api/*  -> "api" service (FastAPI, Dockerfile)      /  -> "web" static site (Next.js export)
+# Create:  doctl apps create --spec .do/app.yaml      Update:  doctl apps update <APP_ID> --spec .do/app.yaml
+# Set the SECRET values in the DO console (or with doctl) after the first create.
+name: tandem
+region: nyc
+services:
+  - name: api
+    github:
+      repo: AlexWS12/shellhacks26
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    dockerfile_path: backend/Dockerfile
+    http_port: 8080
+    instance_size_slug: apps-s-1vcpu-1gb
+    instance_count: 1
+    routes:
+      - path: /api
+        preserve_path_prefix: true   # FastAPI routes already start with /api
+    health_check:
+      http_path: /api/health
+    envs:
+      - { key: GEMINI_API_KEY, scope: RUN_TIME, type: SECRET }
+      - { key: GEMINI_MODEL, scope: RUN_TIME, value: gemini-3.8-flash }
+      - { key: JEV_PROVIDER, scope: RUN_TIME, value: typesafe }
+      - { key: TYPESAFE_API_KEY, scope: RUN_TIME, type: SECRET }
+      - { key: DATABASE_URL, scope: RUN_TIME, type: SECRET }   # Tiger Data service URL
+      - { key: TANDEM_PACE, scope: RUN_TIME, value: "1.0" }
+static_sites:
+  - name: web
+    github:
+      repo: AlexWS12/shellhacks26
+      branch: main
+      deploy_on_push: true
+    source_dir: frontend
+    build_command: npm ci && npm run build
+    output_dir: out
+    routes:
+      - path: /
+    # Production builds call /api on the same domain (frontend/lib/api.ts), so no build env is needed.

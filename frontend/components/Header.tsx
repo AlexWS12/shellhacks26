@@ -1,0 +1,37 @@
+"use client";
+
+import { run, useRev } from "@/lib/run";
+import { skipToResults, startRun, useUI } from "@/lib/ui";
+
+export default function Header() {
+  useRev((s) => s.rev);
+  const { filters, setFilters, health } = useUI();
+  const running = run.phase === "running";
+  const jevOn = Boolean(health && health.jev !== "off" && health.jev !== "mock");
+  return (
+    <header className="top">
+      <div className="brand">
+        <i className="mark" />
+        <h1>Tandem</h1>
+        <span className="tag">Coordinating utility construction across state lines</span>
+      </div>
+      <div className="status" aria-label="Status">
+        {running && <span className="live"><i />{run.mode === "replay" ? "Replay" : "Live"}</span>}
+        <span className={health?.gemini ? "on" : ""} title={health?.gemini_model}><i />Gemini</span>
+        <span className={jevOn ? "on" : ""} title={`Jev: ${health?.jev ?? "…"}`}><i />Jev{health?.jev === "mock" ? " (mock)" : ""}</span>
+        <span className={health?.tiger ? "on" : ""}><i />Tiger Data</span>
+      </div>
+      <span className="spacer" />
+      <div className="filters">
+        <label><input type="checkbox" checked={filters.allSponsors} onChange={(e) => setFilters({ allSponsors: e.target.checked })} /> GTC, MEAG, DU</label>
+        <label><input type="checkbox" checked={filters.townLevel} onChange={(e) => setFilters({ townLevel: e.target.checked })} /> Approx. locations</label>
+        <label><input type="checkbox" checked={filters.hideFinished} onChange={(e) => setFilters({ hideFinished: e.target.checked })} /> Hide finished</label>
+      </div>
+      {running && <button onClick={() => void skipToResults()}>Skip</button>}
+      <button onClick={() => void startRun("replay")} disabled={running} title="Replays the newest recorded run. Works offline.">Replay</button>
+      <button className="primary" onClick={() => void startRun("live")} disabled={running}>
+        {running ? "Running…" : run.phase === "done" ? "Run again" : "Run pipeline"}
+      </button>
+    </header>
+  );
+}

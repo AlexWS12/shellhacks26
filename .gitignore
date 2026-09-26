@@ -1,0 +1,21 @@
+# secrets
+.env
+**/.env
+
+# build output and dependencies
+.venv/
+node_modules/
+.next/
+out/
+__pycache__/
+.pytest_cache/
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# internal notes and planning (shared with the team directly, not in the repo)
+*.md
+!/README.md
+docs/
+data/reference/
+docker-compose.yml

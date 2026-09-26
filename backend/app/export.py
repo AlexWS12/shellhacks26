@@ -1,0 +1,83 @@
+# Sperry's columns first, in their order. Our extra columns go after.
+
+import io
+from datetime import date
+
+import openpyxl
+from openpyxl.styles import Font
+
+from app.core.models import Overlap, Project
+from app.core.sample import OVERLAP_HEADERS, PROJECT_HEADERS
+from app.store import dataset
+
+UTILITY_NAME = {"DESC": "Dominion Energy South Carolina", "GA": "Georgia Power"}
+PROJECT_EXTRA = ["sponsor", "location_confidence", "build_start", "estimated_cost", "status", "source", "project_type"]
+OVERLAP_EXTRA = ["location_confidence", "windows_overlap", "in_sponsor_sample"]
+
+
+def _project_row(p: Project, overlaps_of: dict[str, list[str]]) -> list:
+    a = p.endpoints[0] if p.endpoints else None
+    b = p.endpoints[1] if len(p.endpoints) > 1 else None
+    ids = overlaps_of.get(p.id, [])
+    return [p.id, UTILITY_NAME[p.utility], "SC" if p.utility == "DESC" else "GA", p.name,
+            a.name if a else None, a.lat if a else None, a.lon if a else None,
+            b.name if b else None, b.lat if b else None, b.lon if b else None,
+            p.lat, p.lon, date.fromisoformat(p.in_service_date), len(ids),
+            ids[0] if ids else None, ids[1] if len(ids) > 1 else None, ids[2] if len(ids) > 2 else None,
+            p.sponsor, p.location_confidence, date.fromisoformat(p.build_start) if p.build_start else None,
+            p.cost_total, p.status, f"{p.source_file} p.{p.source_page} ({p.source_ref})", p.project_type]
+
+
+def _header(ws, headers: list[str]) -> None:
+    ws.append(headers)
+    for c in ws[1]:
+        c.font = Font(bold=True)
+
+
+def build_xlsx(overlaps: list[Overlap]) -> bytes:
+    ids = {o.id: f"OVL_{i}" for i, o in enumerate(overlaps, start=1)}
+    overlaps_of: dict[str, list[str]] = {}
+    for o in overlaps:
+        overlaps_of.setdefault(o.project_a, []).append(ids[o.id])
+        overlaps_of.setdefault(o.project_b, []).append(ids[o.id])
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "projects"
+    _header(ws, PROJECT_HEADERS + PROJECT_EXTRA)
+    for p in sorted(dataset.CURRENT.projects.values(), key=lambda p: (p.utility, p.id)):
+        ws.append(_project_row(p, overlaps_of))
+    for row in ws.iter_rows(min_row=2):
+        for idx in (12, 19):  # in_service_date, build_start
+            if row[idx].value:
+                row[idx].number_format = "mm/dd/yyyy"
+    ws2 = wb.create_sheet("overlaps")
+    _header(ws2, OVERLAP_HEADERS + OVERLAP_EXTRA)
+    for o in overlaps:
+        a, b = dataset.CURRENT.projects[o.project_a], dataset.CURRENT.projects[o.project_b]
+        ws2.append([ids[o.id], o.distance_mi, o.time_gap_days, UTILITY_NAME["DESC"], a.id, a.name, UTILITY_NAME["GA"],
+                    b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample])
+    ws3 = wb.create_sheet("data_checks")
+    _header(ws3, ["level", "rule", "title", "detail", "source", "project_id", "decided_by"])
+    for c in dataset.CURRENT.checks:
+        ws3.append([c.level, c.rule, c.title, c.detail, c.source, c.project_id, c.actor])
+    ws4 = wb.create_sheet("reference_test")
+    _header(ws4, ["overlap_id", "sponsor_a", "sponsor_b", "our_a", "our_b", "expected_mi", "got_mi",
+                  "expected_days", "got_days", "pass"])
+    for r in dataset.CURRENT.reference:
+        ws4.append([r.overlap_id, r.a, r.b, r.a_project, r.b_project, r.expected_mi, r.got_mi, r.expected_days,
+                    r.got_days, r.passed])
+    ws5 = wb.create_sheet("notes")
+    for line in [
+        "Method: center = midpoint of located endpoints (or the single located one); haversine miles, R = 3958.8.",
+        "Overlap: centers under 25 miles apart. time_gap (day) = |in-service date A - in-service date B|.",
+        "Dates: DESC 'Planned In-Service Date' (final phase if phased); Georgia 'Need Date' from each project page.",
+        "Georgia sponsor scope in this export follows the filters used when exporting.",
+        "location_confidence: verified (sponsor file / override), confirmed_osm (OpenStreetMap + judge), "
+        "partial (mixed), town (GeoNames town, approximate), unlocated.",
+        "Georgia costs are REDACTED in the filing and exported as empty, never zero.",
+        f"Dataset run: {dataset.CURRENT.run_id}",
+    ]:
+        ws5.append([line])
+    buf = io.BytesIO()
+    wb.save(buf)
+    return buf.getvalue()

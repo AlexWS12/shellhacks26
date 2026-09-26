@@ -1,0 +1,156 @@
+// Keep in sync with backend/app/core/models.py and CLAUDE.md.
+
+export type Confidence = "verified" | "confirmed_osm" | "partial" | "town" | "unlocated";
+
+export interface Endpoint {
+  name: string;
+  lat: number | null;
+  lon: number | null;
+  method: string;
+  confidence: Confidence;
+  evidence: Record<string, unknown>;
+}
+
+export interface Project {
+  id: string;
+  utility: "DESC" | "GA";
+  sponsor: string;
+  name: string;
+  description: string;
+  need_text: string;
+  status: string;
+  in_service_date: string;
+  in_service_raw: string;
+  build_start: string | null;
+  build_active_from: string | null;
+  cost_total: number | null;
+  cost_by_year: Record<string, number | null> | null;
+  miles: number | null;
+  zone: string | null;
+  project_type: string | null;
+  project_type_actor: string | null;
+  endpoints: Endpoint[];
+  lat: number | null;
+  lon: number | null;
+  location_confidence: Confidence;
+  source_file: string;
+  source_page: number;
+  source_ref: string;
+  extracted_by: string;
+  sponsor_ref_id: string | null;
+}
+
+export interface Check {
+  id: string;
+  level: "error" | "warn" | "info";
+  rule: string;
+  title: string;
+  detail: string;
+  source: string;
+  project_id: string | null;
+  actor: string;
+}
+
+export interface Overlap {
+  id: string;
+  project_a: string;
+  project_b: string;
+  distance_mi: number;
+  time_gap_days: number;
+  windows_overlap: boolean | null;
+  pair_confidence: Confidence;
+  in_sponsor_sample: boolean;
+  rank: number;
+}
+
+export interface ReferenceResult {
+  overlap_id: string;
+  a: string;
+  b: string;
+  a_project: string | null;
+  b_project: string | null;
+  expected_mi: number;
+  got_mi: number | null;
+  expected_days: number;
+  got_days: number | null;
+  passed: boolean;
+}
+
+export interface Shared {
+  timing: "concurrent" | "sequential" | "unknown";
+  items: string[];
+  level: "high" | "medium" | "low";
+  types: string[];
+}
+
+export interface CostBlock {
+  desc_cost: number | null;
+  ga_cost: null;
+  desc_miles: number | null;
+  desc_cost_per_mile: number | null;
+  savings: number | null;
+  source: string | null;
+  statement: string;
+  shared?: Shared;
+}
+
+export interface Written {
+  text: string;
+  actor: string;
+  unsupported_numbers?: string[];
+}
+
+export interface Brief {
+  dominion?: Written;
+  georgia?: Written;
+  mediator?: Written;
+}
+
+export interface AgentSpec {
+  id: string;
+  name: string;
+  role: string;
+  actors: string[];
+  depends_on: string[];
+  kind: "agent" | "tool";
+  engine: string;
+}
+
+export interface SourceSpec {
+  id: string;
+  label: string;
+  detail: string;
+  file: string;
+  total: number;
+}
+
+export interface PairDetail {
+  overlap: Overlap;
+  a: Project;
+  b: Project;
+  shared: Shared;
+  cost: CostBlock;
+  analysis: Written | null;
+  brief: Brief | null;
+}
+
+export interface Health {
+  status: string;
+  dataset_run: string | null;
+  projects: number;
+  gemini: boolean;
+  gemini_model: string;
+  jev: string;
+  tiger: boolean;
+  today: string;
+}
+
+export interface RunEvent {
+  type: string;
+  run_id: string;
+  seq: number;
+  ts: number;
+  agent_id?: string;
+  actor?: string;
+  [key: string]: unknown;
+}

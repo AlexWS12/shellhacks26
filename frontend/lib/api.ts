@@ -1,0 +1,51 @@
+import type { Check, Health, Overlap, PairDetail, Project, ReferenceResult } from "./types";
+
+// Dev talks to localhost:8000. Production calls /api on the same domain.
+const DEFAULT_API = process.env.NODE_ENV === "development" ? "http://localhost:8000" : "";
+export const API = (process.env.NEXT_PUBLIC_API_URL ?? DEFAULT_API).replace(/\/$/, "");
+
+async function get<T>(path: string): Promise<T> {
+  const r = await fetch(`${API}${path}`);
+  if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`);
+  return (await r.json()) as T;
+}
+
+export interface FilterState {
+  allSponsors: boolean;
+  townLevel: boolean;
+  hideFinished: boolean;
+  sort: "distance" | "gap";
+}
+
+export function filterQuery(f: FilterState): string {
+  const q = new URLSearchParams({
+    all_sponsors: String(f.allSponsors),
+    min_conf: f.townLevel ? "town" : "confirmed_osm",
+    hide_finished: String(f.hideFinished),
+    sort: f.sort,
+  });
+  return q.toString();
+}
+
+export const api = {
+  health: () => get<Health>("/api/health"),
+  projects: () => get<Project[]>("/api/projects"),
+  checks: () => get<Check[]>("/api/checks"),
+  reference: () => get<ReferenceResult[]>("/api/reference-test"),
+  overlaps: (f: FilterState) =>
+    get<{ overlaps: Overlap[]; visible_projects: number; total_projects: number }>(`/api/overlaps?${filterQuery(f)}`),
+  pair: (a: string, b: string) => get<PairDetail>(`/api/pair/${encodeURIComponent(a)}/${encodeURIComponent(b)}`),
+  runs: () => get<{ recorded: { run_id: string; complete: boolean; ok: boolean; seconds: number }[] }>("/api/runs"),
+  startRun: async (mode: "live" | "replay", speed = 1): Promise<{ run_id: string }> => {
+    const r = await fetch(`${API}/api/runs`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ mode, speed }),
+    });
+    if (!r.ok) throw new Error(`start run: HTTP ${r.status} ${await r.text()}`);
+    return r.json();
+  },
+  skip: (runId: string) => fetch(`${API}/api/runs/${runId}/skip`, { method: "POST" }),
+  exportUrl: (f: FilterState, kind: "xlsx" | "csv") => `${API}/api/export.${kind}?${filterQuery(f)}`,
+  eventsUrl: (runId: string) => `${API}/api/runs/${runId}/events`,
+};
