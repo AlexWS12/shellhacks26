@@ -14,8 +14,14 @@ import { showLatestResults, startRun, useUI } from "@/lib/ui";
 const STREETS = "https://tiles.openfreemap.org/styles/dark";
 const US: LngLatBoundsLike = [[-125, 24.3], [-66.5, 49.5]];
 const BORDER: LngLatBoundsLike = [[-85.7, 30.3], [-78.4, 35.3]];
+const RIVER: LngLatBoundsLike = [[-82.7, 31.9], [-80.5, 34.0]]; // Augusta to Savannah, where the overlaps are
 const RING_MI = 25;
 const PIN_DROP_MS = 800;
+const TRAVEL_MS = 1100; // neon ball from one project to the other when a connection is found
+const DWELL_MS = 550; // how long an agent marker stays on each thing it works on
+const MAX_QUEUE = 6; // if an agent is faster than that, skip ahead but keep moving visibly
+// marching-ants dash steps for the connection lines
+const DASHES = [[0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5], [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0], [0, 0.5, 3, 3.5], [0, 1, 3, 3], [0, 1.5, 3, 2.5], [0, 2, 3, 2], [0, 2.5, 3, 1.5], [0, 3, 3, 1], [0, 3.5, 3, 0.5]];
 const YEARS = { min: 2023, max: 2034 };
 
 const COLORS = { desc: "#2dd4bf", gpc: "#6ea8fe", zone: "#f5b841", ink: "#e7eaf0", bg: "#07090d" };
@@ -97,7 +103,10 @@ function buildData() {
   const pairs = currentOverlaps().filter((o) => ids.has(o.project_a) && ids.has(o.project_b));
   const links: GeoJSON.Feature[] = [];
   const labels: GeoJSON.Feature[] = [];
+  const t = performance.now();
   for (const o of pairs) {
+    const born = run.linkBorn[o.id];
+    if (born && t - born < TRAVEL_MS) continue; // the ball is still drawing this one
     const a = run.projects[o.project_a], b = run.projects[o.project_b];
     const isSel = sel ? sel.a === o.project_a && sel.b === o.project_b : false;
     const path = arc([a.lon!, a.lat!], [b.lon!, b.lat!]);
@@ -110,9 +119,26 @@ function buildData() {
   return { points, lines, links: fc(links), labels: fc(labels), ring };
 }
 
+// Balls traveling along connections that were just found. Returns them plus how many are in flight.
+function comets(): { data: FC; flying: number } {
+  const t = performance.now();
+  const feats: GeoJSON.Feature[] = [];
+  for (const o of run.overlaps) {
+    const born = run.linkBorn[o.id];
+    if (!born || t - born >= TRAVEL_MS) continue;
+    const a = run.projects[o.project_a], b = run.projects[o.project_b];
+    if (!a?.lat || !b?.lat) continue;
+    const path = arc([a.lon!, a.lat!], [b.lon!, b.lat!]);
+    const k = Math.min(path.length - 1, Math.floor(((t - born) / TRAVEL_MS) * (path.length - 1)));
+    feats.push({ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: path.slice(0, k + 1).length > 1 ? path.slice(0, k + 1) : [path[0], path[0]] } });
+    feats.push({ type: "Feature", properties: { head: true }, geometry: { type: "Point", coordinates: path[k] } });
+  }
+  return { data: fc(feats), flying: feats.length / 2 };
+}
+
 function addDataLayers(map: maplibregl.Map) {
   const color = ["match", ["get", "u"], "DESC", COLORS.desc, COLORS.gpc] as maplibregl.ExpressionSpecification;
-  for (const id of ["ring", "lines", "links", "labels", "points", "pulse"]) {
+  for (const id of ["ring", "lines", "links", "labels", "points", "pulse", "comets"]) {
     if (!map.getSource(id)) map.addSource(id, { type: "geojson", data: fc([]) });
   }
   const linkOpacity = ["case", ["get", "dim"], 0.12, 1] as maplibregl.ExpressionSpecification;
@@ -126,12 +152,18 @@ function addDataLayers(map: maplibregl.Map) {
     paint: { "line-color": COLORS.zone, "line-width": ["case", ["get", "sel"], 12, 7], "line-blur": 6,
       "line-opacity": ["*", linkOpacity, ["case", ["get", "together"], 0.45, 0.22]] }, layout: { "line-cap": "round" } });
   map.addLayer({ id: "links", type: "line", source: "links",
-    paint: { "line-color": ["case", ["get", "together"], COLORS.zone, "#c9a45c"], "line-width": ["case", ["get", "sel"], 2.6, 1.5],
-      "line-opacity": linkOpacity }, layout: { "line-cap": "round" } });
+    paint: { "line-color": ["case", ["get", "together"], COLORS.zone, "#d9b56a"], "line-width": ["case", ["get", "sel"], 3, 2],
+      "line-opacity": linkOpacity, "line-dasharray": DASHES[0] } });
   map.addLayer({ id: "links-hit", type: "line", source: "links", paint: { "line-color": "#000", "line-opacity": 0, "line-width": 14 } });
   map.addLayer({ id: "pulse", type: "circle", source: "pulse",
     paint: { "circle-radius": ["get", "r"], "circle-color": color, "circle-opacity": 0, "circle-stroke-color": color,
       "circle-stroke-width": 2, "circle-stroke-opacity": ["get", "o"] } });
+  map.addLayer({ id: "comet-trail", type: "line", source: "comets", filter: ["==", ["geometry-type"], "LineString"],
+    paint: { "line-color": COLORS.zone, "line-width": 3, "line-blur": 2, "line-opacity": 0.8 }, layout: { "line-cap": "round" } });
+  map.addLayer({ id: "comet-glow", type: "circle", source: "comets", filter: ["==", ["geometry-type"], "Point"],
+    paint: { "circle-radius": 16, "circle-color": COLORS.zone, "circle-blur": 1, "circle-opacity": 0.75 } });
+  map.addLayer({ id: "comet-core", type: "circle", source: "comets", filter: ["==", ["geometry-type"], "Point"],
+    paint: { "circle-radius": 4.5, "circle-color": "#fff" } });
   map.addLayer({ id: "points-glow", type: "circle", source: "points",
     paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 7, 9, 13], "circle-color": color, "circle-blur": 1, "circle-opacity": 0.35 } });
   map.addLayer({ id: "points", type: "circle", source: "points",
@@ -148,19 +180,20 @@ function addDataLayers(map: maplibregl.Map) {
     paint: { "text-color": COLORS.zone, "text-halo-color": COLORS.bg, "text-halo-width": 2.5, "text-opacity": ["case", ["get", "dim"], 0.2, 1] } });
 }
 
-// One labeled beacon per working agent, gliding to whatever it's working on.
+// One labeled beacon per working agent. Each stop is held for DWELL_MS so people can follow it.
+type Stop = { lon: number; lat: number; label: string };
+type Beacon = { m: maplibregl.Marker; cur: [number, number]; label: HTMLElement; queue: Stop[]; lastT: number; arrivedAt: number };
+
 class AgentMarkers {
-  private markers = new Map<string, { m: maplibregl.Marker; cur: [number, number]; label: HTMLElement }>();
+  private markers = new Map<string, Beacon>();
   constructor(private map: maplibregl.Map) {}
 
   sync() {
-    const live = new Set<string>();
     for (const [id, pos] of Object.entries(run.agentPos)) {
       const agent = run.agents[id];
-      if (!agent || agent.status !== "working") continue;
-      live.add(id);
-      let entry = this.markers.get(id);
-      if (!entry) {
+      if (!agent) continue;
+      let b = this.markers.get(id);
+      if (!b) {
         const el = document.createElement("div");
         el.className = "agent-marker";
         el.style.setProperty("--c", engineColor(agent.engine ?? ""));
@@ -173,31 +206,49 @@ class AgentMarkers {
         tag.appendChild(em);
         el.append(pin, tag);
         const m = new maplibregl.Marker({ element: el, anchor: "left", offset: [-6, 0] }).setLngLat([pos.lon, pos.lat]).addTo(this.map);
-        entry = { m, cur: [pos.lon, pos.lat], label: em };
-        this.markers.set(id, entry);
+        b = { m, cur: [pos.lon, pos.lat], label: em, queue: [], lastT: 0, arrivedAt: 0 };
+        this.markers.set(id, b);
       }
-      entry.label.textContent = pos.label.length > 28 ? `${pos.label.slice(0, 26)}…` : pos.label;
-    }
-    for (const [id, entry] of this.markers) {
-      if (!live.has(id)) {
-        entry.m.remove();
-        this.markers.delete(id);
+      if (pos.t !== b.lastT) {
+        b.lastT = pos.t;
+        b.queue.push({ lon: pos.lon, lat: pos.lat, label: pos.label });
+        if (b.queue.length > MAX_QUEUE) b.queue.splice(1, b.queue.length - MAX_QUEUE);
       }
     }
   }
 
-  step(): boolean {
-    let moving = false;
-    for (const [id, entry] of this.markers) {
-      const target = run.agentPos[id];
-      if (!target) continue;
-      const dx = target.lon - entry.cur[0], dy = target.lat - entry.cur[1];
-      if (Math.abs(dx) + Math.abs(dy) < 0.0005) continue;
-      entry.cur = [entry.cur[0] + dx * 0.18, entry.cur[1] + dy * 0.18];
-      entry.m.setLngLat(entry.cur);
-      moving = true;
+  step(now: number): boolean {
+    let busy = false;
+    for (const [id, b] of this.markers) {
+      const target = b.queue[0];
+      if (!target) {
+        // nothing left to show: remove once the agent is done
+        if (run.agents[id]?.status !== "working" || run.phase !== "running") {
+          b.m.remove();
+          this.markers.delete(id);
+        }
+        continue;
+      }
+      busy = true;
+      const dx = target.lon - b.cur[0], dy = target.lat - b.cur[1];
+      if (Math.abs(dx) + Math.abs(dy) > 0.002) {
+        b.cur = [b.cur[0] + dx * 0.12, b.cur[1] + dy * 0.12];
+        b.m.setLngLat(b.cur);
+        b.arrivedAt = 0;
+        continue;
+      }
+      if (!b.arrivedAt) {
+        b.arrivedAt = now;
+        b.label.textContent = target.label.length > 28 ? `${target.label.slice(0, 26)}…` : target.label;
+      }
+      if (now - b.arrivedAt >= DWELL_MS && b.queue.length > 1) {
+        b.queue.shift();
+        b.arrivedAt = 0;
+      } else if (now - b.arrivedAt >= DWELL_MS && run.agents[id]?.status !== "working") {
+        b.queue.shift();
+      }
     }
-    return moving;
+    return busy;
   }
 
   clear() {
@@ -254,18 +305,29 @@ export default function MapView() {
     });
 
     function refresh() {
-      if (!map.isStyleLoaded() || !map.getSource("points")) return;
+      if (!map.getSource("points")) return; // layers not added yet (isStyleLoaded() is false during every data update)
+      drawSources();
+      agents.sync();
+      animate();
+    }
+
+    function drawSources() {
       const d = buildData();
       (map.getSource("points") as GeoJSONSource).setData(d.points);
       (map.getSource("lines") as GeoJSONSource).setData(d.lines);
       (map.getSource("links") as GeoJSONSource).setData(d.links);
       (map.getSource("labels") as GeoJSONSource).setData(d.labels);
       (map.getSource("ring") as GeoJSONSource).setData(d.ring);
-      agents.sync();
-      animate();
     }
 
     let raf = 0;
+    let flying = 0;
+    let dash = 0;
+    const ants = setInterval(() => {
+      if (!map.getLayer("links")) return;
+      dash = (dash + 1) % DASHES.length;
+      map.setPaintProperty("links", "line-dasharray", DASHES[dash]);
+    }, 70);
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     function animate() {
       if (raf) return;
@@ -279,8 +341,14 @@ export default function MapView() {
           return [{ type: "Feature", properties: { u: p.utility, r: 3 + 18 * k, o: 0.9 * (1 - k) },
             geometry: { type: "Point", coordinates: [p.lon!, p.lat!] } } as GeoJSON.Feature];
         })));
-        const moving = agents.step();
-        raf = drops.length || moving ? requestAnimationFrame(tick) : 0;
+        const c = comets();
+        (map.getSource("comets") as GeoJSONSource | undefined)?.setData(c.data);
+        if (c.flying !== flying) {
+          flying = c.flying;
+          drawSources(); // a ball landed: show its finished connection
+        }
+        const moving = agents.step(t);
+        raf = drops.length || moving || c.flying ? requestAnimationFrame(tick) : 0;
       };
       raf = requestAnimationFrame(tick);
     }
@@ -295,6 +363,7 @@ export default function MapView() {
       unsubUI();
       cancelAnimationFrame(raf);
       clearTimeout(fallback);
+      clearInterval(ants);
       agents.clear();
       map.remove();
     };
@@ -349,6 +418,7 @@ function moveCamera(map: maplibregl.Map, c: ReturnType<typeof useUI.getState>["c
   const opts = { padding: 40, duration: 1300, essential: false };
   if (c.kind === "us") map.fitBounds(US, opts);
   else if (c.kind === "border") map.fitBounds(BORDER, opts);
+  else if (c.kind === "river") map.fitBounds(RIVER, { ...opts, duration: 1600 });
   else if (c.kind === "pair") {
     const a = run.projects[c.a], b = run.projects[c.b];
     if (!a?.lat || !b?.lat) return;

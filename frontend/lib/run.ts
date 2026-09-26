@@ -66,6 +66,7 @@ export interface RunData {
   handoffs: { id: number; from: string; to: string; t: number }[];
   recent: Record<string, number>; // when each pin dropped, for the animation
   agentPos: Record<string, { lon: number; lat: number; t: number; label: string }>; // where each agent is working
+  linkBorn: Record<string, number>; // when each overlap was found, for the connection animation
   stats: Record<string, number> | null;
   startTs: number | null;
   endTs: number | null;
@@ -77,7 +78,7 @@ const empty = (): RunData => ({
   runId: null, mode: null, replayOf: null, phase: "idle", ok: null, failMsg: "", lastSeq: -1,
   agents: {}, agentOrder: [], sources: {}, sourceOrder: [], projects: {}, unlocated: {}, checks: [], overlaps: [],
   reference: [], analyses: {}, costs: {}, briefs: {}, log: [], ticker: "Not started.", judges: {}, agentLog: {},
-  thinking: {}, health: {}, handoffs: [], recent: {}, agentPos: {}, stats: null, startTs: null, endTs: null, lastTs: null, totalCost: 0,
+  thinking: {}, health: {}, handoffs: [], recent: {}, agentPos: {}, linkBorn: {}, stats: null, startTs: null, endTs: null, lastTs: null, totalCost: 0,
 });
 
 export const run: RunData = empty();
@@ -300,6 +301,7 @@ export function apply(e: RunEvent): void {
     case "overlap.found": {
       const o = e.overlap as Overlap;
       run.overlaps.push(o);
+      run.linkBorn[o.id] = now();
       moveTo(aid, [o.project_a, o.project_b], `${o.distance_mi.toFixed(1)} mi`);
       break;
     }

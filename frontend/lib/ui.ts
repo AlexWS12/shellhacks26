@@ -11,7 +11,7 @@ export type Panel =
   | { kind: "project"; id: string }
   | { kind: "agent"; id: string };
 
-export type Camera = { kind: "us" } | { kind: "border" } | { kind: "pair"; a: string; b: string } | { kind: "project"; id: string };
+export type Camera = { kind: "us" } | { kind: "border" } | { kind: "river" } | { kind: "pair"; a: string; b: string } | { kind: "project"; id: string };
 
 interface UIState {
   panel: Panel;
@@ -73,6 +73,9 @@ function follow(runId: string): void {
   source.onmessage = (m) => {
     const e = JSON.parse(m.data) as RunEvent;
     apply(e);
+    // zoom into the Savannah River while connections are found, then back out
+    if (e.type === "agent.spawned" && e.agent_id === "overlap") useUI.getState().flyTo({ kind: "river" });
+    if (e.type === "run.done") useUI.getState().flyTo({ kind: "border" });
     if (e.type === "run.done") void useUI.getState().refreshResults();
   };
   source.addEventListener("end", () => {

@@ -27,7 +27,7 @@ class OverlapEngine(Agent):
         ctx.log("Overlaps: comparing every Dominion project with every Georgia project, center to center.")
         for o in b.overlaps:
             ctx.emit("overlap.found", overlap=o.model_dump())
-            await ctx.pace(0.12)
+            await ctx.pace(0.3)  # slow enough to watch each connection form
         ctx.log(f"Overlaps: {len(b.overlaps)} pairs under 25 miles.")
         return f"{len(b.overlaps)} pairs under 25 miles"
 
