@@ -156,6 +156,7 @@ function ExportMenu() {
           <a role="menuitem" href={api.exportUrl(filters, "xlsx")} onClick={() => setOpen(false)}>.xlsx</a>
           <a role="menuitem" href={api.exportUrl(filters, "csv")} onClick={() => setOpen(false)}>.csv</a>
           {run.report && <a role="menuitem" href={api.reportUrl} onClick={() => setOpen(false)}>Report .md</a>}
+          {run.report && <a role="menuitem" href={api.reportPdfUrl} onClick={() => setOpen(false)}>Report .pdf</a>}
         </div>
       )}
     </div>
@@ -775,7 +776,7 @@ function ReportView() {
 
       <h3>Method</h3>
       <div className="prov">{r.method.map((m, k) => <div key={k}>{m}</div>)}</div>
-      <div className="exports"><a href={api.reportUrl}>Download report (.md)</a></div>
+      <div className="exports"><a href={api.reportUrl}>Download report (.md)</a> · <a href={api.reportPdfUrl}>Download report (.pdf)</a></div>
     </div>
   );
 }
