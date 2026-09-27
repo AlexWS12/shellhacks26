@@ -1,0 +1,3126 @@
+{
+ "rows": {
+  "19523": {
+   "zone": "219",
+   "year": "2025",
+   "teams": "19523",
+   "tname": "SAV: CC - HYUNDAI MOTORS SAVANNAH AKA. PROJECT EA",
+   "need": "1/1/2025",
+   "sponsor": "SAV"
+  },
+  "18670": {
+   "zone": "212",
+   "year": "2025",
+   "teams": "18670",
+   "tname": "GTC: BANKS CROSSING - POND FORK 115 KV",
+   "need": "5/1/2025",
+   "sponsor": "GTC"
+  },
+  "18492": {
+   "zone": "216",
+   "year": "2025",
+   "teams": "18492",
+   "tname": "MITCHELL - NORTH TIFTON 230KV RECONDUCTOR",
+   "need": "5/1/2025",
+   "sponsor": "GPC"
+  },
+  "19676": {
+   "zone": "206",
+   "year": "2025",
+   "teams": "19676",
+   "tname": "ADAMSVILLE - JACK MCDONOUGH 230KV LINE REBUILD",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "18800": {
+   "zone": "214",
+   "year": "2025",
+   "teams": "18800",
+   "tname": "ECHECONNEE-WELLSTON 115KV REBUILD",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "19187": {
+   "zone": "211",
+   "year": "2025",
+   "teams": "19187",
+   "tname": "GRID - BREMEN - CROOKED CREEK (APC) 115 KV PROJECT",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "18153": {
+   "zone": "214",
+   "year": "2025",
+   "teams": "18153",
+   "tname": "GTC: BONAIRE PRI- ECHECONNEE 115 KV PARTIAL REBUILD",
+   "need": "6/1/2025",
+   "sponsor": "GTC"
+  },
+  "20342": {
+   "zone": "218",
+   "year": "2025",
+   "teams": "20342",
+   "tname": "GTC: CAMDEN INDUSTRIAL PARK 230/115KV NEW SUBSTATION",
+   "need": "6/1/2025",
+   "sponsor": "GTC"
+  },
+  "20590": {
+   "zone": "214",
+   "year": "2025",
+   "teams": "20590",
+   "tname": "GTC: EATONTON PRIMARY - LICK CREEK 115KV LINE SWITCH REPLACEMENT",
+   "need": "6/1/2025",
+   "sponsor": "GTC"
+  },
+  "11821": {
+   "zone": "218",
+   "year": "2025",
+   "teams": "11821",
+   "tname": "JESUP - LUDOWICI PRIMARY 115KV REBUILD",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "13753": {
+   "zone": "206",
+   "year": "2025",
+   "teams": "13753",
+   "tname": "MEAG: ALCOVY ROAD - SKC 115 KV RECONDUCTOR",
+   "need": "6/1/2025",
+   "sponsor": "MEAG"
+  },
+  "13787": {
+   "zone": "214",
+   "year": "2025",
+   "teams": "13787",
+   "tname": "MEAG: AULTMAN ROAD - BONAIRE PRIMARY 115 KV REBUILD",
+   "need": "6/1/2025",
+   "sponsor": "MEAG"
+  },
+  "20464": {
+   "zone": "202",
+   "year": "2025",
+   "teams": "20464",
+   "tname": "NORCROSS 230KV BUS 1-3 SERIES BUS TIE BREAKER INSTALLATION",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "19631": {
+   "zone": "216",
+   "year": "2025",
+   "teams": "19631",
+   "tname": "PINE GROVE PRIMARY 115 KV DUAL STAGE CAPACITOR BANK",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "20067": {
+   "zone": "219",
+   "year": "2025",
+   "teams": "20067",
+   "tname": "SAV: DEPTFORD - MAGNOLIA 115KV RECONDUCTOR",
+   "need": "6/1/2025",
+   "sponsor": "SAV"
+  },
+  "20466": {
+   "zone": "214",
+   "year": "2025",
+   "teams": "20466",
+   "tname": "SMART VALVE INSTALLATION",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "21046": {
+   "zone": "218",
+   "year": "2025",
+   "teams": "21046",
+   "tname": "THALMANN AND COLERAIN 23O KV LINE RELAY PANEL UPGRADES",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "20431": {
+   "zone": "211",
+   "year": "2025",
+   "teams": "20431",
+   "tname": "VILLA RICA LOW SIDE BREAKER",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "20684": {
+   "zone": "218",
+   "year": "2025",
+   "teams": "20684",
+   "tname": "CAMDEN INDUSTRIAL PARK (GPC)",
+   "need": "6/1/2025",
+   "sponsor": "GPC"
+  },
+  "18774": {
+   "zone": "213",
+   "year": "2025",
+   "teams": "18774",
+   "tname": "GTC: HEARD COUNTY - TENASKA 500KV (SECOND LINE)",
+   "need": "12/1/2025",
+   "sponsor": "GTC"
+  },
+  "18889": {
+   "zone": "206",
+   "year": "2025",
+   "teams": "18889",
+   "tname": "JEFFERSON STREET#3 - NORTHWEST (WHITE) 115 KV RECONDUCTOR",
+   "need": "12/1/2025",
+   "sponsor": "GPC"
+  },
+  "20326": {
+   "zone": "212",
+   "year": "2025",
+   "teams": "20326",
+   "tname": "ANTHONY SHOALS STATCOM SYSTEM",
+   "need": "12/31/2025",
+   "sponsor": "GPC"
+  },
+  "20152": {
+   "zone": "211",
+   "year": "2025",
+   "teams": "20152",
+   "tname": "CC - CASS PINE- HILL VIEW 230 KV LINE- CC IMPROVEMENTS",
+   "need": "12/31/2025",
+   "sponsor": "GPC"
+  },
+  "20175": {
+   "zone": "211",
+   "year": "2025",
+   "teams": "20175",
+   "tname": "CC - PROJECT CHRONOS- SK/HYUNDAI",
+   "need": "12/31/2025",
+   "sponsor": "GPC"
+  },
+  "20010": {
+   "zone": "215",
+   "year": "2025",
+   "teams": "20010",
+   "tname": "GTC: ANTHONY SHOALS - WASHINGTON 115 KV LINE REBUILD",
+   "need": "12/31/2025",
+   "sponsor": "GTC"
+  },
+  "17075": {
+   "zone": "219",
+   "year": "2025",
+   "teams": "17075",
+   "tname": "SAV: LITTLE OGEECHEE 230- 115KV: RELAY MODERNIZATION",
+   "need": "12/31/2025",
+   "sponsor": "SAV"
+  },
+  "18691": {
+   "zone": "216",
+   "year": "2026",
+   "teams": "18691",
+   "tname": "GTC: LIZARD LOPE - WESTOVER 115 KV NEW LINE",
+   "need": "3/1/2026",
+   "sponsor": "GTC"
+  },
+  "20018": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "20018",
+   "tname": "CC - QTS FAYETTEVILLE TRANSMISSION NEEDS",
+   "need": "4/1/2026",
+   "sponsor": "GPC"
+  },
+  "19597": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "19597",
+   "tname": "ADAMSVILLE - BUZZARD ROOST 230KV REBUILD AND JUMPER UPGRADE",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "18960": {
+   "zone": "201",
+   "year": "2026",
+   "teams": "18960",
+   "tname": "BLANKETS CREEK \u2013 WOODSTOCK 115KV LINE REBUILD",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "20243": {
+   "zone": "201",
+   "year": "2026",
+   "teams": "20243",
+   "tname": "CC - GARRETT ROAD SWITCHING STATION - TRAE LANE",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "20216": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "20216",
+   "tname": "CC - STONEWALL TELL ROAD (TA REALTY)",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "18679": {
+   "zone": "211",
+   "year": "2026",
+   "teams": "18679",
+   "tname": "DU: EAST DALTON - OOSTANAULA 115KV REBUILD",
+   "need": "6/1/2026",
+   "sponsor": "DU"
+  },
+  "20491": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "20491",
+   "tname": "EAST POINT RELAY MODERNIZATION",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "16007": {
+   "zone": "215",
+   "year": "2026",
+   "teams": "16007",
+   "tname": "FENWICK STREET - SAND BAR FERRY 115KV (RECONDUCTOR/REBUILD)",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "20516": {
+   "zone": "213",
+   "year": "2026",
+   "teams": "20516",
+   "tname": "GOAT ROCK 230KV SWITCH, JUMPER, & LINE TRAP REPLACEMENT",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "19618": {
+   "zone": "214",
+   "year": "2026",
+   "teams": "19618",
+   "tname": "GORDON-N DUBLIN 115KV (GORDON-ENGL MCI J) REBUILD",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "21139": {
+   "zone": "206",
+   "year": "2026",
+   "teams": "21139",
+   "tname": "GRADY - MORROW (WHITE) 115KV REBUILD",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "20474": {
+   "zone": "206",
+   "year": "2026",
+   "teams": "20474",
+   "tname": "GRADY 230/115KV RELAY MODERNIZATION",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "19706": {
+   "zone": "212",
+   "year": "2026",
+   "teams": "19706",
+   "tname": "GRID - GAINESVILLE #2 EQUIPMENT REPLACEMENT",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "21137": {
+   "zone": "206",
+   "year": "2026",
+   "teams": "21137",
+   "tname": "GTC: CONYERS - CORNISH MOUNTAIN 115KV LINE UPGRADE",
+   "need": "6/1/2026",
+   "sponsor": "GTC"
+  },
+  "19334": {
+   "zone": "213",
+   "year": "2026",
+   "teams": "19334",
+   "tname": "GTC: LAGRANGE - NORTH OPELIKA 230 KV",
+   "need": "6/1/2026",
+   "sponsor": "GTC"
+  },
+  "20015": {
+   "zone": "212",
+   "year": "2026",
+   "teams": "20015",
+   "tname": "GTC: MORNING HORNET 2ND 230/115 KV BANK & THUMBS UP 115KV TL",
+   "need": "6/1/2026",
+   "sponsor": "GTC"
+  },
+  "19999": {
+   "zone": "214",
+   "year": "2026",
+   "teams": "19999",
+   "tname": "GTC: ROBINS SPRING BUS REPLACEMENT",
+   "need": "6/1/2026",
+   "sponsor": "GTC"
+  },
+  "20001": {
+   "zone": "214",
+   "year": "2026",
+   "teams": "20001",
+   "tname": "GTC: ROBINS SPRING CAPACITOR BANK INSTALLATION",
+   "need": "6/1/2026",
+   "sponsor": "GTC"
+  },
+  "19636": {
+   "zone": "211",
+   "year": "2026",
+   "teams": "19636",
+   "tname": "HAMMOND - WEISS DAM 115KV LINE REBUILD",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "20512": {
+   "zone": "214",
+   "year": "2026",
+   "teams": "20512",
+   "tname": "KATHLEEN AREA IMPROVEMENTS",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "20490": {
+   "zone": "206",
+   "year": "2026",
+   "teams": "20490",
+   "tname": "KLONDIKE RELAY MODERNIZATION",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "19598": {
+   "zone": "213",
+   "year": "2026",
+   "teams": "19598",
+   "tname": "MEAG: DRESDEN - LAGRANGE PRIMARY 230KV UPGRADE & JUMPERS",
+   "need": "6/1/2026",
+   "sponsor": "MEAG"
+  },
+  "20270": {
+   "zone": "215",
+   "year": "2026",
+   "teams": "20270",
+   "tname": "MEAG: RAY PLACE RD - WASHINGTON #3",
+   "need": "6/1/2026",
+   "sponsor": "MEAG"
+  },
+  "20271": {
+   "zone": "215",
+   "year": "2026",
+   "teams": "20271",
+   "tname": "MEAG: RAY PLACE RD - WASHINGTON (WASHINGTON - WASHINGTON 3)",
+   "need": "6/1/2026",
+   "sponsor": "MEAG"
+  },
+  "20300": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "20300",
+   "tname": "MORROW 115KV RELAY UPGRADE",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "18690": {
+   "zone": "216",
+   "year": "2026",
+   "teams": "18690",
+   "tname": "PALMYRA REACTOR REMOVAL",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "20066": {
+   "zone": "219",
+   "year": "2026",
+   "teams": "20066",
+   "tname": "SAV: BOULEVARD - DEPTFORD 115KV RECONDUCTOR",
+   "need": "6/1/2026",
+   "sponsor": "SAV"
+  },
+  "19966": {
+   "zone": "219",
+   "year": "2026",
+   "teams": "19966",
+   "tname": "SAV: CC - BIG OGEECHEE 500/230KV (CC NETWORK IMPROVEMENTS)",
+   "need": "6/1/2026",
+   "sponsor": "SAV"
+  },
+  "20277": {
+   "zone": "219",
+   "year": "2026",
+   "teams": "20277",
+   "tname": "SAV: MCINTOSH - PURRYSBURG 230KV REACTORS",
+   "need": "6/1/2026",
+   "sponsor": "SAV"
+  },
+  "20489": {
+   "zone": "206",
+   "year": "2026",
+   "teams": "20489",
+   "tname": "SCOTTDALE RELAY MODERNIZATION",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "17900": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "17900",
+   "tname": "UNION CITY - YATES 230 KV WHITE LINE REBUILD",
+   "need": "4/1/2026",
+   "sponsor": "GPC"
+  },
+  "20691": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "20691",
+   "tname": "UNION CITY - YATES 230KV (WHITE) SWITCH AND TRAP REPLACEMENT",
+   "need": "6/1/2026",
+   "sponsor": "GPC"
+  },
+  "20223": {
+   "zone": "216",
+   "year": "2026",
+   "teams": "20223",
+   "tname": "CC - PROJECT PAYTON BAINBRIDGE",
+   "need": "6/30/2026",
+   "sponsor": "GPC"
+  },
+  "21022": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "21022",
+   "tname": "OHARA BREAKER REPLACEMENT",
+   "need": "10/1/2026",
+   "sponsor": "GPC"
+  },
+  "20668": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "20668",
+   "tname": "DRESDEN LINE PROTECTIVE RELAYING",
+   "need": "12/1/2026",
+   "sponsor": "GPC"
+  },
+  "20874": {
+   "zone": "213",
+   "year": "2026",
+   "teams": "20874",
+   "tname": "GTC: BARNESVILLE PRIMARY- BARNESVILLE #1 115KV RECONDUCTOR",
+   "need": "12/1/2026",
+   "sponsor": "GTC"
+  },
+  "20273": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "20273",
+   "tname": "GTC: DRESDEN 500KV BUS EXPANSION",
+   "need": "12/1/2026",
+   "sponsor": "GTC"
+  },
+  "20002": {
+   "zone": "214",
+   "year": "2026",
+   "teams": "20002",
+   "tname": "GTC: GORDON - SANDERSVILLE #1 115KV LINE REBUILD",
+   "need": "12/1/2026",
+   "sponsor": "GTC"
+  },
+  "20151": {
+   "zone": "211",
+   "year": "2026",
+   "teams": "20151",
+   "tname": "CC - CASS PINE 230/25 NEW SUB - QCELLS - CC IMPROVEMENTS",
+   "need": "12/31/2026",
+   "sponsor": "GPC"
+  },
+  "19287": {
+   "zone": "206",
+   "year": "2026",
+   "teams": "19287",
+   "tname": "GRADY-WEST END 115KV REBUILD",
+   "need": "12/31/2026",
+   "sponsor": "GPC"
+  },
+  "19363": {
+   "zone": "208",
+   "year": "2026",
+   "teams": "19363",
+   "tname": "MORROW - MOUNTAIN VIEW 115 KV REBUILD",
+   "need": "12/31/2026",
+   "sponsor": "GPC"
+  },
+  "18832": {
+   "zone": "213",
+   "year": "2027",
+   "teams": "18832",
+   "tname": "MEAG: FORTSON 230KV SUBSTATION MODERNIZATION",
+   "need": "1/13/2027",
+   "sponsor": "MEAG"
+  },
+  "20509": {
+   "zone": "201",
+   "year": "2027",
+   "teams": "20509",
+   "tname": "CC - EMBLEM RIVERSIDE CUSTOMER SUB (FLEXENTIAL)",
+   "need": "3/1/2027",
+   "sponsor": "GPC"
+  },
+  "19635": {
+   "zone": "211",
+   "year": "2027",
+   "teams": "19635",
+   "tname": "GTC: HICKORY LEVEL - VILLA RICA 230KV LINE RECONDUCTOR",
+   "need": "5/1/2027",
+   "sponsor": "GTC"
+  },
+  "19601": {
+   "zone": "208",
+   "year": "2027",
+   "teams": "19601",
+   "tname": "MORROW - YATES COMMON 115KV LINE UPGRADE",
+   "need": "5/1/2027",
+   "sponsor": "GPC"
+  },
+  "15879": {
+   "zone": "211",
+   "year": "2027",
+   "teams": "15879",
+   "tname": "POSSUM BRANCH - YATES COMMON 115KV REBUILD (YATES TO CLEM)",
+   "need": "5/1/2027",
+   "sponsor": "GPC"
+  },
+  "20771": {
+   "zone": "208",
+   "year": "2027",
+   "teams": "20771",
+   "tname": "CC - GULLATT ROAD TRANSMISSION IMPROVEMENTS",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "18736": {
+   "zone": "208",
+   "year": "2027",
+   "teams": "18736",
+   "tname": "CC - MICROSOFT - SHUGART (CCO06)",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "20781": {
+   "zone": "201",
+   "year": "2027",
+   "teams": "20781",
+   "tname": "CC - SUMMER LAKE - VILLA RICA 230KV REBUILD (CC IMPROVMNT)",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "20736": {
+   "zone": "208",
+   "year": "2027",
+   "teams": "20736",
+   "tname": "CC - TA REALTY ELLENWOOD NETWORK IMPROVEMENTS",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "20234": {
+   "zone": "212",
+   "year": "2027",
+   "teams": "20234",
+   "tname": "DOYLE - LG&E MONROE 230KV - JACKS CREEK LOOP IN",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "20858": {
+   "zone": "201",
+   "year": "2027",
+   "teams": "20858",
+   "tname": "GTC: ADAMSVILLE - BUZZARD ROOST 230KV REBUILD",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "20776": {
+   "zone": "201",
+   "year": "2027",
+   "teams": "20776",
+   "tname": "GTC: DOUGLASVILLE - VILLA RICA 230KV REBUILD (CC IMPROVEMENT)",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "20778": {
+   "zone": "212",
+   "year": "2027",
+   "teams": "20778",
+   "tname": "GTC: DOYLE - WINDER PRIMARY 230KV LINE JUMPER REPLACEMENT",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "19358": {
+   "zone": "216",
+   "year": "2027",
+   "teams": "19358",
+   "tname": "GTC: EAST MOULTRIE - HIGHWAY 112 230 KV LINE",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "09662": {
+   "zone": "212",
+   "year": "2027",
+   "teams": "09662",
+   "tname": "GTC: EAST WALTON 500/230KV PROJECT",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "20505": {
+   "zone": "201",
+   "year": "2027",
+   "teams": "20505",
+   "tname": "GTC: GARRETT RD - V. RICA 230KV LINE RECONDUCTOR (CC NET IM)",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "19622": {
+   "zone": "214",
+   "year": "2027",
+   "teams": "19622",
+   "tname": "GTC: RIDDLEVILLE BUS REPLACEMENT",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "19606": {
+   "zone": "206",
+   "year": "2027",
+   "teams": "19606",
+   "tname": "GTC: SKC 115KV BUS AND JUMPER REPLACEMENT",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "20020": {
+   "zone": "214",
+   "year": "2027",
+   "teams": "20020",
+   "tname": "GTC: SOUTH HAZLEHURST - NEW LACY 230KV LINE",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "20506": {
+   "zone": "201",
+   "year": "2027",
+   "teams": "20506",
+   "tname": "GTC: SWITCH WAY - THORNTON ROAD 230KV LINE REBUILD",
+   "need": "6/1/2027",
+   "sponsor": "GTC"
+  },
+  "18668": {
+   "zone": "218",
+   "year": "2027",
+   "teams": "18668",
+   "tname": "JESUP - OFFERMAN 115KV REBUILD",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "10143": {
+   "zone": "202",
+   "year": "2027",
+   "teams": "10143",
+   "tname": "LAWRENCEVILLE - WINDER 115KV LINE REBUILD",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "10481": {
+   "zone": "202",
+   "year": "2027",
+   "teams": "10481",
+   "tname": "LAWRENCEVILLE - WINDER PRIMARY 230KV LINE REBUILD",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "20264": {
+   "zone": "215",
+   "year": "2027",
+   "teams": "20264",
+   "tname": "MEAG: RAY PLACE RD - WARRENTON PRIMARY",
+   "need": "6/1/2027",
+   "sponsor": "MEAG"
+  },
+  "19248": {
+   "zone": "214",
+   "year": "2027",
+   "teams": "19248",
+   "tname": "SANDERSVILLE #1 - WADLEY PRI. 115KV REBUILD/RECONDUCTOR",
+   "need": "6/1/2027",
+   "sponsor": "GPC"
+  },
+  "20785": {
+   "zone": "219",
+   "year": "2027",
+   "teams": "20785",
+   "tname": "SAV: GOSHEN (SAV) - KRAFT 115KV LINE REBUILD",
+   "need": "6/1/2027",
+   "sponsor": "SAV"
+  },
+  "20065": {
+   "zone": "219",
+   "year": "2027",
+   "teams": "20065",
+   "tname": "SAV: GOSHEN (SAV) - MCINTOSH 115KV LINE REBUILD",
+   "need": "6/1/2027",
+   "sponsor": "SAV"
+  },
+  "20717": {
+   "zone": "208",
+   "year": "2027",
+   "teams": "20717",
+   "tname": "CC - TOMOCHICHI 500/230KV SOLUTION (CC NETWORK IMPROVEMENTS)",
+   "need": "7/15/2027",
+   "sponsor": "GPC"
+  },
+  "18573": {
+   "zone": "214",
+   "year": "2027",
+   "teams": "18573",
+   "tname": "GRID - ARKWRIGHT - LLOYD SHOALS 115KV",
+   "need": "7/30/2027",
+   "sponsor": "GPC"
+  },
+  "20591": {
+   "zone": "214",
+   "year": "2027",
+   "teams": "20591",
+   "tname": "GTC: EATONTON PRIMARY (035591) - LICK CREEK 115KV REBUILD",
+   "need": "12/1/2027",
+   "sponsor": "GTC"
+  },
+  "17977": {
+   "zone": "212",
+   "year": "2027",
+   "teams": "17977",
+   "tname": "ATHENA - EAST WATKINSVILLE 115 KV (REBUILD)",
+   "need": "12/31/2027",
+   "sponsor": "GPC"
+  },
+  "20150": {
+   "zone": "211",
+   "year": "2027",
+   "teams": "20150",
+   "tname": "CC - HILL VIEW & GRASSY HOLLOW SUB - CC IMPROVEMENTS",
+   "need": "12/31/2027",
+   "sponsor": "GPC"
+  },
+  "20024": {
+   "zone": "211",
+   "year": "2027",
+   "teams": "20024",
+   "tname": "DYER ROAD - EAST ROANOKE 115KV (REBUILD)",
+   "need": "12/31/2027",
+   "sponsor": "GPC"
+  },
+  "19997": {
+   "zone": "214",
+   "year": "2028",
+   "teams": "19997",
+   "tname": "AULTMAN ROAD-PERRY 115KV LINE REBUILD",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "20797": {
+   "zone": "201",
+   "year": "2028",
+   "teams": "20797",
+   "tname": "CC - EAST VILLA RICA AREA SWITCHING STATION (CC IMPROVEMENT)",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "20774": {
+   "zone": "211",
+   "year": "2028",
+   "teams": "20774",
+   "tname": "CC - VILLA RICA UPGRADES (CC NETWORK IMPROVEMENTS)",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "21048": {
+   "zone": "214",
+   "year": "2028",
+   "teams": "21048",
+   "tname": "FITZGERALD - PITTS 115 KV LINE REBUILD",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "08458": {
+   "zone": "213",
+   "year": "2028",
+   "teams": "08458",
+   "tname": "GTC: BARNESVILLE - SOUTH GRIFFIN 230KV PROJECT",
+   "need": "6/1/2028",
+   "sponsor": "GTC"
+  },
+  "20503": {
+   "zone": "216",
+   "year": "2028",
+   "teams": "20503",
+   "tname": "GTC: BARNEYVILLE - EAST MOULTRIE 115KV NEW LINE",
+   "need": "6/1/2028",
+   "sponsor": "GTC"
+  },
+  "20873": {
+   "zone": "214",
+   "year": "2028",
+   "teams": "20873",
+   "tname": "GTC: BONAIRE PRIMARY 500/230KV XFMR REPLCMNT & RELAY MOD",
+   "need": "6/1/2028",
+   "sponsor": "GTC"
+  },
+  "19992": {
+   "zone": "212",
+   "year": "2028",
+   "teams": "19992",
+   "tname": "GTC: BOSTWICK - EAST SOCIAL CIRCLE 230KV RECONDUCTOR",
+   "need": "6/1/2028",
+   "sponsor": "GTC"
+  },
+  "20777": {
+   "zone": "206",
+   "year": "2028",
+   "teams": "20777",
+   "tname": "JACK MCDONOUGH - NORTHWEST (BLACK) 230KV RECONDUCTOR",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "19629": {
+   "zone": "216",
+   "year": "2028",
+   "teams": "19629",
+   "tname": "MEAG: BRUMBLEY CREEK - SOUTH BAINBRIDGE 115KV REBUILD",
+   "need": "6/1/2028",
+   "sponsor": "MEAG"
+  },
+  "19630": {
+   "zone": "216",
+   "year": "2028",
+   "teams": "19630",
+   "tname": "MEAG: THOMASVILLE 230/115KV AUTOBANK REPLACEMENT",
+   "need": "6/1/2028",
+   "sponsor": "MEAG"
+  },
+  "20482": {
+   "zone": "213",
+   "year": "2028",
+   "teams": "20482",
+   "tname": "PITTMAN ROAD - WEST POINT DAM (USA) 115KV REBUILD",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "20656": {
+   "zone": "208",
+   "year": "2028",
+   "teams": "20656",
+   "tname": "PLANT YATES BREAKER AND HALF STATION",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "20783": {
+   "zone": "219",
+   "year": "2028",
+   "teams": "20783",
+   "tname": "SAV: COLEMAN - DEAN FOREST 115KV LINE REBUILD",
+   "need": "6/1/2028",
+   "sponsor": "SAV"
+  },
+  "20407": {
+   "zone": "219",
+   "year": "2028",
+   "teams": "20407",
+   "tname": "SAV: MAGNOLIA - TRUMAN PARKWAY 115KV REBUILD",
+   "need": "6/1/2028",
+   "sponsor": "SAV"
+  },
+  "21069": {
+   "zone": "201",
+   "year": "2028",
+   "teams": "21069",
+   "tname": "SMART VALVES AT EAST VILLA RICA SWITCHING STATION",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "20768": {
+   "zone": "214",
+   "year": "2028",
+   "teams": "20768",
+   "tname": "SOUTH MACON 115KV BUSES 1 & 2 REPLACEMENT",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "20274": {
+   "zone": "208",
+   "year": "2028",
+   "teams": "20274",
+   "tname": "UNION CITY - YATES 230KV (BLACK) LINE REBUILD",
+   "need": "6/1/2028",
+   "sponsor": "GPC"
+  },
+  "13166": {
+   "zone": "213",
+   "year": "2028",
+   "teams": "13166",
+   "tname": "FIRST AVENUE - NORTH COLUMBUS 115KV LINE REBUILD",
+   "need": "12/1/2028",
+   "sponsor": "GPC"
+  },
+  "20586": {
+   "zone": "214",
+   "year": "2028",
+   "teams": "20586",
+   "tname": "GTC: NORTH DUBLIN 230/115KV TRANSFORMERS AND BUS-TIE BREAKER",
+   "need": "12/1/2028",
+   "sponsor": "GTC"
+  },
+  "21062": {
+   "zone": "208",
+   "year": "2029",
+   "teams": "21062",
+   "tname": "ASHLEY PARK-WANSLEY 500KV",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "10222": {
+   "zone": "216",
+   "year": "2029",
+   "teams": "10222",
+   "tname": "BLAKELY PRIMARY - HUCKLEBERRY 115KV REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "21047": {
+   "zone": "214",
+   "year": "2029",
+   "teams": "21047",
+   "tname": "BROADWAY - ECHECONNEE 115 KV LINE REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "16887": {
+   "zone": "213",
+   "year": "2029",
+   "teams": "16887",
+   "tname": "BUTLER - THOMASTON 230KV LINE CONVERSION",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "21036": {
+   "zone": "201",
+   "year": "2029",
+   "teams": "21036",
+   "tname": "BUZZARD ROOST - FACTORY SHOALS 230KV NEW LINE",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "21142": {
+   "zone": "206",
+   "year": "2029",
+   "teams": "21142",
+   "tname": "CONYERS - KLONDIKE 230 KV SECOND LINE",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "21138": {
+   "zone": "206",
+   "year": "2029",
+   "teams": "21138",
+   "tname": "GLENWOOD SPRINGS - PORTERDALE PRIMARY 230KV LINE SWITCH REPL",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "21112": {
+   "zone": "213",
+   "year": "2029",
+   "teams": "21112",
+   "tname": "GTC: BARNESVILLE PRIMARY - THOMASTON 230KV",
+   "need": "6/1/2029",
+   "sponsor": "GTC"
+  },
+  "10814": {
+   "zone": "202",
+   "year": "2029",
+   "teams": "10814",
+   "tname": "GTC: BAY CREEK 230/115KV SECOND AUTO TRANSFORMER",
+   "need": "6/1/2029",
+   "sponsor": "GTC"
+  },
+  "21140": {
+   "zone": "214",
+   "year": "2029",
+   "teams": "21140",
+   "tname": "GTC: BONAIRE PRIMARY - EASTMAN PRIMARY 115 KV LINE REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "GTC"
+  },
+  "20849": {
+   "zone": "201",
+   "year": "2029",
+   "teams": "20849",
+   "tname": "GTC: CLIFTONDALE - LINE CREEK 230KV LINE",
+   "need": "6/1/2029",
+   "sponsor": "GTC"
+  },
+  "19950": {
+   "zone": "213",
+   "year": "2029",
+   "teams": "19950",
+   "tname": "GTC: DRESDEN - TALBOT 500KV LINE",
+   "need": "6/1/2029",
+   "sponsor": "GTC"
+  },
+  "20760": {
+   "zone": "202",
+   "year": "2029",
+   "teams": "20760",
+   "tname": "GTC: HOPEWELL 230/115 KV BANK A",
+   "need": "6/1/2029",
+   "sponsor": "GTC"
+  },
+  "21123": {
+   "zone": "201",
+   "year": "2029",
+   "teams": "21123",
+   "tname": "GTC: TENASKA - WANSLEY 500KV NEW LINE",
+   "need": "6/1/2029",
+   "sponsor": "GTC"
+  },
+  "21141": {
+   "zone": "206",
+   "year": "2029",
+   "teams": "21141",
+   "tname": "LLOYD SHOALS - PORTERDALE PRIMARY 115KV REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "20285": {
+   "zone": "216",
+   "year": "2029",
+   "teams": "20285",
+   "tname": "LOWER RIVER - WEBB (APC) 115KV RECONDUCTOR",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "19621": {
+   "zone": "212",
+   "year": "2029",
+   "teams": "19621",
+   "tname": "MCEVER ROAD - SHOAL CREEK 115KV REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "20346": {
+   "zone": "218",
+   "year": "2029",
+   "teams": "20346",
+   "tname": "MCMANUS - WEST BRUNSWICK 115KV REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "17706": {
+   "zone": "214",
+   "year": "2029",
+   "teams": "17706",
+   "tname": "MEAG: AULTMAN ROAD - FORT VALLEY #1 115 KV REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "MEAG"
+  },
+  "11051": {
+   "zone": "216",
+   "year": "2029",
+   "teams": "11051",
+   "tname": "MEAG: SLAPPEY DRIVE - WESTOVER 115KV LINE REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "MEAG"
+  },
+  "20757": {
+   "zone": "202",
+   "year": "2029",
+   "teams": "20757",
+   "tname": "NORCROSS - NORTH DRUID HILLS 115KV REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "21006": {
+   "zone": "219",
+   "year": "2029",
+   "teams": "21006",
+   "tname": "SAV: BOULEVARD - MAGNOLIA 115 KV LINE REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "SAV"
+  },
+  "21023": {
+   "zone": "219",
+   "year": "2029",
+   "teams": "21023",
+   "tname": "SAV: DEAN FOREST - LITTLE OGEECHEE 230 KV REBUILD",
+   "need": "6/1/2029",
+   "sponsor": "SAV"
+  },
+  "20989": {
+   "zone": "219",
+   "year": "2029",
+   "teams": "20989",
+   "tname": "SAV: RICE HOPE NEW AUTO TRANSFORMER",
+   "need": "6/1/2029",
+   "sponsor": "SAV"
+  },
+  "13628": {
+   "zone": "216",
+   "year": "2029",
+   "teams": "13628",
+   "tname": "SOUTH BAINBRIDGE - SINAI (FPL) 115KV LINE RECONDUCTOR",
+   "need": "6/1/2029",
+   "sponsor": "GPC"
+  },
+  "20248": {
+   "zone": "202",
+   "year": "2029",
+   "teams": "20248",
+   "tname": "BAY CREEK - CONYERS 230KV REBUILD",
+   "need": "12/31/2029",
+   "sponsor": "GPC"
+  },
+  "21129": {
+   "zone": "211",
+   "year": "2030",
+   "teams": "21129",
+   "tname": "ANNISTON - HAMMOND 230KV LINE",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "20764": {
+   "zone": "201",
+   "year": "2030",
+   "teams": "20764",
+   "tname": "ATKINSON - NORTHSIDE DRIVE 115KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "20761": {
+   "zone": "201",
+   "year": "2030",
+   "teams": "20761",
+   "tname": "ATKINSON - NORTHWEST 115KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "21130": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "21130",
+   "tname": "CC - NORTH GEORGIA DATA NETWORK UPGRADES",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "10478": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "10478",
+   "tname": "CORNELIA - TALLULAH LODGE 115KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "18669": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "18669",
+   "tname": "DU: DAWSON CROSSING - NELSON (WHITE) 115 KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "DU"
+  },
+  "21097": {
+   "zone": "201",
+   "year": "2030",
+   "teams": "21097",
+   "tname": "EAST POINT - TRIBUTARY 230KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "20480": {
+   "zone": "208",
+   "year": "2030",
+   "teams": "20480",
+   "tname": "EAST POINT - UNION CITY 230KV BLACK LINE RECONDUCTOR",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "19627": {
+   "zone": "214",
+   "year": "2030",
+   "teams": "19627",
+   "tname": "ECHECONNEE-WELLSTON 115KV LINE REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "21063": {
+   "zone": "216",
+   "year": "2030",
+   "teams": "21063",
+   "tname": "FARLEY (APC)-TAZEWELL 500KV",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "12120": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "12120",
+   "tname": "GAINESVILLE #2 - MCEVER ROAD 115 KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "20298": {
+   "zone": "214",
+   "year": "2030",
+   "teams": "20298",
+   "tname": "GLENWOOD SPRINGS - LAKE OCONEE 115KV LINE REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "21128": {
+   "zone": "213",
+   "year": "2030",
+   "teams": "21128",
+   "tname": "GOAT ROCK REACTORS INSTALLATION",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "19996": {
+   "zone": "215",
+   "year": "2030",
+   "teams": "19996",
+   "tname": "GOLDENS CREEK - WARRENTON PRIMARY 230KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "20428": {
+   "zone": "214",
+   "year": "2030",
+   "teams": "20428",
+   "tname": "GORDON-SANDERSVILLE #1 115KV LINE REBUILD (DEEPSTEP-SAND #6)",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "21116": {
+   "zone": "215",
+   "year": "2030",
+   "teams": "21116",
+   "tname": "GOSHEN AREA STRATEGIC SOLUTION",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "21073": {
+   "zone": "208",
+   "year": "2030",
+   "teams": "21073",
+   "tname": "GTC: BIG SMARR - TOMOCHICHI 500KV",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "21014": {
+   "zone": "201",
+   "year": "2030",
+   "teams": "21014",
+   "tname": "GTC: BUZZARD ROOST - CAVENDER DRIVE 230KV NEW LINE",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "21013": {
+   "zone": "201",
+   "year": "2030",
+   "teams": "21013",
+   "tname": "GTC: CAVENDER DRIVE 500/230KV AUTOBANK",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "20375": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "20375",
+   "tname": "GTC: EAST WATKINSVILLE 230 KV STATION MODIFICATION",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "21111": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "21111",
+   "tname": "GTC: HARTWELL DAM - HARTWELL ENERGY 230KV SERIES REACTORS",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "21113": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "21113",
+   "tname": "GTC: HARTWELL ENERGY - MIDDLE FORK 230KV LINE",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "21131": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "21131",
+   "tname": "GTC: POND FORK - MIDWAY 115KV LINE",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "21077": {
+   "zone": "214",
+   "year": "2030",
+   "teams": "21077",
+   "tname": "GTC: ROCKVILLE - TIGER CREEK -WARTHEN 500KV LINES",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "21076": {
+   "zone": "216",
+   "year": "2030",
+   "teams": "21076",
+   "tname": "GTC: TALLBOT #2 - TAZEWELL 500KV LINE",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "21094": {
+   "zone": "214",
+   "year": "2030",
+   "teams": "21094",
+   "tname": "GTC: TIGER CREEK- ROCKVILLE-NORTH SPA 230KV PROJECT",
+   "need": "6/1/2030",
+   "sponsor": "GTC"
+  },
+  "20789": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "20789",
+   "tname": "JEFFERSON ROAD - WINDER PRIMARY 115KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "20284": {
+   "zone": "216",
+   "year": "2030",
+   "teams": "20284",
+   "tname": "KETTLE CREEK PRIMARY - PINE GROVE PRIMARY 115KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "21118": {
+   "zone": "215",
+   "year": "2030",
+   "teams": "21118",
+   "tname": "MEAG: ATHENA - WARRENTON 230KV CONVERSION",
+   "need": "6/1/2030",
+   "sponsor": "MEAG"
+  },
+  "20857": {
+   "zone": "201",
+   "year": "2030",
+   "teams": "20857",
+   "tname": "NEW CAVENDER DRIVE - TRIBUTARY 230KV LINE",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "21093": {
+   "zone": "214",
+   "year": "2030",
+   "teams": "21093",
+   "tname": "NORTH SPA 230KV STRATEGIC PROJECT",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "19995": {
+   "zone": "212",
+   "year": "2030",
+   "teams": "19995",
+   "tname": "TALLULAH LODGE - TOCCOA 115 KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "21098": {
+   "zone": "201",
+   "year": "2030",
+   "teams": "21098",
+   "tname": "TRIBUTARY - THORNTON RD 230KV REBUILD",
+   "need": "6/1/2030",
+   "sponsor": "GPC"
+  },
+  "20160": {
+   "zone": "213",
+   "year": "2030",
+   "teams": "20160",
+   "tname": "THOMASTON 230 NEW BUILD SUB",
+   "need": "11/1/2030",
+   "sponsor": "GPC"
+  },
+  "18848": {
+   "zone": "216",
+   "year": "2030",
+   "teams": "18848",
+   "tname": "BAINBRIDGE TRANSMISSION: EAST RIVER ROAD, EAST BAINBRIDGE",
+   "need": "12/31/2030",
+   "sponsor": "GPC"
+  },
+  "19626": {
+   "zone": "214",
+   "year": "2030",
+   "teams": "19626",
+   "tname": "GLENWOOD SPRINGS 115KV CAP BANK",
+   "need": "12/31/2030",
+   "sponsor": "GPC"
+  },
+  "20690": {
+   "zone": "208",
+   "year": "2031",
+   "teams": "20690",
+   "tname": "EAST POINT - UNION CITY (WHITE) 230KV REBUILD",
+   "need": "5/1/2031",
+   "sponsor": "GPC"
+  },
+  "19632": {
+   "zone": "202",
+   "year": "2031",
+   "teams": "19632",
+   "tname": "AVERY - HOPEWELL 115KV RECONDUCTOR",
+   "need": "6/1/2031",
+   "sponsor": "GPC"
+  },
+  "10811": {
+   "zone": "211",
+   "year": "2031",
+   "teams": "10811",
+   "tname": "BOWEN #10 500/230KV AUTOBANK REPLACEMENT",
+   "need": "6/1/2031",
+   "sponsor": "GPC"
+  },
+  "20756": {
+   "zone": "215",
+   "year": "2031",
+   "teams": "20756",
+   "tname": "HATCH - WADLEY 500 KV LINE STRATEGIC PROJECT",
+   "need": "6/1/2031",
+   "sponsor": "GPC"
+  },
+  "21099": {
+   "zone": "214",
+   "year": "2031",
+   "teams": "21099",
+   "tname": "MEAG: PIO NONO 230/115KV AREA SOLUTION",
+   "need": "6/1/2031",
+   "sponsor": "MEAG"
+  },
+  "21114": {
+   "zone": "213",
+   "year": "2032",
+   "teams": "21114",
+   "tname": "MEAG: SOUTH GRIFFIN 230/115KV BANK #5",
+   "need": "6/1/2032",
+   "sponsor": "MEAG"
+  },
+  "20784": {
+   "zone": "219",
+   "year": "2032",
+   "teams": "20784",
+   "tname": "SAV: COLEMAN - MELDRIM 115KV LINE REBUILD",
+   "need": "6/1/2032",
+   "sponsor": "SAV"
+  },
+  "20767": {
+   "zone": "214",
+   "year": "2033",
+   "teams": "20767",
+   "tname": "ARKWRIGHT BUS AND JUMPER REPLACEMENT",
+   "need": "6/1/2033",
+   "sponsor": "GPC"
+  },
+  "20758": {
+   "zone": "202",
+   "year": "2033",
+   "teams": "20758",
+   "tname": "BAY CREEK - CONYERS 230KV LIMITING ELEMENT REPLACEMENT",
+   "need": "6/1/2033",
+   "sponsor": "GPC"
+  },
+  "20793": {
+   "zone": "215",
+   "year": "2033",
+   "teams": "20793",
+   "tname": "EVANS PRIMARY - THURMOND DAM (USA) #5 115KV REBUILD",
+   "need": "6/1/2033",
+   "sponsor": "GPC"
+  },
+  "20794": {
+   "zone": "215",
+   "year": "2033",
+   "teams": "20794",
+   "tname": "EVANS PRIMARY - THURMOND DAM (USA) #6 115KV REBUILD",
+   "need": "6/1/2033",
+   "sponsor": "GPC"
+  },
+  "12217": {
+   "zone": "212",
+   "year": "2033",
+   "teams": "12217",
+   "tname": "GTC: CENTER PRIMARY - CLARKSBORO 230 KV REBUILD",
+   "need": "6/1/2033",
+   "sponsor": "GTC"
+  },
+  "20773": {
+   "zone": "212",
+   "year": "2033",
+   "teams": "20773",
+   "tname": "GTC: CLARKSBORO - WINDER PRIMARY 230KV REBUILD",
+   "need": "6/1/2033",
+   "sponsor": "GTC"
+  },
+  "12147": {
+   "zone": "212",
+   "year": "2033",
+   "teams": "12147",
+   "tname": "GTC: EAST SOCIAL CIRCLE - SNELLVILLE 230KV EQUIPMENT UPGRADE",
+   "need": "6/1/2033",
+   "sponsor": "GTC"
+  },
+  "21075": {
+   "zone": "212",
+   "year": "2033",
+   "teams": "21075",
+   "tname": "GTC: EAST WALTON - MIDDLE FORK 500KV",
+   "need": "6/1/2033",
+   "sponsor": "GTC"
+  },
+  "20791": {
+   "zone": "212",
+   "year": "2033",
+   "teams": "20791",
+   "tname": "GTC: SHOAL CREEK - SOUTH HALL 230KV REBUILD",
+   "need": "6/1/2033",
+   "sponsor": "GTC"
+  },
+  "21053": {
+   "zone": "212",
+   "year": "2033",
+   "teams": "21053",
+   "tname": "MCEVER ROAD - SHOAL CREEK 115KV REBUILD PHASE III",
+   "need": "6/1/2033",
+   "sponsor": "GPC"
+  },
+  "09661": {
+   "zone": "212",
+   "year": "2033",
+   "teams": "09661",
+   "tname": "MCGRAU FORD - MIDDLE FORK 500KV LINE PROJECT",
+   "need": "6/1/2033",
+   "sponsor": "GPC"
+  },
+  "20796": {
+   "zone": "219",
+   "year": "2033",
+   "teams": "20796",
+   "tname": "SAV: MELDRIM BANK D REPLACEMENT",
+   "need": "6/1/2033",
+   "sponsor": "SAV"
+  },
+  "14222": {
+   "zone": "215",
+   "year": "2033",
+   "teams": "14222",
+   "tname": "THOMSON PRIMARY 230/115KV SECOND TRANSFORMER",
+   "need": "6/1/2033",
+   "sponsor": "GPC"
+  },
+  "20759": {
+   "zone": "202",
+   "year": "2033",
+   "teams": "20759",
+   "tname": "WINDER PRIMARY 230KV BUS 1-2 PARALLEL BUS-TIE INSTALLATION",
+   "need": "6/1/2033",
+   "sponsor": "GPC"
+  },
+  "10487": {
+   "zone": "216",
+   "year": "2033",
+   "teams": "10487",
+   "tname": "PINE GROVE PRIMARY - WEST VALDOSTA 115 KV RECONDUCTOR",
+   "need": "12/31/2033",
+   "sponsor": "GPC"
+  },
+  "18700": {
+   "zone": "212",
+   "year": "2034",
+   "teams": "18700",
+   "tname": "DAWSON CROSSING - GAINESVILLE #1 115 KV",
+   "need": "6/1/2034",
+   "sponsor": "GPC"
+  },
+  "20787": {
+   "zone": "219",
+   "year": "2034",
+   "teams": "20787",
+   "tname": "SAV: LITTLE OGEECHEE 230/115KV BANK REPLACEMENT",
+   "need": "6/1/2034",
+   "sponsor": "SAV"
+  },
+  "17993": {
+   "zone": "215",
+   "year": "2034",
+   "teams": "17993",
+   "tname": "EVANS PRIMARY - THOMSON PRIMARY 115KV REBUILD",
+   "need": "12/31/2034",
+   "sponsor": "GPC"
+  }
+ },
+ "det": {
+  "21046": {
+   "page": 214,
+   "title": "THALMANN AND COLERAIN 23O KV LINE RELAY PANEL UPGRADES",
+   "need": "06/01/2025",
+   "start": "12/01/2024",
+   "desc": "Relay protection modifications at GPC's Thalmann and Colerain substations to match relay scheme used at GTC's new Camden Industrial Park 230/115kV substation."
+  },
+  "20326": {
+   "page": 215,
+   "title": "ANTHONY SHOALS STATCOM SYSTEM",
+   "need": "12/31/2025",
+   "start": "08/04/2023",
+   "desc": "Install a + 150 / - 150 MVAR turnkey STATCOM system at Anthony Shoals 230kV substation."
+  },
+  "17075": {
+   "page": 216,
+   "title": "SAV: LITTLE OGEECHEE 230-115KV: RELAY MODERNIZATION",
+   "need": "12/31/2025",
+   "start": "06/01/2022",
+   "desc": "Relay modernization with conversion of the 230kV ring bus to BAAH topology and addition of BAAH rung for Big Ogeechee - Little Ogeechee (Red) 230kV Line. Rebuild 115kV straight bus to BAAH design."
+  },
+  "20491": {
+   "page": 217,
+   "title": "EAST POINT RELAY MODERNIZATION",
+   "need": "06/01/2026",
+   "start": "01/01/2024",
+   "desc": "Upgrade protection on 230kV buses, 115kV buses, and 230/115kV auto transformer at the East Point station. Add adequate monitoring on DC supply."
+  },
+  "20474": {
+   "page": 218,
+   "title": "GRADY 230/115KV RELAY MODERNIZATION",
+   "need": "06/01/2026",
+   "start": "01/01/2024",
+   "desc": "Upgrade protection on 230kV bus, all 115kV buses, and both 230/115kV auto transformers at Grady. Add adequate monitoring on DC supply. Install a 230kV breaker and associated switches on the high side of Grady 230/115kV auto transformer D."
+  },
+  "20490": {
+   "page": 219,
+   "title": "KLONDIKE RELAY MODERNIZATION",
+   "need": "06/01/2026",
+   "start": "01/01/2024",
+   "desc": "Upgrade protection on 230kV buses at the Klondike station. Add adequate monitoring on DC supply."
+  },
+  "20300": {
+   "page": 220,
+   "title": "MORROW 115KV RELAY UPGRADE",
+   "need": "06/01/2026",
+   "start": "06/01/2024",
+   "desc": "Upgrade protection scheme on all three 115kV buses at Morrow."
+  },
+  "20489": {
+   "page": 221,
+   "title": "SCOTTDALE RELAY MODERNIZATION",
+   "need": "06/01/2026",
+   "start": "01/01/2024",
+   "desc": "Upgrade protection on 230kV bus and 230/115kV auto transformers at the Scottdale station. Add adequate monitoring on DC supply."
+  },
+  "20668": {
+   "page": 222,
+   "title": "DRESDEN LINE PROTECTIVE RELAYING",
+   "need": "12/01/2026",
+   "start": "12/01/2024",
+   "desc": "On the O'Hara - Wansley 500kV line, replace the protective relay panels associated with the 500kV line terminal facing Dresden, at both O'Hara and Wansley."
+  },
+  "18832": {
+   "page": 223,
+   "title": "MEAG: FORTSON SUBSTATION MODERNIZATION",
+   "need": "01/13/2027",
+   "start": "01/01/2025",
+   "desc": "Complete modernization and replacement of obsolete equipment and relays for the 500kV, 230kV, and 115kV yards. Add a redundant relay scheme at Fortson."
+  },
+  "21022": {
+   "page": 225,
+   "title": "OHARA BREAKER REPLACEMENT",
+   "need": "10/01/2026",
+   "start": "10/01/2025",
+   "desc": "Replace Breaker on the Ohara - Tara 115kV Line at the Ohara Substation."
+  },
+  "20277": {
+   "page": 227,
+   "title": "SAV: MCINTOSH - PURRYSBURG 230KV REACTORS",
+   "need": "06/01/2026",
+   "start": "01/01/2024",
+   "desc": "Install reactors on the McIntosh - Purrysburg (Black and White) 230kV tie lines at McIntosh. Rebuild 0.1 miles (GPC portion) for both lines to (2) 200C 1351 ACSS conductor."
+  },
+  "21111": {
+   "page": 228,
+   "title": "GTC: HARTWELL DAM - HARTWELL ENERGY 230KV SERIES REACTORS",
+   "need": "06/01/2030",
+   "start": "06/01/2027",
+   "desc": "GTC: Replace the 1600A series reactors on the Hartwell Dam - Hartwell Energy 230kV line with 3000A."
+  },
+  "21113": {
+   "page": 229,
+   "title": "GTC: HARTWELL ENERGY - MIDDLE FORK 230KV LINE",
+   "need": "06/01/2030",
+   "start": "06/01/2027",
+   "desc": "Construct a new 230kV line, approx. 35 miles, from Hartwell Energy to Middle Fork with 200C (2) 1351 ACSS conductor. GTC: Expand Hartwell Energy 230kV and Middle Fork 230kV as necessary to install breakers to accept new line termination."
+  },
+  "19523": {
+   "page": 231,
+   "title": "SAV: CC - HYUNDAI MOTORS SAVANNAH AKA. PROJECT EA",
+   "need": "04/25/2025",
+   "start": "06/01/2022",
+   "desc": "Construct a new Hyundai 230kV substation with an eight element 230kV ring bus and four 230/25kV banks. Construct a new Newton Rd 230kV substation with a five element 230kV ring bus and loop through the Little Ogeechee - Meldrim Black and White 230kV lines. Build two new 230kV lines connecting from Hyundai - Newton Rd (12 miles) and Hyundai - Meldrim (10 miles). At Meldrim, add a breaker to accommodate for the new Hyundai line. Install a 115/25kV bank at Interstate Centre and build a new 115kV line from Interstate Centre - Hyundai (2.3 miles) for bridge power."
+  },
+  "18670": {
+   "page": 232,
+   "title": "GTC: BANKS CROSSING - POND FORK 115 KV",
+   "need": "05/01/2025",
+   "start": "06/01/2021",
+   "desc": "GTC will build a new 115kV line from McClure Industrial to structure 21N on the Ridgeway Church Road Junction or tap point (approximately 3 miles). Close normally open switch at Ridgeway Church Road to establish the Banks Crossing - Pond Fork 115kV line. All new conductors should be 100C 1351 ACSR Martin."
+  },
+  "18492": {
+   "page": 233,
+   "title": "MITCHELL - NORTH TIFTON 230KV RECONDUCTOR",
+   "need": "05/01/2025",
+   "start": "12/31/2021",
+   "desc": "Rebuild 35.21 miles of the Mitchell - North Tifton 230kV line from 100C 795 ACSR to 100C 1351 ACSR."
+  },
+  "19676": {
+   "page": 234,
+   "title": "ADAMSVILLE - JACK MCDONOUGH 230KV LINE REBUILD",
+   "need": "06/01/2025",
+   "start": "06/01/2023",
+   "desc": "Rebuild the entire 6.1 mile Adamsville - Jack McDonough 230kV line with 160C 1351 ACSS."
+  },
+  "18800": {
+   "page": 235,
+   "title": "ECHECONNEE-WELLSTON 115KV REBUILD",
+   "need": "06/01/2025",
+   "start": "01/01/2024",
+   "desc": "Rebuild the South Warner Robins to Wellston section (1.2 miles) with 100C 1351.5 ACSR Martin conductor."
+  },
+  "19187": {
+   "page": 236,
+   "title": "GRID - BREMEN - CROOKED CREEK (APC) 115 KV PROJECT",
+   "need": "06/01/2025",
+   "start": "09/01/2021",
+   "desc": "Rebuild from Bremen to Indian Creek Road, on the Bremen - Crooked Creek 115kV line (14 miles), using 795 ACSR conductor at 100C."
+  },
+  "18153": {
+   "page": 237,
+   "title": "GTC: BONAIRE PRI-ECHECONNEE 115 KV PARTIAL REBUILD",
+   "need": "06/01/2025",
+   "start": "01/01/2023",
+   "desc": "Rebuild 2.3 miles of the Bonaire Primary - Echeconnee 115kV line with 100C ACSR 795 conductor."
+  },
+  "20342": {
+   "page": 238,
+   "title": "GTC: CAMDEN INDUSTRIAL PARK 230/115KV NEW SUBSTATION",
+   "need": "06/01/2025",
+   "start": "01/01/2024",
+   "desc": "GTC will construct a new 230/115kV substation with a three element 230kV ring bus, two element 115kV ring bus, and one new 230/115kV 400MVA transformer. A new 115kV line to Kinlaw substation will be built also."
+  },
+  "20590": {
+   "page": 239,
+   "title": "GTC: EATONTON PRIMARY - LICK CREEK 115KV LINE SWITCH REPLACEMENT",
+   "need": "06/01/2025",
+   "start": "12/01/2023",
+   "desc": "Replace a 1200A RLB line switch on the Eatonton - Lake Oconee 115kV line with a with motor operator and SCADA controls. This switch is located on GTC's Eatonton Primary - Lick Creek 115kV section of the Eatonton Primary - Lake Oconee 115kV Line."
+  },
+  "11821": {
+   "page": 240,
+   "title": "JESUP - LUDOWICI PRIMARY 115KV REBUILD",
+   "need": "06/01/2025",
+   "start": "06/01/2023",
+   "desc": "Rebuild approximately 7.5 miles of the Jesup - North Jesup - Rayonier section of the Jesup - Ludowici Primary 115kV line from 100C 336.4 ACSR Linnet conductor to 100C 795 ACSR Drake conductor."
+  },
+  "13753": {
+   "page": 241,
+   "title": "MEAG: ALCOVY ROAD - SKC 115 KV RECONDUCTOR",
+   "need": "06/01/2025",
+   "start": "06/01/2023",
+   "desc": "MEAG will reconductor approximately 0.53 miles of 100C 336 ACSR conductor with 100C 1033 ACSR conductor from Alcovy Road to Alcovy Road Jct. on the Alcovy Road - SKC 115kV line."
+  },
+  "13787": {
+   "page": 242,
+   "title": "MEAG: AULTMAN ROAD - BONAIRE PRIMARY 115 KV REBUILD",
+   "need": "06/01/2025",
+   "start": "06/01/2023",
+   "desc": "MEAG: Rebuild approximately 1.99 miles of Sleepy Hollow - Peach Blossom 115kV section of the Aultman Road - Bonaire Primary 115kV line from 100C 336 ACSR to 100C 795 ACSR. GTC: Replace the jumpers at Sleepy Hollow with 1590 AAC."
+  },
+  "20464": {
+   "page": 243,
+   "title": "NORCROSS 230KV BUS 1-3 SERIES BUS TIE BREAKER INSTALLATION",
+   "need": "06/01/2025",
+   "start": "11/01/2023",
+   "desc": "Install a bus tie breaker in series with existing bus tie breaker between 230kV Bus 1 and Bus 3 at Norcross."
+  },
+  "19631": {
+   "page": 244,
+   "title": "PINE GROVE PRIMARY 115 KV DUAL STAGE CAPACITOR BANK",
+   "need": "06/01/2025",
+   "start": "11/01/2023",
+   "desc": "Install a Dual Stage 30MVAR capacitor bank at Pine Grove Primary."
+  },
+  "20067": {
+   "page": 245,
+   "title": "SAV: DEPTFORD - MAGNOLIA 115KV RECONDUCTOR",
+   "need": "06/01/2025",
+   "start": "01/01/2023",
+   "desc": "Reconductor the Deptford - Magnolia 115kV line (approximately 5 miles) using 973.1 C7 ACCS (Everglades) conductor and upgrade the Deptford main bus."
+  },
+  "20466": {
+   "page": 246,
+   "title": "SMART VALVE INSTALLATION",
+   "need": "06/01/2025",
+   "start": "10/01/2023",
+   "desc": "Installation of Smart Valve devices inside the Eatonton Primary substation on the Branch - Oasis 230kV and Eatonton Primary - Oasis 230kV lines."
+  },
+  "20431": {
+   "page": 247,
+   "title": "VILLA RICA LOW SIDE BREAKER",
+   "need": "06/01/2025",
+   "start": "06/01/2024",
+   "desc": "Replace a low side breaker at Villa Rica with a 4000A breaker."
+  },
+  "20684": {
+   "page": 248,
+   "title": "CAMDEN INDUSTRIAL PARK (GPC)",
+   "need": "06/30/2025",
+   "start": "01/01/2024",
+   "desc": "This project will loop in GPC's existing Colerain to Thalman 230kV line into GTC's new Camden Industrial Park station. GPC's Kingsland termination at GTC's Kinlaw sub will be relocated to a new 115kV bay position."
+  },
+  "18774": {
+   "page": 249,
+   "title": "GTC: HEARD COUNTY - TENASKA 500KV (SECOND LINE)",
+   "need": "12/01/2025",
+   "start": "12/01/2021",
+   "desc": "GTC: Build a second Heard County - Tenaska 500kV line, 0.8 miles, with 100C (3) 1113 ACSR Bluejay conductors. Add a 500kV breaker at Heard County. GPC: Add a 500kV breaker at Tenaska."
+  },
+  "18889": {
+   "page": 250,
+   "title": "JEFFERSON STREET#3 - NORTHWEST (WHITE) 115 KV RECONDUCTOR",
+   "need": "12/01/2025",
+   "start": "01/01/2024",
+   "desc": "Rebuild the 115kV White line from Northwest to Jefferson Street #3 (1.2 miles) with 200C 1351 ACSS conductor."
+  },
+  "20152": {
+   "page": 251,
+   "title": "CC - CASS PINE- HILL VIEW 230 KV LINE- CC IMPROVEMENTS",
+   "need": "12/31/2025",
+   "start": "06/01/2023",
+   "desc": "Build a new 7.58 mile 200C 1351 ACSS conductor 230kV line between new Cass Pine and Hill View 230kV substations."
+  },
+  "20175": {
+   "page": 252,
+   "title": "CC - PROJECT CHRONOS- SK/HYUNDAI",
+   "need": "12/31/2025",
+   "start": "07/31/2023",
+   "desc": "GPC will build a 230/25kV station named Two Run Ranch and loop it into the Cartersville - Pinson 230kV line to serve SK Battery/Hyundai and new load in the area."
+  },
+  "20010": {
+   "page": 253,
+   "title": "GTC: ANTHONY SHOALS - WASHINGTON 115 KV LINE REBUILD",
+   "need": "12/31/2025",
+   "start": "01/01/2024",
+   "desc": "Rebuild 21 miles of the Double Branches Junction - Washington 115kV line section with 100C 795 ACSR conductor or higher rated conductor."
+  },
+  "18691": {
+   "page": 254,
+   "title": "GTC: LIZARD LOPE - WESTOVER 115 KV NEW LINE",
+   "need": "03/01/2026",
+   "start": "06/01/2021",
+   "desc": "Construct two new 115kV stations, Lizard Lope and Westover, and build a new 19.8 miles of 115kV line from Lizard Lope to Gillionville"
+  },
+  "20018": {
+   "page": 255,
+   "title": "CC - QTS FAYETTEVILLE TRANSMISSION NEEDS",
+   "need": "04/01/2026",
+   "start": "06/01/2023",
+   "desc": "Build a new 500/230kV substation (Ashley Park) splitting the Ohara - Union City 500kV line. Install two 500/230kV auto transformers at the Ashley Park station. At Ashley Park, the 500kV side will be a 4 - breaker ring bus, while the 230kV side will be a 2 - rung Breaker and a Half configuration. Build two new 230kV lines (~6 miles each) from Ashley Park to the high side of customer substations. The new lines will be built with bundled 200C 1351 ACSS Martin conductor."
+  },
+  "19597": {
+   "page": 256,
+   "title": "ADAMSVILLE - BUZZARD ROOST 230KV REBUILD AND JUMPER UPGRADE",
+   "need": "06/01/2026",
+   "start": "06/01/2024",
+   "desc": "Rebuild the line sections from Adamsville to Boat Rock Road (8.08 miles) on the Adamsville - Buzzard Roost 230kV line with 200C 1351 ACSS Martin conductor. Replace the AAC 750 jumper on the line at Adamsville with (2) 1590 AAC jumper. Replace 1590 AAC jumpers at Bakers Ferry and Boat Rock with (2) 1590 AAC jumpers. Replace 1600A line switches at Boat Rock with 3000A switches."
+  },
+  "18960": {
+   "page": 257,
+   "title": "BLANKETS CREEK \u2013 WOODSTOCK 115KV LINE REBUILD",
+   "need": "06/01/2026",
+   "start": "06/01/2025",
+   "desc": "Rebuild the entire Blankets Creek - Woodstock 115kV line, approximately 7.1 miles, with 200C 795 ACSS conductor."
+  },
+  "20243": {
+   "page": 258,
+   "title": "CC - GARRETT ROAD SWITCHING STATION - TRAE LANE",
+   "need": "06/01/2026",
+   "start": "04/30/2023",
+   "desc": "Build the new Garrett Road 230kV switching station (three - element ring bus) splitting the Villa Rica - West Marietta 230kV line. Build a new 230kV line (8.6 miles) from the Trae Lane substation to the Garrett Road switching station with bundled 100C 1351 ACSR conductor."
+  },
+  "20216": {
+   "page": 259,
+   "title": "CC - STONEWALL TELL ROAD (TA REALTY)",
+   "need": "06/01/2026",
+   "start": "01/01/2025",
+   "desc": "Build 230kV line segment, using 200C 1351 ACSS Martin conductor, to loop in the Stonewall Tell Road (TA Realty) customer station into the East Point - Union City 230kV Black line."
+  },
+  "18679": {
+   "page": 260,
+   "title": "DU: EAST DALTON - OOSTANAULA 115KV REBUILD",
+   "need": "06/01/2026",
+   "start": "06/01/2023",
+   "desc": "DU: Rebuild the portion of East Dalton - Oostanaula and Dalton - East Dalton 115kV double circuit lines between East Dalton substation and the Dalton substation frame with 200C 795 ACSS."
+  },
+  "16007": {
+   "page": 261,
+   "title": "FENWICK STREET - SAND BAR FERRY 115KV (RECONDUCTOR/REBUILD)",
+   "need": "06/01/2026",
+   "start": "09/01/2022",
+   "desc": "Reconductor approximately 2.72 miles of transmission line from Fenwick St to East Augusta Jct. with 100C 1351 ACSR conductor."
+  },
+  "20516": {
+   "page": 262,
+   "title": "GOAT ROCK 230KV SWITCH, JUMPER, & LINE TRAP REPLACEMENT",
+   "need": "06/01/2026",
+   "start": "01/01/2024",
+   "desc": "Replace the 230kV 1200A switch with 3000A, 90C 1351.5 ACSR Martin jumper with (2) AAC 1590, and 1600A line trap with 3000A (part of the Goat Rock - North Opelika 230kV line at Goat Rock substation."
+  },
+  "19618": {
+   "page": 263,
+   "title": "GORDON-N DUBLIN 115KV (GORDON-ENGL MCI J) REBUILD",
+   "need": "06/01/2026",
+   "start": "10/01/2023",
+   "desc": "Rebuild the Gordon - Engelhard McIntyre J of the Gordon - North Dublin 115kV line from 100C 336.4 ACSR (2.81 miles) Linnet and 75C 4/0 F Copper/CW (3.18 miles) to 200C ACSS 795 conductor."
+  },
+  "21139": {
+   "page": 264,
+   "title": "GRADY - MORROW (WHITE) 115KV REBUILD",
+   "need": "06/01/2026",
+   "start": "06/01/2024",
+   "desc": "Replace 0.72 miles of conductor from Moreland Way to Morrow including the bus and jumper at Moreland Way with 1351.5 Martin/ACSS 54/19 conductor."
+  },
+  "19706": {
+   "page": 265,
+   "title": "GRID - GAINESVILLE #2 EQUIPMENT REPLACEMENT",
+   "need": "06/01/2026",
+   "start": "12/31/2024",
+   "desc": "GPC: Replace the two 230/115kV auto transformers (Bank C and D) at Gainesville #2 with 400MVA. Project was originally maintenance driven but now compliance driven."
+  },
+  "21137": {
+   "page": 266,
+   "title": "GTC: CONYERS - CORNISH MOUNTAIN 115KV LINE UPGRADE",
+   "need": "06/01/2026",
+   "start": "06/01/2025",
+   "desc": "Upgrade 750 jumpers at North Conyers and raise the temperature rating of the 636 ACSR conductor on the Conyers - Cornish MTN 115kV line from 100C to 125C."
+  },
+  "19334": {
+   "page": 267,
+   "title": "GTC: LAGRANGE - NORTH OPELIKA 230 KV",
+   "need": "06/01/2026",
+   "start": "06/01/2023",
+   "desc": "Build a new Lagrange - North Opelika (APC) 230kV line, 29.4 miles, with 100C ACSR 1351.5 Martin Conductor. GTC will construct the ~15 - mile section from Lagrange to the Metering Station near the Georgia - Alabama border. The Metering Station will be owned by GTC. GPC will construct the short line section from the Metering Station to the GA - AL state line. APC will construct the 230kV line from the GA - AL state line to North Opelika."
+  },
+  "20015": {
+   "page": 268,
+   "title": "GTC: MORNING HORNET 2ND 230/115 KV BANK & THUMBS UP 115KV TL",
+   "need": "06/01/2026",
+   "start": "06/01/2024",
+   "desc": "GTC to add a second 230/115kV auto transformer at Morning Hornet substation. Also, build an additional 115kV line from Morning Hornet to Thumbs Up, approximately 2.4 miles, using at least 100C 1351 ACSR conductor."
+  },
+  "19999": {
+   "page": 269,
+   "title": "GTC: ROBINS SPRING BUS REPLACEMENT",
+   "need": "06/01/2026",
+   "start": "06/01/2023",
+   "desc": "GTC: Replace the main 115kV bus 90C ACSR 336.4 Linnet conductor with higher rating."
+  },
+  "20001": {
+   "page": 270,
+   "title": "GTC: ROBINS SPRING CAPACITOR BANK INSTALLATION",
+   "need": "06/01/2026",
+   "start": "01/01/2023",
+   "desc": "Install a 115kV 2 - stage 22.5MVAR (45MVAR total) capacitor bank at Robins Spring"
+  },
+  "19636": {
+   "page": 271,
+   "title": "HAMMOND - WEISS DAM 115KV LINE REBUILD",
+   "need": "06/01/2026",
+   "start": "06/01/2023",
+   "desc": "Rebuild 11.2 miles of Hammond - Weiss Dam 115kV from Hammond to the APC border with 200C 795 ACSS."
+  },
+  "20512": {
+   "page": 272,
+   "title": "KATHLEEN AREA IMPROVEMENTS",
+   "need": "06/01/2026",
+   "start": "01/01/2024",
+   "desc": "Rebuild the Kathleen - Big Grocery Creek 230kV line (approximately 1.5 miles). Rebuild the Bonaire Primary - Kathleen 230kV line (approximately 6 miles). Upgrade limiting elements at Kathleen substation."
+  },
+  "19598": {
+   "page": 273,
+   "title": "MEAG: DRESDEN - LAGRANGE PRIMARY 230KV UPGRADE & JUMPERS",
+   "need": "06/01/2026",
+   "start": "06/01/2024",
+   "desc": "MEAG will re-sag the Dresden - LaGrange Primary 230kV line to 125C. Replace the jumpers at Dresden and LaGrange with (2) 1590 AAC jumpers."
+  },
+  "20270": {
+   "page": 274,
+   "title": "MEAG: RAY PLACE RD - WASHINGTON #3",
+   "need": "06/01/2026",
+   "start": "01/01/2024",
+   "desc": "Rebuild the Ray Place Rd - Washington 115kV line with 100C 795 ACSR conductor (total 17.4 Miles) between Ray Place Rd and Washington 2. Replace Jumpers and bus at Washington 2."
+  },
+  "20271": {
+   "page": 275,
+   "title": "MEAG: RAY PLACE RD - WASHINGTON (WASHINGTON - WASHINGTON 3)",
+   "need": "06/01/2026",
+   "start": "06/01/2025",
+   "desc": "MEAG will rebuild the Ray Place Rd - Washington 115kV line with 100C 1351 ACSR conductor (total 1.2 Miles) between Washington and Washington 3. Replace jumpers at Washington."
+  },
+  "18690": {
+   "page": 276,
+   "title": "PALMYRA REACTOR REMOVAL",
+   "need": "06/01/2026",
+   "start": "05/01/2023",
+   "desc": "Remove the 6% reactor at the Palmyra Substation."
+  },
+  "20066": {
+   "page": 277,
+   "title": "SAV: BOULEVARD - DEPTFORD 115KV RECONDUCTOR",
+   "need": "06/01/2026",
+   "start": "06/01/2025",
+   "desc": "Reconductor the Boulevard - Deptford 115kV line (approximately 8 miles) using 973.1 C7 ACCS (Everglades) conductor. Upgrade main bus and jumpers at Bolton substation from 90C 1590 AAC Coreopsis to 90C (2)1590 AAC Coreopsis or higher rated equipment."
+  },
+  "19966": {
+   "page": 278,
+   "title": "SAV: CC - BIG OGEECHEE 500/230KV (CC NETWORK IMPROVEMENTS)",
+   "need": "06/01/2026",
+   "start": "06/01/2023",
+   "desc": "Construct a new substation near Little Ogeechee, adjacent to the 500kV and 230kV shared right of way for McCall Road - Thalmann 500kV and the Little Ogeechee - Meldrim 230kV Black and White lines. The new substation will loop in the existing McCall Road - Thalmann 500kV line, the existing Little Ogeechee - Meldrim 230kV lines, and accommodate a new 1344MVA 500/230kV auto transformers with an additional 230kV connection to Little Ogeechee."
+  },
+  "17900": {
+   "page": 279,
+   "title": "UNION CITY - YATES 230 KV WHITE LINE REBUILD",
+   "need": "06/01/2026",
+   "start": "06/01/2023",
+   "desc": "Rebuild 23.4 miles of the Union City - Yates 230kV White line with bundled 1351 ACSS Martin conductor at 200C."
+  },
+  "20691": {
+   "page": 280,
+   "title": "UNION CITY - YATES 230KV (WHITE) SWITCH AND TRAP REPLACEMENT",
+   "need": "06/01/2026",
+   "start": "05/15/2024",
+   "desc": "Replace the limiting elements at Union City and Yates substations along the Union City - Yates 230kV (White) line."
+  },
+  "20223": {
+   "page": 281,
+   "title": "CC - PROJECT PAYTON BAINBRIDGE",
+   "need": "06/30/2026",
+   "start": "06/01/2024",
+   "desc": "Split Farley - South Bainbridge 230kV line with a 230kV station (Dothan Road) and bring an 8.5 mile 200C 1351 ACSS 230kV line from Dothan Rd to new customer sub Downrange. Bring another 10mile 200C 1351 ACSS 230kV line from Climax to customer sub Downrange."
+  },
+  "20874": {
+   "page": 282,
+   "title": "GTC: BARNESVILLE PRIMARY-BARNESVILLE #1 115KV RECONDUCTOR",
+   "need": "12/01/2026",
+   "start": "06/01/2024",
+   "desc": "Rebuild approximately 4.53 miles of the Barnesville Primary - Barnesville #1 segment on the Barnesville Primary - Lamar County Industrial 115kV line."
+  },
+  "20273": {
+   "page": 283,
+   "title": "GTC: DRESDEN 500KV BUS EXPANSION",
+   "need": "12/01/2026",
+   "start": "12/01/2024",
+   "desc": "GTC will expand the Dresden 500kV bus into a 5 - element ring bus configuration. Loop the O'Hara - Wansley 500kV line into the Dresden 500kV substation and allow for future Dresden - Talbot 500kV line termination."
+  },
+  "20002": {
+   "page": 284,
+   "title": "GTC: GORDON - SANDERSVILLE #1 115KV LINE REBUILD",
+   "need": "12/01/2026",
+   "start": "02/01/2023",
+   "desc": "Rebuild the 1.87 miles of Sandersville #1 - Sandersville #6 line section of the Gordon - Sandersville #1 115kV line from 100C ACSR 336 conductor to 100C ACSR 795 conductor."
+  },
+  "20151": {
+   "page": 285,
+   "title": "CC - CASS PINE 230/25 NEW SUB - QCELLS - CC IMPROVEMENTS",
+   "need": "12/31/2026",
+   "start": "06/01/2024",
+   "desc": "Build a new 230/25kV 8 element ring bus networked substation named Cass Pine that will interconnect between new Great Valley and Hill View 230kV substations."
+  },
+  "19287": {
+   "page": 286,
+   "title": "GRADY-WEST END 115KV REBUILD",
+   "need": "12/31/2026",
+   "start": "06/01/2022",
+   "desc": "Reconductor the Grady - West End 115kV line (2.6 miles) using 200C 1351 ACSS Martin."
+  },
+  "19363": {
+   "page": 287,
+   "title": "MORROW - MOUNTAIN VIEW 115 KV REBUILD",
+   "need": "12/31/2026",
+   "start": "01/01/2024",
+   "desc": "Rebuild the Mountain View - Barnett Road section of the Morrow - Mountain View 115kV line with 200C 1351 ACSS Martin conductor."
+  },
+  "20509": {
+   "page": 288,
+   "title": "CC - EMBLEM RIVERSIDE CUSTOMER SUB (FLEXENTIAL)",
+   "need": "03/01/2027",
+   "start": "06/01/2025",
+   "desc": "A new customer substation, Emblem Riverside, is being built along the Buzzard Roost - Douglasville 230kV line. Moreover, a Fiber ICON ring is being built in the area to help with communications and protection for all customers in the area."
+  },
+  "19635": {
+   "page": 289,
+   "title": "GTC: HICKORY LEVEL - VILLA RICA 230KV LINE RECONDUCTOR",
+   "need": "05/01/2027",
+   "start": "05/01/2024",
+   "desc": "GTC will reconductor from 100C 1351 ACSR to 160C 1351 ACSS on 8.6 miles of 230kV line. A 2000A line trap at Villa Rica will also be replaced with a 3000A line trap."
+  },
+  "19601": {
+   "page": 290,
+   "title": "MORROW - YATES COMMON 115KV LINE UPGRADE",
+   "need": "05/01/2027",
+   "start": "05/01/2024",
+   "desc": "On the Fife - Fairburn SW - Owens Corning Tap sections of the Morrow - Yates Common 115kV line, rebuild approximately 5.8 miles of 50C 477 ACSR with 210C 1334 T13 ACCR Martin or 200C 1351.0 ACSS Martin."
+  },
+  "15879": {
+   "page": 291,
+   "title": "POSSUM BRANCH - YATES COMMON 115KV REBUILD (YATES TO CLEM)",
+   "need": "05/01/2027",
+   "start": "06/01/2025",
+   "desc": "Rebuild 11.2 miles of 100C 477 ACSR with 200C 1334 T13 ACCR Martin or 200C 1351.0 ACSS between Yates Common to Oak Mountain. Replace limiting elements along the line."
+  },
+  "20771": {
+   "page": 292,
+   "title": "CC - GULLATT ROAD TRANSMISSION IMPROVEMENTS",
+   "need": "06/01/2027",
+   "start": "06/01/2024",
+   "desc": "Upstream Transmission improvements to serve a new customer station being built along the Morrow - Yates Common 115kV and Line Creek - Fairburn #2 115kV lines. Rebuild the Morrow - Yates Common 115kV line from Line Creek to the new Gullatt Road customer station. Rebuild the Line Creek - Fairburn #2 115kV line from Line Creek to the new Gullatt Road customer station. Remove the Owens Corning Tap Connection on the Morrow - Yates Common 115kV line and rebuild the line from North Coweta to Str 1. Build new line section from Str 1 to the new Gullatt Road customer station"
+  },
+  "18736": {
+   "page": 293,
+   "title": "CC - MICROSOFT - SHUGART (CCO06)",
+   "need": "06/01/2027",
+   "start": "12/31/2022",
+   "desc": "GPC will rebuild the Line Creek 230kV substation as breaker and a half configuration and connect the Morrow - Yates 230kV line and the Union City - Yates 230kV White line into Line Creek. For the Union City - Yates 230kV Black line, terminate the line from the Yates side into Shugart Farms, and the line from the Union City side into Line Creek. Build two short lines from Line Creek to Shugart Farms (0.3 miles each) with 100C 1351 ACSR Martin conductor."
+  },
+  "20781": {
+   "page": 294,
+   "title": "CC - SUMMER LAKE - VILLA RICA 230KV REBUILD (CC IMPROVEMENT)",
+   "need": "06/01/2027",
+   "start": "06/01/2025",
+   "desc": "Rebuild the 2.5 mile section from Villa Rica to the new East Villa Rica Switching station on the Summer Lake - Villa Rica 230kV line with bundled 200C 1351 ACSS Martin."
+  },
+  "20736": {
+   "page": 295,
+   "title": "CC - TA REALTY ELLENWOOD NETWORK IMPROVEMENTS",
+   "need": "06/01/2027",
+   "start": "06/01/2024",
+   "desc": "Rebuild the ~14.9mi Austin Drive - Morrow 115kV with 200C 1351.5 ACSS Martin. At Austin Drive 115kV, replace the 115/230kV auto transformer along with upgrades other limiting elements at the station."
+  },
+  "20234": {
+   "page": 296,
+   "title": "DOYLE - LG&E MONROE 230KV - JACKS CREEK LOOP IN",
+   "need": "06/01/2027",
+   "start": "01/03/2027",
+   "desc": "Loop in and out the new Jack's Creek 230kV switching station into the Doyle - LG&E Monroe 230kV line. This is coordinated with the East Walton Project (TEAMS #09662)."
+  },
+  "20858": {
+   "page": 297,
+   "title": "GTC: ADAMSVILLE - BUZZARD ROOST 230KV REBUILD",
+   "need": "06/01/2027",
+   "start": "06/01/2025",
+   "desc": "GTC plans to rebuild 5 miles of line from Buzzard Roost to Boat Rock Road with 200C 1351 ACSS Martin."
+  },
+  "20776": {
+   "page": 298,
+   "title": "GTC: DOUGLASVILLE - VILLA RICA 230KV REBUILD (CC IMPROVEMENT)",
+   "need": "06/01/2027",
+   "start": "06/01/2025",
+   "desc": "Rebuild the 2.5 mile section from Villa to the new East Villa Rica Switching station on the Douglasville - Villa Rica 230kV line with bundled 200C 1351 ACSS Martin."
+  },
+  "20778": {
+   "page": 299,
+   "title": "GTC: DOYLE - WINDER PRIMARY 230KV LINE JUMPER REPLACEMENT",
+   "need": "06/01/2027",
+   "start": "12/31/2025",
+   "desc": "Replace the limiting AAC 1033 jumper with AAC 1590 at Doyle on the Doyle - Winder Primary 230kV line."
+  },
+  "19358": {
+   "page": 300,
+   "title": "GTC: EAST MOULTRIE - HIGHWAY 112 230 KV LINE",
+   "need": "06/01/2027",
+   "start": "06/01/2022",
+   "desc": "Build a new 27 miles of 230kV line between HWY 112 and East Moultrie substations with 100C 1351 ACSR conductor."
+  },
+  "09662": {
+   "page": 301,
+   "title": "GTC: EAST WALTON 500/230KV PROJECT",
+   "need": "06/01/2027",
+   "start": "06/01/2023",
+   "desc": "GTC: - Construct the East Walton 500/230kV substation. - Construct the Bostwick 230kV switching station. - Construct the East Walton - Rockville 500kV line (3 - 100C 1113 ACSR). - Construct the Bethabara - East Walton 230kV line (170C 1351.5 ACSS). - Construct the Bostwick - East Walton 230kV line (170C 1351.5 ACSS). - Construct the East Walton - Jack's Creek 230kV line (170C 1351.5 ACSS). - At Bethabara, terminate the East Walton 230kV line. - Loop the East Social Circle - East Watkinsville 230kV line into Bostwick. - Replace line trap at East Watkinsville on the Bostwick 230kV line. GPC: - Construct the Rockville 500kV switching station. - Loop the Scherer - Warthen 500kV line into Rockville. - Loop the Doyle - LG&E Monroe 230kV line into Jack's Creek. MEAG: - Construct the Jack's Creek 230kV switching station."
+  },
+  "20505": {
+   "page": 303,
+   "title": "GTC: GARRETT RD - V. RICA 230KV LINE RECONDUCTOR (CC NET IM)",
+   "need": "06/01/2027",
+   "start": "01/01/2027",
+   "desc": "GTC will reconductor the section from East Villa Rica Switching station to Garrett Rd with 160C 1351 ACSS on 11.5 miles of the Garrett Road - Villa Rica 230kV line. Additionally, the 2.5 miles section from East Villa Rica Switching Station to Villa Rica will be rebuilt with bundled 200C 1351 ACSS Martin."
+  },
+  "19622": {
+   "page": 304,
+   "title": "GTC: RIDDLEVILLE BUS REPLACEMENT",
+   "need": "06/01/2027",
+   "start": "01/09/2023",
+   "desc": "GTC will replace the main 115kV bus at Riddleville substation with higher rating."
+  },
+  "19606": {
+   "page": 305,
+   "title": "GTC: SKC 115KV BUS AND JUMPER REPLACEMENT",
+   "need": "06/01/2027",
+   "start": "06/01/2025",
+   "desc": "Replace the 115kV bus and jumpers at SKC substation with higher rated bus and jumpers with rating higher than 255MVA."
+  },
+  "20020": {
+   "page": 306,
+   "title": "GTC: SOUTH HAZLEHURST - NEW LACY 230KV LINE",
+   "need": "06/01/2027",
+   "start": "01/15/2024",
+   "desc": "GTC will build a new 230kV transmission line between South Hazlehurst (bus 2) and New Lacy substation (approximately 25 miles) with 100C ACSR 1351 Martin conductor. Do all the necessary upgrade work to accommodate the additional line in both facilities."
+  },
+  "20506": {
+   "page": 307,
+   "title": "GTC: SWITCH WAY - THORNTON ROAD 230KV LINE REBUILD",
+   "need": "06/01/2027",
+   "start": "01/01/2025",
+   "desc": "GTC will rebuild the 1.3 mile Switchway - Thornton Rd 230kV line with 200C 1351 ACSS."
+  },
+  "18668": {
+   "page": 308,
+   "title": "JESUP - OFFERMAN 115KV REBUILD",
+   "need": "06/01/2027",
+   "start": "04/06/2021",
+   "desc": "Rebuild 20 miles of 100C 4/0 ACSR Penguin conductor along the Jesup - Offerman 115kV line, with 100C 795 ACSR Drake conductor."
+  },
+  "10143": {
+   "page": 309,
+   "title": "LAWRENCEVILLE - WINDER 115KV LINE REBUILD",
+   "need": "06/01/2027",
+   "start": "10/15/2026",
+   "desc": "Rebuild approximately 1.2 miles of 100C 636 ACSR conductor from Johns Manville to Winder Primary with 200C 795 ACSS conductor."
+  },
+  "10481": {
+   "page": 310,
+   "title": "LAWRENCEVILLE - WINDER PRIMARY 230KV LINE REBUILD",
+   "need": "06/01/2027",
+   "start": "06/01/2024",
+   "desc": "Rebuild the entire Lawrenceville - Winder Primary 230kV line, approximately 15.4 miles, using 200C 1351 ACSS \"Martin\" conductor."
+  },
+  "20264": {
+   "page": 311,
+   "title": "MEAG: RAY PLACE RD - WARRENTON PRIMARY",
+   "need": "06/01/2027",
+   "start": "01/01/2026",
+   "desc": "Rebuild 10 miles of Ray Place - Warrenton Primary 115kV line with 100C 2 - 1351 ACSR conductor and replace 1590 AAC Coreopsis jumpers at Warrenton."
+  },
+  "19248": {
+   "page": 312,
+   "title": "SANDERSVILLE #1 - WADLEY PRI. 115KV REBUILD/RECONDUCTOR",
+   "need": "06/01/2027",
+   "start": "02/15/2022",
+   "desc": "Rebuild approximately 24.3 miles of the Sandersville #1 - Wadley Primary 115kV line from 100C 336 ACSR Linnet conductor to 100C 1351 ACSR Drake conductor. Replace limiting elements in substations along the line."
+  },
+  "20785": {
+   "page": 313,
+   "title": "SAV: GOSHEN (SAV) - KRAFT 115KV LINE REBUILD",
+   "need": "06/01/2027",
+   "start": "06/01/2024",
+   "desc": "Rebuild 9.3 miles of Goshen - Kraft 115kV line from Kraft - Godley J - Rice Hope from 100C 795 ACSR Drake to 200C 1351 ACSS Martin."
+  },
+  "20065": {
+   "page": 314,
+   "title": "SAV: GOSHEN (SAV) - MCINTOSH 115KV LINE REBUILD",
+   "need": "06/01/2027",
+   "start": "06/01/2025",
+   "desc": "Rebuild the Goshen (Savannah) - Georgia Pacific (Rincon) section, approximately 6.7 miles, of the Goshen (Sav) - McIntosh 115kV line using 100C 795 ACSR Drake conductor."
+  },
+  "20717": {
+   "page": 315,
+   "title": "CC - TOMOCHICHI 500/230KV SOLUTION (CC NETWORK IMPROVEMENTS)",
+   "need": "07/15/2027",
+   "start": "06/01/2024",
+   "desc": "Build the new Tomochichi 500/230kV switching station (four element ring bus 500kV high side, four element breaker and a half 230kV low side) splitting the Ohara - Schere 500kV line. Build two new 230kV lines from the new Tomochichi substation to the new Towaliga River 230kV substation."
+  },
+  "18573": {
+   "page": 316,
+   "title": "GRID - ARKWRIGHT - LLOYD SHOALS 115KV",
+   "need": "07/30/2027",
+   "start": "06/01/2021",
+   "desc": "Rebuild the Arkwright - Lloyd Shoals 115kV line with 100C 795 ACSR Drake."
+  },
+  "20591": {
+   "page": 317,
+   "title": "GTC: EATONTON PRIMARY (035591) - LICK CREEK 115KV REBUILD",
+   "need": "12/01/2027",
+   "start": "10/01/2023",
+   "desc": "Rebuild approximately 7.5 miles Eatonton Primary - Lick Creek 115kV line section with 100C 795 ACSR conductor."
+  },
+  "17977": {
+   "page": 318,
+   "title": "ATHENA - EAST WATKINSVILLE 115 KV (REBUILD)",
+   "need": "12/31/2027",
+   "start": "08/01/2024",
+   "desc": "Rebuild 8.47 miles of the University of Georgia - East Watkinsville line sections on the Athena - East Watkinsville 115kV line with 100C ACSR 1033 conductor."
+  },
+  "20150": {
+   "page": 319,
+   "title": "CC - HILL VIEW & GRASSY HOLLOW SUB - CC IMPROVEMENTS",
+   "need": "12/31/2027",
+   "start": "06/01/2023",
+   "desc": "Build two 230kV switching stations (Hill View and Grassy Hollow) looping into the Cartersville - McGrau Ford 230kV line (8.5 miles apart). Build two new 230kV lines: Cass Pine - Great Valley and Great Valley - Grassy Hollow (total 10.1 miles) with 200C 1351 ACSS Martin."
+  },
+  "20024": {
+   "page": 320,
+   "title": "DYER ROAD - EAST ROANOKE 115KV (REBUILD)",
+   "need": "12/31/2027",
+   "start": "06/01/2025",
+   "desc": "Rebuild 20.7 miles of 75C 397.5 ACSR conductor with advanced conductor from Dyer Road to Wansley tap on the Dyer Road - East Roanoke (APC) 115kV line."
+  },
+  "19997": {
+   "page": 321,
+   "title": "AULTMAN ROAD-PERRY 115KV LINE REBUILD",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Rebuild the PPG J2 - Langston Road line section of the Aultman Road - Perry 115kV line from 100C 336 ACSR Linnet conductor to 200C 1351 ACSS conductor."
+  },
+  "20797": {
+   "page": 322,
+   "title": "CC - EAST VILLA RICA AREA SWITCHING STATION (CC IMPROVEMENT)",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Build a 7 rung breaker and a half switching station along the right of way of the (3) 230kV lines about 2.5 miles East of Villa Rica to service recently signed customers in the area. All three lines will terminate into this station."
+  },
+  "20774": {
+   "page": 323,
+   "title": "CC - VILLA RICA UPGRADES (CC NETWORK IMPROVEMENTS)",
+   "need": "06/01/2028",
+   "start": "06/01/2026",
+   "desc": "Loop in the Bowen - Union City line into Villa Rica 500kV bus and add a second 2016 MVA 500/230kV auto transformer. Convert the 230kV side to a 10 element breaker and a half scheme."
+  },
+  "21048": {
+   "page": 324,
+   "title": "FITZGERALD - PITTS 115 KV LINE REBUILD",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Rebuild approximately 26.14 miles of the Fitzgerald - Pitts 115kV line with 200C 1351 ACSS."
+  },
+  "08458": {
+   "page": 325,
+   "title": "GTC: BARNESVILLE - SOUTH GRIFFIN 230KV PROJECT",
+   "need": "06/01/2028",
+   "start": "01/01/2026",
+   "desc": "Construct 19 miles of 230kV circuit, on existing ROW, using200C 1351 ACSS conductor from South Griffin 230/115kV substation to the Barnesville 230/69kV substation."
+  },
+  "20503": {
+   "page": 326,
+   "title": "GTC: BARNEYVILLE - EAST MOULTRIE 115KV NEW LINE",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Build a new 20 miles of 115kV line with 200C 1351 ACSS from Barneyville to East Moultrie. Add 115kV breakers to Barneyville and East Moultrie substations."
+  },
+  "20873": {
+   "page": 327,
+   "title": "GTC: BONAIRE PRIMARY 500/230KV XFMR REPLCMNT & RELAY MOD",
+   "need": "06/01/2028",
+   "start": "03/14/2024",
+   "desc": "Replace 500/230kV, auto transformer C with a new 448 MVA transformer. Replace obsolete relay panels."
+  },
+  "19992": {
+   "page": 328,
+   "title": "GTC: BOSTWICK - EAST SOCIAL CIRCLE 230KV RECONDUCTOR",
+   "need": "06/01/2028",
+   "start": "12/31/2024",
+   "desc": "Reconductor 10.8 miles of the East Social Circle - East Watkinsville 230kV line (up to future Bostwick location) from 1033 ACSR Curlew conductor to 1033 ACCR 200C conductor."
+  },
+  "20777": {
+   "page": 329,
+   "title": "JACK MCDONOUGH - NORTHWEST (BLACK) 230KV RECONDUCTOR",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Rebuild the Jack McDonough - Northwest (Black) 230kV line (4.59 miles) using 200C 1351 Elbrus/TW."
+  },
+  "19629": {
+   "page": 330,
+   "title": "MEAG: BRUMBLEY CREEK - SOUTH BAINBRIDGE 115KV REBUILD",
+   "need": "06/01/2028",
+   "start": "01/01/2024",
+   "desc": "Rebuild 2.1 miles segment from line tap into Roddenbery Station on the South Bainbridge - Thomasville 115kV line from 50C ACSR TW 762.8 to 200C 1351 ACSS conductor."
+  },
+  "19630": {
+   "page": 331,
+   "title": "MEAG: THOMASVILLE 230/115KV AUTOBANK REPLACEMENT",
+   "need": "06/01/2028",
+   "start": "06/01/2027",
+   "desc": "Replace the 140MVA 230/115kV auto transformer #4 at Thomasville substation."
+  },
+  "20482": {
+   "page": 332,
+   "title": "PITTMAN ROAD - WEST POINT DAM (USA) 115KV REBUILD",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Rebuild 3 miles from the Pittman Road 115kV station to the West Point Dam (USA) 115kV station with 100C 1351 ACSS Martin conductor. Replace AAC 750 jumper at Pittman Road 115kV with (2) 1590 AAC."
+  },
+  "20656": {
+   "page": 333,
+   "title": "PLANT YATES BREAKER AND HALF STATION",
+   "need": "06/01/2028",
+   "start": "05/01/2024",
+   "desc": "Rebuild the Yates 6 & 7 substation to a Breaker and a Half configuration."
+  },
+  "20783": {
+   "page": 334,
+   "title": "SAV: COLEMAN - DEAN FOREST 115KV LINE REBUILD",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Rebuild entire line from Coleman to Dean Forest. 6.67 miles of 100C 477 Hawk Conductor with 200C 1351 ACSS Martin conductor."
+  },
+  "20407": {
+   "page": 335,
+   "title": "SAV: MAGNOLIA - TRUMAN PARKWAY 115KV REBUILD",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Rebuild 3 miles of the Magnolia - Truman Parkway 115kV from 75C 927 ACAR to 200C 1351 ACSS Martin conductor or higher rated conductor. Upgrade 1200A switches at Magnolia substation to 2000A switches and jumpers at Truman Parkway."
+  },
+  "21069": {
+   "page": 336,
+   "title": "SMART VALVES AT EAST VILLA RICA SWITCHING STATION",
+   "need": "06/01/2028",
+   "start": "06/01/2028",
+   "desc": "Installation of Power Flow Controllers at the new East Villa Rica Switching Station on the Douglasville - Villa Rica 230kV and Summer Lake - Villa Rica 230kV lines. The Power Flow Controllers will be removed when GTCs strategic project at Cavender Drive goes in service."
+  },
+  "20768": {
+   "page": 337,
+   "title": "SOUTH MACON 115KV BUSES 1 & 2 REPLACEMENT",
+   "need": "06/01/2028",
+   "start": "01/15/2025",
+   "desc": "Replace the 115kV buses 1 and 2 at South Macon with (2) 1590 AAC."
+  },
+  "20274": {
+   "page": 338,
+   "title": "UNION CITY - YATES 230KV (BLACK) LINE REBUILD",
+   "need": "06/01/2028",
+   "start": "06/01/2025",
+   "desc": "Rebuild the Union City - Yates 230kV Black line with bundled 200C 1351 ACSS Martin conductor. Replace limiting elements at Union City, Fairburn #1 and Line Creek substations."
+  },
+  "13166": {
+   "page": 339,
+   "title": "FIRST AVENUE - NORTH COLUMBUS 115KV LINE REBUILD",
+   "need": "12/01/2028",
+   "start": "01/01/2028",
+   "desc": "Rebuild the 0.9 miles North Columbus - First Avenue 115kV line (currently 75C 657 ACAR) with 200C 1351 ACSS conductor."
+  },
+  "20586": {
+   "page": 340,
+   "title": "GTC: NORTH DUBLIN 230/115KV TRANSFORMERS AND BUS-TIE BREAKER",
+   "need": "12/01/2028",
+   "start": "11/01/2023",
+   "desc": "Replace 230/115kV auto transformers A & B with (2) new 230/115kV, 400 MVA auto transformers. Replace 230kV bus tie breaker with a new 2000A breaker. Replace 115kV bus tie breaker with a new 2000A breaker."
+  },
+  "21062": {
+   "page": 341,
+   "title": "ASHLEY PARK-WANSLEY 500KV",
+   "need": "06/01/2029",
+   "start": "12/01/2024",
+   "desc": "Construct a 500kV line from Ashley Park to Wansley, approximately 35 miles long."
+  },
+  "10222": {
+   "page": 342,
+   "title": "BLAKELY PRIMARY - HUCKLEBERRY 115KV REBUILD",
+   "need": "06/01/2029",
+   "start": "06/01/2025",
+   "desc": "Rebuild the Blakley Primary - Huckleberry 115kV line from 75C 477 ACSR to 200C 1351 ACSS. (13.5 miles) GPC: Replace jumpers at Blakely Primary GTC: Replace jumpers at Blakely and Huckleberry"
+  },
+  "21047": {
+   "page": 343,
+   "title": "BROADWAY - ECHECONNEE 115 KV LINE REBUILD",
+   "need": "06/01/2029",
+   "start": "01/01/2025",
+   "desc": "Rebuild the Griffin Rd \u2013 Echeconnee line section of Broadway - Echeconnee line with 200C 1351 ACSS conductor."
+  },
+  "16887": {
+   "page": 344,
+   "title": "BUTLER - THOMASTON 230KV LINE CONVERSION",
+   "need": "06/01/2029",
+   "start": "01/01/2025",
+   "desc": "Rebuild the radial Thomaston - Butler 115kV line to 230kV network operation. Make all necessary upgrades and accommodations at Butler and Thomaston. Convert the Wesley substation from 115kV to 230kV."
+  },
+  "21036": {
+   "page": 345,
+   "title": "BUZZARD ROOST - FACTORY SHOALS 230KV NEW LINE",
+   "need": "06/01/2029",
+   "start": "06/01/2026",
+   "desc": "A new 2 mile 230kV line is being built from Buzzard Roost to Factory Shoals with 200C 1351 ACSS Martin conductor."
+  },
+  "21142": {
+   "page": 346,
+   "title": "CONYERS - KLONDIKE 230 KV SECOND LINE",
+   "need": "06/01/2029",
+   "start": "06/01/2026",
+   "desc": "Build a new 6.56 mile line from Conyers to Klondike with 200C (2) 1351 ACSS Martin conductor. Build one new 230kV breaker terminal at Conyers and one new 230kV terminal at Klondike."
+  },
+  "21138": {
+   "page": 347,
+   "title": "GLENWOOD SPRINGS - PORTERDALE PRIMARY 230KV LINE SWITCH REPL",
+   "need": "06/01/2029",
+   "start": "06/01/2029",
+   "desc": "Replace the 600A line switch at Porterdale Primary on the Glenwood Springs - Porterdale Primary 230kV Line with 1200A switch."
+  },
+  "21112": {
+   "page": 348,
+   "title": "GTC: BARNESVILLE PRIMARY - THOMASTON 230KV",
+   "need": "06/01/2029",
+   "start": "06/01/2027",
+   "desc": "Rebuild Barnesville Primary - Thomaston 230kV line (13.24 miles) with 100C 1351 ACSS; Replace 1200A switches at Barnesville Primary & Thomaston with 3000A switch; replace associated jumper at both stations."
+  },
+  "10814": {
+   "page": 349,
+   "title": "GTC: BAY CREEK 230/115KV SECOND AUTO TRANSFORMER",
+   "need": "06/01/2029",
+   "start": "06/01/2028",
+   "desc": "Install a second 230/115kV, 400 MVA auto transformer at the Bay Creek substation."
+  },
+  "21140": {
+   "page": 350,
+   "title": "GTC: BONAIRE PRIMARY - EASTMAN PRIMARY 115 KV LINE REBUILD",
+   "need": "06/01/2029",
+   "start": "01/01/2026",
+   "desc": "Rebuild 41.08 miles of the Bonaire Primary - Eastman Primary 115kV Line using 200C 1351ACSS Martin and upgrade the bus at Roddy substation."
+  },
+  "20849": {
+   "page": 351,
+   "title": "GTC: CLIFTONDALE - LINE CREEK 230KV LINE",
+   "need": "06/01/2029",
+   "start": "06/01/2026",
+   "desc": "An 11.6 mile 230kV line is being built form Cliftondale to Line Creek with 200C 1351 ACSS Martin."
+  },
+  "19950": {
+   "page": 352,
+   "title": "GTC: DRESDEN - TALBOT 500KV LINE",
+   "need": "06/01/2029",
+   "start": "06/01/2025",
+   "desc": "GTC will build a new 500kV line from Talbot to Dresden (75 miles). This project will create a new Talbot 500/230kV substation with a 500/230kV auto transformers. The low side of the auto transformers will connect to the Talbot County #1 and #2 230kV buses."
+  },
+  "20760": {
+   "page": 353,
+   "title": "GTC: HOPEWELL 230/115 KV BANK A",
+   "need": "06/01/2029",
+   "start": "06/01/2028",
+   "desc": "Replace the Hopewell 230/115kV auto transformer with a 400 MVA auto transformer."
+  },
+  "21123": {
+   "page": 354,
+   "title": "GTC: TENASKA - WANSLEY 500KV NEW LINE",
+   "need": "06/01/2029",
+   "start": "12/01/2024",
+   "desc": "Construct a 5 mile long 500kV line between Tenaska and Wansley. Make all necessary accommodations at the substations for the line termination."
+  },
+  "21141": {
+   "page": 355,
+   "title": "LLOYD SHOALS - PORTERDALE PRIMARY 115KV REBUILD",
+   "need": "06/01/2029",
+   "start": "03/01/2026",
+   "desc": "Rebuild 15.8 miles of 50C 397.5 ACSR Ibis with 200C 1351 ACSS Martin from Jackson Lake to Lloyd Shoals and Jackson Lake to South. Covington Junction."
+  },
+  "20285": {
+   "page": 356,
+   "title": "LOWER RIVER - WEBB (APC) 115KV RECONDUCTOR",
+   "need": "06/01/2029",
+   "start": "06/01/2025",
+   "desc": "Reconductor 0.97 miles of 100C 636 Grosbeak Lower River - Webb 115kV line with 200C 795 ACSS Drake conductor."
+  },
+  "19621": {
+   "page": 357,
+   "title": "MCEVER ROAD - SHOAL CREEK 115KV REBUILD",
+   "need": "06/01/2029",
+   "start": "12/31/2024",
+   "desc": "Rebuild the 636 ACSR (1 mile) of the McEver Road - College Square section, and 2 - 4/0 copper part (2.05 miles) of the College Square to Lakeside WTP B line section, part of the McEver Road - Shoal Creek 115kV line, using 200C 1351 ACSS conductor."
+  },
+  "20346": {
+   "page": 358,
+   "title": "MCMANUS - WEST BRUNSWICK 115KV REBUILD",
+   "need": "06/01/2029",
+   "start": "01/01/2026",
+   "desc": "Rebuild the McManus - West Brunswick 115kV line, approximately 5.7 miles, with 200C 1351 ACSS Martin conductor."
+  },
+  "17706": {
+   "page": 359,
+   "title": "MEAG: AULTMAN ROAD - FORT VALLEY #1 115 KV REBUILD",
+   "need": "06/01/2029",
+   "start": "06/01/2026",
+   "desc": "Rebuild approximately 8 miles of the Aultman Road - Fort Valley #1 115kV line with 200C 1351 ACSS conductor."
+  },
+  "11051": {
+   "page": 360,
+   "title": "MEAG: SLAPPEY DRIVE - WESTOVER 115KV LINE REBUILD",
+   "need": "06/01/2029",
+   "start": "06/01/2026",
+   "desc": "Rebuild 2.92 miles of 100C sagged 477 ACSR Hawk conductor from Slappey Drive to Albany #9 with 1351 ACSR."
+  },
+  "20757": {
+   "page": 361,
+   "title": "NORCROSS - NORTH DRUID HILLS 115KV REBUILD",
+   "need": "06/01/2029",
+   "start": "01/01/2025",
+   "desc": "Rebuild the Norcross - Norcross Junction (674) segment, approximately 3.9 miles, from 100C 477 ACSR Hawk conductor to 200C 1351 ACSS \"Martin\" conductor."
+  },
+  "21006": {
+   "page": 362,
+   "title": "SAV: BOULEVARD - MAGNOLIA 115 KV LINE REBUILD",
+   "need": "06/01/2029",
+   "start": "01/01/2027",
+   "desc": "Rebuild the entire line from Boulevard to Magnolia (4.56 miles) from 100C 795 ACSR Drake to 200C 1351 ACSS Martin"
+  },
+  "21023": {
+   "page": 363,
+   "title": "SAV: DEAN FOREST - LITTLE OGEECHEE 230 KV REBUILD",
+   "need": "06/01/2029",
+   "start": "01/01/2026",
+   "desc": "Rebuild the entire line from Little Ogeechee - Salt Creek and Salt Creek - Dean Forest, approximately 8 miles, using 200C 1351 ACSS/Martin. Upgrade jumpers at the Little Ogeechee terminal."
+  },
+  "20989": {
+   "page": 364,
+   "title": "SAV: RICE HOPE NEW AUTO TRANSFORMER",
+   "need": "06/01/2029",
+   "start": "06/01/2025",
+   "desc": "Install a new 230/115kV 400MVA auto transformer at Rice Hope and loop in the Crossgate - McIntosh 230kV line."
+  },
+  "13628": {
+   "page": 365,
+   "title": "SOUTH BAINBRIDGE - SINAI (FPL) 115KV LINE RECONDUCTOR",
+   "need": "06/01/2029",
+   "start": "06/01/2025",
+   "desc": "Rebuild the Four Mile tap - Recovery - Sinai (FPL) segment of the Sinai (FPL) - South Bainbridge 115kV line from 100C 336.4 ACSR to 200C 1351 ACSS. 9.8 miles in FPL and 13.75 miles in GPC At Recovery (GTC): Replace 100C 336.4 ACSR string bus with higher rating and jumpers with (1) 1590 AAC At Sinai (FPL): Replace 100C 336.4 ACSR string bus with higher rating"
+  },
+  "20248": {
+   "page": 366,
+   "title": "BAY CREEK - CONYERS 230KV REBUILD",
+   "need": "12/31/2029",
+   "start": "06/01/2031",
+   "desc": "GPC will rebuild the Bay Creek - Conyers 230kV line, approximately 15.29 miles, using 200C 1351 ACSS \"Martin\" conductor."
+  },
+  "21129": {
+   "page": 367,
+   "title": "ANNISTON - HAMMOND 230KV LINE",
+   "need": "06/01/2030",
+   "start": "06/01/2025",
+   "desc": "Rebuild the 28.12 miles section between Hammond and the Goshen tap with 200C 1351 ACSS Martin conductor."
+  },
+  "20764": {
+   "page": 368,
+   "title": "ATKINSON - NORTHSIDE DRIVE 115KV REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2027",
+   "desc": "Rebuild a portion of the Atkinson - Northside 115kV line, approximately 3.2 miles from Atkinson to Chattahoochee with 200C 1351 ACSS Martin."
+  },
+  "20761": {
+   "page": 369,
+   "title": "ATKINSON - NORTHWEST 115KV REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2027",
+   "desc": "Rebuild the 1.2 mile Atkinson - Tilford Yards section of the Atkinson - Northwest 115kV with 200C 1351 ACSS Martin."
+  },
+  "21130": {
+   "page": 370,
+   "title": "CC - NORTH GEORGIA DATA NETWORK UPGRADES",
+   "need": "06/01/2030",
+   "start": "06/01/2026",
+   "desc": "Construct approximately 7 miles of 115kV line with minimum 170C 1351 ACSS conductor from Gillsville Tap Junction to Midway. Utilize the existing GPC owned North Jackson - Lawrence Smith 46kV ROW that is to be retired. Disconnect the East Maysville 115kV tap at Midway 115kV and terminate the new Pond Fork - Midway 115kV line."
+  },
+  "10478": {
+   "page": 371,
+   "title": "CORNELIA - TALLULAH LODGE 115KV REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2027",
+   "desc": "Rebuild approximately 9.7 miles of the Cornelia - Chase Road - Clarksville - Hollywood segments of the Cornelia - Tallulah Lodge 115kV line with 200C 795 ACSS conductor."
+  },
+  "18669": {
+   "page": 372,
+   "title": "DU: DAWSON CROSSING - NELSON (WHITE) 115 KV REBUILD",
+   "need": "06/01/2030",
+   "start": "12/31/2024",
+   "desc": "Rebuild approximately 15.7 miles of the Dawson Crossing - Etowah - Reavis Mountain - Nelson sections of the Dawson Crossing - Nelson (White) 115kV line with 1351 ACSS conductor. GPC will make any necessary relaying changes at Dawson Crossing."
+  },
+  "21097": {
+   "page": 373,
+   "title": "EAST POINT - TRIBUTARY 230KV REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2027",
+   "desc": "Rebuild the 2.9 mile section from Cavender Drive to Marietta 25 with 200C 1351 ACSS conductor on the East Point - Tributary 230kV line."
+  },
+  "20480": {
+   "page": 374,
+   "title": "EAST POINT - UNION CITY 230KV BLACK LINE RECONDUCTOR",
+   "need": "06/01/2030",
+   "start": "06/01/2028",
+   "desc": "Reconductor the 1.5 mile section from Flat Shoals Road station to the Stonewall Tell loop - in point on the East Point - Union City 230kV Black line with 200C 1351 ACSS Martin conductor. Replace limiting elements at Union City"
+  },
+  "19627": {
+   "page": 375,
+   "title": "ECHECONNEE-WELLSTON 115KV LINE REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2023",
+   "desc": "Rebuild approximately 11.8 miles of the Echeconnee - Wellston 115kV line with 200C 1351 ACSS conductor and the limiting elements along the line with higher ratings. Replace the Bus at North Warner Robins with 1590 AAC."
+  },
+  "21063": {
+   "page": 376,
+   "title": "FARLEY (APC)-TAZEWELL 500KV",
+   "need": "06/01/2030",
+   "start": "12/01/2024",
+   "desc": "Construct a new 500kV line from Farley (APC) to Tazewell substation, approximately 120 miles long. Construct a 5 breaker 500kV ring bus to loop in the Blacksmith - Talbot 500kV line, terminate the new Farley - Tazewell 500kV and Talbot #2 - Tazewell 500kV lines. Install a 500/230kV auto transformer to connect to the existing 230kV switchyard."
+  },
+  "12120": {
+   "page": 377,
+   "title": "GAINESVILLE #2 - MCEVER ROAD 115 KV REBUILD",
+   "need": "06/01/2030",
+   "start": "12/31/2025",
+   "desc": "Rebuild approximately 5.3 miles of the Gainesville #2 - McEver Rd 115kV line with 200C 1351 ACSS conductor."
+  },
+  "20298": {
+   "page": 378,
+   "title": "GLENWOOD SPRINGS - LAKE OCONEE 115KV LINE REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2027",
+   "desc": "Rebuild the North Eatonton Junction - Putnam Sawmill Junction line with 200C 1351 ACSS conductor."
+  },
+  "21128": {
+   "page": 379,
+   "title": "GOAT ROCK REACTORS INSTALLATION",
+   "need": "06/01/2030",
+   "start": "06/01/2028",
+   "desc": "Install 1% series reactors on the Fortson - Goat Rock (Black) 230kV and Fortson - Goat Rock (White) 230kV."
+  },
+  "19996": {
+   "page": 380,
+   "title": "GOLDENS CREEK - WARRENTON PRIMARY 230KV REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2028",
+   "desc": "Rebuild approximately 0.34 miles of the Goldens Creek - Warrenton Primary 230kV line from 100C 1 - 1351.5 ACSR Martin conductor to 200C 1351 ACCR Martin conductor or equivalent."
+  },
+  "20428": {
+   "page": 381,
+   "title": "GORDON-SANDERSVILLE #1 115KV LINE REBUILD (DEEPSTEP-SAND #6)",
+   "need": "06/01/2030",
+   "start": "12/01/2023",
+   "desc": "Rebuild the Deepstep - Robins Spring (7.6 miles) Robins Spring - Kaolin J (2.23mi), and Kaolin J - Sandersville #6 (0.66 miles) line sections of the Gordon - Sandersville #1 115kV line. Rebuild a total of 10.49 miles from 100C 336 ACSR to 100C ACSR 795 conductor."
+  },
+  "21116": {
+   "page": 382,
+   "title": "GOSHEN AREA STRATEGIC SOLUTION",
+   "need": "06/01/2030",
+   "start": "06/01/2025",
+   "desc": "Construct a 230kV switching station on the Waynesboro - Wilson 230kV line and a new 230kV line between the switching station and Goshen, approximately 12.3 miles. Provides an alternate power flow path into Goshen outside of the existing constrained Goshen - Vogtle corridor."
+  },
+  "21073": {
+   "page": 383,
+   "title": "GTC: BIG SMARR - TOMOCHICHI 500KV",
+   "need": "06/01/2030",
+   "start": "12/01/2024",
+   "desc": "Construct a 500kV line from Big Smarr to Tomochichi, approximately 36 miles long. Make the necessary modifications at Big Smarr and Tomochichi to add breakers and terminate the line."
+  },
+  "21014": {
+   "page": 384,
+   "title": "GTC: BUZZARD ROOST - CAVENDER DRIVE 230KV NEW LINE",
+   "need": "06/01/2030",
+   "start": "06/01/2026",
+   "desc": "GTC is building a new 7 mile 230kV line from Cavender Drive to Buzzard Roost with 200C 1351 ACSS Martin."
+  },
+  "21013": {
+   "page": 385,
+   "title": "GTC: CAVENDER DRIVE 500/230KV AUTOBANK",
+   "need": "06/01/2030",
+   "start": "06/01/2026",
+   "desc": "GTC will turn Cavender Drive into a 500/230kV station looping in the Villa Rica - Union City 500kV line, installing a 2016 MVA auto transformer."
+  },
+  "20375": {
+   "page": 386,
+   "title": "GTC: EAST WATKINSVILLE 230 KV STATION MODIFICATION",
+   "need": "06/01/2030",
+   "start": "06/01/2028",
+   "desc": "Replace the 1600A reactors at East Watkinsville on the Russell Dam 230kV line with larger size."
+  },
+  "21131": {
+   "page": 387,
+   "title": "GTC: POND FORK - MIDWAY 115KV LINE",
+   "need": "06/01/2030",
+   "start": "06/01/2026",
+   "desc": "GTC: Construct approximately 6 miles of 115kV line with minimum 170C 1351 ACSS conductor from Gillsville Tap Junction to Pond Fork, utilizing the existing GTC owned portion of the North Jackson - Lawrence Smith 46kV ROW. At Pond Fork, install a second 230/115kV 400MVA auto transformer and terminate the Pond Fork - Midway 115kV line."
+  },
+  "21077": {
+   "page": 388,
+   "title": "GTC: ROCKVILLE - TIGER CREEK -WARTHEN 500KV LINES",
+   "need": "06/01/2030",
+   "start": "12/01/2024",
+   "desc": "Build the new 500kV line from Rockville to Tiger Creek and Tiger Creek to Warthen, approximately 20 miles and 9 miles long respectively. Build a 500kV yard at Tiger Creek and install a 500/230kV auto transformer. Make all necessary accommodations at Warthen and Rockville for the new 500kV breakers."
+  },
+  "21076": {
+   "page": 389,
+   "title": "GTC: TALBOT #2 - TAZEWELL 500KV LINE",
+   "need": "06/01/2030",
+   "start": "12/01/2024",
+   "desc": "Build a new 500kV line from Tazewell to Talbot #2, approximately 20 miles. Make all necessary accommodations at Tazewell and Talbot #2 for the new 500kV breakers and line termination."
+  },
+  "21094": {
+   "page": 390,
+   "title": "GTC: TIGER CREEK-ROCKVILLE-NORTH SPA 230KV PROJECT",
+   "need": "06/01/2030",
+   "start": "01/01/2025",
+   "desc": "Build a new 4 - breaker 230kV ring bus at Rockville substation (no auto transformer to be added at this time). Loop in the Eatonton Primary #2 - Wallace Dam 230kV line. Build a new line 230kV line to Tiger Creek. Build a new 230kV line to North Spa."
+  },
+  "20789": {
+   "page": 391,
+   "title": "JEFFERSON ROAD - WINDER PRIMARY 115KV REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2025",
+   "desc": "Rebuild approximately 11 miles of the Jefferson Road - Russell - Richardson Street Junction segments of the Jefferson Road - Winder Primary 115kV line with 200C 1351 ACSS Martin conductor."
+  },
+  "20284": {
+   "page": 392,
+   "title": "KETTLE CREEK PRIMARY - PINE GROVE PRIMARY 115KV REBUILD",
+   "need": "06/01/2030",
+   "start": "06/02/2026",
+   "desc": "Rebuild approximately 38.04 miles of 50C 4/0 ACSR conductor from the Pine Grove to the Pearson tap using 200C 1351 ACSS conductor."
+  },
+  "21118": {
+   "page": 393,
+   "title": "MEAG: ATHENA - WARRENTON 230KV CONVERSION",
+   "need": "06/01/2030",
+   "start": "06/01/2025",
+   "desc": "Reconductor/rebuild and convert the 115kV lines from Athena - Union Point - Ray Place Road - Warrenton Primary to 230kV operation. Expand Athena 230kV bus for new line termination, construct 230kV bus at Union Point, and expand 230kV bus at Warrenton Primary for new line termination. Install 230/115kV auto transformers at Union Point Primary and Ray Place Road. Replace limiting network equipment at substations along the line."
+  },
+  "20857": {
+   "page": 394,
+   "title": "NEW CAVENDER DRIVE - TRIBUTARY 230KV LINE",
+   "need": "06/01/2030",
+   "start": "06/01/2026",
+   "desc": "Build a new 4 mile 230kV line from Cavender Drive to Tributary with 200C 1351 ACSS Martin."
+  },
+  "21093": {
+   "page": 395,
+   "title": "NORTH SPA 230KV STRATEGIC PROJECT",
+   "need": "06/01/2030",
+   "start": "01/01/2025",
+   "desc": "This project includes the following scope of work: Build a new 230kV switching station north of Oasis in a ring bus configuration with 4 - breakers. Loop in the East Social Circle - Oasis (White) 230kV line. Build a new 230kV line to Cornish Mountain from North Spa. New 230kV line from Rockville 230kV will terminate in this station."
+  },
+  "19995": {
+   "page": 396,
+   "title": "TALLULAH LODGE - TOCCOA 115 KV REBUILD",
+   "need": "06/01/2030",
+   "start": "12/31/2025",
+   "desc": "Rebuild the Tallulah Lodge - Toccoa 115kV Line with 100C 795 ACSR conductor (total of 10.3 miles). Replace limiting elements at Tallulah Lodge and Toccoa."
+  },
+  "21098": {
+   "page": 397,
+   "title": "TRIBUTARY - THORNTON RD 230KV REBUILD",
+   "need": "06/01/2030",
+   "start": "06/01/2027",
+   "desc": "Rebuild the 2.8 mile Tributary - Thornton Road 230kV line with 200C 1351 ACSS Martin."
+  },
+  "20160": {
+   "page": 398,
+   "title": "THOMASTON 230 NEW BUILD SUB",
+   "need": "11/01/2030",
+   "start": "01/01/2026",
+   "desc": "Replace Thomaston 230/115kV 285MVA auto transformers C and D with 400MVA auto transformers. Install high side breakers to meet the 230kV bus differential standards and redesign 230kV bus to a breaker and a half configuration."
+  },
+  "18848": {
+   "page": 399,
+   "title": "BAINBRIDGE TRANSMISSION: EAST RIVER ROAD, EAST BAINBRIDGE",
+   "need": "12/31/2030",
+   "start": "06/01/2023",
+   "desc": "This project will construct a new 115kV breaker and a half substation a mile north of the East Bainbridge substation. East Bainbridge will be simplified to a 115kV straight bus with two transmission lines for service to load, a generation interconnection point and a capacitor bank."
+  },
+  "19626": {
+   "page": 400,
+   "title": "GLENWOOD SPRINGS 115KV CAP BANK",
+   "need": "12/31/2030",
+   "start": "01/01/2028",
+   "desc": "Install a 115kV two stage 30MVAR capacitor bank at Glenwood Springs substation."
+  },
+  "20690": {
+   "page": 401,
+   "title": "EAST POINT - UNION CITY (WHITE) 230KV REBUILD",
+   "need": "05/01/2031",
+   "start": "06/01/2028",
+   "desc": "Rebuild 5.49 miles of 100C 1590.0 ACSR Lapwing with 200C 1351.5 ACSS Martin 230kV line from Welcome All to Union City on the East Point - Union City 230kV line."
+  },
+  "19632": {
+   "page": 402,
+   "title": "AVERY - HOPEWELL 115KV RECONDUCTOR",
+   "need": "06/01/2031",
+   "start": "01/01/2028",
+   "desc": "Reconductor the Hopewell to Birmingham line section (approximately 3.3 miles) on the Avery - Hopewell 115kV line with 100C 1033 ACSR conductor. Replace jumper at Birmingham with 1590 AAC jumper."
+  },
+  "10811": {
+   "page": 403,
+   "title": "BOWEN #10 500/230KV AUTOBANK REPLACEMENT",
+   "need": "06/01/2031",
+   "start": "06/01/2025",
+   "desc": "Replace the existing Bowen #10 1350 MVA 500/230kV auto transformer with a 2016 MVA 500/230kV auto transformer."
+  },
+  "20756": {
+   "page": 404,
+   "title": "HATCH - WADLEY 500 KV LINE STRATEGIC PROJECT",
+   "need": "06/01/2031",
+   "start": "07/03/2024",
+   "desc": "Construct a new 500kV line from Hatch - Wadley Primary."
+  },
+  "21099": {
+   "page": 405,
+   "title": "MEAG: PIO NONO 230/115KV AREA SOLUTION",
+   "need": "06/01/2031",
+   "start": "01/01/2025",
+   "desc": "Build a 4 - breaker 230kV ring bus to terminate lines from Dorsett, South Griffin, and Big Grocery. Install a 400MVA auto transformer and build a 115kV yard to terminate a line from Broadway. Make all necessary modifications to accommodate all the 230kV and 115kV lines terminations."
+  },
+  "21114": {
+   "page": 406,
+   "title": "MEAG: SOUTH GRIFFIN 230/115KV BANK #5",
+   "need": "06/01/2032",
+   "start": "06/01/2030",
+   "desc": "Replace 230/115kV 285MVA auto transformer #5 with 230/115kV 400MVA auto transformer at South Griffin."
+  },
+  "20784": {
+   "page": 407,
+   "title": "SAV: COLEMAN - MELDRIM 115KV LINE REBUILD",
+   "need": "06/01/2032",
+   "start": "06/01/2029",
+   "desc": "Rebuild 3 miles of the Coleman - Meldrim 115kV line from Four Lakes to Meldrim with 200C 1351 ACSS."
+  },
+  "20767": {
+   "page": 408,
+   "title": "ARKWRIGHT BUS AND JUMPER REPLACEMENT",
+   "need": "06/01/2033",
+   "start": "06/01/2029",
+   "desc": "Replace the 115kV bus at Arkwright with higher rating and replace the jumper on the Arkwright - Forrest Rd (Macon) 115kV line with at least 1590AAC."
+  },
+  "20758": {
+   "page": 409,
+   "title": "BAY CREEK - CONYERS 230KV LIMITING ELEMENT REPLACEMENT",
+   "need": "06/01/2033",
+   "start": "06/01/2031",
+   "desc": "Replace equipment such as jumpers, switches, and traps at the Bay Creek, Rockdale, and Conyers substations with equipment capable of carrying 3000A."
+  },
+  "20793": {
+   "page": 410,
+   "title": "EVANS PRIMARY - THURMOND DAM (USA) #5 115KV REBUILD",
+   "need": "06/01/2033",
+   "start": "06/01/2029",
+   "desc": "Rebuild approximately 5.45 miles of Euchee Creek - Thurmond Dam segment of the Evans Primary - Thurmond Dam (USA) #5 115kV line with 200C 1351 ACSS Martin conductor. Replace the main bus with a larger element at Thurmond Dam (USA)."
+  },
+  "20794": {
+   "page": 411,
+   "title": "EVANS PRIMARY - THURMOND DAM (USA) #6 115KV REBUILD",
+   "need": "06/01/2033",
+   "start": "06/01/2030",
+   "desc": "Rebuild approximately 8.9 miles of the Evans Primary - Thurmond Dam (USA) #6 115kV line with 200C 1351 ACSS Martin conductor. Replace the main bus with a larger element at Thurmond Dam (USA)."
+  },
+  "12217": {
+   "page": 412,
+   "title": "GTC: CENTER PRIMARY - CLARKSBORO 230 KV REBUILD",
+   "need": "06/01/2033",
+   "start": "06/01/2028",
+   "desc": "GTC to rebuild the Center Primary \u2013 Clarksboro Primary 230kV line (approx. 8.3 miles) with 200C 1351 ACSS conductor."
+  },
+  "20773": {
+   "page": 413,
+   "title": "GTC: CLARKSBORO - WINDER PRIMARY 230KV REBUILD",
+   "need": "06/01/2033",
+   "start": "06/01/2029",
+   "desc": "Rebuild approximately 14 miles of the Clarksboro - Winder 230kV line with 200C 1351 ACSS conductor."
+  },
+  "12147": {
+   "page": 414,
+   "title": "GTC: EAST SOCIAL CIRCLE - SNELLVILLE 230KV EQUIPMENT UPGRADE",
+   "need": "06/01/2033",
+   "start": "06/01/2030",
+   "desc": "Replace the 1200A switches at Snellville Primary with 3000A. Also, replace the 1200A line trap and switches at East Social Circle with 3000A on the East Social Circle - Snellville 230kV line."
+  },
+  "21075": {
+   "page": 415,
+   "title": "GTC: EAST WALTON - MIDDLE FORK 500KV",
+   "need": "06/01/2033",
+   "start": "12/01/2024",
+   "desc": "Construct a new 500kV line from East Walton to Middle Fork, approximately 45 miles long. Make all necessary accommodations for new 500kV breakers at East Walton and Middle Fork substations."
+  },
+  "20791": {
+   "page": 416,
+   "title": "GTC: SHOAL CREEK - SOUTH HALL 230KV REBUILD",
+   "need": "06/01/2033",
+   "start": "06/01/2029",
+   "desc": "Rebuild approximately 7.9 miles of South Hall - Chestnut Mountain - Spout Springs Road segments of the Shoal Creek - South Hall 230kV line with 200C 1351 ACSS conductor. Also, replace 1 - AAC 1590 jumpers at South Hall with 2 - AAC 1590."
+  },
+  "21053": {
+   "page": 417,
+   "title": "MCEVER ROAD - SHOAL CREEK 115KV REBUILD",
+   "need": "06/01/2033",
+   "start": "06/01/2030",
+   "desc": "Rebuild the 2 - 4/0 copper part (approximately 2.9 miles) of the Gainesville Ferry - Lakeside WTP A line section, part of the McEver Road - Shoal Creek 115kV line, using 200C 1351 ACSS conductor."
+  },
+  "09661": {
+   "page": 418,
+   "title": "MCGRAU FORD - MIDDLE FORK 500KV LINE PROJECT",
+   "need": "06/01/2033",
+   "start": "06/01/2026",
+   "desc": "Construct a new approximately 64 mile 500kV line from McGrau Ford to Middle Fork."
+  },
+  "20796": {
+   "page": 419,
+   "title": "SAV: MELDRIM BANK D REPLACEMENT",
+   "need": "06/01/2033",
+   "start": "06/01/2030",
+   "desc": "Replace 300 MVA 230/115kV Bank D with 400 MVA Bank."
+  },
+  "14222": {
+   "page": 420,
+   "title": "THOMSON PRIMARY 230/115KV SECOND TRANSFORMER",
+   "need": "06/01/2033",
+   "start": "08/01/2025",
+   "desc": "Install a second 400 MVA, 230/115kV auto transformer at Thomson Primary substation."
+  },
+  "20759": {
+   "page": 421,
+   "title": "WINDER PRIMARY 230KV BUS 1-2 PARALLEL BUS-TIE INSTALLATION",
+   "need": "06/01/2033",
+   "start": "06/01/2031",
+   "desc": "Install a 2nd 230kV bus - tie breaker at the Winder Primary Station."
+  },
+  "10487": {
+   "page": 422,
+   "title": "PINE GROVE PRIMARY - WEST VALDOSTA 115 KV RECONDUCTOR",
+   "need": "12/31/2033",
+   "start": "12/31/2029",
+   "desc": "Rebuild 3.7 miles of 100C 4/0 ACSR conductor with 200C 795 ACSS Drake on the Bemis - Pine Grove Primary section of the Pine Grove Primary - West Valdosta 115kV line."
+  },
+  "18700": {
+   "page": 423,
+   "title": "DAWSON CROSSING - GAINESVILLE #1 115 KV",
+   "need": "06/01/2034",
+   "start": "06/01/2032",
+   "desc": "Replace the 500CU main bus at Gainesville #1 115kV with 3\" Sch 40 AL Tube."
+  },
+  "20787": {
+   "page": 424,
+   "title": "SAV: LITTLE OGEECHEE 230/115KV BANK REPLACEMENT",
+   "need": "06/01/2034",
+   "start": "06/01/2030",
+   "desc": "Replace SATX 280MVA auto transformer with 400MVA auto transformer."
+  },
+  "17993": {
+   "page": 425,
+   "title": "EVANS PRIMARY - THOMSON PRIMARY 115KV REBUILD",
+   "need": "12/31/2034",
+   "start": "01/01/2031",
+   "desc": "Rebuild the existing 100C 336 ACSR conductor for the Thomson Primary to Pumpkin Center 115kV line section (approximately 5.28 miles), part of the Evans Primary - Thomson Primary 115kV line with 200C 1351 ACSS Martin conductor."
+  }
+ }
+}
