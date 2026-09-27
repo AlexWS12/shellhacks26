@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Woodstock",
+   "project": "Blankets Creek \u2013 Woodstock 115kV Line Rebuild",
+   "description": "Rebuild the entire Blankets Creek - Woodstock 115kV line, approximately 7.1 miles, with 200C 795 ACSS conductor.",
+   "candidate_town": "Woodstock, GA",
+   "county": "Cherokee County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.89
+   }
+  },
+  "cost_usd": 1.9194000000000003e-05,
+  "latency_ms": 216,
+  "model": "jev-latest"
+ }
+}

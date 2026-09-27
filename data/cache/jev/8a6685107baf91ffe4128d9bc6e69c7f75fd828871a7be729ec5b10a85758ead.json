@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Varnville",
+   "project": "Varnville to Nixville tap 69 kV Rebuild to 115 kV",
+   "description": "",
+   "candidate_town": "Varnville, SC",
+   "county": "Hampton County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  },
+  "cost_usd": 1.7640000000000004e-05,
+  "model": "jev-latest",
+  "latency_ms": 285
+ }
+}

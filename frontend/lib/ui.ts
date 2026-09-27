@@ -1,9 +1,11 @@
 
 import { create } from "zustand";
 
-import { api, API, type FilterState } from "./api";
+import { onRunEvent, showPreflight } from "./alerts";
+import { api, API, ApiError, type FilterState, type PreflightDetail } from "./api";
+import { setSources } from "./owners";
 import { apply, hydrate, reset, run, setAgentSpecs } from "./run";
-import type { AgentSpec, Health, Overlap, ResearchCategory, RunEvent, SourceSpec, ThirdParty } from "./types";
+import type { AgentSpec, Health, Overlap, ResearchCategory, RunEvent, SetupProblem, SourceSpec, ThirdParty } from "./types";
 
 export type Panel =
   | { kind: "list" }
@@ -28,7 +30,13 @@ function savedResearch(): Record<ResearchCategory, boolean> {
   }
 }
 
+// The model setup screen. problems: why a live run was refused (each names a job); canForce: every refusal was only
+// a busy or out-of-quota model, so the run may start anyway.
+export interface SetupState { focusRole: string | null; problems: SetupProblem[]; canForce: boolean; step?: "keys" | "models" }
+const SETUP_SEEN_KEY = "tandem.setupSeen";
+
 interface UIState {
+  setup: SetupState | null; // open when not null
   panel: Panel;
   filters: FilterState;
   results: Overlap[] | null; // from the API after a run
@@ -55,6 +63,7 @@ const SERVER_KEYS = ["allSponsors", "townLevel", "hideFinished"] as const;
 let requests = 0; // only the newest filter request wins
 
 export const useUI = create<UIState>((set, get) => ({
+  setup: null,
   panel: { kind: "list" },
   filters: { allSponsors: false, townLevel: true, hideFinished: false, sort: "distance", chip: "all", q: "" },
   results: null,
@@ -108,7 +117,9 @@ function follow(runId: string): void {
   source = new EventSource(`${API}/api/runs/${runId}/events`);
   source.onmessage = (m) => {
     const e = JSON.parse(m.data) as RunEvent;
+    const fresh = e.seq > run.lastSeq; // reconnects resend old events
     apply(e);
+    if (fresh) onRunEvent(e, run.mode === "live", useUI.getState().health?.models ?? {}); // replays never notify
     // zoom into the Savannah River while connections are found, then back out
     if (e.type === "agent.spawned" && e.agent_id === "overlap") useUI.getState().flyTo({ kind: "river" });
     if (e.type === "run.done") useUI.getState().flyTo({ kind: "border" });
@@ -123,19 +134,47 @@ function follow(runId: string): void {
   };
 }
 
-export async function startRun(mode: "live" | "replay"): Promise<void> {
+export function openSetup(state: Partial<SetupState> = {}): void {
+  useUI.setState({ setup: { focusRole: null, problems: [], canForce: false, ...state } });
+}
+
+export function closeSetup(): void {
+  useUI.setState({ setup: null });
+  try {
+    localStorage.setItem(SETUP_SEEN_KEY, "1");
+  } catch {
+    // not remembered: it may open again on the next first launch
+  }
+  void refreshHealth();
+}
+
+async function refreshHealth(): Promise<void> {
+  try {
+    useUI.setState({ health: await api.health() });
+  } catch {
+    // the header keeps what it had
+  }
+}
+
+export async function startRun(mode: "live" | "replay", force = false): Promise<void> {
   const ui = useUI.getState();
   source?.close();
   reset(mode);
   useUI.setState({ results: null, others: null, visibleProjects: null, panel: { kind: "list" }, error: null });
   ui.flyTo({ kind: "border" });
   try {
-    const { run_id } = await api.startRun(mode, CATEGORIES.filter((c) => ui.research[c]), 1, ui.templateFallback);
+    const { run_id } = await api.startRun(mode, CATEGORIES.filter((c) => ui.research[c]), 1, ui.templateFallback, force);
     follow(run_id);
   } catch (e) {
+    if (e instanceof ApiError && e.status === 409) {
+      // The run check found a job with no working model: the failure modal says which, with a way into the setup.
+      reset(null);
+      showPreflight(e.detail as PreflightDetail);
+      return;
+    }
     run.phase = "failed";
-    run.failMsg = String(e);
-    useUI.setState({ error: String(e) });
+    run.failMsg = String(e instanceof Error ? e.message : e);
+    useUI.setState({ error: run.failMsg });
   }
 }
 
@@ -145,12 +184,23 @@ export async function skipToResults(): Promise<void> {
 
 export async function boot(): Promise<void> {
   try {
-    const [health, graph] = await Promise.all([
+    const [health, graph, known] = await Promise.all([
       api.health(),
       fetch(`${API}/api/agents`).then((r) => r.json() as Promise<{ agents: AgentSpec[]; sources: SourceSpec[] }>),
+      api.sources(),
     ]);
+    setSources(known.sources); // names, colors and shapes of every utility
     useUI.setState({ health, research: savedResearch() });
     setAgentSpecs(graph.agents);
+    // First launch (no saved setup on this machine yet), or a job runs need has no model with a key: show the setup.
+    const s = health.models_setup;
+    let seen = false;
+    try {
+      seen = localStorage.getItem(SETUP_SEEN_KEY) === "1";
+    } catch {
+      // treat as not seen
+    }
+    if (s && (!s.ready || (s.first_launch && health.app_mode !== "hosted" && !seen))) openSetup({ problems: s.problems });
   } catch (e) {
     useUI.setState({ error: `Can't reach the API at ${API || "this site"}/api (${e}).` });
   }
@@ -173,6 +223,8 @@ export async function showLatestResults(): Promise<void> {
 }
 
 export async function refreshAgents(): Promise<void> {
+  // A plan saved or removed in the Sources menu is a source added or removed.
+  void api.sources().then((r) => setSources(r.sources)).catch(() => undefined);
   if (run.phase !== "idle") return; // the new Reader shows up in the next run's graph
   try {
     const graph = await fetch(`${API}/api/agents`).then((r) => r.json() as Promise<{ agents: AgentSpec[] }>);

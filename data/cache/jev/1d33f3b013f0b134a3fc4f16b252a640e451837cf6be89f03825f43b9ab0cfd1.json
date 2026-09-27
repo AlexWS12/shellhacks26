@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "CC - Qts Fayetteville Transmission Needs",
+   "description": "Build a new 500/230kV substation (Ashley Park) splitting the Ohara - Union City 500kV line. Install two 500/230kV auto transformers at the Ashley Park station. At Ashley Park, the 500kV side will be a 4 - breaker ring bus, while the 230kV side will be a 2 - rung Breaker and a Half configuration. Build two new 230kV lines (~6 miles each) from Ashley Park to the high side of customer substations. The new lines will be built with bundled 200C 1351 ACSS Martin conductor."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 1.0,
+    "probabilities": {
+     "new_line": 0.0,
+     "rebuild": 0.0,
+     "substation_construction": 1.0,
+     "other": 0.0,
+     "in_substation_equipment": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.5914000000000003e-05,
+  "latency_ms": 230,
+  "model": "jev-latest"
+ }
+}

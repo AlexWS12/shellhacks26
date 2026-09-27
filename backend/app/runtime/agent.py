@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 from typing import Any, AsyncIterator
 
 from app.clients import judge
+from app.clients.errors import describe
 from app.clients.judge import Verdict
 from app.runtime.board import Board
 from app.runtime.run import Run
@@ -26,6 +27,9 @@ class AgentSpec:
     def public(self) -> dict[str, Any]:
         return {"id": self.id, "name": self.name, "role": self.role, "actors": self.actors,
                 "depends_on": self.depends_on, "kind": self.kind, "engine": self.engine, "team": self.team}
+
+
+LLM_ACTORS = {"gemini", "jev"}
 
 
 class Ctx:
@@ -52,35 +56,38 @@ class Ctx:
         self.emit("agent.log", text=text)
 
     @asynccontextmanager
-    async def tool(self, name: str, args: dict[str, Any], actor: str = "code") -> AsyncIterator[dict[str, str]]:
+    async def tool(self, name: str, args: dict[str, Any], actor: str = "code") -> AsyncIterator[dict[str, Any]]:
+        # A tool run by an LLM actor sets out["model"], and tool.result carries it.
         self.emit("tool.call", tool=name, args=args, actor=actor)
         started = time.perf_counter()
-        out: dict[str, str] = {"summary": ""}
+        out: dict[str, Any] = {"summary": ""}
+        llm = {"model": None} if actor in LLM_ACTORS else {}
         try:
             yield out
         except Exception as e:
-            self.emit("tool.result", tool=name, summary=f"ERROR {type(e).__name__}: {str(e)[:160]}", ok=False,
-                      ms=round((time.perf_counter() - started) * 1000))
+            self.emit("tool.result", tool=name, summary=f"ERROR {describe(e)[:160]}", ok=False,
+                      ms=round((time.perf_counter() - started) * 1000), **llm)
             raise
         self.emit("tool.result", tool=name, summary=out["summary"][:200], ok=True,
-                  ms=round((time.perf_counter() - started) * 1000))
+                  ms=round((time.perf_counter() - started) * 1000), **({"model": out.get("model")} if llm else {}))
 
     def _record(self, v: Verdict, question: str, subject: str, project_id: str | None, answer: Any) -> None:
         self.judgments += 1
         self.cost_usd += v.cost_usd
         self.emit("judgment", actor=v.actor, question=question, subject=subject, project_id=project_id,
                   answer=answer, confidence=round(v.confidence, 3), latency_ms=v.latency_ms,
-                  cost_usd=round(v.cost_usd, 7), cached=v.cached)
+                  cost_usd=round(v.cost_usd, 7), cached=v.cached, model=v.model)
 
     async def ask_noul(self, question: str, subject: str, state: Any, true: str, false: str,
-                       heuristic: Callable[[], float], project_id: str | None = None) -> Verdict:
-        v = await judge.noul(state, question, true, false, heuristic)
+                       heuristic: Callable[[], float], project_id: str | None = None, *, role: str) -> Verdict:
+        # role: which job in config/models.json answers it (confirm_osm, validate_semantic, ...)
+        v = await judge.noul(state, question, true, false, heuristic, role=role)
         self._record(v, question, subject, project_id, round(float(v.value), 3))
         return v
 
     async def ask_choice(self, question: str, subject: str, state: Any, options: dict[str, str],
-                         heuristic: Callable[[], str], project_id: str | None = None) -> Verdict:
-        v = await judge.choice(state, question, options, heuristic)
+                         heuristic: Callable[[], str], project_id: str | None = None, *, role: str) -> Verdict:
+        v = await judge.choice(state, question, options, heuristic, role=role)
         self._record(v, question, subject, project_id, v.value)
         return v
 

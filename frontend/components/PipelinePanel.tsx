@@ -2,11 +2,32 @@
 
 import { useState } from "react";
 
+import { PLAIN, providerName } from "@/lib/alerts";
 import { run, useRev } from "@/lib/run";
+import type { ModelIssue, RoleInfo } from "@/lib/types";
 import { useUI } from "@/lib/ui";
 
 import AgentGraph from "./AgentGraph";
 import SourcesMenu from "./SourcesMenu";
+
+// Model failures and fallbacks, same kind together with a count. A replay shows them here instead of notifying.
+function issueRows(list: ModelIssue[], roles: RoleInfo): { key: string; text: string; level: string; n: number }[] {
+  const label = (id: string) => roles[id]?.label ?? id;
+  const short = (ref?: string) => (ref ? ref.slice(ref.indexOf("/") + 1) : "");
+  const rows = new Map<string, { key: string; text: string; level: string; n: number }>();
+  for (const i of list) {
+    const [key, text, level] = i.type === "model.call_failed"
+      ? [`f/${i.role}/${i.model}/${i.errorClass}`, `${label(i.role)}: ${providerName(i.provider)} ${i.model}: ${PLAIN[i.errorClass ?? ""] ?? i.errorClass}`,
+        ["AuthError", "ModelNotFound", "QuotaExceeded"].includes(i.errorClass ?? "") ? "error" : "warn"]
+      : i.type === "model.fallback_used"
+        ? [`b/${i.role}/${i.to}`, `${label(i.role)}: switched from ${short(i.from)} to backup ${short(i.to)}`, "info"]
+        : [`x/${i.role}`, `${label(i.role)}: no model worked for one item`, "error"];
+    const row = rows.get(key);
+    if (row) row.n += 1;
+    else rows.set(key, { key, text, level, n: 1 });
+  }
+  return [...rows.values()];
+}
 
 export default function PipelinePanel() {
   useRev((s) => s.rev);
@@ -27,6 +48,9 @@ export default function PipelinePanel() {
   const onMap = visibleProjects ?? Object.values(run.projects).filter((p) => p.lat != null).length;
   const pairs = (run.phase === "done" && results ? results : run.overlaps).length;
   const checks = allChecks ? run.checks : run.checks.slice(0, 5);
+  const roles = useUI((st) => st.health?.models) ?? {};
+  const [allIssues, setAllIssues] = useState(false);
+  const issues = issueRows(run.modelIssues, roles);
 
   return (
     <>
@@ -39,8 +63,8 @@ export default function PipelinePanel() {
       )}
       <div className="section">
         <p className="label">Sources
-          <button className="linkbtn addplan" onClick={() => setMenuOpen(true)} disabled={run.phase === "running"}
-            title="Add another utility's plan: spreadsheet, PDF or link">+ Add a plan</button>
+          <button className="linkbtn addplan" onClick={() => setMenuOpen(true)}
+            title="Every utility the pipeline reads; add a filing, spreadsheet or link">Manage · + Add</button>
         </p>
         {menuOpen && <SourcesMenu onClose={() => setMenuOpen(false)} />}
         {run.sourceOrder.length === 0 && <p className="empty">Dominion&apos;s project list, Georgia&apos;s IRP Vol. 3, and a surveyed benchmark set.</p>}
@@ -118,6 +142,20 @@ export default function PipelinePanel() {
         {run.checks.length > 5 && <button className="linkbtn" onClick={() => setAllChecks(!allChecks)}>{allChecks ? "Show less" : `Show all ${run.checks.length}`}</button>}
         {unl.length > 0 && <p className="note">{unl.length} projects have no location yet and stay off the map.</p>}
       </div>
+
+      {issues.length > 0 && (
+        <div className="section">
+          <p className="label">Model problems <span className="count">{issues.length}</span>
+            {run.mode === "replay" && <span className="hint">recorded in this run</span>}</p>
+          {(allIssues ? issues : issues.slice(0, 6)).map((r) => (
+            <div key={r.key} className={`check issue ${r.level}`}>
+              <i className="dot" />
+              <div>{r.text}{r.n > 1 && <span className="sub-inline"> ×{r.n}</span>}</div>
+            </div>
+          ))}
+          {issues.length > 6 && <button className="linkbtn" onClick={() => setAllIssues(!allIssues)}>{allIssues ? "Show less" : `Show all ${issues.length}`}</button>}
+        </div>
+      )}
 
       <div className="section">
         <p className="label">Activity</p>

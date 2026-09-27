@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "project": "Union Pier 115-13.8 kV Sub: Tap",
+   "description": "Installing a 115 kV Tap to feed the future Union Pier 115 kV Sub.",
+   "need": "This project is needed to for load growth in the Charleston area."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.45
+   }
+  },
+  "cost_usd": 1.701e-05,
+  "latency_ms": 287,
+  "model": "jev-latest"
+ }
+}

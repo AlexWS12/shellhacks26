@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Oostanaula",
+   "filing_state": "GA",
+   "project": "DU: East Dalton - Oostanaula 115kV Rebuild",
+   "description": "DU: Rebuild the portion of East Dalton - Oostanaula and Dalton - East Dalton 115kV double circuit lines between East Dalton substation and the Dalton substation frame with 200C 795 ACSS.",
+   "zone": "211",
+   "candidate": {
+    "name": "Oostanaula",
+    "kind": "place=hamlet",
+    "county": "Gordon County",
+    "state": "GA",
+    "lat": 34.4814762,
+    "lon": -85.0143897
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.59
+   }
+  },
+  "cost_usd": 2.2008000000000003e-05,
+  "latency_ms": 265,
+  "model": "jev-latest"
+ }
+}

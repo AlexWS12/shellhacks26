@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Canadys",
+   "utility": "DESC",
+   "filing_state": "SC",
+   "project": "Canadys-Ritter 115KV-Rebld SPDC 230/115KV 1272 (Approx 18 Miles)",
+   "description": "Rebuild Canadys-Ritter 115 kV line as SPDC with 230 kV on one side and 115 kV on the other side.",
+   "zone": null,
+   "candidate": {
+    "name": "Canadys Substation",
+    "operator": "South Carolina Electric & Gas Company",
+    "voltage": "230000;115000",
+    "lat": 33.0640963,
+    "lon": -80.6205999,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.88
+   }
+  },
+  "cost_usd": 2.3394000000000003e-05,
+  "latency_ms": 308,
+  "model": "jev-latest"
+ }
+}

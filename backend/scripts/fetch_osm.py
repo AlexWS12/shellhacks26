@@ -7,9 +7,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.clients import overpass  # noqa: E402
+from app.core.owners import book  # noqa: E402
 
 if __name__ == "__main__":
-    features = overpass.fetch()
+    features = overpass.fetch(book().bbox())  # the active sources' states, or OSM_BBOX
     ops = {}
     for f in features:
         ops[f["operator"] or "(no operator tag)"] = ops.get(f["operator"] or "(no operator tag)", 0) + 1

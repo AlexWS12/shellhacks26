@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Tiger Creek",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Rockville - Tiger Creek -Warthen 500kV Lines",
+   "description": "Build the new 500kV line from Rockville to Tiger Creek and Tiger Creek to Warthen, approximately 20 miles and 9 miles long respectively. Build a 500kV yard at Tiger Creek and install a 500/230kV auto transformer. Make all necessary accommodations at Warthen and Rockville for the new 500kV breakers.",
+   "zone": "214",
+   "candidate": {
+    "name": "Tiger Creek Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 33.0945058,
+    "lon": -82.9815846
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.79
+   }
+  },
+  "cost_usd": 2.3940000000000005e-05,
+  "latency_ms": 249,
+  "model": "jev-latest"
+ }
+}

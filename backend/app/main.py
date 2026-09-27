@@ -9,13 +9,16 @@ from contextlib import asynccontextmanager
 from typing import Literal
 
 import httpx
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 
-from app import config
-from app.clients import fetch, gemini, jev
+from app import config, setup
+from app.api_sources import guarded as sources_guarded
+from app.api_sources import router as sources_router
+from app.api_models import router as models_router
+from app.clients import fetch, models
 from app.core.models import Confidence
 from app.core.overlap import Filters
 from app.core.sheets import FIELDS as SHEET_FIELDS
@@ -26,24 +29,32 @@ from app.export import build_xlsx, owner_label, safe_cell
 from app.pipeline import build_pipeline, run_live
 from app.runtime.replay import recorded_runs, replay
 from app.runtime.run import RUNS, new_run, start_background
-from app.store import dataset, submissions, tiger
+from app.store import dataset, sources, submissions, tiger
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 log = logging.getLogger("api")
 _gemini_ok: bool | None = None  # None until the startup check finishes
+SMOKE_SCHEMA = {"type": "object", "properties": {"ok": {"type": "boolean"}}, "required": ["ok"]}
 
 
 async def check_gemini() -> None:
+    # One live, uncached call through the 'smoke' role: does any configured Gemini model answer right now?
     global _gemini_ok
-    res = await gemini.smoke() if gemini.enabled() else None
-    _gemini_ok = bool(res and res["data"].get("ok"))
-    if not _gemini_ok:
-        log.warning("Gemini smoke check failed: analyses and briefs will fall back to templates")
+    try:
+        res = await models.call("smoke", 'Return {"ok": true}.', SMOKE_SCHEMA, system="Answer in JSON.", cache=False)
+        _gemini_ok = bool(res.value.get("ok"))
+    except models.RoleExhausted as e:
+        _gemini_ok = False
+        log.warning("Gemini smoke check failed (%s): write-ups will fall back to templates", models.describe(e))
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     dataset.load_from_disk()
+    if config.LEGACY_MODEL_VARS:
+        log.warning("%s no longer choose models and are ignored; set models in config/models.json "
+                    "(or config/models.local.json)", ", ".join(config.LEGACY_MODEL_VARS))
+    models.roles()  # a broken config/models.json fails at startup, not in the middle of a run
     gemini_check = asyncio.create_task(check_gemini())  # in the background so startup isn't blocked
     if tiger.enabled():
         try:
@@ -56,6 +67,9 @@ async def lifespan(_: FastAPI):
 
 app = FastAPI(title="Tandem API", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=config.CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"])
+app.include_router(models_router)  # the setup screen
+app.include_router(sources_router)  # the Sources menu (public)
+app.include_router(sources_guarded)  # the Sources menu (admin in hosted mode)
 
 
 def filters(all_sponsors: bool, min_conf: Confidence, hide_finished: bool, sort: str) -> Filters:
@@ -68,8 +82,10 @@ def filters(all_sponsors: bool, min_conf: Confidence, hide_finished: bool, sort:
 @app.get("/api/health")
 def health() -> dict:
     return {"status": "ok", "dataset_run": dataset.CURRENT.run_id, "projects": len(dataset.CURRENT.projects),
-            "gemini": gemini.enabled(), "gemini_ok": _gemini_ok, "gemini_model": config.GEMINI_MODEL,
-            "gemini_fallback_model": config.GEMINI_FALLBACK_MODEL, "jev": config.JEV_PROVIDER or "off",
+            "gemini": models.gemini.configured(), "gemini_ok": _gemini_ok,
+            "gemini_model": next((m for m in models.chain("analyst") if m.startswith("gemini/")), "").removeprefix("gemini/"),
+            "models": models.summary(), "jev": config.JEV_PROVIDER or "off", "app_mode": config.APP_MODE,
+            "models_setup": setup.readiness(),
             "tiger": tiger.enabled(), "today": config.TODAY}
 
 
@@ -80,6 +96,26 @@ def agents(of: Literal["next", "latest"] = "next") -> dict:
         return {"agents": dataset.CURRENT.agents, "sources": dataset.CURRENT.sources}
     agents, sources = build_pipeline()
     return {"agents": [a.spec.public() for a in agents], "sources": sources}
+
+
+@app.get("/api/sources")
+def list_sources() -> dict:
+    # Every utility the pipeline knows: names, codes, colors, states, owners inside each filing. The UI draws from this.
+    from app.core.owners import book
+
+    owners = book()
+    shown: dict[str, int] = {}
+    for p in dataset.CURRENT.projects.values():
+        if (src := owners.of(p)) is not None:
+            shown[src.id] = shown.get(src.id, 0) + 1
+    out = []
+    for s in sources.all_sources():
+        try:
+            d = sources.load_draft(s.id) if not s.builtin else None
+        except ValueError:
+            d = None
+        out.append({**sources.public(s), "projects": shown.get(s.id, 0), "draft_projects": len(d["projects"]) if d else None})
+    return {"sources": out, "bbox": owners.bbox()}
 
 
 @app.get("/api/projects")
@@ -176,21 +212,34 @@ class RunRequest(BaseModel):
     speed: float = 1.0
     templates: bool = True  # live only: fall back to a template when Gemini fails
     research: list[Literal["electric", "gas", "roads_water"]] | None = None  # live only; None = all
+    force: bool = False  # live only: start even if some jobs' models are only busy or out of quota right now
+
+
+def _busy() -> list:
+    return [r for r in RUNS.values() if r.mode == "live" and not r.finished]
 
 
 @app.post("/api/runs")
 async def start_run(req: RunRequest) -> dict:
     if req.mode == "live":
-        busy = [r for r in RUNS.values() if r.mode == "live" and not r.finished]
-        if busy:
+        if busy := _busy():
             return {"run_id": busy[0].id, "joined": True}  # one live run at a time; join it
+        # Check the first model of every job the run needs. 409 names each job without a working model and why,
+        # so the UI can open the setup screen at that job.
+        try:
+            skipped = await setup.preflight(force=req.force)
+        except setup.SetupError as e:
+            raise HTTPException(409, {"message": e.message, **e.details}) from None
+        if busy := _busy():  # another request started one while we checked
+            return {"run_id": busy[0].id, "joined": True}
         run = new_run("live")
+        run.preflight_skipped = skipped
         run.templates = req.templates
         if req.research is not None:
             run.research = list(dict.fromkeys(req.research))
         start_background(run_live(run))
-        return {"run_id": run.id}
-    recs = [r for r in recorded_runs() if r["complete"] and r["ok"]]
+        return {"run_id": run.id, "preflight_skipped": [p["role"] for p in skipped]}
+    recs = [r for r in recorded_runs() if r["complete"] and r["ok"] and r.get("purpose", "pipeline") == "pipeline"]
     source = req.replay_of or (recs[0]["run_id"] if recs else None)
     path = config.RUNS_DIR / f"{source}.jsonl"
     if not source or not path.exists():
@@ -255,7 +304,7 @@ def agent_stats() -> dict:
 
 @app.get("/api/jev/status")
 def jev_status() -> dict:
-    return {"provider": config.JEV_PROVIDER or "off", "live": jev.enabled()}
+    return {"provider": config.JEV_PROVIDER or "off", "live": models.jev.configured()}
 
 
 # ---- Sources menu: plans people submit. Saved until removed; each ready one gets a Reader on every live run.
@@ -299,7 +348,7 @@ def list_submissions() -> dict:
     return {"submissions": [s.model_dump() for s in submissions.list_all()],
             "fields": {k: {"label": v[0], "required": v[1]} for k, v in SHEET_FIELDS.items()},
             "limits": {"max_mb": submissions.MAX_BYTES // (1024 * 1024), "max_plans": submissions.MAX_SUBMISSIONS},
-            "gemini": gemini.enabled()}
+            "gemini": models.available("extract_submission")}
 
 
 @app.post("/api/submissions")

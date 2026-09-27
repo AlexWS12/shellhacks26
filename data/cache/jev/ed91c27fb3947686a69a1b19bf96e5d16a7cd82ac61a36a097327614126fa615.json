@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Middle Fork",
+   "filing_state": "GA",
+   "project": "GTC: Hartwell Energy - Middle Fork 230kV Line",
+   "description": "Construct a new 230kV line, approx. 35 miles, from Hartwell Energy to Middle Fork with 200C (2) 1351 ACSS conductor. GTC: Expand Hartwell Energy 230kV and Middle Fork 230kV as necessary to install breakers to accept new line termination.",
+   "zone": "212",
+   "candidate": {
+    "name": "Middle Fork",
+    "kind": "place=hamlet",
+    "county": "Transylvania County",
+    "state": "outside SC/GA",
+    "lat": 35.1173319,
+    "lon": -82.8237443
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.12
+   }
+  },
+  "cost_usd": 2.3058000000000002e-05,
+  "latency_ms": 331,
+  "model": "jev-latest"
+ }
+}

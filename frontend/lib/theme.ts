@@ -15,16 +15,11 @@ export function token(name: `--${string}`): string {
 
 export function mapPalette() {
   return {
-    desc: token("--desc"),
-    gpc: token("--gpc"),
     zone: token("--zone"),
     zoneFar: token("--zone-far"),
     catElectric: token("--cat-electric"),
     catGas: token("--cat-gas"),
     catRoads: token("--cat-roads"),
-    peer1: token("--peer-1"),
-    peer2: token("--peer-2"),
-    peer3: token("--peer-3"),
     bg: token("--bg"),
     spark: token("--spark"),
     water: token("--map-water"),

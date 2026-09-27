@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Union City",
+   "project": "CC - Stonewall Tell Road (Ta Realty)",
+   "description": "Build 230kV line segment, using 200C 1351 ACSS Martin conductor, to loop in the Stonewall Tell Road (TA Realty) customer station into the East Point - Union City 230kV Black line.",
+   "candidate_town": "Union City, GA",
+   "county": "Fulton County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.89
+   }
+  },
+  "cost_usd": 1.9362000000000002e-05,
+  "latency_ms": 319,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "indian field",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342462266,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9304171,
+   "lat": "33.9803854",
+   "lon": "-84.2579028",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338300221255814,
+   "addresstype": "road",
+   "name": "Indian Field",
+   "display_name": "Indian Field, Neely Farm, Peachtree Corners, Gwinnett County, Georgia, 30092, United States",
+   "address": {
+    "road": "Indian Field",
+    "residential": "Neely Farm",
+    "town": "Peachtree Corners",
+    "county": "Gwinnett County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30092",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9800913",
+    "33.9806546",
+    "-84.2587329",
+    "-84.2570531"
+   ]
+  }
+ ]
+}

@@ -9,7 +9,10 @@ import {
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { Endpoint, Overlap, PairDetail, Project, ThirdParty, Written } from "@/lib/types";
-import { approxDate, dateWord, gapText, ownClass, ownerName, ownerShort, peers, serviceDate, slotOf, whereFrom } from "@/lib/owners";
+import {
+  approxDate, colorOf, costKind, dateWord, gapText, legendSources, ownerName, ownerShort, ownStyle, serviceDate, shapeOf, showsStatus,
+  useSources, whereFrom,
+} from "@/lib/owners";
 import { useUI } from "@/lib/ui";
 
 import Gantt from "./Gantt";
@@ -58,13 +61,13 @@ function byOverlap(links: ThirdParty[]): Record<string, ThirdParty[]> {
   return out;
 }
 
-// list and map marker: Dominion circle, Georgia diamond, submitted plans a circle in their own color
-const mkClass = (p: Project) => (p.utility === "DESC" ? "desc" : p.utility === "GA" ? "gpc" : `peer own-${slotOf(p.utility)}`);
-
-const slotVar = (s: string) => (s === "desc" || s === "gpc" ? s : `peer-${s.slice(1)}`);
+// list and map marker: each source's shape (Georgia a diamond) in its color, both from /api/sources
+function Mk({ p }: { p: Project }) {
+  return <i className={`mk ${shapeOf(p)}`} style={ownStyle(p)} aria-label={ownerShort(p)} role="img" />;
+}
 
 // Georgia's costs are redacted in the filing; other owners' costs are shown when their plan states them.
-const costText = (p: Project, n: number | null) => (p.utility === "GA" ? "redacted" : n == null ? "not stated" : money(n));
+const costText = (p: Project, n: number | null) => (costKind(p) === "redacted" ? "redacted" : n == null ? "not stated" : money(n));
 
 function sideName(overlapId: string, i: 0 | 1): string {
   const p = run.projects[overlapId.split("|")[i]];
@@ -134,6 +137,7 @@ function ExportMenu() {
 
 function OpportunityList() {
   const { filters, setFilters } = useUI();
+  const keySources = legendSources(useSources((st) => st.list), Object.values(run.projects));
   const overlaps = useOverlaps();
   const near = byOverlap(useOthers());
 
@@ -196,9 +200,10 @@ function OpportunityList() {
         </button>
       )}
       <div className="key">
-        <span><i className="mk desc" />Dominion</span>
-        <span><i className="mk gpc" />Georgia</span>
-        {peers().map((x) => <span key={x.key}><i className={`mk own-${x.slot}`} />{x.name}</span>)}
+        {keySources.map((x) => (
+          <span key={x.id}><i className={`mk ${x.display.shape === "diamond" ? "diamond" : "circle"}`} style={{ "--own": x.color } as React.CSSProperties} />
+            {x.display.short_name ?? x.display_name}</span>
+        ))}
         <span className="note-r">same shapes on the map</span>
       </div>
       <div className="col opps-list" role="list">
@@ -213,8 +218,8 @@ function OpportunityList() {
               title={`${ownerName(a)}: ${a.name}\n${ownerName(b)}: ${b.name}`}
               onClick={() => open(o)} onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), open(o))}>
               <div className="names">
-                <div><i className={`mk ${mkClass(a)}`} aria-label={ownerShort(a)} role="img" /><span>{shortName(a)}</span></div>
-                <div><i className={`mk ${mkClass(b)}`} aria-label={ownerShort(b)} role="img" /><span>{shortName(b)}</span></div>
+                <div><Mk p={a} /><span>{shortName(a)}</span></div>
+                <div><Mk p={b} /><span>{shortName(b)}</span></div>
               </div>
               <div className="dist"><b>{o.distance_mi.toFixed(2)}</b>miles</div>
               <div className="meta">
@@ -287,11 +292,11 @@ function PairView({ a, b }: { a: string; b: string }) {
       <Back />
       <p className="label">Opportunity {rank ? `#${rank}` : ""}{o.in_sponsor_sample && <span className="count c-accent">benchmark pair</span>}</p>
       <div className="pair">
-        <div className={`pj ${ownClass(pa)}`}>
-          <b>{pa.name}</b>{ownerName(pa)}{pa.status ? ` · ${pa.status}` : ""}<br />{dateWord(pa)} {serviceDate(pa, fmtDate)}
+        <div className="pj own" style={ownStyle(pa)}>
+          <b>{pa.name}</b>{ownerName(pa)}{pa.status && showsStatus(pa) ? ` · ${pa.status}` : ""}<br />{dateWord(pa)} {serviceDate(pa, fmtDate)}
         </div>
-        <div className={`pj ${ownClass(pb)}`}>
-          <b>{pb.name}</b>{ownerName(pb)}{pb.status && pb.utility !== "GA" ? ` · ${pb.status}` : ""}<br />{dateWord(pb)} {serviceDate(pb, fmtDate)}
+        <div className="pj own" style={ownStyle(pb)}>
+          <b>{pb.name}</b>{ownerName(pb)}{pb.status && showsStatus(pb) ? ` · ${pb.status}` : ""}<br />{dateWord(pb)} {serviceDate(pb, fmtDate)}
         </div>
       </div>
       <div className="hero"><span className="big">{o.distance_mi.toFixed(2)}</span><span>miles apart</span></div>
@@ -300,8 +305,7 @@ function PairView({ a, b }: { a: string; b: string }) {
       {slackNote(o) && <p className="note">{slackNote(o)}</p>}
 
       <h3>Build windows</h3>
-      <Gantt a={pa} b={pb} labels={[ownerShort(pa), ownerShort(pb)]}
-        colors={[`var(--${slotVar(slotOf(pa.utility))})`, `var(--${slotVar(slotOf(pb.utility))})`]} />
+      <Gantt a={pa} b={pb} labels={[ownerShort(pa), ownerShort(pb)]} colors={[colorOf(pa), colorOf(pb)]} />
       <p className="note">Highlighted band = both under construction. A faded start means the work began before 2024.</p>
 
       <OthersNearby links={allOthers.some((t) => t.overlap_id === id)
@@ -333,8 +337,8 @@ function PairView({ a, b }: { a: string; b: string }) {
       {brief && (brief.dominion || brief.mediator) && (
         <>
           <h3>Meeting prep</h3>
-          {brief.dominion && <div className="brief"><div className="who c-desc">Dominion advocate <Chip a={brief.dominion.actor} /></div>{brief.dominion.text}</div>}
-          {brief.georgia && <div className="brief"><div className="who c-gpc">Georgia advocate <Chip a={brief.georgia.actor} /></div>{brief.georgia.text}</div>}
+          {brief.dominion && <div className="brief"><div className="who" style={{ color: colorOf(pa) }}>{ownerShort(pa)} advocate <Chip a={brief.dominion.actor} /></div>{brief.dominion.text}</div>}
+          {brief.georgia && <div className="brief"><div className="who" style={{ color: colorOf(pb) }}>{ownerShort(pb)} advocate <Chip a={brief.georgia.actor} /></div>{brief.georgia.text}</div>}
           {brief.mediator && <div className="brief"><div className="who c-ink">Mediator: joint agenda <Chip a={brief.mediator.actor} /></div>{brief.mediator.text}</div>}
         </>
       )}
@@ -343,7 +347,7 @@ function PairView({ a, b }: { a: string; b: string }) {
       {cost ? (
         <>
           <table className="kv"><tbody>
-            <tr><td>{ownerShort(pa)} project cost{pa.utility === "DESC" ? " (public)" : ""}</td><td>{costText(pa, cost.desc_cost)}</td></tr>
+            <tr><td>{ownerShort(pa)} project cost{costKind(pa) === "public" ? " (public)" : ""}</td><td>{costText(pa, cost.desc_cost)}</td></tr>
             {cost.desc_cost_per_mile && <tr><td>{ownerShort(pa)} cost per mile ({cost.desc_miles} mi)</td><td>{money(cost.desc_cost_per_mile)}</td></tr>}
             <tr><td>{ownerShort(pb)} project cost</td><td>{costText(pb, pb.cost_total)}</td></tr>
             {cost.savings != null && <tr><td>Possible savings</td><td>{money(cost.savings)}</td></tr>}
@@ -385,7 +389,7 @@ function Provenance({ p }: { p: Project }) {
   const line = lineCheck(p);
   return (
     <div>
-      <b className={`own c ${ownClass(p)}`}>{p.name}</b><br />
+      <b className="own c" style={ownStyle(p)}>{p.name}</b><br />
       {whereFrom(p)}
       {p.project_type && <> · {TYPE_LABEL[p.project_type] ?? p.project_type} <Chip a={p.project_type_actor ?? "code"} /></>}
       <br />{p.endpoints.length ? p.endpoints.map((e, i) => <span key={i}>{i > 0 && "; "}<EndpointLine e={e} /></span>) : "No endpoint names in the title"}
@@ -418,7 +422,7 @@ function ProjectView({ id }: { id: string }) {
           <div key={o.id} className="row compact" tabIndex={0} role="button" onClick={() => open(o)}
             onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), open(o))}>
             <span className="rk">{String(o.rank).padStart(2, "0")}</span>
-            <div><div className="t">{other && <span className={`own ${ownClass(other)}`}>{other.name}</span>}{other && <span className="sub-inline"> · {ownerName(other)}</span>}</div><div className="meta"><span><span className="num">{o.distance_mi.toFixed(2)}</span> mi</span><span>{gapText(o.time_gap_days, run.projects[o.project_a], run.projects[o.project_b])} days apart</span></div></div>
+            <div><div className="t">{other && <span className="own" style={ownStyle(other)}>{other.name}</span>}{other && <span className="sub-inline"> · {ownerName(other)}</span>}</div><div className="meta"><span><span className="num">{o.distance_mi.toFixed(2)}</span> mi</span><span>{gapText(o.time_gap_days, run.projects[o.project_a], run.projects[o.project_b])} days apart</span></div></div>
           </div>
         );
       }) : <p className="empty">Nothing from another owner within 25 miles. Most projects look like this.</p>}
@@ -546,7 +550,7 @@ function ResearchView({ id }: { id: string }) {
           <div key={t.overlap_id} className="row compact" tabIndex={0} role="button"
             onClick={() => { useUI.getState().setPanel({ kind: "pair", a, b }); useUI.getState().flyTo({ kind: "pair", a, b }); }}>
             <span className="rk">↗</span>
-            <div><div className="t"><span className={`own ${ownClass(pa)}`}>{pa.name}</span><br /><span className={`own ${ownClass(pb)}`}>{pb.name}</span></div>
+            <div><div className="t"><span className="own" style={ownStyle(pa)}>{pa.name}</span><br /><span className="own" style={ownStyle(pb)}>{pb.name}</span></div>
               <div className="meta"><span><span className="num">{t.dist_a_mi.toFixed(1)}</span> / <span className="num">{t.dist_b_mi.toFixed(1)}</span> mi</span></div></div>
           </div>
         );

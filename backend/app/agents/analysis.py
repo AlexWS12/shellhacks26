@@ -1,7 +1,7 @@
 from datetime import date
 
 from app import config
-from app.clients import gemini
+from app.clients import models
 from app.core.analysis import (cost_block, fact_sheet, shared_resources, template_insight, unsupported_numbers)
 from app.core.models import Overlap, ReferenceResult
 from app.core.overlap import Filters, distance_mi, find_overlaps, time_gap_days
@@ -103,21 +103,23 @@ class Analyst(Agent):
             a, g = b.projects[o.project_a], b.projects[o.project_b]
             shared = b.costs[o.id]["shared"]
             facts = fact_sheet(a, g, o, shared)
-            text, actor = "", "gemini"
+            text, actor, model = "", "gemini", None
+            ctx.think(f"\n\n#{o.rank} {a.name} × {g.name}\n")
+            stream = models.stream("analyst", f"Facts (JSON):\n{facts}", system=SYSTEM, pace=ctx.run.pace)
             try:
-                ctx.think(f"\n\n#{o.rank} {a.name} × {g.name}\n")
-                async for chunk in gemini.stream_text(SYSTEM, f"Facts (JSON):\n{facts}", ctx.run.pace):
+                async for chunk in stream:
                     text += chunk
                     ctx.think(chunk)
+                actor, model = stream.provider or "gemini", stream.model
             except Exception as e:
                 if not ctx.run.templates:
-                    raise RuntimeError(f"Gemini failed on #{o.rank} and template fallback is off: "
-                                       f"{gemini.describe(e)}") from e
-                ctx.think(f"[Gemini unavailable: {gemini.describe(e)}. Using the template.]")
-                ctx.log(f"Analyst: Gemini failed on #{o.rank} ({gemini.describe(e)}), wrote it from the template.")
+                    raise RuntimeError(f"No model could write #{o.rank} and template fallback is off: "
+                                       f"{models.describe(e)}") from e
+                ctx.think(f"[No model available: {models.describe(e)}. Using the template.]")
+                ctx.log(f"Analyst: no model could write #{o.rank} ({models.describe(e)}), wrote it from the template.")
                 text, actor = template_insight(a, g, o, shared), "template"
-            bad = unsupported_numbers(text, facts) if actor == "gemini" else set()
-            b.analyses[o.id] = {"text": text.strip(), "actor": actor, "unsupported_numbers": sorted(bad)}
+            bad = unsupported_numbers(text, facts) if actor != "template" else set()
+            b.analyses[o.id] = {"text": text.strip(), "actor": actor, "model": model, "unsupported_numbers": sorted(bad)}
             ctx.emit("analysis.ready", overlap_id=o.id, **b.analyses[o.id])
             written += 1
             await ctx.pace(0.3)

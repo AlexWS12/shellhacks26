@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 import { activeIn, lineCheck, lineEnds, researchActiveIn, visible } from "@/lib/filters";
 import { CATEGORY_LABEL, engineColor } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
-import { peers, slotOf } from "@/lib/owners";
+import { builtin, colorOf, legendSources, shapeOf, useSources } from "@/lib/owners";
 import { mapPalette } from "@/lib/theme";
 import type { Overlap, Project, ResearchCategory, ThirdParty } from "@/lib/types";
 import { showLatestResults, startRun, useUI } from "@/lib/ui";
@@ -27,7 +27,7 @@ const MAX_QUEUE = 6; // if an agent is faster than that, skip ahead but keep mov
 // marching-ants dash steps for the connection lines
 const DASHES = [[0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5], [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0], [0, 0.5, 3, 3.5], [0, 1, 3, 3], [0, 1.5, 3, 2.5], [0, 2, 3, 2], [0, 2.5, 3, 1.5], [0, 3, 3, 1], [0, 3.5, 3, 0.5]];
 const YEARS = { min: 2023, max: 2034 };
-const POINT_LAYERS = ["points", "points-ga"]; // Dominion circles, Georgia diamonds
+const POINT_LAYERS = ["points", "points-diamond"]; // each source draws as circles or diamonds (display.shape)
 
 type FC = GeoJSON.FeatureCollection;
 const fc = (features: GeoJSON.Feature[]): FC => ({ type: "FeatureCollection", features });
@@ -103,13 +103,14 @@ function buildData() {
   };
   const points = fc(shown.map((p) => ({
     type: "Feature",
-    properties: { id: p.id, u: slotOf(p.utility), hollow: hollow(p), name: p.utility === "DESC" || p.utility === "GA" ? p.name : `${p.sponsor}: ${p.name}` },
+    // color and shape come from the project's source (/api/sources): Georgia draws as diamonds
+    properties: { id: p.id, color: colorOf(p), shape: shapeOf(p), hollow: hollow(p), name: builtin(p) ? p.name : `${p.sponsor}: ${p.name}` },
     geometry: { type: "Point", coordinates: [p.lon!, p.lat!] },
   })));
   const lines = fc(shown.flatMap((p) => {
     if (!lineCheck(p).draw) return []; // one end, or too long to trust or to draw: the (hollow) point stays
     const eps = lineEnds(p);
-    return [{ type: "Feature", properties: { id: p.id, u: slotOf(p.utility), hollow: hollow(p) },
+    return [{ type: "Feature", properties: { id: p.id, color: colorOf(p), hollow: hollow(p) },
       geometry: { type: "LineString", coordinates: eps.map((e) => [e.lon!, e.lat!]) } } as GeoJSON.Feature];
   }));
   const sel = selectedPair();
@@ -174,6 +175,8 @@ function comets(): { data: FC; flying: number } {
 }
 
 // A square turned 45deg, drawn at 2x. 12 css px corner to corner at icon-size 1.
+const diamondsHooked = new WeakSet<maplibregl.Map>();
+
 function addDiamond(map: maplibregl.Map, id: string, fill: string, stroke: string) {
   if (map.hasImage(id)) return;
   const n = 24, c = n / 2, r = c - 2;
@@ -193,8 +196,15 @@ function addDiamond(map: maplibregl.Map, id: string, fill: string, stroke: strin
 
 function addDataLayers(map: maplibregl.Map) {
   const COLORS = mapPalette();
-  const color = ["match", ["get", "u"], "desc", COLORS.desc, "gpc", COLORS.gpc, "p1", COLORS.peer1, "p2", COLORS.peer2,
-    COLORS.peer3] as maplibregl.ExpressionSpecification;
+  const color = ["get", "color"] as maplibregl.ExpressionSpecification; // each feature carries its source's color
+  // Diamond icons are drawn on first use, one per color: "diamond-<hex>" filled, "diamond-hollow-<hex>" outlined.
+  if (!diamondsHooked.has(map)) {
+    diamondsHooked.add(map);
+    map.on("styleimagemissing", (e: { id: string }) => {
+      const m = /^diamond-(hollow-)?(#[0-9a-f]{3,8})$/i.exec(e.id);
+      if (m) addDiamond(map, e.id, m[1] ? COLORS.bg : m[2], m[2]);
+    });
+  }
   for (const id of ["ring", "lines", "links", "labels", "points", "pulse", "comets", "others", "other-links"]) {
     if (!map.getSource(id)) map.addSource(id, { type: "geojson", data: fc([]) });
   }
@@ -223,19 +233,17 @@ function addDataLayers(map: maplibregl.Map) {
     paint: { "circle-radius": 4.5, "circle-color": COLORS.spark } });
   map.addLayer({ id: "points-glow", type: "circle", source: "points",
     paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 7, 9, 13], "circle-color": color, "circle-blur": 1, "circle-opacity": 0.35 } });
-  map.addLayer({ id: "points", type: "circle", source: "points", filter: ["!=", ["get", "u"], "gpc"], // Dominion + submitted plans
+  map.addLayer({ id: "points", type: "circle", source: "points", filter: ["!=", ["get", "shape"], "diamond"],
     paint: {
       "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 3, 9, 6],
       "circle-color": ["case", ["get", "hollow"], COLORS.bg, color],
       "circle-stroke-color": color,
       "circle-stroke-width": ["case", ["get", "hollow"], 1.6, 0],
     } });
-  // Georgia draws as diamonds so the shape, not just the color, tells the utilities apart (same as the list)
-  addDiamond(map, "diamond", COLORS.gpc, COLORS.gpc);
-  addDiamond(map, "diamond-hollow", COLORS.bg, COLORS.gpc);
-  map.addLayer({ id: "points-ga", type: "symbol", source: "points", filter: ["==", ["get", "u"], "gpc"],
+  // A source whose shape is "diamond" (Georgia) draws as diamonds, so shape and not just color tells owners apart
+  map.addLayer({ id: "points-diamond", type: "symbol", source: "points", filter: ["==", ["get", "shape"], "diamond"],
     layout: {
-      "icon-image": ["case", ["get", "hollow"], "diamond-hollow", "diamond"],
+      "icon-image": ["concat", ["case", ["get", "hollow"], "diamond-hollow-", "diamond-"], ["get", "color"]],
       "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.55, 9, 1.05],
       "icon-allow-overlap": true, "icon-ignore-placement": true,
     } });
@@ -348,7 +356,8 @@ export default function MapView() {
   const setYear = useUI((s) => s.setYear);
   const phase = useRev(() => run.phase);
   const cats = useRev(() => run.researchSelected.join(","));
-  useRev(() => peers().length); // redraw the legend when a submitted owner appears
+  const known = useSources((st) => st.list); // redraw the legend when a source is added or removed
+  useRev(() => Object.keys(run.projects).length);
 
   useEffect(() => {
     if (!el.current) return;
@@ -438,7 +447,7 @@ export default function MapView() {
           const p = run.projects[id];
           if (!p || p.lat == null) return [];
           const k = (t - t0) / PIN_DROP_MS;
-          return [{ type: "Feature", properties: { u: slotOf(p.utility), r: 3 + 18 * k, o: 0.9 * (1 - k) },
+          return [{ type: "Feature", properties: { color: colorOf(p), r: 3 + 18 * k, o: 0.9 * (1 - k) },
             geometry: { type: "Point", coordinates: [p.lon!, p.lat!] } } as GeoJSON.Feature];
         })));
         const c = comets();
@@ -480,11 +489,12 @@ export default function MapView() {
         </button>
       </div>
       <div className="legend" aria-label="Legend">
-        <span><i className="sw desc" />Dominion Energy SC</span>
-        <span><i className="sw gpc diamond" />Georgia</span>
+        {legendSources(known, Object.values(run.projects)).map((x) => (
+          <span key={x.id}><i className={`sw own${x.display.shape === "diamond" ? " diamond" : ""}`} style={{ "--own": x.color } as React.CSSProperties} />
+            {x.display.legend ?? x.display.ui_name ?? x.display_name}</span>
+        ))}
         <span><i className="sw hollow" />Hollow = approximate location</span>
         <span><i className="sw zone" />Under 25 mi apart</span>
-        {peers().map((o) => <span key={o.key}><i className={`sw own-${o.slot}`} />{o.name}</span>)}
         {(cats ? (cats.split(",") as ResearchCategory[]) : []).map((c) => (
           <span key={c}><i className={`sw cat-${c}`} />Other · {CATEGORY_LABEL[c]}</span>
         ))}

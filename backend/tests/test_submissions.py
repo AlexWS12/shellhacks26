@@ -267,15 +267,17 @@ def test_web_page_reader_stops_at_its_budget_and_the_run_still_publishes(plans_d
     import types
 
     import app.agents.submissions as reader
+    from app.clients import models
 
     calls = []
 
-    async def fake_json(system, prompt, schema, use_cache=True):
+    async def fake_call(role, prompt, schema=None, *, system="", cache=True):
         calls.append(prompt)
-        return {"data": {"projects": [{"name": f"Line {len(calls)}", "in_service": "2029"}]}, "input_tokens": 0, "output_tokens": 0}
+        return models.Result({"projects": [{"name": f"Line {len(calls)}", "in_service": "2029"}]}, "gemini", "m1")
 
-    # only the Reader sees this Gemini; every other agent keeps Gemini off
-    monkeypatch.setattr(reader, "gemini", types.SimpleNamespace(enabled=lambda: True, generate_json=fake_json))
+    # only the Reader sees this model; every other agent keeps Gemini off
+    monkeypatch.setattr(reader, "models", types.SimpleNamespace(
+        available=lambda role: True, call=fake_call, RoleExhausted=models.RoleExhausted))
     html = "".join(f"<p>{'filler ' * 900} Line {i} in service 2029</p>" for i in range(6)).encode()
     s = submissions.create("Web Co", None, "GA", "url", "plan.html", html, ".html", url="https://example.org/plan")
     monkeypatch.setattr(reader, "READER_BUDGET_S", -1.0)  # budget already used up: read nothing more

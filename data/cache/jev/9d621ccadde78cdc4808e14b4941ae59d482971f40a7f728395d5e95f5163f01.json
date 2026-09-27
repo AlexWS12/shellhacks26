@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "project": "Cainhoy 115 kV Tap: Construct",
+   "description": "Construct a 115 kV tap from Cainhoy to Clements Ferry. Approximately 2.8 miles. Construct terminal at Cainhoy.",
+   "need": "Load growth."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.08
+   }
+  },
+  "cost_usd": 1.6926000000000004e-05,
+  "latency_ms": 451,
+  "model": "jev-latest"
+ }
+}

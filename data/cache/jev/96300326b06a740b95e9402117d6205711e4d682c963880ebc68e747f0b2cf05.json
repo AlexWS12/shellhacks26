@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Sumter",
+   "project": "Eastover \u2013 Sumter 115kV DEP Tie: Rebuild with 1272 ACSR",
+   "description": "Upgrade the DESC section (approx. 1 mile) of the tie line from 397.5 ACSR Ibis to 1272 ACSR.",
+   "candidate_town": "Sumter, SC",
+   "county": "Sumter County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.93
+   }
+  },
+  "cost_usd": 1.8984000000000003e-05,
+  "latency_ms": 180,
+  "model": "jev-latest"
+ }
+}

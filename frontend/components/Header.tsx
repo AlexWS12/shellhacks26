@@ -1,7 +1,8 @@
 "use client";
 
+import { extraSponsors, useSources } from "@/lib/owners";
 import { run, useRev } from "@/lib/run";
-import { skipToResults, startRun, useUI } from "@/lib/ui";
+import { openSetup, skipToResults, startRun, useUI } from "@/lib/ui";
 
 import ResearchPicker from "./ResearchPicker";
 
@@ -10,6 +11,7 @@ export default function Header() {
   const { filters, setFilters, health, templateFallback, setTemplateFallback } = useUI();
   const running = run.phase === "running";
   const jevOn = Boolean(health && health.jev !== "off" && health.jev !== "mock");
+  const extra = extraSponsors(useSources((st) => st.list)); // owners a filing lists but that aren't shown by default
   return (
     <header className="top">
       <div className="brand">
@@ -28,7 +30,9 @@ export default function Header() {
       </div>
       <span className="spacer" />
       <div className="filters">
-        <label><input type="checkbox" checked={filters.allSponsors} onChange={(e) => setFilters({ allSponsors: e.target.checked })} /> GTC, MEAG, DU</label>
+        {extra.length > 0 && (
+          <label><input type="checkbox" checked={filters.allSponsors} onChange={(e) => setFilters({ allSponsors: e.target.checked })} /> {extra.join(", ")}</label>
+        )}
         <label><input type="checkbox" checked={filters.townLevel} onChange={(e) => setFilters({ townLevel: e.target.checked })} /> Approx. locations</label>
         <label><input type="checkbox" checked={filters.hideFinished} onChange={(e) => setFilters({ hideFinished: e.target.checked })} /> Hide finished</label>
       </div>
@@ -38,6 +42,9 @@ export default function Header() {
         <input type="checkbox" checked={templateFallback} disabled={running}
           onChange={(e) => setTemplateFallback(e.target.checked)} /> Template fallback
       </label>
+      <button className="modelsbtn" onClick={() => openSetup()} title="Choose which AI model does each job">
+        Models{health?.models_setup && !health.models_setup.ready && <i className="needs" aria-label="needs setup" />}
+      </button>
       <button onClick={() => void startRun("replay")} disabled={running} title="Replays the newest recorded run. Works offline.">Replay</button>
       <button className="primary" onClick={() => void startRun("live")} disabled={running}>
         {running ? "Running…" : run.phase === "done" ? "Run again" : "Run pipeline"}

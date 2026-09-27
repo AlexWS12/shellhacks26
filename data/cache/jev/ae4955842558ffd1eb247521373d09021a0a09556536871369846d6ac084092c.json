@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "CC - Project Payton Bainbridge",
+   "description": "Split Farley - South Bainbridge 230kV line with a 230kV station (Dothan Road) and bring an 8.5 mile 200C 1351 ACSS 230kV line from Dothan Rd to new customer sub Downrange. Bring another 10mile 200C 1351 ACSS 230kV line from Climax to customer sub Downrange."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "new_line",
+    "confidence": 0.58,
+    "probabilities": {
+     "new_line": 0.67,
+     "rebuild": 0.1,
+     "in_substation_equipment": 0.0,
+     "other": 0.2,
+     "substation_construction": 0.03
+    }
+   }
+  },
+  "cost_usd": 2.4066000000000003e-05,
+  "latency_ms": 255,
+  "model": "jev-latest"
+ }
+}

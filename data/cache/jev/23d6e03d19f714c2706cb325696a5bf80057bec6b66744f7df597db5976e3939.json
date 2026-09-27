@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "project": "Harleyville 115KV Transmission Tap \u2013 Construct (1.4 miles)",
+   "description": "Extend the 115 kV line from the Blue Circle tap to the Harleyville substation to provide 115 kV service.",
+   "need": "Load growth."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.08
+   }
+  },
+  "cost_usd": 1.7094000000000003e-05,
+  "latency_ms": 497,
+  "model": "jev-latest"
+ }
+}

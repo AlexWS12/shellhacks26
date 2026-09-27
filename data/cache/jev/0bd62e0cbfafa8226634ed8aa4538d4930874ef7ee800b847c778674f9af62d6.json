@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Lawrenceville",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Lawrenceville - Winder 115kV Line Rebuild",
+   "description": "Rebuild approximately 1.2 miles of 100C 636 ACSR conductor from Johns Manville to Winder Primary with 200C 795 ACSS conductor.",
+   "zone": "202",
+   "candidate": {
+    "name": "Lawrenceville Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000;115000;46000",
+    "lat": 33.985981,
+    "lon": -84.0007988
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.74
+   }
+  },
+  "cost_usd": 2.2512000000000004e-05,
+  "latency_ms": 220,
+  "model": "jev-latest"
+ }
+}

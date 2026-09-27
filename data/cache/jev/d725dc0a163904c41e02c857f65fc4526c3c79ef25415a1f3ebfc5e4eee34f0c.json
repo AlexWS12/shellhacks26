@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "project": "Williams St Sub: Replace Sw House & Relays, AM Williams Sub: Replace Sw House, and McMeekin Sub: Add Sw House",
+   "description": "Replace switch house, switch house equipment, and relay panels at Williams Street substation. Replace the switch house at AM Williams substation. Add Switching House at McMeekin Substation to move relays from plant relay room.",
+   "need": "This project is required to address end of life and maintenance issues on these transformers."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.9
+   }
+  },
+  "cost_usd": 1.8690000000000002e-05,
+  "latency_ms": 509,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "East Point",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "East Point - Union City 230kV Black Line Reconductor",
+   "description": "Reconductor the 1.5 mile section from Flat Shoals Road station to the Stonewall Tell loop - in point on the East Point - Union City 230kV Black line with 200C 1351 ACSS Martin conductor. Replace limiting elements at Union City",
+   "zone": "208",
+   "candidate": {
+    "name": "East Point Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 33.6763499,
+    "lon": -84.4629659
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.86
+   }
+  },
+  "cost_usd": 2.2680000000000003e-05,
+  "latency_ms": 229,
+  "model": "jev-latest"
+ }
+}

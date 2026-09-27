@@ -14,7 +14,9 @@ export interface Endpoint {
 
 export interface Project {
   id: string;
-  utility: string; // "DESC" | "GA" | a submitted owner's key
+  utility: string; // "DESC" | "GA" | a submitted owner's key: the source's utility_key
+  source_id?: string | null; // row in the sources table (GET /api/sources)
+  provenance?: Record<string, unknown> | null; // AI reader: field -> {page, snippet} (and human_override)
   state?: string | null;
   date_precision?: "day" | "month" | "year" | null;
   sponsor: string;
@@ -104,6 +106,7 @@ export interface CostBlock {
 export interface Written {
   text: string;
   actor: string;
+  model?: string | null; // the model that wrote it; null for a template
   unsupported_numbers?: string[];
 }
 
@@ -210,6 +213,9 @@ export interface Health {
   projects: number;
   gemini: boolean;
   gemini_model: string;
+  models?: RoleInfo; // each job's plain name and models, in fallback order
+  app_mode?: "local" | "hosted";
+  models_setup?: { ready: boolean; first_launch: boolean; problems: SetupProblem[]; error: string | null };
   jev: string;
   tiger: boolean;
   today: string;
@@ -286,4 +292,117 @@ export interface SubmissionView {
   columns: string[];
   mapping: Record<string, string>;
   status: "needs_mapping" | "ready";
+}
+
+// The model setup screen (/api/models/*). Keys never come back from the server, only whether one is set.
+export interface SetupRef { provider: string; model: string }
+export interface SetupResult extends SetupRef {
+  status: string; // ok | NoKey | Off | AuthError | ModelNotFound | RateLimited | QuotaExceeded | Timeout | ...
+  plain: string; // what the screen shows: "Works", "Key rejected", "Model name not found", ...
+  message: string;
+  ok: boolean;
+  temporary: boolean; // busy or out of quota for now: trying later may work
+}
+export interface SetupField { var: string; label: string; secret: boolean; present?: boolean; source?: string | null }
+export interface SetupProvider {
+  id: string;
+  label: string;
+  what: string;
+  get_key: string;
+  kinds: string[];
+  fields: SetupField[];
+  key_present: boolean;
+  can_enter_key: boolean;
+  host?: string; // Jev: where it runs
+  off_reason?: string | null;
+  hosts?: { id: string; label: string; fields: SetupField[] }[];
+}
+export interface SetupRole {
+  name: string;
+  label: string;
+  group: string;
+  description: string;
+  kind: string;
+  not_used: string | null; // why runs don't need this job right now
+  models: SetupRef[];
+  default_models: SetupRef[];
+  customized: boolean;
+  providers: string[]; // which providers can do this job
+}
+export interface SetupConfig {
+  mode: "local" | "hosted";
+  providers: SetupProvider[];
+  roles: SetupRole[];
+  error: string | null;
+  local_file: boolean;
+  problems: SetupProblem[];
+  max_models_per_role: number;
+}
+export interface SetupProblem { role: string; label: string; reason: string; tried?: SetupResult[]; temporary?: boolean }
+export interface ModelList { provider: string; models: { id: string; label: string; description: string }[]; status: string; plain: string }
+
+export type RoleInfo = Record<string, { kind: string; label?: string; models: string[] }>;
+
+// A model event from a run (model.call_failed, model.fallback_used, role.exhausted), kept for the pipeline panel.
+export interface ModelIssue {
+  seq: number;
+  type: "model.call_failed" | "model.fallback_used" | "role.exhausted";
+  role: string;
+  provider?: string;
+  model?: string;
+  errorClass?: string;
+  from?: string;
+  to?: string;
+}
+
+// A utility the pipeline knows (GET /api/sources): its name, code, color and how the UI draws it.
+export interface SourceView {
+  id: string;
+  code: string;
+  display_name: string;
+  states: string[];
+  osm_operator_patterns: string[];
+  color: string;
+  reader: string; // builtin:desc | builtin:gpc | sheet | ai
+  status: "draft" | "extracting" | "review" | "active" | "failed";
+  utility_key: string;
+  position: number;
+  sponsors: { code: string; name: string; default: boolean }[]; // owners inside one filing
+  display: {
+    short_name?: string;
+    ui_name?: string;
+    legend?: string; // the map legend's label
+    card_label?: string;
+    shape?: "circle" | "diamond";
+    date_label?: string;
+    costs?: "public" | "redacted" | "stated";
+    show_status?: boolean;
+    hq?: { lon: number; lat: number; label: string };
+  };
+  builtin: boolean;
+  agent_id: string;
+  file_path?: string | null;
+  file_sha256?: string | null;
+  projects?: number; // in the results on screen
+  draft_projects?: number | null; // read by the AI reader, waiting for (or past) review
+}
+
+// The Sources menu: one field's provenance, as the AI reader recorded it (plus a person's edit).
+export interface Cite { page?: number; snippet?: string; label?: string; human_override?: { value: unknown; previous: unknown; at: string } }
+export interface ReviewRow { status: "pending" | "accepted" | "rejected"; incomplete: string[]; edited?: boolean }
+export interface Review {
+  source: SourceView;
+  projects: Project[];
+  review: Record<string, ReviewRow>;
+  confidence: Record<string, number>;
+  counts: { pending: number; accepted: number; rejected: number };
+  ready: boolean;
+  candidates: { page: number; kind: string; reason: string }[];
+  checks: Check[];
+  estimate: Estimate;
+  pages: number[];
+}
+export interface Estimate {
+  model: string | null; pages: number; calls: number; input_tokens: number; output_tokens: number;
+  usd: number | null; limit_usd: number | null; price_known: boolean;
 }

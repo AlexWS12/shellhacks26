@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "Doyle - Lg&E Monroe 230kV - Jacks Creek Loop In",
+   "description": "Loop in and out the new Jack's Creek 230kV switching station into the Doyle - LG&E Monroe 230kV line. This is coordinated with the East Walton Project (TEAMS #09662)."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 0.78,
+    "probabilities": {
+     "other": 0.13,
+     "substation_construction": 0.82,
+     "in_substation_equipment": 0.01,
+     "new_line": 0.01,
+     "rebuild": 0.03
+    }
+   }
+  },
+  "cost_usd": 2.2092e-05,
+  "latency_ms": 567,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Varnville",
+   "utility": "SCPSA",
+   "filing_state": "SC",
+   "project": "Varnville 230-115 kV substation",
+   "description": "Construct a new Varnville 230-115 kV substation on existing Santee Cooper transmission property and property acquired adjacent to the existing Varnville 230-115-69 kV Substation.",
+   "zone": null,
+   "candidate": {
+    "name": "Danville Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 32.5988447,
+    "lon": -83.2592878,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.02
+   }
+  },
+  "cost_usd": 2.2722000000000004e-05,
+  "model": "jev-latest",
+  "latency_ms": 186
+ }
+}

@@ -3,7 +3,7 @@
 import asyncio
 
 from app.agents.analysis import is_core
-from app.clients import gemini
+from app.clients import models
 from app.core.analysis import fact_sheet
 from app.runtime.agent import Agent, AgentSpec, Ctx
 
@@ -17,19 +17,21 @@ MEDIATOR = ("You are a neutral mediator preparing a joint agenda item for a SERT
             "step. Be balanced: neither side should give up much more than the other. No numbers beyond the facts.")
 
 
-async def _write(ctx: Ctx, system: str, prompt: str, fallback: str) -> tuple[str, str]:
+async def _write(ctx: Ctx, role: str, system: str, prompt: str, fallback: str) -> tuple[str, str, str | None]:
+    # (text, actor, model)
     text = ""
+    stream = models.stream(role, prompt, system=system, pace=ctx.run.pace)
     try:
-        async for chunk in gemini.stream_text(system, prompt, ctx.run.pace):
+        async for chunk in stream:
             text += chunk
             ctx.think(chunk)
-        return text.strip(), "gemini"
+        return text.strip(), stream.provider or "gemini", stream.model
     except Exception as e:
         if not ctx.run.templates:
-            raise RuntimeError(f"Gemini failed and template fallback is off: {gemini.describe(e)}") from e
-        ctx.think("[Gemini unavailable: template from the facts.]")
-        ctx.log(f"{ctx.spec.name}: Gemini failed ({gemini.describe(e)}), wrote it from the template.")
-        return fallback, "template"
+            raise RuntimeError(f"No model could write it and template fallback is off: {models.describe(e)}") from e
+        ctx.think("[No model available: template from the facts.]")
+        ctx.log(f"{ctx.spec.name}: no model could write it ({models.describe(e)}), wrote it from the template.")
+        return fallback, "template", None
 
 
 def _template_side(f: dict, me: str) -> str:
@@ -55,9 +57,10 @@ class Advocate(Agent):
             a, g = b.projects[o.project_a], b.projects[o.project_b]
             f = fact_sheet(a, g, o, b.costs[o.id]["shared"])
             ctx.think(f"\n\n#{o.rank} {a.name} × {g.name}\n")
-            text, actor = await _write(ctx, ADVOCATE.format(utility=utility), f"Facts:\n{f}", _template_side(f, self.side))
-            b.briefs.setdefault(o.id, {})[self.side] = {"text": text, "actor": actor}
-            ctx.emit("brief.side", overlap_id=o.id, side=self.side, text=text, actor=actor)
+            text, actor, model = await _write(ctx, "advocate", ADVOCATE.format(utility=utility), f"Facts:\n{f}",
+                                              _template_side(f, self.side))
+            b.briefs.setdefault(o.id, {})[self.side] = {"text": text, "actor": actor, "model": model}
+            ctx.emit("brief.side", overlap_id=o.id, side=self.side, text=text, actor=actor, model=model)
             await ctx.pace(0.2)
         return f"{min(TOP_BRIEFS, len(b.overlaps))} prep notes"
 
@@ -78,8 +81,8 @@ class Mediator(Agent):
                         f"- Conflict: in-service dates are {o.time_gap_days} days apart.\n"
                         f"- Next step: exchange schedules and share: {', '.join(f['shared']['items'])}.")
             ctx.think(f"\n\n#{o.rank}\n")
-            text, actor = await _write(ctx, MEDIATOR, prompt, fallback)
-            b.briefs.setdefault(o.id, {})["mediator"] = {"text": text, "actor": actor}
-            ctx.emit("brief.ready", overlap_id=o.id, brief=b.briefs[o.id])
+            text, actor, model = await _write(ctx, "mediator", MEDIATOR, prompt, fallback)
+            b.briefs.setdefault(o.id, {})["mediator"] = {"text": text, "actor": actor, "model": model}
+            ctx.emit("brief.ready", overlap_id=o.id, brief=b.briefs[o.id], model=model)
             await asyncio.sleep(0)
         return f"{min(TOP_BRIEFS, sum(1 for o in b.overlaps if is_core(o)))} joint agenda items"

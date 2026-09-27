@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Hemingway",
+   "utility": "SCPSA",
+   "filing_state": "SC",
+   "project": "Rebuild Kingstree-Hemingway 115 kV Line as a Double Circuit 230/115 kV Line",
+   "description": "Construct a second 230 kV line, approximately 22 miles, from the Kingstree 230 kV Switching Station to the Hemingway 230-115 kV Substation by rebuilding the existing Kingstree \u2013 Hemingway 115 kV line for double circuit 230/115 kV construction.",
+   "zone": null,
+   "candidate": {
+    "name": "Hemingway Substation",
+    "operator": "Santee Electric Cooperative",
+    "voltage": "115000",
+    "lat": 33.7497166,
+    "lon": -79.4265511,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.89
+   }
+  },
+  "cost_usd": 2.4696000000000002e-05,
+  "model": "jev-latest",
+  "latency_ms": 211
+ }
+}

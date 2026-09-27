@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Thomaston",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Butler - Thomaston 230kV Line Conversion",
+   "description": "Rebuild the radial Thomaston - Butler 115kV line to 230kV network operation. Make all necessary upgrades and accommodations at Butler and Thomaston. Convert the Wesley substation from 115kV to 230kV.",
+   "zone": "213",
+   "candidate": {
+    "name": "Thomaston Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 32.8999225,
+    "lon": -84.3125168
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.87
+   }
+  },
+  "cost_usd": 2.2344e-05,
+  "latency_ms": 211,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Summerville",
+   "project": "Summerville: Replace and Spare 230-115kV 336MVA Auto Bank",
+   "description": "Purchase a spare 230/115kV, 336MVA Autobank for the Southern Region to be stored at Summerville 230kV Sub. Include a pad, AC for heaters, and possibly a pit for oil containment.",
+   "candidate_town": "Summerville, SC",
+   "county": "Dorchester County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.96
+   }
+  },
+  "cost_usd": 2.0034e-05,
+  "latency_ms": 240,
+  "model": "jev-latest"
+ }
+}

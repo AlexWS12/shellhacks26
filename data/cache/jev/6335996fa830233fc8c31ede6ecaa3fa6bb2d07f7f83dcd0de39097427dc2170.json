@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Grady",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Grady - Morrow (White) 115kV Rebuild",
+   "description": "Replace 0.72 miles of conductor from Moreland Way to Morrow including the bus and jumper at Moreland Way with 1351.5 Martin/ACSS 54/19 conductor.",
+   "zone": "206",
+   "candidate": {
+    "name": "Grady Substation",
+    "operator": "Florida Power & Light",
+    "voltage": "115000",
+    "lat": 30.5758288,
+    "lon": -85.0308207,
+    "state": "outside SC/GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  },
+  "cost_usd": 2.2638000000000002e-05,
+  "latency_ms": 325,
+  "model": "jev-latest"
+ }
+}

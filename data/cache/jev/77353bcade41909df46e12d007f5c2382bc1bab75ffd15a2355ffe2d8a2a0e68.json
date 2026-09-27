@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "Arkwright Bus And Jumper Replacement",
+   "description": "Replace the 115kV bus at Arkwright with higher rating and replace the jumper on the Arkwright - Forrest Rd (Macon) 115kV line with at least 1590AAC."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "in_substation_equipment",
+    "confidence": 0.5,
+    "probabilities": {
+     "rebuild": 0.26,
+     "other": 0.13,
+     "new_line": 0.0,
+     "in_substation_equipment": 0.6,
+     "substation_construction": 0.01
+    }
+   }
+  },
+  "cost_usd": 2.1672000000000002e-05,
+  "latency_ms": 674,
+  "model": "jev-latest"
+ }
+}

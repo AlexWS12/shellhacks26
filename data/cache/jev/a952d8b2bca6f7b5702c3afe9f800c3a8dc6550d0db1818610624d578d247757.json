@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Ritter",
+   "filing_state": "SC",
+   "project": "Yemassee\u2013 Ritter 230kV #1 & #2: Construct SPDC with B-1272",
+   "description": "Construct Ritter \u2013 Yemassee 230kV #1 and #2 SPDC with B1272 ACSR on both sides. Convert the existing Ritter \u2013 Yemassee 230 kV to 115 kV operation. Convert and add terminals at Ritter and Yemassee. Add 230 kV bus tie at Ritter and upgrade the Yemassee 230 kV bus tie.",
+   "zone": null,
+   "candidate": {
+    "name": "Ritter",
+    "kind": "place=hamlet",
+    "county": "Colleton County",
+    "state": "SC",
+    "lat": 32.7896202,
+    "lon": -80.6303822
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.76
+   }
+  },
+  "cost_usd": 2.3562000000000002e-05,
+  "latency_ms": 217,
+  "model": "jev-latest"
+ }
+}

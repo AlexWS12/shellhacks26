@@ -51,3 +51,11 @@ npm run dev
 ```
 
 Tests: `cd backend && uv run pytest`
+
+Models: the **Models** button opens a setup screen: keys, the model for each job and its backups, a test of every
+model, and Save. It opens by itself on first launch, and when a run is refused because a job has no working model.
+On a hosted server set `APP_MODE=hosted` and `ADMIN_PASSCODE`: the screen then needs the passcode, and keys come only
+from the server's environment. Behind it, `config/models.json` lists, for each job, the models to try in order. A
+model that fails is retried or skipped, and the run log records each fallback. Keys come only from env vars. To override a job on your machine,
+use `config/models.local.json`; keys for your machine only go in `.env.local`. Both files are gitignored. To check
+every configured model against its key: `cd backend && uv run python scripts/smoke.py`.

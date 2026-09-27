@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "Smart Valves At East Villa Rica Switching Station",
+   "description": "Installation of Power Flow Controllers at the new East Villa Rica Switching Station on the Douglasville - Villa Rica 230kV and Summer Lake - Villa Rica 230kV lines. The Power Flow Controllers will be removed when GTCs strategic project at Cavender Drive goes in service."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 0.66,
+    "probabilities": {
+     "substation_construction": 0.73,
+     "in_substation_equipment": 0.24,
+     "other": 0.03,
+     "new_line": 0.0,
+     "rebuild": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.2386000000000002e-05,
+  "latency_ms": 221,
+  "model": "jev-latest"
+ }
+}

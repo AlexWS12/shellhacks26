@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Fitzgerald",
+   "project": "Fitzgerald - Pitts 115 kV Line Rebuild",
+   "description": "Rebuild approximately 26.14 miles of the Fitzgerald - Pitts 115kV line with 200C 1351 ACSS.",
+   "candidate_town": "Fitzgerald, GA",
+   "county": "Ben Hill County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.93
+   }
+  },
+  "cost_usd": 1.8900000000000002e-05,
+  "latency_ms": 191,
+  "model": "jev-latest"
+ }
+}
