@@ -155,7 +155,7 @@ function addDataLayers(map: maplibregl.Map) {
   map.addLayer({ id: "links", type: "line", source: "links",
     paint: { "line-color": ["case", ["get", "together"], COLORS.zone, COLORS.zoneFar], "line-width": ["case", ["get", "sel"], 3, 2],
       "line-opacity": linkOpacity, "line-dasharray": DASHES[0] } });
-  map.addLayer({ id: "links-hit", type: "line", source: "links", paint: { "line-color": "#000", "line-opacity": 0, "line-width": 14 } });
+  map.addLayer({ id: "links-hit", type: "line", source: "links", paint: { "line-color": COLORS.bg, "line-opacity": 0, "line-width": 14 } });
   map.addLayer({ id: "pulse", type: "circle", source: "pulse",
     paint: { "circle-radius": ["get", "r"], "circle-color": color, "circle-opacity": 0, "circle-stroke-color": color,
       "circle-stroke-width": 2, "circle-stroke-opacity": ["get", "o"] } });
@@ -164,7 +164,7 @@ function addDataLayers(map: maplibregl.Map) {
   map.addLayer({ id: "comet-glow", type: "circle", source: "comets", filter: ["==", ["geometry-type"], "Point"],
     paint: { "circle-radius": 16, "circle-color": COLORS.zone, "circle-blur": 1, "circle-opacity": 0.75 } });
   map.addLayer({ id: "comet-core", type: "circle", source: "comets", filter: ["==", ["geometry-type"], "Point"],
-    paint: { "circle-radius": 4.5, "circle-color": "#fff" } });
+    paint: { "circle-radius": 4.5, "circle-color": COLORS.spark } });
   map.addLayer({ id: "points-glow", type: "circle", source: "points",
     paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 7, 9, 13], "circle-color": color, "circle-blur": 1, "circle-opacity": 0.35 } });
   map.addLayer({ id: "points", type: "circle", source: "points",
@@ -376,9 +376,8 @@ export default function MapView() {
       <div className="mapctl">
         <button onClick={() => useUI.getState().flyTo({ kind: "us" })}>US</button>
         <button onClick={() => useUI.getState().flyTo({ kind: "border" })}>SC–GA</button>
-        <button onClick={() => useUI.getState().setBasemap(basemap === "streets" ? "simple" : "streets")}
-          title="Streets needs internet; Simple works offline">
-          {basemap === "streets" ? "Simple" : "Streets"}
+        <button onClick={() => useUI.getState().setBasemap(basemap === "streets" ? "simple" : "streets")}>
+          {basemap === "streets" ? "Simple · offline" : "Streets · online"}
         </button>
       </div>
       <div className="legend" aria-label="Legend">
@@ -398,7 +397,7 @@ export default function MapView() {
       {phase === "idle" && (
         <div className="overlay">
           <div className="card">
-            <h2>Two utilities. One river. Separate plans.</h2>
+            <h2>Where Dominion and Georgia Power build close together</h2>
             <p>
               A team of AI agents reads Dominion Energy South Carolina&apos;s and Georgia Power&apos;s public construction
               plans, places every project on the map, and finds where they could build once instead of twice.
@@ -408,6 +407,10 @@ export default function MapView() {
               <button onClick={() => void startRun("replay")}>Replay a run</button>
               <button onClick={() => void showLatestResults()}>Jump to results</button>
             </div>
+            <ul className="hints">
+              <li><b>Replay</b> plays back the newest recorded run and works offline.</li>
+              <li><b>Template fallback</b> (top bar): if Gemini keeps failing during a live run, the text comes from a template instead of the agent failing.</li>
+            </ul>
           </div>
         </div>
       )}

@@ -265,7 +265,8 @@ function ProjectView({ id }: { id: string }) {
       {overlaps.length ? overlaps.map((o) => {
         const other = run.projects[o.project_a === id ? o.project_b : o.project_a];
         return (
-          <div key={o.id} className="row compact" tabIndex={0} role="button" onClick={() => open(o)}>
+          <div key={o.id} className="row compact" tabIndex={0} role="button" onClick={() => open(o)}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), open(o))}>
             <span className="rk">{String(o.rank).padStart(2, "0")}</span>
             <div><div className="t">{other?.name}</div><div className="meta"><span><span className="num">{o.distance_mi.toFixed(2)}</span> mi</span><span>{plural(o.time_gap_days, "day")} apart</span></div></div>
           </div>
