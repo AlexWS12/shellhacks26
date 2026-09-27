@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Villa Rica",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Hickory Level - Villa Rica 230kV Line Reconductor",
+   "description": "GTC will reconductor from 100C 1351 ACSR to 160C 1351 ACSS on 8.6 miles of 230kV line. A 2000A line trap at Villa Rica will also be replaced with a 3000A line trap.",
+   "zone": "211",
+   "candidate": {
+    "name": "Villa Rica Substation",
+    "operator": "",
+    "voltage": "500000;230000;115000;46000",
+    "lat": 33.7410224,
+    "lon": -84.8548652
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.72
+   }
+  },
+  "cost_usd": 2.4024000000000002e-05,
+  "latency_ms": 215,
+  "model": "jev-latest"
+ }
+}

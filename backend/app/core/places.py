@@ -75,7 +75,8 @@ def sponsor_points(sample: Sample | None) -> dict[str, Place]:
 
 
 def load_overrides() -> dict[str, Place]:
-    # Columns: endpoint,state,lat,lon,source_note (the note is required).
+    # Columns: endpoint,state,lat,lon,source_note (the note is required), confidence (optional): "verified" (the
+    # default: the facility itself) or "town" (a community the facility is named after, no surveyed point for it).
     out: dict[str, Place] = {}
     if not OVERRIDES_CSV.exists():
         return out
@@ -83,7 +84,8 @@ def load_overrides() -> dict[str, Place]:
         for row in csv.DictReader(f):
             if row.get("source_note", "").strip() and row.get("lat") and row.get("lon"):
                 out[f"{norm_key(row['endpoint'])}|{row['state'].strip().upper()}"] = Place(
-                    float(row["lat"]), float(row["lon"]), row["endpoint"], {"note": row["source_note"]})
+                    float(row["lat"]), float(row["lon"]), row["endpoint"], {"note": row["source_note"],
+                    "confidence": "town" if (row.get("confidence") or "").strip() == "town" else "verified"})
     return out
 
 
@@ -126,8 +128,6 @@ def osm_keys(f: dict[str, Any]) -> list[tuple[str, str]]:
 
 DIRECTION_RE = re.compile(r"\b(north|south|east|west)\b")
 
-OPERATORS = {"SC": ("dominion", "sce&g", "south carolina electric", "santee cooper"),
-             "GA": ("georgia power", "southern company", "georgia transmission", "meag")}
 
 
 class OsmIndex:
@@ -142,10 +142,16 @@ class OsmIndex:
                 if not any(g is f for g, _ in self.by_key.get(k, [])):
                     self.by_key.setdefault(k, []).append((f, via))
 
-    def candidates(self, key: str, state: str | None = None, limit: int = 3) -> list[tuple[float, dict[str, Any], str]]:
+    def candidates(self, key: str, state: str | None = None, limit: int = 3,
+                   operators: tuple[str, ...] | None = None) -> list[tuple[float, dict[str, Any], str]]:
         # (name similarity, feature, which tag matched), one entry per feature, best first.
+        # operators: the project's source's OSM operator patterns; by default those of every active source in the state.
         if not key:
             return []
+        if operators is None:
+            from app.core.owners import book
+
+            operators = book().operators_for_state(state) if state else ()
         names: dict[str, float] = {}
         for k in variants(key):
             if k in self.by_key:
@@ -160,7 +166,7 @@ class OsmIndex:
                 bonus = 0.0
                 if state and f.get("state") == state:
                     bonus += 0.1
-                if state and any(o in f.get("operator", "").lower() for o in OPERATORS.get(state, ())):
+                if state and any(o in f.get("operator", "").lower() for o in operators):
                     bonus += 0.05
                 if via in ("name", "alt_name"):
                     bonus += 0.01  # a real name beats a name part or operator match at the same similarity

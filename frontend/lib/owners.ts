@@ -1,55 +1,79 @@
-// Who owns a project and which color it gets. Dominion and Georgia are built in; plans submitted in the
-// Sources menu are peers and take the peer colors in the order the run lists them (stable for the whole run).
+// Who owns a project, and how it looks: name, color, marker shape, date wording. All of it comes from
+// GET /api/sources (the backend's sources table), never from a hardcoded map. A project finds its source by
+// source_id, or by its utility key for recordings made before sources existed.
 
-import { run } from "./run";
-import type { Project } from "./types";
+import type { CSSProperties } from "react";
+import { create } from "zustand";
 
-export type Slot = "desc" | "gpc" | "p1" | "p2" | "p3";
-const GA_OWNERS: Record<string, string> = {
-  GPC: "Georgia Power", SAV: "Georgia Power (Savannah)", GTC: "Georgia Transmission", MEAG: "MEAG Power", DU: "Dalton Utilities",
-};
+import type { Project, SourceView } from "./types";
 
-let cacheKey = "";
-let cache: { key: string; name: string; slot: Slot }[] = [];
+// Changing the list re-renders whatever reads it.
+export const useSources = create<{ list: SourceView[] }>(() => ({ list: [] }));
 
-// Submitted owners in this run, each with its color slot. Colors repeat after three owners.
-export function peers(): { key: string; name: string; slot: Slot }[] {
-  const fromSources = run.sourceOrder.map((id) => run.sources[id]).filter((s) => s?.owner_key);
-  const key = fromSources.length ? run.sourceOrder.join(",") : `p:${Object.keys(run.projects).length}`;
-  if (key === cacheKey) return cache;
-  const names = new Map<string, string>();
-  for (const s of fromSources) names.set(s.owner_key!, s.label);
-  if (!fromSources.length) {  // results mode or an older recording: fall back to the projects themselves
-    for (const p of Object.values(run.projects)) if (p.utility !== "DESC" && p.utility !== "GA") names.set(p.utility, p.sponsor);
-  }
-  const keys = fromSources.length ? [...names.keys()] : [...names.keys()].sort();
-  cache = keys.map((k, i) => ({ key: k, name: names.get(k)!, slot: `p${(i % 3) + 1}` as Slot }));
-  cacheKey = key;
-  return cache;
+let byId = new Map<string, SourceView>();
+let byKey = new Map<string, SourceView>();
+
+export function setSources(list: SourceView[]): void {
+  byId = new Map(list.map((s) => [s.id, s]));
+  byKey = new Map();
+  for (const s of list) if (!byKey.has(s.utility_key)) byKey.set(s.utility_key, s);
+  useSources.setState({ list });
 }
 
-export function slotOf(utility: string): Slot {
-  if (utility === "DESC") return "desc";
-  if (utility === "GA") return "gpc";
-  return peers().find((x) => x.key === utility)?.slot ?? "p1";
-}
+export const sourceOf = (p: Project | undefined): SourceView | undefined =>
+  p ? (p.source_id ? byId.get(p.source_id) : undefined) ?? byKey.get(p.utility) : undefined;
 
-export const ownClass = (p: Project) => `own-${slotOf(p.utility)}`;
+const UNKNOWN = "#8b93a4"; // --muted: a project whose source is gone (an old recording of a removed plan)
 
+export const colorOf = (p: Project | undefined) => sourceOf(p)?.color ?? UNKNOWN;
+export const shapeOf = (p: Project | undefined): "circle" | "diamond" => (sourceOf(p)?.display.shape === "diamond" ? "diamond" : "circle");
+// For elements styled with var(--own): list rows, pair cards, markers.
+export const ownStyle = (p: Project | undefined) => ({ "--own": colorOf(p) }) as CSSProperties;
+export const builtin = (p: Project | undefined) => Boolean(sourceOf(p)?.builtin);
+
+// A filing that lists several owners (Georgia's plan: GPC, SAV, GTC, ...) names the row's owner; otherwise the source.
 export function ownerName(p: Project): string {
-  if (p.utility === "DESC") return "Dominion Energy SC";
-  if (p.utility === "GA") return GA_OWNERS[p.sponsor] ?? p.sponsor;
-  return p.sponsor;
+  const s = sourceOf(p);
+  if (!s) return p.sponsor;
+  if (s.sponsors.length > 1) return s.sponsors.find((x) => x.code === p.sponsor)?.name ?? p.sponsor;
+  return s.display.ui_name ?? s.display_name;
 }
 
-export function ownerShort(p: Project): string {
-  if (p.utility === "DESC") return "Dominion";
-  if (p.utility === "GA") return "Georgia";
-  return p.sponsor;
-}
+export const ownerShort = (p: Project) => sourceOf(p)?.display.short_name ?? p.sponsor;
 
 // Georgia's plan gives a need date; everyone else an in-service date.
-export const dateWord = (p: Project) => (p.utility === "GA" ? "Needed by" : "In service");
+export const dateWord = (p: Project) => sourceOf(p)?.display.date_label ?? "In service";
+
+// "redacted" (Georgia), "public" (Dominion) or "stated" (anything else).
+export const costKind = (p: Project) => sourceOf(p)?.display.costs ?? "stated";
+export const showsStatus = (p: Project) => sourceOf(p)?.display.show_status !== false;
+
+// An owner inside a filing that isn't shown by default (Georgia's GTC, MEAG, DU): same rule as the backend.
+export function hiddenByDefault(p: Project): boolean {
+  const s = sourceOf(p);
+  return Boolean(s && s.sponsors.length) && !s!.sponsors.some((x) => x.code === p.sponsor && x.default);
+}
+
+// The owners the "all sponsors" filter adds, for its label: "GTC, MEAG, DU".
+export const extraSponsors = (list: SourceView[]) =>
+  list.filter((s) => s.status === "active").flatMap((s) => s.sponsors.filter((x) => !x.default).map((x) => x.code));
+
+// Owner prefixes a filing puts in its project names ("SAV: ..."), dropped in list rows.
+export function namePrefixes(list: SourceView[]): string[] {
+  return list.flatMap((s) => s.sponsors.map((x) => x.code).filter((c) => c !== s.code));
+}
+
+// Sources the legend shows: every active one, plus any that the current run's projects come from.
+export function legendSources(list: SourceView[], projects: Project[]): SourceView[] {
+  const used = new Set(projects.map((p) => sourceOf(p)?.id).filter(Boolean));
+  return list.filter((s) => s.status === "active" || used.has(s.id));
+}
+
+// Where a Reader agent sits on the map while it reads (a utility's headquarters), by agent id.
+export function readerHome(agentId: string): { lon: number; lat: number; label: string } | undefined {
+  for (const s of byId.values()) if (s.agent_id === agentId && s.display.hq) return s.display.hq;
+  return undefined;
+}
 
 // A submitted plan may give only a year or month; say so instead of printing a made-up day.
 export const approxDate = (p: Project | undefined) => Boolean(p && p.date_precision && p.date_precision !== "day");
@@ -67,6 +91,6 @@ export function serviceDate(p: Project, fmt: (iso: string) => string): string {
 export const gapText = (days: number, a?: Project, b?: Project) =>
   `${approxDate(a) || approxDate(b) ? "about " : ""}${days.toLocaleString()}`;
 
-// Where a project came from: a page of a filing, or a row of a submitted spreadsheet.
+// Where a project came from: a page of a built-in filing, or a row or page of a submitted plan.
 export const whereFrom = (p: Project) =>
-  p.utility === "DESC" || p.utility === "GA" ? `${p.source_file}, page ${p.source_page} (${p.source_ref})` : `${p.source_file}, ${p.source_ref}`;
+  builtin(p) ? `${p.source_file}, page ${p.source_page} (${p.source_ref})` : `${p.source_file}, ${p.source_ref}`;

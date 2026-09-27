@@ -35,7 +35,7 @@ def research_file(tmp_path_factory):
 
 
 def run_with(research_file, categories):
-    from app.pipeline import SOURCES, build_agents
+    from app.pipeline import build_pipeline
 
     old = config.RESEARCH_FILE
     config.GEMINI_API_KEY, config.JEV_PROVIDER, config.OSM_LIVE, config.RESEARCH_LIVE = "", "", False, False
@@ -44,7 +44,7 @@ def run_with(research_file, categories):
         run = new_run("live")
         run.pace = 0
         run.research = categories
-        asyncio.run(execute(run, build_agents(), SOURCES))
+        asyncio.run(execute(run, *build_pipeline()))
         return run
     finally:
         config.RESEARCH_FILE = old

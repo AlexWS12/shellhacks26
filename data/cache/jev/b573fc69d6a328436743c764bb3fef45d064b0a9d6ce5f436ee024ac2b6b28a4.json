@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Anthony Shoals",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Anthony Shoals - Washington 115 kV Line Rebuild",
+   "description": "Rebuild 21 miles of the Double Branches Junction - Washington 115kV line section with 100C 795 ACSR conductor or higher rated conductor.",
+   "zone": "215",
+   "candidate": {
+    "name": "Anthony Shoals Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000;115000",
+    "lat": 34.0018324,
+    "lon": -82.6362788
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.75
+   }
+  },
+  "cost_usd": 2.2092e-05,
+  "latency_ms": 211,
+  "model": "jev-latest"
+ }
+}

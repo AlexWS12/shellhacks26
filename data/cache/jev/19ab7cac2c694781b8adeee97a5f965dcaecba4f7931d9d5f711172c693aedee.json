@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "East Point",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "East Point - Tributary 230kV Rebuild",
+   "description": "Rebuild the 2.9 mile section from Cavender Drive to Marietta 25 with 200C 1351 ACSS conductor on the East Point - Tributary 230kV line.",
+   "zone": "201",
+   "candidate": {
+    "name": "East Point Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 33.6763499,
+    "lon": -84.4629659,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.79
+   }
+  },
+  "cost_usd": 2.2596000000000002e-05,
+  "latency_ms": 261,
+  "model": "jev-latest"
+ }
+}

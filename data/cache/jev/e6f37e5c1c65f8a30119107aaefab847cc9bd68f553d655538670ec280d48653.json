@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Sandersville",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Gordon-Sandersville #1 115kV Line Rebuild (Deepstep-Sand #6)",
+   "description": "Rebuild the Deepstep - Robins Spring (7.6 miles) Robins Spring - Kaolin J (2.23mi), and Kaolin J - Sandersville #6 (0.66 miles) line sections of the Gordon - Sandersville #1 115kV line. Rebuild a total of 10.49 miles from 100C 336 ACSR to 100C ACSR 795 conductor.",
+   "zone": "214",
+   "candidate": {
+    "name": "Sandersville Substation #1",
+    "operator": "Georgia Power",
+    "voltage": "230000;115000;46000;12000",
+    "lat": 32.9984771,
+    "lon": -82.801938
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.83
+   }
+  },
+  "cost_usd": 2.5872000000000002e-05,
+  "latency_ms": 300,
+  "model": "jev-latest"
+ }
+}

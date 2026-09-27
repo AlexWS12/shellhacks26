@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Conway",
+   "utility": "SCPSA",
+   "filing_state": "SC",
+   "project": "Marion-Conway 230 kV Line",
+   "description": "Fold the Hemingway-Red Bluff 230 kV Line into the new Conway 230 kV Switching Station. Construct a 230 kV line approximately 34 miles in length from the Marion 230-115-69kV Substation to the Conway 230 kV Switching Station. Rebuild the existing Marion-Conway 115 kV Line for 230/115 kV double-circuit using bundled 1272 ACSR for the 230 kV line and single 795 ACSR for the 115 kV line.",
+   "zone": null,
+   "candidate": {
+    "name": "Conway Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 33.8146417,
+    "lon": -79.080565,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.22
+   }
+  },
+  "cost_usd": 2.6166000000000003e-05,
+  "model": "jev-latest",
+  "latency_ms": 297
+ }
+}

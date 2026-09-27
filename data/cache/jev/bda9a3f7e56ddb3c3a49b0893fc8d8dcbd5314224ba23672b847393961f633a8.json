@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Union City",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Union City - Yates 230kV (White) Switch And Trap Replacement",
+   "description": "Replace the limiting elements at Union City and Yates substations along the Union City - Yates 230kV (White) line.",
+   "zone": "208",
+   "candidate": {
+    "name": "Junction City Substation",
+    "operator": "",
+    "voltage": "46000",
+    "lat": 32.5989336,
+    "lon": -84.4591383
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  },
+  "cost_usd": 2.1210000000000002e-05,
+  "latency_ms": 189,
+  "model": "jev-latest"
+ }
+}

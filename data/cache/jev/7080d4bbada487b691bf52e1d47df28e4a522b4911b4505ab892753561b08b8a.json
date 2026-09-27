@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Cliftondale",
+   "filing_state": "GA",
+   "project": "GTC: Cliftondale - Line Creek 230kV Line",
+   "description": "An 11.6 mile 230kV line is being built form Cliftondale to Line Creek with 200C 1351 ACSS Martin.",
+   "zone": "201",
+   "candidate": {
+    "name": "Cliftondale",
+    "kind": "place=suburb",
+    "county": "Fulton County",
+    "state": "GA",
+    "lat": 33.6448322,
+    "lon": -84.594654
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.72
+   }
+  },
+  "cost_usd": 2.1462000000000002e-05,
+  "latency_ms": 339,
+  "model": "jev-latest"
+ }
+}

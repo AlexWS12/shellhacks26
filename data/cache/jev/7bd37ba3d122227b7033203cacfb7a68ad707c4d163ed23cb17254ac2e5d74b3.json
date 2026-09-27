@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Fortson",
+   "utility": "MEAG",
+   "state": "GA",
+   "project": "MEAG: Fortson 230kV Substation Modernization",
+   "description": "Complete modernization and replacement of obsolete equipment and relays for the 500kV, 230kV, and 115kV yards. Add a redundant relay scheme at Fortson.",
+   "zone": "213",
+   "candidate": {
+    "name": "Fortson Substation",
+    "operator": "",
+    "voltage": "500000",
+    "lat": 32.6101653,
+    "lon": -84.9156341
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.71
+   }
+  },
+  "cost_usd": 2.1840000000000004e-05,
+  "latency_ms": 230,
+  "model": "jev-latest"
+ }
+}

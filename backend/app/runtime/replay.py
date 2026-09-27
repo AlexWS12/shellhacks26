@@ -21,7 +21,8 @@ def recorded_runs() -> list[dict]:
         except (IndexError, ValueError, OSError):
             continue  # empty or corrupt recording: not offered for replay
         out.append({"run_id": p.stem, "events": len(lines), "complete": last["type"] == "run.done",
-                    "mode": first.get("mode"), "ok": last.get("ok"), "stats": last.get("stats"),
+                    "mode": first.get("mode"), "purpose": first.get("purpose", "pipeline"), "ok": last.get("ok"),
+                    "stats": last.get("stats"),
                     "started": first.get("ts"), "seconds": round(last["ts"] - first["ts"], 1)})
     return out
 

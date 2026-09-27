@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Bonaire Primary",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Bonaire Primary 500/230kV Xfmr Replcmnt & Relay Mod",
+   "description": "Replace 500/230kV, auto transformer C with a new 448 MVA transformer. Replace obsolete relay panels.",
+   "zone": "214",
+   "candidate": {
+    "name": "Bonaire Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "500000",
+    "lat": 32.5647949,
+    "lon": -83.6000226
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.86
+   }
+  },
+  "cost_usd": 2.1798000000000004e-05,
+  "latency_ms": 566,
+  "model": "jev-latest"
+ }
+}

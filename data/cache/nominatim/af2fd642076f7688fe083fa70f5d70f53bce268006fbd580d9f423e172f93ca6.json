@@ -1,0 +1,173 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "perry road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341685311,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 19495880,
+   "lat": "35.0209255",
+   "lon": "-85.1947691",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339850385290299,
+   "addresstype": "road",
+   "name": "Perry Road",
+   "display_name": "Perry Road, Brainerd Hills, Chattanooga, Hamilton County, East Tennessee, Tennessee, 37421, United States",
+   "address": {
+    "road": "Perry Road",
+    "hamlet": "Brainerd Hills",
+    "city": "Chattanooga",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37421",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0201999",
+    "35.0216511",
+    "-85.1951637",
+    "-85.1943746"
+   ]
+  },
+  {
+   "place_id": 302722908,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1180554242,
+   "lat": "31.4323839",
+   "lon": "-85.6291864",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05338768825818262,
+   "addresstype": "road",
+   "name": "Perry Road",
+   "display_name": "Perry Road, Ozark, Dale County, Alabama, 36360, United States",
+   "address": {
+    "road": "Perry Road",
+    "town": "Ozark",
+    "county": "Dale County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36360",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.4321443",
+    "31.4326234",
+    "-85.6292993",
+    "-85.6290736"
+   ]
+  },
+  {
+   "place_id": 343247564,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12332115,
+   "lat": "32.8973885",
+   "lon": "-80.6745441",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338524528877695,
+   "addresstype": "road",
+   "name": "Perry Road",
+   "display_name": "Perry Road, Walterboro, Colleton County, South Carolina, 29488, United States",
+   "address": {
+    "road": "Perry Road",
+    "town": "Walterboro",
+    "county": "Colleton County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29488",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.8961894",
+    "32.8985891",
+    "-80.6755226",
+    "-80.6735639"
+   ]
+  },
+  {
+   "place_id": 343315630,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9083354,
+   "lat": "32.1406479",
+   "lon": "-81.3051197",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338252918287934,
+   "addresstype": "road",
+   "name": "Perry Road",
+   "display_name": "Perry Road, Ottawa Estates, Bloomingdale, Chatham County, Georgia, 31302, United States",
+   "address": {
+    "road": "Perry Road",
+    "hamlet": "Ottawa Estates",
+    "village": "Bloomingdale",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31302",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.1399830",
+    "32.1407070",
+    "-81.3079220",
+    "-81.3023910"
+   ]
+  },
+  {
+   "place_id": 342001479,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9226898,
+   "lat": "34.1020084",
+   "lon": "-85.3449877",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053382155336842874,
+   "addresstype": "road",
+   "name": "Perry Road",
+   "display_name": "Perry Road, Cave Spring, Floyd County, Georgia, 30124, United States",
+   "address": {
+    "road": "Perry Road",
+    "village": "Cave Spring",
+    "county": "Floyd County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30124",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0960320",
+    "34.1079900",
+    "-85.3473860",
+    "-85.3426030"
+   ]
+  }
+ ]
+}

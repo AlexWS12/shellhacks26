@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Yates Common",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Possum Branch - Yates Common 115kV Rebuild (Yates To Clem)",
+   "description": "Rebuild 11.2 miles of 100C 477 ACSR with 200C 1334 T13 ACCR Martin or 200C 1351.0 ACSS between Yates Common to Oak Mountain. Replace limiting elements along the line.",
+   "zone": "211",
+   "candidate": {
+    "name": "Yates Common Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000;46000",
+    "lat": 33.4616412,
+    "lon": -84.9041978,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.9
+   }
+  },
+  "cost_usd": 2.3940000000000005e-05,
+  "latency_ms": 274,
+  "model": "jev-latest"
+ }
+}

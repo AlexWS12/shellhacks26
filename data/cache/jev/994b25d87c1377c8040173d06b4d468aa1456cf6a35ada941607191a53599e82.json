@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Coleman",
+   "utility": "SAV",
+   "filing_state": "GA",
+   "project": "SAV: Coleman - Dean Forest 115kV Line Rebuild",
+   "description": "Rebuild entire line from Coleman to Dean Forest. 6.67 miles of 100C 477 Hawk Conductor with 200C 1351 ACSS Martin conductor.",
+   "zone": "219",
+   "candidate": {
+    "name": "Coleman Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000",
+    "lat": 32.1077199,
+    "lon": -81.226912,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.9
+   }
+  },
+  "cost_usd": 2.2470000000000003e-05,
+  "latency_ms": 215,
+  "model": "jev-latest"
+ }
+}

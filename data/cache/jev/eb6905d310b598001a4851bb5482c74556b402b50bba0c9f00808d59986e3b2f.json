@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "project": "Riverport Tap: Construct Tap",
+   "description": "Construct Okatie \u2013 Riverport 230 kV to feed new Distribution substation.",
+   "need": "Load growth."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.08
+   }
+  },
+  "cost_usd": 1.6086e-05,
+  "latency_ms": 483,
+  "model": "jev-latest"
+ }
+}

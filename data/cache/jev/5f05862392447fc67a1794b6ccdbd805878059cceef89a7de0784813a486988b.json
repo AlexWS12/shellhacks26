@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "GTC: Pond Fork - Midway 115kV Line",
+   "description": "GTC: Construct approximately 6 miles of 115kV line with minimum 170C 1351 ACSS conductor from Gillsville Tap Junction to Pond Fork, utilizing the existing GTC owned portion of the North Jackson - Lawrence Smith 46kV ROW. At Pond Fork, install a second 230/115kV 400MVA auto transformer and terminate the Pond Fork - Midway 115kV line."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "new_line",
+    "confidence": 0.46,
+    "probabilities": {
+     "in_substation_equipment": 0.01,
+     "other": 0.15,
+     "new_line": 0.5599999999999999,
+     "rebuild": 0.23,
+     "substation_construction": 0.05
+    }
+   }
+  },
+  "cost_usd": 2.4150000000000004e-05,
+  "latency_ms": 192,
+  "model": "jev-latest"
+ }
+}

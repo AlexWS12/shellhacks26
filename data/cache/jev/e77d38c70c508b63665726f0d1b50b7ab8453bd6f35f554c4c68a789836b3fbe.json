@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Conway",
+   "project": "Conway 230 kV Switching Station",
+   "description": "Fold the Hemingway-Red Bluff 230 kV Line into the new Conway 230 kV Switching Station. Construct a 230 kV line approximately 34 miles in length from the Marion 230-115-69kV Substation to the Conway 230 kV Switching Station. Rebuild the existing Marion-Conway 115 kV Line for 230/115 kV double-circuit using bundled 1272 ACSR for the 230 kV line and single 795 ACSR for the 115 kV line.",
+   "candidate_town": "Conway, SC",
+   "county": "Horry County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.91
+   }
+  },
+  "cost_usd": 2.3058000000000002e-05,
+  "model": "jev-latest",
+  "latency_ms": 207
+ }
+}

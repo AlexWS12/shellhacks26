@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Goat Rock",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Goat Rock Reactors Installation",
+   "description": "Install 1% series reactors on the Fortson - Goat Rock (Black) 230kV and Fortson - Goat Rock (White) 230kV.",
+   "zone": "213",
+   "candidate": {
+    "name": "Goat Rock Dam Substation",
+    "operator": "",
+    "voltage": "230000;115000",
+    "lat": 32.6082662,
+    "lon": -85.0824629,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.62
+   }
+  },
+  "cost_usd": 2.2050000000000004e-05,
+  "latency_ms": 355,
+  "model": "jev-latest"
+ }
+}

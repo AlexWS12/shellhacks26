@@ -4,7 +4,7 @@ from collections import Counter
 
 from app import config
 from app.core.models import Check, Project
-from app.runtime.agent import Agent, AgentSpec, Ctx
+from app.runtime.agent import LLM_ACTORS, Agent, AgentSpec, Ctx
 
 # equipment word in the need -> words that show the description is about that equipment
 EQUIPMENT: dict[str, list[str]] = {
@@ -35,7 +35,7 @@ class Validator(Agent):
 
     async def report(self, ctx: Ctx, check: Check) -> None:
         ctx.board.checks.append(check)
-        ctx.emit("check.found", check=check.model_dump())
+        ctx.emit("check.found", check=check.model_dump(), **({"model": check.model} if check.actor in LLM_ACTORS else {}))
         await ctx.pace(0.22)
 
     async def run(self, ctx: Ctx) -> str:
@@ -91,11 +91,11 @@ class Validator(Agent):
                     true="The need talks about equipment or work that the description and title never mention "
                          "(likely copied from another project).",
                     false="The need is generic (load growth, reliability, end of life) or matches the described work.",
-                    heuristic=lambda: need_mismatch_heuristic(p), project_id=p.id)
+                    heuristic=lambda: need_mismatch_heuristic(p), project_id=p.id, role="validate_semantic")
             if v.value >= 0.6:
                 flagged += 1
                 await self.report(ctx, Check(
-                    id=f"need:{p.id}", level="warn", rule="need_mismatch", actor=v.actor,
+                    id=f"need:{p.id}", level="warn", rule="need_mismatch", actor=v.actor, model=v.model,
                     title="Stated need doesn't match the description",
                     detail=f"{p.name}: the need says \"{p.need_text}\" but the description is about: "
                            f"\"{p.description[:160]}\". Probably copied from another project.",

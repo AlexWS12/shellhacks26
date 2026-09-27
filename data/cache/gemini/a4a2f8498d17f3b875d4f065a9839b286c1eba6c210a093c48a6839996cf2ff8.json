@@ -1,0 +1,39 @@
+{
+ "provider": "gemini",
+ "version": "gemini-v1",
+ "payload": {
+  "model": "gemini-3.7-flash",
+  "system": "Split a transmission project title into its named endpoints (substations or places). Return at most two names, without voltages, numbers or words like Rebuild/Line/Substation.",
+  "prompt": "Title: CC - Cass Pine- Hill View 230 kV Line- CC Improvements\nDescription: Build a new 7.58 mile 200C 1351 ACSS conductor 230kV line between new Cass Pine and Hill View 230kV substations.",
+  "schema": {
+   "type": "object",
+   "properties": {
+    "endpoints": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "maxItems": 2
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "endpoints"
+   ]
+  }
+ },
+ "response": {
+  "data": {
+   "endpoints": [
+    "Cass Pine",
+    "Hill View"
+   ]
+  },
+  "model": "gemini-3.7-flash",
+  "input_tokens": 102,
+  "output_tokens": 9,
+  "latency_ms": 18675
+ }
+}

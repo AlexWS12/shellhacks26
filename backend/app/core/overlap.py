@@ -9,13 +9,12 @@ from dataclasses import dataclass
 from datetime import date
 
 from app.core.models import Confidence, Overlap, Project
-from app.core.owners import owner_rank
+from app.core.owners import Book, book
 
 EARTH_RADIUS_MI = 3958.8
 OVERLAP_CUTOFF_MI = 25.0
 MAX_SPAN_MI = 60.0  # when the filing gives no length: longer than any such line in either plan
 TIE_CROSS_MI = 30.0  # an end outside the filing's state must be this close to the other end (border ties are short)
-DEFAULT_GA_SPONSORS = ("GPC", "SAV")
 CONF_ORDER: list[Confidence] = ["verified", "confirmed_osm", "partial", "town", "unlocated"]
 
 
@@ -93,10 +92,11 @@ class Filters:
     sort: str = "distance"  # distance | gap
 
 
-def visible(p: Project, f: Filters) -> bool:
+def visible(p: Project, f: Filters, owners: Book | None = None) -> bool:
     if p.lat is None or p.lon is None:
         return False
-    if p.utility == "GA" and not f.all_sponsors and p.sponsor not in DEFAULT_GA_SPONSORS:
+    # Owners inside a filing that aren't shown by default (Georgia's GTC, MEAG, DU) come from the sources table.
+    if not f.all_sponsors and (owners or book()).hidden_by_default(p):
         return False
     if CONF_ORDER.index(p.location_confidence) > CONF_ORDER.index(f.min_confidence):
         return False
@@ -114,14 +114,16 @@ def _cell(p: Project) -> tuple[int, int]:
 
 
 def find_overlaps(projects: list[Project], f: Filters, sample_pairs: set[tuple[str, str]] | None = None) -> list[Overlap]:
-    # The only place overlaps get computed: every pair of projects from two different owners.
-    # Owners are ordered Dominion, Georgia, then submitted plans, so Dominion-Georgia pairs keep 'DESC-...|GA-...'.
-    # A project whose two ends are implausibly far apart is left out (span_ok): its center can't be trusted.
+    # The only place overlaps get computed: every pair of projects from two different active sources (owner codes).
+    # Owners are ordered as the sources table ranks them (Dominion, Georgia, then the rest), so Dominion-Georgia
+    # pairs keep 'DESC-...|GA-...'. A project whose two ends are implausibly far apart is left out (span_ok): its
+    # center can't be trusted.
+    book_ = book()
     groups: dict[str, list[Project]] = {}
     for p in projects:
-        if visible(p, f) and span_ok(p):
-            groups.setdefault(p.utility, []).append(p)
-    owners = sorted(groups, key=owner_rank)
+        if book_.active(p) and visible(p, f, book_) and span_ok(p):
+            groups.setdefault(book_.group(p), []).append(p)
+    owners = sorted(groups, key=book_.rank)
     sample_pairs = sample_pairs or set()
     found: list[Overlap] = []
     for i, ua in enumerate(owners):

@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Banks Crossing",
+   "filing_state": "GA",
+   "project": "GTC: Banks Crossing - Pond Fork 115 kV",
+   "description": "GTC will build a new 115kV line from McClure Industrial to structure 21N on the Ridgeway Church Road Junction or tap point (approximately 3 miles). Close normally open switch at Ridgeway Church Road to establish the Banks Crossing - Pond Fork 115kV line. All new conductors should be 100C 1351 ACSR Martin.",
+   "zone": "212",
+   "candidate": {
+    "name": "Banks Crossing",
+    "kind": "place=hamlet",
+    "county": "Banks County",
+    "state": "GA",
+    "lat": 34.2567734,
+    "lon": -83.4640511
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.61
+   }
+  },
+  "cost_usd": 2.3226000000000004e-05,
+  "latency_ms": 199,
+  "model": "jev-latest"
+ }
+}
