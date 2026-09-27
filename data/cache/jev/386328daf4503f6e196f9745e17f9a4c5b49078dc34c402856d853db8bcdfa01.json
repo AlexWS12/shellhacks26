@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Thomaston 230 New Build",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Thomaston 230 New Build Sub",
+   "description": "Replace Thomaston 230/115kV 285MVA auto transformers C and D with 400MVA auto transformers. Install high side breakers to meet the 230kV bus differential standards and redesign 230kV bus to a breaker and a half configuration.",
+   "zone": "213",
+   "candidate": {
+    "name": "Thomaston Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 32.8999225,
+    "lon": -84.3125168
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.76
+   }
+  },
+  "cost_usd": 2.2932000000000003e-05,
+  "latency_ms": 315
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "agent": "Reader \u00b7 GA",
+   "role": "Reads the ten-year plan table and joins each row to its project page",
+   "running_s": 0.1,
+   "records": "208/208",
+   "recent_events": [
+    "source.progress: TEAMS 18700: Dawson Crossing - Gainesville #1 115 kV",
+    "project.extracted: ",
+    "source.progress: TEAMS 20787: SAV: Little Ogeechee 230/115kV Bank Replacement",
+    "project.extracted: ",
+    "source.progress: TEAMS 17993: Evans Primary - Thomson Primary 115kV Rebuild",
+    "agent.log: "
+   ]
+  },
+  "questions": {
+   "stuck": {
+    "type": "noul",
+    "instructions": "Is this pipeline agent stuck, i.e. not making progress on its job?",
+    "criteria": {
+     "true": "Its counters stopped moving, it repeats the same step, or it keeps failing the same way.",
+     "false": "Recent events show it moving through its records or steps."
+    }
+   },
+   "progress": {
+    "type": "score",
+    "instructions": "How far along is this agent in its job?",
+    "criteria": [
+     "Not started",
+     "Started",
+     "About halfway",
+     "Nearly done",
+     "Done"
+    ]
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "stuck": {
+    "type": "noul",
+    "noul": 0.35
+   },
+   "progress": {
+    "type": "score",
+    "score": 3.13,
+    "confidence": 0.27,
+    "legend": {
+     "0": "Not started",
+     "1": "Started",
+     "2": "About halfway",
+     "3": "Nearly done",
+     "4": "Done"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.17,
+     "2": 0.01,
+     "3": 0.28,
+     "4": 0.52
+    }
+   }
+  },
+  "cost_usd": 2.3562000000000002e-05,
+  "latency_ms": 742
+ }
+}

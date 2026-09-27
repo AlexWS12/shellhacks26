@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Bainbridge",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Bainbridge Transmission: East River Road, East Bainbridge",
+   "description": "This project will construct a new 115kV breaker and a half substation a mile north of the East Bainbridge substation. East Bainbridge will be simplified to a 115kV straight bus with two transmission lines for service to load, a generation interconnection point and a capacitor bank.",
+   "zone": "216",
+   "candidate": {
+    "name": "Bainbridge Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000;12470",
+    "lat": 30.9125521,
+    "lon": -84.5669923
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.56
+   }
+  },
+  "cost_usd": 2.3478000000000005e-05,
+  "latency_ms": 204
+ }
+}
