@@ -17,7 +17,6 @@ next-env.d.ts
 *.md
 !/README.md
 docs/
-data/reference/
 docker-compose.yml
 
 # local pipeline runs (the committed demo run stays tracked)

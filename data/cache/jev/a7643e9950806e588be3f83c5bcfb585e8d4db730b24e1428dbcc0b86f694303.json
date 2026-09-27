@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Camden Industrial Park",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Camden Industrial Park 230/115kV New Substation",
+   "description": "GTC will construct a new 230/115kV substation with a three element 230kV ring bus, two element 115kV ring bus, and one new 230/115kV 400MVA transformer. A new 115kV line to Kinlaw substation will be built also.",
+   "zone": "218",
+   "candidate": {
+    "name": "Cayce Industrial Park Substation",
+    "operator": "South Carolina Gas & Electric",
+    "voltage": "115000",
+    "lat": 33.9621858,
+    "lon": -81.1348532
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  },
+  "cost_usd": 2.3856000000000003e-05,
+  "latency_ms": 240
+ }
+}

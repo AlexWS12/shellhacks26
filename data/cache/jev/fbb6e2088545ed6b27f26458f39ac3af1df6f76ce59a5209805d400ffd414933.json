@@ -1,0 +1,70 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "agent": "Advocate \u00b7 GA",
+   "role": "Prepares GA's interests for the coordination meeting",
+   "running_s": 11.2,
+   "records": 0,
+   "recent_events": [
+    "agent.spawned: ",
+    "agent.thinking: ",
+    "agent.thinking: ",
+    "agent.log: ",
+    "brief.side: ",
+    "agent.thinking: "
+   ]
+  },
+  "questions": {
+   "stuck": {
+    "type": "noul",
+    "instructions": "Is this pipeline agent stuck, i.e. not making progress on its job?",
+    "criteria": {
+     "true": "Its counters stopped moving, it repeats the same step, or it keeps failing the same way.",
+     "false": "Recent events show it moving through its records or steps."
+    }
+   },
+   "progress": {
+    "type": "score",
+    "instructions": "How far along is this agent in its job?",
+    "criteria": [
+     "Not started",
+     "Started",
+     "About halfway",
+     "Nearly done",
+     "Done"
+    ]
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "stuck": {
+    "type": "noul",
+    "noul": 0.62
+   },
+   "progress": {
+    "type": "score",
+    "score": 0.71,
+    "confidence": 0.74,
+    "legend": {
+     "0": "Not started",
+     "1": "Started",
+     "2": "About halfway",
+     "3": "Nearly done",
+     "4": "Done"
+    },
+    "probabilities": {
+     "0": 0.3,
+     "1": 0.7,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.0286000000000002e-05,
+  "latency_ms": 212
+ }
+}
