@@ -25,7 +25,7 @@ from pathlib import Path
 from typing import Any
 
 from app import config
-from app.clients import cache, gemini, jev
+from app.clients import cache, claude, gemini, jev, openai
 from app.clients.base import Judgment, Request
 from app.clients.errors import (AuthError, BadResponse, ModelError, ModelNotFound, ProviderUnavailable, QuotaExceeded,
                                 RateLimited, RoleExhausted, Timeout, describe)
@@ -34,7 +34,7 @@ from app.clients.redact import install_logging, remember
 install_logging()
 log = logging.getLogger("models")
 
-ADAPTERS: dict[str, Any] = {"gemini": gemini, "jev": jev}
+ADAPTERS: dict[str, Any] = {"gemini": gemini, "claude": claude, "openai": openai, "jev": jev}
 KINDS = {"json", "text", "search", "judge"}
 MAX_ATTEMPTS = 3  # tries per model for RateLimited, Timeout and ProviderUnavailable
 BAD_RESPONSE_ATTEMPTS = 2  # one retry

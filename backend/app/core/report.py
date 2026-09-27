@@ -146,7 +146,8 @@ def template_next_steps(r: dict[str, Any]) -> str:
 
 
 def _byline(w: dict[str, Any]) -> str:
-    who = "Written by Gemini from the facts in this report." if w["actor"] == "gemini" else "Template from the computed facts."
+    llm = {"gemini": "Gemini", "claude": "Claude", "openai": "OpenAI"}.get(w["actor"])
+    who = f"Written by {llm} from the facts in this report." if llm else "Template from the computed facts."
     if w.get("unsupported_numbers"):
         who += f" Check these numbers, they are not in the facts: {', '.join(w['unsupported_numbers'])}."
     return f"_{who}_"

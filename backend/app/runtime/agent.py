@@ -31,7 +31,7 @@ class AgentSpec:
                 "roles": self.roles}
 
 
-LLM_ACTORS = {"gemini", "jev"}
+LLM_ACTORS = {"gemini", "claude", "openai", "jev"}
 
 
 class Ctx:

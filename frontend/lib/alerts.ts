@@ -37,7 +37,7 @@ export const PLAIN: Record<string, string> = {
   RateLimited: "Rate limited", QuotaExceeded: "Usage limit reached", Timeout: "No answer in time",
   ProviderUnavailable: "Service unavailable", BadResponse: "Gave an unusable answer", Disabled: "Turned off",
 };
-const PROVIDER: Record<string, string> = { gemini: "Gemini", jev: "Jev" };
+const PROVIDER: Record<string, string> = { gemini: "Gemini", claude: "Claude", openai: "OpenAI", jev: "Jev" };
 export const providerName = (p?: string) => (p ? PROVIDER[p] ?? p : "");
 const modelOf = (ref: string) => ref.slice(ref.indexOf("/") + 1);
 

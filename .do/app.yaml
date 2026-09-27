@@ -25,6 +25,8 @@ services:
       - { key: GEMINI_MODEL, scope: RUN_TIME, value: gemini-3.8-flash }
       - { key: GEMINI_FALLBACK_MODEL, scope: RUN_TIME, value: gemini-3.7-flash }
       - { key: GEMINI_RETRIES, scope: RUN_TIME, value: "3" }
+      - { key: ANTHROPIC_API_KEY, scope: RUN_TIME, type: SECRET }   # optional: Claude models
+      - { key: OPENAI_API_KEY, scope: RUN_TIME, type: SECRET }      # optional: OpenAI models
       - { key: JEV_PROVIDER, scope: RUN_TIME, value: typesafe }
       - { key: TYPESAFE_API_KEY, scope: RUN_TIME, type: SECRET }
       - { key: DATABASE_URL, scope: RUN_TIME, type: SECRET }   # Tiger Data service URL

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { api, type FilterState } from "@/lib/api";
 import { activeIn, lineCheck } from "@/lib/filters";
 import {
-  ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
+  ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, WRITERS, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { Brief, CostBlock, CostEstimate, Endpoint, Overlap, PairDetail, Project, Shared, ThirdParty, Tier, Written } from "@/lib/types";
@@ -359,30 +359,9 @@ function PairView({ a, b }: { a: string; b: string }) {
       </div>
       {!pa || !pb || !o ? <p className="empty oc-body">Loading…</p> : (
         <>
-          <div className="oc-stage">
-            {prev && <i className="oc-peek l" aria-hidden="true" />}
-            {next && <i className="oc-peek r" aria-hidden="true" />}
-            <div key={id} className={`oc-card ${slide < 0 ? "from-l" : slide > 0 ? "from-r" : ""}`}
-              style={{ "--a": colorOf(pa), "--b": colorOf(pb) } as React.CSSProperties}>
-              <div className="oc-conn" aria-hidden="true"><Mk p={pa} /><i className="oc-line" /><Mk p={pb} /></div>
-              <div className="oc-names">
-                <div><b>{pa.name}</b><span>{ownerName(pa)} · {serviceDate(pa, fmtDate)}</span></div>
-                <div><b>{pb.name}</b><span>{ownerName(pb)} · {serviceDate(pb, fmtDate)}</span></div>
-              </div>
-              <div className="oc-dist"><b>{o.distance_mi.toFixed(2)}</b><span>mi apart</span><Action o={o} /></div>
-            </div>
-            <button className="oc-arrow l" onClick={() => prev && go(prev, -1)} disabled={!prev} aria-label="Previous opportunity">‹</button>
-            <button className="oc-arrow r" onClick={() => next && go(next, 1)} disabled={!next} aria-label="Next opportunity">›</button>
-          </div>
-          {i >= 0 && shown.length > 1 && <Dots shown={shown} i={i} />}
-          <PairTabs />
-          <div className="oc-body" role="tabpanel" id={`oc-panel-${tab}`} aria-labelledby={`oc-tab-${tab}`}>
-            {waiting ? <p className="empty">Loading…</p>
-              : tab === "overview" ? <PairOverview o={o} pa={pa} pb={pb} {...detail} />
-              : tab === "money" ? <PairSavings pa={pa} pb={pb} cost={detail.cost} />
-              : tab === "meeting" ? <PairMeeting pa={pa} pb={pb} brief={detail.brief} />
-              : <PairEvidence pa={pa} pb={pb} />}
-          </div>
+          <p className="written">{analysis.text}</p>
+          <div className="by"><Chip a={analysis.actor} />{WRITERS.has(analysis.actor) ? `Written by ${ACTOR_LABEL[analysis.actor]} from the filing text` : "Template from the computed facts"}
+            {analysis.unsupported_numbers?.length ? <span className="fail">check numbers: {analysis.unsupported_numbers.join(", ")}</span> : null}</div>
         </>
       )}
     </div>
@@ -709,7 +688,7 @@ function ResearchView({ id }: { id: string }) {
 
 function Byline({ w }: { w: Written }) {
   return (
-    <div className="by"><Chip a={w.actor} />{w.actor === "gemini" ? "Written by Gemini from the facts below" : "Template from the computed facts"}
+    <div className="by"><Chip a={w.actor} />{WRITERS.has(w.actor) ? `Written by ${ACTOR_LABEL[w.actor]} from the facts below` : "Template from the computed facts"}
       {w.unsupported_numbers?.length ? <span className="fail">check numbers: {w.unsupported_numbers.join(", ")}</span> : null}</div>
   );
 }

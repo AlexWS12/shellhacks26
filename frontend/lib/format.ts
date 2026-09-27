@@ -35,6 +35,8 @@ export const TYPE_LABEL: Record<string, string> = {
 export const ACTOR_LABEL: Record<string, string> = {
   code: "Code",
   gemini: "Gemini",
+  claude: "Claude",
+  openai: "OpenAI",
   jev: "Jev",
   "jev-mock": "Jev (mock)",
   heuristic: "Rule",
@@ -72,6 +74,9 @@ export function fmtDate(iso: string | null | undefined): string {
 
 // "5 mo" under a year, "1.4 yrs" after that
 export const gapLabel = (days: number) => (days < 365 ? `${Math.round(days / 30.4)} mo` : `${(days / 365).toFixed(1)} yrs`);
+
+// the providers whose models write text (as opposed to Jev's typed decisions or code)
+export const WRITERS = new Set(["gemini", "claude", "openai"]);
 
 export const plural = (n: number, word: string) => `${n.toLocaleString()} ${word}${n === 1 ? "" : "s"}`;
 

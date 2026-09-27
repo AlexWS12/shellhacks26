@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { PLAIN, providerName } from "@/lib/alerts";
+import { WRITERS } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { ModelIssue, RoleInfo } from "@/lib/types";
 import { openSetup, useUI, type RailTab } from "@/lib/ui";
@@ -59,8 +60,8 @@ export function AgentsPanel() {
   useRev((s) => s.rev);
   const setPanel = useUI((s) => s.setPanel);
   const jev = run.judges["jev"];
-  const gem = run.judges["gemini"];
-  const other = Object.entries(run.judges).filter(([k]) => k !== "jev" && k !== "gemini").reduce((n, [, t]) => n + t.n, 0);
+  const llms = Object.entries(run.judges).filter(([k]) => WRITERS.has(k));
+  const other = Object.entries(run.judges).filter(([k]) => k !== "jev" && !WRITERS.has(k)).reduce((n, [, t]) => n + t.n, 0);
   return (
     <div className="section">
       <AgentGraph onSelect={(id) => setPanel({ kind: "agent", id })} />
@@ -70,10 +71,10 @@ export function AgentsPanel() {
           <AgentGraph team="research" onSelect={(id) => setPanel({ kind: "agent", id })} />
         </>
       )}
-      {(jev || gem || other > 0) && (
+      {(jev || llms.length > 0 || other > 0) && (
         <div className="decisions">
           {jev && <div><b>{jev.n}</b>Jev calls{jev.n > jev.cached ? ` · ${Math.round(jev.ms / Math.max(1, jev.n - jev.cached))}ms` : ""}</div>}
-          {gem && <div><b>{gem.n}</b>Gemini calls</div>}
+          {llms.map(([k, t]) => <div key={k}><b>{t.n}</b>{providerName(k)} calls</div>)}
           {other > 0 && <div><b>{other}</b>rule-based</div>}
         </div>
       )}

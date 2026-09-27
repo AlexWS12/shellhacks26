@@ -104,8 +104,8 @@ def test_fresh_clone_opens_setup_and_never_shows_the_key(env, client):
     roles = {r["name"]: r for r in body["roles"]}
     assert roles["confirm_osm"]["label"] == "Confirm substations" and roles["confirm_osm"]["description"]
     assert roles["watchdog"]["not_used"] == "Only used when Jev is on."
-    assert roles["analyst"]["providers"] == ["gemini"]  # Jev only does quick decisions
-    assert set(roles["confirm_osm"]["providers"]) == {"gemini", "jev"}
+    assert roles["analyst"]["providers"] == ["gemini", "claude", "openai"]  # Jev only does quick decisions
+    assert set(roles["confirm_osm"]["providers"]) == {"gemini", "claude", "openai", "jev"}
     lst = client.get("/api/models/providers/gemini/models")
     assert [m["id"] for m in lst.json()["models"]] == env.listed
     assert KEY not in all_text(cfg, lst, client.get("/api/health"))

@@ -3,7 +3,7 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 Confidence = Literal["verified", "confirmed_osm", "partial", "town", "unlocated"]
-Actor = Literal["code", "gemini", "jev", "osm", "sponsor_file", "override", "heuristic", "template"]
+Actor = Literal["code", "gemini", "claude", "openai", "jev", "osm", "sponsor_file", "override", "heuristic", "template"]
 
 
 class Endpoint(BaseModel):
