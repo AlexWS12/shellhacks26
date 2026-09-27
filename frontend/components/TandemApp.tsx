@@ -6,13 +6,15 @@ import { useEffect } from "react";
 import { boot, useUI } from "@/lib/ui";
 
 import Header from "./Header";
-import PipelinePanel from "./PipelinePanel";
+import { Flyout, Rail } from "./Rail";
 import RightPanel from "./RightPanel";
 
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
 export default function TandemApp() {
   const error = useUI((s) => s.error);
+  const railOpen = useUI((s) => s.railOpen);
+  const railExpanded = useUI((s) => s.railExpanded);
   useEffect(() => {
     void boot();
   }, []);
@@ -22,10 +24,9 @@ export default function TandemApp() {
         <Header />
         {error && <div className="err" role="alert">{error}</div>}
       </div>
-      <div className="main">
-        <aside className="col left" aria-label="Pipeline">
-          <PipelinePanel />
-        </aside>
+      <div className={`main ${railOpen ? "rail-open" : ""} ${railExpanded ? "rail-expanded" : ""}`}>
+        <Rail />
+        {railOpen && <Flyout />}
         <section className="mapwrap" aria-label="Map">
           <MapView />
         </section>

@@ -132,6 +132,22 @@ function ExportMenu() {
   );
 }
 
+// Moved here from the left column so the numbers stay in view when the rail's panel is closed.
+function Kpis() {
+  const visibleProjects = useUI((s) => s.visibleProjects);
+  const results = useUI((s) => s.results);
+  const total = Object.keys(run.projects).length;
+  const onMap = visibleProjects ?? Object.values(run.projects).filter((p) => p.lat != null).length;
+  const pairs = (run.phase === "done" && results ? results : run.overlaps).length;
+  return (
+    <div className="kpis">
+      <div><b>{total}</b>projects read</div>
+      <div><b>{onMap}</b>on the map</div>
+      <div><b>{pairs}</b>under 25 mi</div>
+    </div>
+  );
+}
+
 function OpportunityList() {
   const { filters, setFilters } = useUI();
   const overlaps = useOverlaps();
@@ -155,6 +171,7 @@ function OpportunityList() {
 
   return (
     <div className="opps">
+      <Kpis />
       <div className="opps-head">
         <div className="opps-title">
           <h2>Opportunities</h2>
