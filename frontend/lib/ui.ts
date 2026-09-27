@@ -15,6 +15,9 @@ export type Panel =
   | { kind: "research"; id: string }
   | { kind: "report" };
 
+// Tabs of the opportunity detail panel. The choice stays while stepping between opportunities.
+export type PairTab = "overview" | "money" | "meeting" | "evidence";
+
 export type Camera = { kind: "us" } | { kind: "border" } | { kind: "river" } | { kind: "pair"; a: string; b: string } | { kind: "project"; id: string } | { kind: "point"; lon: number; lat: number };
 
 export type RailTab = "sources" | "agents" | "bench" | "issues" | "activity";
@@ -58,14 +61,20 @@ function savedResearch(): Record<ResearchCategory, boolean> {
   }
 }
 
-// The model setup screen. problems: why a live run was refused (each names a job); canForce: every refusal was only
-// a busy or out-of-quota model, so the run may start anyway.
-export interface SetupState { focusRole: string | null; problems: SetupProblem[]; canForce: boolean; step?: "keys" | "models" }
+// The Setup modal: Run pipeline, Models, Sources. problems: why a live run was refused (each names a job); canForce:
+// every refusal was only a busy or out-of-quota model, so the run may start anyway. step: which Models step to open.
+export type SetupTab = "run" | "models" | "sources";
+export interface SetupState {
+  tab?: SetupTab; focusRole: string | null; problems: SetupProblem[]; canForce: boolean; step?: "keys" | "models";
+  reviewSource?: string | null; // Sources: open the add flow at this source's step
+}
 const SETUP_SEEN_KEY = "tandem.setupSeen";
 
 interface UIState {
   setup: SetupState | null; // open when not null
   panel: Panel;
+  pairTab: PairTab;
+  setPairTab: (t: PairTab) => void;
   filters: FilterState;
   results: Overlap[] | null; // from the API after a run
   others: ThirdParty[] | null; // other utilities near those results, from the API
@@ -102,6 +111,8 @@ let requests = 0; // only the newest filter request wins
 export const useUI = create<UIState>((set, get) => ({
   setup: null,
   panel: { kind: "list" },
+  pairTab: "overview",
+  setPairTab: (pairTab) => set({ pairTab }),
   filters: { allSponsors: false, townLevel: true, hideFinished: false, sort: "distance", chip: "all", q: "" },
   results: null,
   others: null,
@@ -197,7 +208,9 @@ function follow(runId: string): void {
 }
 
 export function openSetup(state: Partial<SetupState> = {}): void {
-  useUI.setState({ setup: { focusRole: null, problems: [], canForce: false, ...state } });
+  // a refused run or a missing key opens Models; anything else opens Run pipeline unless a tab is given
+  const tab = state.tab ?? (state.step || state.focusRole || state.problems?.length ? "models" : "run");
+  useUI.setState({ setup: { focusRole: null, problems: [], canForce: false, ...state, tab } });
 }
 
 export function closeSetup(): void {
@@ -263,7 +276,8 @@ export async function boot(): Promise<void> {
     } catch {
       // treat as not seen
     }
-    if (s && (!s.ready || (s.first_launch && health.app_mode !== "hosted" && !seen))) openSetup({ problems: s.problems });
+    if (s && !s.ready) openSetup({ problems: s.problems });
+    else if (s && s.first_launch && health.app_mode !== "hosted" && !seen) openSetup({ step: "keys" });
   } catch (e) {
     useUI.setState({ error: `Can't reach the API at ${API || "this site"}/api (${e}).` });
   }

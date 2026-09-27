@@ -6,10 +6,9 @@ import { PLAIN, providerName } from "@/lib/alerts";
 import { WRITERS } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { ModelIssue, RoleInfo } from "@/lib/types";
-import { useUI, type RailTab } from "@/lib/ui";
+import { openSetup, useUI, type RailTab } from "@/lib/ui";
 
 import AgentGraph from "./AgentGraph";
-import SourcesMenu from "./SourcesMenu";
 
 // Each section of the pipeline, shown one at a time in the left rail's panel (see Rail.tsx).
 // The panel header carries the section title, so these start straight with their content.
@@ -35,14 +34,12 @@ function issueRows(list: ModelIssue[], roles: RoleInfo): { key: string; text: st
 
 export function SourcesPanel() {
   useRev((s) => s.rev);
-  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="section">
       <p className="label">
-        <button className="linkbtn addplan" onClick={() => setMenuOpen(true)}
+        <button className="linkbtn addplan" onClick={() => openSetup({ tab: "sources" })}
           title="Every utility the pipeline reads; add a filing, spreadsheet or link">Manage · + Add</button>
       </p>
-      {menuOpen && <SourcesMenu onClose={() => setMenuOpen(false)} />}
       {run.sourceOrder.length === 0 && <p className="empty">Dominion&apos;s project list, Georgia&apos;s IRP Vol. 3, and a surveyed benchmark set.</p>}
       {run.sourceOrder.map((id) => {
         const s = run.sources[id];

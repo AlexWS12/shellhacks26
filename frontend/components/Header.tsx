@@ -36,14 +36,15 @@ export default function Header() {
         <label><input type="checkbox" checked={filters.townLevel} onChange={(e) => setFilters({ townLevel: e.target.checked })} /> Approx. locations</label>
         <label><input type="checkbox" checked={filters.hideFinished} onChange={(e) => setFilters({ hideFinished: e.target.checked })} /> Hide finished</label>
       </div>
-      <ResearchPicker compact />
+      <ResearchPicker />
       {running && <button onClick={() => void skipToResults()}>Skip</button>}
       <label className="fallback" title="Live runs: when Gemini fails after retries, write the text from a template. Off: the agent fails instead.">
         <input type="checkbox" checked={templateFallback} disabled={running}
           onChange={(e) => setTemplateFallback(e.target.checked)} /> Template fallback
       </label>
-      <button className="modelsbtn" onClick={() => openSetup()} title="Choose which AI model does each job">
-        Models{health?.models_setup && !health.models_setup.ready && <i className="needs" aria-label="needs setup" />}
+      <button className="modelsbtn" onClick={() => openSetup({ tab: health?.models_setup && !health.models_setup.ready ? "models" : "run" })}
+        title="Run options, AI models and sources">
+        Setup{health?.models_setup && !health.models_setup.ready && <i className="needs" aria-label="needs setup" />}
       </button>
       <button onClick={() => void startRun("replay")} disabled={running} title="Replays the newest recorded run. Works offline.">Replay</button>
       <button className="primary" onClick={() => void startRun("live")} disabled={running}>

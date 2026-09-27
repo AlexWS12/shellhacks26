@@ -47,7 +47,7 @@ class SubmissionReader(Agent):
         what = "spreadsheet" if sheet else ("web page" if sub.stored.endswith(".html") else "PDF")
         self.spec = AgentSpec(f"extract_{sub.id}", f"Reader · {sub.label}",
                               f"Reads {sub.owner}'s submitted {what}", ["code"] if sheet else ["gemini"],
-                              engine="Parser" if sheet else "Gemini")
+                              engine="Parser" if sheet else "Gemini", roles=[] if sheet else ["extract_submission"])
 
     def source(self) -> dict[str, Any]:
         return {"id": self.sub.id, "label": self.sub.owner, "detail": f"Submitted {self.sub.kind}: {self.sub.url or self.sub.filename}",

@@ -461,7 +461,7 @@ class AIReader(Agent):
         self.source, self.page_spec = source, pages
         self.spec = AgentSpec(sources.agent_id(source), f"Reader · {source.code} (AI)",
                               f"Finds and reads the project pages of {source.display_name}'s filing, with the exact "
-                              "text behind every value", ["code", "gemini"], engine="AI reader")
+                              "text behind every value", ["code", "gemini"], engine="AI reader", roles=["reader"])
         self.result: dict[str, Any] | None = None
         self._last_call = 0.0
 

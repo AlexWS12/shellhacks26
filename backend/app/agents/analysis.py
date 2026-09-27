@@ -37,7 +37,7 @@ def written_pairs(overlaps: list[Overlap], projects: dict[str, Project], top: in
 
 
 class OverlapEngine(Agent):
-    spec = AgentSpec("overlap", "Overlaps", "Center-to-center miles and day gaps. Plain code, no AI",
+    spec = AgentSpec("overlap", "Overlaps", "Closest-point miles, distance tiers and day gaps. Plain code, no AI",
                      ["code"], depends_on=["geocoder"], kind="tool", engine="Math")
 
     async def run(self, ctx: Ctx) -> str:
@@ -101,7 +101,7 @@ SYSTEM = ("You write one short paragraph for a transmission planner about two ne
 
 class Analyst(Agent):
     spec = AgentSpec("analyst", "Analyst", "Writes each top opportunity up from the filing text",
-                     ["gemini"], depends_on=["cost", "validator", "reference"], engine="Gemini")
+                     ["gemini"], depends_on=["cost", "validator", "reference"], engine="Gemini", roles=["analyst"])
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board

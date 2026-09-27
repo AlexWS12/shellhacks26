@@ -31,7 +31,7 @@ def need_mismatch_heuristic(p: Project) -> float:
 class Validator(Agent):
     spec = AgentSpec("validator", "Validator", "Checks dates, costs, duplicates and whether each filing agrees with itself",
                      ["code", "jev"], depends_on=["sample", "extract_desc", "extract_ga"],
-                     engine="Rules + Jev")
+                     engine="Rules + Jev", roles=["validate_semantic"])
 
     async def report(self, ctx: Ctx, check: Check) -> None:
         ctx.board.checks.append(check)

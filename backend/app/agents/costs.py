@@ -56,7 +56,7 @@ def sharing_question(a: Project, g: Project, o: Overlap, shared: dict[str, Any])
 class CostResearcher(Agent):
     spec = AgentSpec("cost_research", "Cost research", "Finds each project's cost: filed, published on the web, "
                      "or a Dominion benchmark", ["code", "gemini", "jev"], depends_on=["overlap", "classifier"],
-                     engine="Gemini")
+                     engine="Gemini", roles=["cost_search", "cost_extract", "cost_quote_check"])
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
@@ -126,7 +126,7 @@ class CostResearcher(Agent):
 
 class SavingsCalculator(Agent):
     spec = AgentSpec("cost", "Savings", "Savings range for each pair; Jev checks the two can really share work",
-                     ["code", "jev"], depends_on=["cost_research"], engine="Jev")
+                     ["code", "jev"], depends_on=["cost_research"], engine="Jev", roles=["savings_check"])
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board

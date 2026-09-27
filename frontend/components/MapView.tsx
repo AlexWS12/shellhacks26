@@ -12,9 +12,8 @@ import { builtin, colorOf, legendSources, shapeOf, useSources } from "@/lib/owne
 import { CATEGORY_KINDS, ICON_PATH, kindOf, type UtilityKind } from "@/lib/utilityIcons";
 import { mapPalette } from "@/lib/theme";
 import type { Overlap, Project, ResearchCategory, ThirdParty } from "@/lib/types";
-import { showLatestResults, startRun, useUI } from "@/lib/ui";
+import { openSetup, showLatestResults, startRun, useUI } from "@/lib/ui";
 
-import ResearchPicker from "./ResearchPicker";
 import UtilityIcon from "./UtilityIcon";
 
 const STREETS = "https://tiles.openfreemap.org/styles/dark";
@@ -562,17 +561,11 @@ export default function MapView() {
               plans, places every project on the map, and finds where they could build once instead of twice.
             </p>
             <div className="row2">
-              <button className="primary" onClick={() => void startRun("live")}>Run pipeline</button>
+              <button className="primary" onClick={() => openSetup({ tab: "run" })}>Set up and run</button>
               <button onClick={() => void startRun("replay")}>Replay a run</button>
               <button onClick={() => void showLatestResults()}>Jump to results</button>
             </div>
-            <ResearchPicker />
-            <ul className="hints">
-              <li><b>Add a plan</b> (Sources, left): upload another utility&apos;s project list; its Reader joins every live run.</li>
-              <li><b>Research</b>: before a live run, pick which other utilities the research team looks up near the river.</li>
-              <li><b>Replay</b> plays back the newest recorded run and works offline.</li>
-              <li><b>Template fallback</b> (top bar): if Gemini keeps failing during a live run, the text comes from a template instead of the agent failing.</li>
-            </ul>
+            <p className="note">Setup holds the run options, the AI models for each job, and the utilities to compare.</p>
           </div>
         </div>
       )}

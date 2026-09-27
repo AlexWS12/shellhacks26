@@ -56,7 +56,8 @@ class DescExtractor(Agent):
     def __init__(self, source: Source) -> None:
         self.source, self.path = source, _file(source)
         self.spec = AgentSpec("extract_desc", f"Reader · {source.code}", f"Reads {source.code}'s 44-page project list, "
-                              "one project per page", ["code", "gemini"], engine="Parser + Gemini")
+                              "one project per page", ["code", "gemini"], engine="Parser + Gemini",
+                              roles=["extract_fallback"])
 
     async def run(self, ctx: Ctx) -> str:
         self.models: dict[str, str] = {}  # project id -> the model that read its page

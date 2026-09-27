@@ -20,7 +20,7 @@ NEXT_STEPS = ("You write the recommended next steps of a coordination report for
 
 class Writer(Agent):
     spec = AgentSpec("writer", "Writer", "Writes the final report that sums up the opportunities",
-                     ["code", "gemini"], depends_on=["mediator", "third_party"], engine="Gemini")
+                     ["code", "gemini"], depends_on=["mediator", "third_party"], engine="Gemini", roles=["writer"])
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board

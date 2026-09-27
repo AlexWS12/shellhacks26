@@ -1,7 +1,7 @@
 "use client";
 
-// Which kinds of other utilities the research team covers in the next live run.
-// Welcome card: pills in the same style as the Opportunities chips. Header: one small menu, like Export.
+// Which kinds of other utilities the research team covers in the next live run: one small menu in the header, like
+// Export. The Setup modal's Run pipeline section shows the same choice as pills.
 
 import { useEffect, useRef, useState } from "react";
 
@@ -31,7 +31,7 @@ function Pills() {
   );
 }
 
-export default function ResearchPicker({ compact = false }: { compact?: boolean }) {
+export default function ResearchPicker() {
   useRev((s) => s.rev);
   const research = useUI((s) => s.research);
   const [open, setOpen] = useState(false);
@@ -45,14 +45,6 @@ export default function ResearchPicker({ compact = false }: { compact?: boolean 
     return () => { document.removeEventListener("mousedown", away); document.removeEventListener("keydown", esc); };
   }, [open]);
 
-  if (!compact) {
-    return (
-      <div className="research-pick" role="group" aria-label="Research team covers" title={TIP}>
-        <span className="lead">Research team looks up</span>
-        <div className="chips"><Pills /></div>
-      </div>
-    );
-  }
   const on = CATEGORIES.filter((c) => research[c]);
   return (
     <div className="menu" ref={ref}>

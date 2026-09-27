@@ -150,6 +150,7 @@ export interface AgentSpec {
   kind: "agent" | "tool";
   engine: string;
   team?: "core" | "research";
+  roles?: string[]; // the model jobs it calls (config/models.json); none for plain code
 }
 
 export interface SourceSpec {
