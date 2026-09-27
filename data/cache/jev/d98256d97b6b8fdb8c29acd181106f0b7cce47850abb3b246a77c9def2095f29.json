@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Union City",
+   "utility": "GTC",
+   "filing_state": "GA",
+   "project": "GTC: Cavender Drive 500/230kV Autobank",
+   "description": "GTC will turn Cavender Drive into a 500/230kV station looping in the Villa Rica - Union City 500kV line, installing a 2016 MVA auto transformer.",
+   "zone": "201",
+   "candidate": {
+    "name": "Junction City Substation",
+    "operator": "",
+    "voltage": "46000",
+    "lat": 32.5989336,
+    "lon": -84.4591383,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  },
+  "cost_usd": 2.2596000000000002e-05,
+  "latency_ms": 460,
+  "model": "jev-latest"
+ }
+}

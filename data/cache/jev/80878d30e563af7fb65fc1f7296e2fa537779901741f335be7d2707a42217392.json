@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Winder Primary",
+   "project": "Jefferson Road - Winder Primary 115kV Rebuild",
+   "description": "Rebuild approximately 11 miles of the Jefferson Road - Russell - Richardson Street Junction segments of the Jefferson Road - Winder Primary 115kV line with 200C 1351 ACSS Martin conductor.",
+   "candidate_town": "Winder, GA",
+   "county": "Barrow County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.92
+   }
+  },
+  "cost_usd": 1.9278000000000004e-05,
+  "latency_ms": 192,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Cross",
+   "utility": "SCPSA",
+   "filing_state": "SC",
+   "project": "Cross - Wassamassaw 230 kV #2 Line",
+   "description": "Construct a second 230 kV transmission line, approximately 18.3 miles in length, from the Cross 230 kV Switchyard to the Wassamassaw 230-115 kV Substation along existing transmission right-of-way and using pre-existing double-circuit structures where possible",
+   "zone": null,
+   "candidate": {
+    "name": "Cross Substation",
+    "operator": "",
+    "voltage": "230000",
+    "lat": 33.3666594,
+    "lon": -80.1149899,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.8
+   }
+  },
+  "cost_usd": 2.3184000000000004e-05,
+  "model": "jev-latest",
+  "latency_ms": 211
+ }
+}

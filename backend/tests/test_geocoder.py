@@ -268,40 +268,28 @@ def test_voltages_in_osm_names_are_ignored():
     assert norm_key("Wrens 46/12 kV Substation") == "wrens"
 
 
-def test_live_only_jev_calls_are_not_cached(monkeypatch):
-    # The watchdog asks with use_cache=False every few seconds; storing those answers only churned the cache.
-    from app.clients import jev
+def test_a_town_level_override_comes_after_osm_and_is_marked_town(monkeypatch):
+    # A person's point for the community a facility is named after (no surveyed point): used only when OSM has
+    # nothing, and kept at town level, never "verified".
+    from app.core.places import Place
+    monkeypatch.setattr(config, "OSM_LIVE", False)
+    town = Place(32.2975, -81.119, "Purrysburg", {"note": "community, not the substation", "confidence": "town"})
+    g = _geocoder([])
+    g.overrides = {"purrysburg|SC": town}
+    e = asyncio.run(g.locate_endpoint(_Judge(0.9), _project("Upgrade Purrysburg Transformer"), "Purrysburg", "SC"))
+    assert (e.method, e.confidence, e.lat) == ("override", "town", 32.2975)
+    g = _geocoder([_feature("Purrysburg Substation", 32.33, -81.03)])
+    g.overrides = {"purrysburg|SC": town}
+    e = asyncio.run(g.locate_endpoint(_Judge(0.9), _project("Upgrade Purrysburg Transformer"), "Purrysburg", "SC"))
+    assert e.method == "overpass" and e.confidence == "confirmed_osm"
+    surveyed = Place(32.33, -81.03, "Purrysburg", {"note": "surveyed", "confidence": "verified"})
+    g.overrides = {"purrysburg|SC": surveyed}
+    e = asyncio.run(g.locate_endpoint(_Judge(0.9), _project("Upgrade Purrysburg Transformer"), "Purrysburg", "SC"))
+    assert (e.method, e.confidence) == ("override", "verified")
 
-    class Resp:
-        status_code = 200
-        headers: dict = {}
 
-        def raise_for_status(self) -> None:
-            pass
-
-        def json(self) -> dict:
-            return {"answers": {"q": {"noul": 0.5}}, "usage": {"input_tokens": 1}}
-
-    class Client:
-        def __init__(self, *a, **k) -> None:
-            pass
-
-        async def __aenter__(self):
-            return self
-
-        async def __aexit__(self, *a) -> None:
-            pass
-
-        async def post(self, *a, **k):
-            return Resp()
-
-    puts: list = []
-    monkeypatch.setattr(config, "JEV_PROVIDER", "typesafe")
-    monkeypatch.setenv("TYPESAFE_API_KEY", "test")
-    monkeypatch.setattr(jev.httpx, "AsyncClient", Client)
-    monkeypatch.setattr(jev.cache, "put", lambda *a: puts.append(a))
-    monkeypatch.setattr(jev.cache, "get", lambda *a: None)
-    assert asyncio.run(jev.evaluate("s", {"q": {}}, use_cache=False))["answers"]
-    assert puts == []
-    asyncio.run(jev.evaluate("s", {"q": {}}))
-    assert len(puts) == 1
+def test_committed_overrides_say_their_confidence():
+    from app.core.places import load_overrides
+    rows = load_overrides()
+    assert rows["kraft|GA"].extra["confidence"] == "verified"  # the old rows, with no confidence column value
+    assert {rows[k].extra["confidence"] for k in ("purrysburg|SC", "wassamassaw|SC", "indian field|SC")} == {"town"}

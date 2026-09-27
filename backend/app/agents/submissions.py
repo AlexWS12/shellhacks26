@@ -7,7 +7,7 @@ import re
 import time
 from typing import Any
 
-from app.clients import gemini
+from app.clients import models
 from app.core.htmltext import html_to_text, pages
 from app.core.models import Check, Endpoint, Project
 from app.core.pdftext import read_pdf
@@ -51,7 +51,7 @@ class SubmissionReader(Agent):
 
     def source(self) -> dict[str, Any]:
         return {"id": self.sub.id, "label": self.sub.owner, "detail": f"Submitted {self.sub.kind}: {self.sub.url or self.sub.filename}",
-                "file": self.sub.filename, "total": 0, "owner_key": self.sub.owner_key}
+                "file": self.sub.filename, "total": 0, "owner_key": self.sub.owner_key, "source_id": self.sub.id}
 
     async def run(self, ctx: Ctx) -> str:
         try:
@@ -68,9 +68,10 @@ class SubmissionReader(Agent):
         ctx.board.pending_checks.append(Check(id=f"{rule}:{self.sub.id}", level=level, rule=rule, title=title,  # type: ignore[arg-type]
                                               detail=detail, source=f"Submitted: {self.sub.filename}"))
 
-    def _add(self, ctx: Ctx, p: Project, read: int, total: int, current: str) -> None:
+    def _add(self, ctx: Ctx, p: Project, read: int, total: int, current: str, model: str | None = None) -> None:
         ctx.board.projects[p.id] = p
-        ctx.emit("project.extracted", source_id=self.sub.id, project=p.model_dump(), actor=p.extracted_by)
+        ctx.emit("project.extracted", source_id=self.sub.id, project=p.model_dump(), actor=p.extracted_by,
+                 **({"model": model} if p.extracted_by != "code" else {}))
         ctx.emit("source.progress", source_id=self.sub.id, read=read, total=total, current=current)
 
     async def read_sheet(self, ctx: Ctx) -> str:
@@ -116,10 +117,11 @@ class SubmissionReader(Agent):
                 texts, method = pages(html_to_text(path.read_text(encoding="utf-8", errors="replace"))), "html"
             out["summary"] = f"{len(texts)} pages via {method}"
         ctx.emit("source.opened", source_id=s.id, pages=len(texts), method=method)
-        if not gemini.enabled():
+        if not models.available("extract_submission"):
             self._check(ctx, "warn", "submission_needs_gemini", f"{s.filename} was not read",
-                        "PDFs and web pages are read by Gemini, which is not configured. Spreadsheets work without it.")
-            return "not read: Gemini is not configured"
+                        "PDFs and web pages are read by a language model, and none is configured for this job "
+                        "(extract_submission in config/models.json, with its key). Spreadsheets work without one.")
+            return "not read: no model configured"
         candidates = [(n, t) for n, t in enumerate(texts, start=1) if YEAR.search(t)]
         if len(candidates) > MAX_PAGES:
             ctx.log(f"{self.spec.name}: reading the first {MAX_PAGES} of {len(candidates)} pages that mention a year.")
@@ -134,21 +136,23 @@ class SubmissionReader(Agent):
                 break
             async with ctx.tool("gemini_extract_page", {"page": n}, actor="gemini") as out:
                 left = READER_BUDGET_S - (time.monotonic() - started)
-                try:  # one call with all its retries must still fit in what is left of the budget
-                    res = await asyncio.wait_for(gemini.generate_json(FREEFORM_SYSTEM, text[:12000], FREEFORM_SCHEMA),
-                                                 timeout=max(5.0, left))
-                except TimeoutError:
+                try:  # one call with all its retries and fallbacks must still fit in what is left of the budget
+                    res = await asyncio.wait_for(models.call("extract_submission", text[:12000], FREEFORM_SCHEMA,
+                                                             system=FREEFORM_SYSTEM), timeout=max(5.0, left))
+                except (TimeoutError, models.RoleExhausted):
                     res = None
-                out["summary"] = f"{len(res['data'].get('projects', []))} projects" if res else "Gemini call failed"
+                out["summary"] = f"{len(res.value.get('projects', []))} projects" if res else "no model could read it"
+                out["model"] = res.model if res else None
             if not res:
                 failures += 1
                 if failures >= 3 and done == 0:
                     self._check(ctx, "warn", "submission_needs_gemini", f"{s.filename} was not read",
-                                "Gemini failed three times in a row (quota or outage). Try again later.")
-                    return "not read: Gemini unavailable"
+                                "Every model for this job failed three pages in a row (key, quota or outage). "
+                                "Try again later.")
+                    return "not read: no model available"
                 continue
-            ctx.tokens += res.get("input_tokens", 0) + res.get("output_tokens", 0)
-            for k, item in enumerate(res["data"].get("projects", [])):
+            ctx.tokens += res.tokens
+            for k, item in enumerate(res.value.get("projects", [])):
                 p = self._freeform_project(item, n, k)
                 if p is None:
                     skipped += 1
@@ -156,7 +160,8 @@ class SubmissionReader(Agent):
                 if p.id in ctx.board.projects:  # the same ID listed twice: keep both
                     p.id = f"{p.id}-{done + 1}"
                 done += 1
-                self._add(ctx, p, done, len(candidates), f"p.{n}: {p.name}")
+                p.extracted_by = res.provider
+                self._add(ctx, p, done, len(candidates), f"p.{n}: {p.name}", res.model)
             await ctx.pace(0.05)
         if skipped:
             self._check(ctx, "info", "submitted_rows_skipped", f"{_n(skipped, 'listed item')} skipped in {s.filename}",
@@ -174,7 +179,7 @@ class SubmissionReader(Agent):
         ref = str(item.get("project_id") or "").strip()
         pid = f"{s.id}-p{page}-{re.sub(r'[^A-Za-z0-9]+', '', ref)[:16] or k + 1}"
         ends = [Endpoint(name=str(e).strip()) for e in (item.get("endpoint_a"), item.get("endpoint_b")) if e and str(e).strip()]
-        return Project(id=pid, utility=s.owner_key, sponsor=s.owner, name=name[:200],
+        return Project(id=pid, utility=s.owner_key, source_id=s.id, sponsor=s.owner, name=name[:200],
                        description=str(item.get("description") or "")[:1500], status=str(item.get("status") or "")[:60],
                        in_service_date=isd, in_service_raw=str(item.get("in_service")), date_precision=precision,
                        build_start=start, endpoints=ends, state=s.state, source_file=s.url or s.filename, source_page=page,

@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "Glenwood Springs - Porterdale Primary 230kV Line Switch Repl",
+   "description": "Replace the 600A line switch at Porterdale Primary on the Glenwood Springs - Porterdale Primary 230kV Line with 1200A switch."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "in_substation_equipment",
+    "confidence": 0.93,
+    "probabilities": {
+     "rebuild": 0.05,
+     "other": 0.0,
+     "new_line": 0.0,
+     "substation_construction": 0.0,
+     "in_substation_equipment": 0.95
+    }
+   }
+  },
+  "cost_usd": 2.1672000000000002e-05,
+  "latency_ms": 240,
+  "model": "jev-latest"
+ }
+}

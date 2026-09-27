@@ -1,0 +1,167 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "wassamassaw",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341042064,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 325221,
+   "lat": "33.1780397",
+   "lon": "-80.1621213",
+   "category": "natural",
+   "type": "wetland",
+   "place_rank": 22,
+   "importance": 0.10669536659800104,
+   "addresstype": "wetland",
+   "name": "Wassamassaw Swamp",
+   "display_name": "Wassamassaw Swamp, Berkeley County, South Carolina, United States",
+   "address": {
+    "wetland": "Wassamassaw Swamp",
+    "county": "Berkeley County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.1476538",
+    "33.2084106",
+    "-80.1763255",
+    "-80.1292196"
+   ]
+  },
+  {
+   "place_id": 355556407,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 368395354,
+   "lat": "33.1768339",
+   "lon": "-80.1642558",
+   "category": "natural",
+   "type": "wetland",
+   "place_rank": 22,
+   "importance": 0.10669536659800104,
+   "addresstype": "wetland",
+   "name": "Wassamassaw Swamp",
+   "display_name": "Wassamassaw Swamp, Berkeley County, South Carolina, United States",
+   "address": {
+    "wetland": "Wassamassaw Swamp",
+    "county": "Berkeley County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.1767839",
+    "33.1768839",
+    "-80.1643058",
+    "-80.1642058"
+   ]
+  },
+  {
+   "place_id": 341038486,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1408271311,
+   "lat": "33.1501081",
+   "lon": "-80.1618649",
+   "category": "landuse",
+   "type": "cemetery",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "cemetery",
+   "name": "Wassamassaw Cemetery",
+   "display_name": "Wassamassaw Cemetery, Long Ridge, Berkeley County, South Carolina, United States",
+   "address": {
+    "cemetery": "Wassamassaw Cemetery",
+    "hamlet": "Long Ridge",
+    "county": "Berkeley County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.1495293",
+    "33.1506589",
+    "-80.1626404",
+    "-80.1610257"
+   ]
+  },
+  {
+   "place_id": 342647926,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12361705,
+   "lat": "33.0358416",
+   "lon": "-80.1851759",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053387042801556386,
+   "addresstype": "road",
+   "name": "Wassamassaw Road",
+   "display_name": "Wassamassaw Road, Robynwyn, Summerville, Dorchester County, South Carolina, 29483, United States",
+   "address": {
+    "road": "Wassamassaw Road",
+    "hamlet": "Robynwyn",
+    "city": "Summerville",
+    "county": "Dorchester County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29483",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.0348948",
+    "33.0367884",
+    "-80.1865240",
+    "-80.1838279"
+   ]
+  },
+  {
+   "place_id": 341232943,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12395354,
+   "lat": "33.4708212",
+   "lon": "-79.1386169",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336969176775765,
+   "addresstype": "road",
+   "name": "Wassamassaw Trail",
+   "display_name": "Wassamassaw Trail, Kings Creek, Waverly Mills, Georgetown County, South Carolina, 29585, United States",
+   "address": {
+    "road": "Wassamassaw Trail",
+    "neighbourhood": "Kings Creek",
+    "hamlet": "Waverly Mills",
+    "county": "Georgetown County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29585",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4703710",
+    "33.4710240",
+    "-79.1405870",
+    "-79.1366100"
+   ]
+  }
+ ]
+}

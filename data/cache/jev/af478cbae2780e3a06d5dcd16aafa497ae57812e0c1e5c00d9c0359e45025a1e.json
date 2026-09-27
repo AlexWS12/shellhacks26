@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Aultman Road",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Aultman Road-Perry 115kV Line Rebuild",
+   "description": "Rebuild the PPG J2 - Langston Road line section of the Aultman Road - Perry 115kV line from 100C 336 ACSR Linnet conductor to 200C 1351 ACSS conductor.",
+   "zone": "214",
+   "candidate": {
+    "name": "Altman Road Substation",
+    "operator": "Flint Energies",
+    "voltage": "115000;12000",
+    "lat": 32.56338,
+    "lon": -83.7399508,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.17
+   }
+  },
+  "cost_usd": 2.3436000000000004e-05,
+  "latency_ms": 341,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "Union Pier 115-13.8 kV Sub: Tap",
+   "description": "Installing a 115 kV Tap to feed the future Union Pier 115 kV Sub."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "other",
+    "confidence": 0.22,
+    "probabilities": {
+     "in_substation_equipment": 0.08,
+     "substation_construction": 0.29,
+     "new_line": 0.17,
+     "other": 0.38,
+     "rebuild": 0.08
+    }
+   }
+  },
+  "cost_usd": 2.0790000000000003e-05,
+  "latency_ms": 369,
+  "model": "jev-latest"
+ }
+}

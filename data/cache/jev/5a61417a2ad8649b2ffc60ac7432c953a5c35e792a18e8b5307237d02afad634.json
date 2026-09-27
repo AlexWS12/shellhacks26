@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Crooked Creek",
+   "project": "Grid - Bremen - Crooked Creek (Apc) 115 kV Project",
+   "description": "Rebuild from Bremen to Indian Creek Road, on the Bremen - Crooked Creek 115kV line (14 miles), using 795 ACSR conductor at 100C.",
+   "candidate_town": "Crooked Creek, GA",
+   "county": "Putnam County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.78
+   }
+  },
+  "cost_usd": 1.9152000000000002e-05,
+  "latency_ms": 339,
+  "model": "jev-latest"
+ }
+}

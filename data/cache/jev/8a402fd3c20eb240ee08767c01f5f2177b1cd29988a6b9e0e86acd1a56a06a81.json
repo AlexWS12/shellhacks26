@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Barnesville",
+   "project": "GTC: Barnesville - South Griffin 230kV Project",
+   "description": "Construct 19 miles of 230kV circuit, on existing ROW, using200C 1351 ACSS conductor from South Griffin 230/115kV substation to the Barnesville 230/69kV substation.",
+   "candidate_town": "Barnesville, GA",
+   "county": "Lamar County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  },
+  "cost_usd": 2.0034e-05,
+  "latency_ms": 196,
+  "model": "jev-latest"
+ }
+}

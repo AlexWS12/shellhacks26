@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "West Valdosta",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Pine Grove Primary - West Valdosta 115 kV Reconductor",
+   "description": "Rebuild 3.7 miles of 100C 4/0 ACSR conductor with 200C 795 ACSS Drake on the Bemis - Pine Grove Primary section of the Pine Grove Primary - West Valdosta 115kV line.",
+   "zone": "216",
+   "candidate": {
+    "name": "East Valdosta Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000;12000",
+    "lat": 30.846057,
+    "lon": -83.2543359
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.12
+   }
+  },
+  "cost_usd": 2.2974000000000004e-05,
+  "latency_ms": 194,
+  "model": "jev-latest"
+ }
+}

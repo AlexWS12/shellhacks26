@@ -44,9 +44,10 @@ function status(tab: RailTab): { meta: string; tone: Tone; dot: Tone | null } {
       return { meta: `${passed}/${total}`, tone: passed === total ? "good" : "bad", dot: passed === total ? null : "bad" };
     }
     case "issues": {
-      const n = run.checks.length;
+      const n = run.checks.length + run.modelIssues.length; // filing checks and model problems share the panel
       if (!n) return none;
-      return { meta: String(n), tone: "zone", dot: run.checks.some((c) => c.level === "error") ? "bad" : "zone" };
+      const bad = run.checks.some((c) => c.level === "error") || run.modelIssues.some((i) => i.type !== "model.fallback_used");
+      return { meta: String(n), tone: "zone", dot: bad ? "bad" : "zone" };
     }
     case "activity":
       return run.phase === "running" ? { meta: "live", tone: "bad", dot: null } : none;

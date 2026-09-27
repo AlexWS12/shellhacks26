@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "South Bainbridge - Sinai (Fpl) 115kV Line Reconductor",
+   "description": "Rebuild the Four Mile tap - Recovery - Sinai (FPL) segment of the Sinai (FPL) - South Bainbridge 115kV line from 100C 336.4 ACSR to 200C 1351 ACSS. 9.8 miles in FPL and 13.75 miles in GPC At Recovery (GTC): Replace 100C 336.4 ACSR string bus with higher rating and jumpers with (1) 1590 AAC At Sinai (FPL): Replace 100C 336.4 ACSR string bus with higher rating"
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "rebuild",
+    "confidence": 1.0,
+    "probabilities": {
+     "substation_construction": 0.0,
+     "new_line": 0.0,
+     "rebuild": 1.0,
+     "in_substation_equipment": 0.0,
+     "other": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.6292000000000005e-05,
+  "latency_ms": 226,
+  "model": "jev-latest"
+ }
+}

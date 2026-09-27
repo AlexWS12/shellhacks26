@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Hartwell Dam",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Hartwell Dam - Hartwell Energy 230kV Series Reactors",
+   "description": "GTC: Replace the 1600A series reactors on the Hartwell Dam - Hartwell Energy 230kV line with 3000A.",
+   "zone": "212",
+   "candidate": {
+    "name": "Hartwell Lake Dam Substation",
+    "operator": "Duke Energy",
+    "voltage": "230000",
+    "lat": 34.3552126,
+    "lon": -82.8206727
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.51
+   }
+  },
+  "cost_usd": 2.1756000000000003e-05,
+  "latency_ms": 322,
+  "model": "jev-latest"
+ }
+}

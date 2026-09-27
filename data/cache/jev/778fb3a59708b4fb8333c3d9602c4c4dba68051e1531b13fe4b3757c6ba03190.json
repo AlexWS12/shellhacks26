@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Westover",
+   "filing_state": "GA",
+   "project": "MEAG: Slappey Drive - Westover 115kV Line Rebuild",
+   "description": "Rebuild 2.92 miles of 100C sagged 477 ACSR Hawk conductor from Slappey Drive to Albany #9 with 1351 ACSR.",
+   "zone": "216",
+   "candidate": {
+    "name": "Westover",
+    "kind": "place=hamlet",
+    "county": "Dougherty County",
+    "state": "GA",
+    "lat": 31.58934,
+    "lon": -84.2112979
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.67
+   }
+  },
+  "cost_usd": 2.1588000000000004e-05,
+  "latency_ms": 262,
+  "model": "jev-latest"
+ }
+}

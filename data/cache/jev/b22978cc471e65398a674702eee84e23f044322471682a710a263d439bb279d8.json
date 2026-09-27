@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "project": "Edenwood Sub: #1 & #2 230-115kV Autobanks, Replace with 336MVA",
+   "description": "Replace Autobank 1 and 2 at Edenwood Substation.",
+   "need": "This project is required to address end of life and maintenance issues on these transformers."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  },
+  "cost_usd": 1.7472e-05,
+  "latency_ms": 707,
+  "model": "jev-latest"
+ }
+}

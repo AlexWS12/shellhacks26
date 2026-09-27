@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Harleyville",
+   "utility": "SCPSA",
+   "filing_state": "SC",
+   "project": "Indian Field 230-115 kV Substation",
+   "description": "Fold in the existing Harleyville \u2013 St. George 115 kV line into the new Indian Field 230-115 kV substation. The existing Byrds Tap 115 kV line will be terminated on the 115 kV bus #1 at the new Indian Field 230-115kV substation. A new 115 kV transmission line will be built as a 230/115 kV double circuit line for future 230 kV projects from St. George 115 kV Switching Station to the new Indian Field",
+   "zone": null,
+   "candidate": {
+    "name": "Harleyville Substation",
+    "operator": "",
+    "voltage": "46000",
+    "lat": 33.2099069,
+    "lon": -80.4511658,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.19
+   }
+  },
+  "cost_usd": 2.6166000000000003e-05,
+  "model": "jev-latest",
+  "latency_ms": 168
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Crossgate",
+   "filing_state": "GA",
+   "project": "SAV: Rice Hope New Auto Transformer",
+   "description": "Install a new 230/115kV 400MVA auto transformer at Rice Hope and loop in the Crossgate - McIntosh 230kV line.",
+   "zone": "219",
+   "candidate": {
+    "name": "Crossgate",
+    "kind": "place=neighbourhood",
+    "county": "Muscogee County",
+    "state": "GA",
+    "lat": 32.4687535,
+    "lon": -84.8946525
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.67
+   }
+  },
+  "cost_usd": 2.1336000000000004e-05,
+  "latency_ms": 178,
+  "model": "jev-latest"
+ }
+}

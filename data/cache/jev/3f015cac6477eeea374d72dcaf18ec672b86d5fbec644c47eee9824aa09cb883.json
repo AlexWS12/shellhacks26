@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Jack Primus",
+   "utility": "DESC",
+   "filing_state": "SC",
+   "project": "Jack Primus 115 kV Tap: Construct",
+   "description": "Construct a 115 kV tap from Jack Primus to Clements Ferry. Approximately 2.2 miles. Construct terminals at Jack Primus.",
+   "zone": null,
+   "candidate": {
+    "name": "Jack Primus Substation",
+    "operator": "South Carolina Gas & Electric",
+    "voltage": "115000;23000",
+    "lat": 32.9193841,
+    "lon": -79.9044954,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.88
+   }
+  },
+  "cost_usd": 2.1966000000000003e-05,
+  "latency_ms": 252,
+  "model": "jev-latest"
+ }
+}

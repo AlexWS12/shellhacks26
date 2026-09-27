@@ -6,7 +6,7 @@ from typing import Any
 
 from app import config
 from app.core.models import Overlap, Project
-from app.core.owners import owner_name
+from app.core.owners import book, owner_name
 
 FIELD = {"new_line", "rebuild", "substation_construction"}
 
@@ -52,14 +52,43 @@ def cost_block(a: Project, b: Project, o: Overlap) -> dict[str, Any]:
     return block
 
 
+def is_core(o: Overlap) -> bool:
+    # A Dominion-Georgia pair: the pair the write-ups were built around.
+    return o.project_a.startswith("DESC-") and o.project_b.startswith("GA-")
+
+
+def side_keys(o: Overlap) -> tuple[str, str]:
+    # The fact sheet's keys for the two projects. Dominion-Georgia pairs keep their original keys, so their prompts
+    # (and so offline reruns from the model cache) are unchanged; any other pair says "project_a"/"project_b".
+    return ("dominion", "georgia") if is_core(o) else ("project_a", "project_b")
+
+
+def utility_label(p: Project) -> str:
+    if p.id.startswith("DESC-"):
+        return "Dominion Energy South Carolina"
+    if p.id.startswith("GA-"):
+        return f"Georgia ({p.sponsor})"
+    b = book()
+    s = b.of(p)
+    return b.owner_name(p) if s and s.sponsors else b.display_name(p)  # "Santee Cooper", not its code
+
+
 def fact_sheet(a: Project, b: Project, o: Overlap, shared: dict[str, Any]) -> dict[str, Any]:
     def side(p: Project) -> dict[str, Any]:
-        return {"utility": "Dominion Energy South Carolina" if p.utility == "DESC" else f"Georgia ({p.sponsor})",
+        return {"utility": utility_label(p),
                 "name": p.name, "type": p.project_type, "status": p.status, "in_service": p.in_service_date,
                 "build_start": p.build_start, "description": p.description[:700], "need": p.need_text[:300],
                 "cost": p.cost_total, "source": f"{p.source_file} p.{p.source_page} ({p.source_ref})"}
+    ka, kb = side_keys(o)
     return {"distance_mi": o.distance_mi, "time_gap_days": o.time_gap_days, "windows_overlap": o.windows_overlap,
-            "location_confidence": o.pair_confidence, "shared": shared, "dominion": side(a), "georgia": side(b)}
+            "location_confidence": o.pair_confidence, "shared": shared, ka: side(a), kb: side(b)}
+
+
+def sides(facts: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+    # (project_a's side, project_b's side) of a fact sheet, whichever keys it uses.
+    if "dominion" in facts:
+        return facts["dominion"], facts["georgia"]
+    return facts["project_a"], facts["project_b"]
 
 
 def numbers_in(text: str) -> set[str]:

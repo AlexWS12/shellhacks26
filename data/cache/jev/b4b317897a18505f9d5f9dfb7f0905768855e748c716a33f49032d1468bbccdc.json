@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Grady",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Grady - Morrow (White) 115kV Rebuild",
+   "description": "Replace 0.72 miles of conductor from Moreland Way to Morrow including the bus and jumper at Moreland Way with 1351.5 Martin/ACSS 54/19 conductor.",
+   "zone": "206",
+   "candidate": {
+    "name": "Gray Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000",
+    "lat": 32.9953281,
+    "lon": -83.5635642
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.28
+   }
+  },
+  "cost_usd": 2.1756000000000003e-05,
+  "latency_ms": 210,
+  "model": "jev-latest"
+ }
+}

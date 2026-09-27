@@ -5,6 +5,8 @@ import logging
 import time
 from collections.abc import Awaitable, Callable
 
+from app.clients import models
+from app.clients.errors import describe
 from app.config import env_float
 from app.runtime.agent import Agent, Ctx
 from app.runtime.run import Run
@@ -32,7 +34,11 @@ async def execute(run: Run, agents: list[Agent], sources: list[dict], on_done: C
     if topological_order(agents) is None:
         raise ValueError("agent graph has a cycle")
     started = time.perf_counter()
-    run.emit("run.started", mode=run.mode, templates=run.templates, research=run.research,
+    current = models.SESSION.get()
+    if current is None or current.emit_target != run.emit:  # run_live starts it earlier so the watchdog shares it
+        models.start(run.emit)  # one circuit breaker and one role config for the whole run
+    run.emit("run.started", mode=run.mode, purpose=run.purpose, templates=run.templates, research=run.research,
+             preflight_skipped=[{k: p[k] for k in ("role", "label", "reason")} for p in run.preflight_skipped],
              agents=[a.spec.public() for a in agents], sources=sources)
     finished = {a.spec.id: asyncio.Event() for a in agents}
     summaries: dict[str, str] = {}
@@ -40,6 +46,7 @@ async def execute(run: Run, agents: list[Agent], sources: list[dict], on_done: C
 
     async def node(agent: Agent) -> None:
         spec = agent.spec
+        models.AGENT.set(spec.id)  # model events from this task are tagged with the agent
         try:
             await asyncio.gather(*(finished[d].wait() for d in spec.depends_on))
             blocked = [d for d in spec.depends_on if d not in summaries]
@@ -59,7 +66,7 @@ async def execute(run: Run, agents: list[Agent], sources: list[dict], on_done: C
             run.emit("agent.error", agent_id=spec.id, message=f"Timed out after {AGENT_TIMEOUT_S:.0f} s")
         except Exception as e:
             log.exception("agent %s failed", spec.id)
-            run.emit("agent.error", agent_id=spec.id, message=f"{type(e).__name__}: {e}")
+            run.emit("agent.error", agent_id=spec.id, message=describe(e))
         finally:
             finished[spec.id].set()
 

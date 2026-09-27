@@ -9,8 +9,8 @@ function win(p: Project) {
   return { start: from ? d(from) : null, end: d(p.in_service_date), exact: Boolean(p.build_start) };
 }
 
-export default function Gantt({ a, b, labels = ["Dominion", "Georgia"], colors = ["var(--desc)", "var(--gpc)"] }:
-  { a: Project; b: Project; labels?: [string, string]; colors?: [string, string] }) {
+// labels and colors: each project's source (the caller passes ownerShort and colorOf).
+export default function Gantt({ a, b, labels, colors }: { a: Project; b: Project; labels: [string, string]; colors: [string, string] }) {
   const wa = win(a), wb = win(b);
   const all = [wa.start, wa.end, wb.start, wb.end].filter(Boolean) as Date[];
   const y0 = Math.min(...all.map((x) => x.getFullYear()));

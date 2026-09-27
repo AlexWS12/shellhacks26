@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "East Villa Rica",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "CC - East Villa Rica Area Switching Station (CC Improvement)",
+   "description": "Build a 7 rung breaker and a half switching station along the right of way of the (3) 230kV lines about 2.5 miles East of Villa Rica to service recently signed customers in the area. All three lines will terminate into this station.",
+   "zone": "201",
+   "candidate": {
+    "name": "West Villa Rica Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 33.7417954,
+    "lon": -84.9595976
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  },
+  "cost_usd": 2.2176000000000002e-05,
+  "latency_ms": 671,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Varnville",
+   "utility": "SCPSA",
+   "filing_state": "SC",
+   "project": "Varnville - Indian Field 230 kV line",
+   "description": "Construct a 230 kV transmission line (approximately 38 miles) from the Varnville 230-115 kV Substation to the proposed Indian Field 230-115 kV Substation. Rebuild the existing Bells Crossroads \u2013 Varnville 115 kV Line for 230/115 kV double- circuit on the existing right-of-way. Rebuild the St. George \u2013 Bells Crossroads (via Smoaks) 115 kV Line #2 for 230/115 kV double-circuit on the existing right-",
+   "zone": null,
+   "candidate": {
+    "name": "Danville Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 32.5988447,
+    "lon": -83.2592878,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.02
+   }
+  },
+  "cost_usd": 2.6418000000000004e-05,
+  "model": "jev-latest",
+  "latency_ms": 256
+ }
+}

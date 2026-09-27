@@ -1,0 +1,1148 @@
+South Carolina Regional Transmission Planning
+
+            Stakeholder Meeting
+
+                    Teams
+
+                 March 5, 2025
+
+
+
+                                            1
+   Purpose and Goals for Today’s Meeting
+• Review and Discuss Key Assumptions and Data for
+  the Next Planning Cycle
+• Review and Discuss Major Transmission Expansion
+  Plans
+• Ad Hoc Study in the Savannah Area
+• Review Schedule for completing Transmission
+  Planning Studies
+
+
+                                                    2
+Key Assumptions and Data for the Next
+          Planning Cycle
+
+
+        DESC – Alex Morrison
+
+
+                                        3
+         Modeling Assumptions and Data
+
+Dispersed Substation Load Forecast
+
+ •   Summer/Winter Peak, Off-Peak and Seasonal Load Levels
+
+ •   Resource Planning provides 10 Year system load forecasts
+
+ •   Transmission Planning creates dispersed substation load
+     forecasts
+
+
+
+
+                                                                4
+             Load Forecast Process
+                 Resource Planning Input
+•     Develop 10-year projected forecast based on:
+    −  10-year historical load summer and winter loads
+    −  Load factors by customer class
+    −  Considers weather, personal income, population growth,
+       economic conditions, load management, energy efficiency, etc
+    −  Applies regression analysis to historical data to develop
+       models
+    −  Applies forecasted growth rates to develop future projections
+
+                                                                       5
+                            Load Forecast
+5600
+5400
+5200
+5000
+4800
+4600
+4400
+4200
+4000    2014
+        2015
+        2016
+        2017
+        2018
+        2019
+        2020
+        2021
+        2022
+        2023
+        2024
+        2025
+        2026
+        2027
+        2028
+        2029
+        2030
+        2031
+        2032
+        2033
+        2034
+   Historical Summer Peak    Historical Winter Peak   Projected Summer Peak   Projected Winter Peak
+
+
+
+
+                                                                                                      6
+           Load Forecast Process
+            Transmission Planning Input
+•   Obtain summer and winter snapshot meter data from most
+    recent seasons and adjust for load switching
+•   Develop 10-year projected forecast based on:
+  o   10-year historical loading
+  o   Feedback from Distribution Planning, Local Managers, Large
+      Industrial Group and Transmission Services Manager
+•   Wholesale loads are modeled as provided by the customer
+•   Dispersed forecasted load points are integrated into corporate
+    load forecast
+
+                                                                     7
+        Modeling Assumptions and Data
+
+
+Generation
+ • Annual generator ratings used
+ • Input from Generation Expansion Plan – Reductions/Additions
+ • Input from Generation Maintenance Schedule
+ • Generators dispatched economically
+ • Merchant Generators included
+
+
+
+
+                                                                 8
+                 Existing Generation
+                                                                       Neal Shoals
+                                                                         Hydro
+                                                                         4 MW
+
+
+                                 Parr                                           Fairfield
+                               Turbines                                         576 MW
+                                60 MW
+
+
+                                 Parr
+                                Hydro                                       Summer
+                                8 MW                                        970 MW
+                                                                           (647 MW)
+
+                                      McMeekin
+                                       250 MW
+                                                                                            Wateree
+                                                 Saluda Hydro           CEC                 684 MW
+                                                    190 MW             522 MW
+
+
+                                                              Coit
+             Stevens
+                                                            Turbines
+              Creek
+                                                             26 MW
+             10 MW
+                                                                                                      Williams
+                                                                                                      595 MW
+                Urquhart
+DESC Owned      553 MW
+                                                             Cope
+                                                            415 MW
+                                                                                                                 Bushy
+                                                                                                                  Park
+                                                                                                                 42 MW
+Generation                 Urquhart
+                           Turbines
+                            87 MW
+
+5,637 MW
+                                                                                                                 Hagood
+                                                   Jasper                                                        Turbines
+                                                   852 MW                                                        116 MW
+                                      Merchant Generation
+                                             Beulah
+                                             75 MW
+                                                                                       Eastover
+                                                                                        74 MW
+
+
+                                                                                                   Midlands
+                                                                                                    72 MW
+
+
+                                                                                                      Lone Star
+                                                                                                       66 MW
+                                                                                                                       Cameron
+                        Shaw Creek                                                                                       Solar
+                          76 MW                                                                                         20 MW
+
+
+                              Peony Solar                                                                     Palmetto Plains
+                                39 MW                                                                             75 MW
+
+
+                                                                                                                  Huntley
+                                      Blackville                                                                  75 MW
+                                       Solar II
+                                       20 MW
+                                                                                                                      TWE Bowman
+                                                                                                                        75 MW
+Additional Dispersed Solar Generation
+▪ 921 MW Transmission
+   • 84 MW Battery
+                                                       Lily
+                                                      70 MW
+
+
+
+▪ 193 MW Distribution                                    Hampton
+                                                          Solar II
+                                                          20 MW
+
+
+                                                              Estill Solar I
+                                                                20 MW
+
+
+                                                                                                  Seabrook
+                                                                       Moffett Solar               73 MW
+                                                                         71 MW
+                   Future Generation Additions     2022
+
+
+
+                          Catalina
+                         74.97 MW
+
+
+
+
+                                                          DESCSQ 1139
+                                                            100 MW
+
+
+
+
+Dispersed Solar
+249.97 MW Transmission
+0 MW Distribution
+                                     DESCSQ 1151
+                                        75 MW
+                 Interconnection Transitional Cluster
+
+
+•   Total new generation remaining in cluster: 660 MW
+•   Facilities Studies completed
+     •   PV Only: 225 MW
+     •   Hybrid: 100 MW PV & BESS
+     •   BESS Only: 0 MW
+     •   Gas Uprates: 235 MW
+•   CEC and Bushy Park gas uprates entered commercial operation
+•   Parr gas uprate expected COD in 2025. Network upgrade required for uprate.
+                   Interconnection DISIS 2023
+
+•   Total new generation remaining in cluster: 1,830 MW
+•   Phase 3 restudy completed
+    •   PV Only: 382 MW
+    •   Hybrid: 554 MW PV & BESS
+    •   BESS Only: 698 MW
+    •   Gas & Hydro Uprates: 196 MW
+
+
+
+
+                                                          13
+                   Interconnection DISIS 2024
+
+•   Total new generation remaining in cluster: 2,302 MW
+•   Phase 1 study in progress
+    •   PV Only: 714 MW
+    •   Hybrid: 575 MW PV & BESS
+    •   BESS Only: 0 MW
+    •   Gas: 1013 MW
+
+
+
+
+                                                          14
+       Modeling Assumptions and Data
+
+Transmission Network
+ • Input from Transmission Plan
+ • Neighboring Transmission Systems Modeled
+
+
+
+
+                                              15
+Modeling Assumptions
+      and Data
+Planned Transmission
+      Facilities
+
+
+
+
+                       16
+        Modeling Assumptions and Data
+System Interchange
+ •  Firm scheduled transfers included
+ •  Coordinated with Neighbors
+
+
+
+
+                                        17
+       Santee Cooper
+Transmission Planning Models
+  Key Assumptions and Data
+
+
+         Emily Morgan
+
+
+                               18
+Major Model Components
+
+• Load Demand Forecast
+
+• Transmission Network
+
+• Generation Resources
+
+• Actual System Operations
+
+                             19
+Load Demand Forecast
+
+• 10-year projected demand forecast
+   – Wholesale customers load forecast (from Central)
+   – Industrial and municipality customer contracts
+   – Santee Cooper Distribution load forecast
+   – Transmission Planning produces dispersed substation load
+     based on power factors derived from most recent meter data
+• System Peak and off-peak load conditions
+
+
+                                                                  20
+Santee Cooper 10-Year Actual & Load Forecast
+
+
+
+
+                                               21
+                Transmission Network
+
+Models include:
+• Existing transmission system and committed projects
+• Neighboring transmission system representations
+• All facilities assumed to be available unless notified
+  otherwise
+• Normal operating status (in-service or out-of-service) of
+  facilities is represented
+
+
+                                                              22
+                Transmission Network
+
+• Uniform rating methodology is applied to transmission
+  facilities
+• Base case models are updated annually prior to annual
+  transmission assessment
+• Study models may be updated as needed prior to any study
+• Neighboring and Regional system network from the latest
+  MMWG models are used
+
+
+                                                             23
+    Committed Transmission Facilities
+                              Project Title                                   In-service Date
+Conway 230 kV Switching Station                                                  12/1/2025
+Marion-Conway 230 kV Line                                                        12/1/2025
+Upgrade Purrysburg 230-115 kV Transformer                                        12/1/2025
+Carolina Forest 230-115 kV Substation: Add Transformer                           12/1/2025
+Conway - Perry Road 230 kV Line                                                  12/1/2025
+Install 2nd Wassamassaw xfmr at Wassamassaw                                      9/1/2026
+Replace Bluffton-Purrysburg 230 kV limiting Elements                             11/1/2026
+Indian Field-Wassamassaw 230 kV Line                                             11/1/2026
+Indian Field 230-115 kV Substation                                               12/1/2026
+Upgrade Batesburg 230-115 kV transformer                                         12/1/2026
+Varnville to Nixville tap 69 kV Rebuild to 115 kV                                12/1/2026
+Cross - Wassamassaw 230 kV #2 Line                                               6/1/2027
+Purrysburg Station Improvements                                                  6/1/2027
+Varnville 230-115 kV substation                                                  9/30/2028
+Varnville - Indian Field 230 kV line                                             11/1/2028
+Marion - Red Bluff 230 kV line                                                   11/1/2028
+Rebuild Kingstree-Hemingway 115 kV Line as a Double Circuit 230/115 kV Line      6/1/2029
+
+
+
+
+                                                                                                24
+                            Generation Resources
+                          Existing/Committed Generation
+Cross Units 1- 4                             J.S. Rainey Combined Cycle PB1
+Winyah Units 1-4 (retire end of 2030)        J.S. Rainey 2A, 2B CTs
+Hilton Head Turbines 1-3                     J.S. Rainey 3-5 CTs
+Myrtle Beach Turbines 1-5                    Spillway Hydro
+Jefferies Hydro 1, 2, 3, 4, 6                St. Stephen Hydro 1-3
+Allendale (Merchant)                         V.C. Summer #1 (shared output with DESC)
+Cherokee Combined Cycle                      Dorchester (Merchant)
+Centerfield Solar (Merchant)                 Domtar (Merchant)
+Allora Solar (Merchant)                      Gunsight Solar (Merchant)
+Lambert I and II Solar (Merchant ISD 2025)   Landrace Solar (Merchant)
+
+
+
+
+                                                                                        25
+         CHEROKEE
+         GAS TURBINES                              Existing Generation
+                        VC SUMMER
+                        NUCLEAR
+
+
+
+
+RAINEY                                                                          MYRTLE BEACH
+                                                                                Gas Turbines
+GAS TURBINES
+
+
+
+                                             ST STEPHEN
+                                             HYDRO
+                                    CROSS
+                                    COAL
+
+
+
+                                           JEFFERIES
+                                           HYDRO
+                                                                         WINYAH
+                                                                         COAL
+
+
+
+
+                                       HILTON HEAD    date-unit no-pres no-26
+                                       GAS TURBINES                                    26
+                                                                                   Merchant/Future
+                                                                                       Generation
+
+                                                                    Centerfield
+                                                                    Solar
+                                                                                  Domtar
+                                                                                  Biomass
+
+                                      Allora   Gunsight
+                                      Solar    Solar
+
+
+
+
+                                                                                                                Landrace Solar
+
+
+
+
+                                                                                        Lambert Solar
+
+Solar Generation                                          Dorchester
+                                                          Biomass
+Operating: 280 MW                Allendale
+                                 Biomass
+Under Construction: 200 MW
+
+Suspended projects are not included
+in above total
+                                                                                            date-unit no-pres no-27
+                                                                                                                                 27
+             Resources Assumptions and Data
+• Generation data is verified with Generation Department
+
+• Seasonal models account for unit maintenance outages, known at the time, based
+  on planned maintenance schedules
+
+• Confirmed firm transmission service reservations
+
+• SEPA allocations and other contracted purchases
+
+• Economic dispatch order is used for generator dispatch in base cases
+
+
+
+
+                                                                                   28
+Santee Cooper Planning Models
+    Data and Assumptions
+
+
+
+         Questions?
+
+
+
+
+                                29
+Current DESC Transmission
+     Expansion Plans
+
+
+       Alex Morrison
+
+                            30
+• The projects described in these presentations represent the
+  current transmission plans within the SCRTP footprint.
+• The expansion plan is continuously reviewed and may change
+  due to changes in key data and assumptions.
+• This presentation does not represent a commitment to build.
+
+
+
+
+                                                                31
+32
+DESC Planned Transmission Facilities
+
+
+
+
+                                       33
+       DESC
+     2025 - 2029
+Planned Transmission
+      Facilities
+Saluda Hydro – Bush River 115kV #1 and #2 Tie Lines Rebuild
+
+Project Description
+Rebuild the existing Saluda Hydro – Bush River #1 and #2 Tie Lines to SPDC 1272.
+
+Project Need
+This project is needed to improve system performance and to meet NERC TPL and internal DESC Planning Criteria for
+reliability.
+
+Project Status
+In Progress
+
+Planned In-Service Date
+December 2026
+
+
+
+
+                                                                                                                    35
+                   15.3 miles to be upgraded
+    Point of             to 1272 ACSR
+Ownership Change
+
+
+
+
+                             5.5 miles already
+                                 1272 ACSR
+
+
+
+                                      Saluda Hydro
+
+                                                     36
+Okatie – McIntosh 115kV Tie: Add Series Reactor
+
+Project Description
+Construct Deerfield Switching Station and Install a 9% series reactor on the Okatie – McIntosh 115kV Tie Line.
+
+Project Need
+This project is needed to improve system performance and to meet NERC TPL and internal DESC Planning Criteria for
+reliability.
+
+Project Status
+Planned
+
+Planned In-Service Date
+December 2028
+
+
+
+
+                                                                                                                    37
+Deerfield Switching Station
+  with 9% series reactor
+
+
+
+
+                              38
+Long Savannah 115 kV Tap: Construct
+
+Project Description
+Rebuild Church Creek - Dawson 230kV line from Long Savannah to Church Creek. Include Long Savannah 115kV Tap SPDC
+with Church Creek - Dawson 230kV from Long Savannah to tap point with Church Creek - Ravenel (BEC) 115kV Line and
+SPSC from Tap Point to Church Creek. Long Savannah will be fed from Church Creek – Ravenel (BEC) 115 kV.
+
+Project Need
+Load Growth.
+
+Project Status
+Planned
+
+Planned In-Service Date
+December 2028
+
+
+
+
+                                                                                                                    39
+Long Savannah 115-23kV sub
+
+
+
+
+                             Church Creek
+
+
+
+
+                                            40
+Church Creek – Dawson 230 kV: Rebuild from Long Savannah to Dawson
+
+Project Description
+The remaining section of Church Creek – Dawson 230 kV needs to be rebuilt with B1272 ACSR (approximately 13.5
+additional miles). The 8.5 mile section of Dawson – Faber Place 230 kV that is adjacent to Church Creek – Dawson 230 kV
+will also be rebuilt with B1272 ACSR.
+
+Project Need
+This project is needed to improve system performance and to meet NERC TPL and internal DESC Planning Criteria for
+reliability.
+
+Project Status
+Planned
+
+Planned In-Service Date
+December 2028
+
+
+
+
+                                                                                                                          41
+Dawson
+
+
+
+
+         Long Savannah 115-23kV sub
+
+
+
+
+                Church Creek
+
+                                  42
+Winnsboro West 230-115 kV Sub and Fold-in: Construct
+
+Project Description
+Construct new 230-115 kV substation and fold in the Parr – Winnsboro 115 kV #1 and VCS1 – Killian 230 kV lines into the
+new substation.
+
+Project Need
+This project is needed to uprate the Parr Gas Turbines GT1 and GT2 in accordance with the DESC Transitional Cluster
+System Impact Study.
+
+Project Status
+Planned
+
+Planned In-Service Date
+January 2028
+
+
+
+
+                                                                                                                          43
+Winnsboro West
+
+
+
+
+                 44
+Canadys-Ritter 115KV-Rebld SPDC 230/115KV 1272 (Approx 18 Miles)
+
+Project Description
+Rebuild Canadys-Ritter 115 kV line as SPDC with 1272 ACSR.
+
+Project Need
+This project is needed to improve system performance and to meet NERC TPL and internal DESC Planning Criteria for
+reliability.
+
+Project Status
+In Progress
+
+Planned In-Service Date
+June 2028
+
+
+
+
+                                                                                                                    45
+   Canadys
+
+
+
+
+Ritter
+
+
+
+
+             46
+Load growth Projects                                      Solar projects
+•   Scout 230kV Sub and Fold-in: Construct                •   Catalina Solar 115kV Switching Station: Construct
+•   Dawson 230kV Sub and Fold-in: Construct and           •   DESCSQ-1151 115kV Switching Station: Construct
+    Rebuild                                                    –    Upgrade 336 ACSR portion of DESCSQ #1151 -
+•   Union Pier 115-13.8 kV Sub: Tap                                 Yemassee 115 kV line to 1272 ACSR.
+
+•   Harleyville 115KV Transmission Tap – Construct (1.4
+    miles)
+•   Sherwood Tap: Construct Tap
+•   Wagener 115kV Tap: Construct Tap
+•   Coit – Gills Creek 115kV: Construct
+•   Cainhoy 115kV Tap: Construct
+•   Jack Primus 115kV Tap: Construct
+•   Coast Guard 115kV Tap: Construct
+•   Long Savannah 115 kV Tap: Construct
+•   Millrace 115 kV Tap: Construct
+Questions?
+
+
+
+
+             48
+          Santee Cooper
+Major Transmission Expansion Plans
+
+
+            Emily Morgan
+
+
+
+
+                                     49
+      Transmission Projects 2025-2029
+                              Project Title                                   In-service Date
+Conway 230 kV Switching Station                                                  12/1/2025
+Marion-Conway 230 kV Line                                                        12/1/2025
+Upgrade Purrysburg 230-115 kV Transformer                                        12/1/2025
+Carolina Forest 230-115 kV Substation: Add Transformer                           12/1/2025
+Conway - Perry Road 230 kV Line                                                  12/1/2025
+Install 2nd Wassamassaw xfmr at Wassamassaw                                      9/1/2026
+Replace Bluffton-Purrysburg 230 kV limiting Elements                             11/1/2026
+Indian Field-Wassamassaw 230 kV Line                                             11/1/2026
+Indian Field 230-115 kV Substation                                               12/1/2026
+Upgrade Batesburg 230-115 kV transformer                                         12/1/2026
+Varnville to Nixville tap 69 kV Rebuild to 115 kV                                12/1/2026
+Cross - Wassamassaw 230 kV #2 Line                                               6/1/2027
+Purrysburg Station Improvements                                                  6/1/2027
+Varnville 230-115 kV substation                                                  9/30/2028
+Varnville - Indian Field 230 kV line                                             11/1/2028
+Marion - Red Bluff 230 kV line                                                   11/1/2028
+Rebuild Kingstree-Hemingway 115 kV Line as a Double Circuit 230/115 kV Line      6/1/2029
+Conway 230 kV Switching Station and Marion-Conway 230 kV Line
+
+Project Description
+Fold the Hemingway-Red Bluff 230 kV Line into the new Conway 230 kV Switching Station. Construct a 230 kV line
+approximately 34 miles in length from the Marion 230-115-69kV Substation to the Conway 230 kV Switching Station.
+Rebuild the existing Marion-Conway 115 kV Line for 230/115 kV double-circuit using bundled 1272 ACSR for the 230 kV
+line and single 795 ACSR for the 115 kV line.
+
+Project Need
+Studies indicate thermal loading and voltage violations under contingency conditions in the Horry-Georgetown area
+that are mitigated by the additional support that the Marion-Conway 230 kV Line provides. The new Conway Switching
+Station will also enable additional 230 kV network expansion in the area.
+
+Project Status
+In Progress
+
+Planned In-Service Date
+December 2025
+
+
+
+
+                                                                                                                 51
+Conway 230 kV Switching Station
+Marion-Conway 230 kV line
+
+                     MARION
+
+
+
+
+                                  CONWAY
+Conway – Perry Road 230 kV Line
+
+Project Description
+Construct a new 230 kV line between the Conway 230 kV Switching Station and the Perry Road 230-115 kV Substation
+using bundled 1272 ACSR conductor.
+
+Project Need
+The Conway – Perry Rd 230 kV Line will alleviate thermal loading exceedances under contingency conditions shown in
+planning assessments. To provide the necessary loading relief and voltage support to its transmission system, this new
+230kV Line will upgrade existing infrastructure, improving reliability and meet the NERC Transmission Planning
+Reliability Standard. It will also provide additional network support to Horry County, a highly concentrated load area of
+the Santee Cooper system that includes Myrtle Beach that continues to see significant load growth.
+
+Project Status
+In Progress
+
+Planned In-Service Date
+December 2025
+
+
+
+
+                                                                                                                       53
+Conway – Perry Road 230 kV line
+
+
+
+
+              Build new 230 kV line
+              as a parallel circuit
+
+
+
+
+                   Rebuild as double
+                   circuit 230/115 kV
+Cross – Wassamassaw 230 kV #2 Line
+
+Project Description
+Construct a second 230 kV transmission line, approximately 18.3 miles in length, from the Cross 230 kV Switchyard to
+the Wassamassaw 230-115 kV Substation along existing transmission right-of-way and using pre-existing double-circuit
+structures where possible
+
+Project Need
+Adding a second Cross – Wassamassaw 230 kV line will mitigate thermal loading exceedances under contingency
+conditions. These exceedances violates planning criteria and does not meet NERC transmission planning reliability
+standard.
+
+Project Status
+Planned
+
+Planned In-Service Date
+June 2027
+
+
+
+
+                                                                                                                    55
+Cross – Wassamassaw 230 kV #2 line
+
+
+
+
+                                     56
+Indian Field 230-115 kV Substation
+
+Project Description
+Fold in the existing Harleyville – St. George 115 kV line into the new Indian Field 230-115 kV substation. The existing
+Byrds Tap 115 kV line will be terminated on the 115 kV bus #1 at the new Indian Field 230-115kV substation. A new 115
+kV transmission line will be built as a 230/115 kV double circuit line for future 230 kV projects from St. George 115 kV
+Switching Station to the new Indian Field 230-115kV substation.
+
+Project Need
+The new Indian Field substation will support the Southern Area load growth and enable additional 230 kV network
+expansion in the area.
+
+Project Status
+Planned
+
+Planned In-Service Date
+December 2026
+
+
+
+
+                                                                                                                     57
+Indian Field 230-115 kV Substation
+
+
+
+                           Indian Field 230-115
+                           kV Substation
+
+
+
+
+                New 115 kV line
+                from St. George to
+                Indian Field
+
+
+
+
+                                                  58
+Indian Field – Wassamassaw 230 kV Line
+
+Project Description
+Construct a 230 kV transmission line from the proposed Indian Field 230-115 kV Substation to the Wassamassaw 230-
+115 kV Substation. Design and construct with bundled 1272 ACSR conductor rated for 2,400 Ampere continuous
+operation at 230kV.
+
+Project Need
+This 230 kV line and the proposed Indian Field 230-115 kV substation together provides support for the load growth in
+the Southern area. In addition, with the proposed Indian Field – Varnville 230 kV line, this project establishes an
+additional network path required to support economic power transfer from the Southern interface toward the load
+center.
+
+Project Status
+Planned
+
+Planned In-Service Date
+November 2026
+
+
+
+
+                                                                                                                   59
+Indian Field – Wassamassaw 230 kV Line
+
+
+
+
+     Indian Field
+
+
+
+
+                                         60
+Rebuild Kingstree – Hemingway 115 kV Line as a Double Circuit 230/115 kV Line
+
+Project Description
+Construct a second 230 kV line, approximately 22 miles, from the Kingstree 230 kV Switching Station to the Hemingway
+230-115 kV Substation by rebuilding the existing Kingstree – Hemingway 115 kV line for double circuit 230/115 kV
+construction.
+
+Project Need
+This additional 230 kV line from Kingstree to Hemingway will help provide thermal loading relief and voltage support for
+the eastern area. This line also creates an additional path to the eastern area.
+
+Project Status
+Planned
+
+Planned In-Service Date
+June 2029
+
+
+
+
+                                                                                                                    61
+Kingstree – Hemingway 230/115 kV line
+
+
+
+
+                                        62
+Varnville 230-115 kV Substation
+
+Project Description
+Construct a new Varnville 230-115 kV substation on existing Santee Cooper transmission property and property
+acquired adjacent to the existing Varnville 230-115-69 kV Substation.
+
+Project Need
+Planning studies indicate the need to construct a new Varnville 230-115 kV substation to facilitate additional 230 kV
+transmission lines to support future transmission network expansion plans. The existing Varnville substation has space
+limitations and cannot accommodate additional 230 kV line terminals, transformation, and long-term plans to convert
+the 69 kV delivery points in the area to 115 kV service.
+
+Project Status
+Planned
+
+Planned In-Service Date
+September 2028
+
+
+
+
+                                                                                                                    63
+Varnville 230-115 kV Substation
+
+
+
+
+                                  New Varnville 230-115 kV Substation
+
+
+
+
+                                                                        64
+Varnville – Indian Field 230 kV Line
+
+Project Description
+Construct a 230 kV transmission line (approximately 38 miles) from the Varnville 230-115 kV Substation to the proposed
+Indian Field 230-115 kV Substation. Rebuild the existing Bells Crossroads – Varnville 115 kV Line for 230/115 kV double-
+circuit on the existing right-of-way. Rebuild the St. George – Bells Crossroads (via Smoaks) 115 kV Line #2 for 230/115 kV
+double-circuit on the existing right-of-way until the 230 kV line reaches just outside of St George 115 kV Switching
+Station.
+
+Project Need
+Planning studies indicate this project and Indian Field-Wassamassaw 230 kV line project is necessary to add an
+additional path for bulk power transmission from Southern region to Eastern region. Existing Southern path via
+Yemassee and Mateeba is a contingency constraint seen in the near-term and long-term planning studies.
+
+Project Status
+Planned
+
+Planned In-Service Date
+November 2028
+
+
+
+                                                                                                                      65
+Varnville – Indian Field 230 kV Line
+
+                                         Indian Field
+
+
+
+
+              Varnville – Indian
+              Field 230kV Line
+
+
+
+
+                             Varnville
+
+
+                                                        66
+Marion – Red Bluff 230 kV Line
+
+Project Description
+Construct a new 230 kV transmission line from the Marion 230-115/230-69/115-69 kV Substation to the Red Bluff 230-
+115 kV Substation with bundled 1272 ACSR conductor rated for 2400 Ampere minimum continuous operation at 230 kV.
+Existing right-of-way will be used where possible, but new right-of-way will need to be obtained.
+
+Project Need
+Planning assessments have identified thermal loading and voltage violations under contingency conditions in the
+eastern region of the transmission system that are mitigated by the addition of a Marion – Red Bluff 230 kV Line. These
+thermal loading exceedances do not meet the transmission system planning performance requirements under NERC
+Reliability Standard or the planning criteria.
+In addition, Santee Cooper’s plans to retire Winyah Generating Station requires additional thermal and voltage support
+in this area to mitigate potential wide spread low voltage conditions under contingency conditions, which could pose
+serious risk to the reliability in the area and result in the need to curtail large amounts of load. This 230 kV line will also
+provide an additional source for a highly concentrated load area of the Santee Cooper system that continues to see
+significant load growth.
+
+Project Status Planned
+Planned In-Service Date November 2028
+
+
+                                                                                                                            67
+Marion – Red Bluff 230 kV line
+
+
+
+           MARION
+
+
+
+
+                                 RED BLUFF
+
+
+
+
+                                             68
+       Santee Cooper
+Transmission Expansion Plans
+
+
+        Questions?
+
+
+                               69
+Ad Hoc Coordinated Study
+
+
+      Weijian Cong
+
+
+
+
+                           70
+Ad Hoc Study between
+SCRTP & Southern Company
+
+                           DESC, Santee Cooper and Southern
+                           Company coordinated a transmission
+                           study to evaluate:
+
+                           •   Efficient and cost-effective
+                               transmission solutions to increase
+                               interregional transfer capability,
+                               generating resource changes in both
+                               Georgia and South Carolina
+                           •   Transmission Planning effort will
+                               continue to consider these projects in
+                               the transmission plans
+
+
+         New 230kV Line
+         New 500kV Line
+
+
+
+                                                                        71
+      Reliability Transmission Planning Studies Timeline
+          Model
+       Development
+                             TPL Studies
+                                   &
+                               Internal
+                             Assessments         Operating Guides/Project
+                                                      Development
+
+                                                                                  TPL Review &
+                                                                                  Assessments
+                                                                                    Finalized
+
+
+                                                                                                       TPL Report &
+                                                                                                           Filing
+
+Jan        Feb        Mar         Apr      May        Jun        Jul        Aug   Sep            Oct       Nov        Dec   2024
+                     Today
+
+
+
+
+                                                                                                                              72
+                  Next SCRTP Meeting
+• Stakeholders will select up to 5 Economic Transmission
+  Planning Studies
+• Request Form will be posted on SCRTP website
+• Review and discuss Multi-Party Assessment Studies
+• SCRTP Email Distribution List will be notified
+• Register online
+
+
+
+
+                                                           73
+South Carolina Regional Transmission Planning
+
+            Stakeholder Meeting
+
+                    Teams
+
+                 March 5, 2025
+
+
+
+                                            74
+

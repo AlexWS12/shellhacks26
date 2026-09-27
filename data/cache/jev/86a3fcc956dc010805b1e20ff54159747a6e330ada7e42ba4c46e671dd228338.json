@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Meldrim",
+   "utility": "SAV",
+   "filing_state": "GA",
+   "project": "SAV: Meldrim Bank D Replacement",
+   "description": "Replace 300 MVA 230/115kV Bank D with 400 MVA Bank.",
+   "zone": "219",
+   "candidate": {
+    "name": "Meldrim Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000;115000;46000",
+    "lat": 32.1552821,
+    "lon": -81.368377,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.88
+   }
+  },
+  "cost_usd": 2.1966000000000003e-05,
+  "latency_ms": 248,
+  "model": "jev-latest"
+ }
+}

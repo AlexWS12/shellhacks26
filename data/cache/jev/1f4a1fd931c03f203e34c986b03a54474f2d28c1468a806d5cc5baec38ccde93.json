@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "GTC: Morning Hornet 2nd 230/115 kV Bank & Thumbs Up 115kV Tl",
+   "description": "GTC to add a second 230/115kV auto transformer at Morning Hornet substation. Also, build an additional 115kV line from Morning Hornet to Thumbs Up, approximately 2.4 miles, using at least 100C 1351 ACSR conductor."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 0.43,
+    "probabilities": {
+     "in_substation_equipment": 0.02,
+     "rebuild": 0.0,
+     "new_line": 0.1,
+     "other": 0.33,
+     "substation_construction": 0.55
+    }
+   }
+  },
+  "cost_usd": 2.3394000000000003e-05,
+  "latency_ms": 354,
+  "model": "jev-latest"
+ }
+}

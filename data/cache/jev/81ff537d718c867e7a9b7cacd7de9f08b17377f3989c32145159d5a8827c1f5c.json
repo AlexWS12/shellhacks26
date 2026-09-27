@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Winder Primary",
+   "project": "GTC: Clarksboro - Winder Primary 230kV Rebuild",
+   "description": "Rebuild approximately 14 miles of the Clarksboro - Winder 230kV line with 200C 1351 ACSS conductor.",
+   "candidate_town": "Winder, GA",
+   "county": "Barrow County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.93
+   }
+  },
+  "cost_usd": 1.8858e-05,
+  "latency_ms": 186,
+  "model": "jev-latest"
+ }
+}

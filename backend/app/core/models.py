@@ -2,7 +2,6 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-Utility = Literal["DESC", "GA"]
 Confidence = Literal["verified", "confirmed_osm", "partial", "town", "unlocated"]
 Actor = Literal["code", "gemini", "jev", "osm", "sponsor_file", "override", "heuristic", "template"]
 
@@ -21,7 +20,8 @@ class Endpoint(BaseModel):
 
 class Project(BaseModel):
     id: str  # 'DESC-0139MN', 'GA-20277', or '<submission>-<row>' for submitted plans
-    utility: str  # 'DESC' | 'GA' | a submitted owner's key
+    utility: str  # 'DESC' | 'GA' | a submitted owner's key (the source's utility_key)
+    source_id: str | None = None  # row in the sources table ('desc', 'gpc', a saved plan's id)
     sponsor: str  # DESC | GPC | SAV | GTC | MEAG | DU
     name: str
     description: str = ""
@@ -48,6 +48,8 @@ class Project(BaseModel):
     sponsor_ref_id: str | None = None  # 'DESC_3' when the project is in Sperry's sample
     state: str | None = None  # SC | GA; set for submitted plans (Dominion = SC, Georgia = GA otherwise)
     date_precision: str | None = None  # day | month | year; submitted rows that give only a year or month
+    # AI reader: where each value came from. field -> {page, snippet} (snippet = the exact text on that page)
+    provenance: dict | None = None
 
 
 class Check(BaseModel):
@@ -59,12 +61,13 @@ class Check(BaseModel):
     source: str
     project_id: str | None = None
     actor: str = "code"
+    model: str | None = None  # the model that raised it, when an LLM did
 
 
 class Overlap(BaseModel):
     id: str
-    project_a: str  # DESC project id
-    project_b: str  # GA project id
+    project_a: str  # the first owner's project, as the sources table ranks them (Dominion when it's in the pair)
+    project_b: str  # the other owner's project
     distance_mi: float
     time_gap_days: int
     windows_overlap: bool | None = None

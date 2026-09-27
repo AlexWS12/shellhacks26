@@ -1,0 +1,45 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Buzzard Roost",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "CC - Emblem Riverside Customer Sub (Flexential)",
+   "description": "A new customer substation, Emblem Riverside, is being built along the Buzzard Roost - Douglasville 230kV line. Moreover, a Fiber ICON ring is being built in the area to help with communications and protection for all customers in the area.",
+   "zone": "201",
+   "candidate": {
+    "name": "Buzzard Roost Dam",
+    "operator": "South Carolina Public Service Authority",
+    "voltage": "",
+    "lat": 34.1693081,
+    "lon": -81.9025444,
+    "state": "SC",
+    "power": "plant"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  "cost_usd": 2.3268e-05,
+  "latency_ms": 199,
+  "model": "jev-latest"
+ }
+}

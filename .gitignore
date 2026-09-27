@@ -1,6 +1,9 @@
-# secrets
+# secrets and this machine's settings
 .env
 **/.env
+.env.local
+**/.env.local
+config/models.local.json
 
 # build output and dependencies
 .venv/
@@ -24,3 +27,10 @@ data/runs/run_*
 
 # plans uploaded in the Sources menu (runtime data, saved on the server)
 data/submissions/
+
+# the sources table (utilities as data), seeded on first start
+data/tandem.db
+
+# filings added in the Sources menu, and the AI reader's drafts and reviewed projects (runtime data)
+data/uploads/
+data/sources/

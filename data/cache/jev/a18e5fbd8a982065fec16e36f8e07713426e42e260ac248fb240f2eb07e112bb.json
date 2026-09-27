@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "East Watkinsville",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Athena - East Watkinsville 115 kV (Rebuild)",
+   "description": "Rebuild 8.47 miles of the University of Georgia - East Watkinsville line sections on the Athena - East Watkinsville 115kV line with 100C ACSR 1033 conductor.",
+   "zone": "212",
+   "candidate": {
+    "name": "East Watkinsville Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000;115000;12000",
+    "lat": 33.8605463,
+    "lon": -83.3847649
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.84
+   }
+  },
+  "cost_usd": 2.3058000000000002e-05,
+  "latency_ms": 248,
+  "model": "jev-latest"
+ }
+}

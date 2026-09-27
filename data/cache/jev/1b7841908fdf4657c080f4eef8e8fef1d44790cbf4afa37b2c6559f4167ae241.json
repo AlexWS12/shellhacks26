@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Cameron Jct",
+   "filing_state": "SC",
+   "project": "Cameron Jct \u2013 Cameron \u2013 St Matthews 46 kV Rebuild",
+   "description": "Rebuilding the 46 kV line between Cameron Jct and St Matthews. 9.8 miles.",
+   "zone": null,
+   "candidate": {
+    "name": "Cameron",
+    "kind": "place=hamlet",
+    "county": "Screven County",
+    "state": "GA",
+    "lat": 32.5579515,
+    "lon": -81.6737207
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.31
+   }
+  },
+  "cost_usd": 2.0706e-05,
+  "latency_ms": 577,
+  "model": "jev-latest"
+ }
+}

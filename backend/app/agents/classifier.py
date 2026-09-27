@@ -46,11 +46,11 @@ class Classifier(Agent):
             async with sem:
                 v = await ctx.ask_choice("What kind of work is this project?", p.name,
                                          {"title": p.name, "description": p.description[:700]}, TYPES,
-                                         heuristic=lambda: type_heuristic(p), project_id=p.id)
+                                         heuristic=lambda: type_heuristic(p), project_id=p.id, role="classify_type")
             p.project_type, p.project_type_actor = str(v.value), v.actor
             done += 1
             ctx.emit("project.classified", project_id=p.id, project_type=p.project_type, actor=v.actor,
-                     confidence=round(v.confidence, 3))
+                     model=v.model, confidence=round(v.confidence, 3))
             ctx.progress(done, len(projects), "classified")
             await ctx.pace(0.008)
 

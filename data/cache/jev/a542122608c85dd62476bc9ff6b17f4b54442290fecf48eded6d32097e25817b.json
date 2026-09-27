@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Dresden",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Dresden Line Protective Relaying",
+   "description": "On the O'Hara - Wansley 500kV line, replace the protective relay panels associated with the 500kV line terminal facing Dresden, at both O'Hara and Wansley.",
+   "zone": "208",
+   "candidate": {
+    "name": "Dresden Substation",
+    "operator": "",
+    "voltage": "500000",
+    "lat": 33.3511155,
+    "lon": -84.9059539,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.67
+   }
+  },
+  "cost_usd": 2.2134000000000002e-05,
+  "latency_ms": 210,
+  "model": "jev-latest"
+ }
+}

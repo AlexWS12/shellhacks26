@@ -5,7 +5,7 @@
 import json
 from typing import Any
 
-from app.clients import gemini
+from app.clients import models
 from app.core.analysis import unsupported_numbers
 from app.core.report import TOP_REPORT, build, facts_for_prose, template_next_steps, template_summary, to_markdown
 from app.runtime.agent import Agent, AgentSpec, Ctx
@@ -34,24 +34,27 @@ class Writer(Agent):
         r["next_steps"] = await self.write(ctx, NEXT_STEPS, facts, template_next_steps(r), "Next steps")
         r["markdown"] = to_markdown(r)
         b.report = r
-        ctx.emit("report.ready", report=r)
+        ctx.emit("report.ready", report=r, model=r["summary"]["model"])  # each part also names its own model
         ctx.log(f"Writer: report ready, {len(r['top'])} opportunities summarized.")
         return f"report on {len(r['top'])} opportunities (summary: {r['summary']['actor']})"
 
     async def write(self, ctx: Ctx, system: str, facts: dict[str, Any], fallback: str, label: str) -> dict[str, Any]:
-        text, actor = "", "gemini"
+        text, actor, model = "", "gemini", None
         ctx.think(f"\n\n{label}\n")
+        stream = models.stream("writer", f"Facts (JSON):\n{json.dumps(facts, default=str)}", system=system,
+                               pace=ctx.run.pace)
         try:
-            async for chunk in gemini.stream_text(system, f"Facts (JSON):\n{json.dumps(facts, default=str)}", ctx.run.pace):
+            async for chunk in stream:
                 text += chunk
                 ctx.think(chunk)
+            actor, model = stream.provider or "gemini", stream.model
         except Exception as e:
             if not ctx.run.templates:
-                raise RuntimeError(f"Gemini failed on the {label.lower()} and template fallback is off: "
-                                   f"{gemini.describe(e)}") from e
-            ctx.think(f"[Gemini unavailable: {gemini.describe(e)}. Using the template.]")
-            ctx.log(f"Writer: Gemini failed ({gemini.describe(e)}), wrote the {label.lower()} from the template.")
+                raise RuntimeError(f"No model could write the {label.lower()} and template fallback is off: "
+                                   f"{models.describe(e)}") from e
+            ctx.think(f"[No model available: {models.describe(e)}. Using the template.]")
+            ctx.log(f"Writer: no model could write the {label.lower()} ({models.describe(e)}), used the template.")
             text, actor = fallback, "template"
         text = text.replace(" \u2014 ", ", ").replace("\u2014", ", ")  # house style: no em dashes
-        bad = sorted(unsupported_numbers(text, facts)) if actor == "gemini" else []
-        return {"text": text.strip(), "actor": actor, "unsupported_numbers": bad}
+        bad = sorted(unsupported_numbers(text, facts)) if actor != "template" else []
+        return {"text": text.strip(), "actor": actor, "model": model, "unsupported_numbers": bad}
