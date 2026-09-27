@@ -4,7 +4,7 @@
 :root {
   /* surfaces, darkest to lightest */
   --bg: #07090d;
-  --panel: #0c0f15;
+  --panel: #0d1426;
   --raised: #121620;
   --hover: #171c28;
   --line: #1c2230;
@@ -12,22 +12,22 @@
   --glass: rgb(12 15 21 / .88);
 
   /* text */
-  --ink: #e7eaf0;
-  --muted: #8b93a4;
+  --ink: #eef2f8;
+  --muted: #94a1b9;
   --spark: #f4f6fb; /* moving highlights: handoff dots, map comets */
   --shade: #020306; /* shadow base, tinted toward --bg */
-  --faint: #7f879a; /* 4.7:1 on --hover, the lightest surface it sits on */
+  --faint: #7f8ba5; /* 5.5:1 on --panel, 4.8:1 on --hover */
 
   /* who owns the work: Dominion, Georgia, and the zone where they meet */
   --desc: #2dd4bf;
   --gpc: #6ea8fe;
-  --zone: #f5b841;
+  --zone: #e8579b;
   --zone-far: #d9b56a;
-  --zone-soft: rgb(245 184 65 / .12);
-  --muted-soft: rgb(139 147 164 / .12);
+  --zone-soft: rgb(232 87 155 / .12);
+  --muted-soft: rgb(148 161 185 / .12);
 
   /* other utilities (research team), one hue per category */
-  --cat-electric: #f472b6;
+  --cat-electric: #f5b841; /* amber, so it doesn't clash with the pink --zone */
   --cat-gas: #fb923c; /* flame orange: slate was too faint on the dark map */
   --cat-roads: #a3e635;
 
@@ -37,12 +37,12 @@
   --peer-3: #fde68a;
 
   /* state */
-  --accent: #8b7cff;
+  --accent: #9d62f2;
   --accent-hi: #9b8eff;
-  --accent-fill: #6d5ce8; /* primary button fill: 4.8:1 under --on-accent */
-  --accent-fill-hi: #5f4fd9;
-  --on-accent: #fff;
-  --accent-soft: rgb(139 124 255 / .18);
+  --accent-fill: #fff; /* primary button: white fill, navy text */
+  --accent-fill-hi: #e3e9f3;
+  --on-accent: #0d1426;
+  --accent-soft: rgb(157 98 242 / .18);
   --good: #34d399;
   --bad: #f87171;
   --bad-soft: rgb(248 113 113 / .08);
@@ -101,7 +101,7 @@
   --radius: var(--r-md);
 
   /* depth */
-  --glow-accent: 0 0 0 1px rgb(139 124 255 / .35), 0 0 22px -6px var(--accent);
+  --glow-accent: 0 0 0 1px rgb(157 98 242 / .35), 0 0 22px -6px var(--accent);
   --shadow-float: 0 30px 80px -20px var(--shade);
   --ring: 2px solid var(--accent);
 
@@ -450,7 +450,7 @@ table.kv td:last-child { text-align: right; color: var(--ink); font-family: var(
 
 /* Sources menu */
 .label .addplan { margin-left: auto; text-transform: none; letter-spacing: 0; font-weight: 500; padding: 0; }
-.modal-back { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: rgb(2 3 6 / .6); backdrop-filter: blur(2px); padding: var(--sp-4); }
+.modal-back { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: rgb(3 6 13 / .6); backdrop-filter: blur(2px); padding: var(--sp-4); }
 .modal { width: min(760px, 100%); max-height: 90vh; overflow: auto; background: var(--panel); border: 1px solid var(--line-2); border-radius: var(--r-xl); box-shadow: var(--shadow-float); padding: var(--sp-5) var(--sp-6); }
 .modal-head { display: flex; align-items: baseline; gap: var(--sp-3); }
 .modal-head h2 { font-size: var(--fs-2xl); flex: 1; }
