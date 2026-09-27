@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Hamlin",
+   "utility": "DESC",
+   "filing_state": "SC",
+   "project": "Cainhoy - Hamlin 115kV: Rebuild Line and Cainhoy \u2013 Hamlin 115 kV #2: Construct New 115 kV Line",
+   "description": "Upgrade the 954 ACSR portion of the Cainhoy \u2013 Hamlin 115 kV line to B795 ACSR conductor, construct a new Cainhoy \u2013 Hamlin 115 kV #2 line, add terminals to Cainhoy and Hamlin sub to accommodate upgrades.",
+   "zone": null,
+   "candidate": {
+    "name": "Hamlin Substation",
+    "operator": "South Carolina Gas & Electric",
+    "voltage": "115000",
+    "lat": 32.859937,
+    "lon": -79.7884409,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.89
+   }
+  },
+  "cost_usd": 2.4444000000000002e-05,
+  "latency_ms": 341,
+  "model": "jev-latest"
+ }
+}

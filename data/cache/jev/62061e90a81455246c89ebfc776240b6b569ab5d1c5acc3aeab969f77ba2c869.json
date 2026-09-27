@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Dawson",
+   "filing_state": "SC",
+   "project": "Dawson 230kV Sub and Fold-in: Construct and Rebuild",
+   "description": "Construct Dawson 230kV substation. Fold in the existing Canadys \u2013 Church Creek and Canadys \u2013 Faber Place 230kV lines at the Dawson 230kV substation (phase 1). Rebuild Canadys \u2013 Dawson 230kV #1 and #2 with B1272 ACSR (phase 2).",
+   "zone": null,
+   "candidate": {
+    "name": "Dawson",
+    "kind": "place=town",
+    "county": "Terrell County",
+    "state": "GA",
+    "lat": 31.7735001,
+    "lon": -84.4465827
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.09
+   }
+  },
+  "cost_usd": 2.3016000000000005e-05,
+  "latency_ms": 295,
+  "model": "jev-latest"
+ }
+}

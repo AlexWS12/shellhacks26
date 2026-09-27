@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Pitts",
+   "filing_state": "GA",
+   "project": "Fitzgerald - Pitts 115 kV Line Rebuild",
+   "description": "Rebuild approximately 26.14 miles of the Fitzgerald - Pitts 115kV line with 200C 1351 ACSS.",
+   "zone": "214",
+   "candidate": {
+    "name": "Pitts",
+    "kind": "place=hamlet",
+    "county": "Dodge County",
+    "state": "GA",
+    "lat": 32.1590629,
+    "lon": -83.0379249
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.81
+   }
+  },
+  "cost_usd": 2.1168e-05,
+  "latency_ms": 199,
+  "model": "jev-latest"
+ }
+}

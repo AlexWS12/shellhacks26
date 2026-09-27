@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Plant Yates",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Plant Yates Breaker And Half Station",
+   "description": "Rebuild the Yates 6 & 7 substation to a Breaker and a Half configuration.",
+   "zone": "208",
+   "candidate": {
+    "name": "Plant Yates",
+    "operator": "Georgia Power",
+    "voltage": "",
+    "lat": 33.4576339,
+    "lon": -84.8969584,
+    "power": "plant"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.69
+   }
+  },
+  "cost_usd": 2.0622000000000003e-05,
+  "latency_ms": 278,
+  "model": "jev-latest"
+ }
+}

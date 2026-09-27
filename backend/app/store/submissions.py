@@ -16,7 +16,7 @@ from app import config
 MAX_BYTES = 20 * 1024 * 1024
 MAX_SUBMISSIONS = 12
 Kind = Literal["spreadsheet", "pdf", "url"]
-# The two built-in plans; submitting them again would pair a utility with itself.
+# Legacy spellings of the built-in owners; submitting them again would pair a utility with itself.
 BUILT_IN = re.compile(r"\b(georgia power|dominion|sce ?& ?g|scana|south carolina electric (and|&) gas)\b|^(desc|gpc)$")
 
 
@@ -79,8 +79,14 @@ def check_owner(owner: str) -> str:
     owner = " ".join(owner.split())
     if not owner or len(owner) > 80:
         raise ValueError("Give the utility's name (up to 80 characters).")
-    if BUILT_IN.search(re.sub(r"[^a-z&\s]", " ", owner.lower()).strip()) or BUILT_IN.search(owner.lower().strip()):
-        raise ValueError("Dominion Energy SC and Georgia Power are already built in. Submit another utility's plan.")
+    from app.store import sources  # built-in sources, by name and code; BUILT_IN keeps their legacy spellings
+
+    low = owner.lower().strip()
+    builtin = [x for x in sources.all_sources() if x.builtin]
+    if (BUILT_IN.search(re.sub(r"[^a-z&\s]", " ", low).strip()) or BUILT_IN.search(low)
+            or any(low in (x.display_name.lower(), x.code.lower()) for x in builtin)):
+        names = " and ".join(x.display.get("ui_name", x.display_name) for x in builtin) or "The built-in utilities"
+        raise ValueError(f"{names} are already built in. Submit another utility's plan.")
     return owner
 
 

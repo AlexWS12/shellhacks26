@@ -5,7 +5,10 @@ import { useEffect } from "react";
 
 import { boot, useUI } from "@/lib/ui";
 
+import FailureModal from "./FailureModal";
 import Header from "./Header";
+import ModelSetup from "./ModelSetup";
+import Notices from "./Notices";
 import { Flyout, Rail, RailHandle } from "./Rail";
 import RightPanel from "./RightPanel";
 
@@ -13,6 +16,7 @@ const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
 export default function TandemApp() {
   const error = useUI((s) => s.error);
+  const setupOpen = useUI((s) => s.setup !== null);
   const railOpen = useUI((s) => s.railOpen);
   const railMode = useUI((s) => s.railMode);
   const hidden = railMode === "hidden";
@@ -35,6 +39,9 @@ export default function TandemApp() {
           <RightPanel />
         </aside>
       </div>
+      {setupOpen && <ModelSetup />}
+      <FailureModal />
+      <Notices />
     </div>
   );
 }

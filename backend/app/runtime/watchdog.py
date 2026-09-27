@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from app import config
-from app.clients import jev
+from app.clients import models
 from app.clients.judge import _heuristic_actor
 from app.runtime.run import Event, Run
 
@@ -54,15 +54,15 @@ async def watch(run: Run) -> None:
         now = time.monotonic()
         state = {"agent": w.name, "role": w.role, "running_s": round(now - w.started, 1),
                  "records": f"{w.count}/{w.total}" if w.total else w.count, "recent_events": w.recent[-6:]}
-        started = time.perf_counter()
-        r = await jev.evaluate(state, QUESTIONS, use_cache=False) if jev.enabled() else {}
-        answers, actor = (r["answers"], "jev") if r else (_heuristic(w, now), _heuristic_actor())
+        try:  # live only: never read from or written to the cache
+            r = await models.call("watchdog", models.Judgment(state, QUESTIONS), cache=False)
+            answers, actor, model, latency, cost = r.value, r.provider, r.model, r.latency_ms, r.cost_usd
+        except models.RoleExhausted:
+            answers, actor, model, latency, cost = _heuristic(w, now), _heuristic_actor(), None, 0, 0.0
         if w.done or run.finished:
             return
-        run.emit("agent.health", agent_id=aid, actor=actor, stuck=round(float(answers["stuck"]["noul"]), 3),
-                 progress=round(float(answers["progress"]["score"]), 2),
-                 latency_ms=r.get("latency_ms", round((time.perf_counter() - started) * 1000)) if r else 0,
-                 cost_usd=round(r.get("cost_usd", 0.0), 7) if r else 0.0)
+        run.emit("agent.health", agent_id=aid, actor=actor, model=model, stuck=round(float(answers["stuck"]["noul"]), 3),
+                 progress=round(float(answers["progress"]["score"]), 2), latency_ms=latency, cost_usd=round(cost, 7))
 
     def on_event(e: Event) -> None:
         t, aid = e["type"], e.get("agent_id")

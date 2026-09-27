@@ -15,20 +15,26 @@ from app.core.owners import owner_name
 LINES = {"new_line", "rebuild"}
 ROUND_TO = 100_000
 
-# Share of the smaller project's cost that coordination might save, by (timing, shared level).
+# Share of the smaller project's cost that coordination might save, by (distance tier, both under construction).
 # ASSUMPTIONS: team estimates, not figures from a cited source. Edit here; the UI and report say so.
-# Reasoning, from typical transmission cost breakdowns:
-#   Mobilization and staging run a few percent of construction; sharing avoids much of one set, not all of it
-#   (crews still move between sites), so 2-5%.
-#   Outage planning and deliveries are a small slice of cost: 0.5-2%.
-#   Engineering, surveys and environmental work are about a tenth of a line project; reusing the other project's
-#   records saves a fraction of that, so 0.5-1.5%. Substation equipment work gains little from them: 0-0.5%.
-ASSUMPTIONS: dict[tuple[str, str], tuple[float, float]] = {
-    ("concurrent", "high"): (0.02, 0.05),  # one mobilization, staging yard and outage window instead of two
-    ("concurrent", "medium"): (0.005, 0.02),  # shared outage coordination and deliveries
-    ("sequential", "medium"): (0.005, 0.015),  # reused surveys, right-of-way records and studies
-    ("sequential", "low"): (0.0, 0.005),  # information sharing only
+# Built up tier by tier, like what each tier can share (core/analysis.py TIER_ITEMS), from typical transmission
+# cost breakdowns:
+#   under 25 mi  crews and equipment: part of one mobilization, 1-3%. Apart in time, only records: 0-0.5%.
+#   under 5 mi   + laydown yards and deliveries: 0.5-1% more (a reused yard alone: 0.25-0.5%).
+#   under 1 mi   + right-of-way, access roads and permits, which don't depend on timing: 1-2% more.
+#   touching     + one outage window and shared crossing structures: 0.5-1% more (structures alone: 0.25-0.5%).
+ASSUMPTIONS: dict[tuple[str, bool], tuple[float, float]] = {
+    ("crew", True): (0.01, 0.03),
+    ("crew", False): (0.0, 0.005),
+    ("site", True): (0.015, 0.04),
+    ("site", False): (0.0025, 0.01),
+    ("row", True): (0.025, 0.06),
+    ("row", False): (0.0125, 0.03),
+    ("touching", True): (0.03, 0.07),
+    ("touching", False): (0.015, 0.035),
 }
+TIER_WORDS = {"touching": "touching or crossing", "row": "under 1 mile apart", "site": "under 5 miles apart",
+              "crew": "under 25 miles apart"}
 ASSUMPTION_LABEL = "Assumption range set by the team, not a sourced figure"
 
 
@@ -93,28 +99,18 @@ def estimate_for(p: Project, estimates: dict[str, dict[str, Any]], table: dict[s
     return estimates.get(p.id) or filed_estimate(p) or benchmark_estimate(p, table)
 
 
-def savings_basis(o: Overlap, shared: dict[str, Any]) -> dict[str, Any]:
-    # What the savings are for. Once either project is in service, crews and staging can't be shared, only its
-    # records and design, whatever the build windows say. (shared_resources is left alone: other agents use it.)
-    if not o.finished or shared["timing"] == "sequential":
-        return shared
-    if LINES & set(shared["types"]):
-        items, level = ["surveys", "right-of-way records", "environmental studies", "design of the later project"], "medium"
-    else:
-        items, level = ["information sharing (surveys, permits, design)"], "low"
-    return {**shared, "timing": "sequential", "items": items, "level": level}
-
-
 def savings_block(a: Project, b: Project, o: Overlap, shared: dict[str, Any], ea: dict[str, Any] | None,
                   eb: dict[str, Any] | None, check: dict[str, Any] | None = None) -> dict[str, Any]:
-    # check: Jev's verdict on whether sharing what savings_basis lists is worth raising; None if not asked.
-    shared = savings_basis(o, shared)
+    # shared: shared_resources for the pair (its tier and items). check: Jev's verdict on whether sharing those is
+    # worth raising; None if not asked.
+    tier = shared.get("tier") or o.tier
+    together = shared["timing"] == "concurrent" and not o.finished
     block: dict[str, Any] = {"a": ea, "b": eb, "savings_low": None, "savings_high": None, "share": None,
-                             "applies_to": None, "for": shared["items"], "assumption": ASSUMPTION_LABEL,
-                             "check": check, "statement": ""}
-    share = ASSUMPTIONS.get((shared["timing"], shared["level"]))
+                             "applies_to": None, "for": shared["items"], "tier": tier, "together": together,
+                             "assumption": ASSUMPTION_LABEL, "check": check, "statement": ""}
+    share = ASSUMPTIONS.get((tier, together))
     if share is None:
-        block["statement"] = "One build window is unknown, so no savings range is given."
+        block["statement"] = "This pair has no distance tier, so no savings range is given."
         return block
     if not ea or not eb:
         block["statement"] = "One project has no cost estimate, so no savings range is given."
@@ -128,9 +124,10 @@ def savings_block(a: Project, b: Project, o: Overlap, shared: dict[str, Any], ea
     block.update(savings_low=_sig(base * share[0]), savings_high=_sig(base * share[1]),
                  share=list(share), applies_to=smaller[1].id)
     modeled = [owner_name(p) for e, p in ((ea, a), (eb, b)) if e["basis"] == "benchmark"]
+    when = "while both are under construction" if together else "at different times"
     block["statement"] = (
-        f"{share[0]:.1%} to {share[1]:.1%} of the smaller project's cost ({owner_name(smaller[1])}), for sharing "
-        f"{', '.join(shared['items'])}. {ASSUMPTION_LABEL}."
-        + (" One project is already in service, so only its records and design count." if o.finished else "")
+        f"{share[0]:.1%} to {share[1]:.1%} of the smaller project's cost ({owner_name(smaller[1])}): the two are "
+        f"{TIER_WORDS[tier]} and built {when}, so they could share {', '.join(shared['items'])}. {ASSUMPTION_LABEL}."
+        + (" One project is already in service." if o.finished else "")
         + (f" {' and '.join(modeled)} cost is modeled from Dominion's filed costs." if modeled else ""))
     return block

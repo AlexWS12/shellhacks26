@@ -24,7 +24,9 @@ def test_overlaps_ranked_and_under_cutoff(finished_run):
     # active pairs first, each group closest first
     assert [(o.finished, o.distance_mi) for o in ov] == sorted((o.finished, o.distance_mi) for o in ov)
     headline = next(o for o in ov if o.project_a == "DESC-06367DG" and o.project_b == "GA-20277")
-    assert (headline.distance_mi, headline.time_gap_days, headline.in_sponsor_sample) == (5.65, 152, True)
+    # the benchmark's 5.65 mi is center to center; the lines' closest points are nearer, in the site-logistics tier
+    assert (headline.center_mi, headline.time_gap_days, headline.in_sponsor_sample) == (5.65, 152, True)
+    assert (headline.distance_mi, headline.tier) == (2.99, "site")
     assert headline.finished  # DESC-06367DG went into service 12/31/25
 
 

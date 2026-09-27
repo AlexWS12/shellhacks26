@@ -1,39 +1,90 @@
+# Gemini adapter (google-genai SDK). Makes one call to one model and turns every failure into a ModelError.
+# Retries, fallbacks and the circuit breaker are the registry's job (clients/models.py).
+#
+# Error mapping, checked against the live API on 2026-09-27:
+#   400 "API key not valid" / 401 / 403  -> AuthError        404 NOT_FOUND "models/x is not found" -> ModelNotFound
+#   429 with a per-day or zero quotaId   -> QuotaExceeded    other 429 (per minute)                -> RateLimited
+#   500 / 502 / 503 / network            -> ProviderUnavailable   504, our own timeout             -> Timeout
+#   other 4xx, bad JSON, schema mismatch -> BadResponse
+
 import asyncio
 import json
-import logging
-import random
-import time
-from collections.abc import AsyncIterator, Awaitable, Callable
-from typing import Any, TypeVar
+import re
+from collections.abc import AsyncIterator
+from typing import Any
+
+import httpx
 
 from app import config
-from app.clients import cache
+from app.clients import schema as jsonschema
+from app.clients.base import Reply, Request, parse_judgment, render_judgment
+from app.clients.errors import (AuthError, BadResponse, ModelError, ModelNotFound, ProviderUnavailable, QuotaExceeded,
+                                RateLimited, Timeout)
+from app.clients.redact import remember
 
-log = logging.getLogger("gemini")
+PROVIDER = "gemini"
 CACHE_VERSION = "gemini-v1"
+KINDS = {"json", "text", "search", "judge"}
 TIMEOUT_S = 45
 _SEMAPHORE = asyncio.Semaphore(4)
-_client = None
-T = TypeVar("T")
+_clients: dict[str, Any] = {}  # one SDK client per key, so a changed key takes effect
+# A daily (or zero) limit won't recover during a run. Every 429 message says "check your plan and billing details",
+# so the structured quotaId ('GenerateRequestsPerDayPerProjectPerModel-FreeTier') decides, not the prose.
+QUOTA_RE = re.compile(r"PerDay|per ?day|limit: 0\b|quotaValue['\"]?\s*:\s*['\"]0['\"]", re.I)
+RETRY_RE = re.compile(r"retryDelay['\"]?\s*:\s*['\"]?(\d+(?:\.\d+)?)s")
 
 
-def enabled() -> bool:
+def disabled() -> str | None:
+    return None  # a missing key is an AuthError, so the run records it
+
+
+def configured() -> bool:
     return bool(config.GEMINI_API_KEY)
 
 
-def _get_client():
-    global _client
-    if _client is None:
+def _client(api_key: str | None = None):
+    key = api_key if api_key is not None else config.GEMINI_API_KEY
+    if not key:
+        raise AuthError("GEMINI_API_KEY is not set")
+    remember(key)
+    c = _clients.get(key)
+    if c is None:
         from google import genai
 
-        _client = genai.Client(api_key=config.GEMINI_API_KEY)
-    return _client
+        c = _clients[key] = genai.Client(api_key=key)
+    return c
 
 
-def _usage(resp: Any) -> dict[str, int]:
-    u = getattr(resp, "usage_metadata", None)
-    return {"input_tokens": getattr(u, "prompt_token_count", 0) or 0,
-            "output_tokens": getattr(u, "candidates_token_count", 0) or 0}
+def classify(e: BaseException) -> ModelError:
+    from google.genai import errors
+
+    if isinstance(e, ModelError):
+        return e
+    if isinstance(e, (TimeoutError, asyncio.TimeoutError, httpx.TimeoutException)):
+        return Timeout(f"no answer within {TIMEOUT_S} s")
+    if isinstance(e, errors.APIError):
+        code, status, msg = e.code or 0, e.status or "", e.message or str(e)
+        text = f"{code} {status}: {msg}".strip()
+        low = msg.lower()
+        if code in (401, 403) or (code == 400 and ("api key" in low or "api_key" in low)):
+            return AuthError(text)
+        if code == 404 or (code == 400 and "model" in low and ("not found" in low or "deprecated" in low)):
+            return ModelNotFound(text)
+        if code == 429:
+            if QUOTA_RE.search(str(e)):  # str(e) includes the structured details
+                return QuotaExceeded(text)
+            m = RETRY_RE.search(str(e))
+            return RateLimited(text, retry_after=float(m[1]) if m else None)
+        if code in (408, 504):
+            return Timeout(text)
+        if code >= 500:
+            return ProviderUnavailable(text)
+        return BadResponse(text)  # another model may accept the request
+    if isinstance(e, (httpx.TransportError, ConnectionError, OSError)):
+        return ProviderUnavailable(f"network: {type(e).__name__}")
+    if isinstance(e, (TypeError, AttributeError, NameError)):
+        raise e  # a bug in our code, not a provider failure
+    return ProviderUnavailable(f"{type(e).__name__}: {e}")
 
 
 def _config(system: str, temperature: float, **extra: Any):
@@ -44,120 +95,65 @@ def _config(system: str, temperature: float, **extra: Any):
         automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True), **extra)
 
 
-def _models() -> list[str]:
-    return list(dict.fromkeys(m for m in (config.GEMINI_MODEL, config.GEMINI_FALLBACK_MODEL) if m))
+def _usage(resp: Any) -> dict[str, int]:
+    u = getattr(resp, "usage_metadata", None)
+    return {"input_tokens": getattr(u, "prompt_token_count", 0) or 0,
+            "output_tokens": getattr(u, "candidates_token_count", 0) or 0}
 
 
-def _transient(e: Exception) -> bool:
-    # Overload, rate limit and timeouts are worth another try. A bad key or model name (400/401/403/404) is not.
-    from google.genai import errors
-
-    if isinstance(e, TimeoutError):
-        return True
-    if isinstance(e, errors.ServerError):
-        return e.code in (500, 503)
-    if isinstance(e, errors.ClientError):
-        return e.code == 429
-    return False
+def _json_form(req: Request) -> tuple[str, str, dict[str, Any]]:
+    if req.kind == "judge":
+        return render_judgment(req.judgment)  # type: ignore[arg-type]
+    return req.system, req.prompt, req.schema or {}
 
 
-def describe(e: Exception) -> str:
-    # "ClientError 429 RESOURCE_EXHAUSTED" for API errors, just the class name otherwise
-    return " ".join(str(x) for x in (type(e).__name__, getattr(e, "code", None), getattr(e, "status", None)) if x)
+def payload(model: str, req: Request) -> dict[str, Any]:
+    # Same shapes as before the registry, so existing cache files keep hitting for the same model.
+    if req.kind in ("json", "judge"):
+        system, prompt, schema = _json_form(req)
+        return {"model": model, "system": system, "prompt": prompt, "schema": schema}
+    if req.kind == "search":
+        return {"model": model, "system": req.system, "prompt": req.prompt, "tool": "google_search"}
+    return {"model": model, "system": req.system, "prompt": req.prompt}
 
 
-def _retry_after(e: Exception) -> float | None:
-    headers = getattr(getattr(e, "response", None), "headers", None)
+def cached_value(req: Request, hit: dict[str, Any]) -> Any:
+    if req.kind == "json":
+        return hit["data"]
+    if req.kind == "judge":
+        return parse_judgment(req.judgment, hit["data"])  # type: ignore[arg-type]
+    if req.kind == "search":
+        return {k: hit[k] for k in ("text", "sources", "supports")}
+    return hit["text"]
+
+
+async def _generate(model: str, prompt: str, cfg: Any, timeout: float = TIMEOUT_S, api_key: str | None = None) -> Any:
     try:
-        return float(headers.get("retry-after")) if headers else None
-    except (TypeError, ValueError):
-        return None
-
-
-async def _backoff(attempt: int, e: Exception) -> None:
-    await asyncio.sleep(_retry_after(e) or 2**attempt + random.uniform(0, 0.5))  # 1 s, 2 s, 4 s + jitter
-
-
-async def _with_retries(call: Callable[[str], Awaitable[T]]) -> tuple[T, str]:
-    # Tries the primary model, then the fallback, each up to GEMINI_RETRIES times. Returns (result, model).
-    last: Exception | None = None
-    for model in _models():
-        for attempt in range(config.GEMINI_RETRIES):
-            try:
-                return await call(model), model
-            except Exception as e:
-                if not _transient(e):
-                    raise
-                last = e
-                log.warning("Gemini %s attempt %d failed: %s: %s", model, attempt + 1, type(e).__name__, str(e)[:200])
-                if attempt + 1 < config.GEMINI_RETRIES:
-                    await _backoff(attempt, e)
-    raise last or RuntimeError("No Gemini model configured")
-
-
-async def generate_json(system: str, prompt: str, schema: dict[str, Any],
-                        use_cache: bool = True) -> dict[str, Any] | None:
-    # Returns None if Gemini is off or the call fails.
-    payload = {"model": config.GEMINI_MODEL, "system": system, "prompt": prompt, "schema": schema}
-    if use_cache and (hit := cache.get("gemini", CACHE_VERSION, payload)) is not None:
-        return {**hit, "cached": True}
-    if not enabled():
-        return None
-
-    async def call(model: str) -> Any:
         async with _SEMAPHORE:
-            return await asyncio.wait_for(_get_client().aio.models.generate_content(
-                model=model, contents=prompt,
-                config=_config(system, 0, response_mime_type="application/json", response_json_schema=schema)),
-                timeout=TIMEOUT_S)
-
-    started = time.perf_counter()
-    try:
-        resp, model = await _with_retries(call)
-        result = {"data": json.loads(resp.text or "{}"), "model": model, **_usage(resp),
-                  "latency_ms": round((time.perf_counter() - started) * 1000)}
+            return await asyncio.wait_for(_client(api_key).aio.models.generate_content(
+                model=model, contents=prompt, config=cfg), timeout=timeout)
     except Exception as e:
-        log.warning("Gemini JSON call failed: %s: %s", type(e).__name__, str(e)[:300])
-        return None
-    if use_cache:
-        cache.put("gemini", CACHE_VERSION, payload, result)
-    return {**result, "cached": False}
+        raise classify(e) from None
 
 
-async def _open_stream(model: str, system: str, prompt: str) -> tuple[AsyncIterator[Any], str]:
-    # Opens a stream and waits for its first text, so a failure up to here can still be retried.
-    stream = await asyncio.wait_for(_get_client().aio.models.generate_content_stream(
-        model=model, contents=prompt, config=_config(system, 0.3)), timeout=TIMEOUT_S)
-    it = aiter(stream)
-    while (chunk := await asyncio.wait_for(anext(it, None), timeout=TIMEOUT_S)) is not None:
-        if chunk.text:
-            return it, chunk.text
-    return it, ""
-
-
-async def stream_text(system: str, prompt: str, pace: float = 1.0) -> AsyncIterator[str]:
-    payload = {"model": config.GEMINI_MODEL, "system": system, "prompt": prompt}
-    if (hit := cache.get("gemini", CACHE_VERSION, payload)) is not None:
-        text: str = hit["text"]
-        for i in range(0, len(text), 24):  # replay cached text in chunks
-            yield text[i : i + 24]
-            if pace > 0:
-                await asyncio.sleep(0.015 * pace)
-        return
-    if not enabled():
-        raise RuntimeError("Gemini is not configured (set GEMINI_API_KEY)")
-
-    async with _SEMAPHORE:
-        (it, first), model = await _with_retries(lambda m: _open_stream(m, system, prompt))
-        parts = [first]
-        if first:
-            yield first
-        # Text is on screen now: a failure from here on raises instead of retrying, which would duplicate it.
-        while (chunk := await asyncio.wait_for(anext(it, None), timeout=TIMEOUT_S)) is not None:
-            if chunk.text:
-                parts.append(chunk.text)
-                yield chunk.text
-    cache.put("gemini", CACHE_VERSION, payload, {"text": "".join(parts), "model": model})
+async def call(model: str, req: Request) -> Reply:
+    if req.kind == "search":
+        return await _search(model, req)
+    if req.kind == "text":
+        resp = await _generate(model, req.prompt, _config(req.system, 0.3))
+        return Reply(resp.text or "", {"text": resp.text or "", "model": model}, **_usage(resp))
+    system, prompt, schema = _json_form(req)
+    resp = await _generate(model, prompt, _config(system, 0, response_mime_type="application/json",
+                                                  response_json_schema=schema))
+    try:
+        data = json.loads(resp.text or "")
+    except ValueError:
+        raise BadResponse("reply is not valid JSON") from None
+    if bad := jsonschema.problems(data, schema):
+        raise BadResponse("reply doesn't match the schema: " + "; ".join(bad[:3]))
+    usage = _usage(resp)
+    value = parse_judgment(req.judgment, data) if req.kind == "judge" else data  # type: ignore[arg-type]
+    return Reply(value, {"data": data, "model": model, **usage}, **usage)
 
 
 def _grounding(resp: Any) -> tuple[list[dict[str, str]], list[dict[str, Any]]]:
@@ -170,34 +166,78 @@ def _grounding(resp: Any) -> tuple[list[dict[str, str]], list[dict[str, Any]]]:
     return chunks, supports
 
 
-async def search_grounded(system: str, prompt: str, use_cache: bool = True) -> dict[str, Any] | None:
-    # Gemini answer grounded in Google Search, with the pages it used. None if Gemini is off or the call fails.
-    payload = {"model": config.GEMINI_MODEL, "system": system, "prompt": prompt, "tool": "google_search"}
-    if use_cache and (hit := cache.get("gemini", CACHE_VERSION, payload)) is not None:
-        return {**hit, "cached": True}
-    if not enabled():
-        return None
+async def _search(model: str, req: Request) -> Reply:
     from google.genai import types
 
-    async def call(model: str) -> Any:
-        async with _SEMAPHORE:
-            return await asyncio.wait_for(_get_client().aio.models.generate_content(
-                model=model, contents=prompt,
-                config=_config(system, 0, tools=[types.Tool(google_search=types.GoogleSearch())])),
-                timeout=TIMEOUT_S * 2)
+    resp = await _generate(model, req.prompt, _config(req.system, 0, tools=[types.Tool(google_search=types.GoogleSearch())]),
+                           timeout=TIMEOUT_S * 2)
+    chunks, supports = _grounding(resp)
+    value = {"text": resp.text or "", "sources": chunks, "supports": supports}
+    usage = _usage(resp)
+    return Reply(value, {**value, "model": model, **usage}, **usage)
 
-    started = time.perf_counter()
+
+async def open_stream(model: str, req: Request) -> tuple[str, AsyncIterator[str]]:
+    # Opens a stream and waits for its first text, so a failure up to here can still be retried or fall back.
+    # The iterator returned yields the rest; a failure there raises a ModelError (it can't be retried).
     try:
-        resp, model = await _with_retries(call)
-        chunks, supports = _grounding(resp)
-        result = {"text": resp.text or "", "sources": chunks, "supports": supports, "model": model, **_usage(resp),
-                  "latency_ms": round((time.perf_counter() - started) * 1000)}
+        async with _SEMAPHORE:
+            stream = await asyncio.wait_for(_client().aio.models.generate_content_stream(
+                model=model, contents=req.prompt, config=_config(req.system, 0.3)), timeout=TIMEOUT_S)
+            it = aiter(stream)
+            first = ""
+            while (chunk := await asyncio.wait_for(anext(it, None), timeout=TIMEOUT_S)) is not None:
+                if chunk.text:
+                    first = chunk.text
+                    break
     except Exception as e:
-        log.warning("Gemini search call failed: %s: %s", type(e).__name__, str(e)[:300])
-        return None
-    if use_cache:
-        cache.put("gemini", CACHE_VERSION, payload, result)
-    return {**result, "cached": False}
+        raise classify(e) from None
+
+    async def rest() -> AsyncIterator[str]:
+        try:
+            while (chunk := await asyncio.wait_for(anext(it, None), timeout=TIMEOUT_S)) is not None:
+                if chunk.text:
+                    yield chunk.text
+        except Exception as e:
+            raise classify(e) from None
+
+    return first, rest()
+
+
+# Models the setup screen offers: ones that generate text. Speech, image, video and embedding models are left out.
+NOT_TEXT = re.compile(r"embedding|tts|image|imagen|audio|veo|aqa|live|robotics|computer-use", re.I)
+
+
+async def list_models(api_key: str | None = None) -> list[dict[str, str]]:
+    # Live from the API, never a hardcoded list.
+    client = _client(api_key)
+    out: list[dict[str, str]] = []
+    try:
+        async for m in await client.aio.models.list():
+            name = (m.name or "").removeprefix("models/")
+            if "generateContent" in (getattr(m, "supported_actions", None) or []) and not NOT_TEXT.search(name):
+                out.append({"id": name, "label": getattr(m, "display_name", None) or name,
+                            "description": (getattr(m, "description", None) or "")[:200]})
+    except Exception as e:
+        raise classify(e) from None
+    return out
+
+
+async def check_key(api_key: str) -> None:
+    # Listing models needs a valid key and costs no quota.
+    await list_models(api_key)
+
+
+async def validate(model: str, api_key: str) -> None:
+    # A list-models call (checks the key and that the model exists), then one tiny generate call.
+    client = _client(api_key)
+    try:
+        names = {m.name.removeprefix("models/") async for m in await client.aio.models.list()}
+    except Exception as e:
+        raise classify(e) from None
+    if model.removeprefix("models/") not in names:
+        raise ModelNotFound(f"'{model}' is not in this key's model list ({len(names)} models)")
+    await _generate(model, "Reply with the word OK.", _config("", 0, max_output_tokens=16), api_key=api_key)
 
 
 def cite(text: str, supports: list[dict[str, Any]]) -> str:
@@ -209,13 +249,3 @@ def cite(text: str, supports: list[dict[str, Any]]) -> str:
             raw = raw[: s["end"]] + marks.encode() + raw[s["end"] :]
     return raw.decode("utf-8", errors="ignore")
 
-
-async def smoke() -> dict[str, Any] | None:
-    # Live call (never cached), so it tells whether the key and model work right now.
-    return await generate_json("Answer in JSON.", "Return {\"ok\": true}.",
-                               {"type": "object", "properties": {"ok": {"type": "boolean"}}, "required": ["ok"]},
-                               use_cache=False)
-
-
-if __name__ == "__main__":
-    print(asyncio.run(smoke()))

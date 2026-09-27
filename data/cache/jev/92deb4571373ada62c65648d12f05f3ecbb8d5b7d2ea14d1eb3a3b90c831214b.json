@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Union City",
+   "project": "CC - Microsoft - Shugart (Cco06)",
+   "description": "GPC will rebuild the Line Creek 230kV substation as breaker and a half configuration and connect the Morrow - Yates 230kV line and the Union City - Yates 230kV White line into Line Creek. For the Union City - Yates 230kV Black line, terminate the line from the Yates side into Shugart Farms, and the line from the Union City side into Line Creek. Build two short lines from Line Creek to Shugart Farm",
+   "candidate_town": "Union City, GA",
+   "county": "Fulton County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.86
+   }
+  },
+  "cost_usd": 2.163e-05,
+  "latency_ms": 307,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "title": "Church Creek \u2013 Faber Place \u2013 Charleston Transmission: Add 230kV Line",
+   "description": "Construct a 230 kV transmission line from Church Creek to Charleston Transmission. The Church Creek \u2013 Faber Place 230kV and 115kV lines will be rebuilt, and a 230kV line will be added between Faber Place and Charleston Transmission. Add 230/115kV transformer at Charleston Transmission. Add/upgrade terminals and bus work at impacted substations."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "new_line",
+    "confidence": 0.26,
+    "probabilities": {
+     "in_substation_equipment": 0.0,
+     "other": 0.33,
+     "new_line": 0.41,
+     "rebuild": 0.25,
+     "substation_construction": 0.01
+    }
+   }
+  },
+  "cost_usd": 2.3688000000000004e-05,
+  "latency_ms": 511,
+  "model": "jev-latest"
+ }
+}

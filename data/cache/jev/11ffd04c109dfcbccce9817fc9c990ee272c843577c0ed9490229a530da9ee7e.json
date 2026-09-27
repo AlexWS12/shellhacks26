@@ -1,0 +1,45 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Buzzard Roost",
+   "utility": "GTC",
+   "filing_state": "GA",
+   "project": "GTC: Adamsville - Buzzard Roost 230kV Rebuild",
+   "description": "GTC plans to rebuild 5 miles of line from Buzzard Roost to Boat Rock Road with 200C 1351 ACSS Martin.",
+   "zone": "201",
+   "candidate": {
+    "name": "Buzzard Roost Dam",
+    "operator": "South Carolina Public Service Authority",
+    "voltage": "",
+    "lat": 34.1693081,
+    "lon": -81.9025444,
+    "state": "SC",
+    "power": "plant"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  },
+  "cost_usd": 2.2554000000000005e-05,
+  "latency_ms": 184,
+  "model": "jev-latest"
+ }
+}

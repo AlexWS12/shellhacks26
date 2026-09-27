@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Thomson Primary",
+   "project": "Evans Primary - Thomson Primary 115kV Rebuild",
+   "description": "Rebuild the existing 100C 336 ACSR conductor for the Thomson Primary to Pumpkin Center 115kV line section (approximately 5.28 miles), part of the Evans Primary - Thomson Primary 115kV line with 200C 1351 ACSS Martin conductor.",
+   "candidate_town": "Thomson, GA",
+   "county": "McDuffie County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.92
+   }
+  },
+  "cost_usd": 2.0286000000000002e-05,
+  "latency_ms": 200,
+  "model": "jev-latest"
+ }
+}

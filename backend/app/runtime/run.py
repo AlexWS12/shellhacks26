@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from app.clients.redact import contains_secret, redact
 from app.config import PACE, RUNS_DIR
 from app.core.models import RESEARCH_CATEGORIES
 from app.runtime.board import Board
@@ -20,7 +21,9 @@ class Run:
     pace: float = PACE  # demo delay multiplier, 0 = instant
     source: str | None = None  # replay: the recorded run id
     templates: bool = True  # False: a Gemini failure fails the agent instead of writing a template
+    purpose: str = "pipeline"  # pipeline | extract (an AI reader reading one source; not a replay default)
     research: list[str] = field(default_factory=lambda: list(RESEARCH_CATEGORIES))  # chosen before the run
+    preflight_skipped: list[dict[str, Any]] = field(default_factory=list)  # jobs started without a working model
     events: list[Event] = field(default_factory=list)
     finished: bool = False
     board: Board = field(default_factory=Board)
@@ -35,9 +38,13 @@ class Run:
 
     def emit(self, type: str, **payload: Any) -> Event:
         event: Event = {"type": type, "run_id": self.id, "seq": len(self.events), "ts": round(time.time(), 3), **payload}
+        line = json.dumps(event, default=str)
+        if contains_secret(line):  # last line of defense: no key reaches the log, the UI or Tiger Data
+            line = redact(line)
+            event = json.loads(line)
         self.events.append(event)
         if self._file:
-            self._file.write(json.dumps(event, default=str) + "\n")
+            self._file.write(line + "\n")
             self._file.flush()  # a crashed run still leaves a usable log
         for q in self._subscribers:
             q.put_nowait(event)

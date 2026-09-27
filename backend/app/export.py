@@ -7,14 +7,16 @@ import openpyxl
 from openpyxl.styles import Font
 
 from app.core.models import Overlap, Project
-from app.core.owners import state_of
+from app.core.owners import Book, book
 from app.core.sample import OVERLAP_HEADERS, PROJECT_HEADERS
 from app.store import dataset
 
-UTILITY_NAME = {"DESC": "Dominion Energy South Carolina", "GA": "Georgia Power"}
+# Owner names and codes come from the sources table. sponsor is the source's code (DESC, GPC, ...);
+# filing_sponsor keeps the owner the filing itself names for the row (GPC, SAV, GTC, MEAG, DU).
 PROJECT_EXTRA = ["sponsor", "location_confidence", "build_start", "estimated_cost", "status", "source", "project_type",
-                 "date_precision"]
-OVERLAP_EXTRA = ["location_confidence", "windows_overlap", "in_sponsor_sample", "other_utilities_nearby"]
+                 "date_precision", "filing_sponsor"]
+OVERLAP_EXTRA = ["location_confidence", "windows_overlap", "in_sponsor_sample", "center_distance_mi", "tier",
+                 "other_utilities_nearby"]
 CATEGORY_NAME = {"electric": "electric", "gas": "gas", "roads_water": "roads and water"}
 
 
@@ -27,24 +29,24 @@ def _append(ws, row: list) -> None:
     ws.append([safe_cell(v) for v in row])
 
 
-def owner_label(p: Project) -> str:
-    return UTILITY_NAME.get(p.utility, p.sponsor)
+def owner_label(p: Project, owners: Book | None = None) -> str:
+    return (owners or book()).display_name(p)
 
 
-def _project_row(p: Project, overlaps_of: dict[str, list[str]]) -> list:
+def _project_row(p: Project, overlaps_of: dict[str, list[str]], owners: Book) -> list:
     title = [e for e in p.endpoints if e.role == "endpoint"]  # description places aren't endpoints
     a = title[0] if title else None
     b = title[1] if len(title) > 1 else None
     ids = overlaps_of.get(p.id, [])
-    return [p.id, UTILITY_NAME.get(p.utility, p.sponsor), state_of(p), p.name,
+    return [p.id, owners.display_name(p), owners.state_of(p), p.name,
             a.name if a else None, a.lat if a else None, a.lon if a else None,
             b.name if b else None, b.lat if b else None, b.lon if b else None,
             p.lat, p.lon, date.fromisoformat(p.in_service_date), len(ids),
             ids[0] if ids else None, ids[1] if len(ids) > 1 else None, ids[2] if len(ids) > 2 else None,
-            p.sponsor, p.location_confidence, date.fromisoformat(p.build_start) if p.build_start else None,
+            owners.code(p), p.location_confidence, date.fromisoformat(p.build_start) if p.build_start else None,
             p.cost_total, p.status,
-            f"{p.source_file} p.{p.source_page} ({p.source_ref})" if p.utility in ("DESC", "GA") else f"{p.source_file}, {p.source_ref}",
-            p.project_type, p.date_precision or "day"]
+            f"{p.source_file} p.{p.source_page} ({p.source_ref})" if owners.builtin(p) else f"{p.source_file}, {p.source_ref}",
+            p.project_type, p.date_precision or "day", p.sponsor]
 
 
 def _header(ws, headers: list[str]) -> None:
@@ -62,9 +64,10 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "projects"
+    owners = book()
     _header(ws, PROJECT_HEADERS + PROJECT_EXTRA)
     for p in sorted(dataset.CURRENT.projects.values(), key=lambda p: (p.utility, p.id)):
-        _append(ws, _project_row(p, overlaps_of))
+        _append(ws, _project_row(p, overlaps_of, owners))
     for row in ws.iter_rows(min_row=2):
         for idx in (12, 19):  # in_service_date, build_start
             if row[idx].value:
@@ -79,8 +82,9 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
     _header(ws2, OVERLAP_HEADERS + OVERLAP_EXTRA)
     for o in overlaps:
         a, b = dataset.CURRENT.projects[o.project_a], dataset.CURRENT.projects[o.project_b]
-        _append(ws2, [ids[o.id], o.distance_mi, o.time_gap_days, UTILITY_NAME.get(a.utility, a.sponsor), a.id, a.name,
-                    UTILITY_NAME.get(b.utility, b.sponsor), b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample, "; ".join(near.get(o.id, []))])
+        _append(ws2, [ids[o.id], o.distance_mi, o.time_gap_days, owners.display_name(a), a.id, a.name,
+                    owners.display_name(b), b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample, o.center_mi, o.tier,
+                    "; ".join(near.get(o.id, []))])
     ws3 = wb.create_sheet("data_checks")
     _header(ws3, ["level", "rule", "title", "detail", "source", "project_id", "decided_by"])
     for c in dataset.CURRENT.checks:
@@ -110,8 +114,12 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
                     t.gap_a_days, t.gap_b_days, t.approx_date])
     ws5 = wb.create_sheet("notes")
     for line in [
-        "Method: center = midpoint of located endpoints (or the single located one); haversine miles, R = 3958.8.",
-        "Overlap: centers under 25 miles apart. time_gap (day) = |in-service date A - in-service date B|.",
+        "distance_mi: miles between the closest points of the two projects (the challenge's rule). A line is the "
+        "straight segment between its two located ends; anything else is a point.",
+        "center_distance_mi: center to center, as in Sperry's sample (center = midpoint of located endpoints, or the "
+        "single located one; haversine miles, R = 3958.8). The reference_test sheet uses this one.",
+        "Overlap: closest points under 25 miles apart. tier: touching (under 0.1 mi), row (under 1 mi), site (under "
+        "5 mi), crew (under 25 mi). time_gap (day) = |in-service date A - in-service date B|.",
         "Dates: DESC 'Planned In-Service Date' (final phase if phased); Georgia 'Need Date' from each project page.",
         "Georgia sponsor scope in this export follows the filters used when exporting.",
         "location_confidence: verified (sponsor file / override), confirmed_osm (OpenStreetMap + judge), "

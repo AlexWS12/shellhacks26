@@ -2,8 +2,10 @@
 
 import { create } from "zustand";
 
+import { readerHome } from "./owners";
+
 import type {
-  AgentSpec, Brief, Check, CostBlock, Overlap, Project, ReferenceResult, Report, ResearchCategory, ResearchProject, RunEvent,
+  AgentSpec, Brief, Check, CostBlock, ModelIssue, Overlap, Project, ReferenceResult, Report, ResearchCategory, ResearchProject, RunEvent,
   SourceSpec, ThirdParty, Written,
 } from "./types";
 
@@ -61,6 +63,7 @@ export interface RunData {
   research: Record<string, ResearchProject>; // other utilities' projects
   researchSelected: ResearchCategory[];
   thirdParty: ThirdParty[];
+  modelIssues: ModelIssue[]; // model failures and fallbacks, listed in the pipeline panel (live and replay)
   report: Report | null; // the Writer's final report
   log: { text: string; agent?: string }[];
   ticker: string;
@@ -82,7 +85,7 @@ export interface RunData {
 const empty = (): RunData => ({
   runId: null, mode: null, replayOf: null, phase: "idle", ok: null, failMsg: "", lastSeq: -1,
   agents: {}, agentOrder: [], sources: {}, sourceOrder: [], projects: {}, unlocated: {}, checks: [], overlaps: [],
-  reference: [], analyses: {}, costs: {}, briefs: {}, research: {}, researchSelected: [], thirdParty: [], report: null, log: [], ticker: "Not started.", judges: {}, agentLog: {},
+  reference: [], analyses: {}, costs: {}, briefs: {}, research: {}, researchSelected: [], thirdParty: [], modelIssues: [], report: null, log: [], ticker: "Not started.", judges: {}, agentLog: {},
   thinking: {}, health: {}, handoffs: [], recent: {}, agentPos: {}, linkBorn: {}, stats: null, startTs: null, endTs: null, lastTs: null, totalCost: 0,
 });
 
@@ -137,11 +140,6 @@ function pushAgent(id: string, entry: AgentEntry) {
 
 const now = () => (typeof performance !== "undefined" ? performance.now() : Date.now());
 
-// Extractors "sit" at each utility's headquarters while they read the filing.
-const HQ: Record<string, { lon: number; lat: number; label: string }> = {
-  extract_desc: { lon: -81.074, lat: 33.966, label: "Dominion HQ, Cayce SC" },
-  extract_ga: { lon: -84.389, lat: 33.759, label: "Georgia Power HQ, Atlanta" },
-};
 
 function moveTo(agentId: string | undefined, projectIds: string[], label: string) {
   if (!agentId) return;
@@ -178,7 +176,8 @@ export function apply(e: RunEvent): void {
     }
     case "agent.spawned":
       if (agent) agent.status = "working";
-      if (aid && HQ[aid]) run.agentPos[aid] = { ...HQ[aid], t: now() };
+      // Readers "sit" at their utility's headquarters while they read the filing (display.hq in /api/sources).
+      if (aid && readerHome(aid)) run.agentPos[aid] = { ...readerHome(aid)!, t: now() };
       break;
     case "agent.done":
       if (aid) delete run.agentPos[aid];
@@ -326,12 +325,14 @@ export function apply(e: RunEvent): void {
       moveTo(aid, String(e.overlap_id).split("|"), "cost");
       break;
     case "analysis.ready":
-      run.analyses[String(e.overlap_id)] = { text: String(e.text), actor: String(e.actor), unsupported_numbers: e.unsupported_numbers as string[] };
+      run.analyses[String(e.overlap_id)] = {
+        text: String(e.text), actor: String(e.actor), model: (e.model as string | null) ?? null, unsupported_numbers: e.unsupported_numbers as string[],
+      };
       moveTo(aid, String(e.overlap_id).split("|"), "write-up");
       break;
     case "brief.side": {
       const b = (run.briefs[String(e.overlap_id)] ??= {});
-      b[e.side as "dominion" | "georgia"] = { text: String(e.text), actor: String(e.actor) };
+      b[e.side as "dominion" | "georgia"] = { text: String(e.text), actor: String(e.actor), model: (e.model as string | null) ?? null };
       const [pa, pb] = String(e.overlap_id).split("|");
       moveTo(aid, [e.side === "dominion" ? pa : pb], "meeting prep");
       break;
@@ -381,6 +382,12 @@ export function apply(e: RunEvent): void {
     case "store.failed":
       pushLog(`Tiger Data save failed: ${e.message}`);
       break;
+    case "pages.located": {
+      // AI reader: which pages list projects, and why (each candidate carries its reason)
+      const c = (e.candidates as { page: number }[] | undefined) ?? [];
+      pushLog(`${agent?.name ?? "Reader"}: ${c.length} of ${e.total} pages list projects${e.by === "code" ? " (found by text signals)" : ""}.`, aid);
+      break;
+    }
     case "project.extract_failed":
       pushLog(`Parser couldn't read ${e.source_id} page ${e.page}: ${e.reason}. Trying Gemini.`, aid);
       break;
@@ -397,6 +404,19 @@ export function apply(e: RunEvent): void {
       run.phase = "failed";
       run.failMsg = String(e.message);
       pushLog(`Run failed: ${e.message}`);
+      break;
+    // Model registry: a model failing, a fallback taking over, or every model for a job failing.
+    case "model.call_failed":
+      run.modelIssues.push({ seq: e.seq, type: e.type, role: String(e.role), provider: String(e.provider), model: String(e.model), errorClass: String(e.error_class) });
+      pushLog(`${e.role}: ${e.provider}/${e.model} failed (${e.error_class})${e.will_retry ? ", retrying" : e.will_fallback ? ", trying the next model" : ""}.`, aid);
+      break;
+    case "model.fallback_used":
+      run.modelIssues.push({ seq: e.seq, type: e.type, role: String(e.role), from: String(e.from), to: String(e.to) });
+      pushLog(`${e.role}: using ${e.to} instead of ${e.from}.`, aid);
+      break;
+    case "role.exhausted":
+      run.modelIssues.push({ seq: e.seq, type: e.type, role: String(e.role) });
+      pushLog(`${e.role}: every configured model failed.`, aid);
       break;
   }
   bump();

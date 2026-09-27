@@ -207,7 +207,7 @@ def to_project(sub: Any, mapping: dict[str, str], header: list[str], row: list[A
         endpoints = [Endpoint(name=n) for n in (a, b) if n]
     pid = f"{sub.id}-{re.sub(r'[^A-Za-z0-9]+', '', ref)[:20] or f'r{rownum}'}"
     return Project(
-        id=pid, utility=sub.owner_key, sponsor=sub.owner, name=name[:200],
+        id=pid, utility=sub.owner_key, source_id=sub.id, sponsor=sub.owner, name=name[:200],
         description=str(get("description") or "")[:1500], status=str(get("status") or "")[:60],
         in_service_date=isd, in_service_raw=str(raw_date), date_precision=precision, build_start=start,
         cost_total=_money(get("cost")), endpoints=endpoints, state=state,

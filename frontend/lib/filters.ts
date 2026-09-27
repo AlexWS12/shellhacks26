@@ -1,13 +1,14 @@
 // Same check as `visible` in backend/app/core/overlap.py. Only decides what to draw.
 
 import type { FilterState } from "./api";
+import { hiddenByDefault } from "./owners";
 import type { Project, ResearchProject } from "./types";
 
 const ORDER = ["verified", "confirmed_osm", "partial", "town", "unlocated"];
 
 export function visible(p: Project, f: FilterState, today: string): boolean {
   if (p.lat == null || p.lon == null) return false;
-  if (p.utility === "GA" && !f.allSponsors && !["GPC", "SAV"].includes(p.sponsor)) return false;
+  if (!f.allSponsors && hiddenByDefault(p)) return false; // owners shown by default come from /api/sources
   const min = f.townLevel ? "town" : "confirmed_osm";
   if (ORDER.indexOf(p.location_confidence) > ORDER.indexOf(min)) return false;
   if (f.hideFinished && p.in_service_date < today) return false;

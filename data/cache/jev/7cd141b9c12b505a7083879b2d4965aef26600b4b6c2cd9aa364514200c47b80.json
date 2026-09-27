@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Adamsville",
+   "filing_state": "GA",
+   "project": "Adamsville - Jack Mcdonough 230kV Line Rebuild",
+   "description": "Rebuild the entire 6.1 mile Adamsville - Jack McDonough 230kV line with 160C 1351 ACSS.",
+   "zone": "206",
+   "candidate": {
+    "name": "Adamsville",
+    "kind": "place=hamlet",
+    "county": "McDuffie County",
+    "state": "GA",
+    "lat": 33.3754181,
+    "lon": -82.370125
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.75
+   }
+  },
+  "cost_usd": 2.1504000000000003e-05,
+  "latency_ms": 483,
+  "model": "jev-latest"
+ }
+}

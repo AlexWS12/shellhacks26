@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Ray Place Rd",
+   "utility": "MEAG",
+   "filing_state": "GA",
+   "project": "MEAG: Ray Place Rd - Warrenton Primary",
+   "description": "Rebuild 10 miles of Ray Place - Warrenton Primary 115kV line with 100C 2 - 1351 ACSR conductor and replace 1590 AAC Coreopsis jumpers at Warrenton.",
+   "zone": "215",
+   "candidate": {
+    "name": "Ray Place Road Switching Station",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 33.4682585,
+    "lon": -82.8197717,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.6
+   }
+  },
+  "cost_usd": 2.2764000000000004e-05,
+  "latency_ms": 176,
+  "model": "jev-latest"
+ }
+}

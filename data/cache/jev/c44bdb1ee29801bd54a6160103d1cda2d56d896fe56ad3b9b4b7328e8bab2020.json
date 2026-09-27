@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Buzzard Roost",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Buzzard Roost - Cavender Drive 230kV New Line",
+   "description": "GTC is building a new 7 mile 230kV line from Cavender Drive to Buzzard Roost with 200C 1351 ACSS Martin.",
+   "zone": "201",
+   "candidate": {
+    "name": "Buzzard Roost Dam Substation",
+    "operator": "",
+    "voltage": "44000",
+    "lat": 34.16889,
+    "lon": -81.9025522
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.22
+   }
+  },
+  "cost_usd": 2.1882e-05,
+  "latency_ms": 289,
+  "model": "jev-latest"
+ }
+}

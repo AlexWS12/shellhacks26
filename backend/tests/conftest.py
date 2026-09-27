@@ -11,6 +11,7 @@ from app.runtime.run import new_run
 def no_saved_plans(tmp_path_factory):
     # Plans saved in the Sources menu on this machine must not change test results.
     config.SUBMISSIONS_DIR = tmp_path_factory.mktemp("submissions")
+    config.SOURCES_DB = tmp_path_factory.mktemp("sources") / "sources.db"  # seeded with DESC and GPC on first use
     return config.SUBMISSIONS_DIR
 
 
@@ -18,12 +19,12 @@ def no_saved_plans(tmp_path_factory):
 def finished_run():
     # One offline run over the real files: no Gemini, no Jev (local rules decide), no live OSM or
     # Nominatim (committed caches only). Nothing is written to data/.
-    from app.pipeline import SOURCES, build_agents
+    from app.pipeline import build_pipeline
 
     config.GEMINI_API_KEY = ""
     config.JEV_PROVIDER = ""
     config.OSM_LIVE = False
     run = new_run("live")
     run.pace = 0
-    asyncio.run(execute(run, build_agents(), SOURCES))
+    asyncio.run(execute(run, *build_pipeline()))
     return run

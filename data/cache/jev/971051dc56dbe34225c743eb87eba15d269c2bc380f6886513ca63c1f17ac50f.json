@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Lick Creek",
+   "utility": "GTC",
+   "filing_state": "GA",
+   "project": "GTC: Eatonton Primary - Lick Creek 115kV Line Switch Replacement",
+   "description": "Replace a 1200A RLB line switch on the Eatonton - Lake Oconee 115kV line with a with motor operator and SCADA controls. This switch is located on GTC's Eatonton Primary - Lick Creek 115kV section of the Eatonton Primary - Lake Oconee 115kV Line.",
+   "zone": "214",
+   "candidate": {
+    "name": "Black Creek Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000;13800",
+    "lat": 32.206352,
+    "lon": -81.5579018,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  "cost_usd": 2.4528000000000003e-05,
+  "latency_ms": 231,
+  "model": "jev-latest"
+ }
+}

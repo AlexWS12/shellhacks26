@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "project": "Dawson 230kV Sub and Fold-in: Construct and Rebuild",
+   "description": "Construct Dawson 230kV substation. Fold in the existing Canadys \u2013 Church Creek and Canadys \u2013 Faber Place 230kV lines at the Dawson 230kV substation (phase 1). Rebuild Canadys \u2013 Dawson 230kV #1 and #2 with B1272 ACSR (phase 2).",
+   "need": "Load growth."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  },
+  "cost_usd": 1.9194000000000003e-05,
+  "latency_ms": 570,
+  "model": "jev-latest"
+ }
+}

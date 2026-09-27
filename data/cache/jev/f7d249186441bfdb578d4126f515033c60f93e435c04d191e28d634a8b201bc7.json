@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Thalmann",
+   "utility": "SAV",
+   "filing_state": "GA",
+   "project": "SAV: CC - Big Ogeechee 500/230kV (CC Network Improvements)",
+   "description": "Construct a new substation near Little Ogeechee, adjacent to the 500kV and 230kV shared right of way for McCall Road - Thalmann 500kV and the Little Ogeechee - Meldrim 230kV Black and White lines. The new substation will loop in the existing McCall Road - Thalmann 500kV line, the existing Little Ogeechee - Meldrim 230kV lines, and accommodate a new 1344MVA 500/230kV auto transformers with an addit",
+   "zone": "219",
+   "candidate": {
+    "name": "Thalmann Substation",
+    "operator": "Georgia Power",
+    "voltage": "500000;230000",
+    "lat": 31.2934589,
+    "lon": -81.6807807,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.87
+   }
+  },
+  "cost_usd": 2.6922000000000004e-05,
+  "latency_ms": 278,
+  "model": "jev-latest"
+ }
+}

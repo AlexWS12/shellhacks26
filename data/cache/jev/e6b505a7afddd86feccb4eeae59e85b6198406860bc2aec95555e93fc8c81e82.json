@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Webb",
+   "filing_state": "GA",
+   "project": "Lower River - Webb (Apc) 115kV Reconductor",
+   "description": "Reconductor 0.97 miles of 100C 636 Grosbeak Lower River - Webb 115kV line with 200C 795 ACSS Drake conductor.",
+   "zone": "216",
+   "candidate": {
+    "name": "Webb",
+    "kind": "place=village",
+    "county": "Houston County",
+    "state": "outside SC/GA",
+    "lat": 31.2604534,
+    "lon": -85.2732658
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.55
+   }
+  },
+  "cost_usd": 2.1798000000000004e-05,
+  "latency_ms": 350,
+  "model": "jev-latest"
+ }
+}

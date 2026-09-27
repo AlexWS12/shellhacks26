@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Magnolia",
+   "utility": "SAV",
+   "state": "GA",
+   "project": "SAV: Boulevard - Magnolia 115 kV Line Rebuild",
+   "description": "Rebuild the entire line from Boulevard to Magnolia (4.56 miles) from 100C 795 ACSR Drake to 200C 1351 ACSS Martin",
+   "zone": "219",
+   "candidate": {
+    "name": "Magnolia Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000;46000;13800",
+    "lat": 32.0226869,
+    "lon": -81.0861807
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.84
+   }
+  },
+  "cost_usd": 2.2302000000000004e-05,
+  "latency_ms": 223,
+  "model": "jev-latest"
+ }
+}

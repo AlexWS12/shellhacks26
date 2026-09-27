@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Warrenton Primary",
+   "project": "MEAG: Ray Place Rd - Warrenton Primary",
+   "description": "Rebuild 10 miles of Ray Place - Warrenton Primary 115kV line with 100C 2 - 1351 ACSR conductor and replace 1590 AAC Coreopsis jumpers at Warrenton.",
+   "candidate_town": "Warrenton, GA",
+   "county": "Warren County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.93
+   }
+  },
+  "cost_usd": 1.9572e-05,
+  "latency_ms": 250,
+  "model": "jev-latest"
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Midway",
+   "project": "GTC: Pond Fork - Midway 115kV Line",
+   "description": "GTC: Construct approximately 6 miles of 115kV line with minimum 170C 1351 ACSS conductor from Gillsville Tap Junction to Pond Fork, utilizing the existing GTC owned portion of the North Jackson - Lawrence Smith 46kV ROW. At Pond Fork, install a second 230/115kV 400MVA auto transformer and terminate the Pond Fork - Midway 115kV line.",
+   "candidate_town": "Midway, GA",
+   "county": "Liberty County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.81
+   }
+  },
+  "cost_usd": 2.1462000000000002e-05,
+  "latency_ms": 244,
+  "model": "jev-latest"
+ }
+}

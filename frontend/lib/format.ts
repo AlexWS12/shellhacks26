@@ -1,3 +1,4 @@
+import { namePrefixes, sourceOf, useSources } from "./owners";
 import type { Confidence, Project, ResearchCategory } from "./types";
 
 export const CATEGORY_LABEL: Record<ResearchCategory, string> = {
@@ -44,13 +45,20 @@ export const ACTOR_LABEL: Record<string, string> = {
   research_file: "Research",
 };
 
-export const utilityName = (p: Project) =>
-  p.utility === "DESC" ? "Dominion Energy SC" : p.utility === "GA" ? `Georgia · ${p.sponsor}` : `${p.sponsor} · submitted plan`;
-// list rows drop the owner prefix (the diamond and tooltip carry it) and use en-dashes
-export const shortName = (p: Project) => p.name.replace(/^(SAV|GTC|MEAG|DU|CC)\s*[-:]\s*/i, "").replace(/\s-\s/g, " – ");
+// The owner line of a project card: a built-in filing by name (with the row's owner when the filing lists several),
+// an added plan as such.
+export function utilityName(p: Project): string {
+  const s = sourceOf(p);
+  if (!s?.builtin) return `${p.sponsor} · submitted plan`;
+  return s.sponsors.length > 1 ? `${s.display.short_name ?? s.display_name} · ${p.sponsor}` : s.display.ui_name ?? s.display_name;
+}
 
-export const OWNER: Record<string, string> = { GPC: "Georgia Power", SAV: "Georgia Power (Savannah)", GTC: "Georgia Transmission",
-  MEAG: "MEAG Power", DU: "Dalton Utilities", DESC: "Dominion Energy SC" };
+// list rows drop the owner prefix a filing puts in its names ('SAV: ...'; the marker and tooltip carry it) and use
+// en-dashes. 'CC' is a name prefix, not an owner.
+export function shortName(p: Project): string {
+  const codes = [...namePrefixes(useSources.getState().list), "CC"];
+  return p.name.replace(new RegExp(`^(${codes.join("|")})\\s*[-:]\\s*`, "i"), "").replace(/\s-\s/g, " – ");
+}
 
 export function money(n: number | null | undefined): string {
   if (n == null) return "redacted";

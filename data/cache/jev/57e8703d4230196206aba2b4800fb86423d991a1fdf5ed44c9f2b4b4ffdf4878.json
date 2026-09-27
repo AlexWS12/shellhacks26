@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Cameron Jct",
+   "utility": "DESC",
+   "state": "SC",
+   "project": "Cameron Jct \u2013 Cameron \u2013 St Matthews 46 kV Rebuild",
+   "description": "Rebuilding the 46 kV line between Cameron Jct and St Matthews. 9.8 miles.",
+   "zone": null,
+   "candidate": {
+    "name": "Cameron Substation",
+    "operator": "",
+    "voltage": "46000",
+    "lat": 33.5636663,
+    "lon": -80.7089959
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.33
+   }
+  },
+  "cost_usd": 2.0832000000000003e-05,
+  "latency_ms": 205,
+  "model": "jev-latest"
+ }
+}

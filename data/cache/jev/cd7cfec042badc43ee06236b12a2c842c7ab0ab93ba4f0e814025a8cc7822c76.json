@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Palmyra",
+   "filing_state": "GA",
+   "project": "Palmyra Reactor Removal",
+   "description": "Remove the 6% reactor at the Palmyra Substation.",
+   "zone": "216",
+   "candidate": {
+    "name": "Palmyra",
+    "kind": "place=hamlet",
+    "county": "Lee County",
+    "state": "GA",
+    "lat": 31.6376726,
+    "lon": -84.1943534
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.74
+   }
+  },
+  "cost_usd": 1.9824000000000002e-05,
+  "latency_ms": 326,
+  "model": "jev-latest"
+ }
+}

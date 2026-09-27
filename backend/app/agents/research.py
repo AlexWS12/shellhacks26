@@ -13,9 +13,11 @@ from functools import lru_cache
 from typing import Any
 
 from app import config
-from app.clients import gemini, nominatim, overpass
+from app.clients import models, nominatim, overpass
+from app.clients.gemini import cite
 from app.core.models import Endpoint, ResearchPlace, ResearchProject
 from app.core.normalize import norm_key
+from app.core.owners import book
 from app.core.places import OsmIndex, Place, States, Towns, load_overrides, variants
 from app.core.research import load_file, nearby, place_center, prepare, rollup_confidence
 from app.runtime.agent import Agent, AgentSpec, Ctx
@@ -29,7 +31,6 @@ AREA = ("the Augusta-Aiken area (Aiken, Edgefield, McCormick, Barnwell counties 
         "Burke counties GA) and the Savannah-Jasper-Beaufort area (Jasper, Beaufort, Hampton counties SC; Chatham, "
         "Effingham, Bryan counties GA)")
 POINT_KINDS = ("substation", "power_plant", "facility")
-SC_GA_BOX = (30.3, -85.7, 35.3, -78.4)  # south, west, north, east
 
 LIVE_SCHEMA = {
     "type": "object",
@@ -70,7 +71,8 @@ def _resources() -> dict[str, Any]:
 
 
 def _in_box(lat: float, lon: float) -> bool:
-    s, w, n, e = SC_GA_BOX
+    # Inside the search area: the union of the active sources' states (or OSM_BBOX).
+    s, w, n, e = book().bbox()
     return s <= lat <= n and w <= lon <= e
 
 
@@ -112,7 +114,8 @@ class ResearchScout(Agent):
 
         async def one(r: ResearchProject) -> None:
             nonlocal placed
-            ctx.emit("research.found", record=r.model_dump())
+            ctx.emit("research.found", record=r.model_dump(),
+                     **({"model": r.verification.get("model")} if r.found_by == "gemini_search" else {}))
             async with sem:
                 await self.locate(ctx, r, res)
             b.research[r.id] = r  # each scout writes only its own category's records
@@ -132,24 +135,36 @@ class ResearchScout(Agent):
         return f"{len(records)} projects, {placed} placed"
 
     async def live_search(self, ctx: Ctx, known: list[ResearchProject]) -> list[ResearchProject]:
-        if not gemini.enabled():
-            ctx.log(f"{self.spec.name}: live search is on but Gemini is not configured; using the research file only.")
+        if not models.available("research_search"):
+            ctx.log(f"{self.spec.name}: live search is on but no model is configured for it; using the research file only.")
             return []
         prompt = (f"List specific {WHAT[self.category]} construction projects in {AREA} that are under construction or "
                   "planned between 2024 and 2034, by owners other than Dominion Energy South Carolina's electric "
                   "business and Georgia Power's electric business. Give owner, project name, towns or counties, and "
                   "start and completion dates.")
         async with ctx.tool("gemini_google_search", {"category": self.category}, actor="gemini") as out:
-            g = await gemini.search_grounded(LIVE_SEARCH_SYSTEM, prompt)
-            out["summary"] = f"{len(g['sources'])} pages" if g else "search unavailable"
-        if not g or not g["sources"]:
+            try:
+                g = await models.call("research_search", prompt, system=LIVE_SEARCH_SYSTEM)
+            except models.RoleExhausted:
+                g = None
+            out["summary"] = f"{len(g.value['sources'])} pages" if g else "search unavailable"
+            out["model"] = g.model if g else None
+        if not g or not g.value["sources"]:
             return []
-        numbered = "\n".join(f"[{i + 1}] {s['title']} {s['url']}" for i, s in enumerate(g["sources"]))
-        async with ctx.tool("gemini_extract_records", {"sources": len(g["sources"])}, actor="gemini") as out:
-            x = await gemini.generate_json(LIVE_EXTRACT_SYSTEM, f"Text:\n{gemini.cite(g['text'], g['supports'])}\n\n"
-                                           f"Sources:\n{numbered}", LIVE_SCHEMA)
-            out["summary"] = f"{len((x or {}).get('data', {}).get('projects', []))} records" if x else "extraction failed"
-        return live_records((x or {}).get("data", {}).get("projects", []), g["sources"], self.category, known)
+        found = g.value
+        numbered = "\n".join(f"[{i + 1}] {s['title']} {s['url']}" for i, s in enumerate(found["sources"]))
+        async with ctx.tool("gemini_extract_records", {"sources": len(found["sources"])}, actor="gemini") as out:
+            try:
+                x = await models.call("research_extract", f"Text:\n{cite(found['text'], found['supports'])}\n\n"
+                                      f"Sources:\n{numbered}", LIVE_SCHEMA, system=LIVE_EXTRACT_SYSTEM)
+            except models.RoleExhausted:
+                x = None
+            out["summary"] = f"{len(x.value.get('projects', []))} records" if x else "extraction failed"
+            out["model"] = x.model if x else None
+        records = live_records(x.value.get("projects", []) if x else [], found["sources"], self.category, known)
+        for r in records:
+            r.verification["model"] = x.model if x else None  # which model turned the search into this record
+        return records
 
     async def locate(self, ctx: Ctx, r: ResearchProject, res: dict[str, Any]) -> None:
         stated = [c for c in r.stated_coordinates if _in_box(float(c.get("lat", 0)), float(c.get("lon", 0)))]
@@ -169,7 +184,7 @@ class ResearchScout(Agent):
         keys, tried = variants(key), []
         for k in keys:
             if state and (o := load_overrides().get(f"{k}|{state}")) is not None:
-                return _ep(pl.name, o, "override", "verified", o.extra)
+                return _ep(pl.name, o, "override", o.extra["confidence"], o.extra)
 
         if pl.kind in POINT_KINDS:
             cands = [c for c in res["osm"].candidates(key, state) if c[1].get("state") == state][:2]
@@ -183,7 +198,8 @@ class ResearchScout(Agent):
                      "candidate": {k2: f.get(k2) for k2 in ("name", "operator", "voltage", "power", "state")}},
                     true="Same facility: name, owner or operator and area fit the project.",
                     false="A different facility that only shares part of the name, or is in another area.",
-                    heuristic=lambda s=score, via=via: 0.8 if s == 1.0 and via in ("name", "alt_name") else 0.3)
+                    heuristic=lambda s=score, via=via: 0.8 if s == 1.0 and via in ("name", "alt_name") else 0.3,
+                    role="research_confirm")
                 if v.value >= ACCEPT:
                     return _ep(pl.name, Place(f["lat"], f["lon"], f["name"], {}), "overpass", "confirmed_osm",
                                {"osm_id": f["osm_id"], "osm_name": f["name"], "judge": v.actor, "p_match": round(float(v.value), 3)})
@@ -210,7 +226,7 @@ class ResearchScout(Agent):
                  "description": r.description[:300], "candidate_town": town.label, "county": town.extra.get("county")},
                 true="The record means this town (or a site in it).",
                 false="The name only coincides with the town.",
-                heuristic=lambda: 0.8 if pl.kind == "town" else 0.55)
+                heuristic=lambda: 0.8 if pl.kind == "town" else 0.55, role="research_confirm")
             if v.value >= ACCEPT:
                 return _ep(pl.name, town, "geonames_town", "town",
                            {"town": town.label, "judge": v.actor, "p_match": round(float(v.value), 3)})
@@ -228,7 +244,7 @@ class ResearchScout(Agent):
                 {"place": pl.name, "kind": pl.kind, "project": r.name, "owner": r.utility,
                  "description": r.description[:300], "candidate": {"name": x["name"], "kind": x["kind"], "county": x["county"]}},
                 true="The record means this place.", false="The name only coincides.",
-                heuristic=lambda: 0.7)
+                heuristic=lambda: 0.7, role="research_confirm")
             if v.value >= ACCEPT:
                 sub = x["kind"] == "power=substation"
                 return _ep(pl.name, Place(x["lat"], x["lon"], x["display_name"], {}), "nominatim",

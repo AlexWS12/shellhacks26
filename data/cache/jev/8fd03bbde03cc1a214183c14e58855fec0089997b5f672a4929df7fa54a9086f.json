@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Carolina Forest",
+   "utility": "SCPSA",
+   "filing_state": "SC",
+   "project": "Carolina Forest 230-115 kV Substation: Add Transformer",
+   "description": "",
+   "zone": null,
+   "candidate": {
+    "name": "Carolina Forest Substation",
+    "operator": "",
+    "voltage": "230000;115000",
+    "lat": 33.7812511,
+    "lon": -78.8869651,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.8
+   }
+  },
+  "cost_usd": 2.0832000000000003e-05,
+  "model": "jev-latest",
+  "latency_ms": 237
+ }
+}

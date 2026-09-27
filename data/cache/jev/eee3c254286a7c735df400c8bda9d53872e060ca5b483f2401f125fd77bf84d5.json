@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Klondike",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Klondike Relay Modernization",
+   "description": "Upgrade protection on 230kV buses at the Klondike station. Add adequate monitoring on DC supply.",
+   "zone": "206",
+   "candidate": {
+    "name": "Klondike Substation",
+    "operator": "Georgia Power",
+    "voltage": "500000;230000",
+    "lat": 33.6369768,
+    "lon": -84.124487,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.89
+   }
+  },
+  "cost_usd": 2.1504000000000003e-05,
+  "latency_ms": 237,
+  "model": "jev-latest"
+ }
+}

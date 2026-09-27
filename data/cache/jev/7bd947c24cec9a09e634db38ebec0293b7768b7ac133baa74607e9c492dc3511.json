@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Varnville",
+   "project": "Varnville - Indian Field 230 kV line",
+   "description": "Construct a 230 kV transmission line (approximately 38 miles) from the Varnville 230-115 kV Substation to the proposed Indian Field 230-115 kV Substation. Rebuild the existing Bells Crossroads \u2013 Varnville 115 kV Line for 230/115 kV double- circuit on the existing right-of-way. Rebuild the St. George \u2013 Bells Crossroads (via Smoaks) 115 kV Line #2 for 230/115 kV double-circuit on the existing right-",
+   "candidate_town": "Varnville, SC",
+   "county": "Hampton County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.96
+   }
+  },
+  "cost_usd": 2.3268e-05,
+  "model": "jev-latest",
+  "latency_ms": 205
+ }
+}

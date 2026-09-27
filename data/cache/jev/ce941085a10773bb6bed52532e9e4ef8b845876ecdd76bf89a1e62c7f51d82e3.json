@@ -1,0 +1,44 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Mcintosh",
+   "utility": "SAV",
+   "filing_state": "GA",
+   "project": "SAV: Mcintosh - Purrysburg 230kV Reactors",
+   "description": "Install reactors on the McIntosh - Purrysburg (Black and White) 230kV tie lines at McIntosh. Rebuild 0.1 miles (GPC portion) for both lines to (2) 200C 1351 ACSS conductor.",
+   "zone": "219",
+   "candidate": {
+    "name": "McIntosh Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 32.3521162,
+    "lon": -81.1751124,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.91
+   }
+  },
+  "cost_usd": 2.3394000000000003e-05,
+  "latency_ms": 216,
+  "model": "jev-latest"
+ }
+}

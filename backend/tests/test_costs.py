@@ -1,8 +1,9 @@
 # Cost research and the savings calculator: filed costs first, benchmarks from Dominion's filed costs, and a
-# savings range that is labeled as an assumption and dropped when Jev says the pair can't share work.
+# savings range by distance tier, labeled as an assumption and dropped when Jev says sharing isn't worth raising.
 from statistics import median
 
-from app.core.costs import ASSUMPTION_LABEL, ASSUMPTIONS, benchmark_table, savings_block
+from app.core.analysis import shared_resources
+from app.core.costs import ASSUMPTION_LABEL, ASSUMPTIONS, _sig, benchmark_table, savings_block
 from app.core.models import Overlap, Project
 
 
@@ -41,60 +42,76 @@ def test_savings_blocks_for_every_pair(finished_run):
         assert 0 <= c["savings_low"] < c["savings_high"]
         assert c["applies_to"] in (c["a"]["project_id"], c["b"]["project_id"])
         assert ASSUMPTION_LABEL in c["statement"] and c["check"]
-    for c in b.costs.values():
-        if c["shared"]["timing"] == "unknown":
-            assert c["savings_high"] is None
+    for o in b.overlaps:  # the savings follow the pair's distance tier and what it can share
+        c = b.costs[o.id]
+        assert c["tier"] == o.tier and c["for"] == c["shared"]["items"]
+
+
+def pair(finished: bool = False, windows: bool | None = True, tier: str = "site") -> tuple[Project, Project, Overlap]:
+    a, g = proj("A", "DESC", 10_000_000), proj("G", "GA", None)
+    o = Overlap(id="A|G", project_a="A", project_b="G", distance_mi=3, tier=tier, time_gap_days=10,
+                windows_overlap=windows, pair_confidence="verified", finished=finished)
+    return a, g, o
 
 
 def test_savings_range_uses_the_smaller_cost():
-    a, g = proj("A", "DESC", 10_000_000), proj("G", "GA", None)
-    o = Overlap(id="A|G", project_a="A", project_b="G", distance_mi=3, time_gap_days=10, windows_overlap=True,
-                pair_confidence="verified")
-    shared = {"timing": "concurrent", "level": "high", "items": ["crews"], "types": ["rebuild", "rebuild"]}
+    a, g, o = pair()
+    shared = shared_resources(a, g, o)
     ea = {"project_id": "A", "amount": 10_000_000, "basis": "filed"}
     eg = {"project_id": "G", "amount": 4_000_000, "basis": "benchmark"}
-    lo, hi = ASSUMPTIONS[("concurrent", "high")]
+    lo, hi = ASSUMPTIONS[("site", True)]
     c = savings_block(a, g, o, shared, ea, eg, {"actor": "jev", "p": 0.9})
     assert (c["savings_low"], c["savings_high"], c["applies_to"]) == (round(4e6 * lo), round(4e6 * hi), "G")
-    assert "modeled" in c["statement"]
+    assert "under 5 miles" in c["statement"] and "modeled" in c["statement"]
+
+
+def test_closer_tiers_save_more():
+    for together in (True, False):
+        lows = [ASSUMPTIONS[(t, together)][0] for t in ("crew", "site", "row", "touching")]
+        highs = [ASSUMPTIONS[(t, together)][1] for t in ("crew", "site", "row", "touching")]
+        assert lows == sorted(lows) and highs == sorted(highs)
+    for t in ("crew", "site", "row", "touching"):  # crews on site together always add something
+        assert ASSUMPTIONS[(t, True)][1] > ASSUMPTIONS[(t, False)][1]
 
 
 def test_jev_can_rule_a_pair_out():
-    a, g = proj("A", "DESC", 10_000_000), proj("G", "GA", None)
-    o = Overlap(id="A|G", project_a="A", project_b="G", distance_mi=3, time_gap_days=10, windows_overlap=True,
-                pair_confidence="verified")
-    shared = {"timing": "concurrent", "level": "high", "items": ["crews"], "types": ["rebuild", "rebuild"]}
+    a, g, o = pair()
     e = {"project_id": "A", "amount": 10_000_000, "basis": "filed"}
-    c = savings_block(a, g, o, shared, e, {**e, "project_id": "G"}, {"actor": "jev", "p": 0.2})
+    c = savings_block(a, g, o, shared_resources(a, g, o), e, {**e, "project_id": "G"}, {"actor": "jev", "p": 0.2})
     assert c["savings_high"] is None and "worth raising" in c["statement"]
 
 
-def test_finished_pairs_only_share_records():
-    # One project already in service: no crews or staging, whatever the build windows said.
+def test_finished_pairs_save_only_what_lasts():
+    # One project already in service: no crews, deliveries or outage timing, whatever the build windows said.
     from app.agents.costs import sharing_question
 
-    a, g = proj("A", "DESC", 10_000_000), proj("G", "GA", None)
-    o = Overlap(id="A|G", project_a="A", project_b="G", distance_mi=3, time_gap_days=10, windows_overlap=True,
-                pair_confidence="verified", finished=True)
-    shared = {"timing": "concurrent", "level": "high", "items": ["crews"], "types": ["rebuild", "rebuild"]}
+    a, g, o = pair(finished=True, tier="row")
+    shared = shared_resources(a, g, o)
     e = {"project_id": "A", "amount": 10_000_000, "basis": "filed"}
     c = savings_block(a, g, o, shared, e, {**e, "project_id": "G"}, {"actor": "jev", "p": 0.9})
-    lo, hi = ASSUMPTIONS[("sequential", "medium")]
-    assert "crews" not in c["for"] and "right-of-way records" in c["for"]
-    assert (c["savings_low"], c["savings_high"]) == (round(1e7 * lo), round(1e7 * hi))
-    assert shared["items"] == ["crews"]  # the caller's shared block (used by other agents) is untouched
-    q, state, _, _ = sharing_question(a, g, o, {**shared, "timing": "sequential", "items": c["for"]})
+    lo, hi = ASSUMPTIONS[("row", False)]
+    assert not c["together"] and "crews" not in c["for"] and "right-of-way" in c["for"]
+    assert (c["savings_low"], c["savings_high"]) == (_sig(1e7 * lo), _sig(1e7 * hi))  # two significant figures
+    q, state, _, _ = sharing_question(a, g, o, shared)
     assert "different times" in q and "today" in state and "already_in_service" in state["a"]
 
 
-def test_jev_sees_dominion_build_window(finished_run):
+def test_unknown_timing_still_shares_the_land():
+    a, g, o = pair(windows=None, tier="row")
+    e = {"project_id": "A", "amount": 10_000_000, "basis": "filed"}
+    c = savings_block(a, g, o, shared_resources(a, g, o), e, {**e, "project_id": "G"})
+    assert c["savings_high"] and ASSUMPTIONS[("row", False)] == tuple(c["share"])
+
+
+def test_jev_sees_the_closest_distance_and_tier(finished_run):
     from app.agents.costs import sharing_question
 
     b = finished_run.board
-    o = next(o for o in b.overlaps if o.windows_overlap)
+    o = next(o for o in b.overlaps if o.tier == "touching")
     a, g = b.projects[o.project_a], b.projects[o.project_b]
-    q, state, _, _ = sharing_question(a, g, o, {"timing": "concurrent", "items": ["crews", "cranes"]})
-    assert "at least one of these: crews, cranes" in q
+    q, state, _, _ = sharing_question(a, g, o, shared_resources(a, g, o))
+    assert "touching or crossing" in q and "at least one of these:" in q
+    assert state["closest_distance_mi"] == o.distance_mi and state["tier"] == "touching or crossing"
     assert state["a"]["construction_start"] or state["a"]["under_way_since"]
 
 

@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
+import { PLAIN, providerName } from "@/lib/alerts";
 import { run, useRev } from "@/lib/run";
+import type { ModelIssue, RoleInfo } from "@/lib/types";
 import { useUI, type RailTab } from "@/lib/ui";
 
 import AgentGraph from "./AgentGraph";
@@ -11,14 +13,33 @@ import SourcesMenu from "./SourcesMenu";
 // Each section of the pipeline, shown one at a time in the left rail's panel (see Rail.tsx).
 // The panel header carries the section title, so these start straight with their content.
 
+// Model failures and fallbacks, same kind together with a count. A replay shows them here instead of notifying.
+function issueRows(list: ModelIssue[], roles: RoleInfo): { key: string; text: string; level: string; n: number }[] {
+  const label = (id: string) => roles[id]?.label ?? id;
+  const short = (ref?: string) => (ref ? ref.slice(ref.indexOf("/") + 1) : "");
+  const rows = new Map<string, { key: string; text: string; level: string; n: number }>();
+  for (const i of list) {
+    const [key, text, level] = i.type === "model.call_failed"
+      ? [`f/${i.role}/${i.model}/${i.errorClass}`, `${label(i.role)}: ${providerName(i.provider)} ${i.model}: ${PLAIN[i.errorClass ?? ""] ?? i.errorClass}`,
+        ["AuthError", "ModelNotFound", "QuotaExceeded"].includes(i.errorClass ?? "") ? "error" : "warn"]
+      : i.type === "model.fallback_used"
+        ? [`b/${i.role}/${i.to}`, `${label(i.role)}: switched from ${short(i.from)} to backup ${short(i.to)}`, "info"]
+        : [`x/${i.role}`, `${label(i.role)}: no model worked for one item`, "error"];
+    const row = rows.get(key);
+    if (row) row.n += 1;
+    else rows.set(key, { key, text, level, n: 1 });
+  }
+  return [...rows.values()];
+}
+
 export function SourcesPanel() {
   useRev((s) => s.rev);
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="section">
       <p className="label">
-        <button className="linkbtn addplan" onClick={() => setMenuOpen(true)} disabled={run.phase === "running"}
-          title="Add another utility's plan: spreadsheet, PDF or link">+ Add a plan</button>
+        <button className="linkbtn addplan" onClick={() => setMenuOpen(true)}
+          title="Every utility the pipeline reads; add a filing, spreadsheet or link">Manage · + Add</button>
       </p>
       {menuOpen && <SourcesMenu onClose={() => setMenuOpen(false)} />}
       {run.sourceOrder.length === 0 && <p className="empty">Dominion&apos;s project list, Georgia&apos;s IRP Vol. 3, and a surveyed benchmark set.</p>}
@@ -102,9 +123,26 @@ export function IssuesPanel() {
   const [open, setOpen] = useState<string | null>(null);
   const unl = Object.keys(run.unlocated);
   const checks = allChecks ? run.checks : run.checks.slice(0, 5);
+  const roles = useUI((st) => st.health?.models) ?? {};
+  const [allIssues, setAllIssues] = useState(false);
+  const issues = issueRows(run.modelIssues, roles);
   return (
     <div className="section">
-      {run.checks.length === 0 && <p className="empty">Problems the validator finds in the filings show up here.</p>}
+      {issues.length > 0 && (
+        <>
+          <p className="label">Model problems <span className="count">{issues.length}</span>
+            {run.mode === "replay" && <span className="hint">recorded in this run</span>}</p>
+          {(allIssues ? issues : issues.slice(0, 6)).map((r) => (
+            <div key={r.key} className={`check issue ${r.level}`}>
+              <i className="dot" />
+              <div>{r.text}{r.n > 1 && <span className="sub-inline"> ×{r.n}</span>}</div>
+            </div>
+          ))}
+          {issues.length > 6 && <button className="linkbtn" onClick={() => setAllIssues(!allIssues)}>{allIssues ? "Show less" : `Show all ${issues.length}`}</button>}
+          {run.checks.length > 0 && <p className="label">Filing checks</p>}
+        </>
+      )}
+      {run.checks.length === 0 && issues.length === 0 && <p className="empty">Problems the validator finds in the filings show up here.</p>}
       {checks.map((c) => (
         <div key={c.id} className={`check ${c.level}`} role="button" tabIndex={0} aria-expanded={open === c.id}
           onClick={() => setOpen(open === c.id ? null : c.id)}

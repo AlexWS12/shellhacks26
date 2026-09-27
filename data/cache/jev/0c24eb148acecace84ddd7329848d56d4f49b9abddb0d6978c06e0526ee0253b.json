@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Rockville",
+   "filing_state": "GA",
+   "project": "GTC: Tiger Creek-Rockville-North Spa 230kV Project",
+   "description": "Build a new 4 - breaker 230kV ring bus at Rockville substation (no auto transformer to be added at this time). Loop in the Eatonton Primary #2 - Wallace Dam 230kV line. Build a new line 230kV line to Tiger Creek. Build a new 230kV line to North Spa.",
+   "zone": "214",
+   "candidate": {
+    "name": "Rockville",
+    "kind": "place=hamlet",
+    "county": "Putnam County",
+    "state": "GA",
+    "lat": 33.3276362,
+    "lon": -83.2187677
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.74
+   }
+  },
+  "cost_usd": 2.3352000000000003e-05,
+  "latency_ms": 736,
+  "model": "jev-latest"
+ }
+}

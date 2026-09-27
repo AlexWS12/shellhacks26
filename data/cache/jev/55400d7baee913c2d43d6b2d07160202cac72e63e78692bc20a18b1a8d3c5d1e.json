@@ -1,0 +1,35 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "model": "jev-latest",
+  "state": {
+   "endpoint": "Harleyville",
+   "project": "Indian Field 230-115 kV Substation",
+   "description": "Fold in the existing Harleyville \u2013 St. George 115 kV line into the new Indian Field 230-115 kV substation. The existing Byrds Tap 115 kV line will be terminated on the 115 kV bus #1 at the new Indian Field 230-115kV substation. A new 115 kV transmission line will be built as a 230/115 kV double circuit line for future 230 kV projects from St. George 115 kV Switching Station to the new Indian Field",
+   "candidate_town": "Harleyville, SC",
+   "county": "Dorchester County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  },
+  "cost_usd": 2.3058000000000002e-05,
+  "model": "jev-latest",
+  "latency_ms": 219
+ }
+}
