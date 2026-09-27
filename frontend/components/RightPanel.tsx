@@ -8,7 +8,7 @@ import {
   ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
-import type { Endpoint, Overlap, PairDetail, Project, ThirdParty, Written } from "@/lib/types";
+import type { Endpoint, Overlap, PairDetail, Project, ThirdParty, Tier, Written } from "@/lib/types";
 import {
   approxDate, colorOf, costKind, dateWord, gapText, legendSources, ownerName, ownerShort, ownStyle, serviceDate, shapeOf, showsStatus,
   useSources, whereFrom,
@@ -105,8 +105,18 @@ function matches(o: Overlap, q: string): boolean {
     [p.id, p.name, ...p.endpoints.map((e) => e.name)].some((t) => t.toLowerCase().includes(q)));
 }
 
+export const TIER_LABEL: Record<Tier, string> = {
+  touching: "Touching or crossing: must coordinate outages and crossing structures",
+  row: "Under 1 mile: can share the land itself (right-of-way, access roads, permits)",
+  site: "Under 5 miles: can share site logistics (laydown yards, deliveries)",
+  crew: "Under 25 miles: can share crews and equipment",
+};
+
 function Action({ o }: { o: Overlap }) {
-  if (o.windows_overlap === true) return <span className="act crews">Share crews</span>;
+  if (o.tier === "touching") return <span className="act crews">Must coordinate</span>;
+  if (o.tier === "row") return <span className="act crews">Share land</span>;
+  if (o.tier === "site") return <span className="act crews">Share site</span>;
+  if (o.windows_overlap === true && !o.finished) return <span className="act crews">Share crews</span>;
   if (o.windows_overlap == null) return <span className="act unknown">Timing undecided</span>;
   return <span className="act records">Share records</span>;
 }
@@ -318,9 +328,10 @@ function PairView({ a, b }: { a: string; b: string }) {
           <b>{pb.name}</b>{ownerName(pb)}{pb.status && showsStatus(pb) ? ` · ${pb.status}` : ""}<br />{dateWord(pb)} {serviceDate(pb, fmtDate)}
         </div>
       </div>
-      <div className="hero"><span className="big">{o.distance_mi.toFixed(2)}</span><span>miles apart</span></div>
+      <div className="hero"><span className="big">{o.distance_mi.toFixed(2)}</span><span>miles apart at the closest points</span></div>
+      {o.center_mi != null && <div className="sub" title="Center = midpoint of each project's located ends.">{o.center_mi.toFixed(2)} mi center to center</div>}
       <div className="sub">{gapText(o.time_gap_days, pa, pb)} days between in-service dates · {CONF_LABEL[o.pair_confidence]}</div>
-      {o.finished && <p className="note">At least one of these projects is already in service, so only records and designs can be shared, not crews.</p>}
+      {o.finished && <p className="note">At least one of these projects is already in service, so crews, equipment and outage timing can&apos;t be shared.</p>}
       {slackNote(o) && <p className="note">{slackNote(o)}</p>}
 
       <h3>Build windows</h3>
@@ -333,6 +344,7 @@ function PairView({ a, b }: { a: string; b: string }) {
       <h3>What they could share</h3>
       {shared ? (
         <p className="share">
+          {shared.tier && <span className="sub block">{TIER_LABEL[shared.tier]}</span>}
           <b className={shared.level === "high" ? "c-zone" : "c-ink"}>
             {shared.level === "high" ? "Strong" : shared.level === "medium" ? "Moderate" : "Limited"}
           </b>{" "}
@@ -616,6 +628,7 @@ function ReportView() {
         {Object.entries(r.owners).map(([o, n]) => <tr key={o}><td>{o}</td><td>{plural(n, "project")}</td></tr>)}
         <tr><td>On the map</td><td>{c.placed} ({c.unlocated} unlocated)</td></tr>
         <tr><td>Pairs under 25 mi</td><td>{c.opportunities} ({c.built_at_same_time} same time)</td></tr>
+        {r.tiers && <tr><td>By closest distance</td><td>{r.tiers.touching} touching · {r.tiers.row} under 1 mi · {r.tiers.site} under 5 mi</td></tr>}
         <tr><td>Benchmark</td><td>{c.benchmark_passed}/{c.benchmark_total} exact</td></tr>
         <tr><td>Data issues</td><td>{c.issues_error} errors · {c.issues_warn} warnings</td></tr>
         {r.research_categories.length > 0 && <tr><td>Other utilities ({r.research_categories.join(", ")})</td><td>{c.other_utility_projects} projects · near {c.opportunities_with_other_utilities} pairs</td></tr>}
@@ -633,6 +646,7 @@ function ReportView() {
               <div className="t">{t.a.name} <span className="sub-inline">· {t.a.owner}</span><br />{t.b.name} <span className="sub-inline">· {t.b.owner}</span></div>
               <div className="meta">
                 <span><span className="num">{t.distance_mi.toFixed(2)}</span> mi</span>
+                {t.tier === "touching" && <span className="tag together">touching</span>}
                 <span><span className="num">{t.a.date_precision !== "day" || t.b.date_precision !== "day" ? "about " : ""}{t.time_gap_days.toLocaleString()}</span> days apart</span>
                 {t.built_at_same_time && <span className="tag together">built at the same time</span>}
                 {t.other_utilities.length > 0 && <span className="tag unknown">+{t.other_utilities.length} other owners nearby</span>}

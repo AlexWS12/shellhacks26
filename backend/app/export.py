@@ -15,7 +15,8 @@ from app.store import dataset
 # filing_sponsor keeps the owner the filing itself names for the row (GPC, SAV, GTC, MEAG, DU).
 PROJECT_EXTRA = ["sponsor", "location_confidence", "build_start", "estimated_cost", "status", "source", "project_type",
                  "date_precision", "filing_sponsor"]
-OVERLAP_EXTRA = ["location_confidence", "windows_overlap", "in_sponsor_sample", "other_utilities_nearby"]
+OVERLAP_EXTRA = ["location_confidence", "windows_overlap", "in_sponsor_sample", "center_distance_mi", "tier",
+                 "other_utilities_nearby"]
 CATEGORY_NAME = {"electric": "electric", "gas": "gas", "roads_water": "roads and water"}
 
 
@@ -82,7 +83,8 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
     for o in overlaps:
         a, b = dataset.CURRENT.projects[o.project_a], dataset.CURRENT.projects[o.project_b]
         _append(ws2, [ids[o.id], o.distance_mi, o.time_gap_days, owners.display_name(a), a.id, a.name,
-                    owners.display_name(b), b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample, "; ".join(near.get(o.id, []))])
+                    owners.display_name(b), b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample, o.center_mi, o.tier,
+                    "; ".join(near.get(o.id, []))])
     ws3 = wb.create_sheet("data_checks")
     _header(ws3, ["level", "rule", "title", "detail", "source", "project_id", "decided_by"])
     for c in dataset.CURRENT.checks:
@@ -112,8 +114,12 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
                     t.gap_a_days, t.gap_b_days, t.approx_date])
     ws5 = wb.create_sheet("notes")
     for line in [
-        "Method: center = midpoint of located endpoints (or the single located one); haversine miles, R = 3958.8.",
-        "Overlap: centers under 25 miles apart. time_gap (day) = |in-service date A - in-service date B|.",
+        "distance_mi: miles between the closest points of the two projects (the challenge's rule). A line is the "
+        "straight segment between its two located ends; anything else is a point.",
+        "center_distance_mi: center to center, as in Sperry's sample (center = midpoint of located endpoints, or the "
+        "single located one; haversine miles, R = 3958.8). The reference_test sheet uses this one.",
+        "Overlap: closest points under 25 miles apart. tier: touching (under 0.1 mi), row (under 1 mi), site (under "
+        "5 mi), crew (under 25 mi). time_gap (day) = |in-service date A - in-service date B|.",
         "Dates: DESC 'Planned In-Service Date' (final phase if phased); Georgia 'Need Date' from each project page.",
         "Georgia sponsor scope in this export follows the filters used when exporting.",
         "location_confidence: verified (sponsor file / override), confirmed_osm (OpenStreetMap + judge), "

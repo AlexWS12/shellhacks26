@@ -47,7 +47,7 @@ def test_the_dominion_georgia_fact_sheet_is_unchanged(owners):
     a, b = proj("DESC-1", "DESC", "DESC"), proj("GA-1", "GA", "GPC")
     o = pair(a, b, 1)
     f = fact_sheet(a, b, o, shared_resources(a, b, o))
-    assert list(f) == ["distance_mi", "time_gap_days", "windows_overlap", "location_confidence", "shared",
+    assert list(f) == ["distance_mi", "distance_rule", "tier", "time_gap_days", "windows_overlap", "location_confidence", "shared",
                        "dominion", "georgia"]
     assert f["dominion"]["utility"] == "Dominion Energy South Carolina" and f["georgia"]["utility"] == "Georgia (GPC)"
     # any other pair names both utilities and doesn't call either one Dominion or Georgia

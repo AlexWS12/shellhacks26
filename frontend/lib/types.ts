@@ -60,7 +60,9 @@ export interface Overlap {
   id: string;
   project_a: string;
   project_b: string;
-  distance_mi: number;
+  distance_mi: number; // closest points between the two projects
+  tier?: Tier; // what that distance lets them share; older recorded runs don't carry it
+  center_mi?: number | null; // center to center, the benchmark's rule
   time_gap_days: number;
   windows_overlap: boolean | null;
   pair_confidence: Confidence;
@@ -85,8 +87,13 @@ export interface ReferenceResult {
   blind_passed?: boolean | null;
 }
 
+// The challenge's distance tiers: touching or crossing, under 1 mi, under 5 mi, under 25 mi.
+export type Tier = "touching" | "row" | "site" | "crew";
+
 export interface Shared {
   timing: "concurrent" | "sequential" | "unknown";
+  tier?: Tier;
+  must_coordinate?: boolean;
   items: string[];
   level: "high" | "medium" | "low";
   types: string[];
@@ -246,6 +253,8 @@ export interface ReportTop {
   rank: number;
   overlap_id: string;
   distance_mi: number;
+  center_mi?: number | null;
+  tier?: Tier;
   time_gap_days: number;
   built_at_same_time: boolean | null;
   location: Confidence;
@@ -268,6 +277,7 @@ export interface Report {
   as_of: string;
   owners: Record<string, number>;
   counts: Record<string, number>;
+  tiers?: Record<Tier, number>; // pairs by closest distance; older reports don't carry it
   research_categories: string[];
   top: ReportTop[];
   issues: { level: string; title: string; source: string }[];

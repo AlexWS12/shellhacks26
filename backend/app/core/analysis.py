@@ -8,29 +8,38 @@ from app import config
 from app.core.models import Overlap, Project
 from app.core.owners import book, owner_name
 
-FIELD = {"new_line", "rebuild", "substation_construction"}
+# What each distance tier lets two projects share (the challenge's tiers, core/overlap.py TIERS). A closer tier also
+# gets everything the farther ones do. Items marked together need both projects under construction at once.
+TIER_ITEMS: dict[str, list[tuple[str, bool]]] = {
+    "touching": [("outage timing", True), ("crossing structures", False)],
+    "row": [("right-of-way", False), ("access roads", False), ("permits", False)],
+    "site": [("laydown yards", False), ("deliveries", True)],
+    "crew": [("crews", True), ("equipment", True)],
+}
+TIER_ORDER = ["touching", "row", "site", "crew"]
 
 
 def shared_resources(a: Project, b: Project, o: Overlap) -> dict[str, Any]:
     ta, tb = a.project_type or "other", b.project_type or "other"
-    lines = {"new_line", "rebuild"}
     if o.windows_overlap is None:
         timing = "unknown"
     else:
         timing = "concurrent" if o.windows_overlap else "sequential"
-    if timing == "concurrent" and ta in lines and tb in lines:
-        items, level = ["crews", "equipment and cranes", "staging/laydown yards", "outage coordination"], "high"
-    elif timing == "concurrent" and ta in FIELD and tb in FIELD:
-        items, level = ["contractors", "staging/laydown yards", "deliveries", "outage coordination"], "high"
-    elif timing == "concurrent":
-        items, level = ["outage coordination", "shared deliveries"], "medium"
-    elif ta in lines or tb in lines:
-        items, level = ["surveys", "right-of-way records", "environmental studies", "design of the later project"], "medium"
+    # a project already in service has no crews left to share, whatever its build window said
+    together = timing == "concurrent" and not o.finished
+    tier = o.tier if o.tier in TIER_ORDER else "crew"
+    items = [name for t in TIER_ORDER[TIER_ORDER.index(tier):] for name, needs_both in TIER_ITEMS[t]
+             if together or not needs_both]
+    if not items:  # crews apart in time: the earlier project's records can still help the later one
+        items = ["survey and design records"]
+    if tier in ("touching", "row"):
+        level = "high"
+    elif tier == "site":
+        level = "high" if together else "medium"
     else:
-        items, level = ["information sharing (surveys, permits, design)"], "low"
-    if "in_substation_equipment" in (ta, tb) and level == "high":
-        level = "medium"
-    return {"timing": timing, "items": items, "level": level, "types": [ta, tb]}
+        level = "medium" if together else "low"
+    return {"timing": timing, "tier": tier, "items": items, "level": level, "types": [ta, tb],
+            "must_coordinate": tier == "touching"}
 
 
 def cost_block(a: Project, b: Project, o: Overlap) -> dict[str, Any]:
@@ -80,7 +89,8 @@ def fact_sheet(a: Project, b: Project, o: Overlap, shared: dict[str, Any]) -> di
                 "build_start": p.build_start, "description": p.description[:700], "need": p.need_text[:300],
                 "cost": p.cost_total, "source": f"{p.source_file} p.{p.source_page} ({p.source_ref})"}
     ka, kb = side_keys(o)
-    return {"distance_mi": o.distance_mi, "time_gap_days": o.time_gap_days, "windows_overlap": o.windows_overlap,
+    return {"distance_mi": o.distance_mi, "distance_rule": "closest points", "tier": o.tier,
+            "time_gap_days": o.time_gap_days, "windows_overlap": o.windows_overlap,
             "location_confidence": o.pair_confidence, "shared": shared, ka: side(a), kb: side(b)}
 
 
@@ -103,9 +113,12 @@ def unsupported_numbers(text: str, facts: dict[str, Any]) -> set[str]:
 
 def template_insight(a: Project, b: Project, o: Overlap, shared: dict[str, Any]) -> str:
     years = o.time_gap_days / 365
-    if shared["timing"] == "concurrent":
-        return (f"Both projects are under construction at the same time, {o.distance_mi:.1f} miles apart. "
-                f"They could share {', '.join(shared['items'])}.")
+    if shared["tier"] == "touching":
+        return (f"The two projects touch or cross, so they must coordinate. They could share "
+                f"{', '.join(shared['items'])}.")
+    if shared["timing"] == "concurrent" and not o.finished:
+        return (f"Both projects are under construction at the same time, {o.distance_mi:.1f} miles apart at their "
+                f"closest points. They could share {', '.join(shared['items'])}.")
     if years < 2:
         return (f"Their in-service dates are {o.time_gap_days} days apart. A modest schedule shift could put both "
                 "crews in the area at once.")

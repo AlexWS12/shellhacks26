@@ -243,7 +243,7 @@ def test_coordinates_outside_the_region_are_ignored(plans_dir):
 
 def test_spatial_buckets_find_exactly_the_same_pairs(finished_run):
     from app.core.models import Project
-    from app.core.overlap import Filters, distance_mi, find_overlaps, visible
+    from app.core.overlap import Filters, closest_mi, find_overlaps, geometry, span_ok, visible
 
     projects = list(finished_run.board.projects.values())
     # a synthetic submitted owner scattered over both overlap areas
@@ -253,13 +253,14 @@ def test_spatial_buckets_find_exactly_the_same_pairs(finished_run):
                                 location_confidence="verified"))
     f = Filters()
     got = {(o.project_a, o.project_b, o.distance_mi) for o in find_overlaps(projects, f)}
-    shown = [p for p in projects if visible(p, f)]
+    shown = [p for p in projects if visible(p, f) and span_ok(p)]
     brute = set()
     for i, a in enumerate(shown):
         for b in shown[i + 1:]:
-            if a.utility != b.utility and distance_mi((a.lat, a.lon), (b.lat, b.lon)) < 25:
+            d = closest_mi(geometry(a), geometry(b))
+            if a.utility != b.utility and d < 25:
                 x, y = sorted((a, b), key=lambda p: ({"DESC": 0, "GA": 1}.get(p.utility, 2), p.utility))
-                brute.add((x.id, y.id, round(distance_mi((a.lat, a.lon), (b.lat, b.lon)), 2)))
+                brute.add((x.id, y.id, round(d, 2)))
     assert got == brute and len(got) > len(finished_run.board.overlaps)
 
 

@@ -43,8 +43,9 @@ class OverlapEngine(Agent):
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
         projects = list(b.projects.values())
-        async with ctx.tool("find_overlaps", {"cutoff_mi": 25, "center": "midpoint of located endpoints",
-                                              "distance": "haversine, R=3958.8 mi", "ga_owners": "GPC, SAV"}) as out:
+        async with ctx.tool("find_overlaps", {"cutoff_mi": 25, "distance": "closest points, lines as straight segments",
+                                              "tiers_mi": {"touching": 0.1, "row": 1, "site": 5, "crew": 25},
+                                              "ga_owners": "GPC, SAV"}) as out:
             f = Filters(today=config.TODAY)
             b.overlaps = find_overlaps(projects, f, b.sample_pairs())
             owners = {p.utility for p in projects if p.lat is not None}
