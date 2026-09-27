@@ -612,7 +612,7 @@ button.danger { border-color: var(--bad); color: var(--bad); }
 .oc-pills { display: flex; flex-wrap: wrap; gap: var(--sp-1-5); }
 .oc-pill { border: 1px solid var(--line-2); border-radius: 999px; padding: var(--sp-0-5) 10px; font-size: var(--fs-sm); white-space: nowrap; }
 .oc-analysis { border-left: 2px solid var(--code); padding-left: var(--sp-3); }
-.oc-analysis.ai { border-color: var(--gemini); }
+.oc-analysis.gemini { border-color: var(--gemini); }
 .oc-analysis p { margin: 0; font-size: var(--fs-md); color: var(--ink); white-space: pre-wrap; text-wrap: pretty; }
 .oc-byline { font-size: var(--fs-xs); color: var(--faint); margin-top: var(--sp-1); }
 .oc-others { text-align: left; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: var(--sp-2) 0 0; font-size: var(--fs-sm); color: var(--muted); }

@@ -459,7 +459,7 @@ function PairOverview({ o, pa, pb, cost, shared, analysis, links }: {
           {shared.tier && <p className="oc-caption">{TIER_LABEL[shared.tier]}</p>}
         </div>
       )}
-      <div className={`oc-analysis ${analysis && WRITERS.has(analysis.actor) ? "ai" : ""}`}>
+      <div className={`oc-analysis ${analysis && WRITERS.has(analysis.actor) ? "gemini" : ""}`}>
         <p>{analysis ? analysis.text : insight(o, shared?.timing ?? "unknown")}</p>
         <div className="oc-byline">
           {analysis && WRITERS.has(analysis.actor) ? `Written by ${ACTOR_LABEL[analysis.actor]} from the filing text` : "From the computed facts"}
