@@ -40,6 +40,12 @@ export default function PipelinePanel() {
       <div className="section">
         <p className="label">Agents <span className="hint">click to inspect</span></p>
         <AgentGraph onSelect={(id) => setPanel({ kind: "agent", id })} />
+        {Object.values(run.agents).some((a) => a.team === "research") && (
+          <>
+            <p className="label team-label">Research team <span className="hint">other utilities near the river</span></p>
+            <AgentGraph team="research" onSelect={(id) => setPanel({ kind: "agent", id })} />
+          </>
+        )}
         {(jev || gem || other > 0) && (
           <div className="decisions">
             {jev && <div><b>{jev.n}</b>Jev calls{jev.n > jev.cached ? ` · ${Math.round(jev.ms / Math.max(1, jev.n - jev.cached))}ms` : ""}</div>}

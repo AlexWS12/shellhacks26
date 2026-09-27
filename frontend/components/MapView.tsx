@@ -5,12 +5,14 @@
 import maplibregl, { type GeoJSONSource, type LngLatBoundsLike, type StyleSpecification } from "maplibre-gl";
 import { useEffect, useRef } from "react";
 
-import { activeIn, visible } from "@/lib/filters";
-import { engineColor } from "@/lib/format";
+import { activeIn, researchActiveIn, visible } from "@/lib/filters";
+import { CATEGORY_LABEL, engineColor } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import { mapPalette } from "@/lib/theme";
-import type { Overlap, Project } from "@/lib/types";
+import type { Overlap, Project, ResearchCategory, ThirdParty } from "@/lib/types";
 import { showLatestResults, startRun, useUI } from "@/lib/ui";
+
+import ResearchPicker from "./ResearchPicker";
 
 const STREETS = "https://tiles.openfreemap.org/styles/dark";
 const US: LngLatBoundsLike = [[-125, 24.3], [-66.5, 49.5]];
@@ -77,6 +79,11 @@ function currentOverlaps(): Overlap[] {
   return run.phase === "done" && results ? results : run.overlaps;
 }
 
+function currentOthers(): ThirdParty[] {
+  const others = useUI.getState().others;
+  return run.phase === "done" && others ? others : run.thirdParty;
+}
+
 function selectedPair(): { a: string; b: string } | null {
   const p = useUI.getState().panel;
   return p.kind === "pair" ? { a: p.a, b: p.b } : null;
@@ -116,7 +123,31 @@ function buildData() {
       geometry: { type: "Point", coordinates: path[12] } });
   }
   const ring = fc(sel && run.projects[sel.a]?.lat != null ? [circle(run.projects[sel.a].lon!, run.projects[sel.a].lat!, RING_MI)] : []);
-  return { points, lines, links: fc(links), labels: fc(labels), ring };
+
+  // other utilities' projects (research team)
+  const panel = useUI.getState().panel;
+  const selId = sel ? `${sel.a}|${sel.b}` : null;
+  const linkedTo = currentOthers().filter((t) => t.overlap_id === selId);
+  const linked = new Set(linkedTo.map((t) => t.research_id));
+  const openId = panel.kind === "research" ? panel.id : null;
+  const others = fc(Object.values(run.research).flatMap((r) => {
+    if (r.lat == null || r.lon == null || !researchActiveIn(r, year)) return [];
+    const approx = !["verified", "confirmed_osm"].includes(r.location_confidence);
+    if (approx && !filters.townLevel) return [];
+    const on = linked.has(r.id) || r.id === openId;
+    return [{ type: "Feature", properties: { id: r.id, c: r.category, name: `${r.utility}: ${r.name}`, label: r.utility,
+      hollow: approx, sel: on, dim: Boolean(sel) && !on }, geometry: { type: "Point", coordinates: [r.lon, r.lat] } } as GeoJSON.Feature];
+  }));
+  const otherLinks = fc(linkedTo.flatMap((t) => {
+    const r = run.research[t.research_id];
+    if (!r || r.lat == null || !sel) return [];
+    return [sel.a, sel.b].flatMap((pid) => {
+      const p = run.projects[pid];
+      return p?.lat != null ? [{ type: "Feature", properties: { c: r.category },
+        geometry: { type: "LineString", coordinates: [[r.lon!, r.lat!], [p.lon!, p.lat!]] } } as GeoJSON.Feature] : [];
+    });
+  }));
+  return { points, lines, links: fc(links), labels: fc(labels), ring, others, otherLinks };
 }
 
 // Balls traveling along connections that were just found. Returns them plus how many are in flight.
@@ -139,7 +170,7 @@ function comets(): { data: FC; flying: number } {
 function addDataLayers(map: maplibregl.Map) {
   const COLORS = mapPalette();
   const color = ["match", ["get", "u"], "DESC", COLORS.desc, COLORS.gpc] as maplibregl.ExpressionSpecification;
-  for (const id of ["ring", "lines", "links", "labels", "points", "pulse", "comets"]) {
+  for (const id of ["ring", "lines", "links", "labels", "points", "pulse", "comets", "others", "other-links"]) {
     if (!map.getSource(id)) map.addSource(id, { type: "geojson", data: fc([]) });
   }
   const linkOpacity = ["case", ["get", "dim"], 0.12, 1] as maplibregl.ExpressionSpecification;
@@ -174,6 +205,24 @@ function addDataLayers(map: maplibregl.Map) {
       "circle-stroke-color": color,
       "circle-stroke-width": ["case", ["get", "hollow"], 1.6, 0],
     } });
+  const cat = ["match", ["get", "c"], "electric", COLORS.catElectric, "gas", COLORS.catGas, COLORS.catRoads] as maplibregl.ExpressionSpecification;
+  map.addLayer({ id: "other-links", type: "line", source: "other-links",
+    paint: { "line-color": cat, "line-width": 1.4, "line-opacity": 0.85, "line-dasharray": [1, 2] } });
+  map.addLayer({ id: "others-sel", type: "circle", source: "others", filter: ["get", "sel"],
+    paint: { "circle-radius": 11, "circle-color": cat, "circle-opacity": 0.15, "circle-stroke-color": cat, "circle-stroke-width": 1.5 } });
+  map.addLayer({ id: "others", type: "circle", source: "others",
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 3.5, 9, 6.5],
+      "circle-color": ["case", ["get", "hollow"], COLORS.bg, cat],
+      "circle-stroke-color": ["case", ["get", "hollow"], cat, COLORS.bg],
+      "circle-stroke-width": ["case", ["get", "hollow"], 1.8, 1.2],
+      "circle-opacity": ["case", ["get", "dim"], 0.25, 1],
+      "circle-stroke-opacity": ["case", ["get", "dim"], 0.25, 1],
+    } });
+  map.addLayer({ id: "other-labels", type: "symbol", source: "others", filter: ["get", "sel"],
+    layout: { "text-field": ["get", "label"], "text-size": 11.5, "text-font": ["Noto Sans Bold"], "text-offset": [0, 1.3],
+      "text-anchor": "top", "text-allow-overlap": false },
+    paint: { "text-color": cat, "text-halo-color": COLORS.bg, "text-halo-width": 2 } });
   map.addLayer({ id: "link-labels", type: "symbol", source: "labels",
     filter: ["any", ["get", "sel"], [">=", ["zoom"], 6.3]],
     layout: { "text-field": ["get", "label"], "text-size": ["case", ["get", "sel"], 14, 12], "text-font": ["Noto Sans Bold"],
@@ -264,6 +313,7 @@ export default function MapView() {
   const year = useUI((s) => s.year);
   const setYear = useUI((s) => s.setYear);
   const phase = useRev(() => run.phase);
+  const cats = useRev(() => run.researchSelected.join(","));
 
   useEffect(() => {
     if (!el.current) return;
@@ -291,6 +341,16 @@ export default function MapView() {
       if (f) popup.setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number]).setText(String(f.properties.name)).addTo(map);
     });
     map.on("mouseleave", "points", () => { map.getCanvas().style.cursor = ""; popup.remove(); });
+    map.on("mouseenter", "others", (e) => {
+      map.getCanvas().style.cursor = "pointer";
+      const f = e.features?.[0];
+      if (f) popup.setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number]).setText(String(f.properties.name)).addTo(map);
+    });
+    map.on("mouseleave", "others", () => { map.getCanvas().style.cursor = ""; popup.remove(); });
+    map.on("click", "others", (e) => {
+      const id = e.features?.[0]?.properties.id;
+      if (id) useUI.getState().setPanel({ kind: "research", id: String(id) });
+    });
     map.on("mouseenter", "links-hit", () => (map.getCanvas().style.cursor = "pointer"));
     map.on("mouseleave", "links-hit", () => (map.getCanvas().style.cursor = ""));
     map.on("click", "points", (e) => {
@@ -319,6 +379,8 @@ export default function MapView() {
       (map.getSource("links") as GeoJSONSource).setData(d.links);
       (map.getSource("labels") as GeoJSONSource).setData(d.labels);
       (map.getSource("ring") as GeoJSONSource).setData(d.ring);
+      (map.getSource("others") as GeoJSONSource).setData(d.others);
+      (map.getSource("other-links") as GeoJSONSource).setData(d.otherLinks);
     }
 
     let raf = 0;
@@ -356,7 +418,7 @@ export default function MapView() {
 
     const unsubRev = useRev.subscribe(refresh);
     const unsubUI = useUI.subscribe((s, prev) => {
-      if (s.results !== prev.results || s.filters !== prev.filters || s.panel !== prev.panel || s.health !== prev.health || s.year !== prev.year) refresh();
+      if (s.results !== prev.results || s.others !== prev.others || s.filters !== prev.filters || s.panel !== prev.panel || s.health !== prev.health || s.year !== prev.year) refresh();
       if (s.camera !== prev.camera) moveCamera(map, s.camera);
     });
     return () => {
@@ -385,6 +447,9 @@ export default function MapView() {
         <span><i className="sw gpc" />Georgia</span>
         <span><i className="sw hollow" />Hollow = approximate location</span>
         <span><i className="sw zone" />Under 25 mi apart</span>
+        {(cats ? (cats.split(",") as ResearchCategory[]) : []).map((c) => (
+          <span key={c}><i className={`sw cat-${c}`} />Other · {CATEGORY_LABEL[c]}</span>
+        ))}
       </div>
       {phase !== "idle" && (
         <div className="timeline" aria-label="Timeline">
@@ -407,7 +472,9 @@ export default function MapView() {
               <button onClick={() => void startRun("replay")}>Replay a run</button>
               <button onClick={() => void showLatestResults()}>Jump to results</button>
             </div>
+            <ResearchPicker />
             <ul className="hints">
+              <li><b>Research</b>: before a live run, pick which other utilities the research team looks up near the river.</li>
               <li><b>Replay</b> plays back the newest recorded run and works offline.</li>
               <li><b>Template fallback</b> (top bar): if Gemini keeps failing during a live run, the text comes from a template instead of the agent failing.</li>
             </ul>
@@ -429,6 +496,8 @@ function moveCamera(map: maplibregl.Map, c: ReturnType<typeof useUI.getState>["c
     const pad = 0.3 + Math.abs(a.lat! - b.lat!) * 0.3 + Math.abs(a.lon! - b.lon!) * 0.3;
     map.fitBounds([[Math.min(a.lon!, b.lon!) - pad, Math.min(a.lat!, b.lat!) - pad],
       [Math.max(a.lon!, b.lon!) + pad, Math.max(a.lat!, b.lat!) + pad]], { ...opts, maxZoom: 9.5 });
+  } else if (c.kind === "point") {
+    map.flyTo({ center: [c.lon, c.lat], zoom: Math.max(map.getZoom(), 8.5), duration: 1000 });
   } else if (c.kind === "project") {
     const p = run.projects[c.id];
     if (p?.lat != null) map.flyTo({ center: [p.lon!, p.lat!], zoom: Math.max(map.getZoom(), 8), duration: 1000 });

@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 import { api } from "@/lib/api";
 import { activeIn } from "@/lib/filters";
-import { ACTOR_LABEL, CONF_LABEL, OWNER, TYPE_LABEL, fmtDate, money, plural, utilityName } from "@/lib/format";
+import { ACTOR_LABEL, CATEGORY_LABEL, CONF_LABEL, OWNER, TYPE_LABEL, fmtDate, money, plural, statedDate, utilityName } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
-import type { Endpoint, Overlap, PairDetail, Project } from "@/lib/types";
+import type { Endpoint, Overlap, PairDetail, Project, ThirdParty } from "@/lib/types";
 import { useUI } from "@/lib/ui";
 
 import Gantt from "./Gantt";
@@ -19,6 +19,7 @@ export default function RightPanel() {
   if (panel.kind === "pair") return <PairView a={panel.a} b={panel.b} />;
   if (panel.kind === "project") return <ProjectView id={panel.id} />;
   if (panel.kind === "agent") return <AgentView id={panel.id} />;
+  if (panel.kind === "research") return <ResearchView id={panel.id} />;
   return <OpportunityList />;
 }
 
@@ -41,6 +42,20 @@ function useOverlaps(): Overlap[] {
   });
 }
 
+// Other utilities near each opportunity: this run's events while running, the API (current filters) after.
+function useOthers(): ThirdParty[] {
+  const others = useUI((s) => s.others);
+  return run.phase === "done" && others ? others : run.thirdParty;
+}
+
+function byOverlap(links: ThirdParty[]): Record<string, ThirdParty[]> {
+  const out: Record<string, ThirdParty[]> = {};
+  for (const t of links) (out[t.overlap_id] ??= []).push(t);
+  return out;
+}
+
+const days = (n: number | null, approx: boolean) => (n == null ? "date unknown" : `${approx ? "≈ " : ""}${n.toLocaleString()} d`);
+
 function open(o: Overlap) {
   useUI.getState().setPanel({ kind: "pair", a: o.project_a, b: o.project_b });
   useUI.getState().flyTo({ kind: "pair", a: o.project_a, b: o.project_b });
@@ -52,6 +67,7 @@ function OpportunityList() {
   const total = Object.keys(run.projects).length;
   const onMap = visibleProjects ?? Object.values(run.projects).filter((p) => p.lat != null).length;
   const together = overlaps.filter((o) => o.windows_overlap).length;
+  const near = byOverlap(useOthers());
 
   if (run.phase === "idle") {
     return (
@@ -98,6 +114,11 @@ function OpportunityList() {
                   {o.windows_overlap == null && <span className="tag unknown">timing undecided</span>}
                   {!["verified", "confirmed_osm"].includes(o.pair_confidence) && <span className="tag approx">approx. location</span>}
                   {o.in_sponsor_sample && <span className="tag bench">benchmark</span>}
+                  {near[o.id] && (
+                    <span className={`tag others cat-${near[o.id][0].category}`}>
+                      +{near[o.id].length} other {near[o.id].length === 1 ? "owner" : "owners"} nearby
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
@@ -125,6 +146,7 @@ function insight(o: Overlap, timing: string): string {
 function PairView({ a, b }: { a: string; b: string }) {
   const id = `${a}|${b}`;
   const local = run.costs[id];
+  const allOthers = useOthers();
   const [fetched, setFetched] = useState<{ id: string; data: PairDetail } | null>(null);
   useEffect(() => {
     if (run.costs[id]) return; // already have it from events
@@ -165,6 +187,9 @@ function PairView({ a, b }: { a: string; b: string }) {
       <h3>Build windows</h3>
       <Gantt a={pa} b={pb} />
       <p className="note">Highlighted band = both under construction. A faded start means the work began before 2024.</p>
+
+      <OthersNearby links={allOthers.some((t) => t.overlap_id === id)
+        ? allOthers.filter((t) => t.overlap_id === id) : remote?.others ?? []} />
 
       <h3>What they could share</h3>
       {shared ? (
@@ -229,6 +254,8 @@ function EndpointLine({ e }: { e: Endpoint }) {
     overpass: `OpenStreetMap ${ev.osm_id ?? ""}, confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
     nominatim: `OpenStreetMap search ${ev.osm_id ?? ""} (${ev.kind ?? ""}), confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
     geonames_town: `town ${ev.town ?? ""}, confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
+    county_centroid: `center of ${ev.county ?? "the county"} (approximate)`,
+    source: "coordinates printed in the source",
   };
   return <>{e.name} <span className="mono">({e.lat.toFixed(3)}, {e.lon!.toFixed(3)})</span> · {how[e.method] ?? e.method}</>;
 }
@@ -307,6 +334,106 @@ function AgentView({ id }: { id: string }) {
           {e.kind === "note" && <span>{e.text}</span>}
         </div>
       ))}
+    </div>
+  );
+}
+
+function OthersNearby({ links }: { links: ThirdParty[] }) {
+  const selected = run.researchSelected;
+  return (
+    <>
+      <h3>Other utilities nearby</h3>
+      {links.length === 0 && (
+        <p className="empty">
+          {selected.length ? "No other owner's project from the research is under 25 mi from both." : "The research team was off for this run."}
+        </p>
+      )}
+      {links.map((t) => {
+        const r = run.research[t.research_id];
+        if (!r) return null;
+        return (
+          <div key={t.research_id} className={`other cat-${r.category}`} role="button" tabIndex={0}
+            onClick={() => useUI.getState().setPanel({ kind: "research", id: r.id })}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), useUI.getState().setPanel({ kind: "research", id: r.id }))}>
+            <div><span className="catname">{CATEGORY_LABEL[r.category]}</span> · {r.utility}</div>
+            <b>{r.name}</b>
+            <div>
+              <span className="num">{t.dist_a_mi.toFixed(1)}</span> mi from Dominion&apos;s, <span className="num">{t.dist_b_mi.toFixed(1)}</span> mi from
+              Georgia&apos;s · in service {statedDate(r.in_service)} ({days(t.gap_a_days, t.approx_date)} / {days(t.gap_b_days, t.approx_date)})
+            </div>
+          </div>
+        );
+      })}
+      {links.length > 0 && <p className="note">Under 25 mi from both project centers. Day gaps compare in-service dates; ≈ means the source gives only a year or month.</p>}
+    </>
+  );
+}
+
+function ResearchView({ id }: { id: string }) {
+  const r = run.research[id];
+  const links = useOthers().filter((t) => t.research_id === id);
+  useEffect(() => {
+    if (r?.lat != null) useUI.getState().flyTo({ kind: "point", lon: r.lon!, lat: r.lat! });
+  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
+  if (!r) return <div className="detail"><Back /><p className="empty">Unknown project.</p></div>;
+  const v = r.verification ?? {};
+  return (
+    <div className={`detail cat-${r.category}`}>
+      <Back />
+      <p className="label"><span className="catname">Other utility · {CATEGORY_LABEL[r.category]}</span></p>
+      <h2>{r.name}</h2>
+      <p className="sub">{r.utility}{r.utility_kind ? ` · ${r.utility_kind}` : ""} · {r.status.replace("_", " ")}</p>
+      {r.found_by === "gemini_search"
+        ? <p className="checked live">From a live Google-grounded Gemini search. Not checked by the fact-checkers.</p>
+        : v.verifiers ? <p className="checked">Confirmed by {v.confirmed} of {v.verifiers} independent fact-checkers.</p> : null}
+      {r.description && <p className="written">{r.description}</p>}
+
+      <h3>Timing</h3>
+      <table className="kv"><tbody>
+        <tr><td>Start</td><td>{statedDate(r.start)}</td></tr>
+        <tr><td>In service</td><td>{statedDate(r.in_service)}</td></tr>
+        {r.miles != null && <tr><td>Length</td><td>{r.miles} mi</td></tr>}
+        {r.cost_usd != null && <tr><td>Cost (as stated)</td><td>{money(r.cost_usd)}</td></tr>}
+      </tbody></table>
+      {r.date_quote && <div className="quote">{r.date_quote}</div>}
+      {r.date_precision && r.date_precision !== "day" && (
+        <p className="note">The source gives a {r.date_precision}; day gaps use its last day and are marked ≈.</p>
+      )}
+
+      <h3>Where</h3>
+      <div className="prov">
+        {r.endpoints.length
+          ? r.endpoints.map((e, i) => <div key={i}><EndpointLine e={e} /></div>)
+          : <div>The sources name no place.</div>}
+        <div>{CONF_LABEL[r.location_confidence]}</div>
+      </div>
+
+      <h3>Near these opportunities</h3>
+      {links.length === 0 && <p className="empty">Not under 25 mi from both sides of any opportunity on the list.</p>}
+      {links.map((t) => {
+        const [a, b] = t.overlap_id.split("|");
+        const pa = run.projects[a], pb = run.projects[b];
+        if (!pa || !pb) return null;
+        return (
+          <div key={t.overlap_id} className="row compact" tabIndex={0} role="button"
+            onClick={() => { useUI.getState().setPanel({ kind: "pair", a, b }); useUI.getState().flyTo({ kind: "pair", a, b }); }}>
+            <span className="rk">↗</span>
+            <div><div className="t"><span className="a">{pa.name}</span><br /><span className="b">{pb.name}</span></div>
+              <div className="meta"><span><span className="num">{t.dist_a_mi.toFixed(1)}</span> / <span className="num">{t.dist_b_mi.toFixed(1)}</span> mi</span></div></div>
+          </div>
+        );
+      })}
+
+      <h3>Sources</h3>
+      <div className="srcs">
+        {r.sources.map((s, i) => (
+          <div key={i}>
+            <a href={s.url} target="_blank" rel="noreferrer noopener">{s.title || s.url}</a>
+            <div className="pub">{s.publisher}{s.accessed ? ` · accessed ${s.accessed}` : ""}</div>
+            {s.quote && <div className="quote">{s.quote}</div>}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

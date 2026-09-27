@@ -3,20 +3,37 @@ import { create } from "zustand";
 
 import { api, API, type FilterState } from "./api";
 import { apply, hydrate, reset, run, setAgentSpecs } from "./run";
-import type { AgentSpec, Health, Overlap, RunEvent, SourceSpec } from "./types";
+import type { AgentSpec, Health, Overlap, ResearchCategory, RunEvent, SourceSpec, ThirdParty } from "./types";
 
 export type Panel =
   | { kind: "list" }
   | { kind: "pair"; a: string; b: string }
   | { kind: "project"; id: string }
-  | { kind: "agent"; id: string };
+  | { kind: "agent"; id: string }
+  | { kind: "research"; id: string };
 
-export type Camera = { kind: "us" } | { kind: "border" } | { kind: "river" } | { kind: "pair"; a: string; b: string } | { kind: "project"; id: string };
+export type Camera = { kind: "us" } | { kind: "border" } | { kind: "river" } | { kind: "pair"; a: string; b: string } | { kind: "project"; id: string } | { kind: "point"; lon: number; lat: number };
+
+export const CATEGORIES: ResearchCategory[] = ["electric", "gas", "roads_water"];
+const RESEARCH_KEY = "tandem.research";
+
+function savedResearch(): Record<ResearchCategory, boolean> {
+  const all = { electric: true, gas: true, roads_water: true };
+  try {
+    const raw = typeof localStorage !== "undefined" ? localStorage.getItem(RESEARCH_KEY) : null;
+    return raw ? { ...all, ...(JSON.parse(raw) as Partial<Record<ResearchCategory, boolean>>) } : all;
+  } catch {
+    return all;
+  }
+}
 
 interface UIState {
   panel: Panel;
   filters: FilterState;
   results: Overlap[] | null; // from the API after a run
+  others: ThirdParty[] | null; // other utilities near those results, from the API
+  research: Record<ResearchCategory, boolean>; // which categories the research team covers next run
+  setResearch: (c: ResearchCategory, on: boolean) => void;
   visibleProjects: number | null;
   health: Health | null;
   basemap: "streets" | "simple";
@@ -39,7 +56,18 @@ export const useUI = create<UIState>((set, get) => ({
   panel: { kind: "list" },
   filters: { allSponsors: false, townLevel: true, hideFinished: false, sort: "distance" },
   results: null,
+  others: null,
   visibleProjects: null,
+  research: { electric: true, gas: true, roads_water: true },
+  setResearch: (c, on) => {
+    const research = { ...get().research, [c]: on };
+    set({ research });
+    try {
+      localStorage.setItem(RESEARCH_KEY, JSON.stringify(research));
+    } catch {
+      // private mode: the choice just isn't remembered
+    }
+  },
   health: null,
   basemap: "streets",
   templateFallback: true,
@@ -58,9 +86,9 @@ export const useUI = create<UIState>((set, get) => ({
     if (run.phase !== "done" || run.ok === false) return;
     const ticket = ++requests;
     try {
-      const r = await api.overlaps(get().filters);
+      const [r, research] = await Promise.all([api.overlaps(get().filters), api.research(get().filters)]);
       if (ticket !== requests) return;
-      set({ results: r.overlaps, visibleProjects: r.visible_projects, error: null });
+      set({ results: r.overlaps, visibleProjects: r.visible_projects, others: research.links, error: null });
     } catch (e) {
       set({ error: String(e) });
     }
@@ -95,10 +123,10 @@ export async function startRun(mode: "live" | "replay"): Promise<void> {
   const ui = useUI.getState();
   source?.close();
   reset(mode);
-  useUI.setState({ results: null, visibleProjects: null, panel: { kind: "list" }, error: null });
+  useUI.setState({ results: null, others: null, visibleProjects: null, panel: { kind: "list" }, error: null });
   ui.flyTo({ kind: "border" });
   try {
-    const { run_id } = await api.startRun(mode, 1, ui.templateFallback);
+    const { run_id } = await api.startRun(mode, CATEGORIES.filter((c) => ui.research[c]), 1, ui.templateFallback);
     follow(run_id);
   } catch (e) {
     run.phase = "failed";
@@ -117,7 +145,7 @@ export async function boot(): Promise<void> {
       api.health(),
       fetch(`${API}/api/agents`).then((r) => r.json() as Promise<{ agents: AgentSpec[]; sources: SourceSpec[] }>),
     ]);
-    useUI.setState({ health });
+    useUI.setState({ health, research: savedResearch() });
     setAgentSpecs(graph.agents);
   } catch (e) {
     useUI.setState({ error: `Can't reach the API at ${API || "this site"}/api (${e}).` });
@@ -127,12 +155,13 @@ export async function boot(): Promise<void> {
 export async function showLatestResults(): Promise<void> {
   const ui = useUI.getState();
   try {
-    const [projects, checks, reference, ov, graph] = await Promise.all([
+    const [projects, checks, reference, ov, graph, research] = await Promise.all([
       api.projects(), api.checks(), api.reference(), api.overlaps(ui.filters),
       fetch(`${API}/api/agents`).then((r) => r.json() as Promise<{ agents: AgentSpec[] }>),
+      api.research(ui.filters),
     ]);
-    hydrate({ projects, checks, reference, overlaps: ov.overlaps, specs: graph.agents });
-    useUI.setState({ results: ov.overlaps, visibleProjects: ov.visible_projects, panel: { kind: "list" } });
+    hydrate({ projects, checks, reference, overlaps: ov.overlaps, specs: graph.agents, research });
+    useUI.setState({ results: ov.overlaps, others: research.links, visibleProjects: ov.visible_projects, panel: { kind: "list" } });
     ui.flyTo({ kind: "border" });
   } catch (e) {
     useUI.setState({ error: String(e) });

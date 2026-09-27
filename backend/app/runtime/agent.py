@@ -21,10 +21,11 @@ class AgentSpec:
     depends_on: list[str] = field(default_factory=list)
     kind: str = "agent"  # agent | tool (plain code, no judgment)
     engine: str = "Rules"  # the one label the UI shows: what powers this agent
+    team: str = "core"  # core | research (drawn as its own group)
 
     def public(self) -> dict[str, Any]:
         return {"id": self.id, "name": self.name, "role": self.role, "actors": self.actors,
-                "depends_on": self.depends_on, "kind": self.kind, "engine": self.engine}
+                "depends_on": self.depends_on, "kind": self.kind, "engine": self.engine, "team": self.team}
 
 
 class Ctx:

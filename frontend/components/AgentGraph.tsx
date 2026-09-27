@@ -40,11 +40,12 @@ function counter(a: AgentView): string {
   return a.lastTool ? `running ${a.lastTool}` : "working…";
 }
 
-export default function AgentGraph({ onSelect }: { onSelect: (id: string) => void }) {
+export default function AgentGraph({ onSelect, team = "core" }: { onSelect: (id: string) => void; team?: "core" | "research" }) {
   useRev((s) => s.rev);
   const panel = useUI((s) => s.panel);
-  const agents = run.agentOrder.map((id) => run.agents[id]).filter(Boolean);
-  if (!agents.length) return <p className="empty">Loading the agent graph…</p>;
+  // each team gets its own layout; edges to agents outside the team are not drawn
+  const agents = run.agentOrder.map((id) => run.agents[id]).filter((a) => a && (a.team ?? "core") === team);
+  if (!agents.length) return team === "core" ? <p className="empty">Loading the agent graph…</p> : null;
   const pos = layout(agents);
   const height = Math.max(...Object.values(pos).map((p) => p.y)) + NODE_H + 4;
   const path = (from: string, to: string) => {
