@@ -5,12 +5,14 @@ from collections import Counter
 from typing import Any
 
 from app import config
+from app.core.costs import ASSUMPTIONS
 from app.core.models import Project
 from app.core.overlap import OVERLAP_CUTOFF_MI
 from app.core.owners import owner_name
 from app.runtime.board import Board
 
 TOP_REPORT = 10
+TIER_LABEL = {"touching": "touching", "row": "under 1 mi", "site": "under 5 mi", "crew": "under 25 mi", "none": ""}
 CATEGORY = {"electric": "electric", "gas": "gas", "roads_water": "roads and water"}
 
 
@@ -23,6 +25,10 @@ def _other(board: Board, oid: str) -> list[dict[str, Any]]:
         out.append({"owner": r.utility, "name": r.name, "category": CATEGORY[r.category], "miles_to_a": t.dist_a_mi,
                     "miles_to_b": t.dist_b_mi, "in_service": r.in_service, "sources": len(r.sources)})
     return out
+
+
+def _cost(e: dict[str, Any] | None) -> dict[str, Any] | None:
+    return {"amount": e["amount"], "basis": e["basis"], "source": e["source"]} if e else None
 
 
 def _side(p: Project) -> dict[str, Any]:
@@ -43,11 +49,13 @@ def build(board: Board) -> dict[str, Any]:
         cost = board.costs.get(o.id, {})
         shared = cost.get("shared") or {}
         top.append({
-            "rank": o.rank, "overlap_id": o.id, "distance_mi": o.distance_mi, "time_gap_days": o.time_gap_days,
+            "rank": o.rank, "overlap_id": o.id, "distance_mi": o.distance_mi, "center_mi": o.center_mi, "tier": o.tier,
+            "time_gap_days": o.time_gap_days,
             "built_at_same_time": o.windows_overlap, "location": o.pair_confidence, "benchmark_pair": o.in_sponsor_sample,
             "a": _side(a), "b": _side(g),
             "shared_level": shared.get("level"), "shared_items": shared.get("items", []), "timing": shared.get("timing"),
-            "a_cost": cost.get("desc_cost"), "savings": cost.get("savings"), "cost_source": cost.get("source"),
+            "a_cost": _cost(cost.get("a")), "b_cost": _cost(cost.get("b")),
+            "savings_low": cost.get("savings_low"), "savings_high": cost.get("savings_high"),
             "analysis": board.analyses.get(o.id), "joint_agenda": (board.briefs.get(o.id) or {}).get("mediator"),
             "other_utilities": _other(board, o.id),
         })
@@ -70,18 +78,30 @@ def build(board: Board) -> dict[str, Any]:
             "other_utility_placed": sum(1 for r in research if r.lat is not None),
             "opportunities_with_other_utilities": len({t.overlap_id for t in board.third_party}),
         },
+        "tiers": {t: sum(1 for o in board.overlaps if o.tier == t) for t in ("touching", "row", "site", "crew")},
         "research_categories": [CATEGORY[c] for c in board.research_selected],
         "top": top,
         "issues": [{"level": c.level, "title": c.title, "source": c.source} for c in board.checks if c.level != "info"],
         "method": [
-            "Project center: midpoint of the two located endpoints, or the one located endpoint.",
-            "Distance: straight-line (haversine) miles between centers. An opportunity is a pair under 25 miles apart.",
+            "Distance: miles between the closest points of the two projects. A line is the straight segment between "
+            "its two located ends (the filings give no routes); anything else is a point. An opportunity is a pair "
+            "under 25 miles (40 km) apart.",
+            "Tiers: touching or crossing must coordinate; under 1 mile can share right-of-way, access roads and "
+            "permits; under 5 miles, laydown yards and deliveries; under 25 miles, crews and equipment. Crews, "
+            "equipment, deliveries and outage timing count only while both are under construction.",
+            "Benchmark: the known overlaps are measured center to center (midpoint of the located ends), as in "
+            "Sperry's sample.",
             "Day gap: days between the two in-service dates (Dominion's planned in-service date, Georgia's need date, "
             "and the in-service column of each submitted plan).",
             "Default view: Georgia Power and Georgia Power (Savannah) projects; approximate locations included.",
             "Other utilities: projects found by the research team, each with cited sources, listed when under 25 miles "
             "from both sides of an opportunity.",
             "Plans that give only a year or month use the last day of that period; their day gaps are marked 'about'.",
+            "Project cost: the owner's filing when it states one; else a cost published on the web whose quote Jev "
+            "confirmed; else the median filed Dominion cost for the same kind of work (per mile for lines).",
+            f"Savings: {min(lo for lo, _ in ASSUMPTIONS.values()):.0%} to {max(hi for _, hi in ASSUMPTIONS.values()):.0%} "
+            "of the smaller project's cost, depending on timing and what the two could share. These percentages are the team's assumptions, not sourced figures; Jev rules out pairs unlikely "
+            "to share work.",
         ],
     }
 
@@ -91,7 +111,7 @@ def facts_for_prose(r: dict[str, Any]) -> dict[str, Any]:
     return {
         "cutoff_mi": int(OVERLAP_CUTOFF_MI),
         "counts": r["counts"],
-        "top": [{k: t[k] for k in ("rank", "distance_mi", "time_gap_days", "built_at_same_time", "shared_level",
+        "top": [{k: t[k] for k in ("rank", "distance_mi", "tier", "time_gap_days", "built_at_same_time", "shared_level",
                                    "shared_items")} | {"a": f"{t['a']['name']} ({t['a']['owner']})",
                                                        "b": f"{t['b']['name']} ({t['b']['owner']})",
                                                        "a_in_service": t["a"]["in_service"], "b_in_service": t["b"]["in_service"],
@@ -139,6 +159,10 @@ def _days(t: dict[str, Any]) -> str:
     return f"{'about ' if approx else ''}{t['time_gap_days']:,}"
 
 
+def _money(n: int) -> str:
+    return f"${n / 1e6:.1f}M" if n >= 1e6 else f"${n:,}"
+
+
 def _yes(v: bool | None) -> str:
     return "yes" if v else "unknown" if v is None else "no"
 
@@ -151,17 +175,19 @@ def to_markdown(r: dict[str, Any]) -> str:
           "| Projects read | " + ", ".join(f"{n} {o}" for o, n in r["owners"].items()) + " |",
           f"| On the map | {c['placed']} ({c['unlocated']} without a location) |",
           f"| Pairs under 25 miles | {c['opportunities']} ({c['built_at_same_time']} built at the same time) |",
+          f"| By closest distance | {r['tiers']['touching']} touching, {r['tiers']['row']} under 1 mi, "
+          f"{r['tiers']['site']} under 5 mi, {r['tiers']['crew']} under 25 mi |",
           f"| Benchmark | {c['benchmark_passed']} of {c['benchmark_total']} known overlaps exact |",
           f"| Data issues | {c['issues_error']} errors, {c['issues_warn']} warnings, {c['issues_info']} notes |"]
     if r["research_categories"]:
         md.append(f"| Other utilities ({', '.join(r['research_categories'])}) | {c['other_utility_projects']} projects, "
                   f"near {c['opportunities_with_other_utilities']} opportunities |")
     md += ["", "## Top opportunities", "",
-           "| # | Project A | Project B | Miles | Days apart | Same time | Other owners nearby |",
-           "|---|---|---|---|---|---|---|"]
+           "| # | Project A | Project B | Miles (closest) | Miles (centers) | Tier | Days apart | Same time | Other owners nearby |",
+           "|---|---|---|---|---|---|---|---|---|"]
     for t in r["top"]:
         md.append(f"| {t['rank']} | {t['a']['name']} ({t['a']['owner']}) | {t['b']['name']} ({t['b']['owner']}) | {t['distance_mi']} | "
-                  f"{_days(t)} | {_yes(t['built_at_same_time'])} | {len(t['other_utilities']) or ''} |")
+                  f"{t['center_mi']} | {TIER_LABEL[t['tier']]} | {_days(t)} | {_yes(t['built_at_same_time'])} | {len(t['other_utilities']) or ''} |")
     for t in r["top"][:3]:
         md += ["", f"### #{t['rank']} {t['a']['name']} and {t['b']['name']}", "",
                f"{t['a']['owner']} and {t['b']['owner']}: {t['distance_mi']} miles apart, {_days(t)} days "
@@ -169,6 +195,9 @@ def to_markdown(r: dict[str, Any]) -> str:
                f"Sources: {t['a']['source']}; {t['b']['source']}."]
         if t["shared_items"]:
             md.append(f"Could share: {', '.join(t['shared_items'])}.")
+        if t.get("savings_high"):
+            md.append(f"Estimated savings: {_money(t['savings_low'])} to {_money(t['savings_high'])} "
+                      "(assumption range, see Method).")
         if t["analysis"]:
             md += ["", t["analysis"]["text"]]
         if t["joint_agenda"]:

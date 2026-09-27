@@ -60,7 +60,9 @@ export interface Overlap {
   id: string;
   project_a: string;
   project_b: string;
-  distance_mi: number;
+  distance_mi: number; // closest points between the two projects
+  tier?: Tier; // what that distance lets them share; older recorded runs don't carry it
+  center_mi?: number | null; // center to center, the benchmark's rule
   time_gap_days: number;
   windows_overlap: boolean | null;
   pair_confidence: Confidence;
@@ -85,20 +87,43 @@ export interface ReferenceResult {
   blind_passed?: boolean | null;
 }
 
+// The challenge's distance tiers: touching or crossing, under 1 mi, under 5 mi, under 25 mi.
+export type Tier = "touching" | "row" | "site" | "crew";
+
 export interface Shared {
   timing: "concurrent" | "sequential" | "unknown";
+  tier?: Tier;
+  must_coordinate?: boolean;
   items: string[];
   level: "high" | "medium" | "low";
   types: string[];
 }
 
+// One project's cost: from its filing, published on the web (quote checked by Jev), or a Dominion benchmark.
+export interface CostEstimate {
+  project_id: string;
+  amount: number;
+  basis: "filed" | "published" | "benchmark";
+  source: string;
+  source_title?: string;
+  quote?: string;
+  method: string;
+  check: { actor: string; p: number } | null;
+}
+
+// Savings for one pair: an assumption range on the smaller project's cost, unless Jev rules the pair out.
 export interface CostBlock {
-  desc_cost: number | null;
-  ga_cost: null;
-  desc_miles: number | null;
-  desc_cost_per_mile: number | null;
-  savings: number | null;
-  source: string | null;
+  a: CostEstimate | null;
+  b: CostEstimate | null;
+  savings_low: number | null;
+  savings_high: number | null;
+  share: [number, number] | null;
+  applies_to: string | null;
+  for?: string[]; // what the pair's distance tier lets them share, given their timing
+  tier?: Tier;
+  together?: boolean; // both under construction at once (neither finished)
+  assumption: string;
+  check: { actor: string; p: number } | null;
   statement: string;
   shared?: Shared;
 }
@@ -246,6 +271,8 @@ export interface ReportTop {
   rank: number;
   overlap_id: string;
   distance_mi: number;
+  center_mi?: number | null;
+  tier?: Tier;
   time_gap_days: number;
   built_at_same_time: boolean | null;
   location: Confidence;
@@ -255,9 +282,10 @@ export interface ReportTop {
   shared_level: string | null;
   shared_items: string[];
   timing: string | null;
-  a_cost: number | null;
-  savings: number | null;
-  cost_source: string | null;
+  a_cost: { amount: number; basis: CostEstimate["basis"]; source: string } | null;
+  b_cost: { amount: number; basis: CostEstimate["basis"]; source: string } | null;
+  savings_low: number | null;
+  savings_high: number | null;
   analysis: Written | null;
   joint_agenda: Written | null;
   other_utilities: { owner: string; name: string; category: string; miles_to_a: number; miles_to_b: number; in_service: string | null; sources: number }[];
@@ -268,6 +296,7 @@ export interface Report {
   as_of: string;
   owners: Record<string, number>;
   counts: Record<string, number>;
+  tiers?: Record<Tier, number>; // pairs by closest distance; older reports don't carry it
   research_categories: string[];
   top: ReportTop[];
   issues: { level: string; title: string; source: string }[];

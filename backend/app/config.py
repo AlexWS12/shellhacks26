@@ -85,8 +85,4 @@ DRAFTS_DIR = DATA_DIR / "sources"  # an AI reader's output per source, waiting f
 UPLOADS_DIR = DATA_DIR / "uploads"  # filings added in the Sources menu, stored as {sha256}.pdf
 UPLOAD_MAX_MB = env_float("UPLOAD_MAX_MB", 50.0)
 
-# Cost model. No savings figure is shown unless a share AND its source are both set.
-COST_MOBILIZATION_SHARE = env_float("COST_MOBILIZATION_SHARE", 0.0)
-COST_SOURCE = env("COST_SOURCE")
-
 CORS_ORIGINS = [o for o in env("CORS_ORIGINS", "http://localhost:3000").split(",") if o]

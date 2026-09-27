@@ -100,6 +100,34 @@
       "when": "research_live",
       "models": [{"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "gemini", "model": "gemini-3.7-flash"}]
     },
+    "cost_search": {
+      "label": "Look up project costs",
+      "group": "Savings",
+      "description": "Searches the web for a published cost of each paired project whose filing doesn't state one.",
+      "kind": "search",
+      "models": [{"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "gemini", "model": "gemini-3.7-flash"}]
+    },
+    "cost_extract": {
+      "label": "Read the cost found",
+      "group": "Savings",
+      "description": "Pulls the one dollar figure, its quote and its page out of what the cost search found.",
+      "kind": "json",
+      "models": [{"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "gemini", "model": "gemini-3.7-flash"}]
+    },
+    "cost_quote_check": {
+      "label": "Check cost quotes",
+      "group": "Savings",
+      "description": "Decides whether a quoted cost is really this project's own cost, and whether the amount matches the quote.",
+      "kind": "judge",
+      "models": [{"provider": "jev", "model": "jev-latest"}, {"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "gemini", "model": "gemini-3.7-flash"}]
+    },
+    "savings_check": {
+      "label": "Check sharing is worth raising",
+      "group": "Savings",
+      "description": "Decides whether sharing what a pair's distance tier allows is worth raising between the two utilities.",
+      "kind": "judge",
+      "models": [{"provider": "jev", "model": "jev-latest"}, {"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "gemini", "model": "gemini-3.7-flash"}]
+    },
     "analyst": {
       "label": "Write up opportunities",
       "group": "Writing",

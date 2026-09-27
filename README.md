@@ -12,7 +12,14 @@ Built at ShellHacks 2026 for the Gridlock challenge.
 - **Reads the filings live.** 44 Dominion projects and 208 Georgia projects, parsed straight from the PDFs.
 - **Places every project.** OpenStreetMap substations and towns, with each fuzzy match confirmed by Jev.
 - **Checks the data.** Malformed costs, spending after a project is done, text copied between projects.
-- **Finds overlaps.** Every pair under 25 miles apart, plus how many days apart they finish, ranked.
+- **Finds overlaps.** Every pair under 25 miles (40 km) apart at their closest points, so a long line passing near a
+  substation counts, ranked by the challenge's tiers: touching or crossing, under 1 mile (share the land), under 5
+  miles (share site logistics), under 25 miles (share crews and equipment). Plus whether their build windows overlap.
+- **Estimates savings.** A Cost research agent gives every paired project a cost: from its filing, published on
+  the web (Jev confirms the quote backs it), or modeled from Dominion's filed costs for the same kind of work. A
+  Savings agent turns that into a range per pair from its distance tier (closer pairs can share more) and whether
+  both are being built at once, using percentages labeled as team assumptions. Jev rules out pairs where sharing
+  isn't worth raising.
 - **Looks past the two utilities.** A research team maps other owners' projects near the river: other
   electric utilities, gas pipelines, roads and water. You choose which before each run. Every record cites its
   sources, and each one near both sides of an opportunity is flagged.
@@ -23,7 +30,8 @@ Built at ShellHacks 2026 for the Gridlock challenge.
   coordination meeting.
 - **Shows its work.** Every agent appears on the map and in the pipeline graph while it runs; every number
   links back to a page in the filing.
-- **Scores itself.** 6 of 6 known overlaps reproduced exactly (to 0.01 mi and to the day).
+- **Scores itself.** 6 of 6 known overlaps reproduced exactly (to 0.01 mi and to the day), using the benchmark's
+  center-to-center rule.
 
 ## Stack
 

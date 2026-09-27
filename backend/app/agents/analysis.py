@@ -2,7 +2,7 @@ from datetime import date
 
 from app import config
 from app.clients import models
-from app.core.analysis import (cost_block, fact_sheet, shared_resources, template_insight, unsupported_numbers)
+from app.core.analysis import fact_sheet, template_insight, unsupported_numbers
 from app.core.models import Overlap, Project, ReferenceResult
 from app.core.overlap import Filters, distance_mi, find_overlaps, time_gap_days
 from app.core.owners import book
@@ -43,8 +43,9 @@ class OverlapEngine(Agent):
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
         projects = list(b.projects.values())
-        async with ctx.tool("find_overlaps", {"cutoff_mi": 25, "center": "midpoint of located endpoints",
-                                              "distance": "haversine, R=3958.8 mi", "ga_owners": "GPC, SAV"}) as out:
+        async with ctx.tool("find_overlaps", {"cutoff_mi": 25, "distance": "closest points, lines as straight segments",
+                                              "tiers_mi": {"touching": 0.1, "row": 1, "site": 5, "crew": 25},
+                                              "ga_owners": "GPC, SAV"}) as out:
             f = Filters(today=config.TODAY)
             b.overlaps = find_overlaps(projects, f, b.sample_pairs())
             owners = {p.utility for p in projects if p.lat is not None}
@@ -91,20 +92,6 @@ class ReferenceChecker(Agent):
                 "using dates from our own extraction. With our own geocoding instead of the file's coordinates, "
                 f"{blind} of {len(b.reference)} land within {BLIND_TOLERANCE_MI:g} mi.")
         return f"{passed}/{len(b.reference)} exact, {blind}/{len(b.reference)} blind"
-
-
-class CostEstimator(Agent):
-    spec = AgentSpec("cost", "Cost model", "Public Dominion costs; savings only with a cited source",
-                     ["code"], depends_on=["overlap", "classifier"], kind="tool", engine="Math")
-
-    async def run(self, ctx: Ctx) -> str:
-        b = ctx.board
-        for o in b.overlaps:
-            a, g = b.projects[o.project_a], b.projects[o.project_b]
-            b.costs[o.id] = {**cost_block(a, g, o), "shared": shared_resources(a, g, o)}
-            ctx.emit("cost.ready", overlap_id=o.id, cost=b.costs[o.id])
-        concurrent = sum(1 for o in b.overlaps if o.windows_overlap)
-        return f"{len(b.overlaps)} cost blocks, {concurrent} with overlapping build windows"
 
 
 SYSTEM = ("You write one short paragraph for a transmission planner about two nearby planned projects from different "

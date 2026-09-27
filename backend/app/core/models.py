@@ -68,7 +68,9 @@ class Overlap(BaseModel):
     id: str
     project_a: str  # the first owner's project, as the sources table ranks them (Dominion when it's in the pair)
     project_b: str  # the other owner's project
-    distance_mi: float
+    distance_mi: float  # closest points between the two projects (the challenge's rule)
+    tier: str = "crew"  # touching | row | site | crew: what the distance lets them share (core/overlap.py TIERS)
+    center_mi: float | None = None  # center to center, the benchmark's rule
     time_gap_days: int
     windows_overlap: bool | None = None
     pair_confidence: Confidence

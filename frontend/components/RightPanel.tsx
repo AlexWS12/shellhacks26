@@ -8,7 +8,7 @@ import {
   ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, WRITERS, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
-import type { Endpoint, Overlap, PairDetail, Project, ThirdParty, Written } from "@/lib/types";
+import type { CostEstimate, Endpoint, Overlap, PairDetail, Project, ThirdParty, Tier, Written } from "@/lib/types";
 import {
   approxDate, colorOf, costKind, dateWord, gapText, legendSources, ownerName, ownerShort, ownStyle, serviceDate, shapeOf, showsStatus,
   useSources, whereFrom,
@@ -68,8 +68,15 @@ function Mk({ p }: { p: Project }) {
   return <i className={`mk ${shapeOf(p)}`} style={ownStyle(p)} aria-label={ownerShort(p)} role="img" />;
 }
 
-// Georgia's costs are redacted in the filing; other owners' costs are shown when their plan states them.
-const costText = (p: Project, n: number | null) => (costKind(p) === "redacted" ? "redacted" : n == null ? "not stated" : money(n));
+const BASIS = { filed: "from the filing", published: "published, quote checked", benchmark: "modeled" } as const;
+
+// Georgia's costs are redacted in its filing, so its projects get a published or modeled estimate.
+function CostRow({ p, e }: { p: Project; e: CostEstimate | null }) {
+  return (
+    <tr><td>{ownerShort(p)} project cost {e && <span className="basis">{BASIS[e.basis]}</span>}</td>
+      <td>{e ? money(e.amount) : costKind(p) === "redacted" ? "redacted" : "not stated"}</td></tr>
+  );
+}
 
 function sideName(overlapId: string, i: 0 | 1): string {
   const p = run.projects[overlapId.split("|")[i]];
@@ -105,8 +112,18 @@ function matches(o: Overlap, q: string): boolean {
     [p.id, p.name, ...p.endpoints.map((e) => e.name)].some((t) => t.toLowerCase().includes(q)));
 }
 
+export const TIER_LABEL: Record<Tier, string> = {
+  touching: "Touching or crossing: must coordinate outages and crossing structures",
+  row: "Under 1 mile: can share the land itself (right-of-way, access roads, permits)",
+  site: "Under 5 miles: can share site logistics (laydown yards, deliveries)",
+  crew: "Under 25 miles: can share crews and equipment",
+};
+
 function Action({ o }: { o: Overlap }) {
-  if (o.windows_overlap === true) return <span className="act crews">Share crews</span>;
+  if (o.tier === "touching") return <span className="act crews">Must coordinate</span>;
+  if (o.tier === "row") return <span className="act crews">Share land</span>;
+  if (o.tier === "site") return <span className="act crews">Share site</span>;
+  if (o.windows_overlap === true && !o.finished) return <span className="act crews">Share crews</span>;
   if (o.windows_overlap == null) return <span className="act unknown">Timing undecided</span>;
   return <span className="act records">Share records</span>;
 }
@@ -318,14 +335,36 @@ function PairView({ a, b }: { a: string; b: string }) {
           <b>{pb.name}</b>{ownerName(pb)}{pb.status && showsStatus(pb) ? ` · ${pb.status}` : ""}<br />{dateWord(pb)} {serviceDate(pb, fmtDate)}
         </div>
       </div>
-      <div className="hero"><span className="big">{o.distance_mi.toFixed(2)}</span><span>miles apart</span></div>
+      <div className="hero"><span className="big">{o.distance_mi.toFixed(2)}</span><span>miles apart at the closest points</span></div>
+      {o.center_mi != null && <div className="sub" title="Center = midpoint of each project's located ends.">{o.center_mi.toFixed(2)} mi center to center</div>}
       <div className="sub">{gapText(o.time_gap_days, pa, pb)} days between in-service dates · {CONF_LABEL[o.pair_confidence]}</div>
-      {o.finished && <p className="note">At least one of these projects is already in service, so only records and designs can be shared, not crews.</p>}
+      {o.finished && <p className="note">At least one of these projects is already in service, so crews, equipment and outage timing can&apos;t be shared.</p>}
       {slackNote(o) && <p className="note">{slackNote(o)}</p>}
 
       <h3>Build windows</h3>
       <Gantt a={pa} b={pb} labels={[ownerShort(pa), ownerShort(pb)]} colors={[colorOf(pa), colorOf(pb)]} />
       <p className="note">Highlighted band = both under construction. A faded start means the work began before 2024.</p>
+
+      <h3>Estimated savings</h3>
+      {cost && "savings_high" in cost ? (
+        <>
+          <table className="kv"><tbody>
+            <CostRow p={pa} e={cost.a} />
+            <CostRow p={pb} e={cost.b} />
+            {cost.savings_high != null && (
+              <tr><td>Possible savings <span className="basis">assumption</span></td>
+                <td>{cost.savings_low ? money(cost.savings_low) : "$0"} to {money(cost.savings_high)}</td></tr>
+            )}
+          </tbody></table>
+          <p className="note">{cost.statement}
+            {cost.check && <> <Chip a={cost.check.actor} />{cost.check.p >= 0.5 ? "judged" : "didn't judge"} sharing worth raising between the two utilities ({Math.round(cost.check.p * 100)}%).</>}</p>
+          {[cost.a, cost.b].map((e) => e && e.basis !== "filed" && (
+            <p className="note" key={e.project_id}>{ownerShort(run.projects[e.project_id] ?? pa)}: {e.method}
+              {e.quote && <> “{e.quote}” <a href={e.source} target="_blank" rel="noreferrer">{e.source_title || "source"}</a></>}</p>
+          ))}
+        </>
+      ) : cost ? <p className="empty">This replay predates the savings calculator. Run again to see cost estimates.</p>
+        : <p className="empty">Waiting for the savings calculator.</p>}
 
       <OthersNearby links={allOthers.some((t) => t.overlap_id === id)
         ? allOthers.filter((t) => t.overlap_id === id) : remote?.others ?? []} />
@@ -333,6 +372,7 @@ function PairView({ a, b }: { a: string; b: string }) {
       <h3>What they could share</h3>
       {shared ? (
         <p className="share">
+          {shared.tier && <span className="sub block">{TIER_LABEL[shared.tier]}</span>}
           <b className={shared.level === "high" ? "c-zone" : "c-ink"}>
             {shared.level === "high" ? "Strong" : shared.level === "medium" ? "Moderate" : "Limited"}
           </b>{" "}
@@ -342,7 +382,7 @@ function PairView({ a, b }: { a: string; b: string }) {
             {shared.timing === "unknown" ? " · timing undecided" : `, ${shared.timing} build windows`}
           </span>
         </p>
-      ) : <p className="empty">Waiting for the cost estimator.</p>}
+      ) : <p className="empty">Waiting for the savings calculator.</p>}
 
       <h3>Analysis</h3>
       {analysis ? (
@@ -361,19 +401,6 @@ function PairView({ a, b }: { a: string; b: string }) {
           {brief.mediator && <div className="brief"><div className="who c-ink">Mediator: joint agenda <Chip a={brief.mediator.actor} /></div>{brief.mediator.text}</div>}
         </>
       )}
-
-      <h3>Cost</h3>
-      {cost ? (
-        <>
-          <table className="kv"><tbody>
-            <tr><td>{ownerShort(pa)} project cost{costKind(pa) === "public" ? " (public)" : ""}</td><td>{costText(pa, cost.desc_cost)}</td></tr>
-            {cost.desc_cost_per_mile && <tr><td>{ownerShort(pa)} cost per mile ({cost.desc_miles} mi)</td><td>{money(cost.desc_cost_per_mile)}</td></tr>}
-            <tr><td>{ownerShort(pb)} project cost</td><td>{costText(pb, pb.cost_total)}</td></tr>
-            {cost.savings != null && <tr><td>Possible savings</td><td>{money(cost.savings)}</td></tr>}
-          </tbody></table>
-          <p className="note">{cost.statement}{cost.source && <> Source: {cost.source}</>}</p>
-        </>
-      ) : <p className="empty">Waiting for the cost estimator.</p>}
 
       <h3>From the filings</h3>
       <div className="quote">{pa.description}</div>
@@ -616,6 +643,7 @@ function ReportView() {
         {Object.entries(r.owners).map(([o, n]) => <tr key={o}><td>{o}</td><td>{plural(n, "project")}</td></tr>)}
         <tr><td>On the map</td><td>{c.placed} ({c.unlocated} unlocated)</td></tr>
         <tr><td>Pairs under 25 mi</td><td>{c.opportunities} ({c.built_at_same_time} same time)</td></tr>
+        {r.tiers && <tr><td>By closest distance</td><td>{r.tiers.touching} touching · {r.tiers.row} under 1 mi · {r.tiers.site} under 5 mi</td></tr>}
         <tr><td>Benchmark</td><td>{c.benchmark_passed}/{c.benchmark_total} exact</td></tr>
         <tr><td>Data issues</td><td>{c.issues_error} errors · {c.issues_warn} warnings</td></tr>
         {r.research_categories.length > 0 && <tr><td>Other utilities ({r.research_categories.join(", ")})</td><td>{c.other_utility_projects} projects · near {c.opportunities_with_other_utilities} pairs</td></tr>}
@@ -633,6 +661,7 @@ function ReportView() {
               <div className="t">{t.a.name} <span className="sub-inline">· {t.a.owner}</span><br />{t.b.name} <span className="sub-inline">· {t.b.owner}</span></div>
               <div className="meta">
                 <span><span className="num">{t.distance_mi.toFixed(2)}</span> mi</span>
+                {t.tier === "touching" && <span className="tag together">touching</span>}
                 <span><span className="num">{t.a.date_precision !== "day" || t.b.date_precision !== "day" ? "about " : ""}{t.time_gap_days.toLocaleString()}</span> days apart</span>
                 {t.built_at_same_time && <span className="tag together">built at the same time</span>}
                 {t.other_utilities.length > 0 && <span className="tag unknown">+{t.other_utilities.length} other owners nearby</span>}
