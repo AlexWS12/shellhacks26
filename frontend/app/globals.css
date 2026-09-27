@@ -1,4 +1,4 @@
-/* Tandem design tokens. One dark theme, no Tailwind.
+/* UtiliTies design tokens. One dark theme, no Tailwind.
    Every color, size, radius and duration used on screen comes from this block. MapLibre needs
    literal values, so lib/theme.ts reads these same properties at runtime. */
 :root {
@@ -28,11 +28,11 @@
 
   /* other utilities (research team), one hue per category */
   --cat-electric: #f472b6;
-  --cat-gas: #cbd5e1;
+  --cat-gas: #fb923c; /* flame orange: slate was too faint on the dark map */
   --cat-roads: #a3e635;
 
   /* submitted plans (Sources menu): peer owners after Dominion and Georgia */
-  --peer-1: #fb923c;
+  --peer-1: #cbd5e1;
   --peer-2: #c4b5fd;
   --peer-3: #fde68a;
 
@@ -159,6 +159,10 @@ button.primary:hover:not(:disabled) { background: var(--accent-fill-hi); border-
 .app { display: grid; grid-template-rows: auto 1fr; height: 100vh; }
 .main { --rail: var(--rail-w); display: grid; grid-template-columns: var(--rail) minmax(0, 1fr) var(--col-right); min-height: 0; transition: grid-template-columns var(--dur-base) var(--ease-out); }
 .main.rail-expanded { --rail: var(--rail-w-expanded); }
+.main.rail-hidden { grid-template-columns: minmax(0, 1fr) var(--col-right); position: relative; }
+.rail-handle { position: absolute; left: 0; top: 14px; z-index: 6; width: 26px; height: 46px; padding: 0; display: flex; align-items: center; justify-content: center;
+  background: var(--glass); backdrop-filter: blur(8px); border: 1px solid var(--line-2); border-left: 0; border-radius: 0 var(--r-md) var(--r-md) 0; color: var(--muted); }
+.rail-handle:hover:not(:disabled) { color: var(--ink); background: var(--raised); }
 .main.rail-open { grid-template-columns: var(--rail) var(--flyout-w) minmax(0, 1fr) var(--col-right); }
 .col { overflow: auto; min-height: 0; background: var(--panel); }
 .right { border-left: 1px solid var(--line); }
@@ -421,11 +425,6 @@ table.kv td:last-child { text-align: right; color: var(--ink); font-family: var(
 .think { font-size: var(--fs-sm); white-space: pre-wrap; background: var(--raised); border: 1px solid var(--line-2); border-radius: var(--radius); padding: var(--sp-2) var(--sp-3); max-height: 220px; overflow: auto; color: var(--muted); }
 
 /* research team */
-.filters.research { align-items: center; }
-.filters.research .lead { color: var(--faint); font-size: var(--fs-xs); font-weight: 600; letter-spacing: var(--track-caps); text-transform: uppercase; padding-right: 2px; }
-.filters.research label:has(input:checked) { color: var(--ink); border-color: var(--cat); }
-.filters.research input { accent-color: var(--cat); }
-.overlay .filters.research { margin-top: var(--sp-4); flex-wrap: wrap; }
 .team-label { margin-top: var(--sp-5); }
 .tag.others { color: var(--cat); }
 .other { display: grid; grid-template-columns: 3px 1fr; gap: var(--sp-1) 10px; padding: var(--sp-2) 0; border-bottom: 1px solid var(--line); cursor: pointer; font-size: var(--fs-sm); color: var(--muted); }
@@ -476,6 +475,30 @@ table.kv td:last-child { text-align: right; color: var(--ink); font-family: var(
 button.danger { border-color: var(--bad); color: var(--bad); }
 .err-inline { color: var(--bad); font-size: var(--fs-md); margin: var(--sp-3) 0 0; }
 .ok-inline { color: var(--good); font-size: var(--fs-md); margin: var(--sp-3) 0 0; }
+
+/* utility symbols (bolt, flame, drop, road) */
+.uicon { width: 1.05em; height: 1.05em; vertical-align: -0.16em; flex: none; }
+.catname .uicon { margin-right: 1px; }
+.legend .catkey { color: var(--muted); }
+.legend .catkey .uicon { color: var(--cat); width: 12px; height: 12px; }
+
+.legend button.catkey { all: unset; display: flex; align-items: center; gap: var(--sp-2); cursor: pointer; color: var(--muted); }
+.legend button.catkey:hover { color: var(--ink); }
+.legend button.catkey:focus-visible { outline: var(--ring); outline-offset: 2px; }
+.legend button.catkey.off { opacity: .4; text-decoration: line-through; }
+
+/* research choice: same pills as the Opportunities chips; color only on the symbols */
+.research-pick { display: grid; gap: var(--sp-2); margin-top: var(--sp-4); }
+.research-pick .lead, .research-list .lead { font-size: var(--fs-xs); font-weight: 600; letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--faint); }
+.rpill { border: 1px solid var(--line-2); }
+.rpill .uicon { color: var(--cat); }
+.rpill[aria-pressed="false"] .uicon { opacity: .45; }
+.research-btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line-2); border-radius: var(--r-sm); }
+.research-icons { display: inline-flex; gap: 2px; }
+.research-icons .uicon { color: var(--cat); }
+.research-off { color: var(--faint); }
+.research-list { right: auto; left: 0; min-width: 210px; gap: 6px; padding: var(--sp-2); }
+.research-list .rpill { justify-content: flex-start; }
 
 /* motion and small screens */
 @media (prefers-reduced-motion: reduce) {

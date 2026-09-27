@@ -5,14 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import { api, type FilterState } from "@/lib/api";
 import { activeIn, lineCheck } from "@/lib/filters";
 import {
-  ACTOR_LABEL, CATEGORY_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
+  ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { Endpoint, Overlap, PairDetail, Project, ThirdParty, Written } from "@/lib/types";
 import { approxDate, dateWord, gapText, ownClass, ownerName, ownerShort, peers, serviceDate, slotOf, whereFrom } from "@/lib/owners";
 import { useUI } from "@/lib/ui";
+import { KIND_LABEL, kindOf } from "@/lib/utilityIcons";
 
 import Gantt from "./Gantt";
+import UtilityIcon from "./UtilityIcon";
 
 const Chip = ({ a }: { a: string }) => <i className={`chipe ${a.startsWith("jev") ? "jev" : a}`}>{ACTOR_LABEL[a] ?? a}</i>;
 
@@ -495,7 +497,7 @@ function OthersNearby({ links }: { links: ThirdParty[] }) {
           <div key={t.research_id} className={`other cat-${r.category}`} role="button" tabIndex={0}
             onClick={() => useUI.getState().setPanel({ kind: "research", id: r.id })}
             onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), useUI.getState().setPanel({ kind: "research", id: r.id }))}>
-            <div><span className="catname">{CATEGORY_LABEL[r.category]}</span> · {r.utility}</div>
+            <div><span className="catname"><UtilityIcon kind={kindOf(r)} /> {KIND_LABEL[kindOf(r)]}</span> · {r.utility}</div>
             <b>{r.name}</b>
             <div>
               <span className="num">{t.dist_a_mi.toFixed(1)}</span> mi from {sideName(t.overlap_id, 0)}&apos;s, <span className="num">{t.dist_b_mi.toFixed(1)}</span> mi from
@@ -520,7 +522,7 @@ function ResearchView({ id }: { id: string }) {
   return (
     <div className={`detail cat-${r.category}`}>
       <Back />
-      <p className="label"><span className="catname">Other utility · {CATEGORY_LABEL[r.category]}</span></p>
+      <p className="label"><span className="catname"><UtilityIcon kind={kindOf(r)} /> Other utility · {KIND_LABEL[kindOf(r)]}</span></p>
       <h2>{r.name}</h2>
       <p className="sub">{r.utility}{r.utility_kind ? ` · ${r.utility_kind}` : ""} · {r.status.replace("_", " ")}</p>
       {r.found_by === "gemini_search"

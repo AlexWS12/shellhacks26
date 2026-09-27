@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { boot, useUI } from "@/lib/ui";
 
 import Header from "./Header";
-import { Flyout, Rail } from "./Rail";
+import { Flyout, Rail, RailHandle } from "./Rail";
 import RightPanel from "./RightPanel";
 
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
@@ -14,7 +14,8 @@ const MapView = dynamic(() => import("./MapView"), { ssr: false });
 export default function TandemApp() {
   const error = useUI((s) => s.error);
   const railOpen = useUI((s) => s.railOpen);
-  const railExpanded = useUI((s) => s.railExpanded);
+  const railMode = useUI((s) => s.railMode);
+  const hidden = railMode === "hidden";
   useEffect(() => {
     void boot();
   }, []);
@@ -24,9 +25,9 @@ export default function TandemApp() {
         <Header />
         {error && <div className="err" role="alert">{error}</div>}
       </div>
-      <div className={`main ${railOpen ? "rail-open" : ""} ${railExpanded ? "rail-expanded" : ""}`}>
-        <Rail />
-        {railOpen && <Flyout />}
+      <div className={`main ${railOpen && !hidden ? "rail-open" : ""} ${railMode === "full" ? "rail-expanded" : ""} ${hidden ? "rail-hidden" : ""}`}>
+        {hidden ? <RailHandle /> : <Rail />}
+        {railOpen && !hidden && <Flyout />}
         <section className="mapwrap" aria-label="Map">
           <MapView />
         </section>

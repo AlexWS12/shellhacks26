@@ -22,18 +22,25 @@ export const CATEGORIES: ResearchCategory[] = ["electric", "gas", "roads_water"]
 const RESEARCH_KEY = "tandem.research";
 const RAIL_KEY = "tandem.rail";
 
-function savedRail(): { railOpen?: boolean; railExpanded?: boolean } {
+export type RailMode = "full" | "icons" | "hidden"; // icon + name, icon only, nothing (a handle brings it back)
+export const NEXT_RAIL: Record<RailMode, RailMode> = { full: "icons", icons: "hidden", hidden: "full" };
+
+function savedRail(): { railOpen?: boolean; railMode?: RailMode } {
   try {
     const raw = typeof localStorage !== "undefined" ? localStorage.getItem(RAIL_KEY) : null;
-    return raw ? (JSON.parse(raw) as { railOpen?: boolean; railExpanded?: boolean }) : {};
+    if (!raw) return {};
+    const v = JSON.parse(raw) as { railOpen?: boolean; railMode?: RailMode; railExpanded?: boolean };
+    // older saves kept only on/off labels
+    const railMode = v.railMode ?? (v.railExpanded === false ? "icons" : v.railExpanded === true ? "full" : undefined);
+    return { ...(v.railOpen != null ? { railOpen: v.railOpen } : {}), ...(railMode ? { railMode } : {}) };
   } catch {
     return {};
   }
 }
 
-function saveRail(s: { railOpen: boolean; railExpanded: boolean }): void {
+function saveRail(s: { railOpen: boolean; railMode: RailMode }): void {
   try {
-    localStorage.setItem(RAIL_KEY, JSON.stringify({ railOpen: s.railOpen, railExpanded: s.railExpanded }));
+    localStorage.setItem(RAIL_KEY, JSON.stringify({ railOpen: s.railOpen, railMode: s.railMode }));
   } catch {
     // private mode: the layout just isn't remembered
   }
@@ -55,6 +62,8 @@ interface UIState {
   results: Overlap[] | null; // from the API after a run
   others: ThirdParty[] | null; // other utilities near those results, from the API
   research: Record<ResearchCategory, boolean>; // which categories the research team covers next run
+  hiddenCats: ResearchCategory[]; // other-owner categories hidden on the map (legend toggle)
+  toggleCat: (c: ResearchCategory) => void;
   setResearch: (c: ResearchCategory, on: boolean) => void;
   visibleProjects: number | null;
   health: Health | null;
@@ -72,10 +81,11 @@ interface UIState {
   setBasemap: (b: UIState["basemap"]) => void;
   railTab: RailTab; // which pipeline section the left panel shows
   railOpen: boolean; // left panel visible
-  railExpanded: boolean; // rail shows labels and status
+  railMode: RailMode; // full (icon + name), icons, or hidden
   selectRailTab: (t: RailTab) => void; // clicking the open tab closes the panel
   closeRail: () => void;
-  toggleRailExpanded: () => void;
+  stepRail: () => void; // full -> icons -> hidden
+  showRail: () => void; // the handle: back to full
 }
 
 const SERVER_KEYS = ["allSponsors", "townLevel", "hideFinished"] as const;
@@ -88,6 +98,11 @@ export const useUI = create<UIState>((set, get) => ({
   others: null,
   visibleProjects: null,
   research: { electric: true, gas: true, roads_water: true },
+  hiddenCats: [],
+  toggleCat: (c) => {
+    const h = get().hiddenCats;
+    set({ hiddenCats: h.includes(c) ? h.filter((x) => x !== c) : [...h, c] });
+  },
   setResearch: (c, on) => {
     const research = { ...get().research, [c]: on };
     set({ research });
@@ -128,7 +143,7 @@ export const useUI = create<UIState>((set, get) => ({
   setBasemap: (basemap) => set({ basemap }),
   railTab: "agents",
   railOpen: true,
-  railExpanded: false,
+  railMode: "full",
   selectRailTab: (railTab) => {
     const s = get();
     set(s.railOpen && s.railTab === railTab ? { railOpen: false } : { railTab, railOpen: true });
@@ -138,8 +153,12 @@ export const useUI = create<UIState>((set, get) => ({
     set({ railOpen: false });
     saveRail(get());
   },
-  toggleRailExpanded: () => {
-    set((s) => ({ railExpanded: !s.railExpanded }));
+  stepRail: () => {
+    set((s) => ({ railMode: NEXT_RAIL[s.railMode] }));
+    saveRail(get());
+  },
+  showRail: () => {
+    set({ railMode: "full" });
     saveRail(get());
   },
 }));

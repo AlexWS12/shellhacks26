@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity, Database, Menu, Target, TriangleAlert, Workflow, type LucideIcon } from "lucide-react";
+import { Activity, Database, Menu, PanelLeftOpen, Target, TriangleAlert, Workflow, type LucideIcon } from "lucide-react";
 import { useRef } from "react";
 
 import { run, useRev } from "@/lib/run";
@@ -57,9 +57,10 @@ export function Rail() {
   useRev((s) => s.rev);
   const tab = useUI((s) => s.railTab);
   const open = useUI((s) => s.railOpen);
-  const expanded = useUI((s) => s.railExpanded);
+  const mode = useUI((s) => s.railMode);
+  const expanded = mode === "full";
   const select = useUI((s) => s.selectRailTab);
-  const toggle = useUI((s) => s.toggleRailExpanded);
+  const step = useUI((s) => s.stepRail);
   const items = useRef<(HTMLButtonElement | null)[]>([]);
 
   // Arrow keys move between tabs; only the current one is in the tab order.
@@ -73,7 +74,9 @@ export function Rail() {
 
   return (
     <nav className={`rail ${expanded ? "expanded" : ""}`} aria-label="Pipeline">
-      <button className="rail-menu" onClick={toggle} aria-expanded={expanded} aria-label={expanded ? "Hide labels" : "Show labels"}>
+      <button className="rail-menu" onClick={step} aria-expanded={expanded}
+        title={expanded ? "Icons only (click again to hide the menu)" : "Hide the menu"}
+        aria-label={expanded ? "Show icons only" : "Hide the menu"}>
         <Menu size={22} strokeWidth={2} aria-hidden="true" />
         {expanded && <span>Pipeline</span>}
       </button>
@@ -126,5 +129,15 @@ export function Flyout() {
         <Body />
       </div>
     </section>
+  );
+}
+
+// When the menu is hidden: a slim tab on the left edge brings it back.
+export function RailHandle() {
+  const show = useUI((s) => s.showRail);
+  return (
+    <button className="rail-handle" onClick={show} title="Show the menu" aria-label="Show the menu">
+      <PanelLeftOpen size={16} strokeWidth={2} aria-hidden="true" />
+    </button>
   );
 }

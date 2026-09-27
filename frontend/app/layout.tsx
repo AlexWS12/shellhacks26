@@ -4,7 +4,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tandem · Utility coordination",
+  title: "UtiliTies · Utility coordination",
   description: "Agents read Dominion Energy SC and Georgia Power's public plans and find where they build close together.",
 };
 
