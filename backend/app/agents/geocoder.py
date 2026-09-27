@@ -13,6 +13,7 @@ from app.core.endpoints import clean_endpoint, description_names, looks_awkward,
 from app.core.models import Check, Endpoint, Project
 from app.core.normalize import norm_key
 from app.core.overlap import MAX_SPAN_MI, TIE_CROSS_MI, center, distance_mi, span_limit
+from app.core.owners import state_of
 from app.core.places import OsmIndex, Place, States, Towns, load_overrides, sponsor_points, variants
 from app.core.sample import match_projects
 from app.runtime.agent import Agent, AgentSpec, Ctx
@@ -39,7 +40,8 @@ class Geocoder(Agent):
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
         async with ctx.tool("match_sample", {"sample_projects": len(b.sample.projects) if b.sample else 0}) as out:
-            b.sample_map = match_projects(b.sample, list(b.projects.values())) if b.sample else {}
+            built_in = [p for p in b.projects.values() if p.utility in ("DESC", "GA")]
+            b.sample_map = match_projects(b.sample, built_in) if b.sample else {}
             out["summary"] = f"matched {len(b.sample_map)} of {len(b.sample.projects) if b.sample else 0} benchmark projects"
         ctx.emit("sample.matched", mapping=b.sample_map)
 
@@ -84,6 +86,7 @@ class Geocoder(Agent):
         # scorer can test our geocoding and not only the distance math.
         async def blind(pid: str) -> None:
             p = b.projects[pid].model_copy(deep=True)
+            p.endpoints = []  # start from the title, not the file's endpoint names
             async with sem:
                 await self.locate_project(ctx, p, blind=True)
             b.blind[pid] = {"lat": p.lat, "lon": p.lon, "confidence": p.location_confidence,
@@ -125,7 +128,7 @@ class Geocoder(Agent):
 
     async def locate_project(self, ctx: Ctx, p: Project, blind: bool = False) -> None:
         # blind: ignore the benchmark file's coordinates, as if this project weren't in it.
-        state = "SC" if p.utility == "DESC" else "GA"
+        state = state_of(p)
         ref = None if blind else self.by_sample.get(p.id)
         if ref and ctx.board.sample:
             sp = ctx.board.sample.projects[ref]  # use the sponsor's own coordinates for this row
@@ -138,10 +141,15 @@ class Geocoder(Agent):
                                         "reason": "no coordinates in the benchmark file; left unlocated so the center "
                                                   "matches the benchmark's own"}))
                            for pt in (sp.a, sp.b) if pt.name]
+        elif any(e.method == "submitted" for e in p.endpoints):
+            pass  # coordinates from the submitted file are used as given
         else:
-            names = split_endpoints(p.name)
-            if looks_awkward(p.name, names) and gemini.enabled():
-                names = await self.gemini_split(ctx, p, names)
+            if p.endpoints:  # endpoint names from a submitted plan's columns
+                names = [e.name for e in p.endpoints]
+            else:
+                names = split_endpoints(p.name)
+                if looks_awkward(p.name, names) and gemini.enabled():
+                    names = await self.gemini_split(ctx, p, names)
             eps = [await self.locate_endpoint(ctx, p, n, state, blind=blind) for n in names]
             p.endpoints = await self.check_span(ctx, p, eps, state, blind)
             if not any(e.lat is not None for e in p.endpoints):

@@ -21,3 +21,6 @@ docker-compose.yml
 
 # local pipeline runs (the committed demo run stays tracked)
 data/runs/run_*
+
+# plans uploaded in the Sources menu (runtime data, saved on the server)
+data/submissions/

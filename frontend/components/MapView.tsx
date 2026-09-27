@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import { activeIn, lineCheck, lineEnds, researchActiveIn, visible } from "@/lib/filters";
 import { CATEGORY_LABEL, engineColor } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
+import { peers, slotOf } from "@/lib/owners";
 import { mapPalette } from "@/lib/theme";
 import type { Overlap, Project, ResearchCategory, ThirdParty } from "@/lib/types";
 import { showLatestResults, startRun, useUI } from "@/lib/ui";
@@ -102,13 +103,13 @@ function buildData() {
   };
   const points = fc(shown.map((p) => ({
     type: "Feature",
-    properties: { id: p.id, u: p.utility, hollow: hollow(p), name: p.name },
+    properties: { id: p.id, u: slotOf(p.utility), hollow: hollow(p), name: p.utility === "DESC" || p.utility === "GA" ? p.name : `${p.sponsor}: ${p.name}` },
     geometry: { type: "Point", coordinates: [p.lon!, p.lat!] },
   })));
   const lines = fc(shown.flatMap((p) => {
     if (!lineCheck(p).draw) return []; // one end, or too long to trust or to draw: the (hollow) point stays
     const eps = lineEnds(p);
-    return [{ type: "Feature", properties: { id: p.id, u: p.utility, hollow: hollow(p) },
+    return [{ type: "Feature", properties: { id: p.id, u: slotOf(p.utility), hollow: hollow(p) },
       geometry: { type: "LineString", coordinates: eps.map((e) => [e.lon!, e.lat!]) } } as GeoJSON.Feature];
   }));
   const sel = selectedPair();
@@ -192,7 +193,8 @@ function addDiamond(map: maplibregl.Map, id: string, fill: string, stroke: strin
 
 function addDataLayers(map: maplibregl.Map) {
   const COLORS = mapPalette();
-  const color = ["match", ["get", "u"], "DESC", COLORS.desc, COLORS.gpc] as maplibregl.ExpressionSpecification;
+  const color = ["match", ["get", "u"], "desc", COLORS.desc, "gpc", COLORS.gpc, "p1", COLORS.peer1, "p2", COLORS.peer2,
+    COLORS.peer3] as maplibregl.ExpressionSpecification;
   for (const id of ["ring", "lines", "links", "labels", "points", "pulse", "comets", "others", "other-links"]) {
     if (!map.getSource(id)) map.addSource(id, { type: "geojson", data: fc([]) });
   }
@@ -221,7 +223,7 @@ function addDataLayers(map: maplibregl.Map) {
     paint: { "circle-radius": 4.5, "circle-color": COLORS.spark } });
   map.addLayer({ id: "points-glow", type: "circle", source: "points",
     paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 7, 9, 13], "circle-color": color, "circle-blur": 1, "circle-opacity": 0.35 } });
-  map.addLayer({ id: "points", type: "circle", source: "points", filter: ["==", ["get", "u"], "DESC"],
+  map.addLayer({ id: "points", type: "circle", source: "points", filter: ["!=", ["get", "u"], "gpc"], // Dominion + submitted plans
     paint: {
       "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 3, 9, 6],
       "circle-color": ["case", ["get", "hollow"], COLORS.bg, color],
@@ -231,7 +233,7 @@ function addDataLayers(map: maplibregl.Map) {
   // Georgia draws as diamonds so the shape, not just the color, tells the utilities apart (same as the list)
   addDiamond(map, "diamond", COLORS.gpc, COLORS.gpc);
   addDiamond(map, "diamond-hollow", COLORS.bg, COLORS.gpc);
-  map.addLayer({ id: "points-ga", type: "symbol", source: "points", filter: ["!=", ["get", "u"], "DESC"],
+  map.addLayer({ id: "points-ga", type: "symbol", source: "points", filter: ["==", ["get", "u"], "gpc"],
     layout: {
       "icon-image": ["case", ["get", "hollow"], "diamond-hollow", "diamond"],
       "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.55, 9, 1.05],
@@ -346,6 +348,7 @@ export default function MapView() {
   const setYear = useUI((s) => s.setYear);
   const phase = useRev(() => run.phase);
   const cats = useRev(() => run.researchSelected.join(","));
+  useRev(() => peers().length); // redraw the legend when a submitted owner appears
 
   useEffect(() => {
     if (!el.current) return;
@@ -435,7 +438,7 @@ export default function MapView() {
           const p = run.projects[id];
           if (!p || p.lat == null) return [];
           const k = (t - t0) / PIN_DROP_MS;
-          return [{ type: "Feature", properties: { u: p.utility, r: 3 + 18 * k, o: 0.9 * (1 - k) },
+          return [{ type: "Feature", properties: { u: slotOf(p.utility), r: 3 + 18 * k, o: 0.9 * (1 - k) },
             geometry: { type: "Point", coordinates: [p.lon!, p.lat!] } } as GeoJSON.Feature];
         })));
         const c = comets();
@@ -481,6 +484,7 @@ export default function MapView() {
         <span><i className="sw gpc diamond" />Georgia</span>
         <span><i className="sw hollow" />Hollow = approximate location</span>
         <span><i className="sw zone" />Under 25 mi apart</span>
+        {peers().map((o) => <span key={o.key}><i className={`sw own-${o.slot}`} />{o.name}</span>)}
         {(cats ? (cats.split(",") as ResearchCategory[]) : []).map((c) => (
           <span key={c}><i className={`sw cat-${c}`} />Other · {CATEGORY_LABEL[c]}</span>
         ))}
@@ -508,6 +512,7 @@ export default function MapView() {
             </div>
             <ResearchPicker />
             <ul className="hints">
+              <li><b>Add a plan</b> (Sources, left): upload another utility&apos;s project list; its Reader joins every live run.</li>
               <li><b>Research</b>: before a live run, pick which other utilities the research team looks up near the river.</li>
               <li><b>Replay</b> plays back the newest recorded run and works offline.</li>
               <li><b>Template fallback</b> (top bar): if Gemini keeps failing during a live run, the text comes from a template instead of the agent failing.</li>

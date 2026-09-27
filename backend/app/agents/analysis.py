@@ -3,12 +3,17 @@ from datetime import date
 from app import config
 from app.clients import gemini
 from app.core.analysis import (cost_block, fact_sheet, shared_resources, template_insight, unsupported_numbers)
-from app.core.models import ReferenceResult
+from app.core.models import Overlap, ReferenceResult
 from app.core.overlap import Filters, distance_mi, find_overlaps, time_gap_days
 from app.runtime.agent import Agent, AgentSpec, Ctx
 
 TOP_ANALYSES = 6
 BLIND_TOLERANCE_MI = 1.0  # our own geocoding vs the benchmark distance
+
+
+def is_core(o: Overlap) -> bool:
+    # A Dominion-Georgia pair. Submitted plans get the facts, the cost block and the report, not the written sides.
+    return o.project_a.startswith("DESC-") and o.project_b.startswith("GA-")
 
 
 class OverlapEngine(Agent):
@@ -22,13 +27,13 @@ class OverlapEngine(Agent):
                                               "distance": "haversine, R=3958.8 mi", "ga_owners": "GPC, SAV"}) as out:
             f = Filters(today=config.TODAY)
             b.overlaps = find_overlaps(projects, f, b.sample_pairs())
-            n_desc = sum(1 for p in projects if p.utility == "DESC" and p.lat is not None)
-            n_ga = sum(1 for p in projects if p.utility == "GA" and p.lat is not None and p.sponsor in ("GPC", "SAV"))
-            out["summary"] = f"{n_desc} x {n_ga} pairs compared, {len(b.overlaps)} under 25 mi"
-        ctx.log("Overlaps: comparing every Dominion project with every Georgia project, center to center.")
+            owners = {p.utility for p in projects if p.lat is not None}
+            out["summary"] = f"{len(owners)} owners' plans compared pair by pair, {len(b.overlaps)} pairs under 25 mi"
+        ctx.log("Overlaps: comparing every project with every project of a different owner, center to center.")
+        step = min(0.3, 20 / max(1, len(b.overlaps)))  # watchable, but never more than ~20 s in total
         for o in b.overlaps:
             ctx.emit("overlap.found", overlap=o.model_dump())
-            await ctx.pace(0.3)  # slow enough to watch each connection form
+            await ctx.pace(step)
         ctx.log(f"Overlaps: {len(b.overlaps)} pairs under 25 miles.")
         return f"{len(b.overlaps)} pairs under 25 miles"
 
@@ -94,7 +99,7 @@ class Analyst(Agent):
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
         written = 0
-        for o in b.overlaps[:TOP_ANALYSES]:
+        for o in [o for o in b.overlaps if is_core(o)][:TOP_ANALYSES]:
             a, g = b.projects[o.project_a], b.projects[o.project_b]
             shared = b.costs[o.id]["shared"]
             facts = fact_sheet(a, g, o, shared)

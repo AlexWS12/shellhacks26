@@ -11,6 +11,7 @@ const NODE_W = 100;
 const NODE_H = 58;
 const ROW_H = 72;
 const HANDOFF_MS = 900;
+const PER_LINE = 3;
 
 function layout(agents: AgentView[]): Record<string, { x: number; y: number }> {
   const depth: Record<string, number> = {};
@@ -24,10 +25,16 @@ function layout(agents: AgentView[]): Record<string, { x: number; y: number }> {
   agents.forEach((a) => d(a.id));
   const rows: string[][] = [];
   agents.forEach((a) => (rows[depth[a.id]] ??= []).push(a.id));
+  // Three nodes fit side by side; a level with more (e.g. Readers for submitted plans) wraps onto extra lines.
   const pos: Record<string, { x: number; y: number }> = {};
-  rows.forEach((row, r) => {
-    const gap = (W - row.length * NODE_W) / (row.length + 1);
-    row.forEach((id, i) => (pos[id] = { x: gap + i * (NODE_W + gap), y: r * ROW_H }));
+  let line = 0;
+  rows.filter(Boolean).forEach((row) => {
+    for (let k = 0; k < row.length; k += PER_LINE) {
+      const chunk = row.slice(k, k + PER_LINE);
+      const gap = (W - chunk.length * NODE_W) / (chunk.length + 1);
+      chunk.forEach((id, i) => (pos[id] = { x: gap + i * (NODE_W + gap), y: line * ROW_H }));
+      line += 1;
+    }
   });
   return pos;
 }

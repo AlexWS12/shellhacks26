@@ -16,6 +16,9 @@ Built at ShellHacks 2026 for the Gridlock challenge.
 - **Looks past the two utilities.** A research team maps other owners' projects near the river: other
   electric utilities, gas pipelines, roads and water. You choose which before each run. Every record cites its
   sources, and each one near both sides of an opportunity is flagged.
+- **Takes any utility's plan.** Add a spreadsheet, PDF or link in the Sources menu; it gets its own Reader and its
+  projects are compared with every other owner's.
+- **Writes the report.** A Writer agent sums up the opportunities at the end; every number in it comes from code.
 - **Explains them.** Gemini writes each opportunity up, and two utility advocates plus a mediator draft the
   coordination meeting.
 - **Shows its work.** Every agent appears on the map and in the pipeline graph while it runs; every number

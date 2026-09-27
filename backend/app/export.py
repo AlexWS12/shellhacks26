@@ -7,13 +7,28 @@ import openpyxl
 from openpyxl.styles import Font
 
 from app.core.models import Overlap, Project
+from app.core.owners import state_of
 from app.core.sample import OVERLAP_HEADERS, PROJECT_HEADERS
 from app.store import dataset
 
 UTILITY_NAME = {"DESC": "Dominion Energy South Carolina", "GA": "Georgia Power"}
-PROJECT_EXTRA = ["sponsor", "location_confidence", "build_start", "estimated_cost", "status", "source", "project_type"]
+PROJECT_EXTRA = ["sponsor", "location_confidence", "build_start", "estimated_cost", "status", "source", "project_type",
+                 "date_precision"]
 OVERLAP_EXTRA = ["location_confidence", "windows_overlap", "in_sponsor_sample", "other_utilities_nearby"]
 CATEGORY_NAME = {"electric": "electric", "gas": "gas", "roads_water": "roads and water"}
+
+
+def safe_cell(v: object) -> object:
+    # Text that starts like a formula is stored as text, so a submitted name can't run in Excel or Sheets.
+    return f"'{v}" if isinstance(v, str) and v[:1] in ("=", "+", "-", "@", "\t", "\r") else v
+
+
+def _append(ws, row: list) -> None:
+    ws.append([safe_cell(v) for v in row])
+
+
+def owner_label(p: Project) -> str:
+    return UTILITY_NAME.get(p.utility, p.sponsor)
 
 
 def _project_row(p: Project, overlaps_of: dict[str, list[str]]) -> list:
@@ -21,13 +36,15 @@ def _project_row(p: Project, overlaps_of: dict[str, list[str]]) -> list:
     a = title[0] if title else None
     b = title[1] if len(title) > 1 else None
     ids = overlaps_of.get(p.id, [])
-    return [p.id, UTILITY_NAME[p.utility], "SC" if p.utility == "DESC" else "GA", p.name,
+    return [p.id, UTILITY_NAME.get(p.utility, p.sponsor), state_of(p), p.name,
             a.name if a else None, a.lat if a else None, a.lon if a else None,
             b.name if b else None, b.lat if b else None, b.lon if b else None,
             p.lat, p.lon, date.fromisoformat(p.in_service_date), len(ids),
             ids[0] if ids else None, ids[1] if len(ids) > 1 else None, ids[2] if len(ids) > 2 else None,
             p.sponsor, p.location_confidence, date.fromisoformat(p.build_start) if p.build_start else None,
-            p.cost_total, p.status, f"{p.source_file} p.{p.source_page} ({p.source_ref})", p.project_type]
+            p.cost_total, p.status,
+            f"{p.source_file} p.{p.source_page} ({p.source_ref})" if p.utility in ("DESC", "GA") else f"{p.source_file}, {p.source_ref}",
+            p.project_type, p.date_precision or "day"]
 
 
 def _header(ws, headers: list[str]) -> None:
@@ -47,7 +64,7 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
     ws.title = "projects"
     _header(ws, PROJECT_HEADERS + PROJECT_EXTRA)
     for p in sorted(dataset.CURRENT.projects.values(), key=lambda p: (p.utility, p.id)):
-        ws.append(_project_row(p, overlaps_of))
+        _append(ws, _project_row(p, overlaps_of))
     for row in ws.iter_rows(min_row=2):
         for idx in (12, 19):  # in_service_date, build_start
             if row[idx].value:
@@ -62,17 +79,17 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
     _header(ws2, OVERLAP_HEADERS + OVERLAP_EXTRA)
     for o in overlaps:
         a, b = dataset.CURRENT.projects[o.project_a], dataset.CURRENT.projects[o.project_b]
-        ws2.append([ids[o.id], o.distance_mi, o.time_gap_days, UTILITY_NAME["DESC"], a.id, a.name, UTILITY_NAME["GA"],
-                    b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample, "; ".join(near.get(o.id, []))])
+        _append(ws2, [ids[o.id], o.distance_mi, o.time_gap_days, UTILITY_NAME.get(a.utility, a.sponsor), a.id, a.name,
+                    UTILITY_NAME.get(b.utility, b.sponsor), b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample, "; ".join(near.get(o.id, []))])
     ws3 = wb.create_sheet("data_checks")
     _header(ws3, ["level", "rule", "title", "detail", "source", "project_id", "decided_by"])
     for c in dataset.CURRENT.checks:
-        ws3.append([c.level, c.rule, c.title, c.detail, c.source, c.project_id, c.actor])
+        _append(ws3, [c.level, c.rule, c.title, c.detail, c.source, c.project_id, c.actor])
     ws4 = wb.create_sheet("reference_test")
     _header(ws4, ["overlap_id", "sponsor_a", "sponsor_b", "our_a", "our_b", "expected_mi", "got_mi",
                   "expected_days", "got_days", "pass"])
     for r in dataset.CURRENT.reference:
-        ws4.append([r.overlap_id, r.a, r.b, r.a_project, r.b_project, r.expected_mi, r.got_mi, r.expected_days,
+        _append(ws4, [r.overlap_id, r.a, r.b, r.a_project, r.b_project, r.expected_mi, r.got_mi, r.expected_days,
                     r.got_days, r.passed])
     ws6 = wb.create_sheet("other_utilities")
     _header(ws6, ["research_id", "category", "owner", "project", "status", "start_as_stated", "in_service_as_stated",
@@ -80,16 +97,16 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
                   "fact_checkers_confirmed"])
     for r in dataset.CURRENT.research:
         v = r.verification or {}
-        ws6.append([r.id, CATEGORY_NAME[r.category], r.utility, r.name, r.status, r.start, r.in_service, r.in_service_date,
+        _append(ws6, [r.id, CATEGORY_NAME[r.category], r.utility, r.name, r.status, r.start, r.in_service, r.in_service_date,
                     r.location_confidence, r.lat, r.lon, "; ".join(f"{p.name} ({p.kind}, {p.state})" for p in r.places),
                     " ".join(s.url for s in r.sources), r.found_by,
                     f"{v.get('confirmed')} of {v.get('verifiers')}" if v.get("verifiers") else None])
     ws7 = wb.create_sheet("other_utility_links")
-    _header(ws7, ["overlap_id", "research_id", "owner", "project", "miles_to_dominion_project", "miles_to_georgia_project",
-                  "days_from_dominion_in_service", "days_from_georgia_in_service", "date_is_year_or_month_only"])
+    _header(ws7, ["overlap_id", "research_id", "owner", "project", "miles_to_project_a", "miles_to_project_b",
+                  "days_from_project_a_in_service", "days_from_project_b_in_service", "date_is_year_or_month_only"])
     for t in links:
         r = research[t.research_id]
-        ws7.append([ids.get(t.overlap_id, t.overlap_id), r.id, r.utility, r.name, t.dist_a_mi, t.dist_b_mi,
+        _append(ws7, [ids.get(t.overlap_id, t.overlap_id), r.id, r.utility, r.name, t.dist_a_mi, t.dist_b_mi,
                     t.gap_a_days, t.gap_b_days, t.approx_date])
     ws5 = wb.create_sheet("notes")
     for line in [

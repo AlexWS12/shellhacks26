@@ -20,8 +20,8 @@ class Endpoint(BaseModel):
 
 
 class Project(BaseModel):
-    id: str  # 'DESC-0139MN' or 'GA-20277'
-    utility: Utility
+    id: str  # 'DESC-0139MN', 'GA-20277', or '<submission>-<row>' for submitted plans
+    utility: str  # 'DESC' | 'GA' | a submitted owner's key
     sponsor: str  # DESC | GPC | SAV | GTC | MEAG | DU
     name: str
     description: str = ""
@@ -46,6 +46,8 @@ class Project(BaseModel):
     source_ref: str  # 'ID 0139 M,N' or 'TEAMS 20277, zone 219'
     extracted_by: str = "code"
     sponsor_ref_id: str | None = None  # 'DESC_3' when the project is in Sperry's sample
+    state: str | None = None  # SC | GA; set for submitted plans (Dominion = SC, Georgia = GA otherwise)
+    date_precision: str | None = None  # day | month | year; submitted rows that give only a year or month
 
 
 class Check(BaseModel):

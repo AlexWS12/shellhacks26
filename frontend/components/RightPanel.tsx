@@ -5,10 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import { api, type FilterState } from "@/lib/api";
 import { activeIn, lineCheck } from "@/lib/filters";
 import {
-  ACTOR_LABEL, CATEGORY_LABEL, CONF_LABEL, OWNER, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
+  ACTOR_LABEL, CATEGORY_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
-import type { Endpoint, Overlap, PairDetail, Project, ThirdParty } from "@/lib/types";
+import type { Endpoint, Overlap, PairDetail, Project, ThirdParty, Written } from "@/lib/types";
+import { approxDate, dateWord, gapText, ownClass, ownerName, ownerShort, peers, serviceDate, slotOf, whereFrom } from "@/lib/owners";
 import { useUI } from "@/lib/ui";
 
 import Gantt from "./Gantt";
@@ -22,6 +23,7 @@ export default function RightPanel() {
   if (panel.kind === "project") return <ProjectView id={panel.id} />;
   if (panel.kind === "agent") return <AgentView id={panel.id} />;
   if (panel.kind === "research") return <ResearchView id={panel.id} />;
+  if (panel.kind === "report") return <ReportView />;
   return <OpportunityList />;
 }
 
@@ -54,6 +56,19 @@ function byOverlap(links: ThirdParty[]): Record<string, ThirdParty[]> {
   const out: Record<string, ThirdParty[]> = {};
   for (const t of links) (out[t.overlap_id] ??= []).push(t);
   return out;
+}
+
+// list and map marker: Dominion circle, Georgia diamond, submitted plans a circle in their own color
+const mkClass = (p: Project) => (p.utility === "DESC" ? "desc" : p.utility === "GA" ? "gpc" : `peer own-${slotOf(p.utility)}`);
+
+const slotVar = (s: string) => (s === "desc" || s === "gpc" ? s : `peer-${s.slice(1)}`);
+
+// Georgia's costs are redacted in the filing; other owners' costs are shown when their plan states them.
+const costText = (p: Project, n: number | null) => (p.utility === "GA" ? "redacted" : n == null ? "not stated" : money(n));
+
+function sideName(overlapId: string, i: 0 | 1): string {
+  const p = run.projects[overlapId.split("|")[i]];
+  return p ? ownerShort(p) : i === 0 ? "the first project" : "the second project";
 }
 
 const days = (n: number | null, approx: boolean) => (n == null ? "date unknown" : `${approx ? "≈ " : ""}${n.toLocaleString()} d`);
@@ -110,6 +125,7 @@ function ExportMenu() {
         <div className="menu-list" role="menu">
           <a role="menuitem" href={api.exportUrl(filters, "xlsx")} onClick={() => setOpen(false)}>.xlsx</a>
           <a role="menuitem" href={api.exportUrl(filters, "csv")} onClick={() => setOpen(false)}>.csv</a>
+          {run.report && <a role="menuitem" href={api.reportUrl} onClick={() => setOpen(false)}>Report .md</a>}
         </div>
       )}
     </div>
@@ -173,9 +189,16 @@ function OpportunityList() {
           )}
         </div>
       </div>
+      {run.report && (
+        <button className="reportbtn" onClick={() => useUI.getState().setPanel({ kind: "report" })}>
+          <b>Read the report</b>
+          <span>The Writer&apos;s summary of these opportunities, with next steps</span>
+        </button>
+      )}
       <div className="key">
         <span><i className="mk desc" />Dominion</span>
         <span><i className="mk gpc" />Georgia</span>
+        {peers().map((x) => <span key={x.key}><i className={`mk own-${x.slot}`} />{x.name}</span>)}
         <span className="note-r">same shapes on the map</span>
       </div>
       <div className="col opps-list" role="list">
@@ -187,16 +210,16 @@ function OpportunityList() {
           if (!a || !b) return null;
           return (
             <div key={o.id} role="listitem" tabIndex={0} className={`opp ${run.phase === "running" ? "new" : ""}`}
-              title={`${OWNER.DESC}: ${a.name}\n${OWNER[b.sponsor] ?? b.sponsor}: ${b.name}`}
+              title={`${ownerName(a)}: ${a.name}\n${ownerName(b)}: ${b.name}`}
               onClick={() => open(o)} onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), open(o))}>
               <div className="names">
-                <div><i className="mk desc" aria-label="Dominion" role="img" /><span>{shortName(a)}</span></div>
-                <div><i className="mk gpc" aria-label="Georgia" role="img" /><span>{shortName(b)}</span></div>
+                <div><i className={`mk ${mkClass(a)}`} aria-label={ownerShort(a)} role="img" /><span>{shortName(a)}</span></div>
+                <div><i className={`mk ${mkClass(b)}`} aria-label={ownerShort(b)} role="img" /><span>{shortName(b)}</span></div>
               </div>
               <div className="dist"><b>{o.distance_mi.toFixed(2)}</b>miles</div>
               <div className="meta">
                 <Action o={o} />
-                <span>{gapLabel(o.time_gap_days)} apart</span>
+                <span>{approxDate(a) || approxDate(b) ? "about " : ""}{gapLabel(o.time_gap_days)} apart</span>
                 {o.finished && <span>· one already in service</span>}
                 {slackNote(o) && <span title={slackNote(o)!}>· ±{o.distance_slack_mi} mi</span>}
                 {o.in_sponsor_sample && <span className="c-accent">· benchmark</span>}
@@ -264,20 +287,21 @@ function PairView({ a, b }: { a: string; b: string }) {
       <Back />
       <p className="label">Opportunity {rank ? `#${rank}` : ""}{o.in_sponsor_sample && <span className="count c-accent">benchmark pair</span>}</p>
       <div className="pair">
-        <div className="pj desc">
-          <b>{pa.name}</b>Dominion Energy SC · {pa.status}<br />In service {fmtDate(pa.in_service_date)}
+        <div className={`pj ${ownClass(pa)}`}>
+          <b>{pa.name}</b>{ownerName(pa)}{pa.status ? ` · ${pa.status}` : ""}<br />{dateWord(pa)} {serviceDate(pa, fmtDate)}
         </div>
-        <div className="pj gpc">
-          <b>{pb.name}</b>{OWNER[pb.sponsor] ?? pb.sponsor}<br />Needed by {fmtDate(pb.in_service_date)}
+        <div className={`pj ${ownClass(pb)}`}>
+          <b>{pb.name}</b>{ownerName(pb)}{pb.status && pb.utility !== "GA" ? ` · ${pb.status}` : ""}<br />{dateWord(pb)} {serviceDate(pb, fmtDate)}
         </div>
       </div>
       <div className="hero"><span className="big">{o.distance_mi.toFixed(2)}</span><span>miles apart</span></div>
-      <div className="sub">{o.time_gap_days.toLocaleString()} days between in-service dates · {CONF_LABEL[o.pair_confidence]}</div>
+      <div className="sub">{gapText(o.time_gap_days, pa, pb)} days between in-service dates · {CONF_LABEL[o.pair_confidence]}</div>
       {o.finished && <p className="note">At least one of these projects is already in service, so only records and designs can be shared, not crews.</p>}
       {slackNote(o) && <p className="note">{slackNote(o)}</p>}
 
       <h3>Build windows</h3>
-      <Gantt a={pa} b={pb} />
+      <Gantt a={pa} b={pb} labels={[ownerShort(pa), ownerShort(pb)]}
+        colors={[`var(--${slotVar(slotOf(pa.utility))})`, `var(--${slotVar(slotOf(pb.utility))})`]} />
       <p className="note">Highlighted band = both under construction. A faded start means the work began before 2024.</p>
 
       <OthersNearby links={allOthers.some((t) => t.overlap_id === id)
@@ -319,9 +343,9 @@ function PairView({ a, b }: { a: string; b: string }) {
       {cost ? (
         <>
           <table className="kv"><tbody>
-            <tr><td>Dominion project cost (public)</td><td>{money(cost.desc_cost)}</td></tr>
-            {cost.desc_cost_per_mile && <tr><td>Dominion cost per mile ({cost.desc_miles} mi)</td><td>{money(cost.desc_cost_per_mile)}</td></tr>}
-            <tr><td>Georgia project cost</td><td>redacted</td></tr>
+            <tr><td>{ownerShort(pa)} project cost{pa.utility === "DESC" ? " (public)" : ""}</td><td>{costText(pa, cost.desc_cost)}</td></tr>
+            {cost.desc_cost_per_mile && <tr><td>{ownerShort(pa)} cost per mile ({cost.desc_miles} mi)</td><td>{money(cost.desc_cost_per_mile)}</td></tr>}
+            <tr><td>{ownerShort(pb)} project cost</td><td>{costText(pb, pb.cost_total)}</td></tr>
             {cost.savings != null && <tr><td>Possible savings</td><td>{money(cost.savings)}</td></tr>}
           </tbody></table>
           <p className="note">{cost.statement}{cost.source && <> Source: {cost.source}</>}</p>
@@ -361,8 +385,8 @@ function Provenance({ p }: { p: Project }) {
   const line = lineCheck(p);
   return (
     <div>
-      <b className={p.utility === "DESC" ? "c-desc" : "c-gpc"}>{p.name}</b><br />
-      {p.source_file}, page {p.source_page} ({p.source_ref})
+      <b className={`own c ${ownClass(p)}`}>{p.name}</b><br />
+      {whereFrom(p)}
       {p.project_type && <> · {TYPE_LABEL[p.project_type] ?? p.project_type} <Chip a={p.project_type_actor ?? "code"} /></>}
       <br />{p.endpoints.length ? p.endpoints.map((e, i) => <span key={i}>{i > 0 && "; "}<EndpointLine e={e} /></span>) : "No endpoint names in the title"}
       {line.why && <><br />Line not drawn: {line.why}.</>}
@@ -380,24 +404,24 @@ function ProjectView({ id }: { id: string }) {
       <p className="label">{utilityName(p)}</p>
       <h2>{p.name}</h2>
       <p className="sub">
-        {p.utility === "DESC" ? "In service" : "Needed by"} {fmtDate(p.in_service_date)}
+        {dateWord(p)} {serviceDate(p, fmtDate)}
         {p.build_start && ` · starts ${fmtDate(p.build_start)}`} · {CONF_LABEL[p.location_confidence]}
         {p.cost_total != null && ` · ${money(p.cost_total)}`}
       </p>
       <div className="quote">{p.description}</div>
       {p.need_text && <div className="quote">Why: {p.need_text}</div>}
       <div className="prov"><Provenance p={p} /></div>
-      <h3>Nearby work from the other utility</h3>
+      <h3>Nearby work from other owners</h3>
       {overlaps.length ? overlaps.map((o) => {
         const other = run.projects[o.project_a === id ? o.project_b : o.project_a];
         return (
           <div key={o.id} className="row compact" tabIndex={0} role="button" onClick={() => open(o)}
             onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), open(o))}>
             <span className="rk">{String(o.rank).padStart(2, "0")}</span>
-            <div><div className="t">{other?.name}</div><div className="meta"><span><span className="num">{o.distance_mi.toFixed(2)}</span> mi</span><span>{plural(o.time_gap_days, "day")} apart</span></div></div>
+            <div><div className="t">{other && <span className={`own ${ownClass(other)}`}>{other.name}</span>}{other && <span className="sub-inline"> · {ownerName(other)}</span>}</div><div className="meta"><span><span className="num">{o.distance_mi.toFixed(2)}</span> mi</span><span>{gapText(o.time_gap_days, run.projects[o.project_a], run.projects[o.project_b])} days apart</span></div></div>
           </div>
         );
-      }) : <p className="empty">Nothing from the other utility within 25 miles. Most projects look like this.</p>}
+      }) : <p className="empty">Nothing from another owner within 25 miles. Most projects look like this.</p>}
     </div>
   );
 }
@@ -457,8 +481,8 @@ function OthersNearby({ links }: { links: ThirdParty[] }) {
             <div><span className="catname">{CATEGORY_LABEL[r.category]}</span> · {r.utility}</div>
             <b>{r.name}</b>
             <div>
-              <span className="num">{t.dist_a_mi.toFixed(1)}</span> mi from Dominion&apos;s, <span className="num">{t.dist_b_mi.toFixed(1)}</span> mi from
-              Georgia&apos;s · in service {statedDate(r.in_service)} ({days(t.gap_a_days, t.approx_date)} / {days(t.gap_b_days, t.approx_date)})
+              <span className="num">{t.dist_a_mi.toFixed(1)}</span> mi from {sideName(t.overlap_id, 0)}&apos;s, <span className="num">{t.dist_b_mi.toFixed(1)}</span> mi from
+              {" "}{sideName(t.overlap_id, 1)}&apos;s · in service {statedDate(r.in_service)} ({days(t.gap_a_days, t.approx_date)} / {days(t.gap_b_days, t.approx_date)})
             </div>
           </div>
         );
@@ -495,6 +519,11 @@ function ResearchView({ id }: { id: string }) {
         {r.cost_usd != null && <tr><td>Cost (as stated)</td><td>{money(r.cost_usd)}</td></tr>}
       </tbody></table>
       {r.date_quote && <div className="quote">{r.date_quote}</div>}
+      {v.merged_from?.length ? (
+        <div className="note">Also reported as: {v.merged_from.map((m, i) => (
+          <span key={i}>{i > 0 && "; "}{m.name} (in service {statedDate(m.in_service)})</span>
+        ))}. Where dates differ, the most precise one is shown above.</div>
+      ) : null}
       {r.date_precision && r.date_precision !== "day" && (
         <p className="note">The source gives a {r.date_precision}; day gaps use its last day and are marked ≈.</p>
       )}
@@ -517,7 +546,7 @@ function ResearchView({ id }: { id: string }) {
           <div key={t.overlap_id} className="row compact" tabIndex={0} role="button"
             onClick={() => { useUI.getState().setPanel({ kind: "pair", a, b }); useUI.getState().flyTo({ kind: "pair", a, b }); }}>
             <span className="rk">↗</span>
-            <div><div className="t"><span className="a">{pa.name}</span><br /><span className="b">{pb.name}</span></div>
+            <div><div className="t"><span className={`own ${ownClass(pa)}`}>{pa.name}</span><br /><span className={`own ${ownClass(pb)}`}>{pb.name}</span></div>
               <div className="meta"><span><span className="num">{t.dist_a_mi.toFixed(1)}</span> / <span className="num">{t.dist_b_mi.toFixed(1)}</span> mi</span></div></div>
           </div>
         );
@@ -533,6 +562,77 @@ function ResearchView({ id }: { id: string }) {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+function Byline({ w }: { w: Written }) {
+  return (
+    <div className="by"><Chip a={w.actor} />{w.actor === "gemini" ? "Written by Gemini from the facts below" : "Template from the computed facts"}
+      {w.unsupported_numbers?.length ? <span className="fail">check numbers: {w.unsupported_numbers.join(", ")}</span> : null}</div>
+  );
+}
+
+function ReportView() {
+  const r = run.report;
+  if (!r) return <div className="detail"><Back /><p className="empty">No report yet. It appears when the Writer finishes a run.</p></div>;
+  const c = r.counts;
+  return (
+    <div className="detail report">
+      <Back />
+      <p className="label">Report · as of {fmtDate(r.as_of)}</p>
+      <h2>{r.title}</h2>
+      <p className="sub">Every number here comes from the pipeline&apos;s code. Only the summary and next steps are written text.</p>
+
+      <h3>Summary</h3>
+      <p className="written">{r.summary.text}</p>
+      <Byline w={r.summary} />
+
+      <h3>At a glance</h3>
+      <table className="kv"><tbody>
+        {Object.entries(r.owners).map(([o, n]) => <tr key={o}><td>{o}</td><td>{plural(n, "project")}</td></tr>)}
+        <tr><td>On the map</td><td>{c.placed} ({c.unlocated} unlocated)</td></tr>
+        <tr><td>Pairs under 25 mi</td><td>{c.opportunities} ({c.built_at_same_time} same time)</td></tr>
+        <tr><td>Benchmark</td><td>{c.benchmark_passed}/{c.benchmark_total} exact</td></tr>
+        <tr><td>Data issues</td><td>{c.issues_error} errors · {c.issues_warn} warnings</td></tr>
+        {r.research_categories.length > 0 && <tr><td>Other utilities ({r.research_categories.join(", ")})</td><td>{c.other_utility_projects} projects · near {c.opportunities_with_other_utilities} pairs</td></tr>}
+      </tbody></table>
+
+      <h3>Top opportunities</h3>
+      {r.top.length === 0 && <p className="empty">No pairs from different owners under 25 mi in the default view.</p>}
+      {r.top.map((t) => {
+        const [a, b] = t.overlap_id.split("|");
+        return (
+          <div key={t.overlap_id} className="row compact" tabIndex={0} role="button"
+            onClick={() => { useUI.getState().setPanel({ kind: "pair", a, b }); useUI.getState().flyTo({ kind: "pair", a, b }); }}>
+            <span className="rk">{String(t.rank).padStart(2, "0")}</span>
+            <div>
+              <div className="t">{t.a.name} <span className="sub-inline">· {t.a.owner}</span><br />{t.b.name} <span className="sub-inline">· {t.b.owner}</span></div>
+              <div className="meta">
+                <span><span className="num">{t.distance_mi.toFixed(2)}</span> mi</span>
+                <span><span className="num">{t.a.date_precision !== "day" || t.b.date_precision !== "day" ? "about " : ""}{t.time_gap_days.toLocaleString()}</span> days apart</span>
+                {t.built_at_same_time && <span className="tag together">built at the same time</span>}
+                {t.other_utilities.length > 0 && <span className="tag unknown">+{t.other_utilities.length} other owners nearby</span>}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      <h3>Recommended next steps</h3>
+      <p className="written">{r.next_steps.text}</p>
+      <Byline w={r.next_steps} />
+
+      {r.issues.length > 0 && (
+        <>
+          <h3>Data issues the pipeline caught</h3>
+          {r.issues.map((i, k) => <div key={k} className="entry"><b>{i.title}</b> · {i.source}</div>)}
+        </>
+      )}
+
+      <h3>Method</h3>
+      <div className="prov">{r.method.map((m, k) => <div key={k}>{m}</div>)}</div>
+      <div className="exports"><a href={api.reportUrl}>Download report (.md)</a></div>
     </div>
   );
 }

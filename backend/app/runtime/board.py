@@ -23,6 +23,7 @@ class Board:
     research_selected: list[str] = field(default_factory=list)  # third_party
     third_party: list[ThirdParty] = field(default_factory=list)  # third_party
     blind: dict[str, dict[str, Any]] = field(default_factory=dict)  # geocoder: benchmark projects without the file's coordinates
+    report: dict[str, Any] | None = None  # writer
     ga_page_count: int = 0
     ga_ceii_pages: int = 0
 
@@ -47,4 +48,5 @@ class Board:
             "research_selected": self.research_selected,
             "third_party": [t.model_dump() for t in self.third_party],
             "blind": self.blind,
+            "report": self.report,
         }

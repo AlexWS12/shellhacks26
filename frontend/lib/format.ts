@@ -44,7 +44,8 @@ export const ACTOR_LABEL: Record<string, string> = {
   research_file: "Research",
 };
 
-export const utilityName = (p: Project) => (p.utility === "DESC" ? "Dominion Energy SC" : `Georgia · ${p.sponsor}`);
+export const utilityName = (p: Project) =>
+  p.utility === "DESC" ? "Dominion Energy SC" : p.utility === "GA" ? `Georgia · ${p.sponsor}` : `${p.sponsor} · submitted plan`;
 // list rows drop the owner prefix (the diamond and tooltip carry it) and use en-dashes
 export const shortName = (p: Project) => p.name.replace(/^(SAV|GTC|MEAG|DU|CC)\s*[-:]\s*/i, "").replace(/\s-\s/g, " – ");
 

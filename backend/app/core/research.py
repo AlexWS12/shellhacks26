@@ -87,14 +87,22 @@ def load_file(path: Path) -> tuple[list[ResearchProject], dict[str, Any]]:
 
 def place_center(r: ResearchProject) -> tuple[float, float] | None:
     # Same rule as the filings: midpoint of the two located ends of a line or pipeline;
-    # otherwise the located site(s), otherwise every located place.
+    # otherwise the located site(s), otherwise every located place (e.g. the counties a pipeline crosses).
+    # A county's center is only used when nothing finer is known for that role: a town or substation in the
+    # county says more than the middle of the county.
     located = [(e, p) for e, p in zip(r.endpoints, r.places) if e.lat is not None]
-    for role in ("endpoint", "site"):
-        pts = [(e.lat, e.lon) for e, p in located if p.role == role]
-        if role == "endpoint" and len(pts) >= 2:
-            return center(pts[:2])
-        if role == "site" and pts:
-            return center(pts)
+
+    def finest(pts: list) -> list:
+        fine = [x for x in pts if x[0].method != "county_centroid"]
+        return fine or pts
+
+    ends = [x for x in located if x[1].role == "endpoint"]
+    if len(ends) >= 2:
+        chosen = finest(ends)
+        return center([(e.lat, e.lon) for e, _ in (chosen if len(chosen) >= 2 else ends)[:2]])
+    sites = [x for x in located if x[1].role == "site"]
+    if sites:
+        return center([(e.lat, e.lon) for e, _ in finest(sites)])
     return center([(e.lat, e.lon) for e, _ in located])
 
 

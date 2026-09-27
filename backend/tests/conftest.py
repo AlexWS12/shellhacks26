@@ -7,6 +7,13 @@ from app.runtime.executor import execute
 from app.runtime.run import new_run
 
 
+@pytest.fixture(scope="session", autouse=True)
+def no_saved_plans(tmp_path_factory):
+    # Plans saved in the Sources menu on this machine must not change test results.
+    config.SUBMISSIONS_DIR = tmp_path_factory.mktemp("submissions")
+    return config.SUBMISSIONS_DIR
+
+
 @pytest.fixture(scope="session")
 def finished_run():
     # One offline run over the real files: no Gemini, no Jev (local rules decide), no live OSM or
