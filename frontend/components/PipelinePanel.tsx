@@ -10,6 +10,8 @@ import AgentGraph from "./AgentGraph";
 export default function PipelinePanel() {
   useRev((s) => s.rev);
   const setPanel = useUI((s) => s.setPanel);
+  const visibleProjects = useUI((s) => s.visibleProjects);
+  const results = useUI((s) => s.results);
   const [allChecks, setAllChecks] = useState(false);
   const [open, setOpen] = useState<string | null>(null);
   const unl = Object.keys(run.unlocated);
@@ -17,10 +19,20 @@ export default function PipelinePanel() {
   const jev = run.judges["jev"];
   const gem = run.judges["gemini"];
   const other = Object.entries(run.judges).filter(([k]) => k !== "jev" && k !== "gemini").reduce((n, [, t]) => n + t.n, 0);
+  const total = Object.keys(run.projects).length;
+  const onMap = visibleProjects ?? Object.values(run.projects).filter((p) => p.lat != null).length;
+  const pairs = (run.phase === "done" && results ? results : run.overlaps).length;
   const checks = allChecks ? run.checks : run.checks.slice(0, 5);
 
   return (
     <>
+      {run.phase !== "idle" && (
+        <div className="kpis">
+          <div><b>{total}</b>projects read</div>
+          <div><b>{onMap}</b>on the map</div>
+          <div><b>{pairs}</b>under 25 mi</div>
+        </div>
+      )}
       <div className="section">
         <p className="label">Sources</p>
         {run.sourceOrder.length === 0 && <p className="empty">Dominion&apos;s project list, Georgia&apos;s IRP Vol. 3, and a surveyed benchmark set.</p>}

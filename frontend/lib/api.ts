@@ -14,7 +14,9 @@ export interface FilterState {
   allSponsors: boolean;
   townLevel: boolean;
   hideFinished: boolean;
-  sort: "distance" | "gap";
+  sort: "distance" | "gap" | "strength"; // the API sorts distance | gap; strength is sorted in the list
+  chip: "all" | "same" | "bench" | "verified"; // list-only, never sent to the API
+  q: string; // list-only search text
 }
 
 export function filterQuery(f: FilterState): string {
@@ -22,7 +24,7 @@ export function filterQuery(f: FilterState): string {
     all_sponsors: String(f.allSponsors),
     min_conf: f.townLevel ? "town" : "confirmed_osm",
     hide_finished: String(f.hideFinished),
-    sort: f.sort,
+    sort: f.sort === "gap" ? "gap" : "distance",
   });
   return q.toString();
 }

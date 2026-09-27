@@ -24,6 +24,7 @@ const MAX_QUEUE = 6; // if an agent is faster than that, skip ahead but keep mov
 // marching-ants dash steps for the connection lines
 const DASHES = [[0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5], [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0], [0, 0.5, 3, 3.5], [0, 1, 3, 3], [0, 1.5, 3, 2.5], [0, 2, 3, 2], [0, 2.5, 3, 1.5], [0, 3, 3, 1], [0, 3.5, 3, 0.5]];
 const YEARS = { min: 2023, max: 2034 };
+const POINT_LAYERS = ["points", "points-ga"]; // Dominion circles, Georgia diamonds
 
 type FC = GeoJSON.FeatureCollection;
 const fc = (features: GeoJSON.Feature[]): FC => ({ type: "FeatureCollection", features });
@@ -136,6 +137,24 @@ function comets(): { data: FC; flying: number } {
   return { data: fc(feats), flying: feats.length / 2 };
 }
 
+// A square turned 45deg, drawn at 2x. 12 css px corner to corner at icon-size 1.
+function addDiamond(map: maplibregl.Map, id: string, fill: string, stroke: string) {
+  if (map.hasImage(id)) return;
+  const n = 24, c = n / 2, r = c - 2;
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = n;
+  const ctx = canvas.getContext("2d")!;
+  ctx.beginPath();
+  ctx.moveTo(c, c - r); ctx.lineTo(c + r, c); ctx.lineTo(c, c + r); ctx.lineTo(c - r, c);
+  ctx.closePath();
+  ctx.fillStyle = fill;
+  ctx.fill();
+  ctx.lineWidth = 3.2;
+  ctx.strokeStyle = stroke;
+  ctx.stroke();
+  map.addImage(id, ctx.getImageData(0, 0, n, n), { pixelRatio: 2 });
+}
+
 function addDataLayers(map: maplibregl.Map) {
   const COLORS = mapPalette();
   const color = ["match", ["get", "u"], "DESC", COLORS.desc, COLORS.gpc] as maplibregl.ExpressionSpecification;
@@ -167,12 +186,21 @@ function addDataLayers(map: maplibregl.Map) {
     paint: { "circle-radius": 4.5, "circle-color": COLORS.spark } });
   map.addLayer({ id: "points-glow", type: "circle", source: "points",
     paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 7, 9, 13], "circle-color": color, "circle-blur": 1, "circle-opacity": 0.35 } });
-  map.addLayer({ id: "points", type: "circle", source: "points",
+  map.addLayer({ id: "points", type: "circle", source: "points", filter: ["==", ["get", "u"], "DESC"],
     paint: {
       "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 3, 9, 6],
       "circle-color": ["case", ["get", "hollow"], COLORS.bg, color],
       "circle-stroke-color": color,
       "circle-stroke-width": ["case", ["get", "hollow"], 1.6, 0],
+    } });
+  // Georgia draws as diamonds so the shape, not just the color, tells the utilities apart (same as the list)
+  addDiamond(map, "diamond", COLORS.gpc, COLORS.gpc);
+  addDiamond(map, "diamond-hollow", COLORS.bg, COLORS.gpc);
+  map.addLayer({ id: "points-ga", type: "symbol", source: "points", filter: ["!=", ["get", "u"], "DESC"],
+    layout: {
+      "icon-image": ["case", ["get", "hollow"], "diamond-hollow", "diamond"],
+      "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.55, 9, 1.05],
+      "icon-allow-overlap": true, "icon-ignore-placement": true,
     } });
   map.addLayer({ id: "link-labels", type: "symbol", source: "labels",
     filter: ["any", ["get", "sel"], [">=", ["zoom"], 6.3]],
@@ -285,18 +313,20 @@ export default function MapView() {
       refresh();
     });
     const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 10 });
-    map.on("mouseenter", "points", (e) => {
-      map.getCanvas().style.cursor = "pointer";
-      const f = e.features?.[0];
-      if (f) popup.setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number]).setText(String(f.properties.name)).addTo(map);
-    });
-    map.on("mouseleave", "points", () => { map.getCanvas().style.cursor = ""; popup.remove(); });
+    for (const layer of POINT_LAYERS) {
+      map.on("mouseenter", layer, (e) => {
+        map.getCanvas().style.cursor = "pointer";
+        const f = e.features?.[0];
+        if (f) popup.setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number]).setText(String(f.properties.name)).addTo(map);
+      });
+      map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; popup.remove(); });
+      map.on("click", layer, (e) => {
+        const id = e.features?.[0]?.properties.id;
+        if (id) useUI.getState().setPanel({ kind: "project", id: String(id) });
+      });
+    }
     map.on("mouseenter", "links-hit", () => (map.getCanvas().style.cursor = "pointer"));
     map.on("mouseleave", "links-hit", () => (map.getCanvas().style.cursor = ""));
-    map.on("click", "points", (e) => {
-      const id = e.features?.[0]?.properties.id;
-      if (id) useUI.getState().setPanel({ kind: "project", id: String(id) });
-    });
     map.on("click", "links-hit", (e) => {
       const p = e.features?.[0]?.properties;
       if (p) {
@@ -382,7 +412,7 @@ export default function MapView() {
       </div>
       <div className="legend" aria-label="Legend">
         <span><i className="sw desc" />Dominion Energy SC</span>
-        <span><i className="sw gpc" />Georgia</span>
+        <span><i className="sw gpc diamond" />Georgia</span>
         <span><i className="sw hollow" />Hollow = approximate location</span>
         <span><i className="sw zone" />Under 25 mi apart</span>
       </div>

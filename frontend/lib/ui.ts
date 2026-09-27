@@ -33,11 +33,12 @@ interface UIState {
   setBasemap: (b: UIState["basemap"]) => void;
 }
 
+const SERVER_KEYS = ["allSponsors", "townLevel", "hideFinished"] as const;
 let requests = 0; // only the newest filter request wins
 
 export const useUI = create<UIState>((set, get) => ({
   panel: { kind: "list" },
-  filters: { allSponsors: false, townLevel: true, hideFinished: false, sort: "distance" },
+  filters: { allSponsors: false, townLevel: true, hideFinished: false, sort: "distance", chip: "all", q: "" },
   results: null,
   visibleProjects: null,
   health: null,
@@ -50,8 +51,10 @@ export const useUI = create<UIState>((set, get) => ({
   error: null,
   setPanel: (panel) => set({ panel }),
   setFilters: (f) => {
-    set({ filters: { ...get().filters, ...f } });
-    void get().refreshResults();
+    const prev = get().filters;
+    set({ filters: { ...prev, ...f } });
+    // chip, search and sort are applied in the list; only these change what the API returns
+    if (SERVER_KEYS.some((k) => k in f && f[k] !== prev[k])) void get().refreshResults();
   },
   refreshResults: async () => {
     // failed runs aren't saved by the API, so keep their own events
