@@ -531,7 +531,7 @@ button.danger { border-color: var(--bad); color: var(--bad); }
 .alert-entry { border-left: 2px solid var(--bad); padding: var(--sp-1) 0 var(--sp-1) var(--sp-3); margin-top: var(--sp-3); font-size: var(--fs-md); }
 .alert-entry p { margin: var(--sp-1) 0 0; }
 .alert-entry .outcome { color: var(--ink); font-weight: 500; }
-.notices { position: fixed; right: var(--sp-4); bottom: var(--sp-4); z-index: 40; display: grid; gap: var(--sp-2); width: min(380px, calc(100vw - 32px)); }
+.notices { position: fixed; right: var(--sp-4); bottom: calc(var(--sp-4) + 52px); z-index: 40; display: grid; gap: var(--sp-2); width: min(380px, calc(100vw - 32px)); }
 .notice { display: flex; gap: var(--sp-2); align-items: flex-start; background: var(--glass); border: 1px solid var(--line-2); border-left: 2px solid var(--zone); border-radius: var(--r-md); padding: var(--sp-2) var(--sp-3); font-size: var(--fs-sm); color: var(--ink); box-shadow: var(--shadow-float); }
 .notice > span { flex: 1; }
 .notice .linkbtn { color: var(--muted); padding: 0; }
@@ -820,3 +820,31 @@ button.danger { border-color: var(--bad); color: var(--bad); }
   .timeline { left: var(--sp-3); right: var(--sp-3); width: auto; transform: none; }
   .legend { bottom: 84px; }
 }
+
+/* Floating question box (ChatBot.tsx): appears once the run has produced results. Sits under notices (40) and the
+   Setup modal (50). */
+.chat { position: fixed; right: var(--sp-4); bottom: var(--sp-4); z-index: 30; display: flex; flex-direction: column; align-items: flex-end; gap: var(--sp-2); }
+.chat-btn { display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 var(--sp-3); border: 1px solid var(--line-2);
+  border-radius: 999px; background: var(--raised); color: var(--ink); box-shadow: var(--shadow-float); cursor: pointer; }
+.chat-btn:hover { background: var(--hover); }
+.chat-panel { width: min(400px, calc(100vw - 32px)); height: min(520px, 70vh); display: flex; flex-direction: column;
+  background: var(--panel); border: 1px solid var(--line-2); border-radius: var(--r-lg); box-shadow: var(--shadow-float); overflow: hidden; }
+.chat-head { display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); border-bottom: 1px solid var(--line); }
+.chat-head b { flex: 1; font-size: var(--fs-md); font-weight: 600; }
+.chat-list { flex: 1; min-height: 0; overflow-y: auto; padding: var(--sp-3); display: grid; gap: var(--sp-2); align-content: start; }
+.chat-intro { display: grid; gap: var(--sp-2); }
+.chat-note { margin: 0 0 var(--sp-1); font-size: var(--fs-sm); color: var(--muted); }
+.chat-sugg { text-align: left; border: 1px solid var(--line-2); border-radius: var(--r-md); background: var(--raised);
+  color: var(--ink); padding: var(--sp-2) var(--sp-3); font-size: var(--fs-sm); cursor: pointer; }
+.chat-sugg:hover { background: var(--hover); }
+.chat-msg { max-width: 86%; padding: var(--sp-2) var(--sp-3); border-radius: var(--r-md); font-size: var(--fs-md);
+  line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.chat-msg.user { justify-self: end; background: var(--accent); color: #fff; }
+.chat-msg.assistant { justify-self: start; background: var(--raised); border: 1px solid var(--line); color: var(--ink); }
+.chat-msg.thinking { color: var(--muted); }
+.chat-err { color: var(--bad); font-size: var(--fs-sm); }
+.chat-off { margin: 0; padding: var(--sp-3); border-top: 1px solid var(--line); font-size: var(--fs-sm); color: var(--muted); }
+.chat-input { display: flex; gap: var(--sp-2); padding: var(--sp-2); border-top: 1px solid var(--line); }
+.chat-input input { flex: 1; min-width: 0; height: 34px; padding: 0 var(--sp-3); border: 1px solid var(--line-2);
+  border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-size: var(--fs-md); }
+.chat-input .primary { height: 34px; padding: 0 var(--sp-3); display: inline-flex; align-items: center; }

@@ -243,8 +243,21 @@ export interface Health {
   app_mode?: "local" | "hosted";
   models_setup?: { ready: boolean; first_launch: boolean; problems: SetupProblem[]; error: string | null };
   jev: string;
+  chat?: boolean; // whether a model is set up to answer questions about the run
   tiger: boolean;
   today: string;
+}
+
+// The floating question box: the turns of the conversation so far.
+export interface ChatTurn {
+  role: "user" | "assistant";
+  text: string;
+}
+
+export interface ChatReply {
+  answer: string;
+  model: string;
+  cached: boolean;
 }
 
 export interface RunEvent {

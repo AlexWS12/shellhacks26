@@ -608,7 +608,7 @@ def test_local_file_replaces_a_role_and_bad_configs_are_refused(fake, roles):
 ROLES = {"extract_fallback", "extract_submission", "reader", "endpoint_split", "confirm_osm", "confirm_town", "confirm_place",
          "classify_type", "validate_semantic", "research_confirm", "research_search", "research_extract", "cost_search",
          "cost_extract", "cost_quote_check", "savings_check", "analyst",
-         "advocate", "mediator", "writer", "watchdog", "smoke"}
+         "advocate", "mediator", "writer", "chat", "watchdog", "smoke"}
 
 
 def test_committed_config_has_every_role_the_code_uses():

@@ -156,6 +156,14 @@
       "kind": "text",
       "models": [{"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "gemini", "model": "gemini-3.7-flash"}]
     },
+    "chat": {
+      "label": "Answer questions about the run",
+      "group": "Asking",
+      "description": "Answers a person's questions about this run's opportunities and research, using only the facts the pipeline produced.",
+      "kind": "text",
+      "when": "on_demand",
+      "models": [{"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "gemini", "model": "gemini-3.7-flash"}]
+    },
     "watchdog": {
       "label": "Watch for stuck agents",
       "group": "Background",

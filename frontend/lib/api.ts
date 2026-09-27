@@ -1,6 +1,7 @@
 import type {
-  Check, Health, ModelList, Overlap, PairDetail, Project, ReferenceResult, Report, ResearchCategory, ResearchProject, SetupConfig,
-  Estimate, Review, SetupProblem, SetupProvider, SetupRef, SetupResult, SourceView, SubmissionView, ThirdParty,
+  Check, ChatReply, ChatTurn, Health, ModelList, Overlap, PairDetail, Project, ReferenceResult, Report, ResearchCategory,
+  ResearchProject, SetupConfig, Estimate, Review, SetupProblem, SetupProvider, SetupRef, SetupResult, SourceView,
+  SubmissionView, ThirdParty,
 } from "./types";
 
 // Dev talks to localhost:8000. Production calls /api on the same domain.
@@ -114,6 +115,8 @@ export const api = {
   runs: () => get<{ recorded: { run_id: string; complete: boolean; ok: boolean; seconds: number }[] }>("/api/runs"),
   research: (f: FilterState) =>
     get<{ selected: ResearchCategory[]; records: ResearchProject[]; links: ThirdParty[] }>(`/api/research?${filterQuery(f)}`),
+  // Ask a question about the finished run. 409 before a run, 503 when no model is set up for questions.
+  chat: (question: string, history: ChatTurn[]) => send<ChatReply>("POST", "/api/chat", { question, history }),
   // A live run is refused with 409 (ApiError, detail: PreflightDetail) when a job has no working model.
   startRun: async (mode: "live" | "replay", research: ResearchCategory[], speed = 1, templates = true, force = false): Promise<{ run_id: string }> => {
     const r = await fetch(`${API}/api/runs`, {

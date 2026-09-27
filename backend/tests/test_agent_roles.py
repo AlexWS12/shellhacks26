@@ -4,8 +4,10 @@ import inspect
 from app.clients import models
 from app.pipeline import build_agents
 
-NOT_AN_AGENT = {"watchdog", "smoke"}  # the run's watchdog and the startup check
-ADDED_READERS = {"reader", "extract_submission"}  # only present when a filing or plan has been added
+# Jobs no pipeline agent owns: the run's watchdog, the startup check, and the on-demand question answerer (called
+# from /api/chat, not part of a run). ADDED_READERS are only present when a filing or plan has been added.
+NOT_AN_AGENT = {"watchdog", "smoke", "chat"}
+ADDED_READERS = {"reader", "extract_submission"}
 
 
 def test_agent_roles_are_real_jobs_called_by_that_agent():

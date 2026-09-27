@@ -15,6 +15,7 @@ from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 
 from app import config, setup
+from app.api_chat import router as chat_router
 from app.api_sources import guarded as sources_guarded
 from app.api_sources import router as sources_router
 from app.api_models import router as models_router
@@ -70,6 +71,7 @@ app.add_middleware(CORSMiddleware, allow_origins=config.CORS_ORIGINS, allow_meth
 app.include_router(models_router)  # the setup screen
 app.include_router(sources_router)  # the Sources menu (public)
 app.include_router(sources_guarded)  # the Sources menu (admin in hosted mode)
+app.include_router(chat_router)  # ask questions about the finished run (public)
 
 
 def filters(all_sponsors: bool, min_conf: Confidence, hide_finished: bool, sort: str) -> Filters:
@@ -84,7 +86,8 @@ def health() -> dict:
     return {"status": "ok", "dataset_run": dataset.CURRENT.run_id, "projects": len(dataset.CURRENT.projects),
             "gemini": models.gemini.configured(), "gemini_ok": _gemini_ok,
             "gemini_model": next((m for m in models.chain("analyst") if m.startswith("gemini/")), "").removeprefix("gemini/"),
-            "models": models.summary(), "jev": config.JEV_PROVIDER or "off", "app_mode": config.APP_MODE,
+            "models": models.summary(), "chat": models.available("chat"),
+            "jev": config.JEV_PROVIDER or "off", "app_mode": config.APP_MODE,
             "models_setup": setup.readiness(),
             "tiger": tiger.enabled(), "today": config.TODAY}
 

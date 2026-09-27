@@ -3,8 +3,10 @@
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
 
+import { run, useRev } from "@/lib/run";
 import { boot, useUI } from "@/lib/ui";
 
+import ChatBot from "./ChatBot";
 import FailureModal from "./FailureModal";
 import Header from "./Header";
 import Notices from "./Notices";
@@ -15,6 +17,7 @@ import Setup from "./Setup";
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
 export default function TandemApp() {
+  useRev((s) => s.rev); // a new run gets a fresh question box
   const error = useUI((s) => s.error);
   const setupOpen = useUI((s) => s.setup !== null);
   const railOpen = useUI((s) => s.railOpen);
@@ -42,6 +45,7 @@ export default function TandemApp() {
       {setupOpen && <Setup />}
       <FailureModal />
       <Notices />
+      <ChatBot key={run.runId ?? "idle"} />
     </div>
   );
 }

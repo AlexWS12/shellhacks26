@@ -69,11 +69,12 @@ class Role:
     description: str = ""
     label: str = ""
     group: str = ""
-    when: str = "always"  # always | jev | research_live | startup
+    when: str = "always"  # always | jev | research_live | startup | on_demand
 
 
 WHEN_NOTE = {"jev": "Only used when Jev is on.", "research_live": "Only used when live web search is on (RESEARCH_LIVE=true).",
-             "startup": "Only used for the check when the server starts."}
+             "startup": "Only used for the check when the server starts.",
+             "on_demand": "Only used when you ask a question."}
 
 
 def in_use(role: Role) -> str | None:
@@ -84,6 +85,8 @@ def in_use(role: Role) -> str | None:
         return WHEN_NOTE["research_live"]
     if role.when == "startup":
         return WHEN_NOTE["startup"]
+    if role.when == "on_demand":
+        return WHEN_NOTE["on_demand"]
     return None
 
 
