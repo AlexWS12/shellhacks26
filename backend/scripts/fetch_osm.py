@@ -13,6 +13,9 @@ if __name__ == "__main__":
     ops = {}
     for f in features:
         ops[f["operator"] or "(no operator tag)"] = ops.get(f["operator"] or "(no operator tag)", 0) + 1
-    print(f"{len(features)} named substations -> {overpass.OSM_FILE}")
+    kinds = {}
+    for f in features:
+        kinds[f["power"]] = kinds.get(f["power"], 0) + 1
+    print(f"{len(features)} named power features {kinds} -> {overpass.OSM_FILE}")
     for op, n in sorted(ops.items(), key=lambda kv: -kv[1])[:12]:
         print(f"  {n:>5}  {op}")

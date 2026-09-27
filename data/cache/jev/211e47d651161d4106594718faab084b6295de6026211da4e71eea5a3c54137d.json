@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Ohara",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Ohara Breaker Replacement",
+   "description": "Replace Breaker on the Ohara - Tara 115kV Line at the Ohara Substation.",
+   "zone": "208",
+   "candidate": {
+    "name": "O'Hara Substation",
+    "operator": "",
+    "voltage": "500000",
+    "lat": 33.4819007,
+    "lon": -84.3673898
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.36
+   }
+  },
+  "cost_usd": 2.0496e-05,
+  "latency_ms": 216
+ }
+}

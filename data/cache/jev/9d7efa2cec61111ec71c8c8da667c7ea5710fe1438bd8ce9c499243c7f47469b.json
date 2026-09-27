@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Wateree",
+   "utility": "DESC",
+   "state": "SC",
+   "project": "Wateree-Killian 230kV: Rebuild",
+   "description": "Replace wooden H-Frame structures with Self Supporting Steel Structures.",
+   "zone": null,
+   "candidate": {
+    "name": "Wateree Dam Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 34.3346578,
+    "lon": -80.7023194
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.33
+   }
+  },
+  "cost_usd": 2.0076000000000002e-05,
+  "latency_ms": 718
+ }
+}

@@ -5,7 +5,7 @@ import asyncio
 
 from app import config
 from app.clients import gemini, overpass
-from app.core.endpoints import looks_awkward, split_endpoints
+from app.core.endpoints import clean_endpoint, looks_awkward, split_endpoints
 from app.core.models import Check, Endpoint, Project
 from app.core.normalize import norm_key
 from app.core.overlap import center
@@ -117,8 +117,9 @@ class Geocoder(Agent):
             "Split a transmission project title into its named endpoints (substations or places). "
             "Return at most two names, without voltages, numbers or words like Rebuild/Line/Substation.",
             f"Title: {p.name}\nDescription: {p.description[:500]}", SPLIT_SCHEMA)
-        if res and res["data"].get("endpoints"):
-            names = [n.strip() for n in res["data"]["endpoints"] if n.strip()][:2]
+        # Gemini sometimes keeps voltages or fragments ('Union Pier 115', '13.'): same cleanup as the regex split.
+        names = [c for n in (res["data"].get("endpoints") or []) if (c := clean_endpoint(n))][:2] if res else []
+        if names:
             ctx.emit("endpoints.split", project_id=p.id, actor="gemini", endpoints=names, deterministic=fallback)
             return names
         return fallback
@@ -132,19 +133,30 @@ class Geocoder(Agent):
                 return self._ep(name, o, "override", "verified", o.extra)
             if (s := self.points.get(k)) is not None:
                 return self._ep(name, s, "sponsor_file", "verified", s.extra)
-        for score, f in self.osm.candidates(key):
+        seen: set[str] = set()
+        for score, f, via in [c for k in dict.fromkeys([key, strip_generic(key)]) for c in self.osm.candidates(k)]:
+            if f["osm_id"] in seen:
+                continue
+            seen.add(f["osm_id"])
+            candidate = {k2: f[k2] for k2 in ("name", "operator", "voltage", "lat", "lon")}
+            # Extra fields only for plants/switches and non-name matches, so plain substation judgments stay cached.
+            if f.get("power", "substation") != "substation":
+                candidate["power"] = f["power"]
+            if via != "name":
+                candidate["matched_on"] = {"alt_name": f.get("alt_names"), "ref": f.get("ref"), "name_part": f["name"],
+                                           "operator+name": f"{f['operator']} {f['name']}"}.get(via)
             v = await ctx.ask_noul(
                 "Is this OpenStreetMap substation the endpoint the filing names?", f"{name} → {f['name']}",
                 {"endpoint": name, "utility": p.sponsor, "state": state, "project": p.name,
-                 "description": p.description[:400], "zone": p.zone,
-                 "candidate": {k2: f[k2] for k2 in ("name", "operator", "voltage", "lat", "lon")}},
+                 "description": p.description[:400], "zone": p.zone, "candidate": candidate},
                 true="Same facility: the name matches and the operator, voltage and area are consistent with the project.",
                 false="A different facility, e.g. a similarly named substation of another utility or in the wrong area.",
-                heuristic=lambda s=score: 0.85 if s == 1.0 else 0.4, project_id=p.id)
+                heuristic=lambda s=score, via=via: 0.85 if s == 1.0 and via in ("name", "alt_name") else 0.4,
+                project_id=p.id)
             if v.value >= ACCEPT:
                 return self._ep(name, Place(f["lat"], f["lon"], f["name"], {}), "overpass", "confirmed_osm",
                                 {"osm_id": f["osm_id"], "osm_name": f["name"], "operator": f["operator"],
-                                 "judge": v.actor, "p_match": round(float(v.value), 3)})
+                                 "osm_match": via, "judge": v.actor, "p_match": round(float(v.value), 3)})
         for k in dict.fromkeys([key, strip_generic(key)]):
             town = self.towns.find(k, state) if k else None
             if town is None:
