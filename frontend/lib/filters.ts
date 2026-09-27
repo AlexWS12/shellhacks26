@@ -42,11 +42,16 @@ function miles(a: [number, number], b: [number, number]): number {
   return 2 * 3958.8 * Math.asin(Math.sqrt(h));
 }
 
+// The title's located ends. Places named only in the description never make a line.
+export function lineEnds(p: Project) {
+  return p.endpoints.filter((e) => e.lat != null && e.lon != null && e.role !== "context");
+}
+
 // Whether the map may draw a line between the two located endpoints, and why not.
 // A span past the limit means one end is misplaced. A filing that names far fewer miles than the
 // span means the work is a short piece of the line, somewhere we don't know, so the whole line would mislead.
 export function lineCheck(p: Project): { draw: boolean; span: number | null; why: string } {
-  const eps = p.endpoints.filter((e) => e.lat != null && e.lon != null);
+  const eps = lineEnds(p);
   if (eps.length !== 2) return { draw: false, span: null, why: "" };
   const span = miles([eps[0].lat!, eps[0].lon!], [eps[1].lat!, eps[1].lon!]);
   if (span > spanLimit(p.miles)) return { draw: false, span, why: `ends are ${span.toFixed(0)} mi apart, more than any single line, so one is likely misplaced` };

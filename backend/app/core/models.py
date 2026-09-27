@@ -14,6 +14,9 @@ class Endpoint(BaseModel):
     method: str = "none"  # sponsor_file | override | overpass | nominatim | geonames_town | none
     confidence: Confidence = "unlocated"
     evidence: dict = Field(default_factory=dict)
+    # endpoint: named in the title. context: a place the description names, used only to place
+    # a project whose title ends weren't found. Never drawn as a line or used for the span.
+    role: Literal["endpoint", "context"] = "endpoint"
 
 
 class Project(BaseModel):
@@ -67,6 +70,8 @@ class Overlap(BaseModel):
     windows_overlap: bool | None = None
     pair_confidence: Confidence
     in_sponsor_sample: bool = False
+    finished: bool = False  # either project is in service before today; ranked after the active pairs
+    distance_slack_mi: float = 0.0  # how far the distance could move if the unlocated ends were found
     rank: int = 0
 
 
@@ -81,6 +86,9 @@ class ReferenceResult(BaseModel):
     expected_days: int
     got_days: int | None
     passed: bool
+    # Same pair with our own geocoding: the benchmark projects located as if the file had no coordinates.
+    blind_mi: float | None = None
+    blind_passed: bool | None = None  # within BLIND_TOLERANCE_MI of the expected distance
 
 
 # Other utilities' projects, found by the research team (data/research/other_utilities.json or a live search).

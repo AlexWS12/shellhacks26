@@ -21,9 +21,27 @@ def test_overlaps_ranked_and_under_cutoff(finished_run):
     assert ov, "expected overlaps"
     assert all(o.distance_mi < 25 for o in ov)
     assert [o.rank for o in ov] == list(range(1, len(ov) + 1))
-    assert [o.distance_mi for o in ov] == sorted(o.distance_mi for o in ov)
+    # active pairs first, each group closest first
+    assert [(o.finished, o.distance_mi) for o in ov] == sorted((o.finished, o.distance_mi) for o in ov)
     headline = next(o for o in ov if o.project_a == "DESC-06367DG" and o.project_b == "GA-20277")
     assert (headline.distance_mi, headline.time_gap_days, headline.in_sponsor_sample) == (5.65, 152, True)
+    assert headline.finished  # DESC-06367DG went into service 12/31/25
+
+
+def test_analyses_start_with_active_pairs(finished_run):
+    b = finished_run.board
+    active = [o for o in b.overlaps if not o.finished]
+    assert active, "expected at least one pair with both projects still ahead"
+    first = list(b.analyses)[: len(active)]
+    assert first == [o.id for o in active][: len(first)]
+
+
+def test_one_ended_projects_are_partial(finished_run):
+    for p in finished_run.board.projects.values():
+        if p.lat is not None and any(e.lat is None for e in p.endpoints):
+            assert p.location_confidence in ("partial", "town"), (p.id, p.location_confidence)
+    sumter = finished_run.board.projects["DESC-6846A"]  # Eastover end unknown
+    assert sumter.location_confidence == "partial"
 
 
 def test_validator_findings(finished_run):

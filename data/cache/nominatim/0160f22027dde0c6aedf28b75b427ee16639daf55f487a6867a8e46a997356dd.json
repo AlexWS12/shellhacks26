@@ -1,0 +1,166 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "okatie",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343375218,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1152878522,
+   "lat": "32.2956335",
+   "lon": "-80.9448103",
+   "category": "landuse",
+   "type": "commercial",
+   "place_rank": 24,
+   "importance": 0.08005091554131377,
+   "addresstype": "commercial",
+   "name": "Okatie Village",
+   "display_name": "Okatie Village, Beaufort County, South Carolina, United States",
+   "address": {
+    "commercial": "Okatie Village",
+    "county": "Beaufort County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2947781",
+    "32.2966531",
+    "-80.9458415",
+    "-80.9436309"
+   ]
+  },
+  {
+   "place_id": 344628007,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1364105565,
+   "lat": "32.3515279",
+   "lon": "-80.8852586",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "residential",
+   "name": "Okatie Park",
+   "display_name": "Okatie Park, Chelsea, Jasper County, South Carolina, United States",
+   "address": {
+    "residential": "Okatie Park",
+    "hamlet": "Chelsea",
+    "county": "Jasper County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.3468459",
+    "32.3546047",
+    "-80.8866742",
+    "-80.8841209"
+   ]
+  },
+  {
+   "place_id": 344439737,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 222840933,
+   "lat": "32.2941337",
+   "lon": "-80.9442937",
+   "category": "highway",
+   "type": "unclassified",
+   "place_rank": 26,
+   "importance": 0.0533842488746471,
+   "addresstype": "road",
+   "name": "Okatie Center Boulevard South",
+   "display_name": "Okatie Center Boulevard South, Beaufort County, South Carolina, 29909, United States",
+   "address": {
+    "road": "Okatie Center Boulevard South",
+    "county": "Beaufort County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29909",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2901132",
+    "32.2986838",
+    "-80.9478317",
+    "-80.9393089"
+   ]
+  },
+  {
+   "place_id": 425069702,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1550165557,
+   "lat": "32.3079690",
+   "lon": "-80.9350445",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.0533842488746471,
+   "addresstype": "road",
+   "name": "Okatie Highway",
+   "display_name": "Okatie Highway, Hardeeville, Jasper County, South Carolina, 29909, United States",
+   "address": {
+    "road": "Okatie Highway",
+    "village": "Hardeeville",
+    "county": "Jasper County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29909",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2983444",
+    "32.3176431",
+    "-80.9353895",
+    "-80.9345037"
+   ]
+  },
+  {
+   "place_id": 421504766,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 961789114,
+   "lat": "32.2936024",
+   "lon": "-80.9369082",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.0533842488746471,
+   "addresstype": "road",
+   "name": "Okatie Highway",
+   "display_name": "Okatie Highway, Hardeeville, Beaufort County, South Carolina, 29909, United States",
+   "address": {
+    "road": "Okatie Highway",
+    "village": "Hardeeville",
+    "county": "Beaufort County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29909",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2928222",
+    "32.2943826",
+    "-80.9371598",
+    "-80.9366567"
+   ]
+  }
+ ]
+}

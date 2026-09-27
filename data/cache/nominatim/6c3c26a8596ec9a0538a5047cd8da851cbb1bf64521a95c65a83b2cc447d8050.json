@@ -1,0 +1,43 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "mcintosh",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 299530795,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 1073923,
+   "lat": "31.4979689",
+   "lon": "-81.3921575",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 12,
+   "importance": 0.5533519551045297,
+   "addresstype": "county",
+   "name": "McIntosh County",
+   "display_name": "McIntosh County, Georgia, United States",
+   "address": {
+    "county": "McIntosh County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2909530",
+    "31.6995750",
+    "-81.6683570",
+    "-81.0953830"
+   ]
+  }
+ ]
+}

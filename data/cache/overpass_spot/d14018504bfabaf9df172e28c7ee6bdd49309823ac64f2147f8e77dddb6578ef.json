@@ -1,0 +1,16 @@
+{
+ "provider": "overpass_spot",
+ "version": "v1",
+ "payload": {
+  "query": "[out:json][timeout:60];(nwr[\"power\"][\"name\"~\"thornton|switch ?way|tributary|cavender|jefferson st\",i](30.3,-85.7,35.3,-78.4););out center tags;"
+ },
+ "response": {
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+   "timestamp_osm_base": "2026-09-27T02:47:11Z",
+   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": []
+ }
+}

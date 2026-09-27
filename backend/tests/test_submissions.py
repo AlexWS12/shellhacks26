@@ -118,7 +118,8 @@ def test_peer_pairs_join_the_ranking_but_not_the_benchmark(peer_run):
     assert {b.projects[o.project_a].utility for o in peer} <= {"DESC", "GA"}
     assert all(o.distance_mi < 25 for o in b.overlaps)
     assert [o.rank for o in b.overlaps] == list(range(1, len(b.overlaps) + 1))
-    assert [o.distance_mi for o in b.overlaps] == sorted(o.distance_mi for o in b.overlaps)
+    # active pairs first, each group closest first
+    assert [(o.finished, o.distance_mi) for o in b.overlaps] == sorted((o.finished, o.distance_mi) for o in b.overlaps)
     assert len(b.reference) == 6 and all(r.passed for r in b.reference)
     assert all(k.startswith("DESC-") and "|GA-" in k for k in b.analyses)  # written sides stay Dominion-Georgia
     assert all(o.id in b.costs for o in peer)

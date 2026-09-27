@@ -18,8 +18,8 @@ export function statedDate(s: string | null | undefined): string {
 export const CONF_LABEL: Record<Confidence, string> = {
   verified: "Verified location",
   confirmed_osm: "Confirmed in OpenStreetMap",
-  partial: "Partly verified",
-  town: "Town-level",
+  partial: "Partly located",
+  town: "Approximate",
   unlocated: "No location",
 };
 

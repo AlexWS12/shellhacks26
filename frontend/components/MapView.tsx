@@ -5,7 +5,7 @@
 import maplibregl, { type GeoJSONSource, type LngLatBoundsLike, type StyleSpecification } from "maplibre-gl";
 import { useEffect, useRef } from "react";
 
-import { activeIn, lineCheck, researchActiveIn, visible } from "@/lib/filters";
+import { activeIn, lineCheck, lineEnds, researchActiveIn, visible } from "@/lib/filters";
 import { CATEGORY_LABEL, engineColor } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import { peers, slotOf } from "@/lib/owners";
@@ -108,7 +108,7 @@ function buildData() {
   })));
   const lines = fc(shown.flatMap((p) => {
     if (!lineCheck(p).draw) return []; // one end, or too long to trust or to draw: the (hollow) point stays
-    const eps = p.endpoints.filter((e) => e.lat != null && e.lon != null);
+    const eps = lineEnds(p);
     return [{ type: "Feature", properties: { id: p.id, u: slotOf(p.utility), hollow: hollow(p) },
       geometry: { type: "LineString", coordinates: eps.map((e) => [e.lon!, e.lat!]) } } as GeoJSON.Feature];
   }));

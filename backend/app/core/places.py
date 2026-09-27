@@ -88,13 +88,14 @@ def load_overrides() -> dict[str, Place]:
 
 
 class Towns:
-    # GeoNames towns. Exact name match in the same state only.
+    # GeoNames towns, plus Census places GeoNames lacks (scripts/build_towns.py). Exact name match in the same state only.
     def __init__(self) -> None:
         data = json.loads((GEO_DIR / "towns_sc_ga.json").read_text(encoding="utf-8"))
         self.source = data["source"]
         self.index: dict[tuple[str, str], Place] = {}
-        for name, state, lat, lon, county in data["rows"]:
-            self.index.setdefault((norm_key(name), state), Place(lat, lon, f"{name}, {state}", {"county": county}))
+        for name, state, lat, lon, county, *src in data["rows"]:
+            self.index.setdefault((norm_key(name), state), Place(lat, lon, f"{name}, {state}",
+                                                                 {"county": county, "source": src[0] if src else "geonames"}))
 
     def find(self, key: str, state: str) -> Place | None:
         return self.index.get((key, state))
@@ -123,6 +124,8 @@ def osm_keys(f: dict[str, Any]) -> list[tuple[str, str]]:
     return out
 
 
+DIRECTION_RE = re.compile(r"\b(north|south|east|west)\b")
+
 OPERATORS = {"SC": ("dominion", "sce&g", "south carolina electric", "santee cooper"),
              "GA": ("georgia power", "southern company", "georgia transmission", "meag")}
 
@@ -148,6 +151,8 @@ class OsmIndex:
             if k in self.by_key:
                 names[k] = 1.0
             for close in difflib.get_close_matches(k, list(self.by_key), n=limit, cutoff=0.82):
+                if set(DIRECTION_RE.findall(close)) != set(DIRECTION_RE.findall(k)):
+                    continue  # 'north tifton' is not 'south tifton', however close the spelling
                 names.setdefault(close, round(difflib.SequenceMatcher(None, k, close).ratio(), 3))
         best: dict[str, tuple[float, float, dict[str, Any], str]] = {}
         for k, sim in names.items():

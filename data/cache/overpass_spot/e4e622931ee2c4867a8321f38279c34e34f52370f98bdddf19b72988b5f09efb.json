@@ -1,0 +1,354 @@
+{
+ "provider": "overpass_spot",
+ "version": "v1",
+ "payload": {
+  "query": "[out:json][timeout:60];(nwr[\"power\"][\"name\"~\"griffin\",i](30.3,-85.7,35.3,-78.4); nwr[\"power\"=\"substation\"](around:7000,33.2468,-84.2641););out center tags;"
+ },
+ "response": {
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+   "timestamp_osm_base": "2026-09-27T02:47:11Z",
+   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+   {
+    "type": "node",
+    "id": 9730283167,
+    "lat": 33.2358874,
+    "lon": -84.2959356,
+    "tags": {
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "node",
+    "id": 9730283172,
+    "lat": 33.2280565,
+    "lon": -84.2882057,
+    "tags": {
+     "man_made": "street_cabinet",
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "node",
+    "id": 9730283182,
+    "lat": 33.2315887,
+    "lon": -84.283595,
+    "tags": {
+     "man_made": "street_cabinet",
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 9460467,
+    "center": {
+     "lat": 33.1494448,
+     "lon": -84.199713
+    },
+    "tags": {
+     "cables": "3",
+     "circuits": "1",
+     "name": "South Griffin - Barnesville 69kV",
+     "old_operator": "Georgia Power Company",
+     "operator": "Georgia Transmission Corporation",
+     "power": "line",
+     "voltage": "69000",
+     "wires": "single"
+    }
+   },
+   {
+    "type": "way",
+    "id": 52019564,
+    "center": {
+     "lat": 33.394723,
+     "lon": -81.9950205
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Marvin Griffin Road Substation",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 135911712,
+    "center": {
+     "lat": 33.2488421,
+     "lon": -84.2404489
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Griffin Substation",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "power": "substation",
+     "substation": "transmission",
+     "voltage": "230000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 180131610,
+    "center": {
+     "lat": 33.2495461,
+     "lon": -84.2405319
+    },
+    "tags": {
+     "cables": "3",
+     "circuits": "1",
+     "name": "O'Hara - South Griffin 230kV",
+     "old_operator": "Georgia Power Company",
+     "operator": "Georgia Transmission Corporation",
+     "power": "line",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 180131612,
+    "center": {
+     "lat": 33.2787788,
+     "lon": -84.2495203
+    },
+    "tags": {
+     "cables": "6",
+     "circuits": "2",
+     "name": "O'Hara - South Griffin 230kV",
+     "old_operator": "Georgia Power Company",
+     "operator": "Georgia Transmission Corporation",
+     "power": "line",
+     "voltage": "230000;115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 180131617,
+    "center": {
+     "lat": 33.4550238,
+     "lon": -84.3741749
+    },
+    "tags": {
+     "cables": "3",
+     "circuits": "1",
+     "name": "O'Hara - South Griffin 230kV",
+     "old_operator": "Georgia Power Company",
+     "operator": "Georgia Transmission Corporation",
+     "power": "line",
+     "voltage": "230000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 180131633,
+    "center": {
+     "lat": 33.3558315,
+     "lon": -84.3112688
+    },
+    "tags": {
+     "cables": "3",
+     "circuits": "1",
+     "name": "O'Hara - South Griffin 230kV",
+     "old_operator": "Georgia Power Company",
+     "operator": "Georgia Transmission Corporation",
+     "power": "line",
+     "voltage": "230000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 625325106,
+    "center": {
+     "lat": 33.2260963,
+     "lon": -84.210098
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 652943492,
+    "center": {
+     "lat": 33.2629082,
+     "lon": -84.2723713
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000;12470"
+    }
+   },
+   {
+    "type": "way",
+    "id": 662401680,
+    "center": {
+     "lat": 33.187609,
+     "lon": -84.2775614
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "69000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 837591124,
+    "center": {
+     "lat": 33.2334969,
+     "lon": -84.2315665
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 837592091,
+    "center": {
+     "lat": 33.2593579,
+     "lon": -84.2795877
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000;12470"
+    }
+   },
+   {
+    "type": "way",
+    "id": 875941557,
+    "center": {
+     "lat": 33.2496034,
+     "lon": -84.2565391
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 967362424,
+    "center": {
+     "lat": 33.2793777,
+     "lon": -84.3114412
+    },
+    "tags": {
+     "barrier": "fence",
+     "description": "Power gets transformed and goes underground",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000;12470"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1020907677,
+    "center": {
+     "lat": 33.0380715,
+     "lon": -84.1944206
+    },
+    "tags": {
+     "name": "South Griffin - Barnesville 69kV",
+     "old_operator": "Georgia Power Company",
+     "operator": "Georgia Transmission Corporation",
+     "power": "line",
+     "voltage": "69000",
+     "wires": "single"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1058953576,
+    "center": {
+     "lat": 33.21558,
+     "lon": -84.2793606
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1058953583,
+    "center": {
+     "lat": 33.2352562,
+     "lon": -84.2826729
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1301132851,
+    "center": {
+     "lat": 33.4165727,
+     "lon": -84.3638491
+    },
+    "tags": {
+     "cables": "3",
+     "circuits": "1",
+     "name": "O'Hara - South Griffin 230kV",
+     "old_operator": "Georgia Power Company",
+     "operator": "Georgia Transmission Corporation",
+     "power": "line",
+     "voltage": "230000"
+    }
+   }
+  ]
+ }
+}

@@ -32,8 +32,9 @@ def owner_label(p: Project) -> str:
 
 
 def _project_row(p: Project, overlaps_of: dict[str, list[str]]) -> list:
-    a = p.endpoints[0] if p.endpoints else None
-    b = p.endpoints[1] if len(p.endpoints) > 1 else None
+    title = [e for e in p.endpoints if e.role == "endpoint"]  # description places aren't endpoints
+    a = title[0] if title else None
+    b = title[1] if len(title) > 1 else None
     ids = overlaps_of.get(p.id, [])
     return [p.id, UTILITY_NAME.get(p.utility, p.sponsor), state_of(p), p.name,
             a.name if a else None, a.lat if a else None, a.lon if a else None,

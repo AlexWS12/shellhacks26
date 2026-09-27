@@ -1,0 +1,79 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "ft johnson",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343399208,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1150669616,
+   "lat": "32.7488943",
+   "lon": "-79.9014440",
+   "category": "landuse",
+   "type": "commercial",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "commercial",
+   "name": "Marine Resources Center",
+   "display_name": "Marine Resources Center, Fort Johnson Estates, Charleston, Charleston County, South Carolina, 29412, United States",
+   "address": {
+    "commercial": "Marine Resources Center",
+    "hamlet": "Fort Johnson Estates",
+    "city": "Charleston",
+    "county": "Charleston County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29412",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7453183",
+    "32.7534130",
+    "-79.9050731",
+    "-79.8967124"
+   ]
+  },
+  {
+   "place_id": 343318431,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 12544233001,
+   "lat": "32.7523385",
+   "lon": "-79.8747352",
+   "category": "historic",
+   "type": "memorial",
+   "place_rank": 30,
+   "importance": 2.8699931334355954e-05,
+   "addresstype": "historic",
+   "name": "Fort Johnson",
+   "display_name": "Fort Johnson, Middle Street, Sullivan's Island, Charleston County, South Carolina, 29482, United States",
+   "address": {
+    "historic": "Fort Johnson",
+    "road": "Middle Street",
+    "town": "Sullivan's Island",
+    "county": "Charleston County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29482",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7522885",
+    "32.7523885",
+    "-79.8747852",
+    "-79.8746852"
+   ]
+  }
+ ]
+}

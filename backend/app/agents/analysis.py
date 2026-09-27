@@ -8,6 +8,7 @@ from app.core.overlap import Filters, distance_mi, find_overlaps, time_gap_days
 from app.runtime.agent import Agent, AgentSpec, Ctx
 
 TOP_ANALYSES = 6
+BLIND_TOLERANCE_MI = 1.0  # our own geocoding vs the benchmark distance
 
 
 def is_core(o: Overlap) -> bool:
@@ -51,17 +52,25 @@ class ReferenceChecker(Agent):
             if pa and pb and pa.lat is not None and pb.lat is not None:
                 got_mi = round(distance_mi((pa.lat, pa.lon), (pb.lat, pb.lon)), 2)  # type: ignore[arg-type]
                 got_days = time_gap_days(date.fromisoformat(pa.in_service_date), date.fromisoformat(pb.in_service_date))
+            # the same pair from our own geocoding, without the file's coordinates
+            ba, bb = b.blind.get(pa.id if pa else ""), b.blind.get(pb.id if pb else "")
+            blind_mi = (round(distance_mi((ba["lat"], ba["lon"]), (bb["lat"], bb["lon"])), 2)
+                        if ba and bb and ba["lat"] is not None and bb["lat"] is not None else None)
             r = ReferenceResult(overlap_id=so.overlap_id, a=so.a, b=so.b, a_project=pa.id if pa else None,
                                 b_project=pb.id if pb else None, expected_mi=so.distance_mi, got_mi=got_mi,
                                 expected_days=so.time_gap_days, got_days=got_days,
-                                passed=got_mi is not None and abs(got_mi - so.distance_mi) < 0.01 and got_days == so.time_gap_days)
+                                passed=got_mi is not None and abs(got_mi - so.distance_mi) < 0.01 and got_days == so.time_gap_days,
+                                blind_mi=blind_mi,
+                                blind_passed=blind_mi is not None and abs(blind_mi - so.distance_mi) <= BLIND_TOLERANCE_MI)
             b.reference.append(r)
             ctx.emit("reference.result", result=r.model_dump())
             await ctx.pace(0.15)
         passed = sum(r.passed for r in b.reference)
+        blind = sum(bool(r.blind_passed) for r in b.reference)
         ctx.log(f"Scorer: {passed} of {len(b.reference)} known overlaps reproduced exactly, "
-                "using dates from our own extraction.")
-        return f"{passed}/{len(b.reference)} exact"
+                "using dates from our own extraction. With our own geocoding instead of the file's coordinates, "
+                f"{blind} of {len(b.reference)} land within {BLIND_TOLERANCE_MI:g} mi.")
+        return f"{passed}/{len(b.reference)} exact, {blind}/{len(b.reference)} blind"
 
 
 class CostEstimator(Agent):

@@ -1,0 +1,105 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "crossgate",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343592868,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153932458,
+   "lat": "32.4687535",
+   "lon": "-84.8946525",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08006407492179748,
+   "addresstype": "neighbourhood",
+   "name": "Crossgate",
+   "display_name": "Crossgate, Columbus, Muscogee County, Georgia, 31907, United States",
+   "address": {
+    "neighbourhood": "Crossgate",
+    "city": "Columbus",
+    "county": "Muscogee County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31907",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.4587535",
+    "32.4787535",
+    "-84.9046525",
+    "-84.8846525"
+   ]
+  },
+  {
+   "place_id": 342633776,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154359187,
+   "lat": "33.9569310",
+   "lon": "-84.4539169",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "neighbourhood",
+   "name": "Crossgate",
+   "display_name": "Crossgate, Cobb County, Georgia, 30068, United States",
+   "address": {
+    "neighbourhood": "Crossgate",
+    "county": "Cobb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30068",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9469310",
+    "33.9669310",
+    "-84.4639169",
+    "-84.4439169"
+   ]
+  },
+  {
+   "place_id": 340371853,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 728105771,
+   "lat": "35.0457272",
+   "lon": "-81.9462432",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08002869993133437,
+   "addresstype": "neighbourhood",
+   "name": "Crossgate",
+   "display_name": "Crossgate, Spartanburg County, South Carolina, United States",
+   "address": {
+    "neighbourhood": "Crossgate",
+    "county": "Spartanburg County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0446490",
+    "35.0469459",
+    "-81.9492370",
+    "-81.9428694"
+   ]
+  }
+ ]
+}

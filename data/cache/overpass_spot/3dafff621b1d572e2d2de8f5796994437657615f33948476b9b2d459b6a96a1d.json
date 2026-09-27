@@ -1,0 +1,203 @@
+{
+ "provider": "overpass_spot",
+ "version": "v1",
+ "payload": {
+  "query": "[out:json][timeout:90];(nwr[\"name\"~\"^(plant )?mitchell|okatie|purrysburg|hooks\",i][\"power\"](30.3,-85.7,35.3,-78.4); nwr[\"name\"~\"mitchell|okatie\",i][\"landuse\"=\"industrial\"](30.3,-85.7,35.3,-78.4););out geom tags;"
+ },
+ "response": {
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+   "timestamp_osm_base": "2026-09-27T03:13:47Z",
+   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+   {
+    "type": "way",
+    "id": 656743292,
+    "bounds": {
+     "minlat": 31.4420602,
+     "minlon": -84.1371471,
+     "maxlat": 31.4463308,
+     "maxlon": -84.1279065
+    },
+    "geometry": [
+     {
+      "lat": 31.4463142,
+      "lon": -84.1361654
+     },
+     {
+      "lat": 31.4454149,
+      "lon": -84.1363424
+     },
+     {
+      "lat": 31.4437101,
+      "lon": -84.1366079
+     },
+     {
+      "lat": 31.443257,
+      "lon": -84.1367072
+     },
+     {
+      "lat": 31.4428154,
+      "lon": -84.136844
+     },
+     {
+      "lat": 31.4426987,
+      "lon": -84.1364189
+     },
+     {
+      "lat": 31.4425865,
+      "lon": -84.1364577
+     },
+     {
+      "lat": 31.4426472,
+      "lon": -84.1369218
+     },
+     {
+      "lat": 31.4421448,
+      "lon": -84.1371471
+     },
+     {
+      "lat": 31.4420602,
+      "lon": -84.13638
+     },
+     {
+      "lat": 31.4425522,
+      "lon": -84.1358596
+     },
+     {
+      "lat": 31.442479,
+      "lon": -84.1301492
+     },
+     {
+      "lat": 31.4424904,
+      "lon": -84.1288363
+     },
+     {
+      "lat": 31.4428256,
+      "lon": -84.1286096
+     },
+     {
+      "lat": 31.444136,
+      "lon": -84.1279065
+     },
+     {
+      "lat": 31.444971,
+      "lon": -84.1303933
+     },
+     {
+      "lat": 31.4463308,
+      "lon": -84.1322916
+     },
+     {
+      "lat": 31.4463142,
+      "lon": -84.1361654
+     }
+    ],
+    "tags": {
+     "demolished:power": "plant",
+     "end_date": "2016-08",
+     "landuse": "industrial",
+     "name": "Mitchell Steam Generating Plant",
+     "operator": "Georgia Power",
+     "plant:output:electricity": "163 MW",
+     "plant:source": "coal",
+     "ref:US:EIA": "727",
+     "source": "U.S. Energy Information Administration - EIA-860 - 2019",
+     "start_date": "1948-11"
+    }
+   },
+   {
+    "type": "way",
+    "id": 656743294,
+    "bounds": {
+     "minlat": 31.446638,
+     "minlon": -84.1344139,
+     "maxlat": 31.4476037,
+     "maxlon": -84.1332713
+    },
+    "geometry": [
+     {
+      "lat": 31.4476014,
+      "lon": -84.1344139
+     },
+     {
+      "lat": 31.4476037,
+      "lon": -84.133274
+     },
+     {
+      "lat": 31.4466403,
+      "lon": -84.1332713
+     },
+     {
+      "lat": 31.446638,
+      "lon": -84.1344112
+     },
+     {
+      "lat": 31.4476014,
+      "lon": -84.1344139
+     }
+    ],
+    "tags": {
+     "barrier": "fence",
+     "name": "Mitchell Substation (230kV)",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "power": "substation",
+     "substation": "transmission",
+     "voltage": "230000;115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1039823943,
+    "bounds": {
+     "minlat": 31.4436543,
+     "minlon": -84.1358877,
+     "maxlat": 31.4441657,
+     "maxlon": -84.1343019
+    },
+    "geometry": [
+     {
+      "lat": 31.4441618,
+      "lon": -84.1358877
+     },
+     {
+      "lat": 31.4436543,
+      "lon": -84.1358822
+     },
+     {
+      "lat": 31.4436668,
+      "lon": -84.1343019
+     },
+     {
+      "lat": 31.4440851,
+      "lon": -84.1343065
+     },
+     {
+      "lat": 31.4440764,
+      "lon": -84.1353921
+     },
+     {
+      "lat": 31.4441657,
+      "lon": -84.1353931
+     },
+     {
+      "lat": 31.4441618,
+      "lon": -84.1358877
+     }
+    ],
+    "tags": {
+     "barrier": "wall",
+     "name": "Mitchell Substation (115kV)",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "power": "substation",
+     "substation": "transmission",
+     "voltage": "115000"
+    }
+   }
+  ]
+ }
+}

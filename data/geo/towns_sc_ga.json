@@ -1,1 +1,9517 @@
-{"source": "GeoNames cities1000 (CC BY 4.0) via reverse_geocoder 1.5.1; US places in SC and GA with population >= 1000", "columns": ["name", "state", "lat", "lon", "county"], "rows": [["Lugoff", "SC", 34.22737, -80.68925, "Kershaw County"], ["Abbeville", "GA", 31.99212, -83.30682, "Wilcox County"], ["Acworth", "GA", 34.06635, -84.67837, "Cobb County"], ["Adairsville", "GA", 34.3687, -84.93411, "Bartow County"], ["Adel", "GA", 31.13727, -83.42408, "Cook County"], ["Alamo", "GA", 32.14712, -82.77792, "Wheeler County"], ["Albany", "GA", 31.57851, -84.15574, "Dougherty County"], ["Alma", "GA", 31.53937, -82.46236, "Bacon County"], ["Alpharetta", "GA", 34.07538, -84.29409, "Fulton County"], ["Alto", "GA", 34.46732, -83.57378, "Banks County"], ["Americus", "GA", 32.07239, -84.23269, "Sumter County"], ["Appling", "GA", 33.54608, -82.3173, "Columbia County"], ["Aragon", "GA", 34.04565, -85.05606, "Polk County"], ["Arcade", "GA", 34.07789, -83.56155, "Jackson County"], ["Arlington", "GA", 31.4399, -84.72492, "Calhoun County"], ["Ashburn", "GA", 31.70601, -83.65322, "Turner County"], ["Athens", "GA", 33.96095, -83.37794, "Clarke County"], ["Atlanta", "GA", 33.749, -84.38798, "Fulton County"], ["Auburn", "GA", 34.01372, -83.82768, "Barrow County"], ["Augusta", "GA", 33.47097, -81.97484, "Richmond County"], ["Austell", "GA", 33.81261, -84.63438, "Cobb County"], ["Avondale Estates", "GA", 33.77149, -84.26714, "DeKalb County"], ["Bainbridge", "GA", 30.9038, -84.57547, "Decatur County"], ["Baldwin", "GA", 34.49177, -83.53739, "Habersham County"], ["Ball Ground", "GA", 34.33815, -84.37659, "Cherokee County"], ["Barnesville", "GA", 33.05457, -84.15575, "Lamar County"], ["Baxley", "GA", 31.77825, -82.34846, "Appling County"], ["Belvedere Park", "GA", 33.75483, -84.26742, "DeKalb County"], ["Berkeley Lake", "GA", 33.98371, -84.18658, "Gwinnett County"], ["Blackshear", "GA", 31.30605, -82.24207, "Pierce County"], ["Blairsville", "GA", 34.8762, -83.95824, "Union County"], ["Blakely", "GA", 31.37768, -84.93409, "Early County"], ["Bloomingdale", "GA", 32.13242, -81.299, "Chatham County"], ["Blue Ridge", "GA", 34.86397, -84.32409, "Fannin County"], ["Bogart", "GA", 33.94928, -83.53461, "Oconee County"], ["Bonanza", "GA", 33.46567, -84.33659, "Clayton County"], ["Boston", "GA", 30.79186, -83.78989, "Thomas County"], ["Bowdon", "GA", 33.53789, -85.25328, "Carroll County"], ["Braselton", "GA", 34.10927, -83.76267, "Jackson County"], ["Bremen", "GA", 33.72122, -85.1455, "Haralson County"], ["Brooklet", "GA", 32.37963, -81.66317, "Bulloch County"], ["Broxton", "GA", 31.62519, -82.88681, "Coffee County"], ["Brunswick", "GA", 31.14995, -81.49149, "Glynn County"], ["Buchanan", "GA", 33.8026, -85.18856, "Haralson County"], ["Buena Vista", "GA", 32.31904, -84.51714, "Marion County"], ["Buford", "GA", 34.12066, -84.00435, "Gwinnett County"], ["Butler", "GA", 32.55709, -84.23825, "Taylor County"], ["Byron", "GA", 32.65376, -83.75963, "Peach County"], ["Cairo", "GA", 30.87751, -84.20214, "Grady County"], ["Calhoun", "GA", 34.50259, -84.95105, "Gordon County"], ["Camilla", "GA", 31.23129, -84.21046, "Mitchell County"], ["Canton", "GA", 34.23676, -84.49076, "Cherokee County"], ["Carnesville", "GA", 34.36983, -83.23516, "Franklin County"], ["Carrollton", "GA", 33.58011, -85.07661, "Carroll County"], ["Cartersville", "GA", 34.16533, -84.80231, "Bartow County"], ["Cave Spring", "GA", 34.1076, -85.33634, "Floyd County"], ["Cedartown", "GA", 34.05371, -85.25495, "Polk County"], ["Centerville", "GA", 32.63014, -83.68963, "Houston County"], ["Chamblee", "GA", 33.89205, -84.29881, "DeKalb County"], ["Chatsworth", "GA", 34.76591, -84.76994, "Murray County"], ["Chattanooga Valley", "GA", 34.93285, -85.35551, "Walker County"], ["Chester", "GA", 32.39378, -83.15293, "Dodge County"], ["Chickamauga", "GA", 34.87119, -85.29079, "Walker County"], ["Clarkesville", "GA", 34.6126, -83.52489, "Habersham County"], ["Clarkston", "GA", 33.80955, -84.23964, "DeKalb County"], ["Claxton", "GA", 32.16158, -81.904, "Evans County"], ["Clayton", "GA", 34.87815, -83.40099, "Rabun County"], ["Cleveland", "GA", 34.59704, -83.76324, "White County"], ["Cochran", "GA", 32.38683, -83.35461, "Bleckley County"], ["College Park", "GA", 33.65344, -84.44937, "Fulton County"], ["Colquitt", "GA", 31.17129, -84.73325, "Miller County"], ["Columbus", "GA", 32.46098, -84.98771, "Muscogee County"], ["Comer", "GA", 34.06372, -83.12543, "Madison County"], ["Commerce", "GA", 34.204, -83.45711, "Jackson County"], ["Conley", "GA", 33.64483, -84.32576, "Clayton County"], ["Conyers", "GA", 33.66761, -84.01769, "Rockdale County"], ["Cordele", "GA", 31.96351, -83.78239, "Crisp County"], ["Cornelia", "GA", 34.51149, -83.52712, "Habersham County"], ["Country Club Estates", "GA", 33.98928, -83.4096, "Clarke County"], ["Country Club Estates", "GA", 31.21273, -81.46427, "Glynn County"], ["Covington", "GA", 33.59678, -83.86018, "Newton County"], ["Crawfordville", "GA", 33.55402, -82.89598, "Taliaferro County"], ["Cumming", "GA", 34.20732, -84.14019, "Forsyth County"], ["Cusseta", "GA", 32.30543, -84.7727, "Chattahoochee County"], ["Cuthbert", "GA", 31.77127, -84.78937, "Randolph County"], ["Dacula", "GA", 33.98872, -83.89796, "Gwinnett County"], ["Dahlonega", "GA", 34.53259, -83.98491, "Lumpkin County"], ["Dalton", "GA", 34.7698, -84.97022, "Whitfield County"], ["Dallas", "GA", 33.92371, -84.84077, "Paulding County"], ["Danielsville", "GA", 34.12428, -83.22126, "Madison County"], ["Darien", "GA", 31.37023, -81.43399, "McIntosh County"], ["Davisboro", "GA", 32.97904, -82.60791, "Washington County"], ["Dawson", "GA", 31.77382, -84.448, "Terrell County"], ["Dawsonville", "GA", 34.42121, -84.11908, "Dawson County"], ["Decatur", "GA", 33.77483, -84.29631, "DeKalb County"], ["Deenwood", "GA", 31.22201, -82.38725, "Ware County"], ["Demorest", "GA", 34.5651, -83.54517, "Habersham County"], ["Dock Junction", "GA", 31.20245, -81.51677, "Glynn County"], ["Donalsonville", "GA", 31.04046, -84.87909, "Seminole County"], ["Doraville", "GA", 33.89816, -84.28326, "DeKalb County"], ["Douglas", "GA", 31.50881, -82.84987, "Coffee County"], ["Douglasville", "GA", 33.7515, -84.74771, "Douglas County"], ["Druid Hills", "GA", 33.78038, -84.33604, "DeKalb County"], ["Dublin", "GA", 32.54044, -82.90375, "Laurens County"], ["Duluth", "GA", 34.00288, -84.14464, "Gwinnett County"], ["Dunwoody", "GA", 33.94621, -84.33465, "DeKalb County"], ["East Dublin", "GA", 32.54822, -82.87181, "Laurens County"], ["East Griffin", "GA", 33.24373, -84.22881, "Spalding County"], ["East Point", "GA", 33.67955, -84.43937, "Fulton County"], ["East Newnan", "GA", 33.35067, -84.7766, "Coweta County"], ["Eastman", "GA", 32.19767, -83.17765, "Dodge County"], ["Eatonton", "GA", 33.3268, -83.3885, "Putnam County"], ["Edison", "GA", 31.55823, -84.73825, "Calhoun County"], ["Elberton", "GA", 34.11159, -82.86863, "Elbert County"], ["Ellaville", "GA", 32.23821, -84.30908, "Schley County"], ["Ellijay", "GA", 34.69481, -84.48215, "Gilmer County"], ["Emerson", "GA", 34.12704, -84.75549, "Bartow County"], ["Enigma", "GA", 31.41297, -83.32905, "Berrien County"], ["Euharlee", "GA", 34.14482, -84.933, "Bartow County"], ["Evans", "GA", 33.53375, -82.13067, "Columbia County"], ["Experiment", "GA", 33.26539, -84.28159, "Spalding County"], ["Fair Oaks", "GA", 33.91649, -84.54465, "Cobb County"], ["Fairburn", "GA", 33.56706, -84.58104, "Fulton County"], ["Fairview", "GA", 34.94563, -85.2844, "Walker County"], ["Fayetteville", "GA", 33.44873, -84.45493, "Fayette County"], ["Fitzgerald", "GA", 31.71491, -83.25265, "Ben Hill County"], ["Flowery Branch", "GA", 34.1851, -83.92518, "Hall County"], ["Folkston", "GA", 30.83095, -82.01131, "Charlton County"], ["Forest Park", "GA", 33.62205, -84.36909, "Clayton County"], ["Forsyth", "GA", 33.0343, -83.93824, "Monroe County"], ["Fort Gaines", "GA", 31.60924, -85.04933, "Clay County"], ["Fort Oglethorpe", "GA", 34.94896, -85.2569, "Catoosa County"], ["Fort Valley", "GA", 32.55376, -83.88741, "Peach County"], ["Franklin", "GA", 33.27762, -85.098, "Heard County"], ["Gainesville", "GA", 34.29788, -83.82407, "Hall County"], ["Garden City", "GA", 32.11437, -81.154, "Chatham County"], ["Georgetown", "GA", 31.98326, -81.22733, "Chatham County"], ["Georgetown", "GA", 31.88461, -85.10743, "Quitman County"], ["Gibson", "GA", 33.23348, -82.59541, "Glascock County"], ["Glennville", "GA", 31.93659, -81.92845, "Tattnall County"], ["Gordon", "GA", 32.88209, -83.33238, "Wilkinson County"], ["Grantville", "GA", 33.23484, -84.83577, "Coweta County"], ["Gray", "GA", 33.00958, -83.53378, "Jones County"], ["Grayson", "GA", 33.89427, -83.95574, "Gwinnett County"], ["Greensboro", "GA", 33.57568, -83.18238, "Greene County"], ["Greenville", "GA", 33.02874, -84.71298, "Meriwether County"], ["Gresham Park", "GA", 33.70344, -84.31437, "DeKalb County"], ["Griffin", "GA", 33.24678, -84.26409, "Spalding County"], ["Grovetown", "GA", 33.45042, -82.19818, "Columbia County"], ["Gumlog", "GA", 34.49177, -83.09654, "Franklin County"], ["Guyton", "GA", 32.3363, -81.3915, "Effingham County"], ["Hahira", "GA", 30.99131, -83.37266, "Lowndes County"], ["Hamilton", "GA", 32.75791, -84.87493, "Harris County"], ["Hampton", "GA", 33.38706, -84.28298, "Henry County"], ["Hannahs Mill", "GA", 32.93291, -84.34936, "Upson County"], ["Hapeville", "GA", 33.66011, -84.4102, "Fulton County"], ["Hardwick", "GA", 33.0682, -83.22349, "Baldwin County"], ["Harlem", "GA", 33.41458, -82.31262, "Columbia County"], ["Hartwell", "GA", 34.35288, -82.93209, "Hart County"], ["Hawkinsville", "GA", 32.28377, -83.47212, "Pulaski County"], ["Hazlehurst", "GA", 31.86963, -82.5943, "Jeff Davis County"], ["Helena", "GA", 32.07379, -82.91459, "Telfair County"], ["Hephzibah", "GA", 33.31403, -82.09679, "Richmond County"], ["Hiawassee", "GA", 34.94926, -83.75739, "Towns County"], ["Hinesville", "GA", 31.84688, -81.59595, "Liberty County"], ["Hiram", "GA", 33.87566, -84.76216, "Paulding County"], ["Hogansville", "GA", 33.17318, -84.91494, "Troup County"], ["Holly Springs", "GA", 34.17399, -84.50132, "Cherokee County"], ["Homer", "GA", 34.33372, -83.49905, "Banks County"], ["Homerville", "GA", 31.0366, -82.74708, "Clinch County"], ["Hoschton", "GA", 34.0965, -83.76128, "Jackson County"], ["Indian Springs", "GA", 33.24262, -83.92074, "Butts County"], ["Indian Springs", "GA", 34.95785, -85.1644, "Catoosa County"], ["Irondale", "GA", 33.48067, -84.35881, "Clayton County"], ["Irwinton", "GA", 32.81126, -83.17265, "Wilkinson County"], ["Isle of Hope", "GA", 31.98188, -81.06094, "Chatham County"], ["Jackson", "GA", 33.29457, -83.96602, "Butts County"], ["Jasper", "GA", 34.46787, -84.42909, "Pickens County"], ["Jefferson", "GA", 34.11705, -83.57239, "Jackson County"], ["Jefferson", "GA", 33.4493, -83.31155, "Putnam County"], ["Jeffersonville", "GA", 32.68765, -83.34656, "Twiggs County"], ["Jesup", "GA", 31.60785, -81.88634, "Wayne County"], ["Jonesboro", "GA", 33.5215, -84.35381, "Clayton County"], ["Kennesaw", "GA", 34.02343, -84.61549, "Cobb County"], ["Kingsland", "GA", 30.79996, -81.68983, "Camden County"], ["Knoxville", "GA", 32.72431, -83.99769, "Crawford County"], ["La Grange", "GA", 33.03929, -85.03133, "Troup County"], ["LaFayette", "GA", 34.7048, -85.2819, "Walker County"], ["Lake City", "GA", 33.6065, -84.3352, "Clayton County"], ["Lakeland", "GA", 31.04104, -83.07515, "Lanier County"], ["Lakeview", "GA", 34.97924, -85.25884, "Catoosa County"], ["Lakeview Estates", "GA", 33.70678, -84.03158, "Rockdale County"], ["Lavonia", "GA", 34.43594, -83.10682, "Franklin County"], ["Lawrenceville", "GA", 33.95621, -83.98796, "Gwinnett County"], ["Leesburg", "GA", 31.73212, -84.17074, "Lee County"], ["Lexington", "GA", 33.86984, -83.11182, "Oglethorpe County"], ["Lilburn", "GA", 33.8901, -84.14297, "Gwinnett County"], ["Lincolnton", "GA", 33.79235, -82.47902, "Lincoln County"], ["Lindale", "GA", 34.18676, -85.17467, "Floyd County"], ["Lithia Springs", "GA", 33.794, -84.66049, "Douglas County"], ["Lithonia", "GA", 33.71233, -84.10519, "DeKalb County"], ["Locust Grove", "GA", 33.34595, -84.10908, "Henry County"], ["Loganville", "GA", 33.839, -83.90074, "Walton County"], ["Lookout Mountain", "GA", 34.97758, -85.35774, "Walker County"], ["Louisville", "GA", 33.00154, -82.41124, "Jefferson County"], ["Lovejoy", "GA", 33.43622, -84.31437, "Clayton County"], ["Ludowici", "GA", 31.70799, -81.74234, "Long County"], ["Lula", "GA", 34.3876, -83.66629, "Hall County"], ["Lumber City", "GA", 31.92935, -82.67958, "Telfair County"], ["Lumpkin", "GA", 32.05099, -84.79909, "Stewart County"], ["Lyons", "GA", 32.20435, -82.32179, "Toombs County"], ["Mableton", "GA", 33.81872, -84.58243, "Cobb County"], ["Macon", "GA", 32.84069, -83.6324, "Bibb County"], ["Madison", "GA", 33.59568, -83.46794, "Morgan County"], ["Manchester", "GA", 32.85985, -84.61993, "Meriwether County"], ["Marietta", "GA", 33.9526, -84.54993, "Cobb County"], ["Marshallville", "GA", 32.45626, -83.94019, "Macon County"], ["Martinez", "GA", 33.51736, -82.07567, "Columbia County"], ["Maysville", "GA", 34.25288, -83.56155, "Banks County"], ["McCaysville", "GA", 34.98619, -84.37131, "Fannin County"], ["McDonough", "GA", 33.44734, -84.14686, "Henry County"], ["McRae", "GA", 32.06795, -82.9007, "Telfair County"], ["Meigs", "GA", 31.07241, -84.08907, "Thomas County"], ["Metter", "GA", 32.39712, -82.06012, "Candler County"], ["Midway", "GA", 31.80577, -81.43066, "Liberty County"], ["Milledgeville", "GA", 33.08014, -83.2321, "Baldwin County"], ["Millen", "GA", 32.80405, -81.94928, "Jenkins County"], ["Monroe", "GA", 33.79484, -83.71323, "Walton County"], ["Montezuma", "GA", 32.30516, -84.02741, "Macon County"], ["Montgomery", "GA", 31.94049, -81.12205, "Chatham County"], ["Monticello", "GA", 33.30485, -83.68323, "Jasper County"], ["Morgan", "GA", 31.53767, -84.59936, "Calhoun County"], ["Morrow", "GA", 33.58317, -84.33937, "Clayton County"], ["Mount Airy", "GA", 34.51871, -83.50073, "Habersham County"], ["Moultrie", "GA", 31.17991, -83.78906, "Colquitt County"], ["Mount Vernon", "GA", 32.17851, -82.59458, "Montgomery County"], ["Mount Zion", "GA", 33.63428, -85.18717, "Carroll County"], ["Mount Zion", "GA", 33.36125, -83.00765, "Hancock County"], ["Mountain City", "GA", 34.91815, -83.38544, "Rabun County"], ["Mountain Park", "GA", 33.84427, -84.12936, "Gwinnett County"], ["Nahunta", "GA", 31.20439, -81.98123, "Brantley County"], ["Nashville", "GA", 31.20742, -83.25015, "Berrien County"], ["Nelson", "GA", 34.38204, -84.37103, "Pickens County"], ["Newnan", "GA", 33.38067, -84.79966, "Coweta County"], ["Newton", "GA", 31.31296, -84.33574, "Baker County"], ["Nicholls", "GA", 31.51742, -82.63486, "Coffee County"], ["Nicholson", "GA", 34.114, -83.43155, "Jackson County"], ["Norcross", "GA", 33.94121, -84.21353, "Gwinnett County"], ["North Atlanta", "GA", 33.8651, -84.33659, "DeKalb County"], ["North Decatur", "GA", 33.79038, -84.30603, "DeKalb County"], ["North Druid Hills", "GA", 33.81677, -84.31326, "DeKalb County"], ["Oakwood", "GA", 34.2276, -83.88435, "Hall County"], ["Oakwood", "GA", 33.54817, -83.97435, "Newton County"], ["Ocilla", "GA", 31.59447, -83.2513, "Irwin County"], ["Oglethorpe", "GA", 32.29377, -84.06102, "Macon County"], ["Omega", "GA", 31.34102, -83.5935, "Tift County"], ["Oxford", "GA", 33.619, -83.86741, "Newton County"], ["Palmetto", "GA", 33.51789, -84.66965, "Fulton County"], ["Panthersville", "GA", 33.70733, -84.27187, "DeKalb County"], ["Peachtree City", "GA", 33.39678, -84.59576, "Fayette County"], ["Pearson", "GA", 31.2977, -82.85237, "Atkinson County"], ["Pelham", "GA", 31.12802, -84.15304, "Mitchell County"], ["Pembroke", "GA", 32.13634, -81.62348, "Bryan County"], ["Perry", "GA", 32.45821, -83.73157, "Houston County"], ["Pine Mountain", "GA", 33.67594, -84.11492, "DeKalb County"], ["Pine Mountain", "GA", 32.86485, -84.8541, "Harris County"], ["Pooler", "GA", 32.11548, -81.24706, "Chatham County"], ["Port Wentworth", "GA", 32.14909, -81.16317, "Chatham County"], ["Porterdale", "GA", 33.57511, -83.8938, "Newton County"], ["Powder Springs", "GA", 33.85955, -84.68382, "Cobb County"], ["Preston", "GA", 32.06599, -84.53742, "Webster County"], ["Putney", "GA", 31.47018, -84.11768, "Dougherty County"], ["Quitman", "GA", 30.78492, -83.55988, "Brooks County"], ["Raoul", "GA", 34.44954, -83.59434, "Habersham County"], ["Ray City", "GA", 31.07464, -83.19932, "Berrien County"], ["Redan", "GA", 33.74538, -84.13158, "DeKalb County"], ["Reed Creek", "GA", 34.44594, -82.92487, "Hart County"], ["Reidsville", "GA", 32.08686, -82.1179, "Tattnall County"], ["Remerton", "GA", 30.84409, -83.31043, "Lowndes County"], ["Reynolds", "GA", 32.55987, -84.0963, "Taylor County"], ["Richland", "GA", 32.08793, -84.66742, "Stewart County"], ["Richmond Hill", "GA", 31.93827, -81.30344, "Bryan County"], ["Rincon", "GA", 32.29603, -81.23539, "Effingham County"], ["Ringgold", "GA", 34.91591, -85.10912, "Catoosa County"], ["Riverdale", "GA", 33.57261, -84.41326, "Clayton County"], ["Roberta", "GA", 32.72181, -84.01324, "Crawford County"], ["Rochelle", "GA", 31.95101, -83.45627, "Wilcox County"], ["Rockmart", "GA", 34.0026, -85.04161, "Polk County"], ["Rome", "GA", 34.25704, -85.16467, "Floyd County"], ["Roswell", "GA", 34.02316, -84.36159, "Fulton County"], ["Rossville", "GA", 34.98313, -85.28607, "Walker County"], ["Royston", "GA", 34.28705, -83.11015, "Hart County"], ["Russell", "GA", 33.97872, -83.70017, "Barrow County"], ["Rydal", "GA", 34.33537, -84.71549, "Bartow County"], ["St. Marys", "GA", 30.73051, -81.54649, "Camden County"], ["Saint Simon Mills", "GA", 31.17079, -81.40732, "Glynn County"], ["Saint Simons Island", "GA", 31.15051, -81.36954, "Glynn County"], ["Sandersville", "GA", 32.98154, -82.81014, "Washington County"], ["Sandy Springs", "GA", 33.92427, -84.37854, "Fulton County"], ["Sardis", "GA", 32.79652, -84.63881, "Talbot County"], ["Savannah", "GA", 32.08354, -81.09983, "Chatham County"], ["Scottdale", "GA", 33.78983, -84.26409, "DeKalb County"], ["Senoia", "GA", 33.30234, -84.55382, "Coweta County"], ["Shannon", "GA", 34.33676, -85.07134, "Floyd County"], ["Shannon", "GA", 33.40456, -84.46826, "Fayette County"], ["Shellman", "GA", 31.75628, -84.6152, "Randolph County"], ["Skidaway Island", "GA", 31.93494, -81.04705, "Chatham County"], ["Smyrna", "GA", 33.88399, -84.51438, "Cobb County"], ["Snellville", "GA", 33.85733, -84.01991, "Gwinnett County"], ["Social Circle", "GA", 33.65623, -83.71823, "Walton County"], ["Soperton", "GA", 32.37712, -82.59236, "Treutlen County"], ["Sparks", "GA", 31.16686, -83.43738, "Cook County"], ["Sparks", "GA", 33.08793, -82.73764, "Washington County"], ["Sparta", "GA", 33.2757, -82.97626, "Hancock County"], ["Springfield", "GA", 32.37241, -81.3115, "Effingham County"], ["Statenville", "GA", 30.70327, -83.02764, "Echols County"], ["Statesboro", "GA", 32.44879, -81.78317, "Bulloch County"], ["Statham", "GA", 33.96511, -83.59655, "Barrow County"], ["Stockbridge", "GA", 33.54428, -84.23381, "Henry County"], ["Stone Mountain", "GA", 33.80816, -84.1702, "DeKalb County"], ["Sugar Hill", "GA", 34.10649, -84.03352, "Gwinnett County"], ["Summerville", "GA", 34.48064, -85.34773, "Chattooga County"], ["Sunnyside", "GA", 31.23938, -82.34207, "Ware County"], ["Suwanee", "GA", 34.05149, -84.0713, "Gwinnett County"], ["Swainsboro", "GA", 32.59739, -82.33374, "Emanuel County"], ["Sylvania", "GA", 32.75044, -81.63678, "Screven County"], ["Sylvester", "GA", 31.53092, -83.83693, "Worth County"], ["Talbotton", "GA", 32.67764, -84.53937, "Talbot County"], ["Tallapoosa", "GA", 33.74455, -85.28801, "Haralson County"], ["Temple", "GA", 33.73705, -85.03244, "Carroll County"], ["Tennille", "GA", 32.93599, -82.81153, "Washington County"], ["Thomasville", "GA", 30.83658, -83.97878, "Thomas County"], ["Thomaston", "GA", 32.88819, -84.32659, "Upson County"], ["Thomson", "GA", 33.47069, -82.50457, "McDuffie County"], ["Thunderbolt", "GA", 32.03354, -81.04983, "Chatham County"], ["Tifton", "GA", 31.45046, -83.5085, "Tift County"], ["Toccoa", "GA", 34.57732, -83.33239, "Stephens County"], ["Trenton", "GA", 34.87202, -85.50913, "Dade County"], ["Trion", "GA", 34.54397, -85.31051, "Chattooga County"], ["Tucker", "GA", 33.85455, -84.21714, "DeKalb County"], ["Twin City", "GA", 32.58294, -82.15512, "Emanuel County"], ["Tybee Island", "GA", 32.00022, -80.84567, "Chatham County"], ["Tyrone", "GA", 33.47123, -84.59715, "Fayette County"], ["Unadilla", "GA", 32.26155, -83.73657, "Dooly County"], ["Union City", "GA", 33.58706, -84.54243, "Fulton County"], ["Union Point", "GA", 33.61568, -83.0746, "Greene County"], ["Unionville", "GA", 31.43491, -83.50961, "Tift County"], ["Valdosta", "GA", 30.83334, -83.28032, "Lowndes County"], ["Varnell", "GA", 34.90119, -84.97383, "Whitfield County"], ["Vidalia", "GA", 32.21769, -82.41346, "Toombs County"], ["Vienna", "GA", 32.09156, -83.79545, "Dooly County"], ["Villa Rica", "GA", 33.73205, -84.91911, "Carroll County"], ["Vinings", "GA", 33.86483, -84.46437, "Cobb County"], ["Wadley", "GA", 32.86682, -82.40402, "Jefferson County"], ["Walnut Grove", "GA", 33.74261, -83.8524, "Walton County"], ["Walthourville", "GA", 31.7741, -81.63261, "Liberty County"], ["Warner Robins", "GA", 32.62098, -83.5999, "Houston County"], ["Warrenton", "GA", 33.40708, -82.66208, "Warren County"], ["Washington", "GA", 33.73679, -82.73931, "Wilkes County"], ["Watkinsville", "GA", 33.8629, -83.40877, "Oconee County"], ["Waycross", "GA", 31.21368, -82.3557, "Ware County"], ["Waynesboro", "GA", 33.08987, -82.01567, "Burke County"], ["West Point", "GA", 32.87791, -85.18327, "Troup County"], ["West Point", "GA", 32.79347, -83.80741, "Bibb County"], ["Whitemarsh Island", "GA", 32.02882, -81.01678, "Chatham County"], ["Willacoochee", "GA", 31.34076, -83.04598, "Atkinson County"], ["Wilmington Island", "GA", 32.00355, -80.97372, "Chatham County"], ["Winder", "GA", 33.99261, -83.72017, "Barrow County"], ["Winterville", "GA", 33.96706, -83.27821, "Clarke County"], ["Woodbine", "GA", 30.96396, -81.72416, "Camden County"], ["Woodstock", "GA", 34.10149, -84.51938, "Cherokee County"], ["Wrens", "GA", 33.20765, -82.39179, "Jefferson County"], ["Wrightsville", "GA", 32.72933, -82.71986, "Johnson County"], ["Zebulon", "GA", 33.10235, -84.3427, "Pike County"], ["Abbeville", "SC", 34.17817, -82.37901, "Abbeville County"], ["Aiken", "SC", 33.56042, -81.71955, "Aiken County"], ["Allendale", "SC", 33.00793, -81.30844, "Allendale County"], ["Anderson", "SC", 34.50344, -82.65013, "Anderson County"], ["Andrews", "SC", 33.45128, -79.5609, "Williamsburg County"], ["Arcadia", "SC", 34.95818, -81.99066, "Spartanburg County"], ["Arial", "SC", 34.84595, -82.64152, "Pickens County"], ["Awendaw", "SC", 33.03767, -79.61313, "Charleston County"], ["Bamberg", "SC", 33.2971, -81.03482, "Bamberg County"], ["Barnwell", "SC", 33.24487, -81.35872, "Barnwell County"], ["Batesburg", "SC", 33.90792, -81.54733, "Lexington County"], ["Batesburg-Leesville", "SC", 33.91014, -81.53733, "Lexington County"], ["Beaufort", "SC", 32.43158, -80.66983, "Beaufort County"], ["Belton", "SC", 34.52289, -82.49429, "Anderson County"], ["Belvedere", "SC", 33.53097, -81.94484, "Aiken County"], ["Bennettsville", "SC", 34.61738, -79.68478, "Marlboro County"], ["Berea", "SC", 34.8854, -82.45596, "Greenville County"], ["Bishopville", "SC", 34.21821, -80.24841, "Lee County"], ["Blackville", "SC", 33.35793, -81.27066, "Barnwell County"], ["Blacksburg", "SC", 35.12124, -81.51592, "Cherokee County"], ["Bluffton", "SC", 32.23715, -80.86039, "Beaufort County"], ["Blythewood", "SC", 34.21432, -80.97398, "Richland County"], ["Boiling Springs", "SC", 33.13515, -81.43122, "Barnwell County"], ["Boiling Springs", "SC", 35.04651, -81.98177, "Spartanburg County"], ["Bonneau Beach", "SC", 33.31989, -80.00036, "Berkeley County"], ["Branchville", "SC", 33.25127, -80.81565, "Orangeburg County"], ["Brookdale", "SC", 33.50682, -80.82342, "Orangeburg County"], ["Buffalo", "SC", 34.72569, -81.68343, "Union County"], ["Burnettown", "SC", 33.51541, -81.849, "Aiken County"], ["Burton", "SC", 32.43575, -80.724, "Beaufort County"], ["Calhoun Falls", "SC", 34.09234, -82.59569, "Abbeville County"], ["Camden", "SC", 34.24654, -80.60702, "Kershaw County"], ["Cane Savannah", "SC", 33.90182, -80.45036, "Sumter County"], ["Catawba", "SC", 34.85292, -80.91119, "York County"], ["Cayce", "SC", 33.96571, -81.07398, "Lexington County"], ["Centerville", "SC", 34.53205, -82.70402, "Anderson County"], ["Centerville", "SC", 32.99573, -80.17037, "Dorchester County"], ["Central", "SC", 34.72427, -82.78125, "Pickens County"], ["Chapin", "SC", 34.16598, -81.34982, "Lexington County"], ["Charleston", "SC", 32.77657, -79.93092, "Charleston County"], ["Cheraw", "SC", 34.69766, -79.8834, "Chesterfield County"], ["Cherryvale", "SC", 33.95571, -80.45814, "Sumter County"], ["Chesterfield", "SC", 34.73599, -80.08812, "Chesterfield County"], ["Chester", "SC", 34.70486, -81.21426, "Chester County"], ["City View", "SC", 34.86151, -82.43151, "Greenville County"], ["Clearwater", "SC", 33.4968, -81.89206, "Aiken County"], ["Clemson", "SC", 34.68344, -82.83737, "Pickens County"], ["Clinton", "SC", 34.47263, -81.88066, "Laurens County"], ["Clover", "SC", 35.11125, -81.22646, "York County"], ["Columbia", "SC", 34.00071, -81.03481, "Richland County"], ["Conway", "SC", 33.836, -79.04781, "Horry County"], ["Cowpens", "SC", 35.01679, -81.80399, "Spartanburg County"], ["Dalzell", "SC", 34.01682, -80.43008, "Sumter County"], ["Darlington", "SC", 34.29988, -79.87617, "Darlington County"], ["Denmark", "SC", 33.32265, -81.14232, "Bamberg County"], ["Dentsville", "SC", 34.06404, -80.95815, "Richland County"], ["Dillon", "SC", 34.41655, -79.37116, "Dillon County"], ["Due West", "SC", 34.33345, -82.3879, "Abbeville County"], ["Duncan", "SC", 34.9379, -82.14511, "Spartanburg County"], ["Dunean", "SC", 34.82484, -82.41929, "Greenville County"], ["Easley", "SC", 34.82984, -82.60152, "Pickens County"], ["East Gaffney", "SC", 35.08013, -81.63287, "Cherokee County"], ["East Sumter", "SC", 33.92544, -80.29619, "Sumter County"], ["Edgefield", "SC", 33.78958, -81.92956, "Edgefield County"], ["Edisto", "SC", 33.47654, -80.8987, "Orangeburg County"], ["Elgin", "SC", 34.17098, -80.79425, "Kershaw County"], ["Elgin", "SC", 34.67293, -80.71896, "Lancaster County"], ["Estill", "SC", 32.75489, -81.24205, "Hampton County"], ["Eureka Mill", "SC", 34.71764, -81.1937, "Chester County"], ["Fairfax", "SC", 32.95905, -81.2365, "Allendale County"], ["Fairforest", "SC", 34.95651, -82.01011, "Spartanburg County"], ["Five Forks", "SC", 34.80484, -82.22956, "Greenville County"], ["Florence", "SC", 34.19543, -79.76256, "Florence County"], ["Folly Beach", "SC", 32.65518, -79.94037, "Charleston County"], ["Forest Acres", "SC", 34.01932, -80.98981, "Richland County"], ["Forestbrook", "SC", 33.72239, -78.95809, "Horry County"], ["Fort Mill", "SC", 35.00737, -80.94508, "York County"], ["Fountain Inn", "SC", 34.68901, -82.19567, "Greenville County"], ["Gadsden", "SC", 33.84571, -80.76592, "Richland County"], ["Gaffney", "SC", 35.07179, -81.64982, "Cherokee County"], ["Gantt", "SC", 34.80012, -82.42429, "Greenville County"], ["Garden City", "SC", 33.59295, -79.00865, "Horry County"], ["Gaston", "SC", 33.8171, -81.10093, "Lexington County"], ["Georgetown", "SC", 33.37683, -79.2945, "Georgetown County"], ["Gloverville", "SC", 33.52597, -81.83011, "Aiken County"], ["Golden Grove", "SC", 34.73401, -82.44374, "Greenville County"], ["Goose Creek", "SC", 32.98101, -80.03259, "Berkeley County"], ["Graniteville", "SC", 33.56375, -81.80789, "Aiken County"], ["Great Falls", "SC", 34.57514, -80.90202, "Chester County"], ["Greenville", "SC", 34.85262, -82.39401, "Greenville County"], ["Greenwood", "SC", 34.1954, -82.16179, "Greenwood County"], ["Greer", "SC", 34.93873, -82.22706, "Greenville County"], ["Hampton", "SC", 32.87794, -81.12761, "Hampton County"], ["Hanahan", "SC", 32.91851, -80.02203, "Berkeley County"], ["Hardeeville", "SC", 32.28714, -81.08067, "Jasper County"], ["Hartsville", "SC", 34.37404, -80.0734, "Darlington County"], ["Hilton Head Island", "SC", 32.21632, -80.75261, "Beaufort County"], ["Holly Hill", "SC", 33.32266, -80.4137, "Orangeburg County"], ["Hollywood", "SC", 32.73434, -80.24177, "Charleston County"], ["Honea Path", "SC", 34.4465, -82.39151, "Anderson County"], ["Homeland Park", "SC", 34.47066, -82.67069, "Anderson County"], ["Hopkins", "SC", 33.90432, -80.87703, "Richland County"], ["India Hook", "SC", 35.00737, -81.02174, "York County"], ["Inman", "SC", 35.04706, -82.09011, "Spartanburg County"], ["Inman Mills", "SC", 35.04151, -82.10428, "Spartanburg County"], ["Irmo", "SC", 34.08598, -81.18315, "Lexington County"], ["Irwin", "SC", 34.69376, -80.82229, "Lancaster County"], ["Isle of Palms", "SC", 32.78684, -79.7948, "Charleston County"], ["Iva", "SC", 34.3065, -82.66374, "Anderson County"], ["Jackson", "SC", 33.32542, -81.78789, "Aiken County"], ["Joanna", "SC", 34.41485, -81.81122, "Laurens County"], ["Johnsonville", "SC", 33.81794, -79.44922, "Florence County"], ["Johnston", "SC", 33.83208, -81.80094, "Edgefield County"], ["Judson", "SC", 34.83317, -82.42762, "Greenville County"], ["Kershaw", "SC", 34.55182, -80.58368, "Lancaster County"], ["Kiawah Island", "SC", 32.60824, -80.08482, "Charleston County"], ["Kingstree", "SC", 33.66766, -79.83063, "Williamsburg County"], ["Ladson", "SC", 32.98573, -80.10981, "Berkeley County"], ["Lake City", "SC", 33.871, -79.75535, "Florence County"], ["Lake Secession", "SC", 34.28455, -82.59457, "Abbeville County"], ["Lake Wylie", "SC", 35.10848, -81.04285, "York County"], ["Lakewood", "SC", 33.84683, -80.35008, "Sumter County"], ["Lancaster", "SC", 34.72043, -80.7709, "Lancaster County"], ["Lancaster Mill", "SC", 34.70931, -80.79479, "Lancaster County"], ["Landrum", "SC", 35.17511, -82.18928, "Spartanburg County"], ["Langley", "SC", 33.51791, -81.844, "Aiken County"], ["Latta", "SC", 34.3371, -79.43116, "Dillon County"], ["Laurel Bay", "SC", 32.45019, -80.78483, "Beaufort County"], ["Laurens", "SC", 34.49901, -82.01426, "Laurens County"], ["Leesville", "SC", 33.91653, -81.51344, "Lexington County"], ["Lesslie", "SC", 34.8907, -80.95647, "York County"], ["Lexington", "SC", 33.98154, -81.23621, "Lexington County"], ["Liberty", "SC", 34.78789, -82.69236, "Pickens County"], ["Lincolnville", "SC", 33.00684, -80.15537, "Charleston County"], ["Little River", "SC", 33.87323, -78.61418, "Horry County"], ["Loris", "SC", 34.05628, -78.8903, "Horry County"], ["Lyman", "SC", 34.94817, -82.12733, "Spartanburg County"], ["Manning", "SC", 33.69516, -80.21091, "Clarendon County"], ["Marion", "SC", 34.17822, -79.40061, "Marion County"], ["Mauldin", "SC", 34.77873, -82.31012, "Greenville County"], ["Mayo", "SC", 35.08401, -81.85983, "Spartanburg County"], ["McColl", "SC", 34.66877, -79.54533, "Marlboro County"], ["McCormick", "SC", 33.91346, -82.29346, "McCormick County"], ["Meggett", "SC", 32.71796, -80.23899, "Charleston County"], ["Moncks Corner", "SC", 33.19632, -80.01429, "Berkeley County"], ["Mount Pleasant", "SC", 32.79407, -79.86259, "Charleston County"], ["Mullins", "SC", 34.20572, -79.25449, "Marion County"], ["Murphys Estates", "SC", 33.60125, -81.94428, "Edgefield County"], ["Murrells Inlet", "SC", 33.551, -79.04143, "Georgetown County"], ["Myrtle Beach", "SC", 33.68906, -78.88669, "Horry County"], ["New Ellenton", "SC", 33.42153, -81.68567, "Aiken County"], ["Newberry", "SC", 34.27458, -81.61872, "Newberry County"], ["Newport", "SC", 34.98986, -81.10091, "York County"], ["Ninety Six", "SC", 34.17513, -82.02401, "Greenwood County"], ["North Augusta", "SC", 33.5018, -81.96512, "Aiken County"], ["North Charleston", "SC", 32.85462, -79.97481, "Charleston County"], ["North Hartsville", "SC", 34.39377, -80.06951, "Darlington County"], ["North Myrtle Beach", "SC", 33.81601, -78.68002, "Horry County"], ["Northlake", "SC", 34.56622, -82.68402, "Anderson County"], ["Oak Grove", "SC", 33.77821, -80.96676, "Calhoun County"], ["Oakland", "SC", 33.98293, -80.48842, "Sumter County"], ["Orangeburg", "SC", 33.49182, -80.85565, "Orangeburg County"], ["Pacolet", "SC", 34.89902, -81.76177, "Spartanburg County"], ["Pageland", "SC", 34.77321, -80.39173, "Chesterfield County"], ["Pamplico", "SC", 33.996, -79.57006, "Florence County"], ["Parker", "SC", 34.85067, -82.45346, "Greenville County"], ["Pendleton", "SC", 34.65177, -82.78375, "Anderson County"], ["Pickens", "SC", 34.88345, -82.70736, "Pickens County"], ["Piedmont", "SC", 34.70234, -82.46457, "Anderson County"], ["Pineridge", "SC", 33.91043, -81.10454, "Lexington County"], ["Port Royal", "SC", 32.37908, -80.69261, "Beaufort County"], ["Powdersville", "SC", 34.79178, -82.49291, "Anderson County"], ["Privateer", "SC", 33.83321, -80.41425, "Sumter County"], ["Prosperity", "SC", 34.20931, -81.53316, "Newberry County"], ["Ravenel", "SC", 32.76323, -80.2501, "Charleston County"], ["Red Bank", "SC", 33.93209, -81.23843, "Lexington County"], ["Red Hill", "SC", 33.99961, -79.2581, "Horry County"], ["Red Hill", "SC", 33.82073, -79.01892, "Horry County"], ["Ridgeland", "SC", 32.48074, -80.98039, "Jasper County"], ["Ridgeville", "SC", 33.09572, -80.31537, "Dorchester County"], ["Rock Hill", "SC", 34.92487, -81.02508, "York County"], ["Roebuck", "SC", 34.87957, -81.96621, "Spartanburg County"], ["Saint Andrews", "SC", 34.04543, -81.12926, "Lexington County"], ["Saint George", "SC", 33.186, -80.57565, "Dorchester County"], ["Saint Matthews", "SC", 33.66488, -80.77787, "Calhoun County"], ["Saint Stephen", "SC", 33.40433, -79.92174, "Berkeley County"], ["Saluda", "SC", 34.00152, -81.77205, "Saluda County"], ["Sangaree", "SC", 33.03545, -80.12787, "Berkeley County"], ["Sans Souci", "SC", 34.8779, -82.42401, "Greenville County"], ["Saxon", "SC", 34.96123, -81.96733, "Spartanburg County"], ["Seabrook Island", "SC", 32.57713, -80.17065, "Charleston County"], ["Seneca", "SC", 34.68566, -82.9532, "Oconee County"], ["Seven Oaks", "SC", 34.04876, -81.14648, "Lexington County"], ["Shell Point", "SC", 32.38353, -80.73594, "Beaufort County"], ["Shell Point", "SC", 32.78907, -80.10676, "Charleston County"], ["Simpsonville", "SC", 34.73706, -82.25428, "Greenville County"], ["Socastee", "SC", 33.6835, -78.99837, "Horry County"], ["South Congaree", "SC", 33.91099, -81.13565, "Lexington County"], ["South Sumter", "SC", 33.90571, -80.34619, "Sumter County"], ["Southern Shops", "SC", 34.98595, -81.99455, "Spartanburg County"], ["Spartanburg", "SC", 34.94957, -81.93205, "Spartanburg County"], ["Springdale", "SC", 34.68931, -80.78618, "Lancaster County"], ["Springdale", "SC", 33.95932, -81.10898, "Lexington County"], ["Stateburg", "SC", 33.95765, -80.53481, "Sumter County"], ["Sullivans Island", "SC", 32.76323, -79.83675, "Charleston County"], ["Summerville", "SC", 33.0185, -80.17565, "Dorchester County"], ["Sumter", "SC", 33.92044, -80.34147, "Sumter County"], ["Surfside Beach", "SC", 33.606, -78.97309, "Horry County"], ["Taylors", "SC", 34.92039, -82.29623, "Greenville County"], ["Tega Cay", "SC", 35.02431, -81.02785, "York County"], ["Tigerville", "SC", 35.06845, -82.36845, "Greenville County"], ["Timmonsville", "SC", 34.13488, -79.93979, "Florence County"], ["Travelers Rest", "SC", 34.96762, -82.44345, "Greenville County"], ["Union", "SC", 34.71541, -81.62371, "Union County"], ["Utica", "SC", 34.67816, -82.93154, "Oconee County"], ["Valley Falls", "SC", 35.01595, -81.97483, "Spartanburg County"], ["Varnville", "SC", 32.85044, -81.07927, "Hampton County"], ["Wade Hampton", "SC", 34.90373, -82.33317, "Greenville County"], ["Walhalla", "SC", 34.76482, -83.06404, "Oconee County"], ["Walterboro", "SC", 32.90517, -80.66677, "Colleton County"], ["Ware Shoals", "SC", 34.39845, -82.24679, "Greenwood County"], ["Warrenville", "SC", 33.55097, -81.804, "Aiken County"], ["Wedgefield", "SC", 33.89266, -80.51814, "Sumter County"], ["Wedgewood", "SC", 33.88377, -80.51258, "Sumter County"], ["Welcome", "SC", 34.82651, -82.43901, "Greenville County"], ["Wellford", "SC", 34.95095, -82.10594, "Spartanburg County"], ["West Columbia", "SC", 33.99349, -81.07398, "Lexington County"], ["Westminster", "SC", 34.66482, -83.09654, "Oconee County"], ["Whitmire", "SC", 34.50291, -81.61149, "Newberry County"], ["Wilkinson Heights", "SC", 33.5021, -80.83315, "Orangeburg County"], ["Williamston", "SC", 34.61845, -82.47791, "Anderson County"], ["Williston", "SC", 33.40265, -81.42011, "Barnwell County"], ["Winnsboro", "SC", 34.3807, -81.08648, "Fairfield County"], ["Winnsboro Mills", "SC", 34.36181, -81.08537, "Fairfield County"], ["Woodfield", "SC", 34.05932, -80.93092, "Richland County"], ["Woodruff", "SC", 34.73957, -82.03705, "Spartanburg County"], ["Yemassee", "SC", 32.69018, -80.85066, "Hampton County"], ["York", "SC", 34.9943, -81.24202, "York County"], ["Milton", "GA", 34.13216, -84.30067, "Fulton County"], ["Johns Creek", "GA", 34.02893, -84.19858, "Fulton County"], ["Chattahoochee Hills", "GA", 33.55063, -84.76049, "Fulton County"], ["Fort Stewart", "GA", 31.87217, -81.61001, "Liberty County"], ["Candler-McAfee", "GA", 33.72672, -84.27246, "DeKalb County"], ["Slater-Marietta", "SC", 35.03472, -82.49265, "Greenville County"], ["Watts Mills", "SC", 34.51641, -81.9858, "Laurens County"], ["Kings Bay Base", "GA", 30.79836, -81.56589, "Camden County"], ["Lake Murray of Richland", "SC", 34.12048, -81.2645, "Richland County"], ["Monarch Mill", "SC", 34.7161, -81.585, "Union County"], ["Oak Grove", "SC", 33.9809, -81.14286, "Lexington County"], ["Robins Air Force Base", "GA", 32.60911, -83.58444, "Houston County"], ["Firing Range", "GA", 33.43752, -82.69068, "Warren County"], ["West Warrenton", "GA", 33.41217, -82.67517, "Warren County"], ["St Marys", "GA", 30.75677, -81.57173, "Camden County"]]}
+{
+"source": "GeoNames cities1000 (CC BY 4.0) via reverse_geocoder 1.5.1, population >= 1000; plus US Census Gazetteer 2023 places (public domain) missing from GeoNames, by scripts/build_towns.py",
+"columns": [
+"name",
+"state",
+"lat",
+"lon",
+"county",
+"source"
+],
+"rows": [
+[
+"Lugoff",
+"SC",
+34.22737,
+-80.68925,
+"Kershaw County",
+"geonames"
+],
+[
+"Abbeville",
+"GA",
+31.99212,
+-83.30682,
+"Wilcox County",
+"geonames"
+],
+[
+"Acworth",
+"GA",
+34.06635,
+-84.67837,
+"Cobb County",
+"geonames"
+],
+[
+"Adairsville",
+"GA",
+34.3687,
+-84.93411,
+"Bartow County",
+"geonames"
+],
+[
+"Adel",
+"GA",
+31.13727,
+-83.42408,
+"Cook County",
+"geonames"
+],
+[
+"Alamo",
+"GA",
+32.14712,
+-82.77792,
+"Wheeler County",
+"geonames"
+],
+[
+"Albany",
+"GA",
+31.57851,
+-84.15574,
+"Dougherty County",
+"geonames"
+],
+[
+"Alma",
+"GA",
+31.53937,
+-82.46236,
+"Bacon County",
+"geonames"
+],
+[
+"Alpharetta",
+"GA",
+34.07538,
+-84.29409,
+"Fulton County",
+"geonames"
+],
+[
+"Alto",
+"GA",
+34.46732,
+-83.57378,
+"Banks County",
+"geonames"
+],
+[
+"Americus",
+"GA",
+32.07239,
+-84.23269,
+"Sumter County",
+"geonames"
+],
+[
+"Appling",
+"GA",
+33.54608,
+-82.3173,
+"Columbia County",
+"geonames"
+],
+[
+"Aragon",
+"GA",
+34.04565,
+-85.05606,
+"Polk County",
+"geonames"
+],
+[
+"Arcade",
+"GA",
+34.07789,
+-83.56155,
+"Jackson County",
+"geonames"
+],
+[
+"Arlington",
+"GA",
+31.4399,
+-84.72492,
+"Calhoun County",
+"geonames"
+],
+[
+"Ashburn",
+"GA",
+31.70601,
+-83.65322,
+"Turner County",
+"geonames"
+],
+[
+"Athens",
+"GA",
+33.96095,
+-83.37794,
+"Clarke County",
+"geonames"
+],
+[
+"Atlanta",
+"GA",
+33.749,
+-84.38798,
+"Fulton County",
+"geonames"
+],
+[
+"Auburn",
+"GA",
+34.01372,
+-83.82768,
+"Barrow County",
+"geonames"
+],
+[
+"Augusta",
+"GA",
+33.47097,
+-81.97484,
+"Richmond County",
+"geonames"
+],
+[
+"Austell",
+"GA",
+33.81261,
+-84.63438,
+"Cobb County",
+"geonames"
+],
+[
+"Avondale Estates",
+"GA",
+33.77149,
+-84.26714,
+"DeKalb County",
+"geonames"
+],
+[
+"Bainbridge",
+"GA",
+30.9038,
+-84.57547,
+"Decatur County",
+"geonames"
+],
+[
+"Baldwin",
+"GA",
+34.49177,
+-83.53739,
+"Habersham County",
+"geonames"
+],
+[
+"Ball Ground",
+"GA",
+34.33815,
+-84.37659,
+"Cherokee County",
+"geonames"
+],
+[
+"Barnesville",
+"GA",
+33.05457,
+-84.15575,
+"Lamar County",
+"geonames"
+],
+[
+"Baxley",
+"GA",
+31.77825,
+-82.34846,
+"Appling County",
+"geonames"
+],
+[
+"Belvedere Park",
+"GA",
+33.75483,
+-84.26742,
+"DeKalb County",
+"geonames"
+],
+[
+"Berkeley Lake",
+"GA",
+33.98371,
+-84.18658,
+"Gwinnett County",
+"geonames"
+],
+[
+"Blackshear",
+"GA",
+31.30605,
+-82.24207,
+"Pierce County",
+"geonames"
+],
+[
+"Blairsville",
+"GA",
+34.8762,
+-83.95824,
+"Union County",
+"geonames"
+],
+[
+"Blakely",
+"GA",
+31.37768,
+-84.93409,
+"Early County",
+"geonames"
+],
+[
+"Bloomingdale",
+"GA",
+32.13242,
+-81.299,
+"Chatham County",
+"geonames"
+],
+[
+"Blue Ridge",
+"GA",
+34.86397,
+-84.32409,
+"Fannin County",
+"geonames"
+],
+[
+"Bogart",
+"GA",
+33.94928,
+-83.53461,
+"Oconee County",
+"geonames"
+],
+[
+"Bonanza",
+"GA",
+33.46567,
+-84.33659,
+"Clayton County",
+"geonames"
+],
+[
+"Boston",
+"GA",
+30.79186,
+-83.78989,
+"Thomas County",
+"geonames"
+],
+[
+"Bowdon",
+"GA",
+33.53789,
+-85.25328,
+"Carroll County",
+"geonames"
+],
+[
+"Braselton",
+"GA",
+34.10927,
+-83.76267,
+"Jackson County",
+"geonames"
+],
+[
+"Bremen",
+"GA",
+33.72122,
+-85.1455,
+"Haralson County",
+"geonames"
+],
+[
+"Brooklet",
+"GA",
+32.37963,
+-81.66317,
+"Bulloch County",
+"geonames"
+],
+[
+"Broxton",
+"GA",
+31.62519,
+-82.88681,
+"Coffee County",
+"geonames"
+],
+[
+"Brunswick",
+"GA",
+31.14995,
+-81.49149,
+"Glynn County",
+"geonames"
+],
+[
+"Buchanan",
+"GA",
+33.8026,
+-85.18856,
+"Haralson County",
+"geonames"
+],
+[
+"Buena Vista",
+"GA",
+32.31904,
+-84.51714,
+"Marion County",
+"geonames"
+],
+[
+"Buford",
+"GA",
+34.12066,
+-84.00435,
+"Gwinnett County",
+"geonames"
+],
+[
+"Butler",
+"GA",
+32.55709,
+-84.23825,
+"Taylor County",
+"geonames"
+],
+[
+"Byron",
+"GA",
+32.65376,
+-83.75963,
+"Peach County",
+"geonames"
+],
+[
+"Cairo",
+"GA",
+30.87751,
+-84.20214,
+"Grady County",
+"geonames"
+],
+[
+"Calhoun",
+"GA",
+34.50259,
+-84.95105,
+"Gordon County",
+"geonames"
+],
+[
+"Camilla",
+"GA",
+31.23129,
+-84.21046,
+"Mitchell County",
+"geonames"
+],
+[
+"Canton",
+"GA",
+34.23676,
+-84.49076,
+"Cherokee County",
+"geonames"
+],
+[
+"Carnesville",
+"GA",
+34.36983,
+-83.23516,
+"Franklin County",
+"geonames"
+],
+[
+"Carrollton",
+"GA",
+33.58011,
+-85.07661,
+"Carroll County",
+"geonames"
+],
+[
+"Cartersville",
+"GA",
+34.16533,
+-84.80231,
+"Bartow County",
+"geonames"
+],
+[
+"Cave Spring",
+"GA",
+34.1076,
+-85.33634,
+"Floyd County",
+"geonames"
+],
+[
+"Cedartown",
+"GA",
+34.05371,
+-85.25495,
+"Polk County",
+"geonames"
+],
+[
+"Centerville",
+"GA",
+32.63014,
+-83.68963,
+"Houston County",
+"geonames"
+],
+[
+"Chamblee",
+"GA",
+33.89205,
+-84.29881,
+"DeKalb County",
+"geonames"
+],
+[
+"Chatsworth",
+"GA",
+34.76591,
+-84.76994,
+"Murray County",
+"geonames"
+],
+[
+"Chattanooga Valley",
+"GA",
+34.93285,
+-85.35551,
+"Walker County",
+"geonames"
+],
+[
+"Chester",
+"GA",
+32.39378,
+-83.15293,
+"Dodge County",
+"geonames"
+],
+[
+"Chickamauga",
+"GA",
+34.87119,
+-85.29079,
+"Walker County",
+"geonames"
+],
+[
+"Clarkesville",
+"GA",
+34.6126,
+-83.52489,
+"Habersham County",
+"geonames"
+],
+[
+"Clarkston",
+"GA",
+33.80955,
+-84.23964,
+"DeKalb County",
+"geonames"
+],
+[
+"Claxton",
+"GA",
+32.16158,
+-81.904,
+"Evans County",
+"geonames"
+],
+[
+"Clayton",
+"GA",
+34.87815,
+-83.40099,
+"Rabun County",
+"geonames"
+],
+[
+"Cleveland",
+"GA",
+34.59704,
+-83.76324,
+"White County",
+"geonames"
+],
+[
+"Cochran",
+"GA",
+32.38683,
+-83.35461,
+"Bleckley County",
+"geonames"
+],
+[
+"College Park",
+"GA",
+33.65344,
+-84.44937,
+"Fulton County",
+"geonames"
+],
+[
+"Colquitt",
+"GA",
+31.17129,
+-84.73325,
+"Miller County",
+"geonames"
+],
+[
+"Columbus",
+"GA",
+32.46098,
+-84.98771,
+"Muscogee County",
+"geonames"
+],
+[
+"Comer",
+"GA",
+34.06372,
+-83.12543,
+"Madison County",
+"geonames"
+],
+[
+"Commerce",
+"GA",
+34.204,
+-83.45711,
+"Jackson County",
+"geonames"
+],
+[
+"Conley",
+"GA",
+33.64483,
+-84.32576,
+"Clayton County",
+"geonames"
+],
+[
+"Conyers",
+"GA",
+33.66761,
+-84.01769,
+"Rockdale County",
+"geonames"
+],
+[
+"Cordele",
+"GA",
+31.96351,
+-83.78239,
+"Crisp County",
+"geonames"
+],
+[
+"Cornelia",
+"GA",
+34.51149,
+-83.52712,
+"Habersham County",
+"geonames"
+],
+[
+"Country Club Estates",
+"GA",
+33.98928,
+-83.4096,
+"Clarke County",
+"geonames"
+],
+[
+"Country Club Estates",
+"GA",
+31.21273,
+-81.46427,
+"Glynn County",
+"geonames"
+],
+[
+"Covington",
+"GA",
+33.59678,
+-83.86018,
+"Newton County",
+"geonames"
+],
+[
+"Crawfordville",
+"GA",
+33.55402,
+-82.89598,
+"Taliaferro County",
+"geonames"
+],
+[
+"Cumming",
+"GA",
+34.20732,
+-84.14019,
+"Forsyth County",
+"geonames"
+],
+[
+"Cusseta",
+"GA",
+32.30543,
+-84.7727,
+"Chattahoochee County",
+"geonames"
+],
+[
+"Cuthbert",
+"GA",
+31.77127,
+-84.78937,
+"Randolph County",
+"geonames"
+],
+[
+"Dacula",
+"GA",
+33.98872,
+-83.89796,
+"Gwinnett County",
+"geonames"
+],
+[
+"Dahlonega",
+"GA",
+34.53259,
+-83.98491,
+"Lumpkin County",
+"geonames"
+],
+[
+"Dalton",
+"GA",
+34.7698,
+-84.97022,
+"Whitfield County",
+"geonames"
+],
+[
+"Dallas",
+"GA",
+33.92371,
+-84.84077,
+"Paulding County",
+"geonames"
+],
+[
+"Danielsville",
+"GA",
+34.12428,
+-83.22126,
+"Madison County",
+"geonames"
+],
+[
+"Darien",
+"GA",
+31.37023,
+-81.43399,
+"McIntosh County",
+"geonames"
+],
+[
+"Davisboro",
+"GA",
+32.97904,
+-82.60791,
+"Washington County",
+"geonames"
+],
+[
+"Dawson",
+"GA",
+31.77382,
+-84.448,
+"Terrell County",
+"geonames"
+],
+[
+"Dawsonville",
+"GA",
+34.42121,
+-84.11908,
+"Dawson County",
+"geonames"
+],
+[
+"Decatur",
+"GA",
+33.77483,
+-84.29631,
+"DeKalb County",
+"geonames"
+],
+[
+"Deenwood",
+"GA",
+31.22201,
+-82.38725,
+"Ware County",
+"geonames"
+],
+[
+"Demorest",
+"GA",
+34.5651,
+-83.54517,
+"Habersham County",
+"geonames"
+],
+[
+"Dock Junction",
+"GA",
+31.20245,
+-81.51677,
+"Glynn County",
+"geonames"
+],
+[
+"Donalsonville",
+"GA",
+31.04046,
+-84.87909,
+"Seminole County",
+"geonames"
+],
+[
+"Doraville",
+"GA",
+33.89816,
+-84.28326,
+"DeKalb County",
+"geonames"
+],
+[
+"Douglas",
+"GA",
+31.50881,
+-82.84987,
+"Coffee County",
+"geonames"
+],
+[
+"Douglasville",
+"GA",
+33.7515,
+-84.74771,
+"Douglas County",
+"geonames"
+],
+[
+"Druid Hills",
+"GA",
+33.78038,
+-84.33604,
+"DeKalb County",
+"geonames"
+],
+[
+"Dublin",
+"GA",
+32.54044,
+-82.90375,
+"Laurens County",
+"geonames"
+],
+[
+"Duluth",
+"GA",
+34.00288,
+-84.14464,
+"Gwinnett County",
+"geonames"
+],
+[
+"Dunwoody",
+"GA",
+33.94621,
+-84.33465,
+"DeKalb County",
+"geonames"
+],
+[
+"East Dublin",
+"GA",
+32.54822,
+-82.87181,
+"Laurens County",
+"geonames"
+],
+[
+"East Griffin",
+"GA",
+33.24373,
+-84.22881,
+"Spalding County",
+"geonames"
+],
+[
+"East Point",
+"GA",
+33.67955,
+-84.43937,
+"Fulton County",
+"geonames"
+],
+[
+"East Newnan",
+"GA",
+33.35067,
+-84.7766,
+"Coweta County",
+"geonames"
+],
+[
+"Eastman",
+"GA",
+32.19767,
+-83.17765,
+"Dodge County",
+"geonames"
+],
+[
+"Eatonton",
+"GA",
+33.3268,
+-83.3885,
+"Putnam County",
+"geonames"
+],
+[
+"Edison",
+"GA",
+31.55823,
+-84.73825,
+"Calhoun County",
+"geonames"
+],
+[
+"Elberton",
+"GA",
+34.11159,
+-82.86863,
+"Elbert County",
+"geonames"
+],
+[
+"Ellaville",
+"GA",
+32.23821,
+-84.30908,
+"Schley County",
+"geonames"
+],
+[
+"Ellijay",
+"GA",
+34.69481,
+-84.48215,
+"Gilmer County",
+"geonames"
+],
+[
+"Emerson",
+"GA",
+34.12704,
+-84.75549,
+"Bartow County",
+"geonames"
+],
+[
+"Enigma",
+"GA",
+31.41297,
+-83.32905,
+"Berrien County",
+"geonames"
+],
+[
+"Euharlee",
+"GA",
+34.14482,
+-84.933,
+"Bartow County",
+"geonames"
+],
+[
+"Evans",
+"GA",
+33.53375,
+-82.13067,
+"Columbia County",
+"geonames"
+],
+[
+"Experiment",
+"GA",
+33.26539,
+-84.28159,
+"Spalding County",
+"geonames"
+],
+[
+"Fair Oaks",
+"GA",
+33.91649,
+-84.54465,
+"Cobb County",
+"geonames"
+],
+[
+"Fairburn",
+"GA",
+33.56706,
+-84.58104,
+"Fulton County",
+"geonames"
+],
+[
+"Fairview",
+"GA",
+34.94563,
+-85.2844,
+"Walker County",
+"geonames"
+],
+[
+"Fayetteville",
+"GA",
+33.44873,
+-84.45493,
+"Fayette County",
+"geonames"
+],
+[
+"Fitzgerald",
+"GA",
+31.71491,
+-83.25265,
+"Ben Hill County",
+"geonames"
+],
+[
+"Flowery Branch",
+"GA",
+34.1851,
+-83.92518,
+"Hall County",
+"geonames"
+],
+[
+"Folkston",
+"GA",
+30.83095,
+-82.01131,
+"Charlton County",
+"geonames"
+],
+[
+"Forest Park",
+"GA",
+33.62205,
+-84.36909,
+"Clayton County",
+"geonames"
+],
+[
+"Forsyth",
+"GA",
+33.0343,
+-83.93824,
+"Monroe County",
+"geonames"
+],
+[
+"Fort Gaines",
+"GA",
+31.60924,
+-85.04933,
+"Clay County",
+"geonames"
+],
+[
+"Fort Oglethorpe",
+"GA",
+34.94896,
+-85.2569,
+"Catoosa County",
+"geonames"
+],
+[
+"Fort Valley",
+"GA",
+32.55376,
+-83.88741,
+"Peach County",
+"geonames"
+],
+[
+"Franklin",
+"GA",
+33.27762,
+-85.098,
+"Heard County",
+"geonames"
+],
+[
+"Gainesville",
+"GA",
+34.29788,
+-83.82407,
+"Hall County",
+"geonames"
+],
+[
+"Garden City",
+"GA",
+32.11437,
+-81.154,
+"Chatham County",
+"geonames"
+],
+[
+"Georgetown",
+"GA",
+31.98326,
+-81.22733,
+"Chatham County",
+"geonames"
+],
+[
+"Georgetown",
+"GA",
+31.88461,
+-85.10743,
+"Quitman County",
+"geonames"
+],
+[
+"Gibson",
+"GA",
+33.23348,
+-82.59541,
+"Glascock County",
+"geonames"
+],
+[
+"Glennville",
+"GA",
+31.93659,
+-81.92845,
+"Tattnall County",
+"geonames"
+],
+[
+"Gordon",
+"GA",
+32.88209,
+-83.33238,
+"Wilkinson County",
+"geonames"
+],
+[
+"Grantville",
+"GA",
+33.23484,
+-84.83577,
+"Coweta County",
+"geonames"
+],
+[
+"Gray",
+"GA",
+33.00958,
+-83.53378,
+"Jones County",
+"geonames"
+],
+[
+"Grayson",
+"GA",
+33.89427,
+-83.95574,
+"Gwinnett County",
+"geonames"
+],
+[
+"Greensboro",
+"GA",
+33.57568,
+-83.18238,
+"Greene County",
+"geonames"
+],
+[
+"Greenville",
+"GA",
+33.02874,
+-84.71298,
+"Meriwether County",
+"geonames"
+],
+[
+"Gresham Park",
+"GA",
+33.70344,
+-84.31437,
+"DeKalb County",
+"geonames"
+],
+[
+"Griffin",
+"GA",
+33.24678,
+-84.26409,
+"Spalding County",
+"geonames"
+],
+[
+"Grovetown",
+"GA",
+33.45042,
+-82.19818,
+"Columbia County",
+"geonames"
+],
+[
+"Gumlog",
+"GA",
+34.49177,
+-83.09654,
+"Franklin County",
+"geonames"
+],
+[
+"Guyton",
+"GA",
+32.3363,
+-81.3915,
+"Effingham County",
+"geonames"
+],
+[
+"Hahira",
+"GA",
+30.99131,
+-83.37266,
+"Lowndes County",
+"geonames"
+],
+[
+"Hamilton",
+"GA",
+32.75791,
+-84.87493,
+"Harris County",
+"geonames"
+],
+[
+"Hampton",
+"GA",
+33.38706,
+-84.28298,
+"Henry County",
+"geonames"
+],
+[
+"Hannahs Mill",
+"GA",
+32.93291,
+-84.34936,
+"Upson County",
+"geonames"
+],
+[
+"Hapeville",
+"GA",
+33.66011,
+-84.4102,
+"Fulton County",
+"geonames"
+],
+[
+"Hardwick",
+"GA",
+33.0682,
+-83.22349,
+"Baldwin County",
+"geonames"
+],
+[
+"Harlem",
+"GA",
+33.41458,
+-82.31262,
+"Columbia County",
+"geonames"
+],
+[
+"Hartwell",
+"GA",
+34.35288,
+-82.93209,
+"Hart County",
+"geonames"
+],
+[
+"Hawkinsville",
+"GA",
+32.28377,
+-83.47212,
+"Pulaski County",
+"geonames"
+],
+[
+"Hazlehurst",
+"GA",
+31.86963,
+-82.5943,
+"Jeff Davis County",
+"geonames"
+],
+[
+"Helena",
+"GA",
+32.07379,
+-82.91459,
+"Telfair County",
+"geonames"
+],
+[
+"Hephzibah",
+"GA",
+33.31403,
+-82.09679,
+"Richmond County",
+"geonames"
+],
+[
+"Hiawassee",
+"GA",
+34.94926,
+-83.75739,
+"Towns County",
+"geonames"
+],
+[
+"Hinesville",
+"GA",
+31.84688,
+-81.59595,
+"Liberty County",
+"geonames"
+],
+[
+"Hiram",
+"GA",
+33.87566,
+-84.76216,
+"Paulding County",
+"geonames"
+],
+[
+"Hogansville",
+"GA",
+33.17318,
+-84.91494,
+"Troup County",
+"geonames"
+],
+[
+"Holly Springs",
+"GA",
+34.17399,
+-84.50132,
+"Cherokee County",
+"geonames"
+],
+[
+"Homer",
+"GA",
+34.33372,
+-83.49905,
+"Banks County",
+"geonames"
+],
+[
+"Homerville",
+"GA",
+31.0366,
+-82.74708,
+"Clinch County",
+"geonames"
+],
+[
+"Hoschton",
+"GA",
+34.0965,
+-83.76128,
+"Jackson County",
+"geonames"
+],
+[
+"Indian Springs",
+"GA",
+33.24262,
+-83.92074,
+"Butts County",
+"geonames"
+],
+[
+"Indian Springs",
+"GA",
+34.95785,
+-85.1644,
+"Catoosa County",
+"geonames"
+],
+[
+"Irondale",
+"GA",
+33.48067,
+-84.35881,
+"Clayton County",
+"geonames"
+],
+[
+"Irwinton",
+"GA",
+32.81126,
+-83.17265,
+"Wilkinson County",
+"geonames"
+],
+[
+"Isle of Hope",
+"GA",
+31.98188,
+-81.06094,
+"Chatham County",
+"geonames"
+],
+[
+"Jackson",
+"GA",
+33.29457,
+-83.96602,
+"Butts County",
+"geonames"
+],
+[
+"Jasper",
+"GA",
+34.46787,
+-84.42909,
+"Pickens County",
+"geonames"
+],
+[
+"Jefferson",
+"GA",
+34.11705,
+-83.57239,
+"Jackson County",
+"geonames"
+],
+[
+"Jefferson",
+"GA",
+33.4493,
+-83.31155,
+"Putnam County",
+"geonames"
+],
+[
+"Jeffersonville",
+"GA",
+32.68765,
+-83.34656,
+"Twiggs County",
+"geonames"
+],
+[
+"Jesup",
+"GA",
+31.60785,
+-81.88634,
+"Wayne County",
+"geonames"
+],
+[
+"Jonesboro",
+"GA",
+33.5215,
+-84.35381,
+"Clayton County",
+"geonames"
+],
+[
+"Kennesaw",
+"GA",
+34.02343,
+-84.61549,
+"Cobb County",
+"geonames"
+],
+[
+"Kingsland",
+"GA",
+30.79996,
+-81.68983,
+"Camden County",
+"geonames"
+],
+[
+"Knoxville",
+"GA",
+32.72431,
+-83.99769,
+"Crawford County",
+"geonames"
+],
+[
+"La Grange",
+"GA",
+33.03929,
+-85.03133,
+"Troup County",
+"geonames"
+],
+[
+"LaFayette",
+"GA",
+34.7048,
+-85.2819,
+"Walker County",
+"geonames"
+],
+[
+"Lake City",
+"GA",
+33.6065,
+-84.3352,
+"Clayton County",
+"geonames"
+],
+[
+"Lakeland",
+"GA",
+31.04104,
+-83.07515,
+"Lanier County",
+"geonames"
+],
+[
+"Lakeview",
+"GA",
+34.97924,
+-85.25884,
+"Catoosa County",
+"geonames"
+],
+[
+"Lakeview Estates",
+"GA",
+33.70678,
+-84.03158,
+"Rockdale County",
+"geonames"
+],
+[
+"Lavonia",
+"GA",
+34.43594,
+-83.10682,
+"Franklin County",
+"geonames"
+],
+[
+"Lawrenceville",
+"GA",
+33.95621,
+-83.98796,
+"Gwinnett County",
+"geonames"
+],
+[
+"Leesburg",
+"GA",
+31.73212,
+-84.17074,
+"Lee County",
+"geonames"
+],
+[
+"Lexington",
+"GA",
+33.86984,
+-83.11182,
+"Oglethorpe County",
+"geonames"
+],
+[
+"Lilburn",
+"GA",
+33.8901,
+-84.14297,
+"Gwinnett County",
+"geonames"
+],
+[
+"Lincolnton",
+"GA",
+33.79235,
+-82.47902,
+"Lincoln County",
+"geonames"
+],
+[
+"Lindale",
+"GA",
+34.18676,
+-85.17467,
+"Floyd County",
+"geonames"
+],
+[
+"Lithia Springs",
+"GA",
+33.794,
+-84.66049,
+"Douglas County",
+"geonames"
+],
+[
+"Lithonia",
+"GA",
+33.71233,
+-84.10519,
+"DeKalb County",
+"geonames"
+],
+[
+"Locust Grove",
+"GA",
+33.34595,
+-84.10908,
+"Henry County",
+"geonames"
+],
+[
+"Loganville",
+"GA",
+33.839,
+-83.90074,
+"Walton County",
+"geonames"
+],
+[
+"Lookout Mountain",
+"GA",
+34.97758,
+-85.35774,
+"Walker County",
+"geonames"
+],
+[
+"Louisville",
+"GA",
+33.00154,
+-82.41124,
+"Jefferson County",
+"geonames"
+],
+[
+"Lovejoy",
+"GA",
+33.43622,
+-84.31437,
+"Clayton County",
+"geonames"
+],
+[
+"Ludowici",
+"GA",
+31.70799,
+-81.74234,
+"Long County",
+"geonames"
+],
+[
+"Lula",
+"GA",
+34.3876,
+-83.66629,
+"Hall County",
+"geonames"
+],
+[
+"Lumber City",
+"GA",
+31.92935,
+-82.67958,
+"Telfair County",
+"geonames"
+],
+[
+"Lumpkin",
+"GA",
+32.05099,
+-84.79909,
+"Stewart County",
+"geonames"
+],
+[
+"Lyons",
+"GA",
+32.20435,
+-82.32179,
+"Toombs County",
+"geonames"
+],
+[
+"Mableton",
+"GA",
+33.81872,
+-84.58243,
+"Cobb County",
+"geonames"
+],
+[
+"Macon",
+"GA",
+32.84069,
+-83.6324,
+"Bibb County",
+"geonames"
+],
+[
+"Madison",
+"GA",
+33.59568,
+-83.46794,
+"Morgan County",
+"geonames"
+],
+[
+"Manchester",
+"GA",
+32.85985,
+-84.61993,
+"Meriwether County",
+"geonames"
+],
+[
+"Marietta",
+"GA",
+33.9526,
+-84.54993,
+"Cobb County",
+"geonames"
+],
+[
+"Marshallville",
+"GA",
+32.45626,
+-83.94019,
+"Macon County",
+"geonames"
+],
+[
+"Martinez",
+"GA",
+33.51736,
+-82.07567,
+"Columbia County",
+"geonames"
+],
+[
+"Maysville",
+"GA",
+34.25288,
+-83.56155,
+"Banks County",
+"geonames"
+],
+[
+"McCaysville",
+"GA",
+34.98619,
+-84.37131,
+"Fannin County",
+"geonames"
+],
+[
+"McDonough",
+"GA",
+33.44734,
+-84.14686,
+"Henry County",
+"geonames"
+],
+[
+"McRae",
+"GA",
+32.06795,
+-82.9007,
+"Telfair County",
+"geonames"
+],
+[
+"Meigs",
+"GA",
+31.07241,
+-84.08907,
+"Thomas County",
+"geonames"
+],
+[
+"Metter",
+"GA",
+32.39712,
+-82.06012,
+"Candler County",
+"geonames"
+],
+[
+"Midway",
+"GA",
+31.80577,
+-81.43066,
+"Liberty County",
+"geonames"
+],
+[
+"Milledgeville",
+"GA",
+33.08014,
+-83.2321,
+"Baldwin County",
+"geonames"
+],
+[
+"Millen",
+"GA",
+32.80405,
+-81.94928,
+"Jenkins County",
+"geonames"
+],
+[
+"Monroe",
+"GA",
+33.79484,
+-83.71323,
+"Walton County",
+"geonames"
+],
+[
+"Montezuma",
+"GA",
+32.30516,
+-84.02741,
+"Macon County",
+"geonames"
+],
+[
+"Montgomery",
+"GA",
+31.94049,
+-81.12205,
+"Chatham County",
+"geonames"
+],
+[
+"Monticello",
+"GA",
+33.30485,
+-83.68323,
+"Jasper County",
+"geonames"
+],
+[
+"Morgan",
+"GA",
+31.53767,
+-84.59936,
+"Calhoun County",
+"geonames"
+],
+[
+"Morrow",
+"GA",
+33.58317,
+-84.33937,
+"Clayton County",
+"geonames"
+],
+[
+"Mount Airy",
+"GA",
+34.51871,
+-83.50073,
+"Habersham County",
+"geonames"
+],
+[
+"Moultrie",
+"GA",
+31.17991,
+-83.78906,
+"Colquitt County",
+"geonames"
+],
+[
+"Mount Vernon",
+"GA",
+32.17851,
+-82.59458,
+"Montgomery County",
+"geonames"
+],
+[
+"Mount Zion",
+"GA",
+33.63428,
+-85.18717,
+"Carroll County",
+"geonames"
+],
+[
+"Mount Zion",
+"GA",
+33.36125,
+-83.00765,
+"Hancock County",
+"geonames"
+],
+[
+"Mountain City",
+"GA",
+34.91815,
+-83.38544,
+"Rabun County",
+"geonames"
+],
+[
+"Mountain Park",
+"GA",
+33.84427,
+-84.12936,
+"Gwinnett County",
+"geonames"
+],
+[
+"Nahunta",
+"GA",
+31.20439,
+-81.98123,
+"Brantley County",
+"geonames"
+],
+[
+"Nashville",
+"GA",
+31.20742,
+-83.25015,
+"Berrien County",
+"geonames"
+],
+[
+"Nelson",
+"GA",
+34.38204,
+-84.37103,
+"Pickens County",
+"geonames"
+],
+[
+"Newnan",
+"GA",
+33.38067,
+-84.79966,
+"Coweta County",
+"geonames"
+],
+[
+"Newton",
+"GA",
+31.31296,
+-84.33574,
+"Baker County",
+"geonames"
+],
+[
+"Nicholls",
+"GA",
+31.51742,
+-82.63486,
+"Coffee County",
+"geonames"
+],
+[
+"Nicholson",
+"GA",
+34.114,
+-83.43155,
+"Jackson County",
+"geonames"
+],
+[
+"Norcross",
+"GA",
+33.94121,
+-84.21353,
+"Gwinnett County",
+"geonames"
+],
+[
+"North Atlanta",
+"GA",
+33.8651,
+-84.33659,
+"DeKalb County",
+"geonames"
+],
+[
+"North Decatur",
+"GA",
+33.79038,
+-84.30603,
+"DeKalb County",
+"geonames"
+],
+[
+"North Druid Hills",
+"GA",
+33.81677,
+-84.31326,
+"DeKalb County",
+"geonames"
+],
+[
+"Oakwood",
+"GA",
+34.2276,
+-83.88435,
+"Hall County",
+"geonames"
+],
+[
+"Oakwood",
+"GA",
+33.54817,
+-83.97435,
+"Newton County",
+"geonames"
+],
+[
+"Ocilla",
+"GA",
+31.59447,
+-83.2513,
+"Irwin County",
+"geonames"
+],
+[
+"Oglethorpe",
+"GA",
+32.29377,
+-84.06102,
+"Macon County",
+"geonames"
+],
+[
+"Omega",
+"GA",
+31.34102,
+-83.5935,
+"Tift County",
+"geonames"
+],
+[
+"Oxford",
+"GA",
+33.619,
+-83.86741,
+"Newton County",
+"geonames"
+],
+[
+"Palmetto",
+"GA",
+33.51789,
+-84.66965,
+"Fulton County",
+"geonames"
+],
+[
+"Panthersville",
+"GA",
+33.70733,
+-84.27187,
+"DeKalb County",
+"geonames"
+],
+[
+"Peachtree City",
+"GA",
+33.39678,
+-84.59576,
+"Fayette County",
+"geonames"
+],
+[
+"Pearson",
+"GA",
+31.2977,
+-82.85237,
+"Atkinson County",
+"geonames"
+],
+[
+"Pelham",
+"GA",
+31.12802,
+-84.15304,
+"Mitchell County",
+"geonames"
+],
+[
+"Pembroke",
+"GA",
+32.13634,
+-81.62348,
+"Bryan County",
+"geonames"
+],
+[
+"Perry",
+"GA",
+32.45821,
+-83.73157,
+"Houston County",
+"geonames"
+],
+[
+"Pine Mountain",
+"GA",
+33.67594,
+-84.11492,
+"DeKalb County",
+"geonames"
+],
+[
+"Pine Mountain",
+"GA",
+32.86485,
+-84.8541,
+"Harris County",
+"geonames"
+],
+[
+"Pooler",
+"GA",
+32.11548,
+-81.24706,
+"Chatham County",
+"geonames"
+],
+[
+"Port Wentworth",
+"GA",
+32.14909,
+-81.16317,
+"Chatham County",
+"geonames"
+],
+[
+"Porterdale",
+"GA",
+33.57511,
+-83.8938,
+"Newton County",
+"geonames"
+],
+[
+"Powder Springs",
+"GA",
+33.85955,
+-84.68382,
+"Cobb County",
+"geonames"
+],
+[
+"Preston",
+"GA",
+32.06599,
+-84.53742,
+"Webster County",
+"geonames"
+],
+[
+"Putney",
+"GA",
+31.47018,
+-84.11768,
+"Dougherty County",
+"geonames"
+],
+[
+"Quitman",
+"GA",
+30.78492,
+-83.55988,
+"Brooks County",
+"geonames"
+],
+[
+"Raoul",
+"GA",
+34.44954,
+-83.59434,
+"Habersham County",
+"geonames"
+],
+[
+"Ray City",
+"GA",
+31.07464,
+-83.19932,
+"Berrien County",
+"geonames"
+],
+[
+"Redan",
+"GA",
+33.74538,
+-84.13158,
+"DeKalb County",
+"geonames"
+],
+[
+"Reed Creek",
+"GA",
+34.44594,
+-82.92487,
+"Hart County",
+"geonames"
+],
+[
+"Reidsville",
+"GA",
+32.08686,
+-82.1179,
+"Tattnall County",
+"geonames"
+],
+[
+"Remerton",
+"GA",
+30.84409,
+-83.31043,
+"Lowndes County",
+"geonames"
+],
+[
+"Reynolds",
+"GA",
+32.55987,
+-84.0963,
+"Taylor County",
+"geonames"
+],
+[
+"Richland",
+"GA",
+32.08793,
+-84.66742,
+"Stewart County",
+"geonames"
+],
+[
+"Richmond Hill",
+"GA",
+31.93827,
+-81.30344,
+"Bryan County",
+"geonames"
+],
+[
+"Rincon",
+"GA",
+32.29603,
+-81.23539,
+"Effingham County",
+"geonames"
+],
+[
+"Ringgold",
+"GA",
+34.91591,
+-85.10912,
+"Catoosa County",
+"geonames"
+],
+[
+"Riverdale",
+"GA",
+33.57261,
+-84.41326,
+"Clayton County",
+"geonames"
+],
+[
+"Roberta",
+"GA",
+32.72181,
+-84.01324,
+"Crawford County",
+"geonames"
+],
+[
+"Rochelle",
+"GA",
+31.95101,
+-83.45627,
+"Wilcox County",
+"geonames"
+],
+[
+"Rockmart",
+"GA",
+34.0026,
+-85.04161,
+"Polk County",
+"geonames"
+],
+[
+"Rome",
+"GA",
+34.25704,
+-85.16467,
+"Floyd County",
+"geonames"
+],
+[
+"Roswell",
+"GA",
+34.02316,
+-84.36159,
+"Fulton County",
+"geonames"
+],
+[
+"Rossville",
+"GA",
+34.98313,
+-85.28607,
+"Walker County",
+"geonames"
+],
+[
+"Royston",
+"GA",
+34.28705,
+-83.11015,
+"Hart County",
+"geonames"
+],
+[
+"Russell",
+"GA",
+33.97872,
+-83.70017,
+"Barrow County",
+"geonames"
+],
+[
+"Rydal",
+"GA",
+34.33537,
+-84.71549,
+"Bartow County",
+"geonames"
+],
+[
+"St. Marys",
+"GA",
+30.73051,
+-81.54649,
+"Camden County",
+"geonames"
+],
+[
+"Saint Simon Mills",
+"GA",
+31.17079,
+-81.40732,
+"Glynn County",
+"geonames"
+],
+[
+"Saint Simons Island",
+"GA",
+31.15051,
+-81.36954,
+"Glynn County",
+"geonames"
+],
+[
+"Sandersville",
+"GA",
+32.98154,
+-82.81014,
+"Washington County",
+"geonames"
+],
+[
+"Sandy Springs",
+"GA",
+33.92427,
+-84.37854,
+"Fulton County",
+"geonames"
+],
+[
+"Sardis",
+"GA",
+32.79652,
+-84.63881,
+"Talbot County",
+"geonames"
+],
+[
+"Savannah",
+"GA",
+32.08354,
+-81.09983,
+"Chatham County",
+"geonames"
+],
+[
+"Scottdale",
+"GA",
+33.78983,
+-84.26409,
+"DeKalb County",
+"geonames"
+],
+[
+"Senoia",
+"GA",
+33.30234,
+-84.55382,
+"Coweta County",
+"geonames"
+],
+[
+"Shannon",
+"GA",
+34.33676,
+-85.07134,
+"Floyd County",
+"geonames"
+],
+[
+"Shannon",
+"GA",
+33.40456,
+-84.46826,
+"Fayette County",
+"geonames"
+],
+[
+"Shellman",
+"GA",
+31.75628,
+-84.6152,
+"Randolph County",
+"geonames"
+],
+[
+"Skidaway Island",
+"GA",
+31.93494,
+-81.04705,
+"Chatham County",
+"geonames"
+],
+[
+"Smyrna",
+"GA",
+33.88399,
+-84.51438,
+"Cobb County",
+"geonames"
+],
+[
+"Snellville",
+"GA",
+33.85733,
+-84.01991,
+"Gwinnett County",
+"geonames"
+],
+[
+"Social Circle",
+"GA",
+33.65623,
+-83.71823,
+"Walton County",
+"geonames"
+],
+[
+"Soperton",
+"GA",
+32.37712,
+-82.59236,
+"Treutlen County",
+"geonames"
+],
+[
+"Sparks",
+"GA",
+31.16686,
+-83.43738,
+"Cook County",
+"geonames"
+],
+[
+"Sparks",
+"GA",
+33.08793,
+-82.73764,
+"Washington County",
+"geonames"
+],
+[
+"Sparta",
+"GA",
+33.2757,
+-82.97626,
+"Hancock County",
+"geonames"
+],
+[
+"Springfield",
+"GA",
+32.37241,
+-81.3115,
+"Effingham County",
+"geonames"
+],
+[
+"Statenville",
+"GA",
+30.70327,
+-83.02764,
+"Echols County",
+"geonames"
+],
+[
+"Statesboro",
+"GA",
+32.44879,
+-81.78317,
+"Bulloch County",
+"geonames"
+],
+[
+"Statham",
+"GA",
+33.96511,
+-83.59655,
+"Barrow County",
+"geonames"
+],
+[
+"Stockbridge",
+"GA",
+33.54428,
+-84.23381,
+"Henry County",
+"geonames"
+],
+[
+"Stone Mountain",
+"GA",
+33.80816,
+-84.1702,
+"DeKalb County",
+"geonames"
+],
+[
+"Sugar Hill",
+"GA",
+34.10649,
+-84.03352,
+"Gwinnett County",
+"geonames"
+],
+[
+"Summerville",
+"GA",
+34.48064,
+-85.34773,
+"Chattooga County",
+"geonames"
+],
+[
+"Sunnyside",
+"GA",
+31.23938,
+-82.34207,
+"Ware County",
+"geonames"
+],
+[
+"Suwanee",
+"GA",
+34.05149,
+-84.0713,
+"Gwinnett County",
+"geonames"
+],
+[
+"Swainsboro",
+"GA",
+32.59739,
+-82.33374,
+"Emanuel County",
+"geonames"
+],
+[
+"Sylvania",
+"GA",
+32.75044,
+-81.63678,
+"Screven County",
+"geonames"
+],
+[
+"Sylvester",
+"GA",
+31.53092,
+-83.83693,
+"Worth County",
+"geonames"
+],
+[
+"Talbotton",
+"GA",
+32.67764,
+-84.53937,
+"Talbot County",
+"geonames"
+],
+[
+"Tallapoosa",
+"GA",
+33.74455,
+-85.28801,
+"Haralson County",
+"geonames"
+],
+[
+"Temple",
+"GA",
+33.73705,
+-85.03244,
+"Carroll County",
+"geonames"
+],
+[
+"Tennille",
+"GA",
+32.93599,
+-82.81153,
+"Washington County",
+"geonames"
+],
+[
+"Thomasville",
+"GA",
+30.83658,
+-83.97878,
+"Thomas County",
+"geonames"
+],
+[
+"Thomaston",
+"GA",
+32.88819,
+-84.32659,
+"Upson County",
+"geonames"
+],
+[
+"Thomson",
+"GA",
+33.47069,
+-82.50457,
+"McDuffie County",
+"geonames"
+],
+[
+"Thunderbolt",
+"GA",
+32.03354,
+-81.04983,
+"Chatham County",
+"geonames"
+],
+[
+"Tifton",
+"GA",
+31.45046,
+-83.5085,
+"Tift County",
+"geonames"
+],
+[
+"Toccoa",
+"GA",
+34.57732,
+-83.33239,
+"Stephens County",
+"geonames"
+],
+[
+"Trenton",
+"GA",
+34.87202,
+-85.50913,
+"Dade County",
+"geonames"
+],
+[
+"Trion",
+"GA",
+34.54397,
+-85.31051,
+"Chattooga County",
+"geonames"
+],
+[
+"Tucker",
+"GA",
+33.85455,
+-84.21714,
+"DeKalb County",
+"geonames"
+],
+[
+"Twin City",
+"GA",
+32.58294,
+-82.15512,
+"Emanuel County",
+"geonames"
+],
+[
+"Tybee Island",
+"GA",
+32.00022,
+-80.84567,
+"Chatham County",
+"geonames"
+],
+[
+"Tyrone",
+"GA",
+33.47123,
+-84.59715,
+"Fayette County",
+"geonames"
+],
+[
+"Unadilla",
+"GA",
+32.26155,
+-83.73657,
+"Dooly County",
+"geonames"
+],
+[
+"Union City",
+"GA",
+33.58706,
+-84.54243,
+"Fulton County",
+"geonames"
+],
+[
+"Union Point",
+"GA",
+33.61568,
+-83.0746,
+"Greene County",
+"geonames"
+],
+[
+"Unionville",
+"GA",
+31.43491,
+-83.50961,
+"Tift County",
+"geonames"
+],
+[
+"Valdosta",
+"GA",
+30.83334,
+-83.28032,
+"Lowndes County",
+"geonames"
+],
+[
+"Varnell",
+"GA",
+34.90119,
+-84.97383,
+"Whitfield County",
+"geonames"
+],
+[
+"Vidalia",
+"GA",
+32.21769,
+-82.41346,
+"Toombs County",
+"geonames"
+],
+[
+"Vienna",
+"GA",
+32.09156,
+-83.79545,
+"Dooly County",
+"geonames"
+],
+[
+"Villa Rica",
+"GA",
+33.73205,
+-84.91911,
+"Carroll County",
+"geonames"
+],
+[
+"Vinings",
+"GA",
+33.86483,
+-84.46437,
+"Cobb County",
+"geonames"
+],
+[
+"Wadley",
+"GA",
+32.86682,
+-82.40402,
+"Jefferson County",
+"geonames"
+],
+[
+"Walnut Grove",
+"GA",
+33.74261,
+-83.8524,
+"Walton County",
+"geonames"
+],
+[
+"Walthourville",
+"GA",
+31.7741,
+-81.63261,
+"Liberty County",
+"geonames"
+],
+[
+"Warner Robins",
+"GA",
+32.62098,
+-83.5999,
+"Houston County",
+"geonames"
+],
+[
+"Warrenton",
+"GA",
+33.40708,
+-82.66208,
+"Warren County",
+"geonames"
+],
+[
+"Washington",
+"GA",
+33.73679,
+-82.73931,
+"Wilkes County",
+"geonames"
+],
+[
+"Watkinsville",
+"GA",
+33.8629,
+-83.40877,
+"Oconee County",
+"geonames"
+],
+[
+"Waycross",
+"GA",
+31.21368,
+-82.3557,
+"Ware County",
+"geonames"
+],
+[
+"Waynesboro",
+"GA",
+33.08987,
+-82.01567,
+"Burke County",
+"geonames"
+],
+[
+"West Point",
+"GA",
+32.87791,
+-85.18327,
+"Troup County",
+"geonames"
+],
+[
+"West Point",
+"GA",
+32.79347,
+-83.80741,
+"Bibb County",
+"geonames"
+],
+[
+"Whitemarsh Island",
+"GA",
+32.02882,
+-81.01678,
+"Chatham County",
+"geonames"
+],
+[
+"Willacoochee",
+"GA",
+31.34076,
+-83.04598,
+"Atkinson County",
+"geonames"
+],
+[
+"Wilmington Island",
+"GA",
+32.00355,
+-80.97372,
+"Chatham County",
+"geonames"
+],
+[
+"Winder",
+"GA",
+33.99261,
+-83.72017,
+"Barrow County",
+"geonames"
+],
+[
+"Winterville",
+"GA",
+33.96706,
+-83.27821,
+"Clarke County",
+"geonames"
+],
+[
+"Woodbine",
+"GA",
+30.96396,
+-81.72416,
+"Camden County",
+"geonames"
+],
+[
+"Woodstock",
+"GA",
+34.10149,
+-84.51938,
+"Cherokee County",
+"geonames"
+],
+[
+"Wrens",
+"GA",
+33.20765,
+-82.39179,
+"Jefferson County",
+"geonames"
+],
+[
+"Wrightsville",
+"GA",
+32.72933,
+-82.71986,
+"Johnson County",
+"geonames"
+],
+[
+"Zebulon",
+"GA",
+33.10235,
+-84.3427,
+"Pike County",
+"geonames"
+],
+[
+"Abbeville",
+"SC",
+34.17817,
+-82.37901,
+"Abbeville County",
+"geonames"
+],
+[
+"Aiken",
+"SC",
+33.56042,
+-81.71955,
+"Aiken County",
+"geonames"
+],
+[
+"Allendale",
+"SC",
+33.00793,
+-81.30844,
+"Allendale County",
+"geonames"
+],
+[
+"Anderson",
+"SC",
+34.50344,
+-82.65013,
+"Anderson County",
+"geonames"
+],
+[
+"Andrews",
+"SC",
+33.45128,
+-79.5609,
+"Williamsburg County",
+"geonames"
+],
+[
+"Arcadia",
+"SC",
+34.95818,
+-81.99066,
+"Spartanburg County",
+"geonames"
+],
+[
+"Arial",
+"SC",
+34.84595,
+-82.64152,
+"Pickens County",
+"geonames"
+],
+[
+"Awendaw",
+"SC",
+33.03767,
+-79.61313,
+"Charleston County",
+"geonames"
+],
+[
+"Bamberg",
+"SC",
+33.2971,
+-81.03482,
+"Bamberg County",
+"geonames"
+],
+[
+"Barnwell",
+"SC",
+33.24487,
+-81.35872,
+"Barnwell County",
+"geonames"
+],
+[
+"Batesburg",
+"SC",
+33.90792,
+-81.54733,
+"Lexington County",
+"geonames"
+],
+[
+"Batesburg-Leesville",
+"SC",
+33.91014,
+-81.53733,
+"Lexington County",
+"geonames"
+],
+[
+"Beaufort",
+"SC",
+32.43158,
+-80.66983,
+"Beaufort County",
+"geonames"
+],
+[
+"Belton",
+"SC",
+34.52289,
+-82.49429,
+"Anderson County",
+"geonames"
+],
+[
+"Belvedere",
+"SC",
+33.53097,
+-81.94484,
+"Aiken County",
+"geonames"
+],
+[
+"Bennettsville",
+"SC",
+34.61738,
+-79.68478,
+"Marlboro County",
+"geonames"
+],
+[
+"Berea",
+"SC",
+34.8854,
+-82.45596,
+"Greenville County",
+"geonames"
+],
+[
+"Bishopville",
+"SC",
+34.21821,
+-80.24841,
+"Lee County",
+"geonames"
+],
+[
+"Blackville",
+"SC",
+33.35793,
+-81.27066,
+"Barnwell County",
+"geonames"
+],
+[
+"Blacksburg",
+"SC",
+35.12124,
+-81.51592,
+"Cherokee County",
+"geonames"
+],
+[
+"Bluffton",
+"SC",
+32.23715,
+-80.86039,
+"Beaufort County",
+"geonames"
+],
+[
+"Blythewood",
+"SC",
+34.21432,
+-80.97398,
+"Richland County",
+"geonames"
+],
+[
+"Boiling Springs",
+"SC",
+33.13515,
+-81.43122,
+"Barnwell County",
+"geonames"
+],
+[
+"Boiling Springs",
+"SC",
+35.04651,
+-81.98177,
+"Spartanburg County",
+"geonames"
+],
+[
+"Bonneau Beach",
+"SC",
+33.31989,
+-80.00036,
+"Berkeley County",
+"geonames"
+],
+[
+"Branchville",
+"SC",
+33.25127,
+-80.81565,
+"Orangeburg County",
+"geonames"
+],
+[
+"Brookdale",
+"SC",
+33.50682,
+-80.82342,
+"Orangeburg County",
+"geonames"
+],
+[
+"Buffalo",
+"SC",
+34.72569,
+-81.68343,
+"Union County",
+"geonames"
+],
+[
+"Burnettown",
+"SC",
+33.51541,
+-81.849,
+"Aiken County",
+"geonames"
+],
+[
+"Burton",
+"SC",
+32.43575,
+-80.724,
+"Beaufort County",
+"geonames"
+],
+[
+"Calhoun Falls",
+"SC",
+34.09234,
+-82.59569,
+"Abbeville County",
+"geonames"
+],
+[
+"Camden",
+"SC",
+34.24654,
+-80.60702,
+"Kershaw County",
+"geonames"
+],
+[
+"Cane Savannah",
+"SC",
+33.90182,
+-80.45036,
+"Sumter County",
+"geonames"
+],
+[
+"Catawba",
+"SC",
+34.85292,
+-80.91119,
+"York County",
+"geonames"
+],
+[
+"Cayce",
+"SC",
+33.96571,
+-81.07398,
+"Lexington County",
+"geonames"
+],
+[
+"Centerville",
+"SC",
+34.53205,
+-82.70402,
+"Anderson County",
+"geonames"
+],
+[
+"Centerville",
+"SC",
+32.99573,
+-80.17037,
+"Dorchester County",
+"geonames"
+],
+[
+"Central",
+"SC",
+34.72427,
+-82.78125,
+"Pickens County",
+"geonames"
+],
+[
+"Chapin",
+"SC",
+34.16598,
+-81.34982,
+"Lexington County",
+"geonames"
+],
+[
+"Charleston",
+"SC",
+32.77657,
+-79.93092,
+"Charleston County",
+"geonames"
+],
+[
+"Cheraw",
+"SC",
+34.69766,
+-79.8834,
+"Chesterfield County",
+"geonames"
+],
+[
+"Cherryvale",
+"SC",
+33.95571,
+-80.45814,
+"Sumter County",
+"geonames"
+],
+[
+"Chesterfield",
+"SC",
+34.73599,
+-80.08812,
+"Chesterfield County",
+"geonames"
+],
+[
+"Chester",
+"SC",
+34.70486,
+-81.21426,
+"Chester County",
+"geonames"
+],
+[
+"City View",
+"SC",
+34.86151,
+-82.43151,
+"Greenville County",
+"geonames"
+],
+[
+"Clearwater",
+"SC",
+33.4968,
+-81.89206,
+"Aiken County",
+"geonames"
+],
+[
+"Clemson",
+"SC",
+34.68344,
+-82.83737,
+"Pickens County",
+"geonames"
+],
+[
+"Clinton",
+"SC",
+34.47263,
+-81.88066,
+"Laurens County",
+"geonames"
+],
+[
+"Clover",
+"SC",
+35.11125,
+-81.22646,
+"York County",
+"geonames"
+],
+[
+"Columbia",
+"SC",
+34.00071,
+-81.03481,
+"Richland County",
+"geonames"
+],
+[
+"Conway",
+"SC",
+33.836,
+-79.04781,
+"Horry County",
+"geonames"
+],
+[
+"Cowpens",
+"SC",
+35.01679,
+-81.80399,
+"Spartanburg County",
+"geonames"
+],
+[
+"Dalzell",
+"SC",
+34.01682,
+-80.43008,
+"Sumter County",
+"geonames"
+],
+[
+"Darlington",
+"SC",
+34.29988,
+-79.87617,
+"Darlington County",
+"geonames"
+],
+[
+"Denmark",
+"SC",
+33.32265,
+-81.14232,
+"Bamberg County",
+"geonames"
+],
+[
+"Dentsville",
+"SC",
+34.06404,
+-80.95815,
+"Richland County",
+"geonames"
+],
+[
+"Dillon",
+"SC",
+34.41655,
+-79.37116,
+"Dillon County",
+"geonames"
+],
+[
+"Due West",
+"SC",
+34.33345,
+-82.3879,
+"Abbeville County",
+"geonames"
+],
+[
+"Duncan",
+"SC",
+34.9379,
+-82.14511,
+"Spartanburg County",
+"geonames"
+],
+[
+"Dunean",
+"SC",
+34.82484,
+-82.41929,
+"Greenville County",
+"geonames"
+],
+[
+"Easley",
+"SC",
+34.82984,
+-82.60152,
+"Pickens County",
+"geonames"
+],
+[
+"East Gaffney",
+"SC",
+35.08013,
+-81.63287,
+"Cherokee County",
+"geonames"
+],
+[
+"East Sumter",
+"SC",
+33.92544,
+-80.29619,
+"Sumter County",
+"geonames"
+],
+[
+"Edgefield",
+"SC",
+33.78958,
+-81.92956,
+"Edgefield County",
+"geonames"
+],
+[
+"Edisto",
+"SC",
+33.47654,
+-80.8987,
+"Orangeburg County",
+"geonames"
+],
+[
+"Elgin",
+"SC",
+34.17098,
+-80.79425,
+"Kershaw County",
+"geonames"
+],
+[
+"Elgin",
+"SC",
+34.67293,
+-80.71896,
+"Lancaster County",
+"geonames"
+],
+[
+"Estill",
+"SC",
+32.75489,
+-81.24205,
+"Hampton County",
+"geonames"
+],
+[
+"Eureka Mill",
+"SC",
+34.71764,
+-81.1937,
+"Chester County",
+"geonames"
+],
+[
+"Fairfax",
+"SC",
+32.95905,
+-81.2365,
+"Allendale County",
+"geonames"
+],
+[
+"Fairforest",
+"SC",
+34.95651,
+-82.01011,
+"Spartanburg County",
+"geonames"
+],
+[
+"Five Forks",
+"SC",
+34.80484,
+-82.22956,
+"Greenville County",
+"geonames"
+],
+[
+"Florence",
+"SC",
+34.19543,
+-79.76256,
+"Florence County",
+"geonames"
+],
+[
+"Folly Beach",
+"SC",
+32.65518,
+-79.94037,
+"Charleston County",
+"geonames"
+],
+[
+"Forest Acres",
+"SC",
+34.01932,
+-80.98981,
+"Richland County",
+"geonames"
+],
+[
+"Forestbrook",
+"SC",
+33.72239,
+-78.95809,
+"Horry County",
+"geonames"
+],
+[
+"Fort Mill",
+"SC",
+35.00737,
+-80.94508,
+"York County",
+"geonames"
+],
+[
+"Fountain Inn",
+"SC",
+34.68901,
+-82.19567,
+"Greenville County",
+"geonames"
+],
+[
+"Gadsden",
+"SC",
+33.84571,
+-80.76592,
+"Richland County",
+"geonames"
+],
+[
+"Gaffney",
+"SC",
+35.07179,
+-81.64982,
+"Cherokee County",
+"geonames"
+],
+[
+"Gantt",
+"SC",
+34.80012,
+-82.42429,
+"Greenville County",
+"geonames"
+],
+[
+"Garden City",
+"SC",
+33.59295,
+-79.00865,
+"Horry County",
+"geonames"
+],
+[
+"Gaston",
+"SC",
+33.8171,
+-81.10093,
+"Lexington County",
+"geonames"
+],
+[
+"Georgetown",
+"SC",
+33.37683,
+-79.2945,
+"Georgetown County",
+"geonames"
+],
+[
+"Gloverville",
+"SC",
+33.52597,
+-81.83011,
+"Aiken County",
+"geonames"
+],
+[
+"Golden Grove",
+"SC",
+34.73401,
+-82.44374,
+"Greenville County",
+"geonames"
+],
+[
+"Goose Creek",
+"SC",
+32.98101,
+-80.03259,
+"Berkeley County",
+"geonames"
+],
+[
+"Graniteville",
+"SC",
+33.56375,
+-81.80789,
+"Aiken County",
+"geonames"
+],
+[
+"Great Falls",
+"SC",
+34.57514,
+-80.90202,
+"Chester County",
+"geonames"
+],
+[
+"Greenville",
+"SC",
+34.85262,
+-82.39401,
+"Greenville County",
+"geonames"
+],
+[
+"Greenwood",
+"SC",
+34.1954,
+-82.16179,
+"Greenwood County",
+"geonames"
+],
+[
+"Greer",
+"SC",
+34.93873,
+-82.22706,
+"Greenville County",
+"geonames"
+],
+[
+"Hampton",
+"SC",
+32.87794,
+-81.12761,
+"Hampton County",
+"geonames"
+],
+[
+"Hanahan",
+"SC",
+32.91851,
+-80.02203,
+"Berkeley County",
+"geonames"
+],
+[
+"Hardeeville",
+"SC",
+32.28714,
+-81.08067,
+"Jasper County",
+"geonames"
+],
+[
+"Hartsville",
+"SC",
+34.37404,
+-80.0734,
+"Darlington County",
+"geonames"
+],
+[
+"Hilton Head Island",
+"SC",
+32.21632,
+-80.75261,
+"Beaufort County",
+"geonames"
+],
+[
+"Holly Hill",
+"SC",
+33.32266,
+-80.4137,
+"Orangeburg County",
+"geonames"
+],
+[
+"Hollywood",
+"SC",
+32.73434,
+-80.24177,
+"Charleston County",
+"geonames"
+],
+[
+"Honea Path",
+"SC",
+34.4465,
+-82.39151,
+"Anderson County",
+"geonames"
+],
+[
+"Homeland Park",
+"SC",
+34.47066,
+-82.67069,
+"Anderson County",
+"geonames"
+],
+[
+"Hopkins",
+"SC",
+33.90432,
+-80.87703,
+"Richland County",
+"geonames"
+],
+[
+"India Hook",
+"SC",
+35.00737,
+-81.02174,
+"York County",
+"geonames"
+],
+[
+"Inman",
+"SC",
+35.04706,
+-82.09011,
+"Spartanburg County",
+"geonames"
+],
+[
+"Inman Mills",
+"SC",
+35.04151,
+-82.10428,
+"Spartanburg County",
+"geonames"
+],
+[
+"Irmo",
+"SC",
+34.08598,
+-81.18315,
+"Lexington County",
+"geonames"
+],
+[
+"Irwin",
+"SC",
+34.69376,
+-80.82229,
+"Lancaster County",
+"geonames"
+],
+[
+"Isle of Palms",
+"SC",
+32.78684,
+-79.7948,
+"Charleston County",
+"geonames"
+],
+[
+"Iva",
+"SC",
+34.3065,
+-82.66374,
+"Anderson County",
+"geonames"
+],
+[
+"Jackson",
+"SC",
+33.32542,
+-81.78789,
+"Aiken County",
+"geonames"
+],
+[
+"Joanna",
+"SC",
+34.41485,
+-81.81122,
+"Laurens County",
+"geonames"
+],
+[
+"Johnsonville",
+"SC",
+33.81794,
+-79.44922,
+"Florence County",
+"geonames"
+],
+[
+"Johnston",
+"SC",
+33.83208,
+-81.80094,
+"Edgefield County",
+"geonames"
+],
+[
+"Judson",
+"SC",
+34.83317,
+-82.42762,
+"Greenville County",
+"geonames"
+],
+[
+"Kershaw",
+"SC",
+34.55182,
+-80.58368,
+"Lancaster County",
+"geonames"
+],
+[
+"Kiawah Island",
+"SC",
+32.60824,
+-80.08482,
+"Charleston County",
+"geonames"
+],
+[
+"Kingstree",
+"SC",
+33.66766,
+-79.83063,
+"Williamsburg County",
+"geonames"
+],
+[
+"Ladson",
+"SC",
+32.98573,
+-80.10981,
+"Berkeley County",
+"geonames"
+],
+[
+"Lake City",
+"SC",
+33.871,
+-79.75535,
+"Florence County",
+"geonames"
+],
+[
+"Lake Secession",
+"SC",
+34.28455,
+-82.59457,
+"Abbeville County",
+"geonames"
+],
+[
+"Lake Wylie",
+"SC",
+35.10848,
+-81.04285,
+"York County",
+"geonames"
+],
+[
+"Lakewood",
+"SC",
+33.84683,
+-80.35008,
+"Sumter County",
+"geonames"
+],
+[
+"Lancaster",
+"SC",
+34.72043,
+-80.7709,
+"Lancaster County",
+"geonames"
+],
+[
+"Lancaster Mill",
+"SC",
+34.70931,
+-80.79479,
+"Lancaster County",
+"geonames"
+],
+[
+"Landrum",
+"SC",
+35.17511,
+-82.18928,
+"Spartanburg County",
+"geonames"
+],
+[
+"Langley",
+"SC",
+33.51791,
+-81.844,
+"Aiken County",
+"geonames"
+],
+[
+"Latta",
+"SC",
+34.3371,
+-79.43116,
+"Dillon County",
+"geonames"
+],
+[
+"Laurel Bay",
+"SC",
+32.45019,
+-80.78483,
+"Beaufort County",
+"geonames"
+],
+[
+"Laurens",
+"SC",
+34.49901,
+-82.01426,
+"Laurens County",
+"geonames"
+],
+[
+"Leesville",
+"SC",
+33.91653,
+-81.51344,
+"Lexington County",
+"geonames"
+],
+[
+"Lesslie",
+"SC",
+34.8907,
+-80.95647,
+"York County",
+"geonames"
+],
+[
+"Lexington",
+"SC",
+33.98154,
+-81.23621,
+"Lexington County",
+"geonames"
+],
+[
+"Liberty",
+"SC",
+34.78789,
+-82.69236,
+"Pickens County",
+"geonames"
+],
+[
+"Lincolnville",
+"SC",
+33.00684,
+-80.15537,
+"Charleston County",
+"geonames"
+],
+[
+"Little River",
+"SC",
+33.87323,
+-78.61418,
+"Horry County",
+"geonames"
+],
+[
+"Loris",
+"SC",
+34.05628,
+-78.8903,
+"Horry County",
+"geonames"
+],
+[
+"Lyman",
+"SC",
+34.94817,
+-82.12733,
+"Spartanburg County",
+"geonames"
+],
+[
+"Manning",
+"SC",
+33.69516,
+-80.21091,
+"Clarendon County",
+"geonames"
+],
+[
+"Marion",
+"SC",
+34.17822,
+-79.40061,
+"Marion County",
+"geonames"
+],
+[
+"Mauldin",
+"SC",
+34.77873,
+-82.31012,
+"Greenville County",
+"geonames"
+],
+[
+"Mayo",
+"SC",
+35.08401,
+-81.85983,
+"Spartanburg County",
+"geonames"
+],
+[
+"McColl",
+"SC",
+34.66877,
+-79.54533,
+"Marlboro County",
+"geonames"
+],
+[
+"McCormick",
+"SC",
+33.91346,
+-82.29346,
+"McCormick County",
+"geonames"
+],
+[
+"Meggett",
+"SC",
+32.71796,
+-80.23899,
+"Charleston County",
+"geonames"
+],
+[
+"Moncks Corner",
+"SC",
+33.19632,
+-80.01429,
+"Berkeley County",
+"geonames"
+],
+[
+"Mount Pleasant",
+"SC",
+32.79407,
+-79.86259,
+"Charleston County",
+"geonames"
+],
+[
+"Mullins",
+"SC",
+34.20572,
+-79.25449,
+"Marion County",
+"geonames"
+],
+[
+"Murphys Estates",
+"SC",
+33.60125,
+-81.94428,
+"Edgefield County",
+"geonames"
+],
+[
+"Murrells Inlet",
+"SC",
+33.551,
+-79.04143,
+"Georgetown County",
+"geonames"
+],
+[
+"Myrtle Beach",
+"SC",
+33.68906,
+-78.88669,
+"Horry County",
+"geonames"
+],
+[
+"New Ellenton",
+"SC",
+33.42153,
+-81.68567,
+"Aiken County",
+"geonames"
+],
+[
+"Newberry",
+"SC",
+34.27458,
+-81.61872,
+"Newberry County",
+"geonames"
+],
+[
+"Newport",
+"SC",
+34.98986,
+-81.10091,
+"York County",
+"geonames"
+],
+[
+"Ninety Six",
+"SC",
+34.17513,
+-82.02401,
+"Greenwood County",
+"geonames"
+],
+[
+"North Augusta",
+"SC",
+33.5018,
+-81.96512,
+"Aiken County",
+"geonames"
+],
+[
+"North Charleston",
+"SC",
+32.85462,
+-79.97481,
+"Charleston County",
+"geonames"
+],
+[
+"North Hartsville",
+"SC",
+34.39377,
+-80.06951,
+"Darlington County",
+"geonames"
+],
+[
+"North Myrtle Beach",
+"SC",
+33.81601,
+-78.68002,
+"Horry County",
+"geonames"
+],
+[
+"Northlake",
+"SC",
+34.56622,
+-82.68402,
+"Anderson County",
+"geonames"
+],
+[
+"Oak Grove",
+"SC",
+33.77821,
+-80.96676,
+"Calhoun County",
+"geonames"
+],
+[
+"Oakland",
+"SC",
+33.98293,
+-80.48842,
+"Sumter County",
+"geonames"
+],
+[
+"Orangeburg",
+"SC",
+33.49182,
+-80.85565,
+"Orangeburg County",
+"geonames"
+],
+[
+"Pacolet",
+"SC",
+34.89902,
+-81.76177,
+"Spartanburg County",
+"geonames"
+],
+[
+"Pageland",
+"SC",
+34.77321,
+-80.39173,
+"Chesterfield County",
+"geonames"
+],
+[
+"Pamplico",
+"SC",
+33.996,
+-79.57006,
+"Florence County",
+"geonames"
+],
+[
+"Parker",
+"SC",
+34.85067,
+-82.45346,
+"Greenville County",
+"geonames"
+],
+[
+"Pendleton",
+"SC",
+34.65177,
+-82.78375,
+"Anderson County",
+"geonames"
+],
+[
+"Pickens",
+"SC",
+34.88345,
+-82.70736,
+"Pickens County",
+"geonames"
+],
+[
+"Piedmont",
+"SC",
+34.70234,
+-82.46457,
+"Anderson County",
+"geonames"
+],
+[
+"Pineridge",
+"SC",
+33.91043,
+-81.10454,
+"Lexington County",
+"geonames"
+],
+[
+"Port Royal",
+"SC",
+32.37908,
+-80.69261,
+"Beaufort County",
+"geonames"
+],
+[
+"Powdersville",
+"SC",
+34.79178,
+-82.49291,
+"Anderson County",
+"geonames"
+],
+[
+"Privateer",
+"SC",
+33.83321,
+-80.41425,
+"Sumter County",
+"geonames"
+],
+[
+"Prosperity",
+"SC",
+34.20931,
+-81.53316,
+"Newberry County",
+"geonames"
+],
+[
+"Ravenel",
+"SC",
+32.76323,
+-80.2501,
+"Charleston County",
+"geonames"
+],
+[
+"Red Bank",
+"SC",
+33.93209,
+-81.23843,
+"Lexington County",
+"geonames"
+],
+[
+"Red Hill",
+"SC",
+33.99961,
+-79.2581,
+"Horry County",
+"geonames"
+],
+[
+"Red Hill",
+"SC",
+33.82073,
+-79.01892,
+"Horry County",
+"geonames"
+],
+[
+"Ridgeland",
+"SC",
+32.48074,
+-80.98039,
+"Jasper County",
+"geonames"
+],
+[
+"Ridgeville",
+"SC",
+33.09572,
+-80.31537,
+"Dorchester County",
+"geonames"
+],
+[
+"Rock Hill",
+"SC",
+34.92487,
+-81.02508,
+"York County",
+"geonames"
+],
+[
+"Roebuck",
+"SC",
+34.87957,
+-81.96621,
+"Spartanburg County",
+"geonames"
+],
+[
+"Saint Andrews",
+"SC",
+34.04543,
+-81.12926,
+"Lexington County",
+"geonames"
+],
+[
+"Saint George",
+"SC",
+33.186,
+-80.57565,
+"Dorchester County",
+"geonames"
+],
+[
+"Saint Matthews",
+"SC",
+33.66488,
+-80.77787,
+"Calhoun County",
+"geonames"
+],
+[
+"Saint Stephen",
+"SC",
+33.40433,
+-79.92174,
+"Berkeley County",
+"geonames"
+],
+[
+"Saluda",
+"SC",
+34.00152,
+-81.77205,
+"Saluda County",
+"geonames"
+],
+[
+"Sangaree",
+"SC",
+33.03545,
+-80.12787,
+"Berkeley County",
+"geonames"
+],
+[
+"Sans Souci",
+"SC",
+34.8779,
+-82.42401,
+"Greenville County",
+"geonames"
+],
+[
+"Saxon",
+"SC",
+34.96123,
+-81.96733,
+"Spartanburg County",
+"geonames"
+],
+[
+"Seabrook Island",
+"SC",
+32.57713,
+-80.17065,
+"Charleston County",
+"geonames"
+],
+[
+"Seneca",
+"SC",
+34.68566,
+-82.9532,
+"Oconee County",
+"geonames"
+],
+[
+"Seven Oaks",
+"SC",
+34.04876,
+-81.14648,
+"Lexington County",
+"geonames"
+],
+[
+"Shell Point",
+"SC",
+32.38353,
+-80.73594,
+"Beaufort County",
+"geonames"
+],
+[
+"Shell Point",
+"SC",
+32.78907,
+-80.10676,
+"Charleston County",
+"geonames"
+],
+[
+"Simpsonville",
+"SC",
+34.73706,
+-82.25428,
+"Greenville County",
+"geonames"
+],
+[
+"Socastee",
+"SC",
+33.6835,
+-78.99837,
+"Horry County",
+"geonames"
+],
+[
+"South Congaree",
+"SC",
+33.91099,
+-81.13565,
+"Lexington County",
+"geonames"
+],
+[
+"South Sumter",
+"SC",
+33.90571,
+-80.34619,
+"Sumter County",
+"geonames"
+],
+[
+"Southern Shops",
+"SC",
+34.98595,
+-81.99455,
+"Spartanburg County",
+"geonames"
+],
+[
+"Spartanburg",
+"SC",
+34.94957,
+-81.93205,
+"Spartanburg County",
+"geonames"
+],
+[
+"Springdale",
+"SC",
+34.68931,
+-80.78618,
+"Lancaster County",
+"geonames"
+],
+[
+"Springdale",
+"SC",
+33.95932,
+-81.10898,
+"Lexington County",
+"geonames"
+],
+[
+"Stateburg",
+"SC",
+33.95765,
+-80.53481,
+"Sumter County",
+"geonames"
+],
+[
+"Sullivans Island",
+"SC",
+32.76323,
+-79.83675,
+"Charleston County",
+"geonames"
+],
+[
+"Summerville",
+"SC",
+33.0185,
+-80.17565,
+"Dorchester County",
+"geonames"
+],
+[
+"Sumter",
+"SC",
+33.92044,
+-80.34147,
+"Sumter County",
+"geonames"
+],
+[
+"Surfside Beach",
+"SC",
+33.606,
+-78.97309,
+"Horry County",
+"geonames"
+],
+[
+"Taylors",
+"SC",
+34.92039,
+-82.29623,
+"Greenville County",
+"geonames"
+],
+[
+"Tega Cay",
+"SC",
+35.02431,
+-81.02785,
+"York County",
+"geonames"
+],
+[
+"Tigerville",
+"SC",
+35.06845,
+-82.36845,
+"Greenville County",
+"geonames"
+],
+[
+"Timmonsville",
+"SC",
+34.13488,
+-79.93979,
+"Florence County",
+"geonames"
+],
+[
+"Travelers Rest",
+"SC",
+34.96762,
+-82.44345,
+"Greenville County",
+"geonames"
+],
+[
+"Union",
+"SC",
+34.71541,
+-81.62371,
+"Union County",
+"geonames"
+],
+[
+"Utica",
+"SC",
+34.67816,
+-82.93154,
+"Oconee County",
+"geonames"
+],
+[
+"Valley Falls",
+"SC",
+35.01595,
+-81.97483,
+"Spartanburg County",
+"geonames"
+],
+[
+"Varnville",
+"SC",
+32.85044,
+-81.07927,
+"Hampton County",
+"geonames"
+],
+[
+"Wade Hampton",
+"SC",
+34.90373,
+-82.33317,
+"Greenville County",
+"geonames"
+],
+[
+"Walhalla",
+"SC",
+34.76482,
+-83.06404,
+"Oconee County",
+"geonames"
+],
+[
+"Walterboro",
+"SC",
+32.90517,
+-80.66677,
+"Colleton County",
+"geonames"
+],
+[
+"Ware Shoals",
+"SC",
+34.39845,
+-82.24679,
+"Greenwood County",
+"geonames"
+],
+[
+"Warrenville",
+"SC",
+33.55097,
+-81.804,
+"Aiken County",
+"geonames"
+],
+[
+"Wedgefield",
+"SC",
+33.89266,
+-80.51814,
+"Sumter County",
+"geonames"
+],
+[
+"Wedgewood",
+"SC",
+33.88377,
+-80.51258,
+"Sumter County",
+"geonames"
+],
+[
+"Welcome",
+"SC",
+34.82651,
+-82.43901,
+"Greenville County",
+"geonames"
+],
+[
+"Wellford",
+"SC",
+34.95095,
+-82.10594,
+"Spartanburg County",
+"geonames"
+],
+[
+"West Columbia",
+"SC",
+33.99349,
+-81.07398,
+"Lexington County",
+"geonames"
+],
+[
+"Westminster",
+"SC",
+34.66482,
+-83.09654,
+"Oconee County",
+"geonames"
+],
+[
+"Whitmire",
+"SC",
+34.50291,
+-81.61149,
+"Newberry County",
+"geonames"
+],
+[
+"Wilkinson Heights",
+"SC",
+33.5021,
+-80.83315,
+"Orangeburg County",
+"geonames"
+],
+[
+"Williamston",
+"SC",
+34.61845,
+-82.47791,
+"Anderson County",
+"geonames"
+],
+[
+"Williston",
+"SC",
+33.40265,
+-81.42011,
+"Barnwell County",
+"geonames"
+],
+[
+"Winnsboro",
+"SC",
+34.3807,
+-81.08648,
+"Fairfield County",
+"geonames"
+],
+[
+"Winnsboro Mills",
+"SC",
+34.36181,
+-81.08537,
+"Fairfield County",
+"geonames"
+],
+[
+"Woodfield",
+"SC",
+34.05932,
+-80.93092,
+"Richland County",
+"geonames"
+],
+[
+"Woodruff",
+"SC",
+34.73957,
+-82.03705,
+"Spartanburg County",
+"geonames"
+],
+[
+"Yemassee",
+"SC",
+32.69018,
+-80.85066,
+"Hampton County",
+"geonames"
+],
+[
+"York",
+"SC",
+34.9943,
+-81.24202,
+"York County",
+"geonames"
+],
+[
+"Milton",
+"GA",
+34.13216,
+-84.30067,
+"Fulton County",
+"geonames"
+],
+[
+"Johns Creek",
+"GA",
+34.02893,
+-84.19858,
+"Fulton County",
+"geonames"
+],
+[
+"Chattahoochee Hills",
+"GA",
+33.55063,
+-84.76049,
+"Fulton County",
+"geonames"
+],
+[
+"Fort Stewart",
+"GA",
+31.87217,
+-81.61001,
+"Liberty County",
+"geonames"
+],
+[
+"Candler-McAfee",
+"GA",
+33.72672,
+-84.27246,
+"DeKalb County",
+"geonames"
+],
+[
+"Slater-Marietta",
+"SC",
+35.03472,
+-82.49265,
+"Greenville County",
+"geonames"
+],
+[
+"Watts Mills",
+"SC",
+34.51641,
+-81.9858,
+"Laurens County",
+"geonames"
+],
+[
+"Kings Bay Base",
+"GA",
+30.79836,
+-81.56589,
+"Camden County",
+"geonames"
+],
+[
+"Lake Murray of Richland",
+"SC",
+34.12048,
+-81.2645,
+"Richland County",
+"geonames"
+],
+[
+"Monarch Mill",
+"SC",
+34.7161,
+-81.585,
+"Union County",
+"geonames"
+],
+[
+"Oak Grove",
+"SC",
+33.9809,
+-81.14286,
+"Lexington County",
+"geonames"
+],
+[
+"Robins Air Force Base",
+"GA",
+32.60911,
+-83.58444,
+"Houston County",
+"geonames"
+],
+[
+"Firing Range",
+"GA",
+33.43752,
+-82.69068,
+"Warren County",
+"geonames"
+],
+[
+"West Warrenton",
+"GA",
+33.41217,
+-82.67517,
+"Warren County",
+"geonames"
+],
+[
+"St Marys",
+"GA",
+30.75677,
+-81.57173,
+"Camden County",
+"geonames"
+],
+[
+"Adrian",
+"GA",
+32.52995,
+-82.59151,
+"Johnson County",
+"census"
+],
+[
+"Ailey",
+"GA",
+32.18836,
+-82.57557,
+"Montgomery County",
+"census"
+],
+[
+"Alapaha",
+"GA",
+31.38314,
+-83.22371,
+"Berrien County",
+"census"
+],
+[
+"Aldora",
+"GA",
+33.05036,
+-84.17761,
+"Lamar County",
+"census"
+],
+[
+"Allenhurst",
+"GA",
+31.77989,
+-81.61131,
+"Liberty County",
+"census"
+],
+[
+"Allentown",
+"GA",
+32.58733,
+-83.2263,
+"Wilkinson County",
+"census"
+],
+[
+"Alston",
+"GA",
+32.0866,
+-82.48021,
+"Montgomery County",
+"census"
+],
+[
+"Ambrose",
+"GA",
+31.59514,
+-83.01489,
+"Coffee County",
+"census"
+],
+[
+"Andersonville",
+"GA",
+32.19743,
+-84.14557,
+"Sumter County",
+"census"
+],
+[
+"Antioch",
+"GA",
+32.68281,
+-85.05363,
+"Harris County",
+"census"
+],
+[
+"Arabi",
+"GA",
+31.81936,
+-83.71921,
+"Crisp County",
+"census"
+],
+[
+"Argyle",
+"GA",
+31.07321,
+-82.64888,
+"Clinch County",
+"census"
+],
+[
+"Arnoldsville",
+"GA",
+33.91495,
+-83.21843,
+"Oglethorpe County",
+"census"
+],
+[
+"Athens-Clarke County",
+"GA",
+33.9496,
+-83.37009,
+"Clarke County",
+"census"
+],
+[
+"Attapulgus",
+"GA",
+30.74949,
+-84.48389,
+"Decatur County",
+"census"
+],
+[
+"Augusta-Richmond County",
+"GA",
+33.36553,
+-82.07342,
+"Richmond County",
+"census"
+],
+[
+"Avalon",
+"GA",
+34.49714,
+-83.1982,
+"Stephens County",
+"census"
+],
+[
+"Avera",
+"GA",
+33.19342,
+-82.52873,
+"Jefferson County",
+"census"
+],
+[
+"Axson",
+"GA",
+31.27994,
+-82.72715,
+"Atkinson County",
+"census"
+],
+[
+"Baconton",
+"GA",
+31.38038,
+-84.15918,
+"Mitchell County",
+"census"
+],
+[
+"Bartow",
+"GA",
+32.88122,
+-82.47233,
+"Jefferson County",
+"census"
+],
+[
+"Barwick",
+"GA",
+30.89369,
+-83.73884,
+"Brooks County",
+"census"
+],
+[
+"Bellville",
+"GA",
+32.15502,
+-81.97823,
+"Evans County",
+"census"
+],
+[
+"Bemiss",
+"GA",
+30.93295,
+-83.22194,
+"Lowndes County",
+"census"
+],
+[
+"Berlin",
+"GA",
+31.06808,
+-83.6233,
+"Colquitt County",
+"census"
+],
+[
+"Berry College",
+"GA",
+34.29104,
+-85.18777,
+"Floyd County",
+"census"
+],
+[
+"Bethlehem",
+"GA",
+33.93795,
+-83.70998,
+"Barrow County",
+"census"
+],
+[
+"Between",
+"GA",
+33.81767,
+-83.8011,
+"Walton County",
+"census"
+],
+[
+"Bishop",
+"GA",
+33.81873,
+-83.43816,
+"Oconee County",
+"census"
+],
+[
+"Bluffton",
+"GA",
+31.51982,
+-84.86912,
+"Clay County",
+"census"
+],
+[
+"Blythe",
+"GA",
+33.30307,
+-82.20736,
+"Richmond County",
+"census"
+],
+[
+"Bolingbroke",
+"GA",
+32.93845,
+-83.79959,
+"Monroe County",
+"census"
+],
+[
+"Bostwick",
+"GA",
+33.7377,
+-83.5139,
+"Morgan County",
+"census"
+],
+[
+"Bowersville",
+"GA",
+34.37306,
+-83.08431,
+"Hart County",
+"census"
+],
+[
+"Bowman",
+"GA",
+34.20539,
+-83.03114,
+"Elbert County",
+"census"
+],
+[
+"Box Springs",
+"GA",
+32.54456,
+-84.65752,
+"Talbot County",
+"census"
+],
+[
+"Boykin",
+"GA",
+31.10033,
+-84.68403,
+"Miller County",
+"census"
+],
+[
+"Braswell",
+"GA",
+33.98354,
+-84.9584,
+"Paulding County",
+"census"
+],
+[
+"Brinson",
+"GA",
+30.97844,
+-84.73794,
+"Decatur County",
+"census"
+],
+[
+"Bristol",
+"GA",
+31.4517,
+-82.21483,
+"Pierce County",
+"census"
+],
+[
+"Bronwood",
+"GA",
+31.83055,
+-84.36433,
+"Terrell County",
+"census"
+],
+[
+"Brookhaven",
+"GA",
+33.8612,
+-84.3385,
+"DeKalb County",
+"census"
+],
+[
+"Brooks",
+"GA",
+33.29334,
+-84.45137,
+"Fayette County",
+"census"
+],
+[
+"Buckhead",
+"GA",
+31.86184,
+-81.26031,
+"Bryan County",
+"census"
+],
+[
+"Byromville",
+"GA",
+32.20163,
+-83.90724,
+"Dooly County",
+"census"
+],
+[
+"Cadwell",
+"GA",
+32.34013,
+-83.04064,
+"Laurens County",
+"census"
+],
+[
+"Calvary",
+"GA",
+30.71831,
+-84.35708,
+"Grady County",
+"census"
+],
+[
+"Camak",
+"GA",
+33.45076,
+-82.64952,
+"Warren County",
+"census"
+],
+[
+"Canon",
+"GA",
+34.34168,
+-83.11177,
+"Franklin County",
+"census"
+],
+[
+"Canoochee",
+"GA",
+32.6854,
+-82.17361,
+"Emanuel County",
+"census"
+],
+[
+"Carl",
+"GA",
+34.00295,
+-83.81403,
+"Barrow County",
+"census"
+],
+[
+"Carlton",
+"GA",
+34.04096,
+-83.04222,
+"Madison County",
+"census"
+],
+[
+"Cataula",
+"GA",
+32.66503,
+-84.86517,
+"Harris County",
+"census"
+],
+[
+"Cecil",
+"GA",
+31.04658,
+-83.39095,
+"Cook County",
+"census"
+],
+[
+"Cedar Springs",
+"GA",
+31.1873,
+-85.03244,
+"Early County",
+"census"
+],
+[
+"Centralhatchee",
+"GA",
+33.3689,
+-85.10372,
+"Heard County",
+"census"
+],
+[
+"Chauncey",
+"GA",
+32.11181,
+-83.06801,
+"Dodge County",
+"census"
+],
+[
+"Cherry Log",
+"GA",
+34.78509,
+-84.38105,
+"Gilmer County",
+"census"
+],
+[
+"Clermont",
+"GA",
+34.48013,
+-83.7704,
+"Hall County",
+"census"
+],
+[
+"Climax",
+"GA",
+30.87567,
+-84.43117,
+"Decatur County",
+"census"
+],
+[
+"Clyattville",
+"GA",
+30.68152,
+-83.31095,
+"Lowndes County",
+"census"
+],
+[
+"Cobbtown",
+"GA",
+32.27922,
+-82.13833,
+"Tattnall County",
+"census"
+],
+[
+"Cogdell",
+"GA",
+31.16626,
+-82.72164,
+"Clinch County",
+"census"
+],
+[
+"Cohutta",
+"GA",
+34.95525,
+-84.96715,
+"Whitfield County",
+"census"
+],
+[
+"Colbert",
+"GA",
+34.03724,
+-83.2131,
+"Madison County",
+"census"
+],
+[
+"Coleman",
+"GA",
+31.6686,
+-84.89296,
+"Randolph County",
+"census"
+],
+[
+"Collins",
+"GA",
+32.17921,
+-82.10987,
+"Tattnall County",
+"census"
+],
+[
+"Concord",
+"GA",
+33.09213,
+-84.43884,
+"Pike County",
+"census"
+],
+[
+"Coolidge",
+"GA",
+31.01077,
+-83.86648,
+"Thomas County",
+"census"
+],
+[
+"Crawford",
+"GA",
+33.88323,
+-83.15539,
+"Oglethorpe County",
+"census"
+],
+[
+"Crescent",
+"GA",
+31.51866,
+-81.37022,
+"McIntosh County",
+"census"
+],
+[
+"Crooked Creek",
+"GA",
+33.26569,
+-83.27525,
+"Putnam County",
+"census"
+],
+[
+"Culloden",
+"GA",
+32.86491,
+-84.094,
+"Monroe County",
+"census"
+],
+[
+"Cusseta-Chattahoochee County unified government",
+"GA",
+32.34745,
+-84.78802,
+"Chattahoochee County",
+"census"
+],
+[
+"Daisy",
+"GA",
+32.15096,
+-81.83596,
+"Evans County",
+"census"
+],
+[
+"Damascus",
+"GA",
+31.29851,
+-84.7172,
+"Early County",
+"census"
+],
+[
+"Danville",
+"GA",
+32.60601,
+-83.24606,
+"Twiggs County",
+"census"
+],
+[
+"Dasher",
+"GA",
+30.74227,
+-83.22252,
+"Lowndes County",
+"census"
+],
+[
+"Dearing",
+"GA",
+33.41519,
+-82.38648,
+"McDuffie County",
+"census"
+],
+[
+"Deepstep",
+"GA",
+33.01581,
+-82.96511,
+"Washington County",
+"census"
+],
+[
+"Denton",
+"GA",
+31.72013,
+-82.69224,
+"Jeff Davis County",
+"census"
+],
+[
+"De Soto",
+"GA",
+31.95479,
+-84.06364,
+"Sumter County",
+"census"
+],
+[
+"Dewy Rose",
+"GA",
+34.17151,
+-82.94267,
+"Elbert County",
+"census"
+],
+[
+"Dexter",
+"GA",
+32.43319,
+-83.05913,
+"Laurens County",
+"census"
+],
+[
+"Dillard",
+"GA",
+34.97147,
+-83.38116,
+"Rabun County",
+"census"
+],
+[
+"Dixie",
+"GA",
+30.78845,
+-83.66808,
+"Brooks County",
+"census"
+],
+[
+"Dixie Union",
+"GA",
+31.3464,
+-82.4603,
+"Ware County",
+"census"
+],
+[
+"Doerun",
+"GA",
+31.3228,
+-83.91653,
+"Colquitt County",
+"census"
+],
+[
+"Dooling",
+"GA",
+32.22998,
+-83.92892,
+"Dooly County",
+"census"
+],
+[
+"Dudley",
+"GA",
+32.53348,
+-83.08362,
+"Laurens County",
+"census"
+],
+[
+"Du Pont",
+"GA",
+30.9891,
+-82.86908,
+"Clinch County",
+"census"
+],
+[
+"Dutch Island",
+"GA",
+32.00358,
+-81.03278,
+"Chatham County",
+"census"
+],
+[
+"Eagle Grove",
+"GA",
+34.28558,
+-83.00072,
+"Hart County",
+"census"
+],
+[
+"East Ellijay",
+"GA",
+34.66524,
+-84.49076,
+"Gilmer County",
+"census"
+],
+[
+"Echols County consolidated government",
+"GA",
+30.71401,
+-82.89738,
+"Echols County",
+"census"
+],
+[
+"Edge Hill",
+"GA",
+33.15342,
+-82.62499,
+"Glascock County",
+"census"
+],
+[
+"Ellenton",
+"GA",
+31.1767,
+-83.58707,
+"Colquitt County",
+"census"
+],
+[
+"Ellerslie",
+"GA",
+32.63291,
+-84.78845,
+"Harris County",
+"census"
+],
+[
+"Empire",
+"GA",
+32.33705,
+-83.28297,
+"Dodge County",
+"census"
+],
+[
+"Ephesus",
+"GA",
+33.40694,
+-85.25676,
+"Heard County",
+"census"
+],
+[
+"Epworth",
+"GA",
+34.95103,
+-84.38079,
+"Fannin County",
+"census"
+],
+[
+"Eton",
+"GA",
+34.82815,
+-84.76784,
+"Murray County",
+"census"
+],
+[
+"Eulonia",
+"GA",
+31.53338,
+-81.43606,
+"McIntosh County",
+"census"
+],
+[
+"Everett",
+"GA",
+31.39762,
+-81.63704,
+"Glynn County",
+"census"
+],
+[
+"Faceville",
+"GA",
+30.7537,
+-84.63723,
+"Decatur County",
+"census"
+],
+[
+"Fairfield Plantation",
+"GA",
+33.64466,
+-84.92843,
+"Carroll County",
+"census"
+],
+[
+"Fairmount",
+"GA",
+34.43863,
+-84.6994,
+"Gordon County",
+"census"
+],
+[
+"Fairplay",
+"GA",
+33.6182,
+-84.86236,
+"Douglas County",
+"census"
+],
+[
+"Fargo",
+"GA",
+30.68688,
+-82.57145,
+"Clinch County",
+"census"
+],
+[
+"Flemington",
+"GA",
+31.84936,
+-81.56187,
+"Liberty County",
+"census"
+],
+[
+"Flovilla",
+"GA",
+33.25241,
+-83.9029,
+"Butts County",
+"census"
+],
+[
+"Franklin Springs",
+"GA",
+34.28336,
+-83.14609,
+"Franklin County",
+"census"
+],
+[
+"Funston",
+"GA",
+31.19592,
+-83.88114,
+"Colquitt County",
+"census"
+],
+[
+"Gardi",
+"GA",
+31.54179,
+-81.79954,
+"Wayne County",
+"census"
+],
+[
+"Garfield",
+"GA",
+32.64921,
+-82.09729,
+"Emanuel County",
+"census"
+],
+[
+"Gay",
+"GA",
+33.09576,
+-84.57936,
+"Meriwether County",
+"census"
+],
+[
+"Geneva",
+"GA",
+32.57823,
+-84.55307,
+"Talbot County",
+"census"
+],
+[
+"Georgetown-Quitman County unified government",
+"GA",
+31.86294,
+-85.0048,
+"Quitman County",
+"census"
+],
+[
+"Gillsville",
+"GA",
+34.3076,
+-83.63813,
+"Hall County",
+"census"
+],
+[
+"Girard",
+"GA",
+33.03389,
+-81.71551,
+"Burke County",
+"census"
+],
+[
+"Glenn",
+"GA",
+33.14769,
+-85.21402,
+"Heard County",
+"census"
+],
+[
+"Glenwood",
+"GA",
+32.1803,
+-82.67084,
+"Wheeler County",
+"census"
+],
+[
+"Godfrey",
+"GA",
+33.44588,
+-83.50062,
+"Morgan County",
+"census"
+],
+[
+"Good Hope",
+"GA",
+33.79007,
+-83.61745,
+"Walton County",
+"census"
+],
+[
+"Gough",
+"GA",
+33.08411,
+-82.23133,
+"Burke County",
+"census"
+],
+[
+"Graham",
+"GA",
+31.82491,
+-82.49757,
+"Appling County",
+"census"
+],
+[
+"Gumbranch",
+"GA",
+31.83673,
+-81.6838,
+"Liberty County",
+"census"
+],
+[
+"Hagan",
+"GA",
+32.15306,
+-81.92992,
+"Evans County",
+"census"
+],
+[
+"Haralson",
+"GA",
+33.22935,
+-84.56871,
+"Coweta County",
+"census"
+],
+[
+"Harrison",
+"GA",
+32.82642,
+-82.72585,
+"Washington County",
+"census"
+],
+[
+"Helen",
+"GA",
+34.7084,
+-83.72763,
+"White County",
+"census"
+],
+[
+"Henderson",
+"GA",
+32.00705,
+-81.2666,
+"Chatham County",
+"census"
+],
+[
+"Heron Bay",
+"GA",
+33.33904,
+-84.19216,
+"Henry County",
+"census"
+],
+[
+"Hickox",
+"GA",
+31.14512,
+-81.99493,
+"Brantley County",
+"census"
+],
+[
+"Higgston",
+"GA",
+32.2161,
+-82.46479,
+"Montgomery County",
+"census"
+],
+[
+"Hilltop",
+"GA",
+33.10824,
+-84.43714,
+"Pike County",
+"census"
+],
+[
+"Hiltonia",
+"GA",
+32.88334,
+-81.66149,
+"Screven County",
+"census"
+],
+[
+"Hoboken",
+"GA",
+31.18047,
+-82.1309,
+"Brantley County",
+"census"
+],
+[
+"Homeland",
+"GA",
+30.86014,
+-82.0208,
+"Charlton County",
+"census"
+],
+[
+"Hortense",
+"GA",
+31.32896,
+-81.95398,
+"Brantley County",
+"census"
+],
+[
+"Howard",
+"GA",
+32.6041,
+-84.3791,
+"Taylor County",
+"census"
+],
+[
+"Hull",
+"GA",
+34.01761,
+-83.29365,
+"Madison County",
+"census"
+],
+[
+"Ideal",
+"GA",
+32.37288,
+-84.18901,
+"Macon County",
+"census"
+],
+[
+"Ila",
+"GA",
+34.17367,
+-83.29311,
+"Madison County",
+"census"
+],
+[
+"Iron City",
+"GA",
+31.01358,
+-84.81331,
+"Seminole County",
+"census"
+],
+[
+"Ivey",
+"GA",
+32.90993,
+-83.29985,
+"Wilkinson County",
+"census"
+],
+[
+"Jacksonville",
+"GA",
+31.81335,
+-82.9758,
+"Telfair County",
+"census"
+],
+[
+"Jakin",
+"GA",
+31.09005,
+-84.98226,
+"Early County",
+"census"
+],
+[
+"Jekyll Island",
+"GA",
+31.06371,
+-81.41873,
+"Glynn County",
+"census"
+],
+[
+"Jenkinsburg",
+"GA",
+33.32058,
+-84.03731,
+"Butts County",
+"census"
+],
+[
+"Jersey",
+"GA",
+33.71689,
+-83.80425,
+"Walton County",
+"census"
+],
+[
+"Juliette",
+"GA",
+33.11371,
+-83.80842,
+"Monroe County",
+"census"
+],
+[
+"Junction City",
+"GA",
+32.60362,
+-84.4582,
+"Talbot County",
+"census"
+],
+[
+"Kennesaw State University",
+"GA",
+34.03786,
+-84.58264,
+"Cobb County",
+"census"
+],
+[
+"Keysville",
+"GA",
+33.23619,
+-82.22933,
+"Burke County",
+"census"
+],
+[
+"Kingston",
+"GA",
+34.23197,
+-84.94449,
+"Bartow County",
+"census"
+],
+[
+"Kite",
+"GA",
+32.69152,
+-82.51243,
+"Johnson County",
+"census"
+],
+[
+"LaGrange",
+"GA",
+33.02698,
+-85.03826,
+"Troup County",
+"census"
+],
+[
+"Lake Park",
+"GA",
+30.68556,
+-83.1877,
+"Lowndes County",
+"census"
+],
+[
+"Leary",
+"GA",
+31.48438,
+-84.51173,
+"Calhoun County",
+"census"
+],
+[
+"Lenox",
+"GA",
+31.261,
+-83.46687,
+"Cook County",
+"census"
+],
+[
+"Leslie",
+"GA",
+31.9548,
+-84.08709,
+"Sumter County",
+"census"
+],
+[
+"Lilly",
+"GA",
+32.14654,
+-83.87746,
+"Dooly County",
+"census"
+],
+[
+"Lincoln Park",
+"GA",
+32.86738,
+-84.3356,
+"Upson County",
+"census"
+],
+[
+"Lone Oak",
+"GA",
+33.17235,
+-84.81733,
+"Meriwether County",
+"census"
+],
+[
+"Luthersville",
+"GA",
+33.20963,
+-84.7443,
+"Meriwether County",
+"census"
+],
+[
+"Lyerly",
+"GA",
+34.40343,
+-85.40409,
+"Chattooga County",
+"census"
+],
+[
+"McIntyre",
+"GA",
+32.84686,
+-83.20091,
+"Wilkinson County",
+"census"
+],
+[
+"Macon-Bibb County",
+"GA",
+32.80884,
+-83.69419,
+"Bibb County",
+"census"
+],
+[
+"McRae-Helena",
+"GA",
+32.06358,
+-82.89689,
+"Telfair County",
+"census"
+],
+[
+"Manassas",
+"GA",
+32.16112,
+-82.02404,
+"Tattnall County",
+"census"
+],
+[
+"Manor",
+"GA",
+31.10307,
+-82.56671,
+"Ware County",
+"census"
+],
+[
+"Mansfield",
+"GA",
+33.51799,
+-83.73491,
+"Newton County",
+"census"
+],
+[
+"Martin",
+"GA",
+34.48577,
+-83.19745,
+"Stephens County",
+"census"
+],
+[
+"Matthews",
+"GA",
+33.21933,
+-82.30166,
+"Jefferson County",
+"census"
+],
+[
+"Maxeys",
+"GA",
+33.75491,
+-83.17264,
+"Oglethorpe County",
+"census"
+],
+[
+"Meansville",
+"GA",
+33.05145,
+-84.31046,
+"Pike County",
+"census"
+],
+[
+"Mendes",
+"GA",
+31.99475,
+-81.97044,
+"Tattnall County",
+"census"
+],
+[
+"Menlo",
+"GA",
+34.48349,
+-85.47761,
+"Chattooga County",
+"census"
+],
+[
+"Mershon",
+"GA",
+31.46326,
+-82.2528,
+"Pierce County",
+"census"
+],
+[
+"Midville",
+"GA",
+32.82127,
+-82.23527,
+"Burke County",
+"census"
+],
+[
+"Milan",
+"GA",
+32.0192,
+-83.06228,
+"Telfair County",
+"census"
+],
+[
+"Millwood",
+"GA",
+31.2654,
+-82.6572,
+"Ware County",
+"census"
+],
+[
+"Milner",
+"GA",
+33.11607,
+-84.18768,
+"Lamar County",
+"census"
+],
+[
+"Milstead",
+"GA",
+33.68795,
+-83.99073,
+"Rockdale County",
+"census"
+],
+[
+"Mineral Bluff",
+"GA",
+34.91415,
+-84.27761,
+"Fannin County",
+"census"
+],
+[
+"Mitchell",
+"GA",
+33.22171,
+-82.70125,
+"Glascock County",
+"census"
+],
+[
+"Molena",
+"GA",
+33.01408,
+-84.50706,
+"Pike County",
+"census"
+],
+[
+"Montrose",
+"GA",
+32.55923,
+-83.15315,
+"Laurens County",
+"census"
+],
+[
+"Moody AFB",
+"GA",
+30.96961,
+-83.1943,
+"Lowndes County",
+"census"
+],
+[
+"Moreland",
+"GA",
+33.28636,
+-84.76958,
+"Coweta County",
+"census"
+],
+[
+"Morganton",
+"GA",
+34.87505,
+-84.24427,
+"Fannin County",
+"census"
+],
+[
+"Morven",
+"GA",
+30.94398,
+-83.49998,
+"Brooks County",
+"census"
+],
+[
+"Musella",
+"GA",
+32.80187,
+-84.03238,
+"Crawford County",
+"census"
+],
+[
+"Naylor",
+"GA",
+30.91018,
+-83.07418,
+"Lowndes County",
+"census"
+],
+[
+"Newborn",
+"GA",
+33.51608,
+-83.69574,
+"Newton County",
+"census"
+],
+[
+"New England",
+"GA",
+34.91803,
+-85.48137,
+"Dade County",
+"census"
+],
+[
+"Newington",
+"GA",
+32.58916,
+-81.50599,
+"Screven County",
+"census"
+],
+[
+"Norman Park",
+"GA",
+31.26902,
+-83.68453,
+"Colquitt County",
+"census"
+],
+[
+"Norristown",
+"GA",
+32.50704,
+-82.49863,
+"Emanuel County",
+"census"
+],
+[
+"North High Shoals",
+"GA",
+33.82875,
+-83.50165,
+"Oconee County",
+"census"
+],
+[
+"Norwood",
+"GA",
+33.4627,
+-82.70596,
+"Warren County",
+"census"
+],
+[
+"Nunez",
+"GA",
+32.49195,
+-82.34669,
+"Emanuel County",
+"census"
+],
+[
+"Oak Park",
+"GA",
+32.36441,
+-82.32402,
+"Emanuel County",
+"census"
+],
+[
+"Ochlocknee",
+"GA",
+30.97544,
+-84.05064,
+"Thomas County",
+"census"
+],
+[
+"Oconee",
+"GA",
+32.85345,
+-82.95767,
+"Washington County",
+"census"
+],
+[
+"Odum",
+"GA",
+31.67186,
+-82.02418,
+"Wayne County",
+"census"
+],
+[
+"Offerman",
+"GA",
+31.40994,
+-82.11428,
+"Pierce County",
+"census"
+],
+[
+"Ohoopee",
+"GA",
+32.1817,
+-82.22199,
+"Toombs County",
+"census"
+],
+[
+"Oliver",
+"GA",
+32.52308,
+-81.53626,
+"Screven County",
+"census"
+],
+[
+"Orchard Hill",
+"GA",
+33.18516,
+-84.21204,
+"Spalding County",
+"census"
+],
+[
+"Parrott",
+"GA",
+31.89438,
+-84.51175,
+"Terrell County",
+"census"
+],
+[
+"Patterson",
+"GA",
+31.3849,
+-82.13543,
+"Pierce County",
+"census"
+],
+[
+"Pavo",
+"GA",
+30.95937,
+-83.73933,
+"Thomas County",
+"census"
+],
+[
+"Peachtree Corners",
+"GA",
+33.96715,
+-84.23233,
+"Gwinnett County",
+"census"
+],
+[
+"Pendergrass",
+"GA",
+34.16594,
+-83.67886,
+"Jackson County",
+"census"
+],
+[
+"Perkins",
+"GA",
+32.91926,
+-81.94435,
+"Jenkins County",
+"census"
+],
+[
+"Phillipsburg",
+"GA",
+31.43888,
+-83.52032,
+"Tift County",
+"census"
+],
+[
+"Pinehurst",
+"GA",
+32.19621,
+-83.75952,
+"Dooly County",
+"census"
+],
+[
+"Pine Lake",
+"GA",
+33.79071,
+-84.20584,
+"DeKalb County",
+"census"
+],
+[
+"Pineview",
+"GA",
+32.10428,
+-83.50887,
+"Wilcox County",
+"census"
+],
+[
+"Piney Grove",
+"GA",
+32.61546,
+-85.03881,
+"Harris County",
+"census"
+],
+[
+"Pitts",
+"GA",
+31.94618,
+-83.54176,
+"Wilcox County",
+"census"
+],
+[
+"Plains",
+"GA",
+32.03307,
+-84.39453,
+"Sumter County",
+"census"
+],
+[
+"Plainville",
+"GA",
+34.40526,
+-85.03149,
+"Gordon County",
+"census"
+],
+[
+"Portal",
+"GA",
+32.5382,
+-81.92875,
+"Bulloch County",
+"census"
+],
+[
+"Poulan",
+"GA",
+31.51451,
+-83.78982,
+"Worth County",
+"census"
+],
+[
+"Pulaski",
+"GA",
+32.39065,
+-81.95344,
+"Candler County",
+"census"
+],
+[
+"Ranger",
+"GA",
+34.50126,
+-84.71107,
+"Gordon County",
+"census"
+],
+[
+"Rayle",
+"GA",
+33.79134,
+-82.90855,
+"Wilkes County",
+"census"
+],
+[
+"Rebecca",
+"GA",
+31.80723,
+-83.48758,
+"Turner County",
+"census"
+],
+[
+"Register",
+"GA",
+32.36453,
+-81.88049,
+"Bulloch County",
+"census"
+],
+[
+"Rentz",
+"GA",
+32.38289,
+-82.99182,
+"Laurens County",
+"census"
+],
+[
+"Resaca",
+"GA",
+34.57937,
+-84.94382,
+"Gordon County",
+"census"
+],
+[
+"Rest Haven",
+"GA",
+34.13625,
+-83.97471,
+"Gwinnett County",
+"census"
+],
+[
+"Rhine",
+"GA",
+31.98932,
+-83.20043,
+"Dodge County",
+"census"
+],
+[
+"Riceboro",
+"GA",
+31.72444,
+-81.44234,
+"Liberty County",
+"census"
+],
+[
+"Riddleville",
+"GA",
+32.90274,
+-82.66498,
+"Washington County",
+"census"
+],
+[
+"Robins AFB",
+"GA",
+32.61001,
+-83.58295,
+"Houston County",
+"census"
+],
+[
+"Rockingham",
+"GA",
+31.54193,
+-82.41769,
+"Bacon County",
+"census"
+],
+[
+"Rock Spring",
+"GA",
+34.81467,
+-85.23887,
+"Walker County",
+"census"
+],
+[
+"Rocky Ford",
+"GA",
+32.66351,
+-81.83546,
+"Screven County",
+"census"
+],
+[
+"Roopville",
+"GA",
+33.45664,
+-85.13041,
+"Carroll County",
+"census"
+],
+[
+"Rutledge",
+"GA",
+33.62565,
+-83.6097,
+"Morgan County",
+"census"
+],
+[
+"St. Simons",
+"GA",
+31.18015,
+-81.38538,
+"Glynn County",
+"census"
+],
+[
+"Sale City",
+"GA",
+31.26292,
+-84.02082,
+"Mitchell County",
+"census"
+],
+[
+"Salem",
+"GA",
+32.75859,
+-84.19362,
+"Upson County",
+"census"
+],
+[
+"Santa Claus",
+"GA",
+32.17065,
+-82.32959,
+"Toombs County",
+"census"
+],
+[
+"Sasser",
+"GA",
+31.71992,
+-84.34776,
+"Terrell County",
+"census"
+],
+[
+"Satilla",
+"GA",
+31.79187,
+-82.55917,
+"Jeff Davis County",
+"census"
+],
+[
+"Sautee-Nacoochee",
+"GA",
+34.68881,
+-83.68308,
+"White County",
+"census"
+],
+[
+"Scotland",
+"GA",
+32.04725,
+-82.81762,
+"Telfair County",
+"census"
+],
+[
+"Screven",
+"GA",
+31.48415,
+-82.01688,
+"Wayne County",
+"census"
+],
+[
+"Seville",
+"GA",
+31.96095,
+-83.60064,
+"Wilcox County",
+"census"
+],
+[
+"Shady Dale",
+"GA",
+33.39847,
+-83.58938,
+"Jasper County",
+"census"
+],
+[
+"Sharon",
+"GA",
+33.56268,
+-82.79544,
+"Taliaferro County",
+"census"
+],
+[
+"Sharpsburg",
+"GA",
+33.33711,
+-84.65091,
+"Coweta County",
+"census"
+],
+[
+"Shiloh",
+"GA",
+32.81158,
+-84.69871,
+"Harris County",
+"census"
+],
+[
+"Siloam",
+"GA",
+33.54091,
+-83.08489,
+"Greene County",
+"census"
+],
+[
+"Sky Valley",
+"GA",
+34.985,
+-83.33399,
+"Rabun County",
+"census"
+],
+[
+"Smarr",
+"GA",
+32.98702,
+-83.88302,
+"Monroe County",
+"census"
+],
+[
+"Smithville",
+"GA",
+31.9011,
+-84.25517,
+"Lee County",
+"census"
+],
+[
+"South Fulton",
+"GA",
+33.63572,
+-84.58342,
+"Fulton County",
+"census"
+],
+[
+"Stapleton",
+"GA",
+33.21689,
+-82.46724,
+"Jefferson County",
+"census"
+],
+[
+"Sterling",
+"GA",
+31.26215,
+-81.55308,
+"Glynn County",
+"census"
+],
+[
+"Stillmore",
+"GA",
+32.44161,
+-82.21448,
+"Emanuel County",
+"census"
+],
+[
+"Stockton",
+"GA",
+30.94642,
+-83.00361,
+"Lanier County",
+"census"
+],
+[
+"Stonecrest",
+"GA",
+33.68067,
+-84.14525,
+"DeKalb County",
+"census"
+],
+[
+"Summertown",
+"GA",
+32.74524,
+-82.27686,
+"Emanuel County",
+"census"
+],
+[
+"Sumner",
+"GA",
+31.51034,
+-83.73684,
+"Worth County",
+"census"
+],
+[
+"Sunny Side",
+"GA",
+33.34328,
+-84.29174,
+"Spalding County",
+"census"
+],
+[
+"Sunset Village",
+"GA",
+32.89177,
+-84.40971,
+"Upson County",
+"census"
+],
+[
+"Surrency",
+"GA",
+31.72192,
+-82.19782,
+"Appling County",
+"census"
+],
+[
+"Sycamore",
+"GA",
+31.67165,
+-83.63553,
+"Turner County",
+"census"
+],
+[
+"Talahi Island",
+"GA",
+32.03298,
+-80.97602,
+"Chatham County",
+"census"
+],
+[
+"Talking Rock",
+"GA",
+34.52922,
+-84.49195,
+"Pickens County",
+"census"
+],
+[
+"Tallulah Falls",
+"GA",
+34.72584,
+-83.38751,
+"Habersham County",
+"census"
+],
+[
+"Talmo",
+"GA",
+34.17937,
+-83.71742,
+"Jackson County",
+"census"
+],
+[
+"Tarrytown",
+"GA",
+32.319,
+-82.55991,
+"Montgomery County",
+"census"
+],
+[
+"Tate City",
+"GA",
+34.97637,
+-83.55147,
+"Towns County",
+"census"
+],
+[
+"Taylorsville",
+"GA",
+34.08513,
+-84.98563,
+"Bartow County",
+"census"
+],
+[
+"Tazewell",
+"GA",
+32.375,
+-84.43796,
+"Marion County",
+"census"
+],
+[
+"The Rock",
+"GA",
+32.96072,
+-84.23918,
+"Upson County",
+"census"
+],
+[
+"Tiger",
+"GA",
+34.84607,
+-83.43256,
+"Rabun County",
+"census"
+],
+[
+"Tignall",
+"GA",
+33.86696,
+-82.74215,
+"Wilkes County",
+"census"
+],
+[
+"Toomsboro",
+"GA",
+32.82237,
+-83.08264,
+"Wilkinson County",
+"census"
+],
+[
+"Tunnel Hill",
+"GA",
+34.85541,
+-85.03678,
+"Whitfield County",
+"census"
+],
+[
+"Turin",
+"GA",
+33.32298,
+-84.63869,
+"Coweta County",
+"census"
+],
+[
+"Ty Ty",
+"GA",
+31.47188,
+-83.65027,
+"Tift County",
+"census"
+],
+[
+"Uvalda",
+"GA",
+32.03808,
+-82.50746,
+"Montgomery County",
+"census"
+],
+[
+"Vernonburg",
+"GA",
+31.96617,
+-81.12056,
+"Chatham County",
+"census"
+],
+[
+"Vidette",
+"GA",
+33.03612,
+-82.24403,
+"Burke County",
+"census"
+],
+[
+"Waco",
+"GA",
+33.7026,
+-85.18924,
+"Haralson County",
+"census"
+],
+[
+"Waleska",
+"GA",
+34.31702,
+-84.55098,
+"Cherokee County",
+"census"
+],
+[
+"Waresboro",
+"GA",
+31.2475,
+-82.47203,
+"Ware County",
+"census"
+],
+[
+"Warm Springs",
+"GA",
+32.8872,
+-84.67862,
+"Meriwether County",
+"census"
+],
+[
+"Warthen",
+"GA",
+33.09475,
+-82.80492,
+"Washington County",
+"census"
+],
+[
+"Warwick",
+"GA",
+31.82979,
+-83.92063,
+"Worth County",
+"census"
+],
+[
+"Waverly",
+"GA",
+31.10981,
+-81.72762,
+"Camden County",
+"census"
+],
+[
+"Waverly Hall",
+"GA",
+32.68289,
+-84.72833,
+"Harris County",
+"census"
+],
+[
+"Waynesville",
+"GA",
+31.22722,
+-81.78359,
+"Brantley County",
+"census"
+],
+[
+"Webster County unified government",
+"GA",
+32.04669,
+-84.55383,
+"Webster County",
+"census"
+],
+[
+"Wenona",
+"GA",
+31.91094,
+-83.75107,
+"Crisp County",
+"census"
+],
+[
+"West Brow",
+"GA",
+34.91482,
+-85.41858,
+"Dade County",
+"census"
+],
+[
+"Whigham",
+"GA",
+30.88389,
+-84.32737,
+"Grady County",
+"census"
+],
+[
+"White",
+"GA",
+34.28223,
+-84.74803,
+"Bartow County",
+"census"
+],
+[
+"White Plains",
+"GA",
+33.48031,
+-83.03634,
+"Greene County",
+"census"
+],
+[
+"Whitesburg",
+"GA",
+33.49207,
+-84.9143,
+"Carroll County",
+"census"
+],
+[
+"Wildwood",
+"GA",
+34.96694,
+-85.4215,
+"Dade County",
+"census"
+],
+[
+"Williamson",
+"GA",
+33.17827,
+-84.35757,
+"Pike County",
+"census"
+],
+[
+"Woodbury",
+"GA",
+32.98522,
+-84.58201,
+"Meriwether County",
+"census"
+],
+[
+"Woodland",
+"GA",
+32.78822,
+-84.56122,
+"Talbot County",
+"census"
+],
+[
+"Woodville",
+"GA",
+33.6655,
+-83.11809,
+"Greene County",
+"census"
+],
+[
+"Woolsey",
+"GA",
+33.3629,
+-84.40704,
+"Fayette County",
+"census"
+],
+[
+"Yatesville",
+"GA",
+32.91342,
+-84.14271,
+"Upson County",
+"census"
+],
+[
+"Yonah",
+"GA",
+34.64418,
+-83.743,
+"White County",
+"census"
+],
+[
+"Young Harris",
+"GA",
+34.93461,
+-83.84773,
+"Towns County",
+"census"
+],
+[
+"Abney Crossroads",
+"SC",
+34.50635,
+-80.5107,
+"Kershaw County",
+"census"
+],
+[
+"Adams Run",
+"SC",
+32.7219,
+-80.34659,
+"Charleston County",
+"census"
+],
+[
+"Alcolu",
+"SC",
+33.75911,
+-80.22489,
+"Clarendon County",
+"census"
+],
+[
+"Antreville",
+"SC",
+34.29621,
+-82.56035,
+"Abbeville County",
+"census"
+],
+[
+"Arcadia Lakes",
+"SC",
+34.05162,
+-80.96311,
+"Richland County",
+"census"
+],
+[
+"Arkwright",
+"SC",
+34.91496,
+-81.93873,
+"Spartanburg County",
+"census"
+],
+[
+"Arthurtown",
+"SC",
+33.96536,
+-81.00115,
+"Richland County",
+"census"
+],
+[
+"Ashwood",
+"SC",
+34.12301,
+-80.2968,
+"Lee County",
+"census"
+],
+[
+"Atlantic Beach",
+"SC",
+33.80355,
+-78.71774,
+"Horry County",
+"census"
+],
+[
+"Aynor",
+"SC",
+34.00023,
+-79.20712,
+"Horry County",
+"census"
+],
+[
+"Baxter Village",
+"SC",
+35.02721,
+-80.97791,
+"York County",
+"census"
+],
+[
+"Beech Island",
+"SC",
+33.4286,
+-81.89032,
+"Aiken County",
+"census"
+],
+[
+"Ben Avon",
+"SC",
+34.93461,
+-81.87537,
+"Spartanburg County",
+"census"
+],
+[
+"Bethune",
+"SC",
+34.41418,
+-80.34875,
+"Kershaw County",
+"census"
+],
+[
+"Blenheim",
+"SC",
+34.50976,
+-79.65249,
+"Marlboro County",
+"census"
+],
+[
+"Bonneau",
+"SC",
+33.31364,
+-79.95392,
+"Berkeley County",
+"census"
+],
+[
+"Bowman",
+"SC",
+33.3483,
+-80.68429,
+"Orangeburg County",
+"census"
+],
+[
+"Boykin",
+"SC",
+34.12051,
+-80.58444,
+"Kershaw County",
+"census"
+],
+[
+"Bradley",
+"SC",
+34.02991,
+-82.23929,
+"Greenwood County",
+"census"
+],
+[
+"Briarcliffe Acres",
+"SC",
+33.79013,
+-78.74903,
+"Horry County",
+"census"
+],
+[
+"Browntown",
+"SC",
+34.20529,
+-80.31603,
+"Lee County",
+"census"
+],
+[
+"Brunson",
+"SC",
+32.92426,
+-81.18864,
+"Hampton County",
+"census"
+],
+[
+"Bucksport",
+"SC",
+33.66518,
+-79.11577,
+"Horry County",
+"census"
+],
+[
+"Buford",
+"SC",
+34.74805,
+-80.62851,
+"Lancaster County",
+"census"
+],
+[
+"Caesars Head",
+"SC",
+35.10711,
+-82.61838,
+"Greenville County",
+"census"
+],
+[
+"Cameron",
+"SC",
+33.55795,
+-80.71503,
+"Calhoun County",
+"census"
+],
+[
+"Camp Croft",
+"SC",
+34.90878,
+-81.86358,
+"Spartanburg County",
+"census"
+],
+[
+"Campobello",
+"SC",
+35.12566,
+-82.14928,
+"Spartanburg County",
+"census"
+],
+[
+"Capitol View",
+"SC",
+33.96592,
+-80.92551,
+"Richland County",
+"census"
+],
+[
+"Carlisle",
+"SC",
+34.59204,
+-81.46451,
+"Union County",
+"census"
+],
+[
+"Carolina Forest",
+"SC",
+33.76636,
+-78.91348,
+"Horry County",
+"census"
+],
+[
+"Cash",
+"SC",
+34.61965,
+-79.8895,
+"Chesterfield County",
+"census"
+],
+[
+"Cateechee",
+"SC",
+34.76665,
+-82.77876,
+"Pickens County",
+"census"
+],
+[
+"Centenary",
+"SC",
+34.02571,
+-79.35237,
+"Marion County",
+"census"
+],
+[
+"Central Pacolet",
+"SC",
+34.9096,
+-81.75276,
+"Spartanburg County",
+"census"
+],
+[
+"Cherokee Falls",
+"SC",
+35.06387,
+-81.5445,
+"Cherokee County",
+"census"
+],
+[
+"Chesnee",
+"SC",
+35.14625,
+-81.86298,
+"Spartanburg County",
+"census"
+],
+[
+"Chickasaw Point",
+"SC",
+34.53548,
+-83.07645,
+"Oconee County",
+"census"
+],
+[
+"Clarks Hill",
+"SC",
+33.65817,
+-82.16599,
+"McCormick County",
+"census"
+],
+[
+"Clemson University",
+"SC",
+34.6756,
+-82.83525,
+"Pickens County",
+"census"
+],
+[
+"Clifton",
+"SC",
+34.98605,
+-81.8204,
+"Spartanburg County",
+"census"
+],
+[
+"Clio",
+"SC",
+34.57905,
+-79.54606,
+"Marlboro County",
+"census"
+],
+[
+"Cokesbury",
+"SC",
+34.29001,
+-82.20874,
+"Greenwood County",
+"census"
+],
+[
+"Conestee",
+"SC",
+34.76381,
+-82.35164,
+"Greenville County",
+"census"
+],
+[
+"Converse",
+"SC",
+34.99565,
+-81.84305,
+"Spartanburg County",
+"census"
+],
+[
+"Coosawhatchie",
+"SC",
+32.58626,
+-80.93384,
+"Jasper County",
+"census"
+],
+[
+"Cope",
+"SC",
+33.37774,
+-81.00794,
+"Orangeburg County",
+"census"
+],
+[
+"Cordova",
+"SC",
+33.43449,
+-80.92103,
+"Orangeburg County",
+"census"
+],
+[
+"Coronaca",
+"SC",
+34.2518,
+-82.10532,
+"Greenwood County",
+"census"
+],
+[
+"Cottageville",
+"SC",
+32.9362,
+-80.48032,
+"Colleton County",
+"census"
+],
+[
+"Coward",
+"SC",
+33.9718,
+-79.75009,
+"Florence County",
+"census"
+],
+[
+"Cross Anchor",
+"SC",
+34.64424,
+-81.85803,
+"Spartanburg County",
+"census"
+],
+[
+"Cross Hill",
+"SC",
+34.30451,
+-81.98358,
+"Laurens County",
+"census"
+],
+[
+"Dacusville",
+"SC",
+34.93427,
+-82.56051,
+"Pickens County",
+"census"
+],
+[
+"Dale",
+"SC",
+32.55543,
+-80.70156,
+"Beaufort County",
+"census"
+],
+[
+"Danwood",
+"SC",
+34.09031,
+-79.76948,
+"Florence County",
+"census"
+],
+[
+"Daufuskie Island",
+"SC",
+32.11054,
+-80.85708,
+"Beaufort County",
+"census"
+],
+[
+"Daviston",
+"SC",
+33.88617,
+-79.37177,
+"Marion County",
+"census"
+],
+[
+"DeBordieu Colony",
+"SC",
+33.37055,
+-79.17576,
+"Georgetown County",
+"census"
+],
+[
+"Donalds",
+"SC",
+34.3745,
+-82.3432,
+"Abbeville County",
+"census"
+],
+[
+"Dovesville",
+"SC",
+34.40379,
+-79.90849,
+"Darlington County",
+"census"
+],
+[
+"Drayton",
+"SC",
+34.97617,
+-81.90261,
+"Spartanburg County",
+"census"
+],
+[
+"Dunbar",
+"SC",
+33.53522,
+-79.35229,
+"Georgetown County",
+"census"
+],
+[
+"East Camden",
+"SC",
+34.26868,
+-80.56812,
+"Kershaw County",
+"census"
+],
+[
+"Eastover",
+"SC",
+33.87789,
+-80.69493,
+"Richland County",
+"census"
+],
+[
+"Edisto Beach",
+"SC",
+32.49872,
+-80.31349,
+"Colleton County",
+"census"
+],
+[
+"Edmund",
+"SC",
+33.86371,
+-81.19185,
+"Lexington County",
+"census"
+],
+[
+"Ehrhardt",
+"SC",
+33.09851,
+-81.01382,
+"Bamberg County",
+"census"
+],
+[
+"Elko",
+"SC",
+33.38074,
+-81.38053,
+"Barnwell County",
+"census"
+],
+[
+"Elliott",
+"SC",
+34.1109,
+-80.17103,
+"Lee County",
+"census"
+],
+[
+"Elloree",
+"SC",
+33.52999,
+-80.5708,
+"Orangeburg County",
+"census"
+],
+[
+"Enoree",
+"SC",
+34.66049,
+-81.96252,
+"Spartanburg County",
+"census"
+],
+[
+"Eutawville",
+"SC",
+33.39773,
+-80.34293,
+"Orangeburg County",
+"census"
+],
+[
+"Fair Play",
+"SC",
+34.50809,
+-82.98684,
+"Oconee County",
+"census"
+],
+[
+"Fairview Crossroads",
+"SC",
+33.76216,
+-81.35947,
+"Lexington County",
+"census"
+],
+[
+"Fingerville",
+"SC",
+35.13508,
+-82.00041,
+"Spartanburg County",
+"census"
+],
+[
+"Finklea",
+"SC",
+34.09885,
+-78.98581,
+"Horry County",
+"census"
+],
+[
+"Floydale",
+"SC",
+34.32109,
+-79.33703,
+"Dillon County",
+"census"
+],
+[
+"Foreston",
+"SC",
+33.63679,
+-80.06068,
+"Clarendon County",
+"census"
+],
+[
+"Fort Lawn",
+"SC",
+34.70023,
+-80.89912,
+"Chester County",
+"census"
+],
+[
+"Fripp Island",
+"SC",
+32.32205,
+-80.48686,
+"Beaufort County",
+"census"
+],
+[
+"Furman",
+"SC",
+32.68125,
+-81.1877,
+"Hampton County",
+"census"
+],
+[
+"Gayle Mill",
+"SC",
+34.70222,
+-81.23923,
+"Chester County",
+"census"
+],
+[
+"Gifford",
+"SC",
+32.86004,
+-81.23851,
+"Hampton County",
+"census"
+],
+[
+"Gilbert",
+"SC",
+33.92411,
+-81.39104,
+"Lexington County",
+"census"
+],
+[
+"Gillisonville",
+"SC",
+32.61159,
+-81.00018,
+"Jasper County",
+"census"
+],
+[
+"Glendale",
+"SC",
+34.94508,
+-81.83637,
+"Spartanburg County",
+"census"
+],
+[
+"Glenn Springs",
+"SC",
+34.81196,
+-81.85046,
+"Spartanburg County",
+"census"
+],
+[
+"Govan",
+"SC",
+33.22277,
+-81.17483,
+"Bamberg County",
+"census"
+],
+[
+"Gramling",
+"SC",
+35.07753,
+-82.1346,
+"Spartanburg County",
+"census"
+],
+[
+"Gray Court",
+"SC",
+34.60831,
+-82.11512,
+"Laurens County",
+"census"
+],
+[
+"Greeleyville",
+"SC",
+33.58022,
+-79.99002,
+"Williamsburg County",
+"census"
+],
+[
+"Green Sea",
+"SC",
+34.12878,
+-78.97205,
+"Horry County",
+"census"
+],
+[
+"Grover",
+"SC",
+33.10918,
+-80.59196,
+"Dorchester County",
+"census"
+],
+[
+"Hamer",
+"SC",
+34.47449,
+-79.3254,
+"Dillon County",
+"census"
+],
+[
+"Harbor Island",
+"SC",
+32.40829,
+-80.43821,
+"",
+"census"
+],
+[
+"Harleyville",
+"SC",
+33.21307,
+-80.44778,
+"Dorchester County",
+"census"
+],
+[
+"Heath Springs",
+"SC",
+34.59327,
+-80.67505,
+"Lancaster County",
+"census"
+],
+[
+"Helena",
+"SC",
+34.28066,
+-81.64449,
+"Newberry County",
+"census"
+],
+[
+"Hemingway",
+"SC",
+33.75332,
+-79.44626,
+"Williamsburg County",
+"census"
+],
+[
+"Hickory Grove",
+"SC",
+34.97846,
+-81.41806,
+"York County",
+"census"
+],
+[
+"Hilda",
+"SC",
+33.28054,
+-81.24471,
+"Barnwell County",
+"census"
+],
+[
+"Hilltop",
+"SC",
+34.97549,
+-81.9585,
+"Spartanburg County",
+"census"
+],
+[
+"Hodges",
+"SC",
+34.28877,
+-82.24995,
+"Greenwood County",
+"census"
+],
+[
+"Homewood",
+"SC",
+33.89008,
+-79.05052,
+"Horry County",
+"census"
+],
+[
+"Islandton",
+"SC",
+32.90926,
+-80.93595,
+"Colleton County",
+"census"
+],
+[
+"Jacksonboro",
+"SC",
+32.77176,
+-80.47694,
+"Colleton County",
+"census"
+],
+[
+"James Island",
+"SC",
+32.73612,
+-79.93718,
+"Charleston County",
+"census"
+],
+[
+"Jamestown",
+"SC",
+33.28588,
+-79.69459,
+"Berkeley County",
+"census"
+],
+[
+"Jefferson",
+"SC",
+34.65122,
+-80.38411,
+"Chesterfield County",
+"census"
+],
+[
+"Jenkinsville",
+"SC",
+34.31109,
+-81.28667,
+"Fairfield County",
+"census"
+],
+[
+"Jonesville",
+"SC",
+34.83395,
+-81.68241,
+"Union County",
+"census"
+],
+[
+"Keowee Key",
+"SC",
+34.82093,
+-82.91234,
+"Oconee County",
+"census"
+],
+[
+"Ketchuptown",
+"SC",
+34.10908,
+-79.1557,
+"Horry County",
+"census"
+],
+[
+"Kline",
+"SC",
+33.12472,
+-81.34254,
+"Barnwell County",
+"census"
+],
+[
+"La France",
+"SC",
+34.61628,
+-82.7707,
+"Anderson County",
+"census"
+],
+[
+"Lake View",
+"SC",
+34.34078,
+-79.16643,
+"Dillon County",
+"census"
+],
+[
+"Lamar",
+"SC",
+34.16947,
+-80.06507,
+"Darlington County",
+"census"
+],
+[
+"Lane",
+"SC",
+33.52509,
+-79.87968,
+"Williamsburg County",
+"census"
+],
+[
+"Litchfield Beach",
+"SC",
+33.47439,
+-79.11464,
+"Georgetown County",
+"census"
+],
+[
+"Little Mountain",
+"SC",
+34.1969,
+-81.41237,
+"Newberry County",
+"census"
+],
+[
+"Little Rock",
+"SC",
+34.46914,
+-79.3899,
+"Dillon County",
+"census"
+],
+[
+"Live Oak",
+"SC",
+34.05604,
+-78.93973,
+"Horry County",
+"census"
+],
+[
+"Livingston",
+"SC",
+33.55312,
+-81.11955,
+"Orangeburg County",
+"census"
+],
+[
+"Lobeco",
+"SC",
+32.55116,
+-80.73537,
+"Beaufort County",
+"census"
+],
+[
+"Lockhart",
+"SC",
+34.79604,
+-81.46698,
+"Chester County",
+"census"
+],
+[
+"Lodge",
+"SC",
+33.06781,
+-80.9537,
+"Colleton County",
+"census"
+],
+[
+"Longcreek",
+"SC",
+34.7842,
+-83.25638,
+"Oconee County",
+"census"
+],
+[
+"Lowndesville",
+"SC",
+34.20991,
+-82.64763,
+"Abbeville County",
+"census"
+],
+[
+"Lowrys",
+"SC",
+34.80401,
+-81.23722,
+"Chester County",
+"census"
+],
+[
+"Luray",
+"SC",
+32.81421,
+-81.24026,
+"Hampton County",
+"census"
+],
+[
+"Lydia",
+"SC",
+34.28652,
+-80.11851,
+"Darlington County",
+"census"
+],
+[
+"Lynchburg",
+"SC",
+34.06,
+-80.07697,
+"Lee County",
+"census"
+],
+[
+"McBee",
+"SC",
+34.46702,
+-80.25713,
+"Chesterfield County",
+"census"
+],
+[
+"McClellanville",
+"SC",
+33.0865,
+-79.46829,
+"Charleston County",
+"census"
+],
+[
+"McConnells",
+"SC",
+34.87696,
+-81.23161,
+"York County",
+"census"
+],
+[
+"Manville",
+"SC",
+34.15977,
+-80.29742,
+"Lee County",
+"census"
+],
+[
+"Mayesville",
+"SC",
+33.98491,
+-80.20444,
+"Sumter County",
+"census"
+],
+[
+"Modoc",
+"SC",
+33.72145,
+-82.21742,
+"McCormick County",
+"census"
+],
+[
+"Monetta",
+"SC",
+33.84999,
+-81.60993,
+"Saluda County",
+"census"
+],
+[
+"Mount Carmel",
+"SC",
+34.01845,
+-82.50445,
+"McCormick County",
+"census"
+],
+[
+"Mount Croghan",
+"SC",
+34.76975,
+-80.22639,
+"Chesterfield County",
+"census"
+],
+[
+"Mountville",
+"SC",
+34.37303,
+-81.97736,
+"Laurens County",
+"census"
+],
+[
+"Mulberry",
+"SC",
+33.95887,
+-80.32908,
+"Sumter County",
+"census"
+],
+[
+"Neeses",
+"SC",
+33.53644,
+-81.12361,
+"Orangeburg County",
+"census"
+],
+[
+"Newry",
+"SC",
+34.72483,
+-82.91463,
+"Oconee County",
+"census"
+],
+[
+"Newtown",
+"SC",
+34.40128,
+-79.35677,
+"Dillon County",
+"census"
+],
+[
+"Nichols",
+"SC",
+34.23518,
+-79.14912,
+"Marion County",
+"census"
+],
+[
+"Norris",
+"SC",
+34.76612,
+-82.75253,
+"Pickens County",
+"census"
+],
+[
+"North",
+"SC",
+33.61637,
+-81.10297,
+"Orangeburg County",
+"census"
+],
+[
+"North Santee",
+"SC",
+33.54216,
+-80.41411,
+"Clarendon County",
+"census"
+],
+[
+"Norway",
+"SC",
+33.44976,
+-81.12667,
+"Orangeburg County",
+"census"
+],
+[
+"Olanta",
+"SC",
+33.93618,
+-79.93179,
+"Florence County",
+"census"
+],
+[
+"Olar",
+"SC",
+33.17986,
+-81.18534,
+"Bamberg County",
+"census"
+],
+[
+"Olympia",
+"SC",
+33.97388,
+-81.03612,
+"Richland County",
+"census"
+],
+[
+"Oswego",
+"SC",
+34.0056,
+-80.28615,
+"Sumter County",
+"census"
+],
+[
+"Parksville",
+"SC",
+33.78659,
+-82.21737,
+"McCormick County",
+"census"
+],
+[
+"Patrick",
+"SC",
+34.57525,
+-80.04466,
+"Chesterfield County",
+"census"
+],
+[
+"Pauline",
+"SC",
+34.83425,
+-81.86631,
+"Spartanburg County",
+"census"
+],
+[
+"Pawleys Island",
+"SC",
+33.42809,
+-79.12499,
+"Georgetown County",
+"census"
+],
+[
+"Paxville",
+"SC",
+33.73903,
+-80.35856,
+"Clarendon County",
+"census"
+],
+[
+"Peak",
+"SC",
+34.23633,
+-81.32884,
+"Newberry County",
+"census"
+],
+[
+"Pelion",
+"SC",
+33.78486,
+-81.25968,
+"Lexington County",
+"census"
+],
+[
+"Pelzer",
+"SC",
+34.64365,
+-82.46007,
+"Anderson County",
+"census"
+],
+[
+"Perry",
+"SC",
+33.62832,
+-81.3081,
+"Aiken County",
+"census"
+],
+[
+"Pimlico",
+"SC",
+33.09919,
+-79.9596,
+"Berkeley County",
+"census"
+],
+[
+"Pine Ridge",
+"SC",
+34.39567,
+-80.16842,
+"Darlington County",
+"census"
+],
+[
+"Pinewood",
+"SC",
+33.73958,
+-80.46202,
+"Sumter County",
+"census"
+],
+[
+"Pinopolis",
+"SC",
+33.22862,
+-80.0386,
+"Berkeley County",
+"census"
+],
+[
+"Plum Branch",
+"SC",
+33.84895,
+-82.26384,
+"McCormick County",
+"census"
+],
+[
+"Pomaria",
+"SC",
+34.26874,
+-81.41782,
+"Newberry County",
+"census"
+],
+[
+"Princeton",
+"SC",
+34.49128,
+-82.29587,
+"Laurens County",
+"census"
+],
+[
+"Promised Land",
+"SC",
+34.12768,
+-82.2307,
+"Greenwood County",
+"census"
+],
+[
+"Quinby",
+"SC",
+34.22803,
+-79.73569,
+"Florence County",
+"census"
+],
+[
+"Rains",
+"SC",
+34.09424,
+-79.32139,
+"Marion County",
+"census"
+],
+[
+"Reevesville",
+"SC",
+33.1973,
+-80.64168,
+"Dorchester County",
+"census"
+],
+[
+"Reidville",
+"SC",
+34.86581,
+-82.11064,
+"Spartanburg County",
+"census"
+],
+[
+"Rembert",
+"SC",
+34.10374,
+-80.53052,
+"Sumter County",
+"census"
+],
+[
+"Richburg",
+"SC",
+34.71662,
+-81.01958,
+"Chester County",
+"census"
+],
+[
+"Ridge Spring",
+"SC",
+33.84528,
+-81.66121,
+"Saluda County",
+"census"
+],
+[
+"Ridgeway",
+"SC",
+34.30654,
+-80.96008,
+"Fairfield County",
+"census"
+],
+[
+"Riverview",
+"SC",
+35.01405,
+-80.98893,
+"York County",
+"census"
+],
+[
+"Rockville",
+"SC",
+32.60284,
+-80.19138,
+"Charleston County",
+"census"
+],
+[
+"Rowesville",
+"SC",
+33.37224,
+-80.83616,
+"Orangeburg County",
+"census"
+],
+[
+"Ruby",
+"SC",
+34.74816,
+-80.17914,
+"Chesterfield County",
+"census"
+],
+[
+"Russellville",
+"SC",
+33.39702,
+-79.96374,
+"Berkeley County",
+"census"
+],
+[
+"St. Andrews",
+"SC",
+34.0511,
+-81.10561,
+"Richland County",
+"census"
+],
+[
+"St. Charles",
+"SC",
+34.0806,
+-80.22494,
+"Lee County",
+"census"
+],
+[
+"St. George",
+"SC",
+33.18607,
+-80.57946,
+"Dorchester County",
+"census"
+],
+[
+"St. Matthews",
+"SC",
+33.66464,
+-80.77875,
+"Calhoun County",
+"census"
+],
+[
+"St. Stephen",
+"SC",
+33.40342,
+-79.92557,
+"Berkeley County",
+"census"
+],
+[
+"Salem",
+"SC",
+34.88792,
+-82.97522,
+"Oconee County",
+"census"
+],
+[
+"Salley",
+"SC",
+33.5669,
+-81.30366,
+"Aiken County",
+"census"
+],
+[
+"Sandy Springs",
+"SC",
+34.60252,
+-82.75093,
+"Anderson County",
+"census"
+],
+[
+"Santee",
+"SC",
+33.48458,
+-80.48998,
+"Orangeburg County",
+"census"
+],
+[
+"Scotia",
+"SC",
+32.6805,
+-81.24327,
+"Hampton County",
+"census"
+],
+[
+"Scranton",
+"SC",
+33.9173,
+-79.74411,
+"Florence County",
+"census"
+],
+[
+"Seabrook",
+"SC",
+32.53478,
+-80.75624,
+"Beaufort County",
+"census"
+],
+[
+"Sellers",
+"SC",
+34.28259,
+-79.4723,
+"Marion County",
+"census"
+],
+[
+"Sharon",
+"SC",
+34.95202,
+-81.34352,
+"York County",
+"census"
+],
+[
+"Sheldon",
+"SC",
+32.59553,
+-80.79945,
+"Beaufort County",
+"census"
+],
+[
+"Shiloh",
+"SC",
+33.94816,
+-80.01891,
+"Sumter County",
+"census"
+],
+[
+"Silverstreet",
+"SC",
+34.21771,
+-81.71461,
+"Newberry County",
+"census"
+],
+[
+"Six Mile",
+"SC",
+34.80933,
+-82.81164,
+"Pickens County",
+"census"
+],
+[
+"Smoaks",
+"SC",
+33.08945,
+-80.81421,
+"Colleton County",
+"census"
+],
+[
+"Smyrna",
+"SC",
+35.04201,
+-81.40942,
+"York County",
+"census"
+],
+[
+"Snelling",
+"SC",
+33.2443,
+-81.47503,
+"Barnwell County",
+"census"
+],
+[
+"Society Hill",
+"SC",
+34.50982,
+-79.85353,
+"Darlington County",
+"census"
+],
+[
+"South Union",
+"SC",
+34.55955,
+-83.04897,
+"Oconee County",
+"census"
+],
+[
+"Springfield",
+"SC",
+33.49674,
+-81.27949,
+"Orangeburg County",
+"census"
+],
+[
+"Starr",
+"SC",
+34.37789,
+-82.69533,
+"Anderson County",
+"census"
+],
+[
+"Startex",
+"SC",
+34.92936,
+-82.09472,
+"Spartanburg County",
+"census"
+],
+[
+"Stuckey",
+"SC",
+33.73219,
+-79.51312,
+"Williamsburg County",
+"census"
+],
+[
+"Summerton",
+"SC",
+33.60148,
+-80.35265,
+"Clarendon County",
+"census"
+],
+[
+"Summit",
+"SC",
+33.92464,
+-81.42258,
+"Lexington County",
+"census"
+],
+[
+"Swansea",
+"SC",
+33.74002,
+-81.10452,
+"Lexington County",
+"census"
+],
+[
+"Sycamore",
+"SC",
+33.03493,
+-81.22253,
+"Allendale County",
+"census"
+],
+[
+"Tamassee",
+"SC",
+34.87982,
+-83.01403,
+"Oconee County",
+"census"
+],
+[
+"Tatum",
+"SC",
+34.64382,
+-79.58671,
+"Marlboro County",
+"census"
+],
+[
+"The Cliffs Valley",
+"SC",
+35.13951,
+-82.43603,
+"Greenville County",
+"census"
+],
+[
+"Tradesville",
+"SC",
+34.77094,
+-80.55022,
+"Lancaster County",
+"census"
+],
+[
+"Trenton",
+"SC",
+33.74056,
+-81.84094,
+"Edgefield County",
+"census"
+],
+[
+"Troy",
+"SC",
+33.99188,
+-82.29789,
+"Greenwood County",
+"census"
+],
+[
+"Turbeville",
+"SC",
+33.88954,
+-80.01615,
+"Clarendon County",
+"census"
+],
+[
+"Ulmer",
+"SC",
+33.10215,
+-81.20901,
+"Allendale County",
+"census"
+],
+[
+"Unity",
+"SC",
+34.80156,
+-80.69178,
+"Lancaster County",
+"census"
+],
+[
+"Vance",
+"SC",
+33.4364,
+-80.4202,
+"Orangeburg County",
+"census"
+],
+[
+"Van Wyck",
+"SC",
+34.85564,
+-80.82931,
+"Lancaster County",
+"census"
+],
+[
+"Wagener",
+"SC",
+33.6513,
+-81.3626,
+"Aiken County",
+"census"
+],
+[
+"Wallace",
+"SC",
+34.72311,
+-79.84033,
+"Marlboro County",
+"census"
+],
+[
+"Ward",
+"SC",
+33.8573,
+-81.73133,
+"Saluda County",
+"census"
+],
+[
+"Ware Place",
+"SC",
+34.62472,
+-82.38482,
+"Greenville County",
+"census"
+],
+[
+"Waterloo",
+"SC",
+34.3562,
+-82.05721,
+"Laurens County",
+"census"
+],
+[
+"West Pelzer",
+"SC",
+34.64485,
+-82.47484,
+"Anderson County",
+"census"
+],
+[
+"West Union",
+"SC",
+34.75604,
+-83.04414,
+"Oconee County",
+"census"
+],
+[
+"White Knoll",
+"SC",
+33.88802,
+-81.23864,
+"Lexington County",
+"census"
+],
+[
+"Whitney",
+"SC",
+34.98362,
+-81.92237,
+"Spartanburg County",
+"census"
+],
+[
+"Williams",
+"SC",
+33.03414,
+-80.84284,
+"Colleton County",
+"census"
+],
+[
+"Willington",
+"SC",
+33.9651,
+-82.45029,
+"McCormick County",
+"census"
+],
+[
+"Windsor",
+"SC",
+33.48094,
+-81.51365,
+"Aiken County",
+"census"
+],
+[
+"Wisacky",
+"SC",
+34.14658,
+-80.19141,
+"Lee County",
+"census"
+],
+[
+"Woodford",
+"SC",
+33.6687,
+-81.11195,
+"Orangeburg County",
+"census"
+],
+[
+"Wyboo",
+"SC",
+33.56571,
+-80.2153,
+"Clarendon County",
+"census"
+],
+[
+"Zion",
+"SC",
+34.25884,
+-79.31171,
+"Marion County",
+"census"
+]
+]
+}

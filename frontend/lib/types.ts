@@ -9,6 +9,7 @@ export interface Endpoint {
   method: string;
   confidence: Confidence;
   evidence: Record<string, unknown>;
+  role?: "endpoint" | "context"; // context: a place the description names, used only to place the project
 }
 
 export interface Project {
@@ -62,6 +63,8 @@ export interface Overlap {
   windows_overlap: boolean | null;
   pair_confidence: Confidence;
   in_sponsor_sample: boolean;
+  finished?: boolean; // either project already in service; older recorded runs don't carry it
+  distance_slack_mi?: number; // how far the distance could move if unlocated ends were found
   rank: number;
 }
 
@@ -76,6 +79,8 @@ export interface ReferenceResult {
   expected_days: number;
   got_days: number | null;
   passed: boolean;
+  blind_mi?: number | null; // the same pair from our own geocoding, without the file's coordinates
+  blind_passed?: boolean | null;
 }
 
 export interface Shared {

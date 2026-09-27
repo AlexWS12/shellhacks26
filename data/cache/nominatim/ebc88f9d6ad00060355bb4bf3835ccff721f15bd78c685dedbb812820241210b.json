@@ -1,0 +1,143 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "oasis",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 345024551,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154128262,
+   "lat": "34.9153586",
+   "lon": "-84.4821495",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Oasis",
+   "display_name": "Oasis, Fannin County, Georgia, United States",
+   "address": {
+    "hamlet": "Oasis",
+    "county": "Fannin County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.8953586",
+    "34.9353586",
+    "-84.5021495",
+    "-84.4621495"
+   ]
+  },
+  {
+   "place_id": 341193161,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 260693787,
+   "lat": "34.9220401",
+   "lon": "-81.9713178",
+   "category": "shop",
+   "type": "alcohol",
+   "place_rank": 30,
+   "importance": 6.0168612191912985e-05,
+   "addresstype": "shop",
+   "name": "Oasis",
+   "display_name": "Oasis, 102, Southport Road, Spartanburg, Spartanburg County, South Carolina, 29302, United States",
+   "address": {
+    "shop": "Oasis",
+    "house_number": "102",
+    "road": "Southport Road",
+    "city": "Spartanburg",
+    "county": "Spartanburg County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29302",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.9218968",
+    "34.9221876",
+    "-81.9715615",
+    "-81.9710428"
+   ]
+  },
+  {
+   "place_id": 342441382,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 9026971406,
+   "lat": "35.1618958",
+   "lon": "-84.8804625",
+   "category": "shop",
+   "type": "convenience",
+   "place_rank": 30,
+   "importance": 5.607309071483966e-05,
+   "addresstype": "shop",
+   "name": "Oasis",
+   "display_name": "Oasis, 1st Street Northwest, Annadale, Cleveland, Bradley County, East Tennessee, Tennessee, 37311, United States",
+   "address": {
+    "shop": "Oasis",
+    "road": "1st Street Northwest",
+    "hamlet": "Annadale",
+    "city": "Cleveland",
+    "county": "Bradley County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37311",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.1618458",
+    "35.1619458",
+    "-84.8805125",
+    "-84.8804125"
+   ]
+  },
+  {
+   "place_id": 341707603,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 508338013,
+   "lat": "33.4937297",
+   "lon": "-80.5114232",
+   "category": "amenity",
+   "type": "bar",
+   "place_rank": 30,
+   "importance": 3.500190737769158e-05,
+   "addresstype": "amenity",
+   "name": "Oasis",
+   "display_name": "Oasis, Old Number Six Highway, Santee, Orangeburg County, South Carolina, 29163, United States",
+   "address": {
+    "amenity": "Oasis",
+    "road": "Old Number Six Highway",
+    "village": "Santee",
+    "county": "Orangeburg County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29163",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4936674",
+    "33.4938983",
+    "-80.5114828",
+    "-80.5111895"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,139 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "purrysburg",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343375940,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12425303,
+   "lat": "32.2370178",
+   "lon": "-81.0972062",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533842488746471,
+   "addresstype": "road",
+   "name": "Purrysburg Road",
+   "display_name": "Purrysburg Road, Hardeeville, Jasper County, South Carolina, 29927, United States",
+   "address": {
+    "road": "Purrysburg Road",
+    "village": "Hardeeville",
+    "county": "Jasper County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29927",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2272520",
+    "32.2538414",
+    "-81.1060127",
+    "-81.0807320"
+   ]
+  },
+  {
+   "place_id": 342728253,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12420907,
+   "lat": "32.3690777",
+   "lon": "-81.1214588",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Purrysburg Road",
+   "display_name": "Purrysburg Road, Baker Hill, Jasper County, South Carolina, 29927, United States",
+   "address": {
+    "road": "Purrysburg Road",
+    "hamlet": "Baker Hill",
+    "county": "Jasper County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29927",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2967650",
+    "32.4355530",
+    "-81.1221510",
+    "-81.1038850"
+   ]
+  },
+  {
+   "place_id": 343508916,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 358926864,
+   "lat": "32.4623925",
+   "lon": "-80.6523262",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Purrysburg Drive",
+   "display_name": "Purrysburg Drive, Partridge Woods, Beaufort County, South Carolina, 29907, United States",
+   "address": {
+    "road": "Purrysburg Drive",
+    "hamlet": "Partridge Woods",
+    "county": "Beaufort County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29907",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.4593209",
+    "32.4654892",
+    "-80.6527117",
+    "-80.6520623"
+   ]
+  },
+  {
+   "place_id": 344005631,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 805207687,
+   "lat": "32.2225164",
+   "lon": "-81.0749121",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336541924162658,
+   "addresstype": "road",
+   "name": "Purrysburg Road",
+   "display_name": "Purrysburg Road, Limehouse, Jasper County, South Carolina, 29927, United States",
+   "address": {
+    "road": "Purrysburg Road",
+    "hamlet": "Limehouse",
+    "county": "Jasper County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29927",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2192750",
+    "32.2250754",
+    "-81.0770740",
+    "-81.0735840"
+   ]
+  }
+ ]
+}
