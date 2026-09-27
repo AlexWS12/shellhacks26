@@ -15,8 +15,29 @@ export type Panel =
 
 export type Camera = { kind: "us" } | { kind: "border" } | { kind: "river" } | { kind: "pair"; a: string; b: string } | { kind: "project"; id: string } | { kind: "point"; lon: number; lat: number };
 
+export type RailTab = "sources" | "agents" | "bench" | "issues" | "activity";
+export const RAIL_TABS: RailTab[] = ["sources", "agents", "bench", "issues", "activity"];
+
 export const CATEGORIES: ResearchCategory[] = ["electric", "gas", "roads_water"];
 const RESEARCH_KEY = "tandem.research";
+const RAIL_KEY = "tandem.rail";
+
+function savedRail(): { railOpen?: boolean; railExpanded?: boolean } {
+  try {
+    const raw = typeof localStorage !== "undefined" ? localStorage.getItem(RAIL_KEY) : null;
+    return raw ? (JSON.parse(raw) as { railOpen?: boolean; railExpanded?: boolean }) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveRail(s: { railOpen: boolean; railExpanded: boolean }): void {
+  try {
+    localStorage.setItem(RAIL_KEY, JSON.stringify({ railOpen: s.railOpen, railExpanded: s.railExpanded }));
+  } catch {
+    // private mode: the layout just isn't remembered
+  }
+}
 
 function savedResearch(): Record<ResearchCategory, boolean> {
   const all = { electric: true, gas: true, roads_water: true };
@@ -49,6 +70,12 @@ interface UIState {
   refreshResults: () => Promise<void>;
   flyTo: (c: Camera) => void;
   setBasemap: (b: UIState["basemap"]) => void;
+  railTab: RailTab; // which pipeline section the left panel shows
+  railOpen: boolean; // left panel visible
+  railExpanded: boolean; // rail shows labels and status
+  selectRailTab: (t: RailTab) => void; // clicking the open tab closes the panel
+  closeRail: () => void;
+  toggleRailExpanded: () => void;
 }
 
 const SERVER_KEYS = ["allSponsors", "townLevel", "hideFinished"] as const;
@@ -99,6 +126,22 @@ export const useUI = create<UIState>((set, get) => ({
   },
   flyTo: (c) => set((s) => ({ camera: { ...c, n: s.camera.n + 1 } as UIState["camera"] })),
   setBasemap: (basemap) => set({ basemap }),
+  railTab: "agents",
+  railOpen: true,
+  railExpanded: false,
+  selectRailTab: (railTab) => {
+    const s = get();
+    set(s.railOpen && s.railTab === railTab ? { railOpen: false } : { railTab, railOpen: true });
+    saveRail(get());
+  },
+  closeRail: () => {
+    set({ railOpen: false });
+    saveRail(get());
+  },
+  toggleRailExpanded: () => {
+    set((s) => ({ railExpanded: !s.railExpanded }));
+    saveRail(get());
+  },
 }));
 
 let source: EventSource | null = null;
@@ -144,6 +187,7 @@ export async function skipToResults(): Promise<void> {
 }
 
 export async function boot(): Promise<void> {
+  useUI.setState(savedRail());
   try {
     const [health, graph] = await Promise.all([
       api.health(),

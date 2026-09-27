@@ -6,8 +6,8 @@ import { engineColor } from "@/lib/format";
 import { run, useRev, type AgentView } from "@/lib/run";
 import { useUI } from "@/lib/ui";
 
-const W = 318;
-const NODE_W = 100;
+const W = 298; // inner width of the left rail's panel (330px less padding)
+const NODE_W = 92;
 const NODE_H = 58;
 const ROW_H = 72;
 const HANDOFF_MS = 900;
