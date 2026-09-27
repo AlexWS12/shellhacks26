@@ -1,7 +1,7 @@
-# Tandem
+# UtiliTies
 
 Neighboring utilities plan their construction years ahead, usually without seeing each other's plans.
-Tandem is a team of AI agents that reads two utilities' public filings (Dominion Energy South Carolina and
+UtiliTies is a team of AI agents that reads two utilities' public filings (Dominion Energy South Carolina and
 Georgia Power), puts every planned project on a map, and finds where they could share crews, equipment,
 right-of-way and outages because they are building close together.
 

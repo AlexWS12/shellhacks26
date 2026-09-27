@@ -9,7 +9,7 @@ import FailureModal from "./FailureModal";
 import Header from "./Header";
 import ModelSetup from "./ModelSetup";
 import Notices from "./Notices";
-import PipelinePanel from "./PipelinePanel";
+import { Flyout, Rail, RailHandle } from "./Rail";
 import RightPanel from "./RightPanel";
 
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
@@ -17,6 +17,9 @@ const MapView = dynamic(() => import("./MapView"), { ssr: false });
 export default function TandemApp() {
   const error = useUI((s) => s.error);
   const setupOpen = useUI((s) => s.setup !== null);
+  const railOpen = useUI((s) => s.railOpen);
+  const railMode = useUI((s) => s.railMode);
+  const hidden = railMode === "hidden";
   useEffect(() => {
     void boot();
   }, []);
@@ -26,10 +29,9 @@ export default function TandemApp() {
         <Header />
         {error && <div className="err" role="alert">{error}</div>}
       </div>
-      <div className="main">
-        <aside className="col left" aria-label="Pipeline">
-          <PipelinePanel />
-        </aside>
+      <div className={`main ${railOpen && !hidden ? "rail-open" : ""} ${railMode === "full" ? "rail-expanded" : ""} ${hidden ? "rail-hidden" : ""}`}>
+        {hidden ? <RailHandle /> : <Rail />}
+        {railOpen && !hidden && <Flyout />}
         <section className="mapwrap" aria-label="Map">
           <MapView />
         </section>

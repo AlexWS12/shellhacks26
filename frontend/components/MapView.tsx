@@ -9,11 +9,13 @@ import { activeIn, lineCheck, lineEnds, researchActiveIn, visible } from "@/lib/
 import { CATEGORY_LABEL, engineColor } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import { builtin, colorOf, legendSources, shapeOf, useSources } from "@/lib/owners";
+import { CATEGORY_KINDS, ICON_PATH, kindOf, type UtilityKind } from "@/lib/utilityIcons";
 import { mapPalette } from "@/lib/theme";
 import type { Overlap, Project, ResearchCategory, ThirdParty } from "@/lib/types";
 import { showLatestResults, startRun, useUI } from "@/lib/ui";
 
 import ResearchPicker from "./ResearchPicker";
+import UtilityIcon from "./UtilityIcon";
 
 const STREETS = "https://tiles.openfreemap.org/styles/dark";
 const US: LngLatBoundsLike = [[-125, 24.3], [-66.5, 49.5]];
@@ -92,7 +94,7 @@ function selectedPair(): { a: string; b: string } | null {
 }
 
 function buildData() {
-  const { filters, health, year } = useUI.getState();
+  const { filters, health, year, hiddenCats: hidden } = useUI.getState();
   const today = health?.today ?? "2026-09-26";
   const shown = Object.values(run.projects).filter((p) => visible(p, filters, today) && activeIn(p, year));
   const ids = new Set(shown.map((p) => p.id));
@@ -138,14 +140,14 @@ function buildData() {
   const linked = new Set(linkedTo.map((t) => t.research_id));
   const openId = panel.kind === "research" ? panel.id : null;
   const others = fc(Object.values(run.research).flatMap((r) => {
-    if (r.lat == null || r.lon == null || !researchActiveIn(r, year)) return [];
+    if (r.lat == null || r.lon == null || !researchActiveIn(r, year) || hidden.includes(r.category)) return [];
     const approx = !["verified", "confirmed_osm"].includes(r.location_confidence);
     if (approx && !filters.townLevel) return [];
     const on = linked.has(r.id) || r.id === openId;
-    return [{ type: "Feature", properties: { id: r.id, c: r.category, name: `${r.utility}: ${r.name}`, label: r.utility,
+    return [{ type: "Feature", properties: { id: r.id, c: r.category, k: kindOf(r), name: `${r.utility}: ${r.name}`, label: r.utility,
       hollow: approx, sel: on, dim: Boolean(sel) && !on }, geometry: { type: "Point", coordinates: [r.lon, r.lat] } } as GeoJSON.Feature];
   }));
-  const otherLinks = fc(linkedTo.flatMap((t) => {
+  const otherLinks = fc(linkedTo.filter((t) => !hidden.includes(t.category)).flatMap((t) => {
     const r = run.research[t.research_id];
     if (!r || r.lat == null || !sel) return [];
     return [sel.a, sel.b].flatMap((pid) => {
@@ -175,7 +177,21 @@ function comets(): { data: FC; flying: number } {
 }
 
 // A square turned 45deg, drawn at 2x. 12 css px corner to corner at icon-size 1.
-const diamondsHooked = new WeakSet<maplibregl.Map>();
+const imagesHooked = new WeakSet<maplibregl.Map>();
+
+// A utility symbol (bolt, flame, drop, road) in the pin's dark color, drawn at 2x for sharp edges.
+function addGlyph(map: maplibregl.Map, kind: UtilityKind, color: string, suffix = "") {
+  const id = `glyph-${kind}${suffix}`;
+  if (map.hasImage(id)) return;
+  const n = 32;
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = n;
+  const ctx = canvas.getContext("2d")!;
+  ctx.scale(n / 24, n / 24);
+  ctx.fillStyle = color;
+  ctx.fill(new Path2D(ICON_PATH[kind]), "evenodd");
+  map.addImage(id, ctx.getImageData(0, 0, n, n), { pixelRatio: 2 });
+}
 
 function addDiamond(map: maplibregl.Map, id: string, fill: string, stroke: string) {
   if (map.hasImage(id)) return;
@@ -197,12 +213,15 @@ function addDiamond(map: maplibregl.Map, id: string, fill: string, stroke: strin
 function addDataLayers(map: maplibregl.Map) {
   const COLORS = mapPalette();
   const color = ["get", "color"] as maplibregl.ExpressionSpecification; // each feature carries its source's color
-  // Diamond icons are drawn on first use, one per color: "diamond-<hex>" filled, "diamond-hollow-<hex>" outlined.
-  if (!diamondsHooked.has(map)) {
-    diamondsHooked.add(map);
+  // Icons in a source's color are drawn on first use, one per color: "diamond-<hex>" filled, "diamond-hollow-<hex>"
+  // outlined, and "glyph-electric-o-<hex>" (the bolt inside a hollow pin).
+  if (!imagesHooked.has(map)) {
+    imagesHooked.add(map);
     map.on("styleimagemissing", (e: { id: string }) => {
       const m = /^diamond-(hollow-)?(#[0-9a-f]{3,8})$/i.exec(e.id);
       if (m) addDiamond(map, e.id, m[1] ? COLORS.bg : m[2], m[2]);
+      const g = /^glyph-electric-o-(#[0-9a-f]{3,8})$/i.exec(e.id);
+      if (g) addGlyph(map, "electric", g[1], `-o-${g[1]}`);
     });
   }
   for (const id of ["ring", "lines", "links", "labels", "points", "pulse", "comets", "others", "other-links"]) {
@@ -247,6 +266,13 @@ function addDataLayers(map: maplibregl.Map) {
       "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.55, 9, 1.05],
       "icon-allow-overlap": true, "icon-ignore-placement": true,
     } });
+  // a bolt on every source's project once zoomed in (they are all electric plans): dark on a solid pin, in the
+  // source's color inside a hollow one
+  addGlyph(map, "electric", COLORS.bg);
+  map.addLayer({ id: "points-glyph", type: "symbol", source: "points", minzoom: 7,
+    layout: { "icon-image": ["case", ["get", "hollow"], ["concat", "glyph-electric-o-", ["get", "color"]], "glyph-electric"],
+      "icon-size": ["interpolate", ["linear"], ["zoom"], 7, 0.5, 10, 0.8],
+      "icon-allow-overlap": true, "icon-ignore-placement": true } });
   const cat = ["match", ["get", "c"], "electric", COLORS.catElectric, "gas", COLORS.catGas, COLORS.catRoads] as maplibregl.ExpressionSpecification;
   map.addLayer({ id: "other-links", type: "line", source: "other-links",
     paint: { "line-color": cat, "line-width": 1.4, "line-opacity": 0.85, "line-dasharray": [1, 2] } });
@@ -254,13 +280,24 @@ function addDataLayers(map: maplibregl.Map) {
     paint: { "circle-radius": 11, "circle-color": cat, "circle-opacity": 0.15, "circle-stroke-color": cat, "circle-stroke-width": 1.5 } });
   map.addLayer({ id: "others", type: "circle", source: "others",
     paint: {
-      "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 3.5, 9, 6.5],
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 4.5, 7, 7, 10, 9.5],
       "circle-color": ["case", ["get", "hollow"], COLORS.bg, cat],
       "circle-stroke-color": ["case", ["get", "hollow"], cat, COLORS.bg],
       "circle-stroke-width": ["case", ["get", "hollow"], 1.8, 1.2],
       "circle-opacity": ["case", ["get", "dim"], 0.25, 1],
       "circle-stroke-opacity": ["case", ["get", "dim"], 0.25, 1],
     } });
+  // solid pins get a dark symbol; hollow (approximate) pins get the symbol in their category color inside the ring
+  const kindColor: Record<UtilityKind, string> = { electric: COLORS.catElectric, gas: COLORS.catGas, water: COLORS.catRoads, road: COLORS.catRoads };
+  for (const k of Object.keys(ICON_PATH) as UtilityKind[]) {
+    addGlyph(map, k, COLORS.bg);
+    addGlyph(map, k, kindColor[k], "-h");
+  }
+  map.addLayer({ id: "others-glyph", type: "symbol", source: "others", minzoom: 5.5,
+    layout: { "icon-image": ["concat", "glyph-", ["get", "k"], ["case", ["get", "hollow"], "-h", ""]],
+      "icon-size": ["interpolate", ["linear"], ["zoom"], 5.5, 0.65, 10, 1.1],
+      "icon-allow-overlap": true, "icon-ignore-placement": true },
+    paint: { "icon-opacity": ["case", ["get", "dim"], 0.25, 1] } });
   map.addLayer({ id: "other-labels", type: "symbol", source: "others", filter: ["get", "sel"],
     layout: { "text-field": ["get", "label"], "text-size": 11.5, "text-font": ["Noto Sans Bold"], "text-offset": [0, 1.3],
       "text-anchor": "top", "text-allow-overlap": false },
@@ -358,6 +395,8 @@ export default function MapView() {
   const cats = useRev(() => run.researchSelected.join(","));
   const known = useSources((st) => st.list); // redraw the legend when a source is added or removed
   useRev(() => Object.keys(run.projects).length);
+  const hiddenCats = useUI((s) => s.hiddenCats);
+  const toggleCat = useUI((s) => s.toggleCat);
 
   useEffect(() => {
     if (!el.current) return;
@@ -463,11 +502,15 @@ export default function MapView() {
     }
 
     const unsubRev = useRev.subscribe(refresh);
+    // the column grid changes when the left rail's panel opens or closes
+    const resize = new ResizeObserver(() => map.resize());
+    resize.observe(el.current);
     const unsubUI = useUI.subscribe((s, prev) => {
-      if (s.results !== prev.results || s.others !== prev.others || s.filters !== prev.filters || s.panel !== prev.panel || s.health !== prev.health || s.year !== prev.year) refresh();
+      if (s.results !== prev.results || s.others !== prev.others || s.hiddenCats !== prev.hiddenCats || s.filters !== prev.filters || s.panel !== prev.panel || s.health !== prev.health || s.year !== prev.year) refresh();
       if (s.camera !== prev.camera) moveCamera(map, s.camera);
     });
     return () => {
+      resize.disconnect();
       unsubRev();
       unsubUI();
       cancelAnimationFrame(raf);
@@ -496,7 +539,10 @@ export default function MapView() {
         <span><i className="sw hollow" />Hollow = approximate location</span>
         <span><i className="sw zone" />Under 25 mi apart</span>
         {(cats ? (cats.split(",") as ResearchCategory[]) : []).map((c) => (
-          <span key={c}><i className={`sw cat-${c}`} />Other · {CATEGORY_LABEL[c]}</span>
+          <button key={c} className={`cat-${c} catkey ${hiddenCats.includes(c) ? "off" : ""}`} aria-pressed={!hiddenCats.includes(c)}
+            onClick={() => toggleCat(c)} title={hiddenCats.includes(c) ? "Show on the map" : "Hide on the map"}>
+            {CATEGORY_KINDS[c].map((k) => <UtilityIcon key={k} kind={k} />)}Other · {CATEGORY_LABEL[c]}
+          </button>
         ))}
       </div>
       {phase !== "idle" && (

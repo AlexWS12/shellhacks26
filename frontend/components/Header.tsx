@@ -19,7 +19,7 @@ export default function Header() {
           <circle className="a" cx="8" cy="11" r="6" />
           <circle className="b" cx="14" cy="11" r="6" />
         </svg>
-        <h1>Tandem</h1>
+        <h1>UtiliTies</h1>
         <span className="tag">Coordinating utility construction across state lines</span>
       </div>
       <div className="status" aria-label="Status">
