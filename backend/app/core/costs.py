@@ -17,10 +17,16 @@ ROUND_TO = 100_000
 
 # Share of the smaller project's cost that coordination might save, by (timing, shared level).
 # ASSUMPTIONS: team estimates, not figures from a cited source. Edit here; the UI and report say so.
+# Reasoning, from typical transmission cost breakdowns:
+#   Mobilization and staging run a few percent of construction; sharing avoids much of one set, not all of it
+#   (crews still move between sites), so 2-5%.
+#   Outage planning and deliveries are a small slice of cost: 0.5-2%.
+#   Engineering, surveys and environmental work are about a tenth of a line project; reusing the other project's
+#   records saves a fraction of that, so 0.5-1.5%. Substation equipment work gains little from them: 0-0.5%.
 ASSUMPTIONS: dict[tuple[str, str], tuple[float, float]] = {
-    ("concurrent", "high"): (0.03, 0.08),  # one mobilization, staging yard and outage window instead of two
-    ("concurrent", "medium"): (0.01, 0.03),  # shared outage coordination and deliveries
-    ("sequential", "medium"): (0.005, 0.02),  # reused surveys, right-of-way records and studies
+    ("concurrent", "high"): (0.02, 0.05),  # one mobilization, staging yard and outage window instead of two
+    ("concurrent", "medium"): (0.005, 0.02),  # shared outage coordination and deliveries
+    ("sequential", "medium"): (0.005, 0.015),  # reused surveys, right-of-way records and studies
     ("sequential", "low"): (0.0, 0.005),  # information sharing only
 }
 ASSUMPTION_LABEL = "Assumption range set by the team, not a sourced figure"
