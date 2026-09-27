@@ -37,6 +37,7 @@ const FIELDS: Field[] = [
     value: (p) => Object.entries(p.cost_by_year ?? {}).map(([y, v]) => `${y === "prev" ? "Previous" : y}: ${v == null ? "?" : money(v)}`).join(" · ") },
   { key: "voltage_kv", label: "Voltage", value: (p) => (prov(p).voltage_kv_parsed ? `${prov(p).voltage_kv_parsed} kV` : ""),
     cites: (p) => one(p, "voltage_kv"), edit: "voltage_kv" },
+  { key: "owner", label: "Owner (as the page says)", value: (p) => one(p, "owner")[0]?.snippet ?? "", cites: (p) => one(p, "owner") },
   { key: "endpoints", label: "Endpoints", value: (p) => p.endpoints.map((e) => e.name).join(" – "), edit: "endpoints",
     cites: (p) => [...many(p, "endpoints"), ...one(p, "endpoints")] },
 ];
@@ -117,6 +118,7 @@ export default function ReviewTable({ sourceId, review, onChange, images }: {
                   <td>
                     <b>{x.name}</b>{r.edited && <span className="tag">edited</span>}
                     {r.incomplete.map((f) => <div key={f} className="flag">{FLAG[f] ?? f}</div>)}
+                    {r.other_owner && <div className="flag">The page says {r.other_owner} owns it: rejected unless you accept it</div>}
                   </td>
                   <td>{x.in_service_date ? fmtDate(x.in_service_date) : <span className="fail">missing</span>}</td>
                   <td>{x.cost_total != null ? money(x.cost_total) : ""}</td>

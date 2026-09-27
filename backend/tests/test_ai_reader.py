@@ -7,6 +7,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app import config
+from app import setup
 from app.clients import cache, models
 from app.clients.errors import ModelNotFound
 from app.core.pdftext import PdfText
@@ -68,11 +69,16 @@ def env(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "MODELS_LOCAL_FILE", tmp_path / "models.local.json")
     monkeypatch.setattr(models, "_loaded", None)
     monkeypatch.setattr(ai_reader, "read_pdf", lambda *a, **k: PdfText(pages=PAGES, method="test", sha="t"))
+    monkeypatch.setattr(setup, "check", _works)  # the reader check before an extraction; its own test fails it
     src = sources.add("Test Co", "Test Co", ["SC"], "ai", file_path="raw/test.pdf")
     fake.script = {"r1": [LOCATE, {"projects": [GOOD, SECOND, NO_NAME, OFF_SCHEMA]}]}
     fake.src = src
     fake.tmp = tmp_path
     return fake
+
+
+async def _works(provider, model, fresh=False):
+    return setup._result(provider, model, "ok")
 
 
 def run_reader(src, pages=None):
@@ -257,3 +263,48 @@ def test_one_project_on_a_table_row_and_its_own_page_is_merged(env):
     assert (t1.in_service_date, t1.description, t1.status) == ("2025-12-01", "Construct a new line.", "In Progress")
     assert kept[1].description == kept[2].description == "Fold the line into the new station."
     assert sum(c.rule == "ai_merged" for c in checks) == 3
+
+
+def test_extract_is_refused_when_the_reader_has_no_working_model(env, monkeypatch):
+    # As a live run is checked: nothing is read, and the 409 names the job and each model tried, for the setup screen.
+    async def over_quota(provider, model, fresh=False):
+        return setup._result(provider, model, "QuotaExceeded", "daily limit")
+
+    monkeypatch.setattr(setup, "check", over_quota)
+    from app.main import app
+
+    r = TestClient(app).post(f"/api/sources/{env.src.id}/extract", json={})
+    assert r.status_code == 409, r.text
+    d = r.json()["detail"]
+    assert [p["role"] for p in d["problems"]] == ["reader"] and d["problems"][0]["tried"][0]["model"] == "r1"
+    assert d["can_force"] is False  # an extraction has no template to fall back on
+    assert env.calls == [] and sources.get(env.src.id).status == "draft"
+
+
+def test_same_owner():
+    src = sources.Source(id="x", code="SCPSA", display_name="Santee Cooper", states=["SC"], color="#000", reader="ai",
+                         status="draft", created_at="", utility_key="SCPSA",
+                         osm_operator_patterns=["South Carolina Public Service Authority"])
+    assert ai_reader.same_owner("Santee Cooper", src) and ai_reader.same_owner("SANTEE COOPER Transmission", src)
+    assert ai_reader.same_owner("Dominion Energy SC / Santee Cooper", src)  # a joint project is theirs too
+    assert ai_reader.same_owner("SCPSA", src) and ai_reader.same_owner("South Carolina Public Service Authority", src)
+    assert not ai_reader.same_owner("Dominion Energy South Carolina", src)
+    assert not ai_reader.same_owner("DESC", src)
+
+
+def test_a_project_the_page_gives_to_another_utility_is_rejected_by_default(env, monkeypatch):
+    # A joint filing: the page names another owner. Kept for the review, rejected there unless a person accepts it.
+    pages = [*PAGES[:2], PAGES[2] + "Owner\nOther Power Co\n"]
+    monkeypatch.setattr(ai_reader, "read_pdf", lambda *a, **k: PdfText(pages=pages, method="test", sha="t"))
+    theirs = SECOND | {"owner": cell("Other Power Co", 3)}
+    ours = GOOD | {"owner": cell("Test Co", 2, "Foo – Bar 115 kV Rebuild")}  # snippet without the name: dropped, kept
+    env.script = {"r1": [LOCATE, {"projects": [ours, theirs]}]}
+    run = run_reader(env.src)
+    assert run.events[-1]["ok"], run.events[-1]
+    d = sources.load_draft(env.src.id)
+    assert d["review"]["TEST-CO-CD7"] == {"status": "rejected", "incomplete": [], "other_owner": "Other Power Co"}
+    assert d["review"]["TEST-CO-AB12"]["status"] == "pending" and "other_owner" not in d["review"]["TEST-CO-AB12"]
+    other = [c for c in d["checks"] if c["rule"] == "ai_other_owner"]
+    assert len(other) == 1 and "Other Power Co" in other[0]["detail"] and other[0]["project_id"] == "TEST-CO-CD7"
+    p = next(x for x in d["projects"] if x["id"] == "TEST-CO-CD7")
+    assert p["provenance"]["owner"] == {"page": 3, "snippet": "Other Power Co"}

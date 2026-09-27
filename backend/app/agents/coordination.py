@@ -2,12 +2,12 @@
 
 import asyncio
 
-from app.agents.analysis import is_core
+from app.agents.analysis import written_pairs
 from app.clients import models
-from app.core.analysis import fact_sheet
+from app.core.analysis import fact_sheet, is_core, sides, utility_label
 from app.runtime.agent import Agent, AgentSpec, Ctx
 
-TOP_BRIEFS = 3
+TOP_BRIEFS = 3  # per two utilities
 
 ADVOCATE = ("You prepare {utility}'s side for a SERTP coordination meeting about one nearby project of the other "
             "utility. Use ONLY the facts. Write 3 short bullets: what {utility} likely wants, what constrains it, and "
@@ -35,26 +35,33 @@ async def _write(ctx: Ctx, role: str, system: str, prompt: str, fallback: str) -
 
 
 def _template_side(f: dict, me: str) -> str:
-    mine = f["dominion"] if me == "dominion" else f["georgia"]
-    other = f["georgia"] if me == "dominion" else f["dominion"]
+    first, second = sides(f)
+    mine, other = (first, second) if me == "dominion" else (second, first)
     return (f"- Keep {mine['name']} on schedule for {mine['in_service']}.\n"
             f"- Constraint: status '{mine['status']}', work type {mine['type']}.\n"
             f"- Ask: share survey and outage plans for {other['name']}.")
 
 
 class Advocate(Agent):
+    # One advocate per side of a pair. The side keys stay "dominion" (project_a's side) and "georgia" (project_b's
+    # side) for every pair, so earlier runs still replay: in a pair without Dominion, "dominion" is the first utility.
     def __init__(self, side: str) -> None:
         self.side = side
         label = "DESC" if side == "dominion" else "GA"
+        other = "the first utility" if side == "dominion" else "the second utility"
         self.spec = AgentSpec("advocate_desc" if side == "dominion" else "advocate_ga", f"Advocate · {label}",
-                              f"Prepares {label}'s interests for the coordination meeting", ["gemini"],
-                              depends_on=["analyst"], engine="Gemini")
+                              f"Prepares {label}'s interests (or {other}'s, in a pair without them) for the "
+                              "coordination meeting", ["gemini"], depends_on=["analyst"], engine="Gemini")
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
-        utility = "Dominion Energy South Carolina" if self.side == "dominion" else "Georgia Power"
-        for o in [o for o in b.overlaps if is_core(o)][:TOP_BRIEFS]:
+        pairs = written_pairs(b.overlaps, b.projects, TOP_BRIEFS)
+        for o in pairs:
             a, g = b.projects[o.project_a], b.projects[o.project_b]
+            if is_core(o):  # the original wording, so cached answers still match
+                utility = "Dominion Energy South Carolina" if self.side == "dominion" else "Georgia Power"
+            else:
+                utility = utility_label(a if self.side == "dominion" else g)
             f = fact_sheet(a, g, o, b.costs[o.id]["shared"])
             ctx.think(f"\n\n#{o.rank} {a.name} × {g.name}\n")
             text, actor, model = await _write(ctx, "advocate", ADVOCATE.format(utility=utility), f"Facts:\n{f}",
@@ -62,7 +69,7 @@ class Advocate(Agent):
             b.briefs.setdefault(o.id, {})[self.side] = {"text": text, "actor": actor, "model": model}
             ctx.emit("brief.side", overlap_id=o.id, side=self.side, text=text, actor=actor, model=model)
             await ctx.pace(0.2)
-        return f"{min(TOP_BRIEFS, len(b.overlaps))} prep notes"
+        return f"{len(pairs)} prep notes"
 
 
 class Mediator(Agent):
@@ -71,12 +78,14 @@ class Mediator(Agent):
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
-        for o in [o for o in b.overlaps if is_core(o)][:TOP_BRIEFS]:
+        pairs = written_pairs(b.overlaps, b.projects, TOP_BRIEFS)
+        for o in pairs:
             a, g = b.projects[o.project_a], b.projects[o.project_b]
             f = fact_sheet(a, g, o, b.costs[o.id]["shared"])
-            sides = b.briefs.get(o.id, {})
-            prompt = (f"Facts:\n{f}\n\nDominion prep:\n{sides.get('dominion', {}).get('text', '')}\n\n"
-                      f"Georgia prep:\n{sides.get('georgia', {}).get('text', '')}")
+            notes = b.briefs.get(o.id, {})
+            first, second = ("Dominion", "Georgia") if is_core(o) else (utility_label(a), utility_label(g))
+            prompt = (f"Facts:\n{f}\n\n{first} prep:\n{notes.get('dominion', {}).get('text', '')}\n\n"
+                      f"{second} prep:\n{notes.get('georgia', {}).get('text', '')}")
             fallback = (f"- Align: both have work {o.distance_mi:.1f} mi apart.\n"
                         f"- Conflict: in-service dates are {o.time_gap_days} days apart.\n"
                         f"- Next step: exchange schedules and share: {', '.join(f['shared']['items'])}.")
@@ -85,4 +94,4 @@ class Mediator(Agent):
             b.briefs.setdefault(o.id, {})["mediator"] = {"text": text, "actor": actor, "model": model}
             ctx.emit("brief.ready", overlap_id=o.id, brief=b.briefs[o.id], model=model)
             await asyncio.sleep(0)
-        return f"{min(TOP_BRIEFS, sum(1 for o in b.overlaps if is_core(o)))} joint agenda items"
+        return f"{len(pairs)} joint agenda items"

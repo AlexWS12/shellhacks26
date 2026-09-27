@@ -360,9 +360,10 @@ def reset() -> dict[str, Any]:
 
 # ---- before a live run
 
-async def preflight(force: bool = False) -> list[dict[str, Any]]:
+async def preflight(force: bool = False, only: set[str] | None = None) -> list[dict[str, Any]]:
     # For each job the run needs: its first model, then the next ones only if that fails. Returns the jobs with no
-    # working model (empty = go). force skips jobs whose models are only busy or out of quota for now.
+    # working model (empty = go). force skips jobs whose models are only busy or out of quota for now. only: check
+    # just these jobs (an extraction needs only the reader).
     try:
         roles = models.load()
     except models.ConfigError as e:
@@ -388,10 +389,11 @@ async def preflight(force: bool = False) -> list[dict[str, Any]]:
         return {"role": name, "label": r.label, "reason": reason, "tried": tried,
                 "temporary": bool(tried) and all(x["temporary"] for x in tried)}
 
-    found = [p for p in await asyncio.gather(*(job(n, r) for n, r in roles.items() if models.in_use(r) is None)) if p]
+    found = [p for p in await asyncio.gather(*(job(n, r) for n, r in roles.items()
+                                              if models.in_use(r) is None and (only is None or n in only))) if p]
     can_force = bool(found) and all(p["temporary"] for p in found)
     if found and not (force and can_force):
         first = found[0]
         raise SetupError(f"Can't start: {first['label']} has no working model ({first['reason']}).",
-                         problems=found, can_force=can_force)
+                         problems=found, can_force=can_force and only is None)
     return found

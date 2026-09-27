@@ -389,7 +389,12 @@ export interface SourceView {
 
 // The Sources menu: one field's provenance, as the AI reader recorded it (plus a person's edit).
 export interface Cite { page?: number; snippet?: string; label?: string; human_override?: { value: unknown; previous: unknown; at: string } }
-export interface ReviewRow { status: "pending" | "accepted" | "rejected"; incomplete: string[]; edited?: boolean }
+export interface ReviewRow {
+  status: "pending" | "accepted" | "rejected";
+  incomplete: string[];
+  edited?: boolean;
+  other_owner?: string; // a joint filing: the page names this utility as the owner, so it starts rejected
+}
 export interface Review {
   source: SourceView;
   projects: Project[];

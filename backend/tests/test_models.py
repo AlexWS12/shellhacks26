@@ -696,3 +696,23 @@ def test_log_redaction_keeps_the_record_shape_formatters_expect():
     assert rec.args == ("127.0.0.1:1", "GET", "/api/health", "1.1", 200)
     rec = logging.getLogRecordFactory()("x", logging.INFO, "f", 1, "key %s", (ValueError(SECRET),), None)
     assert SECRET not in rec.getMessage()
+
+
+def test_dated_prices(tmp_path, monkeypatch):
+    from datetime import date
+    (tmp_path / "m.json").write_text(json.dumps({"roles": {}, "prices": {
+        "g/a": [{"input_per_mtok": 1, "output_per_mtok": 2}, {"from": "2027-01-01", "input_per_mtok": 3, "output_per_mtok": 4}],
+        "g/b": {"input_per_mtok": 0.25, "output_per_mtok": 1.5},
+        "g/later": [{"from": "2030-01-01", "input_per_mtok": 9, "output_per_mtok": 9}]}}))
+    monkeypatch.setattr(config, "MODELS_FILE", tmp_path / "m.json")
+    monkeypatch.setattr(config, "MODELS_LOCAL_FILE", tmp_path / "none.json")
+    now = models.prices(date(2026, 9, 27))
+    assert now["g/a"] == {"input_per_mtok": 1, "output_per_mtok": 2} and now["g/b"]["output_per_mtok"] == 1.5
+    assert "g/later" not in now  # no price in effect yet: unknown, not guessed
+    assert models.prices(date(2027, 1, 1))["g/a"] == {"input_per_mtok": 3, "output_per_mtok": 4}
+
+
+def test_committed_prices_cover_the_reader_models(monkeypatch):
+    monkeypatch.setattr(config, "MODELS_LOCAL_FILE", config.MODELS_FILE.with_name("absent.json"))
+    chain = [r.name for r in models.load()["reader"].models]
+    assert all(n in models.prices() for n in chain)

@@ -266,3 +266,30 @@ def test_voltages_in_osm_names_are_ignored():
     assert norm_key("Mitchell Substation (230kV)") == norm_key("Mitchell") == "mitchell"
     assert norm_key("North Tifton Substation (500kV)") == "north tifton"
     assert norm_key("Wrens 46/12 kV Substation") == "wrens"
+
+
+def test_a_town_level_override_comes_after_osm_and_is_marked_town(monkeypatch):
+    # A person's point for the community a facility is named after (no surveyed point): used only when OSM has
+    # nothing, and kept at town level, never "verified".
+    from app.core.places import Place
+    monkeypatch.setattr(config, "OSM_LIVE", False)
+    town = Place(32.2975, -81.119, "Purrysburg", {"note": "community, not the substation", "confidence": "town"})
+    g = _geocoder([])
+    g.overrides = {"purrysburg|SC": town}
+    e = asyncio.run(g.locate_endpoint(_Judge(0.9), _project("Upgrade Purrysburg Transformer"), "Purrysburg", "SC"))
+    assert (e.method, e.confidence, e.lat) == ("override", "town", 32.2975)
+    g = _geocoder([_feature("Purrysburg Substation", 32.33, -81.03)])
+    g.overrides = {"purrysburg|SC": town}
+    e = asyncio.run(g.locate_endpoint(_Judge(0.9), _project("Upgrade Purrysburg Transformer"), "Purrysburg", "SC"))
+    assert e.method == "overpass" and e.confidence == "confirmed_osm"
+    surveyed = Place(32.33, -81.03, "Purrysburg", {"note": "surveyed", "confidence": "verified"})
+    g.overrides = {"purrysburg|SC": surveyed}
+    e = asyncio.run(g.locate_endpoint(_Judge(0.9), _project("Upgrade Purrysburg Transformer"), "Purrysburg", "SC"))
+    assert (e.method, e.confidence) == ("override", "verified")
+
+
+def test_committed_overrides_say_their_confidence():
+    from app.core.places import load_overrides
+    rows = load_overrides()
+    assert rows["kraft|GA"].extra["confidence"] == "verified"  # the old rows, with no confidence column value
+    assert {rows[k].extra["confidence"] for k in ("purrysburg|SC", "wassamassaw|SC", "indian field|SC")} == {"town"}

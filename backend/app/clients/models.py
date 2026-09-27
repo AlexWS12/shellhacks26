@@ -20,6 +20,7 @@ import random
 import time
 from collections.abc import AsyncIterator, Awaitable, Callable
 from dataclasses import dataclass, field
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -124,11 +125,20 @@ def parse(merged: dict[str, Any]) -> dict[str, Role]:
     return out
 
 
-def prices() -> dict[str, dict[str, float]]:
+def prices(on: date | None = None) -> dict[str, dict[str, float]]:
     # "provider/model" -> {input_per_mtok, output_per_mtok} in USD, from "prices" in the config files. Only what's
-    # written there is known; nothing is guessed.
+    # written there is known; nothing is guessed. An entry can be a list of dated prices ({"from": "2027-01-01", ...}):
+    # the latest one in effect on `on` (today, by the calendar) applies.
     base, local = _read(config.MODELS_FILE).get("prices", {}), _read(config.MODELS_LOCAL_FILE).get("prices", {})
-    return {**base, **local}
+    day = (on or date.today()).isoformat()
+    out: dict[str, dict[str, float]] = {}
+    for name, entry in {**base, **local}.items():
+        if isinstance(entry, list):
+            live = [e for e in entry if isinstance(e, dict) and str(e.get("from") or "") <= day]
+            entry = max(live, key=lambda e: str(e.get("from") or ""), default=None)
+        if isinstance(entry, dict):
+            out[name] = {k: float(v) for k, v in entry.items() if k in ("input_per_mtok", "output_per_mtok")}
+    return out
 
 
 _loaded: tuple[tuple, dict[str, Role]] | None = None

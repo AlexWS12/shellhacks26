@@ -8,7 +8,9 @@
     "kind: json (structured answer), text (streamed prose), search (web-grounded answer), judge (typed judgment).",
     "when: a role is only needed sometimes: jev (Jev is on), research_live (RESEARCH_LIVE=true), startup (the startup check).",
     "The setup screen (Models button) edits config/models.local.json; this file stays the committed default.",
-    "prices (optional): {\"provider/model\": {\"input_per_mtok\": USD, \"output_per_mtok\": USD}} for the AI reader's cost check (MAX_RUN_COST_USD). Unknown prices are left out, never guessed."
+    "prices (optional): {\"provider/model\": {\"input_per_mtok\": USD, \"output_per_mtok\": USD}} for the AI reader's cost check (MAX_RUN_COST_USD). Unknown prices are left out, never guessed.",
+    "An entry can be a list of dated prices ({\"from\": \"YYYY-MM-DD\", ...}); the latest one in effect today applies.",
+    "The Gemini prices are the paid tier's Standard text prices per 1M tokens (output includes thinking), from https://ai.google.dev/gemini-api/docs/pricing, read 2026-09-27. On the free tier the real cost is $0, so the check is an upper bound."
   ],
   "roles": {
     "extract_fallback": {
@@ -142,5 +144,9 @@
       "models": [{"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "gemini", "model": "gemini-3.7-flash"}]
     }
   },
-  "prices": {}
+  "prices": {
+    "gemini/gemini-3.8-flash": [{"input_per_mtok": 0.75, "output_per_mtok": 3.75}, {"from": "2027-01-01", "input_per_mtok": 1.5, "output_per_mtok": 7.5}],
+    "gemini/gemini-3.7-flash": [{"input_per_mtok": 0.75, "output_per_mtok": 3.75}, {"from": "2027-01-01", "input_per_mtok": 1.5, "output_per_mtok": 7.5}],
+    "gemini/gemini-3.1-flash-lite": {"input_per_mtok": 0.25, "output_per_mtok": 1.5}
+  }
 }

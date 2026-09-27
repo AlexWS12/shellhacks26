@@ -66,8 +66,8 @@ class Check(BaseModel):
 
 class Overlap(BaseModel):
     id: str
-    project_a: str  # DESC project id
-    project_b: str  # GA project id
+    project_a: str  # the first owner's project, as the sources table ranks them (Dominion when it's in the pair)
+    project_b: str  # the other owner's project
     distance_mi: float
     time_gap_days: int
     windows_overlap: bool | None = None

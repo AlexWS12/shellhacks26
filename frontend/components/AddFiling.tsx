@@ -6,8 +6,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { setRetry } from "@/lib/alerts";
-import { api } from "@/lib/api";
+import { setRetry, showPreflight } from "@/lib/alerts";
+import { api, ApiError, type PreflightDetail } from "@/lib/api";
 import { followRun } from "@/lib/follow";
 import type { Estimate, Review, RunEvent, SourceView } from "@/lib/types";
 import { useUI } from "@/lib/ui";
@@ -111,9 +111,9 @@ export default function AddFiling({ start, onActivated, onChanged }: {
     setBusy(true);
     setError("");
     setProgress({ located: null, total: 0, found: [], failed: 0, done: false, msg: "Opening the filing…", noModel: false });
+    setRetry(() => void read()); // the failure modal's "Retry run" reads the filing again
     try {
       const { run_id } = await api.admin.extract(source.id);
-      setRetry(() => void read()); // the failure modal's "Retry run" reads the filing again
       stop.current?.();
       stop.current = followRun(run_id, roles, (ev: RunEvent) => {
         setProgress((p) => {
@@ -149,8 +149,14 @@ export default function AddFiling({ start, onActivated, onChanged }: {
         }
       });
     } catch (e) {
-      setError(errText(e));
       setBusy(false);
+      const d = e instanceof ApiError && e.status === 409 ? e.detail as PreflightDetail | null : null;
+      if (d?.problems?.length) {  // the reader has no working model: the failure modal says why, with a way into setup
+        setProgress((p) => ({ ...p, msg: "Not read: no model can do “Read filings without a parser” right now. Nothing was sent to a model." }));
+        showPreflight(d);
+        return;
+      }
+      setError(errText(e));
     }
   }
 

@@ -184,7 +184,7 @@ class ResearchScout(Agent):
         keys, tried = variants(key), []
         for k in keys:
             if state and (o := load_overrides().get(f"{k}|{state}")) is not None:
-                return _ep(pl.name, o, "override", "verified", o.extra)
+                return _ep(pl.name, o, "override", o.extra["confidence"], o.extra)
 
         if pl.kind in POINT_KINDS:
             cands = [c for c in res["osm"].candidates(key, state) if c[1].get("state") == state][:2]

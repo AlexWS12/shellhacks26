@@ -295,7 +295,7 @@ class Geocoder(Agent):
         key = norm_key(name)
         keys, exact = variants(key), variants(key, strip=False)
         for k in keys:
-            if (o := self.overrides.get(f"{k}|{state}")) is not None:
+            if (o := self.overrides.get(f"{k}|{state}")) is not None and o.extra["confidence"] == "verified":
                 return self._ep(name, o, "override", "verified", o.extra)
             if not blind and (s := self.points.get(k)) is not None and not self._far(p, s.lat, s.lon, near):
                 return self._ep(name, s, "sponsor_file", "verified", s.extra)
@@ -338,6 +338,13 @@ class Geocoder(Agent):
                                 | ({"accepted_by": "exact_name_rule"} if v.value < ACCEPT else {})
                                 | ({"neighbor_utility": neighbor} if neighbor and f.get("state") != state else {}))
             tried.append(f"OpenStreetMap {f['name']} ({f.get('state') or 'outside SC/GA'}): rejected by {v.actor}")
+
+        # A person's town-level point (the community a facility is named after): after the surveyed points and OSM,
+        # before GeoNames.
+        for k in keys:
+            o = self.overrides.get(f"{k}|{state}")
+            if o is not None and o.extra["confidence"] == "town" and not self._far(p, o.lat, o.lon, near):
+                return self._ep(name, o, "override", "town", o.extra)
 
         towns = [(k, t) for k in keys if k and (t := self.towns.find(k, state)) and not self._far(p, t.lat, t.lon, near)]
         if not towns:

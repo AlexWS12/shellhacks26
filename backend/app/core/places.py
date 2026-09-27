@@ -75,7 +75,8 @@ def sponsor_points(sample: Sample | None) -> dict[str, Place]:
 
 
 def load_overrides() -> dict[str, Place]:
-    # Columns: endpoint,state,lat,lon,source_note (the note is required).
+    # Columns: endpoint,state,lat,lon,source_note (the note is required), confidence (optional): "verified" (the
+    # default: the facility itself) or "town" (a community the facility is named after, no surveyed point for it).
     out: dict[str, Place] = {}
     if not OVERRIDES_CSV.exists():
         return out
@@ -83,7 +84,8 @@ def load_overrides() -> dict[str, Place]:
         for row in csv.DictReader(f):
             if row.get("source_note", "").strip() and row.get("lat") and row.get("lon"):
                 out[f"{norm_key(row['endpoint'])}|{row['state'].strip().upper()}"] = Place(
-                    float(row["lat"]), float(row["lon"]), row["endpoint"], {"note": row["source_note"]})
+                    float(row["lat"]), float(row["lon"]), row["endpoint"], {"note": row["source_note"],
+                    "confidence": "town" if (row.get("confidence") or "").strip() == "town" else "verified"})
     return out
 
 

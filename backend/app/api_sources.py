@@ -94,13 +94,18 @@ class ExtractIn(BaseModel):
 
 @guarded.post("/{source_id}/extract")
 async def extract(source_id: str, req: ExtractIn) -> dict[str, Any]:
-    # Runs the AI reader. The cost is checked first (MAX_RUN_COST_USD); the projects go to the source's draft for
-    # review. Follow it like any run: GET /api/runs/{run_id}/events.
+    # Runs the AI reader. The reader's models and the cost (MAX_RUN_COST_USD) are checked first; the projects go to
+    # the source's draft for review. Follow it like any run: GET /api/runs/{run_id}/events.
+    from app import setup
     from app.pipeline import run_extraction
     from app.readers.ai_reader import CostLimitExceeded, estimate_for
 
     s = _src(source_id)
     pages = req.pages or s.display.get("page_range")
+    try:  # as a live run is checked: 409 names the job and each model tried, and the UI opens the setup at it
+        await setup.preflight(only={"reader"})
+    except setup.SetupError as e:
+        raise HTTPException(409, {"message": e.message, **e.details}) from None
     try:
         est = await asyncio.to_thread(estimate_for, s, pages)
     except CostLimitExceeded as e:

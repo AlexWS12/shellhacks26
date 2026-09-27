@@ -52,7 +52,8 @@ EXTRACT_SYSTEM = (
     "the value, copied character for character (a few words to one sentence). If a field is not stated, use null. "
     "Never guess, estimate, compute or combine values. costs: one item per amount shown, label = the column or row "
     "heading it sits under (a year, 'Previous', 'Total'). endpoints: only places the filing itself names as the two "
-    "ends of a line; otherwise null.")
+    "ends of a line; otherwise null. owner: the utility the page names as owning, sponsoring or building the project "
+    "(a column, a heading or a logo caption with its name), as written; null if the page doesn't say.")
 
 
 TABLE_NOTE = "The page below is a table of projects: return every row as its own project, including short rows.\n\n"
@@ -69,7 +70,7 @@ _ITEM = {"type": "object", "properties": {"label": {"type": "string"}, "value": 
          "required": ["label", "value", "page", "snippet"]}
 _END = {"type": "object", "properties": {"value": {"type": "string"}, "page": {"type": "integer"},
                                          "snippet": {"type": "string"}}, "required": ["value", "page", "snippet"]}
-FIELDS = ("project_id", "name", "description", "status", "in_service_date", "start_date", "voltage_kv")
+FIELDS = ("project_id", "name", "description", "status", "in_service_date", "start_date", "voltage_kv", "owner")
 PROJECT_SCHEMA = {"type": "object",
                   "properties": {**{f: _field() for f in FIELDS},
                                  "costs": {"type": ["array", "null"], "items": _ITEM},
@@ -90,6 +91,22 @@ PROJECT_WORDS = re.compile(r"\b(project|in[- ]service|substation|transmission|kv
 
 class CostLimitExceeded(Exception):
     pass
+
+
+def _words(s: str) -> str:
+    return " " + re.sub(r"[^a-z0-9]+", " ", s.lower()).strip() + " "
+
+
+def same_owner(owner: str, source: Source) -> bool:
+    # Whether the owner a page names is this source: any of its names inside the owner's words, or the reverse
+    # ("Santee Cooper Transmission" is Santee Cooper; "Dominion Energy SC / Santee Cooper", a joint project, is too).
+    o = _words(owner)
+    names = [source.display_name, source.code, *source.osm_operator_patterns,
+             *(x.get("name", "") for x in source.sponsors), *(x.get("code", "") for x in source.sponsors),
+             str(source.display.get("short_name") or "")]
+    if len(o.strip()) < 3:
+        return True  # too short to tell apart: the review decides
+    return any(len(n.strip()) >= 3 and (n in o or o in n) for n in map(_words, names))
 
 
 def norm(s: str) -> str:
@@ -189,6 +206,7 @@ class Verified:
     kept: int = 0  # fields that passed
     reason: str = ""  # why there is no project
     incomplete: list[str] = field(default_factory=list)  # in_service_date / endpoints: can't be compared / placed
+    other_owner: str | None = None  # the page says another utility owns it (a joint filing)
 
     @property
     def confidence(self) -> float:
@@ -335,7 +353,17 @@ def verify(item: dict[str, Any], source: Source, texts: dict[int, str], chunk: l
                 extracted_by="gemini", provenance=provenance | ({"voltage_kv_parsed": kv} if kv else {}))
     if not endpoints:
         incomplete.append("endpoints")
-    return Verified(p, v.checks, v.returned, v.kept, incomplete=incomplete)
+    # A joint filing lists other utilities' projects too. One the page itself attributes to someone else is kept for
+    # the review but rejected there by default; a person can accept it.
+    other = cells["owner"]["value"] if cells["owner"] and not same_owner(cells["owner"]["value"], source) else None
+    if other:
+        v.checks.append(Check(id=f"ai_other_owner:{v.tag}", level="warn", rule="ai_other_owner",
+                              title="AI reader: another utility's project",
+                              detail=f"{name['value']}: p.{cells['owner']['page']} names {other} as its owner, not "
+                                     f"{source.display_name}. Rejected in the review unless a person accepts it.",
+                              source=Path(source.file_path or "").name + f" p.{cells['owner']['page']}",
+                              project_id=pid, actor="code"))
+    return Verified(p, v.checks, v.returned, v.kept, incomplete=incomplete, other_owner=other)
 
 
 def name_key(name: str) -> str:
@@ -515,6 +543,7 @@ class AIReader(Agent):
         checks: list[Check] = []
         audit: dict[str, float] = {}
         flags: dict[str, list[str]] = {}  # project id -> what it lacks
+        others: dict[str, str] = {}  # project id -> the other utility its page names as owner
         cand_pages = [c["page"] for c in cands]
         tables = {c["page"] for c in cands if c["kind"] == "project_table"}
         for chunk in chunks(cand_pages, texts, tables):
@@ -552,6 +581,8 @@ class AIReader(Agent):
                 audit[p.id] = v.confidence
                 ctx.board.projects[p.id] = p
                 flags[p.id] = v.incomplete
+                if v.other_owner:
+                    others[p.id] = v.other_owner
                 ctx.emit("project.extracted", source_id=sid, project=p.model_dump(), actor=r.provider, model=r.model,
                          confidence=v.confidence, incomplete=v.incomplete)
                 ctx.emit("source.progress", source_id=sid, read=len(projects), total=len(cands),
@@ -566,6 +597,7 @@ class AIReader(Agent):
             projects = {p.id: p for p in merged}
             flags = {pid: f for pid, f in flags.items() if pid in projects}
             audit = {pid: c for pid, c in audit.items() if pid in projects}
+            others = {pid: o for pid, o in others.items() if pid in projects}
             for p in merged:  # a merge can fill a date or endpoints the first record lacked
                 flags[p.id] = [f for f, missing in (("in_service_date", not p.in_service_date), ("endpoints", not p.endpoints)) if missing]
         checks += merge_checks
@@ -587,7 +619,9 @@ class AIReader(Agent):
                        "file": path.name, "file_sha256": src.file_sha256, "pages": pages, "estimate": est,
                        "candidates": cands, "projects": [p.model_dump() for p in projects.values()],
                        "confidence": audit, "checks": [c.model_dump() for c in checks], "audit_failures": failed_audit,
-                       "review": {pid: {"status": "pending", "incomplete": flags.get(pid, [])} for pid in projects}}
+                       "review": {pid: {"status": "rejected" if pid in others else "pending",
+                                        "incomplete": flags.get(pid, [])} | ({"other_owner": others[pid]} if pid in others else {})
+                                  for pid in projects}}
         sources.save_draft(sid, self.result)
         sources.set_status(sid, "review" if projects else "failed")  # a person reviews it before it joins runs
         return f"{len(projects)} projects from {len(cands)} pages, {len(checks)} checks (draft, waiting for review)"
