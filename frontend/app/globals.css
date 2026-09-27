@@ -173,6 +173,7 @@ header.top { display: flex; align-items: center; gap: var(--sp-4); padding: var(
 .brand { display: flex; align-items: center; gap: var(--sp-2); }
 .brand .mark { width: 22px; height: 22px; display: block; flex: none; }
 .brand .mark .a { stroke: var(--brand-a); } .brand .mark .b { stroke: var(--brand-b); }
+.brand .mark.logo { width: auto; height: 22px; }
 .brand h1 { font-size: var(--fs-xl); letter-spacing: -0.02em; }
 .brand .tag { color: var(--faint); font-size: var(--fs-md); }
 .status { display: flex; gap: var(--sp-3); font-size: var(--fs-sm); color: var(--muted); }
