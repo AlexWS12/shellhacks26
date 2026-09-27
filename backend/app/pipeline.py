@@ -9,6 +9,8 @@
 #   analyst     <- cost, validator, reference
 #   advocate_desc, advocate_ga <- analyst
 #   mediator    <- advocate_desc, advocate_ga
+#   research_electric, research_gas, research_roads_water   start with the readers (research team)
+#   third_party <- overlap, research_*
 
 import asyncio
 import json
@@ -20,7 +22,9 @@ from app.agents.classifier import Classifier
 from app.agents.coordination import Advocate, Mediator
 from app.agents.extractors import DESC_SOURCE, GA_SOURCE, SAMPLE_SOURCE, DescExtractor, GaExtractor, SampleReader
 from app.agents.geocoder import Geocoder
+from app.agents.research import OtherUtilities, ResearchScout
 from app.agents.validator import Validator
+from app.core.models import RESEARCH_CATEGORIES
 from app.runtime import watchdog
 from app.runtime.agent import Agent
 from app.runtime.executor import execute
@@ -33,7 +37,8 @@ SOURCES = [DESC_SOURCE, GA_SOURCE, SAMPLE_SOURCE]
 
 def build_agents() -> list[Agent]:
     return [SampleReader(), DescExtractor(), GaExtractor(), Geocoder(), Validator(), Classifier(), OverlapEngine(),
-            ReferenceChecker(), CostEstimator(), Analyst(), Advocate("dominion"), Advocate("georgia"), Mediator()]
+            ReferenceChecker(), CostEstimator(), Analyst(), Advocate("dominion"), Advocate("georgia"), Mediator(),
+            *(ResearchScout(c) for c in RESEARCH_CATEGORIES), OtherUtilities()]
 
 
 async def publish(run: Run) -> None:

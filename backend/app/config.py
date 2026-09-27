@@ -19,6 +19,7 @@ DESC_PDF = RAW_DIR / "2024-2028-2million-and-above-project-descriptions.pdf"
 GA_PDF = RAW_DIR / "2025_IRP_Volume_3_PUBLIC_DISCLOSURE.pdf"
 SAMPLE_XLSX = RAW_DIR / "Projects_Overlaps.xlsx"
 OVERRIDES_CSV = DATA_DIR / "overrides" / "locations.csv"
+RESEARCH_FILE = DATA_DIR / "research" / "other_utilities.json"
 
 
 def env(name: str, default: str = "") -> str:
@@ -42,6 +43,8 @@ JEV_PROVIDER = env("JEV_PROVIDER")  # typesafe | openrouter | cloudflare | mock 
 # Geocoding
 OSM_LIVE = env("OSM_LIVE", "true").lower() == "true"  # fetch OSM live when there is no cache yet
 NOMINATIM_USER_AGENT = env("NOMINATIM_USER_AGENT", "tandem-shellhacks/0.1")
+# Research team: other utilities near the river. Live = also run a Google-grounded Gemini search each run.
+RESEARCH_LIVE = env("RESEARCH_LIVE", "false").lower() == "true"
 NOMINATIM_BUDGET_S = env_float("NOMINATIM_BUDGET_S", 60.0)  # live lookup time per run (1 request/second)
 
 # Storage (Tiger Data = managed Postgres + TimescaleDB). Empty = no database, files only.

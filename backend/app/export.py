@@ -12,7 +12,8 @@ from app.store import dataset
 
 UTILITY_NAME = {"DESC": "Dominion Energy South Carolina", "GA": "Georgia Power"}
 PROJECT_EXTRA = ["sponsor", "location_confidence", "build_start", "estimated_cost", "status", "source", "project_type"]
-OVERLAP_EXTRA = ["location_confidence", "windows_overlap", "in_sponsor_sample"]
+OVERLAP_EXTRA = ["location_confidence", "windows_overlap", "in_sponsor_sample", "other_utilities_nearby"]
+CATEGORY_NAME = {"electric": "electric", "gas": "gas", "roads_water": "roads and water"}
 
 
 def _project_row(p: Project, overlaps_of: dict[str, list[str]]) -> list:
@@ -50,12 +51,18 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
         for idx in (12, 19):  # in_service_date, build_start
             if row[idx].value:
                 row[idx].number_format = "mm/dd/yyyy"
+    links = dataset.others(overlaps)
+    research = {r.id: r for r in dataset.CURRENT.research}
+    near: dict[str, list[str]] = {}
+    for t in links:
+        r = research[t.research_id]
+        near.setdefault(t.overlap_id, []).append(f"{r.utility}: {r.name} ({t.dist_a_mi} / {t.dist_b_mi} mi)")
     ws2 = wb.create_sheet("overlaps")
     _header(ws2, OVERLAP_HEADERS + OVERLAP_EXTRA)
     for o in overlaps:
         a, b = dataset.CURRENT.projects[o.project_a], dataset.CURRENT.projects[o.project_b]
         ws2.append([ids[o.id], o.distance_mi, o.time_gap_days, UTILITY_NAME["DESC"], a.id, a.name, UTILITY_NAME["GA"],
-                    b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample])
+                    b.id, b.name, o.pair_confidence, o.windows_overlap, o.in_sponsor_sample, "; ".join(near.get(o.id, []))])
     ws3 = wb.create_sheet("data_checks")
     _header(ws3, ["level", "rule", "title", "detail", "source", "project_id", "decided_by"])
     for c in dataset.CURRENT.checks:
@@ -66,6 +73,23 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
     for r in dataset.CURRENT.reference:
         ws4.append([r.overlap_id, r.a, r.b, r.a_project, r.b_project, r.expected_mi, r.got_mi, r.expected_days,
                     r.got_days, r.passed])
+    ws6 = wb.create_sheet("other_utilities")
+    _header(ws6, ["research_id", "category", "owner", "project", "status", "start_as_stated", "in_service_as_stated",
+                  "in_service_date_used", "location_confidence", "lat", "lon", "places", "sources", "found_by",
+                  "fact_checkers_confirmed"])
+    for r in dataset.CURRENT.research:
+        v = r.verification or {}
+        ws6.append([r.id, CATEGORY_NAME[r.category], r.utility, r.name, r.status, r.start, r.in_service, r.in_service_date,
+                    r.location_confidence, r.lat, r.lon, "; ".join(f"{p.name} ({p.kind}, {p.state})" for p in r.places),
+                    " ".join(s.url for s in r.sources), r.found_by,
+                    f"{v.get('confirmed')} of {v.get('verifiers')}" if v.get("verifiers") else None])
+    ws7 = wb.create_sheet("other_utility_links")
+    _header(ws7, ["overlap_id", "research_id", "owner", "project", "miles_to_dominion_project", "miles_to_georgia_project",
+                  "days_from_dominion_in_service", "days_from_georgia_in_service", "date_is_year_or_month_only"])
+    for t in links:
+        r = research[t.research_id]
+        ws7.append([ids.get(t.overlap_id, t.overlap_id), r.id, r.utility, r.name, t.dist_a_mi, t.dist_b_mi,
+                    t.gap_a_days, t.gap_b_days, t.approx_date])
     ws5 = wb.create_sheet("notes")
     for line in [
         "Method: center = midpoint of located endpoints (or the single located one); haversine miles, R = 3958.8.",
@@ -75,6 +99,8 @@ def build_xlsx(overlaps: list[Overlap]) -> bytes:
         "location_confidence: verified (sponsor file / override), confirmed_osm (OpenStreetMap + judge), "
         "partial (mixed), town (GeoNames town, approximate), unlocated.",
         "Georgia costs are REDACTED in the filing and exported as empty, never zero.",
+        "Other utilities: projects found by the research team, each with cited sources. A project is listed on an "
+        "overlap when its center is under 25 miles from BOTH project centers. Year-only dates use Dec 31.",
         f"Dataset run: {dataset.CURRENT.run_id}",
     ]:
         ws5.append([line])

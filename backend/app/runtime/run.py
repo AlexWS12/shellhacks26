@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from app.config import PACE, RUNS_DIR
+from app.core.models import RESEARCH_CATEGORIES
 from app.runtime.board import Board
 
 Event = dict[str, Any]
@@ -19,6 +20,7 @@ class Run:
     pace: float = PACE  # demo delay multiplier, 0 = instant
     source: str | None = None  # replay: the recorded run id
     templates: bool = True  # False: a Gemini failure fails the agent instead of writing a template
+    research: list[str] = field(default_factory=lambda: list(RESEARCH_CATEGORIES))  # chosen before the run
     events: list[Event] = field(default_factory=list)
     finished: bool = False
     board: Board = field(default_factory=Board)

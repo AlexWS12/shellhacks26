@@ -13,6 +13,9 @@ Built at ShellHacks 2026 for the Gridlock challenge.
 - **Places every project.** OpenStreetMap substations and towns, with each fuzzy match confirmed by Jev.
 - **Checks the data.** Malformed costs, spending after a project is done, text copied between projects.
 - **Finds overlaps.** Every pair under 25 miles apart, plus how many days apart they finish, ranked.
+- **Looks past the two utilities.** A research team maps other owners' projects near the river: other
+  electric utilities, gas pipelines, roads and water. You choose which before each run. Every record cites its
+  sources, and each one near both sides of an opportunity is flagged.
 - **Explains them.** Gemini writes each opportunity up, and two utility advocates plus a mediator draft the
   coordination meeting.
 - **Shows its work.** Every agent appears on the map and in the pipeline graph while it runs; every number

@@ -1,7 +1,7 @@
 // Same check as `visible` in backend/app/core/overlap.py. Only decides what to draw.
 
 import type { FilterState } from "./api";
-import type { Project } from "./types";
+import type { Project, ResearchProject } from "./types";
 
 const ORDER = ["verified", "confirmed_osm", "partial", "town", "unlocated"];
 
@@ -21,6 +21,15 @@ export function activeIn(p: Project, year: number | null): boolean {
   const from = p.build_start ?? p.build_active_from;
   const start = from ? Number(from.slice(0, 4)) : end;
   return start <= year && year <= end;
+}
+
+// Other utilities' work: same idea. Unknown dates stay visible, since timing is unknown, not absent.
+export function researchActiveIn(r: ResearchProject, year: number | null): boolean {
+  if (year == null) return true;
+  const end = r.in_service_date ? Number(r.in_service_date.slice(0, 4)) : null;
+  const start = r.start_date ? Number(r.start_date.slice(0, 4)) : end;
+  if (start == null && end == null) return true;
+  return (start ?? -Infinity) <= year && year <= (end ?? Infinity);
 }
 
 // Same limit as span_limit in backend/app/core/overlap.py: 60 mi unless the filing states a longer line.

@@ -114,6 +114,7 @@ export interface AgentSpec {
   depends_on: string[];
   kind: "agent" | "tool";
   engine: string;
+  team?: "core" | "research";
 }
 
 export interface SourceSpec {
@@ -132,6 +133,64 @@ export interface PairDetail {
   cost: CostBlock;
   analysis: Written | null;
   brief: Brief | null;
+  others?: ThirdParty[];
+}
+
+// Other utilities' projects, found by the research team. Every record cites its sources.
+export type ResearchCategory = "electric" | "gas" | "roads_water";
+
+export interface Source {
+  url: string;
+  title: string;
+  publisher: string;
+  quote: string;
+  accessed: string | null;
+}
+
+export interface ResearchPlace {
+  name: string;
+  kind: string;
+  state: string | null;
+  role: string;
+}
+
+export interface ResearchProject {
+  id: string;
+  category: ResearchCategory;
+  utility: string;
+  utility_kind: string;
+  name: string;
+  description: string;
+  status: string;
+  start: string | null; // as precise as the source
+  in_service: string | null;
+  date_quote: string | null;
+  start_date: string | null;
+  in_service_date: string | null;
+  date_precision: "day" | "month" | "year" | null;
+  places: ResearchPlace[];
+  endpoints: Endpoint[];
+  lat: number | null;
+  lon: number | null;
+  location_confidence: Confidence;
+  miles: number | null;
+  cost_usd: number | null;
+  cost_quote: string | null;
+  sources: Source[];
+  found_by: string;
+  verification: { verifiers?: number; confirmed?: number; quotes_found?: number; notes?: string[]; note?: string };
+}
+
+export interface ThirdParty {
+  overlap_id: string;
+  research_id: string;
+  category: ResearchCategory;
+  dist_a_mi: number;
+  dist_b_mi: number;
+  gap_a_days: number | null;
+  gap_b_days: number | null;
+  approx_date: boolean;
+  confidence: Confidence;
 }
 
 export interface Health {

@@ -1,4 +1,19 @@
-import type { Confidence, Project } from "./types";
+import type { Confidence, Project, ResearchCategory } from "./types";
+
+export const CATEGORY_LABEL: Record<ResearchCategory, string> = {
+  electric: "Electric",
+  gas: "Gas",
+  roads_water: "Roads & water",
+};
+
+// A research date as precise as its source: '2028', 'Jun 2027' or 'Oct 1, 2026'.
+export function statedDate(s: string | null | undefined): string {
+  if (!s) return "unknown";
+  const [y, m, d] = s.split("-");
+  if (d) return fmtDate(s);
+  if (m) return new Date(Number(y), Number(m) - 1, 1).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+  return y;
+}
 
 export const CONF_LABEL: Record<Confidence, string> = {
   verified: "Verified location",
@@ -26,6 +41,7 @@ export const ACTOR_LABEL: Record<string, string> = {
   sponsor_file: "Benchmark",
   override: "Human",
   template: "Template",
+  research_file: "Research",
 };
 
 export const utilityName = (p: Project) => (p.utility === "DESC" ? "Dominion Energy SC" : `Georgia · ${p.sponsor}`);

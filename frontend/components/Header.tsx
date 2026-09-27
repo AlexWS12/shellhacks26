@@ -3,6 +3,8 @@
 import { run, useRev } from "@/lib/run";
 import { skipToResults, startRun, useUI } from "@/lib/ui";
 
+import ResearchPicker from "./ResearchPicker";
+
 export default function Header() {
   useRev((s) => s.rev);
   const { filters, setFilters, health, templateFallback, setTemplateFallback } = useUI();
@@ -30,6 +32,7 @@ export default function Header() {
         <label><input type="checkbox" checked={filters.townLevel} onChange={(e) => setFilters({ townLevel: e.target.checked })} /> Approx. locations</label>
         <label><input type="checkbox" checked={filters.hideFinished} onChange={(e) => setFilters({ hideFinished: e.target.checked })} /> Hide finished</label>
       </div>
+      <ResearchPicker compact />
       {running && <button onClick={() => void skipToResults()}>Skip</button>}
       <label className="fallback" title="Live runs: when Gemini fails after retries, write the text from a template. Off: the agent fails instead.">
         <input type="checkbox" checked={templateFallback} disabled={running}

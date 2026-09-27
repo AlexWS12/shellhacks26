@@ -4,8 +4,9 @@ from typing import Any
 
 from app.config import SNAPSHOT_PATH
 from app.core.analysis import cost_block, shared_resources
-from app.core.models import Check, Overlap, Project, ReferenceResult
+from app.core.models import RESEARCH_CATEGORIES, Check, Overlap, Project, ReferenceResult, ResearchProject, ThirdParty
 from app.core.overlap import Filters, distance_mi, find_overlaps, time_gap_days, weaker, windows_overlap
+from app.core.research import nearby
 
 
 @dataclass
@@ -17,6 +18,8 @@ class Dataset:
     sample_pairs: set[tuple[str, str]] = field(default_factory=set)
     analyses: dict[str, Any] = field(default_factory=dict)
     briefs: dict[str, Any] = field(default_factory=dict)
+    research: list[ResearchProject] = field(default_factory=list)
+    research_selected: list[str] = field(default_factory=lambda: list(RESEARCH_CATEGORIES))
 
 
 CURRENT = Dataset()
@@ -31,6 +34,8 @@ def load_snapshot(snap: dict[str, Any]) -> None:
         reference=[ReferenceResult(**r) for r in snap["reference"]],
         sample_pairs={tuple(x) for x in snap.get("sample_pairs", [])},  # type: ignore[misc]
         analyses=snap.get("analyses", {}), briefs=snap.get("briefs", {}),
+        research=[ResearchProject(**r) for r in snap.get("research", [])],
+        research_selected=snap.get("research_selected", list(RESEARCH_CATEGORIES)),
     )
 
 
@@ -43,6 +48,11 @@ def load_from_disk() -> bool:
 
 def overlaps(f: Filters) -> list[Overlap]:
     return find_overlaps(list(CURRENT.projects.values()), f, CURRENT.sample_pairs)
+
+
+def others(ovs: list[Overlap]) -> list[ThirdParty]:
+    # Recomputed for whatever overlaps the filters produce, so the flags always match the list on screen.
+    return nearby(ovs, CURRENT.projects, CURRENT.research, CURRENT.research_selected)
 
 
 def pair_detail(a_id: str, b_id: str) -> dict[str, Any] | None:
@@ -58,4 +68,5 @@ def pair_detail(a_id: str, b_id: str) -> dict[str, Any] | None:
                 in_sponsor_sample=(a.id, b.id) in CURRENT.sample_pairs)
     shared = shared_resources(a, b, o)
     return {"overlap": o.model_dump(), "a": a.model_dump(), "b": b.model_dump(), "shared": shared,
-            "cost": cost_block(a, b, o), "analysis": CURRENT.analyses.get(o.id), "brief": CURRENT.briefs.get(o.id)}
+            "cost": cost_block(a, b, o), "analysis": CURRENT.analyses.get(o.id), "brief": CURRENT.briefs.get(o.id),
+            "others": [t.model_dump() for t in others([o])]}

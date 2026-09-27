@@ -160,6 +160,56 @@ async def stream_text(system: str, prompt: str, pace: float = 1.0) -> AsyncItera
     cache.put("gemini", CACHE_VERSION, payload, {"text": "".join(parts), "model": model})
 
 
+def _grounding(resp: Any) -> tuple[list[dict[str, str]], list[dict[str, Any]]]:
+    # (sources, supports): which web pages Google Search returned, and which answer spans each one backs.
+    meta = getattr((resp.candidates or [None])[0], "grounding_metadata", None)
+    chunks = [{"url": getattr(c.web, "uri", "") or "", "title": getattr(c.web, "title", "") or ""}
+              for c in (getattr(meta, "grounding_chunks", None) or []) if getattr(c, "web", None)]
+    supports = [{"end": s.segment.end_index, "chunks": list(s.grounding_chunk_indices or [])}
+                for s in (getattr(meta, "grounding_supports", None) or []) if getattr(s, "segment", None)]
+    return chunks, supports
+
+
+async def search_grounded(system: str, prompt: str, use_cache: bool = True) -> dict[str, Any] | None:
+    # Gemini answer grounded in Google Search, with the pages it used. None if Gemini is off or the call fails.
+    payload = {"model": config.GEMINI_MODEL, "system": system, "prompt": prompt, "tool": "google_search"}
+    if use_cache and (hit := cache.get("gemini", CACHE_VERSION, payload)) is not None:
+        return {**hit, "cached": True}
+    if not enabled():
+        return None
+    from google.genai import types
+
+    async def call(model: str) -> Any:
+        async with _SEMAPHORE:
+            return await asyncio.wait_for(_get_client().aio.models.generate_content(
+                model=model, contents=prompt,
+                config=_config(system, 0, tools=[types.Tool(google_search=types.GoogleSearch())])),
+                timeout=TIMEOUT_S * 2)
+
+    started = time.perf_counter()
+    try:
+        resp, model = await _with_retries(call)
+        chunks, supports = _grounding(resp)
+        result = {"text": resp.text or "", "sources": chunks, "supports": supports, "model": model, **_usage(resp),
+                  "latency_ms": round((time.perf_counter() - started) * 1000)}
+    except Exception as e:
+        log.warning("Gemini search call failed: %s: %s", type(e).__name__, str(e)[:300])
+        return None
+    if use_cache:
+        cache.put("gemini", CACHE_VERSION, payload, result)
+    return {**result, "cached": False}
+
+
+def cite(text: str, supports: list[dict[str, Any]]) -> str:
+    # Puts [n] after each grounded span (n = source index + 1). Span ends are UTF-8 byte offsets.
+    raw = text.encode("utf-8")
+    for s in sorted(supports, key=lambda s: -s["end"]):
+        marks = "".join(f"[{i + 1}]" for i in sorted(set(s["chunks"])))
+        if marks and 0 <= s["end"] <= len(raw):
+            raw = raw[: s["end"]] + marks.encode() + raw[s["end"] :]
+    return raw.decode("utf-8", errors="ignore")
+
+
 async def smoke() -> dict[str, Any] | None:
     # Live call (never cached), so it tells whether the key and model work right now.
     return await generate_json("Answer in JSON.", "Return {\"ok\": true}.",

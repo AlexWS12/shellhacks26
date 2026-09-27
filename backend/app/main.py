@@ -105,6 +105,14 @@ def checks() -> list[dict]:
     return [c.model_dump() for c in dataset.CURRENT.checks]
 
 
+@app.get("/api/research")
+def research(all_sponsors: bool = False, min_conf: Confidence = "town", hide_finished: bool = False) -> dict:
+    ovs = dataset.overlaps(filters(all_sponsors, min_conf, hide_finished, "distance"))
+    return {"selected": dataset.CURRENT.research_selected,
+            "records": [r.model_dump() for r in dataset.CURRENT.research],
+            "links": [t.model_dump() for t in dataset.others(ovs)]}
+
+
 @app.get("/api/reference-test")
 def reference() -> list[dict]:
     return [r.model_dump() for r in dataset.CURRENT.reference]
@@ -122,11 +130,16 @@ def export_csv(all_sponsors: bool = False, min_conf: Confidence = "town", hide_f
     buf = io.StringIO()
     w = csv.writer(buf)
     w.writerow(["overlap_id", "distance_mi", "time_gap (day)", "utility_a", "project_id_a", "project_name_a",
-                "utility_b", "project_id_b", "project_name_b", "location_confidence"])
-    for i, o in enumerate(dataset.overlaps(filters(all_sponsors, min_conf, hide_finished, "distance")), start=1):
+                "utility_b", "project_id_b", "project_name_b", "location_confidence", "other_utilities_nearby"])
+    ovs = dataset.overlaps(filters(all_sponsors, min_conf, hide_finished, "distance"))
+    research = {r.id: r for r in dataset.CURRENT.research}
+    near: dict[str, list[str]] = {}
+    for t in dataset.others(ovs):
+        near.setdefault(t.overlap_id, []).append(f"{research[t.research_id].utility}: {research[t.research_id].name}")
+    for i, o in enumerate(ovs, start=1):
         a, b = dataset.CURRENT.projects[o.project_a], dataset.CURRENT.projects[o.project_b]
         w.writerow([f"OVL_{i}", o.distance_mi, o.time_gap_days, "Dominion Energy South Carolina", a.id, a.name,
-                    "Georgia Power", b.id, b.name, o.pair_confidence])
+                    "Georgia Power", b.id, b.name, o.pair_confidence, "; ".join(near.get(o.id, []))])
     return Response(buf.getvalue(), media_type="text/csv",
                     headers={"Content-Disposition": 'attachment; filename="Tandem_overlaps.csv"'})
 
@@ -136,6 +149,7 @@ class RunRequest(BaseModel):
     replay_of: str | None = None  # recorded run id; default = newest complete recording
     speed: float = 1.0
     templates: bool = True  # live only: fall back to a template when Gemini fails
+    research: list[Literal["electric", "gas", "roads_water"]] | None = None  # live only; None = all
 
 
 @app.post("/api/runs")
@@ -146,6 +160,8 @@ async def start_run(req: RunRequest) -> dict:
             return {"run_id": busy[0].id, "joined": True}  # one live run at a time; join it
         run = new_run("live")
         run.templates = req.templates
+        if req.research is not None:
+            run.research = list(dict.fromkeys(req.research))
         start_background(run_live(run))
         return {"run_id": run.id}
     recs = [r for r in recorded_runs() if r["complete"] and r["ok"]]

@@ -3,7 +3,8 @@
 import { create } from "zustand";
 
 import type {
-  AgentSpec, Brief, Check, CostBlock, Overlap, Project, ReferenceResult, RunEvent, SourceSpec, Written,
+  AgentSpec, Brief, Check, CostBlock, Overlap, Project, ReferenceResult, ResearchCategory, ResearchProject, RunEvent,
+  SourceSpec, ThirdParty, Written,
 } from "./types";
 
 export type AgentStatus = "idle" | "working" | "done" | "error";
@@ -57,6 +58,9 @@ export interface RunData {
   analyses: Record<string, Written>;
   costs: Record<string, CostBlock>;
   briefs: Record<string, Brief>;
+  research: Record<string, ResearchProject>; // other utilities' projects
+  researchSelected: ResearchCategory[];
+  thirdParty: ThirdParty[];
   log: { text: string; agent?: string }[];
   ticker: string;
   judges: Record<string, JudgeTotals>;
@@ -77,7 +81,7 @@ export interface RunData {
 const empty = (): RunData => ({
   runId: null, mode: null, replayOf: null, phase: "idle", ok: null, failMsg: "", lastSeq: -1,
   agents: {}, agentOrder: [], sources: {}, sourceOrder: [], projects: {}, unlocated: {}, checks: [], overlaps: [],
-  reference: [], analyses: {}, costs: {}, briefs: {}, log: [], ticker: "Not started.", judges: {}, agentLog: {},
+  reference: [], analyses: {}, costs: {}, briefs: {}, research: {}, researchSelected: [], thirdParty: [], log: [], ticker: "Not started.", judges: {}, agentLog: {},
   thinking: {}, health: {}, handoffs: [], recent: {}, agentPos: {}, linkBorn: {}, stats: null, startTs: null, endTs: null, lastTs: null, totalCost: 0,
 });
 
@@ -167,6 +171,7 @@ export function apply(e: RunEvent): void {
       const sources = (e.sources as SourceSpec[] | undefined) ?? [];
       run.sourceOrder = sources.map((s) => s.id);
       run.sources = Object.fromEntries(sources.map((s) => [s.id, { ...s, read: 0, current: "", method: "" }]));
+      run.researchSelected = (e.research as ResearchCategory[] | undefined) ?? [];
       pushLog(e.mode === "replay" ? `Replaying recorded run ${e.replay_of}.` : "Opened both filings and the sponsor sample.");
       break;
     }
@@ -330,6 +335,34 @@ export function apply(e: RunEvent): void {
       run.briefs[String(e.overlap_id)] = e.brief as Brief;
       moveTo(aid, String(e.overlap_id).split("|"), "joint agenda");
       break;
+    case "research.found": {
+      const r = e.record as ResearchProject;
+      run.research[r.id] = r;
+      break;
+    }
+    case "research.placed": {
+      const r = run.research[String(e.research_id)];
+      if (r) {
+        r.lat = e.lat as number;
+        r.lon = e.lon as number;
+        r.location_confidence = e.confidence as ResearchProject["location_confidence"];
+        r.endpoints = e.endpoints as ResearchProject["endpoints"];
+        run.recent[`research:${r.id}`] = now();
+        if (aid) run.agentPos[aid] = { lon: r.lon, lat: r.lat, t: now(), label: r.utility };
+      }
+      break;
+    }
+    case "research.unlocated": {
+      const r = run.research[String(e.research_id)];
+      if (r) r.endpoints = e.endpoints as ResearchProject["endpoints"];
+      break;
+    }
+    case "third_party.found": {
+      const t = e.link as ThirdParty;
+      run.thirdParty.push(t);
+      moveTo(aid, t.overlap_id.split("|"), run.research[t.research_id]?.utility ?? "other utility");
+      break;
+    }
     case "endpoint.rejected":
       if (aid) pushAgent(aid, { kind: "note", text: `Rejected ${e.endpoint} → ${e.candidate}` });
       break;
@@ -363,6 +396,7 @@ export function apply(e: RunEvent): void {
 // "Show results": load the last finished run without running.
 export function hydrate(data: {
   projects: Project[]; checks: Check[]; reference: ReferenceResult[]; overlaps: Overlap[]; specs: AgentSpec[];
+  research: { selected: ResearchCategory[]; records: ResearchProject[]; links: ThirdParty[] };
 }): void {
   Object.assign(run, empty(), { mode: "results", phase: "done", ticker: "Showing the latest finished run." });
   run.projects = Object.fromEntries(data.projects.map((p) => [p.id, p]));
@@ -372,5 +406,8 @@ export function hydrate(data: {
   run.agentOrder = data.specs.map((s) => s.id);
   run.agents = Object.fromEntries(data.specs.map((s) => [s.id, { ...newAgent(s), status: "done" as const }]));
   for (const p of data.projects) if (p.lat == null) run.unlocated[p.id] = "no source matched its endpoints";
+  run.research = Object.fromEntries(data.research.records.map((r) => [r.id, r]));
+  run.researchSelected = data.research.selected;
+  run.thirdParty = data.research.links;
   bump();
 }

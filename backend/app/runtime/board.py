@@ -3,7 +3,7 @@
 from dataclasses import dataclass, field
 from typing import Any
 
-from app.core.models import Check, Overlap, Project, ReferenceResult
+from app.core.models import Check, Overlap, Project, ReferenceResult, ResearchProject, ThirdParty
 from app.core.sample import Sample
 
 
@@ -19,6 +19,9 @@ class Board:
     costs: dict[str, dict[str, Any]] = field(default_factory=dict)
     briefs: dict[str, dict[str, Any]] = field(default_factory=dict)  # overlap id -> {desc, ga, mediator}
     pending_checks: list[Check] = field(default_factory=list)  # the validator reports these
+    research: dict[str, ResearchProject] = field(default_factory=dict)  # each scout writes its own category
+    research_selected: list[str] = field(default_factory=list)  # third_party
+    third_party: list[ThirdParty] = field(default_factory=list)  # third_party
     ga_page_count: int = 0
     ga_ceii_pages: int = 0
 
@@ -39,4 +42,7 @@ class Board:
             "analyses": self.analyses,
             "costs": self.costs,
             "briefs": self.briefs,
+            "research": [r.model_dump() for r in self.research.values()],
+            "research_selected": self.research_selected,
+            "third_party": [t.model_dump() for t in self.third_party],
         }
