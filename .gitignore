@@ -34,3 +34,6 @@ data/tandem.db
 # filings added in the Sources menu, and the AI reader's drafts and reviewed projects (runtime data)
 data/uploads/
 data/sources/
+
+# cache entries made by local live runs, any provider (the committed ones stay tracked)
+data/cache/*/*.json

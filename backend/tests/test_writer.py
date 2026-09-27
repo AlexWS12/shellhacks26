@@ -4,7 +4,7 @@ import re
 from fastapi.testclient import TestClient
 
 from app.core.analysis import unsupported_numbers
-from app.core.report import facts_for_prose
+from app.core.report import facts_for_prose, to_pdf
 
 
 def report_of(run):
@@ -49,6 +49,15 @@ def test_markdown_has_every_top_pair_and_house_wording(finished_run):
     assert "—" not in md  # no em dashes
 
 
+def test_pdf_tolerates_a_report_built_by_an_older_pipeline(finished_run):
+    # data/snapshot.json can be older than this code (e.g. it predates the "tiers" field / a pair's
+    # "center_mi"/"tier"). to_pdf() must degrade gracefully on that, not KeyError.
+    r = dict(report_of(finished_run))
+    del r["tiers"]
+    r["top"] = [{k: v for k, v in t.items() if k not in ("center_mi", "tier")} for t in r["top"]]
+    assert to_pdf(r)[:5] == b"%PDF-"
+
+
 def test_report_endpoints(finished_run):
     from app.main import app
     from app.store import dataset
@@ -59,5 +68,9 @@ def test_report_endpoints(finished_run):
     md = c.get("/api/report.md")
     assert md.status_code == 200 and md.headers["content-type"].startswith("text/markdown")
     assert "attachment" in md.headers["content-disposition"]
+    pdf = c.get("/api/report.pdf")
+    assert pdf.status_code == 200 and pdf.headers["content-type"].startswith("application/pdf")
+    assert "attachment" in pdf.headers["content-disposition"]
+    assert pdf.content[:5] == b"%PDF-"
     dataset.load_snapshot({**finished_run.board.to_snapshot(), "report": None})
     assert c.get("/api/report").status_code == 404

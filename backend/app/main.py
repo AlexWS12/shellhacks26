@@ -22,6 +22,7 @@ from app.api_models import router as models_router
 from app.clients import fetch, models
 from app.core.models import Confidence
 from app.core.overlap import Filters
+from app.core.report import to_pdf
 from app.core.sheets import FIELDS as SHEET_FIELDS
 from app.core.sheets import read_table, validate_mapping
 from app.core.sheets import suggest as suggest_columns
@@ -176,6 +177,14 @@ def report_md() -> Response:
         raise HTTPException(404, "no report yet: run the pipeline")
     return Response(dataset.CURRENT.report["markdown"], media_type="text/markdown; charset=utf-8",
                     headers={"Content-Disposition": 'attachment; filename="Tandem_report.md"'})
+
+
+@app.get("/api/report.pdf")
+def report_pdf() -> Response:
+    if not dataset.CURRENT.report:
+        raise HTTPException(404, "no report yet: run the pipeline")
+    return Response(to_pdf(dataset.CURRENT.report), media_type="application/pdf",
+                    headers={"Content-Disposition": 'attachment; filename="Tandem_report.pdf"'})
 
 
 @app.get("/api/reference-test")

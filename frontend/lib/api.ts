@@ -136,6 +136,7 @@ export const api = {
     return (await r.json()) as Report;
   },
   reportUrl: `${API}/api/report.md`,
+  reportPdfUrl: `${API}/api/report.pdf`,
   submissions: () => get<SubmissionMenu>("/api/submissions"),
   addSubmission: (body: Record<string, unknown>) =>
     send<{ submission: SubmissionView; preview?: SubmissionPreview; suggested?: Record<string, string> }>("POST", "/api/submissions", body),

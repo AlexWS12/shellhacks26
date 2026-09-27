@@ -1,8 +1,16 @@
 # The final report. Code gathers every number and name; the Writer agent only adds two short pieces of prose
 # (summary, next steps) on top, and those are checked for numbers that are not in these facts.
 
+import io
 from collections import Counter
 from typing import Any
+from xml.sax.saxutils import escape as xml_escape
+
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import LETTER
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.units import inch
+from reportlab.platypus import ListFlowable, ListItem, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 from app import config
 from app.core.costs import ASSUMPTIONS
@@ -210,3 +218,128 @@ def to_markdown(r: dict[str, Any]) -> str:
         md += ["## Data issues the pipeline caught", ""] + [f"- {i['title']} ({i['source']})" for i in r["issues"]] + [""]
     md += ["## Method", ""] + [f"- {m}" for m in r["method"]] + [""]
     return "\n".join(md)
+
+
+def _pdf_styles() -> dict[str, ParagraphStyle]:
+    base = getSampleStyleSheet()
+    dark = colors.HexColor("#1a2b3c")
+    return {
+        "title": ParagraphStyle("title", parent=base["Heading1"], fontSize=20, spaceAfter=4, textColor=dark),
+        "asof": ParagraphStyle("asof", parent=base["Normal"], fontSize=9.5, textColor=colors.HexColor("#666666"),
+                               spaceAfter=16),
+        "h2": ParagraphStyle("h2", parent=base["Heading2"], fontSize=14, spaceBefore=16, spaceAfter=6, textColor=dark),
+        "h3": ParagraphStyle("h3", parent=base["Heading3"], fontSize=11.5, spaceBefore=10, spaceAfter=4, textColor=dark),
+        "body": ParagraphStyle("body", parent=base["Normal"], fontSize=10, leading=14, spaceAfter=6),
+        "byline": ParagraphStyle("byline", parent=base["Normal"], fontName="Helvetica-Oblique", fontSize=8.5,
+                                 leading=11, textColor=colors.HexColor("#777777"), spaceAfter=10),
+        "cell": ParagraphStyle("cell", parent=base["Normal"], fontSize=8, leading=10.5),
+        "cell_h": ParagraphStyle("cell_h", parent=base["Normal"], fontSize=8, leading=10.5, textColor=colors.white,
+                                 fontName="Helvetica-Bold"),
+    }
+
+
+def _pdf_table(rows: list[tuple], widths: list[float], styles: dict[str, ParagraphStyle]) -> Table:
+    data = [[Paragraph(xml_escape(str(cell)), styles["cell_h"]) for cell in rows[0]]]
+    data += [[Paragraph(xml_escape(str(cell)), styles["cell"]) for cell in row] for row in rows[1:]]
+    t = Table(data, colWidths=widths, repeatRows=1)
+    t.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1a2b3c")),
+        ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#cccccc")),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#f4f6f8")]),
+        ("TOPPADDING", (0, 0), (-1, -1), 4), ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING", (0, 0), (-1, -1), 5), ("RIGHTPADDING", (0, 0), (-1, -1), 5),
+    ]))
+    return t
+
+
+def _pdf_bullets(items: list[str], styles: dict[str, ParagraphStyle]) -> ListFlowable:
+    return ListFlowable([ListItem(Paragraph(xml_escape(i), styles["body"]), leftIndent=8) for i in items],
+                        bulletType="bullet", start="circle")
+
+
+def to_pdf(r: dict[str, Any]) -> bytes:
+    # Same facts and wording as to_markdown(); laid out as a document instead of a text dump.
+    # .get()/TIER_LABEL.get() guard the few fields a report built by an older pipeline version might lack
+    # (e.g. "tiers" and a pair's "center_mi"/"tier"), so this never breaks on report data older than this code.
+    s = _pdf_styles()
+
+    def p(text: str, style: str = "body") -> Paragraph:
+        return Paragraph(xml_escape(str(text)), s[style])
+
+    story: list[Any] = [p(r["title"], "title"),
+                        p(f"As of {r['as_of']}. Every number below comes from the pipeline's code.", "asof"),
+                        p("Summary", "h2"), p(r["summary"]["text"]), p(_byline(r["summary"]).strip("_"), "byline")]
+
+    c = r["counts"]
+    glance = [("Measure", "Value"),
+              ("Projects read", ", ".join(f"{n} {o}" for o, n in r["owners"].items())),
+              ("On the map", f"{c['placed']} ({c['unlocated']} without a location)"),
+              ("Pairs under 25 miles", f"{c['opportunities']} ({c['built_at_same_time']} built at the same time)")]
+    tiers = r.get("tiers")
+    if tiers:
+        glance.append(("By closest distance", f"{tiers['touching']} touching, {tiers['row']} under 1 mi, "
+                       f"{tiers['site']} under 5 mi, {tiers['crew']} under 25 mi"))
+    glance += [("Benchmark", f"{c['benchmark_passed']} of {c['benchmark_total']} known overlaps exact"),
+              ("Data issues", f"{c['issues_error']} errors, {c['issues_warn']} warnings, {c['issues_info']} notes")]
+    if r["research_categories"]:
+        glance.append((f"Other utilities ({', '.join(r['research_categories'])})",
+                       f"{c['other_utility_projects']} projects, near {c['opportunities_with_other_utilities']} opportunities"))
+    story += [p("At a glance", "h2"), _pdf_table(glance, [2.1 * inch, 4.9 * inch], s)]
+
+    if r["top"]:
+        rows = [("#", "Project A", "Project B", "Mi (closest)", "Mi (centers)", "Tier", "Days apart", "Same time",
+                 "Other owners")]
+        for t in r["top"]:
+            rows.append((t["rank"], f"{t['a']['name']} ({t['a']['owner']})", f"{t['b']['name']} ({t['b']['owner']})",
+                        t["distance_mi"], t.get("center_mi", ""), TIER_LABEL.get(t.get("tier"), ""), _days(t),
+                        _yes(t["built_at_same_time"]), len(t["other_utilities"]) or ""))
+        story += [p("Top opportunities", "h2"),
+                 _pdf_table(rows, [0.3 * inch, 1.55 * inch, 1.55 * inch, 0.6 * inch, 0.6 * inch, 0.65 * inch,
+                                   0.6 * inch, 0.55 * inch, 0.6 * inch], s)]
+    else:
+        story += [p("Top opportunities", "h2"),
+                 p("No pairs from different owners under 25 mi in the default view.")]
+
+    for t in r["top"][:3]:
+        story.append(Spacer(1, 6))
+        story.append(p(f"#{t['rank']} {t['a']['name']} and {t['b']['name']}", "h3"))
+        story.append(p(f"{t['a']['owner']} and {t['b']['owner']}: {t['distance_mi']} miles apart, {_days(t)} days "
+                       f"between in-service dates ({t['a']['in_service']} and {t['b']['in_service']})."))
+        story.append(p(f"Sources: {t['a']['source']}; {t['b']['source']}."))
+        if t["shared_items"]:
+            story.append(p(f"Could share: {', '.join(t['shared_items'])}."))
+        if t.get("savings_high"):
+            story.append(p(f"Estimated savings: {_money(t['savings_low'])} to {_money(t['savings_high'])} "
+                           "(assumption range, see Method)."))
+        if t["analysis"]:
+            story.append(p(t["analysis"]["text"]))
+        if t["joint_agenda"]:
+            story.append(p("Joint agenda", "h3"))
+            story.append(p(t["joint_agenda"]["text"]))
+        if t["other_utilities"]:
+            story.append(_pdf_bullets([f"Also nearby: {o['owner']}, {o['name']} ({o['category']}), {o['miles_to_a']} "
+                                       f"and {o['miles_to_b']} miles from the two projects." for o in t["other_utilities"]], s))
+
+    lines = [ln[2:] if ln.startswith("- ") else ln for ln in r["next_steps"]["text"].splitlines() if ln.strip()]
+    story += [p("Recommended next steps", "h2"), _pdf_bullets(lines, s), p(_byline(r["next_steps"]).strip("_"), "byline")]
+
+    if r["issues"]:
+        story += [p("Data issues the pipeline caught", "h2"),
+                 _pdf_bullets([f"{i['title']} ({i['source']})" for i in r["issues"]], s)]
+
+    story += [p("Method", "h2"), _pdf_bullets(r["method"], s)]
+
+    def footer(canvas, doc) -> None:
+        canvas.saveState()
+        canvas.setFont("Helvetica", 8)
+        canvas.setFillColor(colors.HexColor("#888888"))
+        canvas.drawString(0.75 * inch, 0.5 * inch, "UtiliTies · coordination report")
+        canvas.drawRightString(LETTER[0] - 0.75 * inch, 0.5 * inch, f"Page {doc.page}")
+        canvas.restoreState()
+
+    buf = io.BytesIO()
+    doc = SimpleDocTemplate(buf, pagesize=LETTER, topMargin=0.75 * inch, bottomMargin=0.75 * inch,
+                            leftMargin=0.75 * inch, rightMargin=0.75 * inch, title=r["title"])
+    doc.build(story, onFirstPage=footer, onLaterPages=footer)
+    return buf.getvalue()
