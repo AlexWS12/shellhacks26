@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "GTC: Garrett Rd - V. Rica 230kV Line Reconductor (CC Net Im)",
+   "description": "GTC will reconductor the section from East Villa Rica Switching station to Garrett Rd with 160C 1351 ACSS on 11.5 miles of the Garrett Road - Villa Rica 230kV line. Additionally, the 2.5 miles section from East Villa Rica Switching Station to Villa Rica will be rebuilt with bundled 200C 1351 ACSS Martin."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "rebuild",
+    "confidence": 1.0,
+    "probabilities": {
+     "other": 0.0,
+     "in_substation_equipment": 0.0,
+     "new_line": 0.0,
+     "rebuild": 1.0,
+     "substation_construction": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.4150000000000004e-05,
+  "latency_ms": 489
+ }
+}

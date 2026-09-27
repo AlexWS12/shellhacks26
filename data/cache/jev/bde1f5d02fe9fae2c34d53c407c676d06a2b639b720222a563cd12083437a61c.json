@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Lagrange",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Lagrange - North Opelika 230 kV",
+   "description": "Build a new Lagrange - North Opelika (APC) 230kV line, 29.4 miles, with 100C ACSR 1351.5 Martin Conductor. GTC will construct the ~15 - mile section from Lagrange to the Metering Station near the Georgia - Alabama border. The Metering Station will be owned by GTC. GPC will construct the short line section from the Metering Station to the GA - AL state line. APC will construct the 230kV line from t",
+   "zone": "213",
+   "candidate": {
+    "name": "LaGrange Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 33.0241058,
+    "lon": -85.0156804
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.65
+   }
+  },
+  "cost_usd": 2.5326000000000005e-05,
+  "latency_ms": 186
+ }
+}

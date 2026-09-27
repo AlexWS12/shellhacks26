@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Douglasville",
+   "project": "GTC: Douglasville - Villa Rica 230kV Rebuild (CC Improvement)",
+   "description": "Rebuild the 2.5 mile section from Villa to the new East Villa Rica Switching station on the Douglasville - Villa Rica 230kV line with bundled 200C 1351 ACSS Martin.",
+   "candidate_town": "Douglasville, GA",
+   "county": "Douglas County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.83
+   }
+  },
+  "cost_usd": 2.0034e-05,
+  "latency_ms": 213
+ }
+}

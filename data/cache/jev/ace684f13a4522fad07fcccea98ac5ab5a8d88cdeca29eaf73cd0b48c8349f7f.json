@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Mcever Road",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Gainesville #2 - Mcever Road 115 kV Rebuild",
+   "description": "Rebuild approximately 5.3 miles of the Gainesville #2 - McEver Rd 115kV line with 200C 1351 ACSS conductor.",
+   "zone": "212",
+   "candidate": {
+    "name": "McEver Road Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000",
+    "lat": 34.2728832,
+    "lon": -83.8738012
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.83
+   }
+  },
+  "cost_usd": 2.2050000000000004e-05,
+  "latency_ms": 278
+ }
+}

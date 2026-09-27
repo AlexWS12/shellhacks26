@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Summerville",
+   "utility": "DESC",
+   "state": "SC",
+   "project": "Summerville: Replace and Spare 230-115kV 336MVA Auto Bank",
+   "description": "Purchase a spare 230/115kV, 336MVA Autobank for the Southern Region to be stored at Summerville 230kV Sub. Include a pad, AC for heaters, and possibly a pit for oil containment.",
+   "zone": null,
+   "candidate": {
+    "name": "Summerville Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 34.4719144,
+    "lon": -85.3375288
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.28
+   }
+  },
+  "cost_usd": 2.2470000000000003e-05,
+  "latency_ms": 220
+ }
+}

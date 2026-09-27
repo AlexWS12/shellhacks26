@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import { activeIn, visible } from "@/lib/filters";
 import { engineColor } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
+import { mapPalette } from "@/lib/theme";
 import type { Overlap, Project } from "@/lib/types";
 import { showLatestResults, startRun, useUI } from "@/lib/ui";
 
@@ -24,12 +25,11 @@ const MAX_QUEUE = 6; // if an agent is faster than that, skip ahead but keep mov
 const DASHES = [[0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5], [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0], [0, 0.5, 3, 3.5], [0, 1, 3, 3], [0, 1.5, 3, 2.5], [0, 2, 3, 2], [0, 2.5, 3, 1.5], [0, 3, 3, 1], [0, 3.5, 3, 0.5]];
 const YEARS = { min: 2023, max: 2034 };
 
-const COLORS = { desc: "#2dd4bf", gpc: "#6ea8fe", zone: "#f5b841", ink: "#e7eaf0", bg: "#07090d" };
-
 type FC = GeoJSON.FeatureCollection;
 const fc = (features: GeoJSON.Feature[]): FC => ({ type: "FeatureCollection", features });
 
 function simpleStyle(): StyleSpecification {
+  const c = mapPalette();
   return {
     version: 8,
     glyphs: "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
@@ -39,10 +39,10 @@ function simpleStyle(): StyleSpecification {
       borders: { type: "geojson", data: "/geo/state_borders.json" },
     },
     layers: [
-      { id: "water", type: "background", paint: { "background-color": "#05070a" } },
-      { id: "land", type: "fill", source: "states", paint: { "fill-color": ["case", ["get", "focus"], "#111723", "#0b0f16"] } },
-      { id: "counties", type: "line", source: "counties", paint: { "line-color": "#1a2130", "line-width": 0.5 } },
-      { id: "borders", type: "line", source: "borders", paint: { "line-color": "#2c3548", "line-width": 1 } },
+      { id: "water", type: "background", paint: { "background-color": c.water } },
+      { id: "land", type: "fill", source: "states", paint: { "fill-color": ["case", ["get", "focus"], c.landFocus, c.land] } },
+      { id: "counties", type: "line", source: "counties", paint: { "line-color": c.county, "line-width": 0.5 } },
+      { id: "borders", type: "line", source: "borders", paint: { "line-color": c.border, "line-width": 1 } },
     ],
   };
 }
@@ -137,6 +137,7 @@ function comets(): { data: FC; flying: number } {
 }
 
 function addDataLayers(map: maplibregl.Map) {
+  const COLORS = mapPalette();
   const color = ["match", ["get", "u"], "DESC", COLORS.desc, COLORS.gpc] as maplibregl.ExpressionSpecification;
   for (const id of ["ring", "lines", "links", "labels", "points", "pulse", "comets"]) {
     if (!map.getSource(id)) map.addSource(id, { type: "geojson", data: fc([]) });
@@ -152,7 +153,7 @@ function addDataLayers(map: maplibregl.Map) {
     paint: { "line-color": COLORS.zone, "line-width": ["case", ["get", "sel"], 12, 7], "line-blur": 6,
       "line-opacity": ["*", linkOpacity, ["case", ["get", "together"], 0.45, 0.22]] }, layout: { "line-cap": "round" } });
   map.addLayer({ id: "links", type: "line", source: "links",
-    paint: { "line-color": ["case", ["get", "together"], COLORS.zone, "#d9b56a"], "line-width": ["case", ["get", "sel"], 3, 2],
+    paint: { "line-color": ["case", ["get", "together"], COLORS.zone, COLORS.zoneFar], "line-width": ["case", ["get", "sel"], 3, 2],
       "line-opacity": linkOpacity, "line-dasharray": DASHES[0] } });
   map.addLayer({ id: "links-hit", type: "line", source: "links", paint: { "line-color": "#000", "line-opacity": 0, "line-width": 14 } });
   map.addLayer({ id: "pulse", type: "circle", source: "pulse",
@@ -381,10 +382,10 @@ export default function MapView() {
         </button>
       </div>
       <div className="legend" aria-label="Legend">
-        <span><i className="sw" style={{ background: COLORS.desc }} />Dominion Energy SC</span>
-        <span><i className="sw" style={{ background: COLORS.gpc }} />Georgia</span>
-        <span><i className="sw" style={{ border: `1.5px solid ${COLORS.ink}` }} />Hollow = approximate location</span>
-        <span><i className="sw" style={{ background: COLORS.zone }} />Under 25 mi apart</span>
+        <span><i className="sw desc" />Dominion Energy SC</span>
+        <span><i className="sw gpc" />Georgia</span>
+        <span><i className="sw hollow" />Hollow = approximate location</span>
+        <span><i className="sw zone" />Under 25 mi apart</span>
       </div>
       {phase !== "idle" && (
         <div className="timeline" aria-label="Timeline">

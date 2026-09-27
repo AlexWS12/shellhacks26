@@ -150,12 +150,12 @@ function PairView({ a, b }: { a: string; b: string }) {
   return (
     <div className="detail">
       <Back />
-      <p className="label">Opportunity {rank ? `#${rank}` : ""}{o.in_sponsor_sample && <span className="count" style={{ color: "var(--accent)" }}>benchmark pair</span>}</p>
+      <p className="label">Opportunity {rank ? `#${rank}` : ""}{o.in_sponsor_sample && <span className="count c-accent">benchmark pair</span>}</p>
       <div className="pair">
-        <div className="pj" style={{ borderColor: "var(--desc)" }}>
+        <div className="pj desc">
           <b>{pa.name}</b>Dominion Energy SC · {pa.status}<br />In service {fmtDate(pa.in_service_date)}
         </div>
-        <div className="pj" style={{ borderColor: "var(--gpc)" }}>
+        <div className="pj gpc">
           <b>{pb.name}</b>{OWNER[pb.sponsor] ?? pb.sponsor}<br />Needed by {fmtDate(pb.in_service_date)}
         </div>
       </div>
@@ -168,12 +168,12 @@ function PairView({ a, b }: { a: string; b: string }) {
 
       <h3>What they could share</h3>
       {shared ? (
-        <p style={{ margin: 0 }}>
-          <b style={{ color: shared.level === "high" ? "var(--zone)" : "var(--ink)" }}>
+        <p className="share">
+          <b className={shared.level === "high" ? "c-zone" : "c-ink"}>
             {shared.level === "high" ? "Strong" : shared.level === "medium" ? "Moderate" : "Limited"}
           </b>{" "}
           · {shared.items.join(", ")}
-          <span className="sub" style={{ display: "block" }}>
+          <span className="sub block">
             {TYPE_LABEL[shared.types[0]] ?? shared.types[0]} + {TYPE_LABEL[shared.types[1]] ?? shared.types[1]}
             {shared.timing === "unknown" ? " · timing undecided" : `, ${shared.timing} build windows`}
           </span>
@@ -192,9 +192,9 @@ function PairView({ a, b }: { a: string; b: string }) {
       {brief && (brief.dominion || brief.mediator) && (
         <>
           <h3>Meeting prep</h3>
-          {brief.dominion && <div className="brief"><div className="who" style={{ color: "var(--desc)" }}>Dominion advocate <Chip a={brief.dominion.actor} /></div>{brief.dominion.text}</div>}
-          {brief.georgia && <div className="brief"><div className="who" style={{ color: "var(--gpc)" }}>Georgia advocate <Chip a={brief.georgia.actor} /></div>{brief.georgia.text}</div>}
-          {brief.mediator && <div className="brief"><div className="who" style={{ color: "var(--ink)" }}>Mediator: joint agenda <Chip a={brief.mediator.actor} /></div>{brief.mediator.text}</div>}
+          {brief.dominion && <div className="brief"><div className="who c-desc">Dominion advocate <Chip a={brief.dominion.actor} /></div>{brief.dominion.text}</div>}
+          {brief.georgia && <div className="brief"><div className="who c-gpc">Georgia advocate <Chip a={brief.georgia.actor} /></div>{brief.georgia.text}</div>}
+          {brief.mediator && <div className="brief"><div className="who c-ink">Mediator: joint agenda <Chip a={brief.mediator.actor} /></div>{brief.mediator.text}</div>}
         </>
       )}
 
@@ -235,7 +235,7 @@ function EndpointLine({ e }: { e: Endpoint }) {
 function Provenance({ p }: { p: Project }) {
   return (
     <div>
-      <b style={{ color: p.utility === "DESC" ? "var(--desc)" : "var(--gpc)", fontWeight: 500 }}>{p.name}</b><br />
+      <b className={p.utility === "DESC" ? "c-desc" : "c-gpc"}>{p.name}</b><br />
       {p.source_file}, page {p.source_page} ({p.source_ref})
       {p.project_type && <> · {TYPE_LABEL[p.project_type] ?? p.project_type} <Chip a={p.project_type_actor ?? "code"} /></>}
       <br />{p.endpoints.length ? p.endpoints.map((e, i) => <span key={i}>{i > 0 && "; "}<EndpointLine e={e} /></span>) : "No endpoint names in the title"}
@@ -251,7 +251,7 @@ function ProjectView({ id }: { id: string }) {
     <div className="detail">
       <Back />
       <p className="label">{utilityName(p)}</p>
-      <h2 style={{ fontSize: 17, marginBottom: 6 }}>{p.name}</h2>
+      <h2>{p.name}</h2>
       <p className="sub">
         {p.utility === "DESC" ? "In service" : "Needed by"} {fmtDate(p.in_service_date)}
         {p.build_start && ` · starts ${fmtDate(p.build_start)}`} · {CONF_LABEL[p.location_confidence]}
@@ -264,7 +264,7 @@ function ProjectView({ id }: { id: string }) {
       {overlaps.length ? overlaps.map((o) => {
         const other = run.projects[o.project_a === id ? o.project_b : o.project_a];
         return (
-          <div key={o.id} className="row" style={{ padding: "8px 0" }} tabIndex={0} role="button" onClick={() => open(o)}>
+          <div key={o.id} className="row compact" tabIndex={0} role="button" onClick={() => open(o)}>
             <span className="rk">{String(o.rank).padStart(2, "0")}</span>
             <div><div className="t">{other?.name}</div><div className="meta"><span><span className="num">{o.distance_mi.toFixed(2)}</span> mi</span><span>{plural(o.time_gap_days, "day")} apart</span></div></div>
           </div>
@@ -284,9 +284,9 @@ function AgentView({ id }: { id: string }) {
     <div className="detail">
       <Back />
       <p className="label">Agent · {a.engine}</p>
-      <h2 style={{ fontSize: 17, marginBottom: 4 }}>{a.name}</h2>
+      <h2>{a.name}</h2>
       <p className="sub">{a.role}.</p>
-      <table className="kv" style={{ marginTop: 12 }}><tbody>
+      <table className="kv gap"><tbody>
         <tr><td>Status</td><td>{a.status}</td></tr>
         {a.summary && <tr><td>Result</td><td>{a.summary}</td></tr>}
         <tr><td>AI decisions</td><td>{a.judgments}</td></tr>

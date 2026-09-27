@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "North Druid Hills",
+   "project": "Norcross - North Druid Hills 115kV Rebuild",
+   "description": "Rebuild the Norcross - Norcross Junction (674) segment, approximately 3.9 miles, from 100C 477 ACSR Hawk conductor to 200C 1351 ACSS \"Martin\" conductor.",
+   "candidate_town": "North Druid Hills, GA",
+   "county": "DeKalb County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.9
+   }
+  },
+  "cost_usd": 1.9782e-05,
+  "latency_ms": 218
+ }
+}

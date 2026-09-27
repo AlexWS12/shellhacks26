@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Magnolia",
+   "utility": "SAV",
+   "state": "GA",
+   "project": "SAV: Deptford - Magnolia 115kV Reconductor",
+   "description": "Reconductor the Deptford - Magnolia 115kV line (approximately 5 miles) using 973.1 C7 ACCS (Everglades) conductor and upgrade the Deptford main bus.",
+   "zone": "219",
+   "candidate": {
+    "name": "Magnolia Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000;46000;13800",
+    "lat": 32.0226869,
+    "lon": -81.0861807
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.85
+   }
+  },
+  "cost_usd": 2.2554000000000005e-05,
+  "latency_ms": 225
+ }
+}

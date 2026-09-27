@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Ward",
+   "utility": "DESC",
+   "state": "SC",
+   "project": "VCS2-Ward 230kV: Rebuild Line",
+   "description": "Rebuild 40 miles of 230 kV line.",
+   "zone": null,
+   "candidate": {
+    "name": "Ward Substation",
+    "operator": "",
+    "voltage": "230000",
+    "lat": 33.87218,
+    "lon": -81.6977228
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.65
+   }
+  },
+  "cost_usd": 2.0076000000000002e-05,
+  "latency_ms": 222
+ }
+}

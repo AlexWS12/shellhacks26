@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "CC - Villa Rica Upgrades (CC Network Improvements)",
+   "description": "Loop in the Bowen - Union City line into Villa Rica 500kV bus and add a second 2016 MVA 500/230kV auto transformer. Convert the 230kV side to a 10 element breaker and a half scheme."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "in_substation_equipment",
+    "confidence": 0.43,
+    "probabilities": {
+     "substation_construction": 0.45,
+     "new_line": 0.0,
+     "other": 0.0,
+     "in_substation_equipment": 0.55,
+     "rebuild": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.2344e-05,
+  "latency_ms": 280
+ }
+}

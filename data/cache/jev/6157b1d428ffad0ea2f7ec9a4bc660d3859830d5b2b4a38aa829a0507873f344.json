@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Dresden",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Dresden - Talbot 500kV Line",
+   "description": "GTC will build a new 500kV line from Talbot to Dresden (75 miles). This project will create a new Talbot 500/230kV substation with a 500/230kV auto transformers. The low side of the auto transformers will connect to the Talbot County #1 and #2 230kV buses.",
+   "zone": "213",
+   "candidate": {
+    "name": "Dresden Substation",
+    "operator": "",
+    "voltage": "500000",
+    "lat": 33.3511155,
+    "lon": -84.9059539
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.53
+   }
+  },
+  "cost_usd": 2.3394000000000003e-05,
+  "latency_ms": 205
+ }
+}

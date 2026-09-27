@@ -1,0 +1,31 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "project": "Jasper \u2013 Okatie 230 kV #2: Construct",
+   "description": "Construct a 230 kV line with B1272 ACSR from Jasper to Okatie 230/115kV Substation. The line is estimated to be 6.5 miles long. This makes Jasper a Medium Impact substation and will require a new CIP Hut.",
+   "need": "This project is needed to improve system performance and to meet NERC TPL and internal DESC Planning Criteria for reliability."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.08
+   }
+  },
+  "cost_usd": 1.9194000000000003e-05,
+  "latency_ms": 491
+ }
+}

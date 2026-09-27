@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Eatonton Primary",
+   "project": "GTC: Eatonton Primary - Lick Creek 115kV Line Switch Replacement",
+   "description": "Replace a 1200A RLB line switch on the Eatonton - Lake Oconee 115kV line with a with motor operator and SCADA controls. This switch is located on GTC's Eatonton Primary - Lick Creek 115kV section of the Eatonton Primary - Lake Oconee 115kV Line.",
+   "candidate_town": "Eatonton, GA",
+   "county": "Putnam County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  },
+  "cost_usd": 2.1084000000000003e-05,
+  "latency_ms": 434
+ }
+}

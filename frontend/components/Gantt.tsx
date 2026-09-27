@@ -43,13 +43,13 @@ export default function Gantt({ a, b }: { a: Project; b: Project }) {
       {years.map((y) => (
         <g key={y}>
           <line x1={x(new Date(y, 0, 1))} x2={x(new Date(y, 0, 1))} y1={4} y2={58} stroke="var(--line-2)" />
-          <text x={x(new Date(y, 0, 1))} y={74} textAnchor="middle" fontSize={10.5} fill="var(--faint)" fontFamily="var(--font-mono)">{y}</text>
+          <text x={x(new Date(y, 0, 1))} y={74} textAnchor="middle" fontSize={11} fill="var(--faint)" fontFamily="var(--font-mono)">{y}</text>
         </g>
       ))}
       {overlap && <rect x={x(lo!)} y={4} width={x(hi) - x(lo!)} height={54} fill="var(--zone)" fillOpacity={0.14} />}
-      <text x={0} y={22} fontSize={11.5} fill="var(--muted)">Dominion</text>
+      <text x={0} y={22} fontSize={12} fill="var(--muted)">Dominion</text>
       {bar(wa, 12, "var(--desc)", "ga-a")}
-      <text x={0} y={48} fontSize={11.5} fill="var(--muted)">Georgia</text>
+      <text x={0} y={48} fontSize={12} fill="var(--muted)">Georgia</text>
       {bar(wb, 38, "var(--gpc)", "ga-b")}
     </svg>
   );

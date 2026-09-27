@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "South Macon",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "South Macon 115kV Buses 1 & 2 Replacement",
+   "description": "Replace the 115kV buses 1 and 2 at South Macon with (2) 1590 AAC.",
+   "zone": "214",
+   "candidate": {
+    "name": "South Macon Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 32.8203492,
+    "lon": -83.6261978
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.7
+   }
+  },
+  "cost_usd": 2.1252000000000003e-05,
+  "latency_ms": 236
+ }
+}

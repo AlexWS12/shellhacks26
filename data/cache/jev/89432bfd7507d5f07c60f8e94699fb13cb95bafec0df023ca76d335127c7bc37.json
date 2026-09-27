@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Thomasville 230",
+   "project": "MEAG: Thomasville 230/115kV Autobank Replacement",
+   "description": "Replace the 140MVA 230/115kV auto transformer #4 at Thomasville substation.",
+   "candidate_town": "Thomasville, GA",
+   "county": "Thomas County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  },
+  "cost_usd": 1.8858e-05,
+  "latency_ms": 235
+ }
+}

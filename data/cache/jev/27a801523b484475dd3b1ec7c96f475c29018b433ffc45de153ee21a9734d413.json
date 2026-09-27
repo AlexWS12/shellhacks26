@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Edenwood",
+   "utility": "DESC",
+   "state": "SC",
+   "project": "Edenwood Sub: #1 & #2 230-115kV Autobanks, Replace with 336MVA",
+   "description": "Replace Autobank 1 and 2 at Edenwood Substation.",
+   "zone": null,
+   "candidate": {
+    "name": "Ellenwood Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000",
+    "lat": 33.6086084,
+    "lon": -84.3021169
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  },
+  "cost_usd": 2.1084000000000003e-05,
+  "latency_ms": 215
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "agent": "Reader \u00b7 DESC",
+   "role": "Reads DESC's 44-page project list, one project per page",
+   "running_s": 2.0,
+   "records": "33/44",
+   "recent_events": [
+    "project.extracted: ",
+    "source.progress: p.31: Hooks - Thurmond 115kV Tie: Rebuild",
+    "project.extracted: ",
+    "source.progress: p.32: Batesburg - Saluda County 115kV: Rebuild",
+    "project.extracted: ",
+    "source.progress: p.33: Scout 230 kV Sub and Fold-in: Construct"
+   ]
+  },
+  "questions": {
+   "stuck": {
+    "type": "noul",
+    "instructions": "Is this pipeline agent stuck, i.e. not making progress on its job?",
+    "criteria": {
+     "true": "Its counters stopped moving, it repeats the same step, or it keeps failing the same way.",
+     "false": "Recent events show it moving through its records or steps."
+    }
+   },
+   "progress": {
+    "type": "score",
+    "instructions": "How far along is this agent in its job?",
+    "criteria": [
+     "Not started",
+     "Started",
+     "About halfway",
+     "Nearly done",
+     "Done"
+    ]
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "stuck": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "progress": {
+    "type": "score",
+    "score": 2.97,
+    "confidence": 0.97,
+    "legend": {
+     "0": "Not started",
+     "1": "Started",
+     "2": "About halfway",
+     "3": "Nearly done",
+     "4": "Done"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.03,
+     "3": 0.97,
+     "4": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.2932000000000003e-05,
+  "latency_ms": 191
+ }
+}

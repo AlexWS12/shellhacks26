@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Gainesville #1",
+   "project": "Dawson Crossing - Gainesville #1 115 kV",
+   "description": "Replace the 500CU main bus at Gainesville #1 115kV with 3\" Sch 40 AL Tube.",
+   "candidate_town": "Gainesville, GA",
+   "county": "Hall County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.91
+   }
+  },
+  "cost_usd": 1.8774000000000004e-05,
+  "latency_ms": 219
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "GTC: Rockville - Tiger Creek -Warthen 500kV Lines",
+   "description": "Build the new 500kV line from Rockville to Tiger Creek and Tiger Creek to Warthen, approximately 20 miles and 9 miles long respectively. Build a 500kV yard at Tiger Creek and install a 500/230kV auto transformer. Make all necessary accommodations at Warthen and Rockville for the new 500kV breakers."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "new_line",
+    "confidence": 0.79,
+    "probabilities": {
+     "new_line": 0.83,
+     "substation_construction": 0.04,
+     "rebuild": 0.0,
+     "other": 0.13,
+     "in_substation_equipment": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.3772000000000002e-05,
+  "latency_ms": 203
+ }
+}

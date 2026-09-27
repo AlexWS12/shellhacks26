@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "Summerville: Replace and Spare 230-115kV 336MVA Auto Bank",
+   "description": "Purchase a spare 230/115kV, 336MVA Autobank for the Southern Region to be stored at Summerville 230kV Sub. Include a pad, AC for heaters, and possibly a pit for oil containment."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "in_substation_equipment",
+    "confidence": 0.99,
+    "probabilities": {
+     "substation_construction": 0.0,
+     "rebuild": 0.0,
+     "new_line": 0.0,
+     "other": 0.0,
+     "in_substation_equipment": 1.0
+    }
+   }
+  },
+  "cost_usd": 2.2596000000000002e-05,
+  "latency_ms": 283
+ }
+}

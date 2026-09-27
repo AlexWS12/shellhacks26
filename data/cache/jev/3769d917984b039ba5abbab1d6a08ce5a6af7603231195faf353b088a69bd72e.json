@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Hartwell Dam",
+   "project": "GTC: Hartwell Dam - Hartwell Energy 230kV Series Reactors",
+   "description": "GTC: Replace the 1600A series reactors on the Hartwell Dam - Hartwell Energy 230kV line with 3000A.",
+   "candidate_town": "Hartwell, GA",
+   "county": "Hart County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.82
+   }
+  },
+  "cost_usd": 1.8816000000000004e-05,
+  "latency_ms": 248
+ }
+}

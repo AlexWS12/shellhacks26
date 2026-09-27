@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Cornelia",
+   "project": "Cornelia - Tallulah Lodge 115kV Rebuild",
+   "description": "Rebuild approximately 9.7 miles of the Cornelia - Chase Road - Clarksville - Hollywood segments of the Cornelia - Tallulah Lodge 115kV line with 200C 795 ACSS conductor.",
+   "candidate_town": "Cornelia, GA",
+   "county": "Habersham County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.94
+   }
+  },
+  "cost_usd": 1.9278000000000004e-05,
+  "latency_ms": 200
+ }
+}

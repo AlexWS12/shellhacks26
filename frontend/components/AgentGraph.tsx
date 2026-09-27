@@ -84,8 +84,8 @@ export default function AgentGraph({ onSelect }: { onSelect: (id: string) => voi
             <span className="nm">{a.name}</span>
             <span className="eng">{a.engine}</span>
             <span className="ct">{counter(a)}</span>
-            <i className="st" title={h ? `Watchdog: stuck ${h.stuck.toFixed(2)}, progress ${h.progress.toFixed(1)}/4` : undefined}
-              style={h && a.status === "working" && h.stuck >= 0.6 ? { background: "var(--bad)" } : undefined} />
+            <i className={`st ${h && a.status === "working" && h.stuck >= 0.6 ? "stuck" : ""}`}
+              title={h ? `Watchdog: stuck ${h.stuck.toFixed(2)}, progress ${h.progress.toFixed(1)}/4` : undefined} />
           </button>
         );
       })}

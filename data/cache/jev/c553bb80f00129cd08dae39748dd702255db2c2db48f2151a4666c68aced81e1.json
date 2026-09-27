@@ -1,0 +1,70 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "agent": "Geocoder",
+   "role": "Finds coordinates: surveyed points, OpenStreetMap, then towns",
+   "running_s": 19.7,
+   "records": "164/252",
+   "recent_events": [
+    "project.placed: ",
+    "agent.progress: placed",
+    "judgment: ",
+    "judgment: ",
+    "project.placed: ",
+    "agent.progress: placed"
+   ]
+  },
+  "questions": {
+   "stuck": {
+    "type": "noul",
+    "instructions": "Is this pipeline agent stuck, i.e. not making progress on its job?",
+    "criteria": {
+     "true": "Its counters stopped moving, it repeats the same step, or it keeps failing the same way.",
+     "false": "Recent events show it moving through its records or steps."
+    }
+   },
+   "progress": {
+    "type": "score",
+    "instructions": "How far along is this agent in its job?",
+    "criteria": [
+     "Not started",
+     "Started",
+     "About halfway",
+     "Nearly done",
+     "Done"
+    ]
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "stuck": {
+    "type": "noul",
+    "noul": 0.47
+   },
+   "progress": {
+    "type": "score",
+    "score": 2.17,
+    "confidence": 0.56,
+    "legend": {
+     "0": "Not started",
+     "1": "Started",
+     "2": "About halfway",
+     "3": "Nearly done",
+     "4": "Done"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.18,
+     "2": 0.47,
+     "3": 0.34,
+     "4": 0.01
+    }
+   }
+  },
+  "cost_usd": 2.0748000000000002e-05,
+  "latency_ms": 231
+ }
+}

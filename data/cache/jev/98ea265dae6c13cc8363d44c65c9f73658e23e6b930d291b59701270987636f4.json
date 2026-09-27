@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Bainbridge Transmission",
+   "project": "Bainbridge Transmission: East River Road, East Bainbridge",
+   "description": "This project will construct a new 115kV breaker and a half substation a mile north of the East Bainbridge substation. East Bainbridge will be simplified to a 115kV straight bus with two transmission lines for service to load, a generation interconnection point and a capacitor bank.",
+   "candidate_town": "Bainbridge, GA",
+   "county": "Decatur County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.92
+   }
+  },
+  "cost_usd": 2.0496e-05,
+  "latency_ms": 236
+ }
+}

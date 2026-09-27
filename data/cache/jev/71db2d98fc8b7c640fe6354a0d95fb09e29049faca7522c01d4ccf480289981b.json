@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "Church Creek - Ritter 230kV - Replace 38 Large Angles and Dead Ends",
+   "description": "Replace 6.5 miles of aging conductor."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "rebuild",
+    "confidence": 1.0,
+    "probabilities": {
+     "other": 0.0,
+     "in_substation_equipment": 0.0,
+     "new_line": 0.0,
+     "rebuild": 1.0,
+     "substation_construction": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.0454e-05,
+  "latency_ms": 228
+ }
+}

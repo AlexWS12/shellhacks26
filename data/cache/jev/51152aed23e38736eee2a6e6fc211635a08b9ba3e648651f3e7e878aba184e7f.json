@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Fort Valley #1",
+   "project": "MEAG: Aultman Road - Fort Valley #1 115 kV Rebuild",
+   "description": "Rebuild approximately 8 miles of the Aultman Road - Fort Valley #1 115kV line with 200C 1351 ACSS conductor.",
+   "candidate_town": "Fort Valley, GA",
+   "county": "Peach County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.93
+   }
+  },
+  "cost_usd": 1.9068e-05,
+  "latency_ms": 253
+ }
+}

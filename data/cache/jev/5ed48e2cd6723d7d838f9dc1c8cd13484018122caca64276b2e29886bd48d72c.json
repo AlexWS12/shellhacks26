@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "GTC: Cavender Drive 500/230kV Autobank",
+   "description": "GTC will turn Cavender Drive into a 500/230kV station looping in the Villa Rica - Union City 500kV line, installing a 2016 MVA auto transformer."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 0.95,
+    "probabilities": {
+     "other": 0.0,
+     "in_substation_equipment": 0.04,
+     "substation_construction": 0.96,
+     "rebuild": 0.0,
+     "new_line": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.1924000000000002e-05,
+  "latency_ms": 231
+ }
+}

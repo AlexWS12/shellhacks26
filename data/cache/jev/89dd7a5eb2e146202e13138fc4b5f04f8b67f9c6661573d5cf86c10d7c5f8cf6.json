@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Norcross",
+   "project": "Norcross 230kV Bus 1-3 Series Bus Tie Breaker Installation",
+   "description": "Install a bus tie breaker in series with existing bus tie breaker between 230kV Bus 1 and Bus 3 at Norcross.",
+   "candidate_town": "Norcross, GA",
+   "county": "Gwinnett County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.96
+   }
+  },
+  "cost_usd": 1.8774000000000004e-05,
+  "latency_ms": 206
+ }
+}

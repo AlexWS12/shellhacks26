@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Wadley",
+   "project": "Hatch - Wadley 500 kV Line Strategic Project",
+   "description": "Construct a new 500kV line from Hatch - Wadley Primary.",
+   "candidate_town": "Wadley, GA",
+   "county": "Jefferson County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.92
+   }
+  },
+  "cost_usd": 1.7892e-05,
+  "latency_ms": 202
+ }
+}

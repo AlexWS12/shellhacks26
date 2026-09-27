@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "CC - Project Chronos- Sk/Hyundai",
+   "description": "GPC will build a 230/25kV station named Two Run Ranch and loop it into the Cartersville - Pinson 230kV line to serve SK Battery/Hyundai and new load in the area."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 1.0,
+    "probabilities": {
+     "substation_construction": 1.0,
+     "new_line": 0.0,
+     "rebuild": 0.0,
+     "other": 0.0,
+     "in_substation_equipment": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.1798000000000004e-05,
+  "latency_ms": 216
+ }
+}

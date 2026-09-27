@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "GTC: Gordon - Sandersville #1 115kV Line Rebuild",
+   "description": "Rebuild the 1.87 miles of Sandersville #1 - Sandersville #6 line section of the Gordon - Sandersville #1 115kV line from 100C ACSR 336 conductor to 100C ACSR 795 conductor."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "rebuild",
+    "confidence": 1.0,
+    "probabilities": {
+     "substation_construction": 0.0,
+     "rebuild": 1.0,
+     "new_line": 0.0,
+     "other": 0.0,
+     "in_substation_equipment": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.2932000000000003e-05,
+  "latency_ms": 258
+ }
+}

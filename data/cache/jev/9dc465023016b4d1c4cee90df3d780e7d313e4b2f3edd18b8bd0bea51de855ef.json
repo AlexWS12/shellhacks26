@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Washington",
+   "project": "GTC: Anthony Shoals - Washington 115 kV Line Rebuild",
+   "description": "Rebuild 21 miles of the Double Branches Junction - Washington 115kV line section with 100C 795 ACSR conductor or higher rated conductor.",
+   "candidate_town": "Washington, GA",
+   "county": "Wilkes County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.74
+   }
+  },
+  "cost_usd": 1.8858e-05,
+  "latency_ms": 192
+ }
+}

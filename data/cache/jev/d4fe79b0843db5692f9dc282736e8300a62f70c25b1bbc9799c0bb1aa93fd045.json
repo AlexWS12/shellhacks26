@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "Scout 230 kV Sub and Fold-in: Construct",
+   "description": "Construct 230kV Transmission Line for Scout Customer Substation and modify VCS1 and Killian terminals."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 0.46,
+    "probabilities": {
+     "in_substation_equipment": 0.0,
+     "substation_construction": 0.56,
+     "rebuild": 0.02,
+     "other": 0.05,
+     "new_line": 0.37
+    }
+   }
+  },
+  "cost_usd": 2.0832000000000003e-05,
+  "latency_ms": 420
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "GTC: East Walton 500/230kV Project",
+   "description": "GTC: - Construct the East Walton 500/230kV substation. - Construct the Bostwick 230kV switching station. - Construct the East Walton - Rockville 500kV line (3 - 100C 1113 ACSR). - Construct the Bethabara - East Walton 230kV line (170C 1351.5 ACSS). - Construct the Bostwick - East Walton 230kV line (170C 1351.5 ACSS). - Construct the East Walton - Jack's Creek 230kV line (170C 1351.5 ACSS). - At Bethabara, terminate the East Walton 230kV line. - Loop the East Social Circle - East Watkinsville 230kV line into Bostwick. - Replace line trap at East Watkinsville on the Bostwick 230kV line. GPC: - Construct the Rockville 500kV switching station. - Loop the Scherer - Warthen 500kV line into Rockvil"
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 0.82,
+    "probabilities": {
+     "new_line": 0.06,
+     "in_substation_equipment": 0.0,
+     "rebuild": 0.0,
+     "other": 0.08,
+     "substation_construction": 0.86
+    }
+   }
+  },
+  "cost_usd": 3.087e-05,
+  "latency_ms": 492
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Buzzard Roost",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Buzzard Roost - Factory Shoals 230kV New Line",
+   "description": "A new 2 mile 230kV line is being built from Buzzard Roost to Factory Shoals with 200C 1351 ACSS Martin conductor.",
+   "zone": "201",
+   "candidate": {
+    "name": "Buzzard Roost Dam Substation",
+    "operator": "",
+    "voltage": "44000",
+    "lat": 34.16889,
+    "lon": -81.9025522
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.21
+   }
+  },
+  "cost_usd": 2.1756000000000003e-05,
+  "latency_ms": 233
+ }
+}

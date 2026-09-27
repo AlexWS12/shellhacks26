@@ -1,0 +1,31 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "project": "Okatie 230-115kV Substation, Jasper \u2013 Yemassee 230kV #1 Fold-in",
+   "description": "Expand existing Okatie Transmission sub, add a 230-115 autobank and fold the Jasper \u2013 Yemassee 230 kV #1 line into the 230 kV side. Construct two additional 115 kV bus tie lines.",
+   "need": "This project is needed to improve system performance and to meet NERC TPL and internal DESC Planning Criteria for reliability."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  },
+  "cost_usd": 1.9488000000000004e-05,
+  "latency_ms": 236
+ }
+}
