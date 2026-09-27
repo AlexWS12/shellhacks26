@@ -10,6 +10,13 @@ from app.core.pdftext import read_pdf
 REF = DATA_DIR / "reference"
 
 
+def load_ref(name: str):
+    path = REF / name
+    if not path.exists():
+        pytest.skip("reference fixtures not present")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 @pytest.fixture(scope="module")
 def desc_pages():
     pdf = read_pdf(DESC_PDF)
@@ -23,7 +30,7 @@ def ga():
 
 
 def test_desc_matches_fixture(desc_pages):
-    ref = json.loads((REF / "desc.json").read_text(encoding="utf-8"))
+    ref = load_ref("desc.json")
     assert len(desc_pages) == len(ref) == 44
     for p, r in zip(desc_pages, ref):
         assert (p.page, p.name, p.pid, p.description, p.need, p.status, p.isd_raw) == (
@@ -33,7 +40,7 @@ def test_desc_matches_fixture(desc_pages):
 
 def test_ga_matches_fixture(ga):
     rows, details = ga
-    ref = json.loads((REF / "gpc.json").read_text(encoding="utf-8"))
+    ref = load_ref("gpc.json")
     assert len(rows) == len(ref["rows"]) == 208
     for r in rows:
         x = ref["rows"][r.teams]
