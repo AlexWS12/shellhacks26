@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Adamsville",
+   "filing_state": "GA",
+   "project": "GTC: Adamsville - Buzzard Roost 230kV Rebuild",
+   "description": "GTC plans to rebuild 5 miles of line from Buzzard Roost to Boat Rock Road with 200C 1351 ACSS Martin.",
+   "zone": "201",
+   "candidate": {
+    "name": "Adamsville",
+    "kind": "place=hamlet",
+    "county": "McDuffie County",
+    "state": "GA",
+    "lat": 33.3754181,
+    "lon": -82.370125
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.71
+   }
+  },
+  "cost_usd": 2.142e-05,
+  "latency_ms": 222
+ }
+}

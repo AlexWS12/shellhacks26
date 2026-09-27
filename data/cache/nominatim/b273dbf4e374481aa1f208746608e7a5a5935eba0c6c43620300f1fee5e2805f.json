@@ -1,0 +1,77 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "2 parallel",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 302698004,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 11042888,
+   "lat": "30.3778058",
+   "lon": "-84.3014596",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05340073472190429,
+   "addresstype": "road",
+   "name": "Parallel Street",
+   "display_name": "Parallel Street, Lakeside, Leon County, Florida, 32310, United States",
+   "address": {
+    "road": "Parallel Street",
+    "hamlet": "Lakeside",
+    "county": "Leon County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32310",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3777870",
+    "30.3778925",
+    "-84.3024130",
+    "-84.3005076"
+   ]
+  },
+  {
+   "place_id": 341119806,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 697565583,
+   "lat": "34.8292449",
+   "lon": "-82.3120339",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053396923018234496,
+   "addresstype": "road",
+   "name": "Parallel Parkway",
+   "display_name": "Parallel Parkway, Greenville, Greenville County, South Carolina, 29616, United States",
+   "address": {
+    "road": "Parallel Parkway",
+    "city": "Greenville",
+    "county": "Greenville County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29616",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.8285328",
+    "34.8299031",
+    "-82.3128225",
+    "-82.3113107"
+   ]
+  }
+ ]
+}

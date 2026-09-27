@@ -1,0 +1,107 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "gullatt road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 339277417,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 42004321,
+   "lat": "33.5141185",
+   "lon": "-84.6118181",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053384184786755134,
+   "addresstype": "road",
+   "name": "Gullatt Road",
+   "display_name": "Gullatt Road, Fairburn, Fulton County, Georgia, 30268, United States",
+   "address": {
+    "road": "Gullatt Road",
+    "town": "Fairburn",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30268",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5023515",
+    "33.5265047",
+    "-84.6164180",
+    "-84.6115740"
+   ]
+  },
+  {
+   "place_id": 341956435,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9235548,
+   "lat": "33.5375824",
+   "lon": "-84.6259430",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05336886930647742,
+   "addresstype": "road",
+   "name": "Gullatt Road",
+   "display_name": "Gullatt Road, Fairburn, Fulton County, Georgia, 30268, United States",
+   "address": {
+    "road": "Gullatt Road",
+    "town": "Fairburn",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30268",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5372830",
+    "33.5379421",
+    "-84.6260197",
+    "-84.6257276"
+   ]
+  },
+  {
+   "place_id": 343071757,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 7956541,
+   "lat": "32.4548794",
+   "lon": "-85.3306891",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533433333333333,
+   "addresstype": "road",
+   "name": "Gullatt Road",
+   "display_name": "Gullatt Road, Russell County, Alabama, 36804, United States",
+   "address": {
+    "road": "Gullatt Road",
+    "county": "Russell County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36804",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.4406600",
+    "32.4686400",
+    "-85.3337820",
+    "-85.3295000"
+   ]
+  }
+ ]
+}

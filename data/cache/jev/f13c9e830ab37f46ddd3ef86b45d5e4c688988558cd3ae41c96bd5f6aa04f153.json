@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Warrenton Primary",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Goldens Creek - Warrenton Primary 230kV Rebuild",
+   "description": "Rebuild approximately 0.34 miles of the Goldens Creek - Warrenton Primary 230kV line from 100C 1 - 1351.5 ACSR Martin conductor to 200C 1351 ACCR Martin conductor or equivalent.",
+   "zone": "215",
+   "candidate": {
+    "name": "Warrenton Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000;115000;46000",
+    "lat": 33.3805007,
+    "lon": -82.687296,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.87
+   }
+  },
+  "cost_usd": 2.4024000000000002e-05,
+  "latency_ms": 256
+ }
+}

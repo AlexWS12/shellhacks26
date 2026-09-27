@@ -46,8 +46,8 @@
    },
    "progress": {
     "type": "score",
-    "score": 1.06,
-    "confidence": 0.73,
+    "score": 1.0,
+    "confidence": 0.72,
     "legend": {
      "0": "Not started",
      "1": "Started",
@@ -56,15 +56,15 @@
      "4": "Done"
     },
     "probabilities": {
-     "0": 0.13,
-     "1": 0.75,
-     "2": 0.07,
-     "3": 0.03,
+     "0": 0.17,
+     "1": 0.73,
+     "2": 0.06,
+     "3": 0.02,
      "4": 0.02
     }
    }
   },
   "cost_usd": 2.0538000000000002e-05,
-  "latency_ms": 228
+  "latency_ms": 316
  }
 }

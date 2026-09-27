@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { api } from "@/lib/api";
-import { activeIn } from "@/lib/filters";
-import { ACTOR_LABEL, CATEGORY_LABEL, CONF_LABEL, OWNER, TYPE_LABEL, fmtDate, money, plural, statedDate, utilityName } from "@/lib/format";
+import { api, type FilterState } from "@/lib/api";
+import { activeIn, lineCheck } from "@/lib/filters";
+import {
+  ACTOR_LABEL, CATEGORY_LABEL, CONF_LABEL, OWNER, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
+} from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { Endpoint, Overlap, PairDetail, Project, ThirdParty } from "@/lib/types";
 import { useUI } from "@/lib/ui";
@@ -61,12 +63,62 @@ function open(o: Overlap) {
   useUI.getState().flyTo({ kind: "pair", a: o.project_a, b: o.project_b });
 }
 
+type ChipId = FilterState["chip"];
+type SortId = FilterState["sort"];
+
+const CHIPS: { id: ChipId; label: string; test: (o: Overlap) => boolean }[] = [
+  { id: "all", label: "All", test: () => true },
+  { id: "same", label: "Same time", test: (o) => o.windows_overlap === true },
+  { id: "bench", label: "Benchmark", test: (o) => o.in_sponsor_sample },
+  { id: "verified", label: "Verified location", test: (o) => o.pair_confidence === "verified" },
+];
+
+const SORTS: { id: SortId; label: string; cmp: (x: Overlap, y: Overlap) => number }[] = [
+  { id: "distance", label: "Closest", cmp: (x, y) => x.distance_mi - y.distance_mi },
+  { id: "gap", label: "Soonest", cmp: (x, y) => x.time_gap_days - y.time_gap_days || x.distance_mi - y.distance_mi },
+  { id: "strength", label: "Strongest", cmp: (x, y) => Number(y.windows_overlap === true) - Number(x.windows_overlap === true) || x.distance_mi - y.distance_mi },
+];
+
+function matches(o: Overlap, q: string): boolean {
+  if (!q) return true;
+  return [run.projects[o.project_a], run.projects[o.project_b]].some((p) => p &&
+    [p.id, p.name, ...p.endpoints.map((e) => e.name)].some((t) => t.toLowerCase().includes(q)));
+}
+
+function Action({ o }: { o: Overlap }) {
+  if (o.windows_overlap === true) return <span className="act crews">Share crews</span>;
+  if (o.windows_overlap == null) return <span className="act unknown">Timing undecided</span>;
+  return <span className="act records">Share records</span>;
+}
+
+function ExportMenu() {
+  const filters = useUI((s) => s.filters);
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false);
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", away);
+    document.addEventListener("keydown", esc);
+    return () => { document.removeEventListener("mousedown", away); document.removeEventListener("keydown", esc); };
+  }, [open]);
+  return (
+    <div className="menu" ref={ref}>
+      <button className="export" aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(!open)}>Export ▾</button>
+      {open && (
+        <div className="menu-list" role="menu">
+          <a role="menuitem" href={api.exportUrl(filters, "xlsx")} onClick={() => setOpen(false)}>.xlsx</a>
+          <a role="menuitem" href={api.exportUrl(filters, "csv")} onClick={() => setOpen(false)}>.csv</a>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function OpportunityList() {
-  const { filters, setFilters, visibleProjects, year } = useUI();
+  const { filters, setFilters } = useUI();
   const overlaps = useOverlaps();
-  const total = Object.keys(run.projects).length;
-  const onMap = visibleProjects ?? Object.values(run.projects).filter((p) => p.lat != null).length;
-  const together = overlaps.filter((o) => o.windows_overlap).length;
   const near = byOverlap(useOthers());
 
   if (run.phase === "idle") {
@@ -77,61 +129,85 @@ function OpportunityList() {
       </div>
     );
   }
+  const done = run.phase === "done";
+  const q = filters.q.trim().toLowerCase();
+  const chip = CHIPS.find((c) => c.id === filters.chip) ?? CHIPS[0];
+  const sort = SORTS.find((x) => x.id === filters.sort) ?? SORTS[0];
+  const shown = overlaps.filter((o) => chip.test(o) && matches(o, q));
+  if (done) shown.sort((x, y) => sort.cmp(x, y) || x.rank - y.rank);
+
   return (
-    <>
-      <div className="kpis">
-        <div><b>{total}</b>projects read</div>
-        <div><b>{onMap}</b>on the map</div>
-        <div><b>{overlaps.length}</b>{year ? `active in ${year}` : "under 25 mi"}</div>
+    <div className="opps">
+      <div className="opps-head">
+        <div className="opps-title">
+          <h2>Opportunities</h2>
+          <span className="count">{overlaps.length}</span>
+          <span className="spacer" />
+          {done && <ExportMenu />}
+        </div>
+        <label className="search">
+          <span className="ring" aria-hidden="true" />
+          <input type="search" value={filters.q} onChange={(e) => setFilters({ q: e.target.value })}
+            placeholder="Search project, substation or ID" aria-label="Search opportunities" />
+        </label>
+        <div className="chips">
+          {CHIPS.map((c) => (
+            <button key={c.id} className="chip" aria-pressed={filters.chip === c.id} onClick={() => setFilters({ chip: c.id })}>
+              {c.label}<span className="n">{overlaps.filter(c.test).length}</span>
+            </button>
+          ))}
+        </div>
+        <div className="opps-sort">
+          <span className="nowrap">{shown.length} shown</span>
+          <span className="spacer" />
+          {done && (
+            <>
+              <span>Sort</span>
+              <div className="seg">
+                {SORTS.map((x) => (
+                  <button key={x.id} aria-pressed={filters.sort === x.id} onClick={() => setFilters({ sort: x.id })}>{x.label}</button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
       </div>
-      <div className="toolbar">
-        <span>{together} built at the same time</span>
-        <span className="spacer" />
-        {run.phase === "done" && (
-          <div className="seg">
-            <button aria-pressed={filters.sort === "distance"} onClick={() => setFilters({ sort: "distance" })}>Closest</button>
-            <button aria-pressed={filters.sort === "gap"} onClick={() => setFilters({ sort: "gap" })}>Soonest</button>
-          </div>
+      <div className="key">
+        <span><i className="mk desc" />Dominion</span>
+        <span><i className="mk gpc" />Georgia</span>
+        <span className="note-r">same shapes on the map</span>
+      </div>
+      <div className="col opps-list" role="list">
+        {shown.length === 0 && (
+          <p className="empty pad">{run.phase === "running" && overlaps.length === 0 ? "Reading filings…" : "Nothing matches these filters."}</p>
         )}
-      </div>
-      {overlaps.length === 0 && (
-        <div className="section"><p className="empty">{run.phase === "running" ? "Reading filings…" : "Nothing matches these filters."}</p></div>
-      )}
-      <div role="list">
-        {overlaps.map((o, i) => {
+        {shown.map((o) => {
           const a = run.projects[o.project_a], b = run.projects[o.project_b];
           if (!a || !b) return null;
           return (
-            <div key={o.id} role="listitem" tabIndex={0} className={`row ${run.phase === "running" ? "new" : ""}`}
+            <div key={o.id} role="listitem" tabIndex={0} className={`opp ${run.phase === "running" ? "new" : ""}`}
+              title={`${OWNER.DESC}: ${a.name}\n${OWNER[b.sponsor] ?? b.sponsor}: ${b.name}`}
               onClick={() => open(o)} onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), open(o))}>
-              <span className="rk">{String(o.rank || i + 1).padStart(2, "0")}</span>
-              <div>
-                <div className="t"><span className="a">{a.name}</span><br /><span className="b">{b.name}</span></div>
-                <div className="meta">
-                  <span><span className="num">{o.distance_mi.toFixed(2)}</span> mi</span>
-                  <span><span className="num">{o.time_gap_days.toLocaleString()}</span> days apart</span>
-                  {o.windows_overlap === true && <span className="tag together">built at the same time</span>}
-                  {o.windows_overlap == null && <span className="tag unknown">timing undecided</span>}
-                  {!["verified", "confirmed_osm"].includes(o.pair_confidence) && <span className="tag approx">approx. location</span>}
-                  {o.in_sponsor_sample && <span className="tag bench">benchmark</span>}
-                  {near[o.id] && (
-                    <span className={`tag others cat-${near[o.id][0].category}`}>
-                      +{near[o.id].length} other {near[o.id].length === 1 ? "owner" : "owners"} nearby
-                    </span>
-                  )}
-                </div>
+              <div className="names">
+                <div><i className="mk desc" aria-label="Dominion" role="img" /><span>{shortName(a)}</span></div>
+                <div><i className="mk gpc" aria-label="Georgia" role="img" /><span>{shortName(b)}</span></div>
+              </div>
+              <div className="dist"><b>{o.distance_mi.toFixed(2)}</b>miles</div>
+              <div className="meta">
+                <Action o={o} />
+                <span>{gapLabel(o.time_gap_days)} apart</span>
+                {o.in_sponsor_sample && <span className="c-accent">· benchmark</span>}
+                {near[o.id] && (
+                  <span className={`tag others cat-${near[o.id][0].category}`}>
+                    +{near[o.id].length} other {near[o.id].length === 1 ? "owner" : "owners"} nearby
+                  </span>
+                )}
               </div>
             </div>
           );
         })}
       </div>
-      {run.phase === "done" && (
-        <div className="exports">
-          <a href={api.exportUrl(filters, "xlsx")}>Export .xlsx</a>
-          <a href={api.exportUrl(filters, "csv")}>Export .csv</a>
-        </div>
-      )}
-    </>
+    </div>
   );
 }
 
@@ -261,12 +337,14 @@ function EndpointLine({ e }: { e: Endpoint }) {
 }
 
 function Provenance({ p }: { p: Project }) {
+  const line = lineCheck(p);
   return (
     <div>
       <b className={p.utility === "DESC" ? "c-desc" : "c-gpc"}>{p.name}</b><br />
       {p.source_file}, page {p.source_page} ({p.source_ref})
       {p.project_type && <> · {TYPE_LABEL[p.project_type] ?? p.project_type} <Chip a={p.project_type_actor ?? "code"} /></>}
       <br />{p.endpoints.length ? p.endpoints.map((e, i) => <span key={i}>{i > 0 && "; "}<EndpointLine e={e} /></span>) : "No endpoint names in the title"}
+      {line.why && <><br />Line not drawn: {line.why}.</>}
     </div>
   );
 }

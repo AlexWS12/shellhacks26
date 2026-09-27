@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Heard County",
+   "utility": "GTC",
+   "filing_state": "GA",
+   "project": "GTC: Heard County - Tenaska 500kV (Second Line)",
+   "description": "GTC: Build a second Heard County - Tenaska 500kV line, 0.8 miles, with 100C (3) 1113 ACSR Bluejay conductors. Add a 500kV breaker at Heard County. GPC: Add a 500kV breaker at Tenaska.",
+   "zone": "213",
+   "candidate": {
+    "name": "Heard County Substation",
+    "operator": "",
+    "voltage": "500000",
+    "lat": 33.358678,
+    "lon": -84.9942221,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.8
+   }
+  },
+  "cost_usd": 2.3772000000000002e-05,
+  "latency_ms": 185
+ }
+}

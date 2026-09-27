@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Middle Fork",
+   "filing_state": "GA",
+   "project": "Mcgrau Ford - Middle Fork 500kV Line Project",
+   "description": "Construct a new approximately 64 mile 500kV line from McGrau Ford to Middle Fork.",
+   "zone": "212",
+   "candidate": {
+    "name": "Middle Fork",
+    "kind": "place=hamlet",
+    "county": "Transylvania County",
+    "state": "outside SC/GA",
+    "lat": 35.1173319,
+    "lon": -82.8237443
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.31
+   }
+  },
+  "cost_usd": 2.0748000000000002e-05,
+  "latency_ms": 285
+ }
+}

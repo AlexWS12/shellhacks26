@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Athena",
+   "utility": "MEAG",
+   "filing_state": "GA",
+   "project": "MEAG: Athena - Warrenton 230kV Conversion",
+   "description": "Reconductor/rebuild and convert the 115kV lines from Athena - Union Point - Ray Place Road - Warrenton Primary to 230kV operation. Expand Athena 230kV bus for new line termination, construct 230kV bus at Union Point, and expand 230kV bus at Warrenton Primary for new line termination. Install 230/115kV auto transformers at Union Point Primary and Ray Place Road. Replace limiting network equipment a",
+   "zone": "215",
+   "candidate": {
+    "name": "Athena Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000;115000;12000",
+    "lat": 33.9764031,
+    "lon": -83.3461189,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.89
+   }
+  },
+  "cost_usd": 2.5746000000000004e-05,
+  "latency_ms": 314
+ }
+}

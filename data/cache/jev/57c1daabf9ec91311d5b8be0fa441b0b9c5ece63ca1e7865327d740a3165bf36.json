@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Saluda County",
+   "utility": "DESC",
+   "filing_state": "SC",
+   "project": "Batesburg - Saluda County 115kV: Rebuild",
+   "description": "Rebuild 13.5 miles of conductor.",
+   "zone": null,
+   "candidate": {
+    "name": "Saluda Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 33.9973145,
+    "lon": -81.766219,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.59
+   }
+  },
+  "cost_usd": 2.0748000000000002e-05,
+  "latency_ms": 234
+ }
+}

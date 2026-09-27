@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Tazewell",
+   "filing_state": "GA",
+   "project": "GTC: Talbot #2 - Tazewell 500kV Line",
+   "description": "Build a new 500kV line from Tazewell to Talbot #2, approximately 20 miles. Make all necessary accommodations at Tazewell and Talbot #2 for the new 500kV breakers and line termination.",
+   "zone": "216",
+   "candidate": {
+    "name": "Tazewell",
+    "kind": "place=hamlet",
+    "county": "Marion County",
+    "state": "GA",
+    "lat": 32.3803637,
+    "lon": -84.4403994
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.64
+   }
+  },
+  "cost_usd": 2.2260000000000004e-05,
+  "latency_ms": 294
+ }
+}

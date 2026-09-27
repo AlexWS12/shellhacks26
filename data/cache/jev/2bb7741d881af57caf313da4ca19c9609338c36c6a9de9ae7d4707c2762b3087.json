@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "West Valdosta",
+   "filing_state": "GA",
+   "project": "Pine Grove Primary - West Valdosta 115 kV Reconductor",
+   "description": "Rebuild 3.7 miles of 100C 4/0 ACSR conductor with 200C 795 ACSS Drake on the Bemis - Pine Grove Primary section of the Pine Grove Primary - West Valdosta 115kV line.",
+   "zone": "216",
+   "candidate": {
+    "name": "West Valdosta",
+    "kind": "place=locality",
+    "county": "Lowndes County",
+    "state": "GA",
+    "lat": 30.8157571,
+    "lon": -83.3148748
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.78
+   }
+  },
+  "cost_usd": 2.2470000000000003e-05,
+  "latency_ms": 236
+ }
+}

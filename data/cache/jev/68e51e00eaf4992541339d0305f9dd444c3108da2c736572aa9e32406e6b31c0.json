@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Colerain",
+   "filing_state": "GA",
+   "project": "Thalmann And Colerain 23o kV Line Relay Panel Upgrades",
+   "description": "Relay protection modifications at GPC's Thalmann and Colerain substations to match relay scheme used at GTC's new Camden Industrial Park 230/115kV substation.",
+   "zone": "218",
+   "candidate": {
+    "name": "Colerain",
+    "kind": "place=hamlet",
+    "county": "Camden County",
+    "state": "GA",
+    "lat": 30.8330106,
+    "lon": -81.9006672
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.74
+   }
+  },
+  "cost_usd": 2.1546000000000003e-05,
+  "latency_ms": 175
+ }
+}

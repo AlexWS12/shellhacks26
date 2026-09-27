@@ -1,0 +1,77 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "palmyra",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 302699560,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153949023,
+   "lat": "31.6376726",
+   "lon": "-84.1943534",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.19938740066310082,
+   "addresstype": "hamlet",
+   "name": "Palmyra",
+   "display_name": "Palmyra, Lee County, Georgia, 31650, United States",
+   "address": {
+    "hamlet": "Palmyra",
+    "county": "Lee County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31650",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.6176726",
+    "31.6576726",
+    "-84.2143534",
+    "-84.1743534"
+   ]
+  },
+  {
+   "place_id": 302711784,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 10740746403,
+   "lat": "31.6378239",
+   "lon": "-84.1945185",
+   "category": "historic",
+   "type": "memorial",
+   "place_rank": 30,
+   "importance": 2.8699931334355954e-05,
+   "addresstype": "historic",
+   "name": "Palmyra",
+   "display_name": "Palmyra, Palmyra Road, Palmyra, Lee County, Georgia, 31650, United States",
+   "address": {
+    "historic": "Palmyra",
+    "road": "Palmyra Road",
+    "hamlet": "Palmyra",
+    "county": "Lee County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31650",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.6377739",
+    "31.6378739",
+    "-84.1945685",
+    "-84.1944685"
+   ]
+  }
+ ]
+}

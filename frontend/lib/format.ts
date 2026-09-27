@@ -45,6 +45,9 @@ export const ACTOR_LABEL: Record<string, string> = {
 };
 
 export const utilityName = (p: Project) => (p.utility === "DESC" ? "Dominion Energy SC" : `Georgia · ${p.sponsor}`);
+// list rows drop the owner prefix (the diamond and tooltip carry it) and use en-dashes
+export const shortName = (p: Project) => p.name.replace(/^(SAV|GTC|MEAG|DU|CC)\s*[-:]\s*/i, "").replace(/\s-\s/g, " – ");
+
 export const OWNER: Record<string, string> = { GPC: "Georgia Power", SAV: "Georgia Power (Savannah)", GTC: "Georgia Transmission",
   MEAG: "MEAG Power", DU: "Dalton Utilities", DESC: "Dominion Energy SC" };
 
@@ -57,6 +60,9 @@ export function fmtDate(iso: string | null | undefined): string {
   if (!iso) return "unknown";
   return new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
+
+// "5 mo" under a year, "1.4 yrs" after that
+export const gapLabel = (days: number) => (days < 365 ? `${Math.round(days / 30.4)} mo` : `${(days / 365).toFixed(1)} yrs`);
 
 export const plural = (n: number, word: string) => `${n.toLocaleString()} ${word}${n === 1 ? "" : "s"}`;
 

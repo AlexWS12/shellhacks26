@@ -42,7 +42,7 @@
   "answers": {
    "stuck": {
     "type": "noul",
-    "noul": 0.8
+    "noul": 0.79
    },
    "progress": {
     "type": "score",
@@ -65,6 +65,6 @@
    }
   },
   "cost_usd": 1.9824000000000002e-05,
-  "latency_ms": 297
+  "latency_ms": 290
  }
 }

@@ -1,0 +1,44 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "rice hope",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343443178,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 158585928,
+   "lat": "33.0904486",
+   "lon": "-79.9328594",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Rice Hope",
+   "display_name": "Rice Hope, Berkeley County, South Carolina, United States",
+   "address": {
+    "hamlet": "Rice Hope",
+    "county": "Berkeley County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.0704486",
+    "33.1104486",
+    "-79.9528594",
+    "-79.9128594"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Faber Place",
+   "filing_state": "SC",
+   "project": "Faber Place-Bayfront 115kV: Rebuild North Bridge Terrace to Bayfront Section",
+   "description": "Replace wooden structures with Self Supporting Steel Structures and upgrade conductor to standard 1272 ACSR.",
+   "zone": null,
+   "candidate": {
+    "name": "Faber Place",
+    "kind": "place=neighbourhood",
+    "county": "Charleston County",
+    "state": "SC",
+    "lat": 32.8462865,
+    "lon": -80.0298124
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.65
+   }
+  },
+  "cost_usd": 2.0832000000000003e-05,
+  "latency_ms": 237
+ }
+}

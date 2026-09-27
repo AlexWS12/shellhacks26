@@ -42,11 +42,11 @@
   "answers": {
    "stuck": {
     "type": "noul",
-    "noul": 0.85
+    "noul": 0.86
    },
    "progress": {
     "type": "score",
-    "score": 0.1,
+    "score": 0.09,
     "confidence": 0.92,
     "legend": {
      "0": "Not started",
@@ -65,6 +65,6 @@
    }
   },
   "cost_usd": 2.0244e-05,
-  "latency_ms": 283
+  "latency_ms": 272
  }
 }

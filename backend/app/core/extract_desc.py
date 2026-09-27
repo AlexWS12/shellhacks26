@@ -101,7 +101,7 @@ def to_project(p: DescPage, source_file: str) -> tuple[Project, list[Check]]:
     # "Previous" spending = started before 2024, exact date unknown.
     active_from = build_start or "2024-01-01"
 
-    miles = re.search(r"(\d+(?:\.\d+)?)\s*miles", f"{p.name} {p.description}", re.I)
+    miles = re.search(r"(\d+(?:\.\d+)?)[\s-]*miles?\b", f"{p.name} {p.description}", re.I)
     project = Project(
         id=pid, utility="DESC", sponsor="DESC", name=p.name, description=p.description, need_text=p.need,
         status=p.status, in_service_date=isd.isoformat(), in_service_raw=p.isd_raw, build_start=build_start,

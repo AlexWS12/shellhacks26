@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Rice Hope",
+   "filing_state": "GA",
+   "project": "SAV: Rice Hope New Auto Transformer",
+   "description": "Install a new 230/115kV 400MVA auto transformer at Rice Hope and loop in the Crossgate - McIntosh 230kV line.",
+   "zone": "219",
+   "candidate": {
+    "name": "Rice Hope",
+    "kind": "place=hamlet",
+    "county": "Berkeley County",
+    "state": "SC",
+    "lat": 33.0904486,
+    "lon": -79.9328594
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.46
+   }
+  },
+  "cost_usd": 2.1168e-05,
+  "latency_ms": 170
+ }
+}

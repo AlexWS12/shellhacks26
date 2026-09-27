@@ -1,0 +1,13 @@
+{
+ "provider": "gemini",
+ "version": "gemini-v1",
+ "payload": {
+  "model": "gemini-3.8-flash",
+  "system": "You prepare Georgia Power's side for a SERTP coordination meeting about one nearby project of the other utility. Use ONLY the facts. Write 3 short bullets: what Georgia Power likely wants, what constrains it, and one concrete ask of the other utility. Never state a number that is not in the facts.",
+  "prompt": "Facts:\n{'distance_mi': 4.09, 'time_gap_days': 3074, 'windows_overlap': False, 'location_confidence': 'verified', 'shared': {'timing': 'sequential', 'items': ['surveys', 'right-of-way records', 'environmental studies', 'design of the later project'], 'level': 'medium', 'types': ['rebuild', 'rebuild']}, 'dominion': {'utility': 'Dominion Energy South Carolina', 'name': 'Hooks - Thurmond 115kV Tie: Rebuild', 'type': 'rebuild', 'status': 'In Progress', 'in_service': '2024-12-31', 'build_start': None, 'description': 'Rebuilding section of line between Hooks and Thurmond. Approximately 2.3 miles. The line will be rebuilt on existing R/W using steel poles, 115 kV insulation, and 1272 ACSR conductor.', 'need': 'This project is required to address end of life and reliability issues on these lines.', 'cost': 2200080, 'source': '2024-2028-2million-and-above-project-descriptions.pdf p.31 (ID 6810 A)'}, 'georgia': {'utility': 'Georgia (GPC)', 'name': 'Evans Primary - Thurmond Dam (USA) #5 115kV Rebuild', 'type': 'rebuild', 'status': 'Planned', 'in_service': '2033-06-01', 'build_start': '2029-06-01', 'description': 'Rebuild approximately 5.45 miles of Euchee Creek - Thurmond Dam segment of the Evans Primary - Thurmond Dam (USA) #5 115kV line with 200C 1351 ACSS Martin conductor. Replace the main bus with a larger element at Thurmond Dam (USA).', 'need': '', 'cost': None, 'source': '2025_IRP_Volume_3_PUBLIC_DISCLOSURE.pdf p.410 (TEAMS 20793, zone 215)'}}"
+ },
+ "response": {
+  "text": "* **What Georgia Power wants:** To leverage shared surveys, right-of-way records, and environmental studies from Dominion's project to assist in the design of its later Evans Primary - Thurmond Dam (USA) #5 115kV Rebuild.\n* **What constrains Georgia Power:** The projects do not have overlapping windows, facing sequential timing with a 3074-day time gap between Dominion's 2024-12-31 in-service date and Georgia Power's 2029-06-01 build start.\n* **Concrete ask:** Request that Dominion Energy South Carolina provide its surveys, right-of-way records, and environmental studies from the Hooks - Thurmond 115kV Tie rebuild project.",
+  "model": "gemini-3.8-flash"
+ }
+}

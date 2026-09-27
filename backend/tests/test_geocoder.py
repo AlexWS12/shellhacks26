@@ -2,9 +2,10 @@
 import asyncio
 
 from app import config
-from app.agents.geocoder import MAX_SPAN_MI
+from app.agents.geocoder import Geocoder
 from app.clients import nominatim, overpass
-from app.core.overlap import distance_mi
+from app.core.models import Endpoint, Project
+from app.core.overlap import Filters, distance_mi, find_overlaps, span_limit, span_ok
 from app.core.places import OsmIndex, States, variants
 
 
@@ -40,7 +41,40 @@ def test_no_project_spans_more_than_the_limit(finished_run):
     for p in finished_run.board.projects.values():
         pts = [e for e in p.endpoints if e.lat is not None]
         if len(pts) == 2 and not all(e.method in ("sponsor_file", "override") for e in pts):
-            assert distance_mi((pts[0].lat, pts[0].lon), (pts[1].lat, pts[1].lon)) <= MAX_SPAN_MI, p.name
+            assert distance_mi((pts[0].lat, pts[0].lon), (pts[1].lat, pts[1].lon)) <= span_limit(p.miles), p.name
+
+
+def _osm(name: str, lat: float, lon: float) -> Endpoint:
+    return Endpoint(name=name, lat=lat, lon=lon, method="overpass", confidence="confirmed_osm", evidence={"matched": name})
+
+
+def test_out_of_state_end_far_from_the_other_is_rejected():
+    g = Geocoder.__new__(Geocoder)
+    g.states = States()
+    sumter, st_george_ga = _osm("Sumter", 33.898, -80.324), _osm("St George", 30.523, -82.026)
+    weak, keep, _ = g._bad_span(sumter, st_george_ga, "SC")
+    assert weak is st_george_ga and keep is sumter
+    # a real border tie: South Bainbridge (GA) - Sinai (FL), 27 mi
+    assert g._bad_span(_osm("South Bainbridge", 30.84, -84.489), _osm("Sinai", 30.664, -84.901), "GA") is None
+    # both ends surveyed: left for a human
+    a, b = (e.model_copy(update={"method": "sponsor_file"}) for e in (sumter, st_george_ga))
+    assert g._bad_span(a, b, "SC") is None
+
+
+def test_a_project_with_an_implausible_span_makes_no_overlaps():
+    def proj(pid: str, utility: str, eps: list[Endpoint]) -> Project:
+        return Project(id=pid, utility=utility, sponsor="DESC" if utility == "DESC" else "SAV", name=pid,  # type: ignore[arg-type]
+                       in_service_date="2026-05-31", endpoints=eps, lat=32.21, lon=-81.175,
+                       location_confidence="verified", source_file="x", source_page=1, source_ref="x")
+    bogus = proj("DESC-X", "DESC", [_osm("St George", 30.523, -82.026), _osm("Sumter", 33.898, -80.324)])
+    savannah = proj("GA-Y", "GA", [])
+    assert not span_ok(bogus)
+    assert find_overlaps([bogus, savannah], Filters()) == []
+
+
+def test_span_limit_follows_the_filed_line_length():
+    assert span_limit(None) == span_limit(2.0) == 60.0
+    assert span_limit(120.0) > 120.0  # Farley - Tazewell 500kV
 
 
 def test_every_endpoint_has_method_and_evidence(finished_run):

@@ -1,0 +1,45 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "kathleen",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 339492220,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153913608,
+   "lat": "32.4952940",
+   "lon": "-83.6099696",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.3022467077917196,
+   "addresstype": "hamlet",
+   "name": "Kathleen",
+   "display_name": "Kathleen, Houston County, Georgia, 31047, United States",
+   "address": {
+    "hamlet": "Kathleen",
+    "county": "Houston County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31047",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.4752940",
+    "32.5152940",
+    "-83.6299696",
+    "-83.5899696"
+   ]
+  }
+ ]
+}

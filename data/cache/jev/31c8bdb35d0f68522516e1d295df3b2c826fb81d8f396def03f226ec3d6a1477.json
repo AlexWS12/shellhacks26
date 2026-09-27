@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Huckleberry",
+   "filing_state": "GA",
+   "project": "Blakely Primary - Huckleberry 115kV Rebuild",
+   "description": "Rebuild the Blakley Primary - Huckleberry 115kV line from 75C 477 ACSR to 200C 1351 ACSS. (13.5 miles) GPC: Replace jumpers at Blakely Primary GTC: Replace jumpers at Blakely and Huckleberry",
+   "zone": "216",
+   "candidate": {
+    "name": "Huckleberry",
+    "kind": "place=hamlet",
+    "county": "Hamilton County",
+    "state": "outside SC/GA",
+    "lat": 35.2603463,
+    "lon": -85.2110692
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.15
+   }
+  },
+  "cost_usd": 2.3352000000000003e-05,
+  "latency_ms": 296
+ }
+}

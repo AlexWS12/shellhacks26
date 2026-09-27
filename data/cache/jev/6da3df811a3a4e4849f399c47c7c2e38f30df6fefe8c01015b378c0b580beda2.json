@@ -42,12 +42,12 @@
   "answers": {
    "stuck": {
     "type": "noul",
-    "noul": 0.35
+    "noul": 0.36
    },
    "progress": {
     "type": "score",
-    "score": 3.13,
-    "confidence": 0.27,
+    "score": 2.87,
+    "confidence": 0.06,
     "legend": {
      "0": "Not started",
      "1": "Started",
@@ -56,15 +56,15 @@
      "4": "Done"
     },
     "probabilities": {
-     "0": 0.01,
-     "1": 0.17,
-     "2": 0.01,
-     "3": 0.28,
-     "4": 0.52
+     "0": 0.03,
+     "1": 0.23,
+     "2": 0.02,
+     "3": 0.3,
+     "4": 0.42
     }
    }
   },
   "cost_usd": 2.3562000000000002e-05,
-  "latency_ms": 742
+  "latency_ms": 1274
  }
 }
