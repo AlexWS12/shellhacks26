@@ -36,11 +36,11 @@ export const api = {
     get<{ overlaps: Overlap[]; visible_projects: number; total_projects: number }>(`/api/overlaps?${filterQuery(f)}`),
   pair: (a: string, b: string) => get<PairDetail>(`/api/pair/${encodeURIComponent(a)}/${encodeURIComponent(b)}`),
   runs: () => get<{ recorded: { run_id: string; complete: boolean; ok: boolean; seconds: number }[] }>("/api/runs"),
-  startRun: async (mode: "live" | "replay", speed = 1): Promise<{ run_id: string }> => {
+  startRun: async (mode: "live" | "replay", speed = 1, templates = true): Promise<{ run_id: string }> => {
     const r = await fetch(`${API}/api/runs`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ mode, speed }),
+      body: JSON.stringify({ mode, speed, templates }),
     });
     if (!r.ok) throw new Error(`start run: HTTP ${r.status} ${await r.text()}`);
     return r.json();

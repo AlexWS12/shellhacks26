@@ -5,7 +5,7 @@ import { skipToResults, startRun, useUI } from "@/lib/ui";
 
 export default function Header() {
   useRev((s) => s.rev);
-  const { filters, setFilters, health } = useUI();
+  const { filters, setFilters, health, templateFallback, setTemplateFallback } = useUI();
   const running = run.phase === "running";
   const jevOn = Boolean(health && health.jev !== "off" && health.jev !== "mock");
   return (
@@ -28,6 +28,10 @@ export default function Header() {
         <label><input type="checkbox" checked={filters.hideFinished} onChange={(e) => setFilters({ hideFinished: e.target.checked })} /> Hide finished</label>
       </div>
       {running && <button onClick={() => void skipToResults()}>Skip</button>}
+      <label className="fallback" title="Live runs: when Gemini fails after retries, write the text from a template. Off: the agent fails instead.">
+        <input type="checkbox" checked={templateFallback} disabled={running}
+          onChange={(e) => setTemplateFallback(e.target.checked)} /> Template fallback
+      </label>
       <button onClick={() => void startRun("replay")} disabled={running} title="Replays the newest recorded run. Works offline.">Replay</button>
       <button className="primary" onClick={() => void startRun("live")} disabled={running}>
         {running ? "Running…" : run.phase === "done" ? "Run again" : "Run pipeline"}

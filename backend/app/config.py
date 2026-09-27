@@ -35,6 +35,8 @@ def env_float(name: str, default: float) -> float:
 # LLMs
 GEMINI_API_KEY = env("GEMINI_API_KEY")
 GEMINI_MODEL = env("GEMINI_MODEL", "gemini-3.8-flash")
+GEMINI_FALLBACK_MODEL = env("GEMINI_FALLBACK_MODEL", "gemini-3.7-flash")  # used when the primary keeps failing
+GEMINI_RETRIES = max(1, int(env_float("GEMINI_RETRIES", 3)))  # attempts per model on 5xx / 429 / timeout
 JEV_PROVIDER = env("JEV_PROVIDER")  # typesafe | openrouter | cloudflare | mock | "" (off)
 
 # Geocoding

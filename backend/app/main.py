@@ -23,17 +23,28 @@ from app.store import dataset, tiger
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 log = logging.getLogger("api")
+_gemini_ok: bool | None = None  # None until the startup check finishes
+
+
+async def check_gemini() -> None:
+    global _gemini_ok
+    res = await gemini.smoke() if gemini.enabled() else None
+    _gemini_ok = bool(res and res["data"].get("ok"))
+    if not _gemini_ok:
+        log.warning("Gemini smoke check failed: analyses and briefs will fall back to templates")
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     dataset.load_from_disk()
+    gemini_check = asyncio.create_task(check_gemini())  # in the background so startup isn't blocked
     if tiger.enabled():
         try:
             await asyncio.to_thread(tiger.init_schema)
         except Exception as e:
             log.warning("Tiger Data unavailable at startup: %s", str(e)[:200])
     yield
+    gemini_check.cancel()
 
 
 app = FastAPI(title="Tandem API", lifespan=lifespan)
@@ -50,7 +61,8 @@ def filters(all_sponsors: bool, min_conf: Confidence, hide_finished: bool, sort:
 @app.get("/api/health")
 def health() -> dict:
     return {"status": "ok", "dataset_run": dataset.CURRENT.run_id, "projects": len(dataset.CURRENT.projects),
-            "gemini": gemini.enabled(), "gemini_model": config.GEMINI_MODEL, "jev": config.JEV_PROVIDER or "off",
+            "gemini": gemini.enabled(), "gemini_ok": _gemini_ok, "gemini_model": config.GEMINI_MODEL,
+            "gemini_fallback_model": config.GEMINI_FALLBACK_MODEL, "jev": config.JEV_PROVIDER or "off",
             "tiger": tiger.enabled(), "today": config.TODAY}
 
 
@@ -123,6 +135,7 @@ class RunRequest(BaseModel):
     mode: Literal["live", "replay"] = "live"
     replay_of: str | None = None  # recorded run id; default = newest complete recording
     speed: float = 1.0
+    templates: bool = True  # live only: fall back to a template when Gemini fails
 
 
 @app.post("/api/runs")
@@ -132,6 +145,7 @@ async def start_run(req: RunRequest) -> dict:
         if busy:
             return {"run_id": busy[0].id, "joined": True}  # one live run at a time; join it
         run = new_run("live")
+        run.templates = req.templates
         start_background(run_live(run))
         return {"run_id": run.id}
     recs = [r for r in recorded_runs() if r["complete"] and r["ok"]]
