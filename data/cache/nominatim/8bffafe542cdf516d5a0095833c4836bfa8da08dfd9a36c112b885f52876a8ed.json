@@ -1,0 +1,173 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "mccall road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343704356,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9032494,
+   "lat": "32.8499570",
+   "lon": "-83.5763346",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533981330586709,
+   "addresstype": "road",
+   "name": "McCall Road",
+   "display_name": "McCall Road, Lakeside Hill, Macon, Bibb County, Georgia, 31217, United States",
+   "address": {
+    "road": "McCall Road",
+    "hamlet": "Lakeside Hill",
+    "city": "Macon",
+    "county": "Bibb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31217",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.8475180",
+    "32.8527640",
+    "-83.5791530",
+    "-83.5749240"
+   ]
+  },
+  {
+   "place_id": 343725145,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9032497,
+   "lat": "32.7836742",
+   "lon": "-83.7867928",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533981330586709,
+   "addresstype": "road",
+   "name": "McCall Road",
+   "display_name": "McCall Road, Macon, Bibb County, Georgia, 31052, United States",
+   "address": {
+    "road": "McCall Road",
+    "city": "Macon",
+    "county": "Bibb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31052",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7824283",
+    "32.7848780",
+    "-83.7883590",
+    "-83.7852505"
+   ]
+  },
+  {
+   "place_id": 343315808,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1356723622,
+   "lat": "32.3585648",
+   "lon": "-81.3106257",
+   "category": "highway",
+   "type": "unclassified",
+   "place_rank": 26,
+   "importance": 0.0533840276188296,
+   "addresstype": "road",
+   "name": "McCall Road",
+   "display_name": "McCall Road, Spring Branch, Springfield, Effingham County, Georgia, 31329, United States",
+   "address": {
+    "road": "McCall Road",
+    "neighbourhood": "Spring Branch",
+    "village": "Springfield",
+    "county": "Effingham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31329",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.3525155",
+    "32.3645050",
+    "-81.3122150",
+    "-81.3089316"
+   ]
+  },
+  {
+   "place_id": 342115021,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 18889291,
+   "lat": "34.9340393",
+   "lon": "-80.7658820",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053375671778438966,
+   "addresstype": "road",
+   "name": "McCall Road",
+   "display_name": "McCall Road, Marvin Properties, Waxhaw, Union County, North Carolina, 28173, United States",
+   "address": {
+    "road": "McCall Road",
+    "residential": "Marvin Properties",
+    "town": "Waxhaw",
+    "county": "Union County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28173",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.9338043",
+    "34.9353712",
+    "-80.7682183",
+    "-80.7629776"
+   ]
+  },
+  {
+   "place_id": 342731024,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 16785802,
+   "lat": "35.2650011",
+   "lon": "-82.6806816",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "McCall Road",
+   "display_name": "McCall Road, Benton Hills, Transylvania County, North Carolina, 28768, United States",
+   "address": {
+    "road": "McCall Road",
+    "hamlet": "Benton Hills",
+    "county": "Transylvania County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28768",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2648219",
+    "35.2655500",
+    "-82.6815047",
+    "-82.6793190"
+   ]
+  }
+ ]
+}

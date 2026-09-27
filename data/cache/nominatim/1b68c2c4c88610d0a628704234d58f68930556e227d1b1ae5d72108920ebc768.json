@@ -1,0 +1,105 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "stevens creek",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343154044,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 14267644,
+   "lat": "33.7410515",
+   "lon": "-82.1646667",
+   "category": "waterway",
+   "type": "river",
+   "place_rank": 18,
+   "importance": 0.16000999999999999,
+   "addresstype": "river",
+   "name": "Stevens Creek",
+   "display_name": "Stevens Creek, Edgefield County, South Carolina, United States",
+   "address": {
+    "river": "Stevens Creek",
+    "county": "Edgefield County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5652416",
+    "33.8975415",
+    "-82.2341641",
+    "-82.0258296"
+   ]
+  },
+  {
+   "place_id": 344537274,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154354660,
+   "lat": "33.5606903",
+   "lon": "-82.0565063",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13337083466849772,
+   "addresstype": "hamlet",
+   "name": "Stevens Creek",
+   "display_name": "Stevens Creek, Columbia County, Georgia, 30907, United States",
+   "address": {
+    "hamlet": "Stevens Creek",
+    "county": "Columbia County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30907",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5406903",
+    "33.5806903",
+    "-82.0765063",
+    "-82.0365063"
+   ]
+  },
+  {
+   "place_id": 341761864,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 41352247,
+   "lat": "35.1432113",
+   "lon": "-80.6690254",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10672447623407337,
+   "addresstype": "stream",
+   "name": "Stevens Creek",
+   "display_name": "Stevens Creek, Mint Hill, Mecklenburg County, North Carolina, 28014, United States",
+   "address": {
+    "stream": "Stevens Creek",
+    "town": "Mint Hill",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28014",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.1426885",
+    "35.1440170",
+    "-80.6710241",
+    "-80.6668969"
+   ]
+  }
+ ]
+}

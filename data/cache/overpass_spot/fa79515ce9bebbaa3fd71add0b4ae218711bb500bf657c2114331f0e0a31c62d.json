@@ -1,0 +1,341 @@
+{
+ "provider": "overpass_spot",
+ "version": "v1",
+ "payload": {
+  "query": "[out:json][timeout:60];(nwr[\"power\"][\"name\"~\"dublin\",i](30.3,-85.7,35.3,-78.4); nwr[\"power\"=\"substation\"](around:8000,32.5404,-82.9038););out center tags;"
+ },
+ "response": {
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+   "timestamp_osm_base": "2026-09-27T02:46:20Z",
+   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+   {
+    "type": "way",
+    "id": 170685416,
+    "center": {
+     "lat": 32.5684811,
+     "lon": -82.8982616
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "transmission",
+     "voltage": "230000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 170685419,
+    "center": {
+     "lat": 32.5689182,
+     "lon": -82.9002185
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "transmission",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 170685885,
+    "center": {
+     "lat": 32.5433751,
+     "lon": -82.9620942
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "230000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 550916538,
+    "center": {
+     "lat": 32.5406038,
+     "lon": -82.8945494
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Dublin Primary Substation",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 550917439,
+    "center": {
+     "lat": 32.5103539,
+     "lon": -82.8349998
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Catlin Substation",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 840331498,
+    "center": {
+     "lat": 32.5095265,
+     "lon": -82.8396989
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "switching",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 960083212,
+    "center": {
+     "lat": 32.5036702,
+     "lon": -82.8426366
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "WestRock Substation",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1011162741,
+    "center": {
+     "lat": 32.581656,
+     "lon": -82.9332062
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1011162742,
+    "center": {
+     "lat": 32.5814001,
+     "lon": -82.9261107
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Dublin Solar I",
+     "operator": "AES Distributed Energy",
+     "plant:method": "photovoltaic",
+     "plant:output:electricity": "4.10 MW",
+     "plant:source": "solar",
+     "power": "plant",
+     "ref:US:EIA": "60930",
+     "start_date": "2015-12"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1041608729,
+    "center": {
+     "lat": 32.5710228,
+     "lon": -82.8460008
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1045347622,
+    "center": {
+     "lat": 32.5348594,
+     "lon": -82.8819452
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1045347624,
+    "center": {
+     "lat": 32.4697419,
+     "lon": -82.7693291
+    },
+    "tags": {
+     "cables": "3",
+     "circuits": "1",
+     "name": "Dublin - Soperton 46kV",
+     "power": "line",
+     "voltage": "46000",
+     "wires": "single"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1045347628,
+    "center": {
+     "lat": 32.5177225,
+     "lon": -82.8601143
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1045347632,
+    "center": {
+     "lat": 32.5200281,
+     "lon": -82.840436
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Georgia Power",
+     "operator:wikidata": "Q5547666",
+     "operator:wikipedia": "en:Georgia Power",
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1045347656,
+    "center": {
+     "lat": 32.4194763,
+     "lon": -82.678724
+    },
+    "tags": {
+     "cables": "3",
+     "circuits": "1",
+     "name": "Dublin - Soperton 115kV",
+     "power": "line",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1054037672,
+    "center": {
+     "lat": 32.3770495,
+     "lon": -83.0365898
+    },
+    "tags": {
+     "cables": "3",
+     "circuits": "1",
+     "name": "Dublin - Eastman 46kV",
+     "power": "line",
+     "voltage": "46000",
+     "wires": "single"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1054037687,
+    "center": {
+     "lat": 32.5216421,
+     "lon": -82.9231016
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Dirt Road Substation",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1054037690,
+    "center": {
+     "lat": 32.5025286,
+     "lon": -82.9464836
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Achord Road Substation",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1054037694,
+    "center": {
+     "lat": 32.5202689,
+     "lon": -82.9311335
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "industrial",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1054037695,
+    "center": {
+     "lat": 32.5345966,
+     "lon": -82.9440364
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Vinson Medical Center Substation",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "46000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1178530290,
+    "center": {
+     "lat": 32.568111,
+     "lon": -82.8436957
+    },
+    "tags": {
+     "barrier": "fence",
+     "operator": "Altamaha EMC",
+     "power": "substation",
+     "start_date": "1963",
+     "substation": "minor_distribution",
+     "voltage": "25000"
+    }
+   }
+  ]
+ }
+}

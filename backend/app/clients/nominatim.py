@@ -37,6 +37,9 @@ def start_budget(seconds: float) -> None:
 
 def _keep(r: dict[str, Any]) -> dict[str, Any] | None:
     cls, typ = r.get("category") or r.get("class"), r.get("type")
+    if cls == "boundary" and typ == "administrative" and r.get("addresstype") in PLACE_TYPES:
+        # A town mapped only as its town limits ('Eastover, Richland County, SC'): same thing as place=town.
+        cls, typ = "place", r["addresstype"]
     if not ((cls == "power" and typ == "substation") or (cls == "place" and typ in PLACE_TYPES)):
         return None
     addr = r.get("address") or {}

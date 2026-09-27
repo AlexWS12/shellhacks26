@@ -1,0 +1,45 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "kinlaw",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 303537667,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153879135,
+   "lat": "30.8446781",
+   "lon": "-81.6756591",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.133383290608072,
+   "addresstype": "hamlet",
+   "name": "Kinlaw",
+   "display_name": "Kinlaw, Kingsland, Camden County, Georgia, United States",
+   "address": {
+    "hamlet": "Kinlaw",
+    "town": "Kingsland",
+    "county": "Camden County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.8246781",
+    "30.8646781",
+    "-81.6956591",
+    "-81.6556591"
+   ]
+  }
+ ]
+}

@@ -54,3 +54,30 @@ def looks_awkward(name: str, parts: list[str]) -> bool:
         return True
     return (any(re.search(r"\d", p) for p in parts) or any(len(p.split()) > 4 for p in parts)
             or any(letters(p) <= 3 for p in parts))  # 'Skc': an acronym, not a findable place name
+
+
+# Existing places a description names, for projects whose title ends can't be found
+# ('loop it into the Cartersville - Pinson 230kV line', 'Add Switching House at McMeekin Substation').
+_NAME = r"[A-Z][\w.'&]*(?:\s+[A-Z][\w.'&]*){0,3}"
+_KV = r"\d{2,3}(?:\.\d)?(?:/\d{2,3})*\s?kV"
+DESC_LINE_RE = re.compile(rf"({_NAME})\s*[-–]\s*({_NAME})(?:\s*\([A-Za-z]+\))?\s*(?:#\d+\s*)?{_KV}")
+DESC_SUB_RE = re.compile(rf"\b(?:at|to|inside|into|from)\s+(?:the\s+)?(?:existing\s+)?({_NAME})\s+"
+                         rf"(?:{_KV}\s+)?(?i:substation|sub|switching station|station)\b")
+NOT_PLACES = {"gtc", "gpc", "desc", "meag", "sav", "apc", "usa", "acsr", "acss", "tl", "dc", "cc",
+              "creek", "branch", "river", "road", "lake", "junction"}  # alone, these match anything
+LEAD_RE = re.compile(r"^(?:\w+'s\s+|(?:split|build|install|extend|convert|upgrade|loop|fold|utilize)\s+)", re.I)
+
+
+def description_names(text: str, limit: int = 4) -> list[str]:
+    # Cleaned names in the order the description mentions them. Anything it calls new is skipped:
+    # OSM can't have it yet.
+    raw = [m for pair in DESC_LINE_RE.findall(text) for m in pair] + DESC_SUB_RE.findall(text)
+    raw.sort(key=lambda r: text.find(r))
+    out: list[str] = []
+    for r in raw:
+        if re.search(rf"\b(new|named)\s+(?:\S+\s+){{0,3}}?{re.escape(r)}", text, re.I):
+            continue
+        name = clean_endpoint(LEAD_RE.sub("", r))
+        if len(name) > 2 and name.lower() not in NOT_PLACES and name not in out:
+            out.append(name)
+    return out[:limit]

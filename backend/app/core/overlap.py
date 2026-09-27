@@ -33,7 +33,7 @@ def distance_mi(a: tuple[float, float], b: tuple[float, float]) -> float:
 
 def span_mi(p: Project) -> float | None:
     # Straight-line miles between the two located endpoints, None unless both are located.
-    pts = [(e.lat, e.lon) for e in p.endpoints if e.lat is not None and e.lon is not None]
+    pts = [(e.lat, e.lon) for e in p.endpoints if e.lat is not None and e.lon is not None and e.role == "endpoint"]
     return distance_mi(pts[0], pts[1]) if len(pts) == 2 else None
 
 
@@ -46,6 +46,15 @@ def span_ok(p: Project) -> bool:
     # A longer span means one end is the wrong place, so the center (and every distance from it) is too.
     s = span_mi(p)
     return s is None or s <= span_limit(p.miles)
+
+
+def center_slack_mi(p: Project) -> float:
+    # A project placed from one end of two, or from places its description names: the real
+    # midpoint is up to half the line away. With no stated length, half the longest plausible span.
+    title = [e for e in p.endpoints if e.role == "endpoint"]
+    if not any(e.lat is not None for e in p.endpoints) or all(e.lat is not None for e in title):
+        return 0.0
+    return (p.miles or MAX_SPAN_MI) / 2
 
 
 def time_gap_days(a: date, b: date) -> int:
@@ -112,11 +121,14 @@ def find_overlaps(projects: list[Project], f: Filters, sample_pairs: set[tuple[s
                 windows_overlap=windows_overlap(a, b),
                 pair_confidence=weaker(a.location_confidence, b.location_confidence),
                 in_sponsor_sample=(a.id, b.id) in sample_pairs,
+                finished=min(a.in_service_date, b.in_service_date) < f.today,
+                distance_slack_mi=round(center_slack_mi(a) + center_slack_mi(b), 1),
             ))
+    # Active pairs first: a finished project can only share records, not crews.
     if f.sort == "gap":
-        found.sort(key=lambda o: (o.time_gap_days, o.distance_mi, o.project_a, o.project_b))
+        found.sort(key=lambda o: (o.finished, o.time_gap_days, o.distance_mi, o.project_a, o.project_b))
     else:
-        found.sort(key=lambda o: (o.distance_mi, o.time_gap_days, o.project_a, o.project_b))
+        found.sort(key=lambda o: (o.finished, o.distance_mi, o.time_gap_days, o.project_a, o.project_b))
     for i, o in enumerate(found, start=1):
         o.rank = i
         o.id = f"{o.project_a}|{o.project_b}"

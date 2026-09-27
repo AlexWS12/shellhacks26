@@ -1,0 +1,175 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "west marietta",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343116326,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 42739245,
+   "lat": "33.7852164",
+   "lon": "-84.4220231",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "West Marietta Street Northwest",
+   "display_name": "West Marietta Street Northwest, Bankhead, Atlanta, Fulton County, Georgia, 30318, United States",
+   "address": {
+    "road": "West Marietta Street Northwest",
+    "suburb": "Bankhead",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30318",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7827210",
+    "33.7863048",
+    "-84.4275308",
+    "-84.4172193"
+   ]
+  },
+  {
+   "place_id": 342378119,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 133115169,
+   "lat": "33.7863112",
+   "lon": "-84.4326561",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "West Marietta Street Northwest",
+   "display_name": "West Marietta Street Northwest, Rockdale, Bankhead, Atlanta, Fulton County, Georgia, 30318, United States",
+   "address": {
+    "road": "West Marietta Street Northwest",
+    "neighbourhood": "Rockdale",
+    "suburb": "Bankhead",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30318",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7862490",
+    "33.7883970",
+    "-84.4365900",
+    "-84.4281820"
+   ]
+  },
+  {
+   "place_id": 343892747,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1355459570,
+   "lat": "33.7817900",
+   "lon": "-84.4164814",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "West Marietta Street Northwest",
+   "display_name": "West Marietta Street Northwest, Howell Station, Bankhead, Atlanta, Fulton County, Georgia, 30318, United States",
+   "address": {
+    "road": "West Marietta Street Northwest",
+    "neighbourhood": "Howell Station",
+    "suburb": "Bankhead",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30318",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7808586",
+    "33.7827210",
+    "-84.4172193",
+    "-84.4157434"
+   ]
+  },
+  {
+   "place_id": 302759429,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 10879373,
+   "lat": "30.3278237",
+   "lon": "-81.7982211",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05340426108186462,
+   "addresstype": "road",
+   "name": "Lake Marietta Drive West",
+   "display_name": "Lake Marietta Drive West, Jacksonville, Duval County, Florida, 32220, United States",
+   "address": {
+    "road": "Lake Marietta Drive West",
+    "city": "Jacksonville",
+    "county": "Duval County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32220",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3266340",
+    "30.3291820",
+    "-81.7982460",
+    "-81.7977260"
+   ]
+  },
+  {
+   "place_id": 301337611,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 10875568,
+   "lat": "30.3295215",
+   "lon": "-81.7982525",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05340426108186462,
+   "addresstype": "road",
+   "name": "West Lake Marietta Drive",
+   "display_name": "West Lake Marietta Drive, Jacksonville, Duval County, Florida, 32220, United States",
+   "address": {
+    "road": "West Lake Marietta Drive",
+    "city": "Jacksonville",
+    "county": "Duval County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32220",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3291820",
+    "30.3298610",
+    "-81.7982590",
+    "-81.7982460"
+   ]
+  }
+ ]
+}

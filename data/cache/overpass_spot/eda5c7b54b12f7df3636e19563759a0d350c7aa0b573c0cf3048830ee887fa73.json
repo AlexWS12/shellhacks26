@@ -1,0 +1,125 @@
+{
+ "provider": "overpass_spot",
+ "version": "v1",
+ "payload": {
+  "query": "[out:json][timeout:60];(nwr[\"power\"][\"name\"~\"coit|gills\",i](30.3,-85.7,35.3,-78.4); nwr[\"power\"=\"substation\"](around:3000,34.0007,-80.9870););out center tags;"
+ },
+ "response": {
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+   "timestamp_osm_base": "2026-09-27T02:45:19Z",
+   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+   {
+    "type": "way",
+    "id": 511584982,
+    "center": {
+     "lat": 34.0002377,
+     "lon": -81.01535
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Five Points Substation",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 528218922,
+    "center": {
+     "lat": 34.0088893,
+     "lon": -80.9702535
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 529784015,
+    "center": {
+     "lat": 34.020461,
+     "lon": -80.9909991
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 554650082,
+    "center": {
+     "lat": 33.9872726,
+     "lon": -80.9860599
+    },
+    "tags": {
+     "barrier": "wall",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1078487417,
+    "center": {
+     "lat": 34.0180706,
+     "lon": -81.0071813
+    },
+    "tags": {
+     "barrier": "fence",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "115000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1078487455,
+    "center": {
+     "lat": 33.985739,
+     "lon": -80.9932556
+    },
+    "tags": {
+     "barrier": "fence",
+     "name": "Rosewood Substation",
+     "operator": "Dominion Energy",
+     "operator:wikidata": "Q677464",
+     "power": "substation",
+     "substation": "distribution",
+     "voltage": "33000"
+    }
+   },
+   {
+    "type": "way",
+    "id": 1317440404,
+    "center": {
+     "lat": 33.9860798,
+     "lon": -81.005719
+    },
+    "tags": {
+     "addr:city": "Columbia",
+     "addr:housenumber": "423",
+     "addr:postcode": "29205",
+     "addr:state": "SC",
+     "addr:street": "Howard Street",
+     "name": "Howard Street",
+     "operator": "Dominion Energy South Carolina",
+     "operator:wikidata": "Q114367619",
+     "power": "substation",
+     "ref": "1102"
+    }
+   }
+  ]
+ }
+}

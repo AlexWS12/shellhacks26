@@ -1,0 +1,73 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "thurmond dam",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344287101,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34557826,
+   "lat": "33.6611734",
+   "lon": "-82.1985171",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.21822785325192331,
+   "addresstype": "dam",
+   "name": "J. Strom Thurmond Dam",
+   "display_name": "J. Strom Thurmond Dam, McCormick County, South Carolina, United States",
+   "address": {
+    "dam": "J. Strom Thurmond Dam",
+    "county": "McCormick County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6606374",
+    "33.6615426",
+    "-82.2030977",
+    "-82.1967176"
+   ]
+  },
+  {
+   "place_id": 343087374,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358736223,
+   "lat": "34.1906530",
+   "lon": "-84.3301732",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.13337083466849772,
+   "addresstype": "dam",
+   "name": "Thurmond Lake Dam",
+   "display_name": "Thurmond Lake Dam, Cherokee County, Georgia, United States",
+   "address": {
+    "dam": "Thurmond Lake Dam",
+    "county": "Cherokee County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.1906030",
+    "34.1907030",
+    "-84.3302232",
+    "-84.3301232"
+   ]
+  }
+ ]
+}

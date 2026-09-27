@@ -134,7 +134,8 @@ function OpportunityList() {
   const chip = CHIPS.find((c) => c.id === filters.chip) ?? CHIPS[0];
   const sort = SORTS.find((x) => x.id === filters.sort) ?? SORTS[0];
   const shown = overlaps.filter((o) => chip.test(o) && matches(o, q));
-  if (done) shown.sort((x, y) => sort.cmp(x, y) || x.rank - y.rank);
+  // active pairs stay on top whatever the sort, same as the server's ranking
+  if (done) shown.sort((x, y) => Number(Boolean(x.finished)) - Number(Boolean(y.finished)) || sort.cmp(x, y) || x.rank - y.rank);
 
   return (
     <div className="opps">
@@ -196,6 +197,8 @@ function OpportunityList() {
               <div className="meta">
                 <Action o={o} />
                 <span>{gapLabel(o.time_gap_days)} apart</span>
+                {o.finished && <span>· one already in service</span>}
+                {slackNote(o) && <span title={slackNote(o)!}>· ±{o.distance_slack_mi} mi</span>}
                 {o.in_sponsor_sample && <span className="c-accent">· benchmark</span>}
                 {near[o.id] && (
                   <span className={`tag others cat-${near[o.id][0].category}`}>
@@ -209,6 +212,17 @@ function OpportunityList() {
       </div>
     </div>
   );
+}
+
+// Worth a note once an unlocated end could move the distance by more than a few miles.
+const SLACK_NOTE_MI = 5;
+
+function slackNote(o: Overlap): string | null {
+  const s = o.distance_slack_mi ?? 0;
+  if (s <= SLACK_NOTE_MI) return null;
+  const firm = o.distance_mi + s < 25;
+  return `One end of a project isn't located, so the distance could be off by up to ${s} mi` +
+    (firm ? "; still under 25 mi either way." : "; the pair may not really be under 25 mi.");
 }
 
 function insight(o: Overlap, timing: string): string {
@@ -259,6 +273,8 @@ function PairView({ a, b }: { a: string; b: string }) {
       </div>
       <div className="hero"><span className="big">{o.distance_mi.toFixed(2)}</span><span>miles apart</span></div>
       <div className="sub">{o.time_gap_days.toLocaleString()} days between in-service dates · {CONF_LABEL[o.pair_confidence]}</div>
+      {o.finished && <p className="note">At least one of these projects is already in service, so only records and designs can be shared, not crews.</p>}
+      {slackNote(o) && <p className="note">{slackNote(o)}</p>}
 
       <h3>Build windows</h3>
       <Gantt a={pa} b={pb} />
@@ -326,14 +342,19 @@ function EndpointLine({ e }: { e: Endpoint }) {
   const ev = e.evidence as Record<string, string | number>;
   if (e.lat == null) return <>{e.name} (not located{ev.reason ? `: ${ev.reason}` : ""})</>;
   const how: Record<string, string> = {
-    sponsor_file: "surveyed point", override: `verified by hand: ${ev.note ?? ""}`,
-    overpass: `OpenStreetMap ${ev.osm_id ?? ""}, confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
+    sponsor_file: `surveyed point from the benchmark file${ev.ref_id ? ` (${ev.ref_id})` : ""}`, override: `verified by hand: ${ev.note ?? ""}`,
+    overpass: `OpenStreetMap ${ev.osm_id ?? ""}, ` + (ev.accepted_by === "exact_name_rule"
+      ? `the only substation with this exact name in the state (${ACTOR_LABEL[String(ev.judge)] ?? ev.judge} p=${ev.p_match}, accepted by rule)`
+      : `confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`)
+      + (ev.neighbor_utility ? ` · ${ev.neighbor_utility} territory, as the title says` : ""),
     nominatim: `OpenStreetMap search ${ev.osm_id ?? ""} (${ev.kind ?? ""}), confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
     geonames_town: `town ${ev.town ?? ""}, confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
     county_centroid: `center of ${ev.county ?? "the county"} (approximate)`,
     source: "coordinates printed in the source",
   };
-  return <>{e.name} <span className="mono">({e.lat.toFixed(3)}, {e.lon!.toFixed(3)})</span> · {how[e.method] ?? e.method}</>;
+  const near = e.role === "context" ? "near " : "";
+  const from = e.role === "context" ? " · named in the description, not a line end" : "";
+  return <>{near}{e.name} <span className="mono">({e.lat.toFixed(3)}, {e.lon!.toFixed(3)})</span> · {how[e.method] ?? e.method}{from}</>;
 }
 
 function Provenance({ p }: { p: Project }) {

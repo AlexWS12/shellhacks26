@@ -16,6 +16,8 @@ export default function PipelinePanel() {
   const [open, setOpen] = useState<string | null>(null);
   const unl = Object.keys(run.unlocated);
   const passed = run.reference.filter((r) => r.passed).length;
+  const blind = run.reference.filter((r) => r.blind_passed).length;
+  const hasBlind = run.reference.some((r) => r.blind_passed != null);
   const jev = run.judges["jev"];
   const gem = run.judges["gemini"];
   const other = Object.entries(run.judges).filter(([k]) => k !== "jev" && k !== "gemini").reduce((n, [, t]) => n + t.n, 0);
@@ -77,9 +79,16 @@ export default function PipelinePanel() {
               <span className={`big ${passed === run.reference.length ? "" : "fail"}`}>{passed}/{run.reference.length}</span>
               <span>exact on distance and days</span>
             </div>
+            {hasBlind && (
+              <div className="bench">
+                <span className={`big ${blind === run.reference.length ? "" : "fail"}`}>{blind}/{run.reference.length}</span>
+                <span>within 1 mi using our own geocoding, without the file&apos;s coordinates</span>
+              </div>
+            )}
             <table className="mini"><tbody>
               {run.reference.map((r) => (
-                <tr key={r.overlap_id}><td>{r.overlap_id}</td><td>{r.got_mi ?? "?"} mi · {r.got_days ?? "?"} d</td><td className={r.passed ? "" : "fail"}>{r.passed ? "✓" : "✗"}</td></tr>
+                <tr key={r.overlap_id}><td>{r.overlap_id}</td><td>{r.got_mi ?? "?"} mi · {r.got_days ?? "?"} d</td><td className={r.passed ? "" : "fail"}>{r.passed ? "✓" : "✗"}</td>
+                  {hasBlind && <td className={r.blind_passed ? "" : "fail"} title="Our own geocoding">ours {r.blind_mi ?? "?"} mi</td>}</tr>
               ))}
             </tbody></table>
           </>

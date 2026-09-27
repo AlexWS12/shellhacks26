@@ -47,6 +47,8 @@ def title_case(s: str) -> str:
 
 def norm_key(name: str) -> str:
     s = name.lower().replace("–", "-").replace("—", "-").replace("(usa)", "").replace("(sav)", "")
+    # OSM puts voltages in names: 'Mitchell Substation (230kV)', 'Wrens 46/12 kV Substation'
+    s = re.sub(r"\(?\b\d+(\.\d+)?(\s?/\s?\d+(\.\d+)?)*\s?kv\b\)?", "", s)
     s = re.sub(r"\b(sub|substation|primary|pri|tap|jct|switching station|ss)\b", "", s)
     s = re.sub(r"[^a-z0-9 ]", "", s)
     s = re.sub(r"\s\d+$", "", " ".join(s.split()))

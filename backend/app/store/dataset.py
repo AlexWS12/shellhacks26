@@ -5,7 +5,9 @@ from typing import Any
 from app.config import SNAPSHOT_PATH
 from app.core.analysis import cost_block, shared_resources
 from app.core.models import RESEARCH_CATEGORIES, Check, Overlap, Project, ReferenceResult, ResearchProject, ThirdParty
-from app.core.overlap import Filters, distance_mi, find_overlaps, time_gap_days, weaker, windows_overlap
+from app.config import TODAY
+from app.core.overlap import (Filters, center_slack_mi, distance_mi, find_overlaps, time_gap_days, weaker,
+                              windows_overlap)
 from app.core.research import nearby
 
 
@@ -65,7 +67,9 @@ def pair_detail(a_id: str, b_id: str) -> dict[str, Any] | None:
                 distance_mi=round(distance_mi((a.lat, a.lon), (b.lat, b.lon)), 2),  # type: ignore[arg-type]
                 time_gap_days=time_gap_days(date.fromisoformat(a.in_service_date), date.fromisoformat(b.in_service_date)),
                 windows_overlap=windows_overlap(a, b), pair_confidence=weaker(a.location_confidence, b.location_confidence),
-                in_sponsor_sample=(a.id, b.id) in CURRENT.sample_pairs)
+                in_sponsor_sample=(a.id, b.id) in CURRENT.sample_pairs,
+                finished=min(a.in_service_date, b.in_service_date) < TODAY,
+                distance_slack_mi=round(center_slack_mi(a) + center_slack_mi(b), 1))
     shared = shared_resources(a, b, o)
     return {"overlap": o.model_dump(), "a": a.model_dump(), "b": b.model_dump(), "shared": shared,
             "cost": cost_block(a, b, o), "analysis": CURRENT.analyses.get(o.id), "brief": CURRENT.briefs.get(o.id),

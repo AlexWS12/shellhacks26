@@ -22,6 +22,7 @@ class Board:
     research: dict[str, ResearchProject] = field(default_factory=dict)  # each scout writes its own category
     research_selected: list[str] = field(default_factory=list)  # third_party
     third_party: list[ThirdParty] = field(default_factory=list)  # third_party
+    blind: dict[str, dict[str, Any]] = field(default_factory=dict)  # geocoder: benchmark projects without the file's coordinates
     ga_page_count: int = 0
     ga_ceii_pages: int = 0
 
@@ -45,4 +46,5 @@ class Board:
             "research": [r.model_dump() for r in self.research.values()],
             "research_selected": self.research_selected,
             "third_party": [t.model_dump() for t in self.third_party],
+            "blind": self.blind,
         }
