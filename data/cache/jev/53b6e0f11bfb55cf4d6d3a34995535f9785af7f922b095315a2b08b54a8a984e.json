@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Hooks",
+   "filing_state": "SC",
+   "project": "Hooks - Thurmond 115kV Tie: Rebuild",
+   "description": "Rebuilding section of line between Hooks and Thurmond. Approximately 2.3 miles. The line will be rebuilt on existing R/W using steel poles, 115 kV insulation, and 1272 ACSR conductor.",
+   "zone": null,
+   "candidate": {
+    "name": "Hooks",
+    "kind": "place=hamlet",
+    "county": "Russell County",
+    "state": "outside SC/GA",
+    "lat": 32.1918178,
+    "lon": -85.2324376
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.15
+   }
+  },
+  "cost_usd": 2.1546000000000003e-05,
+  "latency_ms": 225
+ }
+}

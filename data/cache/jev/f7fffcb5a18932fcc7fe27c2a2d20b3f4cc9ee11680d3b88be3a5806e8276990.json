@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Jasper",
+   "utility": "DESC",
+   "filing_state": "SC",
+   "project": "Jasper \u2013 Okatie 230 kV #2: Construct",
+   "description": "Construct a 230 kV line with B1272 ACSR from Jasper to Okatie 230/115kV Substation. The line is estimated to be 6.5 miles long. This makes Jasper a Medium Impact substation and will require a new CIP Hut.",
+   "zone": null,
+   "candidate": {
+    "name": "Jasper Substation",
+    "operator": "",
+    "voltage": "230000",
+    "lat": 32.3606993,
+    "lon": -81.1241523,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.76
+   }
+  },
+  "cost_usd": 2.3058000000000002e-05,
+  "latency_ms": 328
+ }
+}

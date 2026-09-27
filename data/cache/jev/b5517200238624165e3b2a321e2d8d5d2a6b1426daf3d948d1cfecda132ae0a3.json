@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "North Jackson",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "CC - North Georgia Data Network Upgrades",
+   "description": "Construct approximately 7 miles of 115kV line with minimum 170C 1351 ACSS conductor from Gillsville Tap Junction to Midway. Utilize the existing GPC owned North Jackson - Lawrence Smith 46kV ROW that is to be retired. Disconnect the East Maysville 115kV tap at Midway 115kV and terminate the new Pond Fork - Midway 115kV line.",
+   "zone": "212",
+   "candidate": {
+    "name": "North Jackson Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 34.182423,
+    "lon": -83.6646578,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.87
+   }
+  },
+  "cost_usd": 2.4528000000000003e-05,
+  "latency_ms": 252
+ }
+}

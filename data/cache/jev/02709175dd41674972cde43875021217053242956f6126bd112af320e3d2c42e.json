@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Tazewell",
+   "project": "GTC: Talbot #2 - Tazewell 500kV Line",
+   "description": "Build a new 500kV line from Tazewell to Talbot #2, approximately 20 miles. Make all necessary accommodations at Tazewell and Talbot #2 for the new 500kV breakers and line termination.",
+   "candidate_town": "Tazewell, GA",
+   "county": "Marion County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.77
+   }
+  },
+  "cost_usd": 1.9824000000000002e-05,
+  "latency_ms": 343
+ }
+}

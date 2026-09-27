@@ -90,7 +90,8 @@ async def evaluate(state: Any, questions: dict[str, Any], use_cache: bool = True
         data = data.get("result", data)
         result = {"answers": data["answers"], "cost_usd": _cost(data),
                   "latency_ms": round((time.perf_counter() - started) * 1000)}
-        cache.put("jev", CACHE_VERSION, payload, result)
+        if use_cache:  # live-only calls (the watchdog's run checks) never read it back, so don't store them
+            cache.put("jev", CACHE_VERSION, payload, result)
         return {**result, "cached": False}
     except Exception as e:  # the judge falls back
         log.warning("Jev call failed: %s: %s", type(e).__name__, str(e)[:200])

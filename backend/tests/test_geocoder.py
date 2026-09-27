@@ -266,3 +266,42 @@ def test_voltages_in_osm_names_are_ignored():
     assert norm_key("Mitchell Substation (230kV)") == norm_key("Mitchell") == "mitchell"
     assert norm_key("North Tifton Substation (500kV)") == "north tifton"
     assert norm_key("Wrens 46/12 kV Substation") == "wrens"
+
+
+def test_live_only_jev_calls_are_not_cached(monkeypatch):
+    # The watchdog asks with use_cache=False every few seconds; storing those answers only churned the cache.
+    from app.clients import jev
+
+    class Resp:
+        status_code = 200
+        headers: dict = {}
+
+        def raise_for_status(self) -> None:
+            pass
+
+        def json(self) -> dict:
+            return {"answers": {"q": {"noul": 0.5}}, "usage": {"input_tokens": 1}}
+
+    class Client:
+        def __init__(self, *a, **k) -> None:
+            pass
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *a) -> None:
+            pass
+
+        async def post(self, *a, **k):
+            return Resp()
+
+    puts: list = []
+    monkeypatch.setattr(config, "JEV_PROVIDER", "typesafe")
+    monkeypatch.setenv("TYPESAFE_API_KEY", "test")
+    monkeypatch.setattr(jev.httpx, "AsyncClient", Client)
+    monkeypatch.setattr(jev.cache, "put", lambda *a: puts.append(a))
+    monkeypatch.setattr(jev.cache, "get", lambda *a: None)
+    assert asyncio.run(jev.evaluate("s", {"q": {}}, use_cache=False))["answers"]
+    assert puts == []
+    asyncio.run(jev.evaluate("s", {"q": {}}))
+    assert len(puts) == 1
