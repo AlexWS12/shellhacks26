@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { api, type FilterState } from "@/lib/api";
 import { activeIn, lineCheck } from "@/lib/filters";
 import {
-  ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
+  ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, WRITERS, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { Brief, CostBlock, CostEstimate, Endpoint, Overlap, PairDetail, Project, Shared, ThirdParty, Tier, Written } from "@/lib/types";
@@ -459,10 +459,10 @@ function PairOverview({ o, pa, pb, cost, shared, analysis, links }: {
           {shared.tier && <p className="oc-caption">{TIER_LABEL[shared.tier]}</p>}
         </div>
       )}
-      <div className={`oc-analysis ${analysis?.actor === "gemini" ? "gemini" : ""}`}>
+      <div className={`oc-analysis ${analysis && WRITERS.has(analysis.actor) ? "ai" : ""}`}>
         <p>{analysis ? analysis.text : insight(o, shared?.timing ?? "unknown")}</p>
         <div className="oc-byline">
-          {analysis?.actor === "gemini" ? "Written by Gemini from the filing text" : "From the computed facts"}
+          {analysis && WRITERS.has(analysis.actor) ? `Written by ${ACTOR_LABEL[analysis.actor]} from the filing text` : "From the computed facts"}
           {analysis?.unsupported_numbers?.length ? <span className="fail"> · check numbers: {analysis.unsupported_numbers.join(", ")}</span> : null}
         </div>
       </div>
@@ -709,7 +709,7 @@ function ResearchView({ id }: { id: string }) {
 
 function Byline({ w }: { w: Written }) {
   return (
-    <div className="by"><Chip a={w.actor} />{w.actor === "gemini" ? "Written by Gemini from the facts below" : "Template from the computed facts"}
+    <div className="by"><Chip a={w.actor} />{WRITERS.has(w.actor) ? `Written by ${ACTOR_LABEL[w.actor]} from the facts below` : "Template from the computed facts"}
       {w.unsupported_numbers?.length ? <span className="fail">check numbers: {w.unsupported_numbers.join(", ")}</span> : null}</div>
   );
 }

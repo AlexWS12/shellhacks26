@@ -14,6 +14,8 @@ export const errText = (e: unknown) => (e instanceof Error ? e.message : String(
 const HUES: Record<string, string[]> = {
   jev: ["#fb923c", "#fdba74", "#ea580c", "#fed7aa"],
   gemini: ["#e879f9", "#f0abfc", "#c084fc", "#d946ef", "#f5d0fe"],
+  claude: ["#fda4af", "#fb7185", "#fecdd3"],
+  openai: ["#22d3ee", "#67e8f9", "#06b6d4"],
 };
 const OTHER = ["#94a1b9", "#cbd5e1", "#7f8ba5"];
 

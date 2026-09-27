@@ -44,6 +44,8 @@ def env_float(name: str, default: float) -> float:
 
 # LLMs: keys only. Which model does which job is in config/models.json.
 GEMINI_API_KEY = env("GEMINI_API_KEY")
+ANTHROPIC_API_KEY = env("ANTHROPIC_API_KEY")  # Claude
+OPENAI_API_KEY = env("OPENAI_API_KEY")
 JEV_PROVIDER = env("JEV_PROVIDER")  # where Jev runs: typesafe | openrouter | cloudflare | mock | "" (off)
 # Model names used to come from these. They're ignored now, so the API warns instead of silently changing models.
 LEGACY_MODEL_VARS = [v for v in ("GEMINI_MODEL", "GEMINI_FALLBACK_MODEL", "GEMINI_RETRIES", "JEV_MODEL") if env(v)]
