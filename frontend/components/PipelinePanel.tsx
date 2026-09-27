@@ -30,7 +30,7 @@ export default function PipelinePanel() {
             <div className="src" key={id}>
               <b>{s.label}</b>
               <span className="num">{s.read}/{s.total}</span>
-              <div className="bar"><i style={{ width: `${Math.min(100, (s.read / s.total) * 100)}%` }} /></div>
+              <div className="bar"><i style={{ transform: `scaleX(${Math.min(1, s.read / s.total)})` }} /></div>
             </div>
           );
         })}
@@ -72,7 +72,9 @@ export default function PipelinePanel() {
         <p className="label">Data issues found <span className="count">{run.checks.length || ""}</span></p>
         {run.checks.length === 0 && <p className="empty">Problems the validator finds in the filings show up here.</p>}
         {checks.map((c) => (
-          <div key={c.id} className={`check ${c.level}`} onClick={() => setOpen(open === c.id ? null : c.id)}>
+          <div key={c.id} className={`check ${c.level}`} role="button" tabIndex={0} aria-expanded={open === c.id}
+            onClick={() => setOpen(open === c.id ? null : c.id)}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), setOpen(open === c.id ? null : c.id))}>
             <i className="dot" />
             <div>
               {c.title}

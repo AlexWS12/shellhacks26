@@ -42,14 +42,14 @@ export default function Gantt({ a, b }: { a: Project; b: Project }) {
     <svg className="gantt" viewBox={`0 0 ${w} ${h}`} role="img" aria-label="Build windows">
       {years.map((y) => (
         <g key={y}>
-          <line x1={x(new Date(y, 0, 1))} x2={x(new Date(y, 0, 1))} y1={4} y2={58} stroke="var(--line-2)" />
-          <text x={x(new Date(y, 0, 1))} y={74} textAnchor="middle" fontSize={11} fill="var(--faint)" fontFamily="var(--font-mono)">{y}</text>
+          <line x1={x(new Date(y, 0, 1))} x2={x(new Date(y, 0, 1))} y1={4} y2={58} className="tick" />
+          <text x={x(new Date(y, 0, 1))} y={74} textAnchor="middle" className="yr">{y}</text>
         </g>
       ))}
       {overlap && <rect x={x(lo!)} y={4} width={x(hi) - x(lo!)} height={54} fill="var(--zone)" fillOpacity={0.14} />}
-      <text x={0} y={22} fontSize={12} fill="var(--muted)">Dominion</text>
+      <text x={0} y={22}>Dominion</text>
       {bar(wa, 12, "var(--desc)", "ga-a")}
-      <text x={0} y={48} fontSize={12} fill="var(--muted)">Georgia</text>
+      <text x={0} y={48}>Georgia</text>
       {bar(wb, 38, "var(--gpc)", "ga-b")}
     </svg>
   );

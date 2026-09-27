@@ -11,7 +11,10 @@ export default function Header() {
   return (
     <header className="top">
       <div className="brand">
-        <i className="mark" />
+        <svg className="mark" viewBox="0 0 22 22" fill="none" strokeWidth="2" aria-hidden="true">
+          <circle className="a" cx="8" cy="11" r="6" />
+          <circle className="b" cx="14" cy="11" r="6" />
+        </svg>
         <h1>Tandem</h1>
         <span className="tag">Coordinating utility construction across state lines</span>
       </div>

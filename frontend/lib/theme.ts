@@ -20,6 +20,7 @@ export function mapPalette() {
     zone: token("--zone"),
     zoneFar: token("--zone-far"),
     bg: token("--bg"),
+    spark: token("--spark"),
     water: token("--map-water"),
     land: token("--map-land"),
     landFocus: token("--map-land-focus"),
