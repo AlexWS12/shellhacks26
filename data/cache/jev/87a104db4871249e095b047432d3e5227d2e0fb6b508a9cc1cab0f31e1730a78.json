@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Sumter",
+   "utility": "DESC",
+   "filing_state": "SC",
+   "project": "Eastover \u2013 Sumter 115kV DEP Tie: Rebuild with 1272 ACSR",
+   "description": "Upgrade the DESC section (approx. 1 mile) of the tie line from 397.5 ACSR Ibis to 1272 ACSR.",
+   "zone": null,
+   "candidate": {
+    "name": "Sumter Substation",
+    "operator": "",
+    "voltage": "230000",
+    "lat": 33.8976611,
+    "lon": -80.3239761,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.61
+   }
+  },
+  "cost_usd": 2.2092e-05,
+  "latency_ms": 223
+ }
+}

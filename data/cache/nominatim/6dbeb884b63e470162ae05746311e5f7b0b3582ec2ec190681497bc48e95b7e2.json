@@ -1,0 +1,48 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "north georgia data",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 429099074,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1097502169,
+   "lat": "33.7259584",
+   "lon": "-84.6195747",
+   "category": "building",
+   "type": "yes",
+   "place_rank": 30,
+   "importance": 5.3360036621607044e-05,
+   "addresstype": "building",
+   "name": "Aligned Data Centers",
+   "display_name": "Aligned Data Centers, 1551, North River Road, Lithia Springs, Douglas County, Georgia, 30122, United States",
+   "address": {
+    "building": "Aligned Data Centers",
+    "house_number": "1551",
+    "road": "North River Road",
+    "town": "Lithia Springs",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30122",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7251913",
+    "33.7267250",
+    "-84.6213274",
+    "-84.6178219"
+   ]
+  }
+ ]
+}

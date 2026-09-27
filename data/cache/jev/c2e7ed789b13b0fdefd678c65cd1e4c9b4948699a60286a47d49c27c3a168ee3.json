@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "West End",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Grady-West End 115kV Rebuild",
+   "description": "Reconductor the Grady - West End 115kV line (2.6 miles) using 200C 1351 ACSS Martin.",
+   "zone": "206",
+   "candidate": {
+    "name": "West End Substation",
+    "operator": "Duke Energy Progress",
+    "voltage": "230000",
+    "lat": 35.2195791,
+    "lon": -79.5302689,
+    "state": "outside SC/GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.12
+   }
+  },
+  "cost_usd": 2.2176000000000002e-05,
+  "latency_ms": 326
+ }
+}

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { api, type FilterState } from "@/lib/api";
-import { activeIn } from "@/lib/filters";
+import { activeIn, lineCheck } from "@/lib/filters";
 import { ACTOR_LABEL, CONF_LABEL, OWNER, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, utilityName } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { Endpoint, Overlap, PairDetail, Project } from "@/lib/types";
@@ -308,12 +308,14 @@ function EndpointLine({ e }: { e: Endpoint }) {
 }
 
 function Provenance({ p }: { p: Project }) {
+  const line = lineCheck(p);
   return (
     <div>
       <b className={p.utility === "DESC" ? "c-desc" : "c-gpc"}>{p.name}</b><br />
       {p.source_file}, page {p.source_page} ({p.source_ref})
       {p.project_type && <> · {TYPE_LABEL[p.project_type] ?? p.project_type} <Chip a={p.project_type_actor ?? "code"} /></>}
       <br />{p.endpoints.length ? p.endpoints.map((e, i) => <span key={i}>{i > 0 && "; "}<EndpointLine e={e} /></span>) : "No endpoint names in the title"}
+      {line.why && <><br />Line not drawn: {line.why}.</>}
     </div>
   );
 }

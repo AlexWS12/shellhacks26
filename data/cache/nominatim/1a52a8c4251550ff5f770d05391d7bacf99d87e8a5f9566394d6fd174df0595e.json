@@ -1,0 +1,46 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "qts fayetteville",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342753618,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1472128597,
+   "lat": "33.4483646",
+   "lon": "-84.5224884",
+   "category": "building",
+   "type": "yes",
+   "place_rank": 30,
+   "importance": 3.750133516437045e-05,
+   "addresstype": "building",
+   "name": "QTS",
+   "display_name": "QTS, Highway 54 West, Fayetteville, Fayette County, Georgia, United States",
+   "address": {
+    "building": "QTS",
+    "road": "Highway 54 West",
+    "town": "Fayetteville",
+    "county": "Fayette County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4479544",
+    "33.4488517",
+    "-84.5243392",
+    "-84.5206382"
+   ]
+  }
+ ]
+}

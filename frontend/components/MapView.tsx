@@ -5,7 +5,7 @@
 import maplibregl, { type GeoJSONSource, type LngLatBoundsLike, type StyleSpecification } from "maplibre-gl";
 import { useEffect, useRef } from "react";
 
-import { activeIn, visible } from "@/lib/filters";
+import { activeIn, lineCheck, visible } from "@/lib/filters";
 import { engineColor } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import { mapPalette } from "@/lib/theme";
@@ -88,15 +88,19 @@ function buildData() {
   const today = health?.today ?? "2026-09-26";
   const shown = Object.values(run.projects).filter((p) => visible(p, filters, today) && activeIn(p, year));
   const ids = new Set(shown.map((p) => p.id));
-  const hollow = (p: Project) => !["verified", "confirmed_osm"].includes(p.location_confidence);
+  // hollow = approximate: a weak source, or a line we won't draw (so the point is only roughly on the work)
+  const hollow = (p: Project) => {
+    const l = lineCheck(p);
+    return !["verified", "confirmed_osm"].includes(p.location_confidence) || (l.span != null && !l.draw);
+  };
   const points = fc(shown.map((p) => ({
     type: "Feature",
     properties: { id: p.id, u: p.utility, hollow: hollow(p), name: p.name },
     geometry: { type: "Point", coordinates: [p.lon!, p.lat!] },
   })));
   const lines = fc(shown.flatMap((p) => {
+    if (!lineCheck(p).draw) return []; // one end, or too long to trust or to draw: the (hollow) point stays
     const eps = p.endpoints.filter((e) => e.lat != null && e.lon != null);
-    if (eps.length !== 2) return [];
     return [{ type: "Feature", properties: { id: p.id, u: p.utility, hollow: hollow(p) },
       geometry: { type: "LineString", coordinates: eps.map((e) => [e.lon!, e.lat!]) } } as GeoJSON.Feature];
   }));

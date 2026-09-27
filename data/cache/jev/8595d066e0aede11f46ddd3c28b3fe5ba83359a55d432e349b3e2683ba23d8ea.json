@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Riddleville",
+   "utility": "GTC",
+   "filing_state": "GA",
+   "project": "GTC: Riddleville Bus Replacement",
+   "description": "GTC will replace the main 115kV bus at Riddleville substation with higher rating.",
+   "zone": "214",
+   "candidate": {
+    "name": "Ridgeville Substation",
+    "operator": "",
+    "voltage": "46000",
+    "lat": 33.1001644,
+    "lon": -80.3099574,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  },
+  "cost_usd": 2.1294000000000003e-05,
+  "latency_ms": 175
+ }
+}

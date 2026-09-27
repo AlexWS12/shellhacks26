@@ -89,7 +89,7 @@ def to_project(row: TableRow, det: DetailPage | None, source_file: str) -> tuple
         raise ValueError(f"TEAMS {row.teams}: no need date")
     start = parse_date(det.start) if det and det.start else None
     name = det.title if det and len(det.title) >= len(row.name) - 3 else row.name
-    miles = re.search(r"(\d+(?:\.\d+)?)\s*miles", det.description if det else "", re.I)
+    miles = re.search(r"(\d+(?:\.\d+)?)[\s-]*miles?\b", det.description if det else "", re.I)
     if det is None:
         checks.append(Check(id=f"nodetail:{pid}", level="warn", rule="missing_detail", title="No project page",
                             detail=f"TEAMS {row.teams} is in the table but has no detail page.",

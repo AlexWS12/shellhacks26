@@ -1,0 +1,43 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Wansley",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Ashley Park-Wansley 500kV",
+   "description": "Construct a 500kV line from Ashley Park to Wansley, approximately 35 miles long.",
+   "zone": "208",
+   "candidate": {
+    "name": "Wansley Combined Cycle",
+    "operator": "Southern Power",
+    "voltage": "",
+    "lat": 33.4058756,
+    "lon": -85.0374322,
+    "state": "GA",
+    "power": "plant"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.37
+   }
+  },
+  "cost_usd": 2.1504000000000003e-05,
+  "latency_ms": 228
+ }
+}

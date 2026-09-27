@@ -1,6 +1,7 @@
 # Source order: override > benchmark points > OSM substation > GeoNames town > Nominatim > unlocated.
 # Fuzzy matches get confirmed by the judge. Code rejects a match that puts one project's two ends
-# more than MAX_SPAN_MI apart, then looks again near the end it trusts more.
+# farther apart than span_limit, or an out-of-state end more than TIE_CROSS_MI from the other one,
+# then looks again near the end it trusts more.
 
 import asyncio
 
@@ -9,13 +10,13 @@ from app.clients import gemini, nominatim, overpass
 from app.core.endpoints import clean_endpoint, looks_awkward, split_endpoints
 from app.core.models import Check, Endpoint, Project
 from app.core.normalize import norm_key
-from app.core.overlap import center, distance_mi
+from app.core.overlap import MAX_SPAN_MI, TIE_CROSS_MI, center, distance_mi, span_limit
 from app.core.places import OsmIndex, Place, States, Towns, load_overrides, sponsor_points, variants
 from app.core.sample import match_projects
 from app.runtime.agent import Agent, AgentSpec, Ctx
 
 ACCEPT = 0.5
-MAX_SPAN_MI = 100.0  # longer than any single line or tie in either plan
+ACCEPT_OUT_OF_STATE = 0.65  # a candidate outside the filing's state needs a clearer yes
 STRENGTH = {"override": 0, "sponsor_file": 0, "overpass": 1, "nominatim": 2, "geonames_town": 2}
 SPLIT_SCHEMA = {"type": "object", "properties": {"endpoints": {"type": "array", "items": {"type": "string"}, "maxItems": 2},
                                                  "note": {"type": "string"}}, "required": ["endpoints"]}
@@ -143,29 +144,52 @@ class Geocoder(Agent):
             return names
         return fallback
 
+    def _outside(self, e: Endpoint, state: str) -> bool:
+        # A searched match (not a surveyed point) that landed outside the filing's state.
+        return STRENGTH.get(e.method, 3) > 0 and self.states.state_of(e.lat, e.lon) != state  # type: ignore[arg-type]
+
+    def _bad_span(self, a: Endpoint, b: Endpoint, state: str,
+                  limit: float = MAX_SPAN_MI) -> tuple[Endpoint, Endpoint, str] | None:
+        # (weak end, kept end, why) when the pair can't be one project, else None.
+        d = distance_mi((a.lat, a.lon), (b.lat, b.lon))  # type: ignore[arg-type]
+        outside = [e for e in (a, b) if self._outside(e, state)] if d > TIE_CROSS_MI else []
+        if len(outside) == 1:
+            weak = outside[0]
+            why = f"outside {state} and {d:.0f} mi from the other end (limit {TIE_CROSS_MI:.0f} for a border tie)"
+        elif d > limit:
+            # drop the weaker match; between equals, the one outside the filing's state
+            rank = lambda e: (STRENGTH.get(e.method, 3), self.states.state_of(e.lat, e.lon) != state)  # noqa: E731
+            weak = a if rank(a) > rank(b) else b
+            why = f"{d:.0f} mi from the other end (limit {limit:.0f})"
+        else:
+            return None
+        if STRENGTH.get(weak.method, 3) == 0:
+            return None  # both from verified sources: leave it for a human
+        return weak, (b if weak is a else a), why
+
     async def check_span(self, ctx: Ctx, p: Project, eps: list[Endpoint], state: str) -> list[Endpoint]:
         located = [e for e in eps if e.lat is not None]
         if len(located) != 2:
             return eps
-        a, b = located
-        d = distance_mi((a.lat, a.lon), (b.lat, b.lon))  # type: ignore[arg-type]
-        if d <= MAX_SPAN_MI:
+        bad = self._bad_span(*located, state, span_limit(p.miles))
+        if bad is None:
             return eps
-        # drop the weaker match; between equals, the one outside the filing's state
-        rank = lambda e: (STRENGTH.get(e.method, 3), self.states.state_of(e.lat, e.lon) != state)  # noqa: E731
-        weak, keep = (a, b) if rank(a) > rank(b) else (b, a)
-        if STRENGTH.get(weak.method, 3) == 0:
-            return eps  # both from verified sources: leave it for a human
+        weak, keep, why = bad
         ctx.emit("endpoint.rejected", project_id=p.id, endpoint=weak.name, candidate=weak.evidence.get("matched", ""),
                  actor="code")
-        ctx.log(f"Geocoder: {weak.name} -> {weak.evidence.get('matched')} is {d:.0f} mi from {keep.name}, "
+        ctx.log(f"Geocoder: {weak.name} -> {weak.evidence.get('matched')} is {why}, "
                 f"too far for one project. Looking again near {keep.name}.")
-        note = f"{weak.evidence.get('matched')} rejected by code: {d:.0f} mi from {keep.name} (limit {MAX_SPAN_MI:.0f})"
+        note = f"{weak.evidence.get('matched')} rejected by code: {why}"
         again = await self.locate_endpoint(ctx, p, weak.name, state, near=(keep.lat, keep.lon), prior=[note])  # type: ignore[arg-type]
+        if again.lat is not None and (bad := self._bad_span(again, keep, state, span_limit(p.miles))) is not None and bad[0] is again:
+            # the second look found something just as implausible: leave the end unlocated
+            tried = [note, f"{again.evidence.get('matched')} rejected by code: {bad[2]}"]
+            again = Endpoint(name=weak.name, evidence={"tried": tried, "reason": "; ".join(tried)})
         return [again if e is weak else e for e in eps]
 
-    def _far(self, lat: float, lon: float, near: tuple[float, float] | None) -> bool:
-        return near is not None and distance_mi((lat, lon), near) > MAX_SPAN_MI
+    @staticmethod
+    def _far(p: Project, lat: float, lon: float, near: tuple[float, float] | None) -> bool:
+        return near is not None and distance_mi((lat, lon), near) > span_limit(p.miles)
 
     async def locate_endpoint(self, ctx: Ctx, p: Project, name: str, state: str,
                               near: tuple[float, float] | None = None, prior: list[str] | None = None) -> Endpoint:
@@ -175,10 +199,10 @@ class Geocoder(Agent):
         for k in keys:
             if (o := self.overrides.get(f"{k}|{state}")) is not None:
                 return self._ep(name, o, "override", "verified", o.extra)
-            if (s := self.points.get(k)) is not None and not self._far(s.lat, s.lon, near):
+            if (s := self.points.get(k)) is not None and not self._far(p, s.lat, s.lon, near):
                 return self._ep(name, s, "sponsor_file", "verified", s.extra)
 
-        cands = [c for c in self.osm.candidates(key, state) if not self._far(c[1]["lat"], c[1]["lon"], near)]
+        cands = [c for c in self.osm.candidates(key, state) if not self._far(p, c[1]["lat"], c[1]["lon"], near)]
         if not cands:
             tried.append("OpenStreetMap: no substation by that name" + (" nearby" if near else ""))
         for score, f, via in cands:
@@ -200,14 +224,14 @@ class Geocoder(Agent):
                       "or region than the project describes.",
                 heuristic=lambda e=exact, m=same: (0.85 if m else 0.45) if e else (0.4 if m else 0.25),
                 project_id=p.id)
-            if v.value >= ACCEPT:
+            if v.value >= (ACCEPT if same else ACCEPT_OUT_OF_STATE):
                 return self._ep(name, Place(f["lat"], f["lon"], f["name"], {}), "overpass", "confirmed_osm",
                                 {"osm_id": f["osm_id"], "osm_name": f["name"], "operator": f["operator"],
                                  "osm_match": via, "candidate_state": f.get("state"), "judge": v.actor,
                                  "p_match": round(float(v.value), 3)})
             tried.append(f"OpenStreetMap {f['name']} ({f.get('state') or 'outside SC/GA'}): rejected by {v.actor}")
 
-        towns = [(k, t) for k in keys if k and (t := self.towns.find(k, state)) and not self._far(t.lat, t.lon, near)]
+        towns = [(k, t) for k in keys if k and (t := self.towns.find(k, state)) and not self._far(p, t.lat, t.lon, near)]
         if not towns:
             tried.append(f"GeoNames: no town by that name in {state}")
         for k, town in towns[:1]:
@@ -242,7 +266,7 @@ class Geocoder(Agent):
             return None
         for r in results:
             r["state"] = self.states.state_of(r["lat"], r["lon"])
-        named = [r for r in results if norm_key(r["name"]) in keys and not self._far(r["lat"], r["lon"], near)]
+        named = [r for r in results if norm_key(r["name"]) in keys and not self._far(p, r["lat"], r["lon"], near)]
         named.sort(key=lambda r: (r["state"] != state, r["kind"] != "power=substation"))
         if not named:
             tried.append("Nominatim: no place or substation by that name" + (" nearby" if near else ""))
@@ -258,7 +282,7 @@ class Geocoder(Agent):
                 true="The endpoint is this substation, or is named after this community and the project area fits.",
                 false="The name only coincides; the project describes a different area or state.",
                 heuristic=lambda m=same, s=sub: (0.8 if s else 0.7) if m else 0.45, project_id=p.id)
-            if v.value >= ACCEPT:
+            if v.value >= (ACCEPT if same else ACCEPT_OUT_OF_STATE):
                 return self._ep(name, Place(r["lat"], r["lon"], r["display_name"], {}), "nominatim",
                                 "confirmed_osm" if sub else "town",
                                 {"osm_id": r["osm_id"], "kind": r["kind"], "county": r["county"],

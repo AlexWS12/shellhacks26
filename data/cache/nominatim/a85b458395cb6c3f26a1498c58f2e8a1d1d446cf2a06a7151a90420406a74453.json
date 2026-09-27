@@ -1,0 +1,44 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "riddleville",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342986182,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 119943,
+   "lat": "32.9068227",
+   "lon": "-82.6656894",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.3807705141182751,
+   "addresstype": "hamlet",
+   "name": "Riddleville",
+   "display_name": "Riddleville, Washington County, Georgia, United States",
+   "address": {
+    "hamlet": "Riddleville",
+    "county": "Washington County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.8996811",
+    "32.9141627",
+    "-82.6746919",
+    "-82.6574449"
+   ]
+  }
+ ]
+}

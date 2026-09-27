@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Farley",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Farley (Apc)-Tazewell 500kV",
+   "description": "Construct a new 500kV line from Farley (APC) to Tazewell substation, approximately 120 miles long. Construct a 5 breaker 500kV ring bus to loop in the Blacksmith - Talbot 500kV line, terminate the new Farley - Tazewell 500kV and Talbot #2 - Tazewell 500kV lines. Install a 500/230kV auto transformer to connect to the existing 230kV switchyard.",
+   "zone": "216",
+   "candidate": {
+    "name": "Farley Substation",
+    "operator": "",
+    "voltage": "500000",
+    "lat": 31.2236137,
+    "lon": -85.1163237,
+    "state": "outside SC/GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.26
+   }
+  },
+  "cost_usd": 2.5998000000000004e-05,
+  "latency_ms": 336
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Mcever Road",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Mcever Road - Shoal Creek 115kV Rebuild Phase Iii",
+   "description": "Rebuild the 2 - 4/0 copper part (approximately 2.9 miles) of the Gainesville Ferry - Lakeside WTP A line section, part of the McEver Road - Shoal Creek 115kV line, using 200C 1351 ACSS conductor.",
+   "zone": "212",
+   "candidate": {
+    "name": "McEver Road Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000",
+    "lat": 34.2728832,
+    "lon": -83.8738012,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.86
+   }
+  },
+  "cost_usd": 2.3856000000000003e-05,
+  "latency_ms": 260
+ }
+}

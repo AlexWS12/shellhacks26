@@ -1,0 +1,73 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "wateree",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342577144,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154213180,
+   "lat": "33.8071004",
+   "lon": "-80.6373094",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Wateree",
+   "display_name": "Wateree, Richland County, South Carolina, United States",
+   "address": {
+    "hamlet": "Wateree",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7871004",
+    "33.8271004",
+    "-80.6573094",
+    "-80.6173094"
+   ]
+  },
+  {
+   "place_id": 338715122,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 14463168,
+   "lat": "34.1246484",
+   "lon": "-80.6496273",
+   "category": "waterway",
+   "type": "river",
+   "place_rank": 18,
+   "importance": 0.2909516038077344,
+   "addresstype": "river",
+   "name": "Wateree River",
+   "display_name": "Wateree River, Kershaw County, South Carolina, United States",
+   "address": {
+    "river": "Wateree River",
+    "county": "Kershaw County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7430232",
+    "34.4712904",
+    "-80.9287799",
+    "-80.5976716"
+   ]
+  }
+ ]
+}

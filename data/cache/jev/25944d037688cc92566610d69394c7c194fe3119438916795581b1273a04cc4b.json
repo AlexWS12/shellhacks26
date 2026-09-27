@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Lake Oconee",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Glenwood Springs - Lake Oconee 115kV Line Rebuild",
+   "description": "Rebuild the North Eatonton Junction - Putnam Sawmill Junction line with 200C 1351 ACSS conductor.",
+   "zone": "214",
+   "candidate": {
+    "name": "Lake Oconee Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 33.4595297,
+    "lon": -83.247451,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.66
+   }
+  },
+  "cost_usd": 2.2050000000000004e-05,
+  "latency_ms": 263
+ }
+}

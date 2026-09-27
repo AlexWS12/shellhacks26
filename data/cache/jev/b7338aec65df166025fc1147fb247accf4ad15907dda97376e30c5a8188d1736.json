@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Hammond",
+   "filing_state": "GA",
+   "project": "Hammond - Weiss Dam 115kV Line Rebuild",
+   "description": "Rebuild 11.2 miles of Hammond - Weiss Dam 115kV from Hammond to the APC border with 200C 795 ACSS.",
+   "zone": "211",
+   "candidate": {
+    "name": "Hammond",
+    "kind": "place=neighbourhood",
+    "county": "Fulton County",
+    "state": "GA",
+    "lat": 33.9253798,
+    "lon": -84.3674264
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.51
+   }
+  },
+  "cost_usd": 2.142e-05,
+  "latency_ms": 246
+ }
+}

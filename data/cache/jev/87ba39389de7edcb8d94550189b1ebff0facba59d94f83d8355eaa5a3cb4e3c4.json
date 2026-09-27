@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Adamsville",
+   "filing_state": "GA",
+   "project": "Adamsville - Buzzard Roost 230kV Rebuild And Jumper Upgrade",
+   "description": "Rebuild the line sections from Adamsville to Boat Rock Road (8.08 miles) on the Adamsville - Buzzard Roost 230kV line with 200C 1351 ACSS Martin conductor. Replace the AAC 750 jumper on the line at Adamsville with (2) 1590 AAC jumper. Replace 1590 AAC jumpers at Bakers Ferry and Boat Rock with (2) 1590 AAC jumpers. Replace 1600A line switches at Boat Rock with 3000A switches.",
+   "zone": "208",
+   "candidate": {
+    "name": "Adamsville",
+    "kind": "place=hamlet",
+    "county": "McDuffie County",
+    "state": "GA",
+    "lat": 33.3754181,
+    "lon": -82.370125
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.84
+   }
+  },
+  "cost_usd": 2.5578000000000005e-05,
+  "latency_ms": 251
+ }
+}

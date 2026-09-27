@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Blakely Primary",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Blakely Primary - Huckleberry 115kV Rebuild",
+   "description": "Rebuild the Blakley Primary - Huckleberry 115kV line from 75C 477 ACSR to 200C 1351 ACSS. (13.5 miles) GPC: Replace jumpers at Blakely Primary GTC: Replace jumpers at Blakely and Huckleberry",
+   "zone": "216",
+   "candidate": {
+    "name": "Blakely Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000;46000",
+    "lat": 31.371554,
+    "lon": -84.9059802,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.9
+   }
+  },
+  "cost_usd": 2.4360000000000004e-05,
+  "latency_ms": 226
+ }
+}

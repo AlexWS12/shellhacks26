@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Thalmann",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Thalmann And Colerain 23o kV Line Relay Panel Upgrades",
+   "description": "Relay protection modifications at GPC's Thalmann and Colerain substations to match relay scheme used at GTC's new Camden Industrial Park 230/115kV substation.",
+   "zone": "218",
+   "candidate": {
+    "name": "Thalmann Substation",
+    "operator": "Georgia Power",
+    "voltage": "500000;230000",
+    "lat": 31.2934589,
+    "lon": -81.6807807,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.9
+   }
+  },
+  "cost_usd": 2.2806e-05,
+  "latency_ms": 213
+ }
+}

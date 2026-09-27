@@ -41,11 +41,11 @@
   "answers": {
    "stuck": {
     "type": "noul",
-    "noul": 0.18
+    "noul": 0.16
    },
    "progress": {
     "type": "score",
-    "score": 2.31,
+    "score": 2.4,
     "confidence": 0.0,
     "legend": {
      "0": "Not started",
@@ -55,15 +55,15 @@
      "4": "Done"
     },
     "probabilities": {
-     "0": 0.01,
-     "1": 0.51,
+     "0": 0.0,
+     "1": 0.49,
      "2": 0.02,
-     "3": 0.09,
-     "4": 0.37
+     "3": 0.08,
+     "4": 0.41
     }
    }
   },
   "cost_usd": 2.0496e-05,
-  "latency_ms": 874
+  "latency_ms": 392
  }
 }

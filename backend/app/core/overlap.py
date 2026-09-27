@@ -12,6 +12,8 @@ from app.core.models import Confidence, Overlap, Project
 
 EARTH_RADIUS_MI = 3958.8
 OVERLAP_CUTOFF_MI = 25.0
+MAX_SPAN_MI = 60.0  # when the filing gives no length: longer than any such line in either plan
+TIE_CROSS_MI = 30.0  # an end outside the filing's state must be this close to the other end (border ties are short)
 DEFAULT_GA_SPONSORS = ("GPC", "SAV")
 CONF_ORDER: list[Confidence] = ["verified", "confirmed_osm", "partial", "town", "unlocated"]
 
@@ -27,6 +29,23 @@ def distance_mi(a: tuple[float, float], b: tuple[float, float]) -> float:
     lat1, lon1, lat2, lon2 = map(math.radians, (a[0], a[1], b[0], b[1]))
     h = math.sin((lat2 - lat1) / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
     return 2 * EARTH_RADIUS_MI * math.asin(math.sqrt(h))
+
+
+def span_mi(p: Project) -> float | None:
+    # Straight-line miles between the two located endpoints, None unless both are located.
+    pts = [(e.lat, e.lon) for e in p.endpoints if e.lat is not None and e.lon is not None]
+    return distance_mi(pts[0], pts[1]) if len(pts) == 2 else None
+
+
+def span_limit(miles: float | None) -> float:
+    # The ends of a line can't be farther apart than the line is long ('Farley - Tazewell 500kV', 120 mi).
+    return max(MAX_SPAN_MI, miles * 1.1 + 5) if miles else MAX_SPAN_MI
+
+
+def span_ok(p: Project) -> bool:
+    # A longer span means one end is the wrong place, so the center (and every distance from it) is too.
+    s = span_mi(p)
+    return s is None or s <= span_limit(p.miles)
 
 
 def time_gap_days(a: date, b: date) -> int:
@@ -78,8 +97,8 @@ def visible(p: Project, f: Filters) -> bool:
 
 def find_overlaps(projects: list[Project], f: Filters, sample_pairs: set[tuple[str, str]] | None = None) -> list[Overlap]:
     # The only place overlaps get computed.
-    desc = [p for p in projects if p.utility == "DESC" and visible(p, f)]
-    ga = [p for p in projects if p.utility == "GA" and visible(p, f)]
+    desc = [p for p in projects if p.utility == "DESC" and visible(p, f) and span_ok(p)]
+    ga = [p for p in projects if p.utility == "GA" and visible(p, f) and span_ok(p)]
     sample_pairs = sample_pairs or set()
     found: list[Overlap] = []
     for a in desc:

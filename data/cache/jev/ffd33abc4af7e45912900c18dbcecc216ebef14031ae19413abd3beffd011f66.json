@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Norcross",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "Norcross 230kV Bus 1-3 Series Bus Tie Breaker Installation",
+   "description": "Install a bus tie breaker in series with existing bus tie breaker between 230kV Bus 1 and Bus 3 at Norcross.",
+   "zone": "202",
+   "candidate": {
+    "name": "Norcross Substation",
+    "operator": "Georgia Power",
+    "voltage": "500000",
+    "lat": 33.9325571,
+    "lon": -84.2134303,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.79
+   }
+  },
+  "cost_usd": 2.2134000000000002e-05,
+  "latency_ms": 322
+ }
+}

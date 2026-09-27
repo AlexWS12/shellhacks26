@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Cainhoy",
+   "utility": "DESC",
+   "filing_state": "SC",
+   "project": "Cainhoy - Hamlin 115kV: Rebuild Line and Cainhoy \u2013 Hamlin 115 kV #2: Construct New 115 kV Line",
+   "description": "Upgrade the 954 ACSR portion of the Cainhoy \u2013 Hamlin 115 kV line to B795 ACSR conductor, construct a new Cainhoy \u2013 Hamlin 115 kV #2 line, add terminals to Cainhoy and Hamlin sub to accommodate upgrades.",
+   "zone": null,
+   "candidate": {
+    "name": "Cainhoy Substation",
+    "operator": "Dominion Energy South Carolina",
+    "voltage": "230000;115000;23900",
+    "lat": 32.941402,
+    "lon": -79.8422757,
+    "state": "SC"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.88
+   }
+  },
+  "cost_usd": 2.5200000000000003e-05,
+  "latency_ms": 581
+ }
+}

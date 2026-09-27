@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Ritter",
+   "filing_state": "SC",
+   "project": "Canadys-Ritter 115KV-Rebld SPDC 230/115KV 1272 (Approx 18 Miles)",
+   "description": "Rebuild Canadys-Ritter 115 kV line as SPDC with 230 kV on one side and 115 kV on the other side.",
+   "zone": null,
+   "candidate": {
+    "name": "Ritter",
+    "kind": "place=hamlet",
+    "county": "Colleton County",
+    "state": "SC",
+    "lat": 32.7896202,
+    "lon": -80.6303822
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.77
+   }
+  },
+  "cost_usd": 2.1966000000000003e-05,
+  "latency_ms": 202
+ }
+}

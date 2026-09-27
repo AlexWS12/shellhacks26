@@ -1,0 +1,170 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "east villa rica",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344141131,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9068982,
+   "lat": "33.7275768",
+   "lon": "-84.9175560",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338367513542378,
+   "addresstype": "road",
+   "name": "East Wilson Street",
+   "display_name": "East Wilson Street, Villa Rica, Carroll County, Georgia, 30180, United States",
+   "address": {
+    "road": "East Wilson Street",
+    "town": "Villa Rica",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30180",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7241467",
+    "33.7304423",
+    "-84.9195208",
+    "-84.9165478"
+   ]
+  },
+  {
+   "place_id": 344060657,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9077765,
+   "lat": "33.7294347",
+   "lon": "-84.9165847",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.05338367513542378,
+   "addresstype": "road",
+   "name": "East Montgomery Street",
+   "display_name": "East Montgomery Street, Villa Rica, Carroll County, Georgia, 30180, United States",
+   "address": {
+    "road": "East Montgomery Street",
+    "town": "Villa Rica",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30180",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7292650",
+    "33.7299778",
+    "-84.9177086",
+    "-84.9153471"
+   ]
+  },
+  {
+   "place_id": 343264526,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9071672,
+   "lat": "33.7318650",
+   "lon": "-84.9181208",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338367513542378,
+   "addresstype": "road",
+   "name": "East Church Street",
+   "display_name": "East Church Street, Villa Rica, Carroll County, Georgia, 30180, United States",
+   "address": {
+    "road": "East Church Street",
+    "town": "Villa Rica",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30180",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7313598",
+    "33.7324788",
+    "-84.9187852",
+    "-84.9174064"
+   ]
+  },
+  {
+   "place_id": 344060127,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9072031,
+   "lat": "33.7320893",
+   "lon": "-84.9162967",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338367513542378,
+   "addresstype": "road",
+   "name": "East Gordon Street",
+   "display_name": "East Gordon Street, Villa Rica, Carroll County, Georgia, 30180, United States",
+   "address": {
+    "road": "East Gordon Street",
+    "town": "Villa Rica",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30180",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7315890",
+    "33.7325770",
+    "-84.9167540",
+    "-84.9158560"
+   ]
+  },
+  {
+   "place_id": 343861055,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9077766,
+   "lat": "33.7291145",
+   "lon": "-84.9122376",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338367513542378,
+   "addresstype": "road",
+   "name": "East Montgomery Street",
+   "display_name": "East Montgomery Street, Villa Rica, Carroll County, Georgia, 30180, United States",
+   "address": {
+    "road": "East Montgomery Street",
+    "town": "Villa Rica",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30180",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7290553",
+    "33.7293941",
+    "-84.9135076",
+    "-84.9109549"
+   ]
+  }
+ ]
+}
