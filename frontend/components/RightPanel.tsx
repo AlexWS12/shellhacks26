@@ -8,7 +8,7 @@ import {
   ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
-import type { Endpoint, Overlap, PairDetail, Project, ThirdParty, Written } from "@/lib/types";
+import type { CostEstimate, Endpoint, Overlap, PairDetail, Project, ThirdParty, Written } from "@/lib/types";
 import { approxDate, dateWord, gapText, ownClass, ownerName, ownerShort, peers, serviceDate, slotOf, whereFrom } from "@/lib/owners";
 import { useUI } from "@/lib/ui";
 import { KIND_LABEL, kindOf } from "@/lib/utilityIcons";
@@ -65,8 +65,15 @@ const mkClass = (p: Project) => (p.utility === "DESC" ? "desc" : p.utility === "
 
 const slotVar = (s: string) => (s === "desc" || s === "gpc" ? s : `peer-${s.slice(1)}`);
 
-// Georgia's costs are redacted in the filing; other owners' costs are shown when their plan states them.
-const costText = (p: Project, n: number | null) => (p.utility === "GA" ? "redacted" : n == null ? "not stated" : money(n));
+const BASIS = { filed: "from the filing", published: "published, quote checked", benchmark: "modeled" } as const;
+
+// Georgia's costs are redacted in its filing, so its projects get a published or modeled estimate.
+function CostRow({ p, e }: { p: Project; e: CostEstimate | null }) {
+  return (
+    <tr><td>{ownerShort(p)} project cost {e && <span className="basis">{BASIS[e.basis]}</span>}</td>
+      <td>{e ? money(e.amount) : p.utility === "GA" ? "redacted" : "not stated"}</td></tr>
+  );
+}
 
 function sideName(overlapId: string, i: 0 | 1): string {
   const p = run.projects[overlapId.split("|")[i]];
@@ -323,6 +330,27 @@ function PairView({ a, b }: { a: string; b: string }) {
         colors={[`var(--${slotVar(slotOf(pa.utility))})`, `var(--${slotVar(slotOf(pb.utility))})`]} />
       <p className="note">Highlighted band = both under construction. A faded start means the work began before 2024.</p>
 
+      <h3>Estimated savings</h3>
+      {cost && "savings_high" in cost ? (
+        <>
+          <table className="kv"><tbody>
+            <CostRow p={pa} e={cost.a} />
+            <CostRow p={pb} e={cost.b} />
+            {cost.savings_high != null && (
+              <tr><td>Possible savings <span className="basis">assumption</span></td>
+                <td>{cost.savings_low ? money(cost.savings_low) : "$0"} to {money(cost.savings_high)}</td></tr>
+            )}
+          </tbody></table>
+          <p className="note">{cost.statement}
+            {cost.check && <> <Chip a={cost.check.actor} />{cost.check.p >= 0.5 ? "judged" : "didn't judge"} sharing worth raising between the two utilities ({Math.round(cost.check.p * 100)}%).</>}</p>
+          {[cost.a, cost.b].map((e) => e && e.basis !== "filed" && (
+            <p className="note" key={e.project_id}>{ownerShort(run.projects[e.project_id] ?? pa)}: {e.method}
+              {e.quote && <> “{e.quote}” <a href={e.source} target="_blank" rel="noreferrer">{e.source_title || "source"}</a></>}</p>
+          ))}
+        </>
+      ) : cost ? <p className="empty">This replay predates the savings calculator. Run again to see cost estimates.</p>
+        : <p className="empty">Waiting for the savings calculator.</p>}
+
       <OthersNearby links={allOthers.some((t) => t.overlap_id === id)
         ? allOthers.filter((t) => t.overlap_id === id) : remote?.others ?? []} />
 
@@ -338,7 +366,7 @@ function PairView({ a, b }: { a: string; b: string }) {
             {shared.timing === "unknown" ? " · timing undecided" : `, ${shared.timing} build windows`}
           </span>
         </p>
-      ) : <p className="empty">Waiting for the cost estimator.</p>}
+      ) : <p className="empty">Waiting for the savings calculator.</p>}
 
       <h3>Analysis</h3>
       {analysis ? (
@@ -357,19 +385,6 @@ function PairView({ a, b }: { a: string; b: string }) {
           {brief.mediator && <div className="brief"><div className="who c-ink">Mediator: joint agenda <Chip a={brief.mediator.actor} /></div>{brief.mediator.text}</div>}
         </>
       )}
-
-      <h3>Cost</h3>
-      {cost ? (
-        <>
-          <table className="kv"><tbody>
-            <tr><td>{ownerShort(pa)} project cost{pa.utility === "DESC" ? " (public)" : ""}</td><td>{costText(pa, cost.desc_cost)}</td></tr>
-            {cost.desc_cost_per_mile && <tr><td>{ownerShort(pa)} cost per mile ({cost.desc_miles} mi)</td><td>{money(cost.desc_cost_per_mile)}</td></tr>}
-            <tr><td>{ownerShort(pb)} project cost</td><td>{costText(pb, pb.cost_total)}</td></tr>
-            {cost.savings != null && <tr><td>Possible savings</td><td>{money(cost.savings)}</td></tr>}
-          </tbody></table>
-          <p className="note">{cost.statement}{cost.source && <> Source: {cost.source}</>}</p>
-        </>
-      ) : <p className="empty">Waiting for the cost estimator.</p>}
 
       <h3>From the filings</h3>
       <div className="quote">{pa.description}</div>

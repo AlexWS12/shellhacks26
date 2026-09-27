@@ -33,25 +33,6 @@ def shared_resources(a: Project, b: Project, o: Overlap) -> dict[str, Any]:
     return {"timing": timing, "items": items, "level": level, "types": [ta, tb]}
 
 
-def cost_block(a: Project, b: Project, o: Overlap) -> dict[str, Any]:
-    # No savings number unless a cited share is configured.
-    block: dict[str, Any] = {"desc_cost": a.cost_total, "ga_cost": None, "desc_miles": a.miles,
-                             "desc_cost_per_mile": round(a.cost_total / a.miles) if a.cost_total and a.miles else None,
-                             "savings": None, "source": None}
-    if config.COST_MOBILIZATION_SHARE > 0 and config.COST_SOURCE and o.windows_overlap and a.cost_total:
-        block["savings"] = round(a.cost_total * config.COST_MOBILIZATION_SHARE)
-        block["source"] = config.COST_SOURCE
-        block["statement"] = (f"If one mobilization is avoided, about {config.COST_MOBILIZATION_SHARE:.0%} of "
-                              f"{owner_name(a)}'s public project cost, per the cited source. {owner_name(a)}'s side only; "
-                              f"{owner_name(b)}'s cost is not counted.")
-    elif o.windows_overlap:
-        block["statement"] = ("Both are under construction at the same time, so one mobilization and staging setup could "
-                              "serve both. No dollar figure is shown until a cited mobilization share is configured.")
-    else:
-        block["statement"] = "The build windows don't overlap (or one is unknown), so no crew or staging savings are claimed."
-    return block
-
-
 def fact_sheet(a: Project, b: Project, o: Overlap, shared: dict[str, Any]) -> dict[str, Any]:
     def side(p: Project) -> dict[str, Any]:
         return {"utility": "Dominion Energy South Carolina" if p.utility == "DESC" else f"Georgia ({p.sponsor})",

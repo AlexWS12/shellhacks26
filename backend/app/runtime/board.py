@@ -16,7 +16,8 @@ class Board:
     overlaps: list[Overlap] = field(default_factory=list)
     reference: list[ReferenceResult] = field(default_factory=list)
     analyses: dict[str, dict[str, Any]] = field(default_factory=dict)  # overlap id -> {text, actor}
-    costs: dict[str, dict[str, Any]] = field(default_factory=dict)
+    estimates: dict[str, dict[str, Any]] = field(default_factory=dict)  # cost_research: project id -> cost estimate
+    costs: dict[str, dict[str, Any]] = field(default_factory=dict)  # savings calculator: overlap id -> savings block
     briefs: dict[str, dict[str, Any]] = field(default_factory=dict)  # overlap id -> {desc, ga, mediator}
     pending_checks: list[Check] = field(default_factory=list)  # the validator reports these
     research: dict[str, ResearchProject] = field(default_factory=dict)  # each scout writes its own category
@@ -42,6 +43,7 @@ class Board:
             "overlaps": [o.model_dump() for o in self.overlaps],
             "reference": [r.model_dump() for r in self.reference],
             "analyses": self.analyses,
+            "estimates": self.estimates,
             "costs": self.costs,
             "briefs": self.briefs,
             "research": [r.model_dump() for r in self.research.values()],

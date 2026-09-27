@@ -13,6 +13,10 @@ Built at ShellHacks 2026 for the Gridlock challenge.
 - **Places every project.** OpenStreetMap substations and towns, with each fuzzy match confirmed by Jev.
 - **Checks the data.** Malformed costs, spending after a project is done, text copied between projects.
 - **Finds overlaps.** Every pair under 25 miles apart, plus how many days apart they finish, ranked.
+- **Estimates savings.** A Cost research agent gives every paired project a cost: from its filing, published on
+  the web (Jev confirms the quote backs it), or modeled from Dominion's filed costs for the same kind of work. A
+  Savings agent turns that into a range per pair, using percentages that are labeled as team assumptions, and Jev
+  rules out pairs that couldn't really share the work.
 - **Looks past the two utilities.** A research team maps other owners' projects near the river: other
   electric utilities, gas pipelines, roads and water. You choose which before each run. Every record cites its
   sources, and each one near both sides of an opportunity is flagged.

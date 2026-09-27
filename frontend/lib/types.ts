@@ -90,13 +90,29 @@ export interface Shared {
   types: string[];
 }
 
+// One project's cost: from its filing, published on the web (quote checked by Jev), or a Dominion benchmark.
+export interface CostEstimate {
+  project_id: string;
+  amount: number;
+  basis: "filed" | "published" | "benchmark";
+  source: string;
+  source_title?: string;
+  quote?: string;
+  method: string;
+  check: { actor: string; p: number } | null;
+}
+
+// Savings for one pair: an assumption range on the smaller project's cost, unless Jev rules the pair out.
 export interface CostBlock {
-  desc_cost: number | null;
-  ga_cost: null;
-  desc_miles: number | null;
-  desc_cost_per_mile: number | null;
-  savings: number | null;
-  source: string | null;
+  a: CostEstimate | null;
+  b: CostEstimate | null;
+  savings_low: number | null;
+  savings_high: number | null;
+  share: [number, number] | null;
+  applies_to: string | null;
+  for?: string[]; // what the savings are for; records and design only once a project is in service
+  assumption: string;
+  check: { actor: string; p: number } | null;
   statement: string;
   shared?: Shared;
 }
@@ -249,9 +265,10 @@ export interface ReportTop {
   shared_level: string | null;
   shared_items: string[];
   timing: string | null;
-  a_cost: number | null;
-  savings: number | null;
-  cost_source: string | null;
+  a_cost: { amount: number; basis: CostEstimate["basis"]; source: string } | null;
+  b_cost: { amount: number; basis: CostEstimate["basis"]; source: string } | null;
+  savings_low: number | null;
+  savings_high: number | null;
   analysis: Written | null;
   joint_agenda: Written | null;
   other_utilities: { owner: string; name: string; category: string; miles_to_a: number; miles_to_b: number; in_service: string | null; sources: number }[];

@@ -14,7 +14,7 @@ from app.runtime.run import new_run  # noqa: E402
 COLORS = {"agent.spawned": 36, "agent.done": 32, "agent.error": 31, "check.found": 33, "overlap.found": 35,
           "reference.result": 34, "run.done": 32, "run.failed": 31, "handoff": 90}
 QUIET_SKIP = {"project.extracted", "source.progress", "project.placed", "project.unlocated", "project.classified",
-              "agent.progress", "judgment", "agent.thinking", "cost.ready", "endpoint.rejected", "agent.health"}
+              "agent.progress", "judgment", "agent.thinking", "cost.ready", "cost.estimate", "endpoint.rejected", "agent.health"}
 
 
 def line(e: dict) -> str:

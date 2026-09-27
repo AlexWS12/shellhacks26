@@ -57,8 +57,4 @@ PACE = env_float("TANDEM_PACE", 1.0)
 # "Today" for the hide-finished filter and the past-date check. Fixed so runs are reproducible.
 TODAY = env("TANDEM_TODAY", "2026-09-26")
 
-# Cost model. No savings figure is shown unless a share AND its source are both set.
-COST_MOBILIZATION_SHARE = env_float("COST_MOBILIZATION_SHARE", 0.0)
-COST_SOURCE = env("COST_SOURCE")
-
 CORS_ORIGINS = [o for o in env("CORS_ORIGINS", "http://localhost:3000").split(",") if o]

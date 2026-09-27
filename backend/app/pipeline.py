@@ -5,7 +5,8 @@
 #   classifier  <- extract_desc, extract_ga
 #   overlap     <- geocoder
 #   reference   <- overlap, sample
-#   cost        <- overlap, classifier
+#   cost_research <- overlap, classifier   (filed, published or benchmark cost per project)
+#   cost        <- cost_research            (savings range per pair, checked by Jev)
 #   analyst     <- cost, validator, reference
 #   advocate_desc, advocate_ga <- analyst
 #   mediator    <- advocate_desc, advocate_ga
@@ -20,9 +21,10 @@ import logging
 from dataclasses import replace
 
 from app import config
-from app.agents.analysis import Analyst, CostEstimator, OverlapEngine, ReferenceChecker
+from app.agents.analysis import Analyst, OverlapEngine, ReferenceChecker
 from app.agents.classifier import Classifier
 from app.agents.coordination import Advocate, Mediator
+from app.agents.costs import CostResearcher, SavingsCalculator
 from app.agents.extractors import DESC_SOURCE, GA_SOURCE, SAMPLE_SOURCE, DescExtractor, GaExtractor, SampleReader
 from app.agents.geocoder import Geocoder
 from app.agents.research import OtherUtilities, ResearchScout
@@ -48,7 +50,7 @@ def build_pipeline() -> tuple[list[Agent], list[dict]]:
     for a in core:
         if a.spec.id in ("geocoder", "validator", "classifier") and ids:
             a.spec = replace(a.spec, depends_on=[*a.spec.depends_on, *ids])
-    agents = [*core, OverlapEngine(), ReferenceChecker(), CostEstimator(), Analyst(), Advocate("dominion"),
+    agents = [*core, OverlapEngine(), ReferenceChecker(), CostResearcher(), SavingsCalculator(), Analyst(), Advocate("dominion"),
               Advocate("georgia"), Mediator(), *(ResearchScout(c) for c in RESEARCH_CATEGORIES), OtherUtilities(), Writer()]
     return agents, [*SOURCES, *(r.source() for r in readers)]
 

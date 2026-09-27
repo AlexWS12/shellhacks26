@@ -410,6 +410,7 @@ table.kv { width: 100%; border-collapse: collapse; font-size: var(--fs-md); }
 table.kv.gap { margin-top: var(--sp-3); }
 table.kv td { padding: var(--sp-1) 0; border-bottom: 1px solid var(--line); color: var(--muted); }
 table.kv td:last-child { text-align: right; color: var(--ink); font-family: var(--font-mono); }
+table.kv .basis { margin-left: var(--sp-1); font-size: var(--fs-xs); color: var(--faint); }
 .quote { font-size: var(--fs-md); color: var(--muted); border-left: 2px solid var(--line-2); padding-left: var(--sp-3); margin: var(--sp-1-5) 0 var(--sp-3); }
 .prov { font-size: var(--fs-sm); color: var(--muted); }
 .prov > div { padding: var(--sp-1) 0; }

@@ -318,6 +318,9 @@ export function apply(e: RunEvent): void {
       moveTo(aid, [r.a_project ?? "", r.b_project ?? ""], r.passed ? "exact match" : "mismatch");
       break;
     }
+    case "cost.estimate":
+      moveTo(aid, [String(e.project_id)], "costed");
+      break;
     case "cost.ready":
       run.costs[String(e.overlap_id)] = e.cost as CostBlock;
       moveTo(aid, String(e.overlap_id).split("|"), "cost");

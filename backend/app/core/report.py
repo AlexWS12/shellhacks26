@@ -5,6 +5,7 @@ from collections import Counter
 from typing import Any
 
 from app import config
+from app.core.costs import ASSUMPTIONS
 from app.core.models import Project
 from app.core.overlap import OVERLAP_CUTOFF_MI
 from app.core.owners import owner_name
@@ -23,6 +24,10 @@ def _other(board: Board, oid: str) -> list[dict[str, Any]]:
         out.append({"owner": r.utility, "name": r.name, "category": CATEGORY[r.category], "miles_to_a": t.dist_a_mi,
                     "miles_to_b": t.dist_b_mi, "in_service": r.in_service, "sources": len(r.sources)})
     return out
+
+
+def _cost(e: dict[str, Any] | None) -> dict[str, Any] | None:
+    return {"amount": e["amount"], "basis": e["basis"], "source": e["source"]} if e else None
 
 
 def _side(p: Project) -> dict[str, Any]:
@@ -47,7 +52,8 @@ def build(board: Board) -> dict[str, Any]:
             "built_at_same_time": o.windows_overlap, "location": o.pair_confidence, "benchmark_pair": o.in_sponsor_sample,
             "a": _side(a), "b": _side(g),
             "shared_level": shared.get("level"), "shared_items": shared.get("items", []), "timing": shared.get("timing"),
-            "a_cost": cost.get("desc_cost"), "savings": cost.get("savings"), "cost_source": cost.get("source"),
+            "a_cost": _cost(cost.get("a")), "b_cost": _cost(cost.get("b")),
+            "savings_low": cost.get("savings_low"), "savings_high": cost.get("savings_high"),
             "analysis": board.analyses.get(o.id), "joint_agenda": (board.briefs.get(o.id) or {}).get("mediator"),
             "other_utilities": _other(board, o.id),
         })
@@ -82,6 +88,11 @@ def build(board: Board) -> dict[str, Any]:
             "Other utilities: projects found by the research team, each with cited sources, listed when under 25 miles "
             "from both sides of an opportunity.",
             "Plans that give only a year or month use the last day of that period; their day gaps are marked 'about'.",
+            "Project cost: the owner's filing when it states one; else a cost published on the web whose quote Jev "
+            "confirmed; else the median filed Dominion cost for the same kind of work (per mile for lines).",
+            f"Savings: {min(lo for lo, _ in ASSUMPTIONS.values()):.0%} to {max(hi for _, hi in ASSUMPTIONS.values()):.0%} "
+            "of the smaller project's cost, depending on timing and what the two could share. These percentages are the team's assumptions, not sourced figures; Jev rules out pairs unlikely "
+            "to share work.",
         ],
     }
 
@@ -138,6 +149,10 @@ def _days(t: dict[str, Any]) -> str:
     return f"{'about ' if approx else ''}{t['time_gap_days']:,}"
 
 
+def _money(n: int) -> str:
+    return f"${n / 1e6:.1f}M" if n >= 1e6 else f"${n:,}"
+
+
 def _yes(v: bool | None) -> str:
     return "yes" if v else "unknown" if v is None else "no"
 
@@ -168,6 +183,9 @@ def to_markdown(r: dict[str, Any]) -> str:
                f"Sources: {t['a']['source']}; {t['b']['source']}."]
         if t["shared_items"]:
             md.append(f"Could share: {', '.join(t['shared_items'])}.")
+        if t.get("savings_high"):
+            md.append(f"Estimated savings: {_money(t['savings_low'])} to {_money(t['savings_high'])} "
+                      "(assumption range, see Method).")
         if t["analysis"]:
             md += ["", t["analysis"]["text"]]
         if t["joint_agenda"]:
