@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { api, type FilterState } from "@/lib/api";
 import { activeIn, lineCheck } from "@/lib/filters";
 import {
-  ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
+  ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, WRITERS, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
 import type { Endpoint, Overlap, PairDetail, Project, ThirdParty, Written } from "@/lib/types";
@@ -348,7 +348,7 @@ function PairView({ a, b }: { a: string; b: string }) {
       {analysis ? (
         <>
           <p className="written">{analysis.text}</p>
-          <div className="by"><Chip a={analysis.actor} />{analysis.actor === "gemini" ? "Written by Gemini from the filing text" : "Template from the computed facts"}
+          <div className="by"><Chip a={analysis.actor} />{WRITERS.has(analysis.actor) ? `Written by ${ACTOR_LABEL[analysis.actor]} from the filing text` : "Template from the computed facts"}
             {analysis.unsupported_numbers?.length ? <span className="fail">check numbers: {analysis.unsupported_numbers.join(", ")}</span> : null}</div>
         </>
       ) : <p className="written">{insight(o, shared?.timing ?? "unknown")}</p>}
@@ -591,7 +591,7 @@ function ResearchView({ id }: { id: string }) {
 
 function Byline({ w }: { w: Written }) {
   return (
-    <div className="by"><Chip a={w.actor} />{w.actor === "gemini" ? "Written by Gemini from the facts below" : "Template from the computed facts"}
+    <div className="by"><Chip a={w.actor} />{WRITERS.has(w.actor) ? `Written by ${ACTOR_LABEL[w.actor]} from the facts below` : "Template from the computed facts"}
       {w.unsupported_numbers?.length ? <span className="fail">check numbers: {w.unsupported_numbers.join(", ")}</span> : null}</div>
   );
 }

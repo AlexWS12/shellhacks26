@@ -1,7 +1,7 @@
 {
   "_about": [
     "Which model does each job, in the order they are tried. No secrets here: keys come only from env vars",
-    "(GEMINI_API_KEY, TYPESAFE_API_KEY / OPENROUTER_API_KEY / CLOUDFLARE_API_TOKEN, chosen by JEV_PROVIDER).",
+    "(GEMINI_API_KEY, ANTHROPIC_API_KEY for provider claude, OPENAI_API_KEY for provider openai, TYPESAFE_API_KEY / OPENROUTER_API_KEY / CLOUDFLARE_API_TOKEN, chosen by JEV_PROVIDER).",
     "Override any role locally in config/models.local.json (gitignored); a role there replaces the role here.",
     "Jev only answers judge roles. With JEV_PROVIDER=openrouter or cloudflare the Jev model gets a 'typesafe/' prefix;",
     "Cloudflare users may need \"typesafe/jev\" in models.local.json.",
@@ -10,7 +10,8 @@
     "The setup screen (Models button) edits config/models.local.json; this file stays the committed default.",
     "prices (optional): {\"provider/model\": {\"input_per_mtok\": USD, \"output_per_mtok\": USD}} for the AI reader's cost check (MAX_RUN_COST_USD). Unknown prices are left out, never guessed.",
     "An entry can be a list of dated prices ({\"from\": \"YYYY-MM-DD\", ...}); the latest one in effect today applies.",
-    "The Gemini prices are the paid tier's Standard text prices per 1M tokens (output includes thinking), from https://ai.google.dev/gemini-api/docs/pricing, read 2026-09-27. On the free tier the real cost is $0, so the check is an upper bound."
+    "The Gemini prices are the paid tier's Standard text prices per 1M tokens (output includes thinking), from https://ai.google.dev/gemini-api/docs/pricing, read 2026-09-27. On the free tier the real cost is $0, so the check is an upper bound.",
+    "The Claude prices are Anthropic's first-party API list prices per 1M tokens (output includes thinking), read 2026-06-24. OpenAI prices aren't listed yet: add them here from openai.com/api/pricing before relying on the cost check."
   ],
   "roles": {
     "extract_fallback": {
@@ -147,6 +148,9 @@
   "prices": {
     "gemini/gemini-3.8-flash": [{"input_per_mtok": 0.75, "output_per_mtok": 3.75}, {"from": "2027-01-01", "input_per_mtok": 1.5, "output_per_mtok": 7.5}],
     "gemini/gemini-3.7-flash": [{"input_per_mtok": 0.75, "output_per_mtok": 3.75}, {"from": "2027-01-01", "input_per_mtok": 1.5, "output_per_mtok": 7.5}],
-    "gemini/gemini-3.1-flash-lite": {"input_per_mtok": 0.25, "output_per_mtok": 1.5}
+    "gemini/gemini-3.1-flash-lite": {"input_per_mtok": 0.25, "output_per_mtok": 1.5},
+    "claude/claude-opus-5": {"input_per_mtok": 5.0, "output_per_mtok": 25.0},
+    "claude/claude-sonnet-5": {"input_per_mtok": 2.0, "output_per_mtok": 10.0},
+    "claude/claude-haiku-4-5": {"input_per_mtok": 1.0, "output_per_mtok": 5.0}
   }
 }

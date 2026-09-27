@@ -1,16 +1,18 @@
 # Keeps API keys out of logs, events, errors and API responses.
 # Known secrets (from env, config, or a key passed to validate) are replaced by value; common key shapes
-# (Google keys, bearer tokens, ?key= parameters, passwords in database URLs) by pattern.
+# (Google, Anthropic and OpenAI keys, bearer tokens, ?key= parameters, passwords in database URLs) by pattern.
 
 import logging
 import os
 import re
 
-SECRET_VARS = ("GEMINI_API_KEY", "TYPESAFE_API_KEY", "OPENROUTER_API_KEY", "CLOUDFLARE_API_TOKEN", "DATABASE_URL")
+SECRET_VARS = ("GEMINI_API_KEY", "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "TYPESAFE_API_KEY", "OPENROUTER_API_KEY",
+               "CLOUDFLARE_API_TOKEN", "DATABASE_URL")
 MASK = "[redacted]"
 MIN_LEN = 8  # shorter values would blank out ordinary words
 PATTERNS = [
     (re.compile(r"AIza[0-9A-Za-z_\-]{20,}"), MASK),
+    (re.compile(r"sk-[A-Za-z0-9_\-]{20,}"), MASK),  # Anthropic (sk-ant-...) and OpenAI (sk-proj-..., sk-...) keys
     (re.compile(r"(?i)(bearer\s+)[A-Za-z0-9._~+/=\-]{8,}"), r"\1" + MASK),
     (re.compile(r"(?i)([?&](?:key|api_key|apikey|token)=)[^&\s\"']+"), r"\1" + MASK),
     (re.compile(r"(?i)(x-goog-api-key['\"]?\s*[:=]\s*['\"]?)[^'\"\s,}]+"), r"\1" + MASK),
@@ -28,7 +30,8 @@ def remember(secret: str | None) -> None:
 def secrets() -> list[str]:
     from app import config  # config never imports this module, so no cycle
 
-    found = {os.getenv(v, "").strip() for v in SECRET_VARS} | {config.GEMINI_API_KEY, config.DATABASE_URL} | _remembered
+    found = {os.getenv(v, "").strip() for v in SECRET_VARS} | {config.GEMINI_API_KEY, config.ANTHROPIC_API_KEY,
+                                                                  config.OPENAI_API_KEY, config.DATABASE_URL} | _remembered
     return sorted((s for s in found if s and len(s) >= MIN_LEN), key=len, reverse=True)
 
 

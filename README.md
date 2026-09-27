@@ -30,7 +30,7 @@ Built at ShellHacks 2026 for the Gridlock challenge.
 | | |
 |---|---|
 | Agents | Python, FastAPI, our own DAG executor, server-sent events |
-| AI | Jev (TypeSafe) for fast typed decisions, Gemini for reading and writing |
+| AI | Jev (TypeSafe) for fast typed decisions, Gemini for reading and writing (Claude or OpenAI can stand in) |
 | Data | Tiger Data (Postgres + TimescaleDB) for runs and the agent event stream |
 | Map | Next.js, MapLibre, OpenFreeMap |
 | Hosting | DigitalOcean App Platform |
@@ -59,3 +59,7 @@ from the server's environment. Behind it, `config/models.json` lists, for each j
 model that fails is retried or skipped, and the run log records each fallback. Keys come only from env vars. To override a job on your machine,
 use `config/models.local.json`; keys for your machine only go in `.env.local`. Both files are gitignored. To check
 every configured model against its key: `cd backend && uv run python scripts/smoke.py`.
+
+Besides Gemini and Jev, a job can use Claude (`ANTHROPIC_API_KEY`, provider `claude`) or OpenAI (`OPENAI_API_KEY`,
+provider `openai`) for anything Gemini does: reading pages, web search and writing. The committed defaults stay on
+Gemini; add a Claude or OpenAI model to a job, first or as a backup, on the setup screen.

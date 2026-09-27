@@ -11,11 +11,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app import config  # noqa: E402
 from app.clients import jev, models  # noqa: E402
+from app.setup import KEY_VAR  # noqa: E402
 
 
 def key_for(provider: str) -> str:
-    if provider == "gemini":
-        return config.GEMINI_API_KEY
+    if provider in KEY_VAR:
+        return getattr(config, KEY_VAR[provider])
     return os.getenv(jev.HOSTS[config.JEV_PROVIDER], "") if config.JEV_PROVIDER in jev.HOSTS else ""
 
 

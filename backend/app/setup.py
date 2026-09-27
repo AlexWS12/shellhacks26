@@ -19,6 +19,10 @@ from app.clients.models import ModelRef, Role
 PROVIDERS: dict[str, dict[str, Any]] = {
     "gemini": {"label": "Gemini", "what": "Reads hard pages, splits awkward names and writes the text.",
                "get_key": "Google AI Studio (aistudio.google.com)"},
+    "claude": {"label": "Claude", "what": "Can do any job Gemini does: reading pages, web search and writing the text.",
+               "get_key": "the Claude Console (platform.claude.com)"},
+    "openai": {"label": "OpenAI", "what": "Can do any job Gemini does: reading pages, web search and writing the text.",
+               "get_key": "the OpenAI dashboard (platform.openai.com)"},
     "jev": {"label": "Jev by TypeSafe", "what": "Makes the quick yes-or-no and pick-one decisions, like whether a map "
                                                "match is the right substation.",
             "get_key": "TypeSafe (typesafe.ai), or through OpenRouter or Cloudflare"},
@@ -26,8 +30,10 @@ PROVIDERS: dict[str, dict[str, Any]] = {
 HOST_LABEL = {"typesafe": "TypeSafe", "openrouter": "OpenRouter", "cloudflare": "Cloudflare Workers AI"}
 JEV_FIELDS = {"typesafe": ["TYPESAFE_API_KEY"], "openrouter": ["OPENROUTER_API_KEY"],
               "cloudflare": ["CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN"]}
+# Providers with one key, and the variable it's in. Jev's variables depend on where it runs (JEV_FIELDS).
+KEY_VAR = {"gemini": "GEMINI_API_KEY", "claude": "ANTHROPIC_API_KEY", "openai": "OPENAI_API_KEY"}
 NOT_SECRET = {"CLOUDFLARE_ACCOUNT_ID"}
-FIELD_LABEL = {"GEMINI_API_KEY": "API key", "TYPESAFE_API_KEY": "API key", "OPENROUTER_API_KEY": "API key",
+FIELD_LABEL = {"GEMINI_API_KEY": "API key", "ANTHROPIC_API_KEY": "API key", "OPENAI_API_KEY": "API key", "TYPESAFE_API_KEY": "API key", "OPENROUTER_API_KEY": "API key",
                "CLOUDFLARE_ACCOUNT_ID": "Account ID", "CLOUDFLARE_API_TOKEN": "API token"}
 KEY_RE = re.compile(r"^[A-Za-z0-9._\-:/+=]{8,300}$")
 MODEL_RE = re.compile(r"^[A-Za-z0-9._\-/:@]{1,120}$")
@@ -56,14 +62,14 @@ class SetupError(Exception):
 # ---- keys
 
 def key_vars(provider: str) -> list[str]:
-    if provider == "gemini":
-        return ["GEMINI_API_KEY"]
+    if provider in KEY_VAR:
+        return [KEY_VAR[provider]]
     return JEV_FIELDS.get(config.JEV_PROVIDER, [])
 
 
 def _key(provider: str) -> str:
-    if provider == "gemini":
-        return config.GEMINI_API_KEY
+    if provider in KEY_VAR:
+        return getattr(config, KEY_VAR[provider])
     return os.getenv(JEV_FIELDS[config.JEV_PROVIDER][-1], "").strip() if config.JEV_PROVIDER in JEV_FIELDS else ""
 
 
@@ -127,7 +133,7 @@ async def save_keys(provider: str, values: dict[str, str], host: str | None = No
             raise SetupError("Choose where Jev runs: " + ", ".join(HOST_LABEL.values()) + ".")
         wanted = JEV_FIELDS[host]
     else:
-        wanted = ["GEMINI_API_KEY"]
+        wanted = [KEY_VAR[provider]]
     clean: dict[str, str] = {}
     for var in wanted:
         v = (values.get(var) or "").strip()
@@ -137,7 +143,7 @@ async def save_keys(provider: str, values: dict[str, str], host: str | None = No
             raise SetupError(f"The {FIELD_LABEL[var].lower()} doesn't look right: paste it without spaces or quotes.")
         clean[var] = v
     before = {v: os.environ.get(v) for v in [*clean, "JEV_PROVIDER"]}
-    before_cfg = (config.GEMINI_API_KEY, config.JEV_PROVIDER)
+    before_cfg = {v: getattr(config, v) for v in [*KEY_VAR.values(), "JEV_PROVIDER"]}
     _apply(clean, host if provider == "jev" else None)
     try:
         ad = models.ADAPTERS[provider]
@@ -148,7 +154,8 @@ async def save_keys(provider: str, values: dict[str, str], host: str | None = No
                 os.environ.pop(var, None)
             else:
                 os.environ[var] = old
-        config.GEMINI_API_KEY, config.JEV_PROVIDER = before_cfg
+        for var, old in before_cfg.items():
+            setattr(config, var, old)
         status = e.error_class if isinstance(e, models.ModelError) else "Timeout"
         return {"status": status, "plain": PLAIN.get(status, status), "message": getattr(e, "message", ""), "saved": False}
     _write_env_local({**clean, **({"JEV_PROVIDER": host} if provider == "jev" else {})})
@@ -166,8 +173,8 @@ def _apply(values: dict[str, str], host: str | None) -> None:
         os.environ[var] = v
         if var not in NOT_SECRET:
             remember(v)
-    if "GEMINI_API_KEY" in values:
-        config.GEMINI_API_KEY = values["GEMINI_API_KEY"]
+        if var in KEY_VAR.values():
+            setattr(config, var, v)
     if host:
         os.environ["JEV_PROVIDER"] = host
         config.JEV_PROVIDER = host
