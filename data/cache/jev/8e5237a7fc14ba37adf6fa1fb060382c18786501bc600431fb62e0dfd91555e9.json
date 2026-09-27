@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Tazewell",
+   "project": "Farley (Apc)-Tazewell 500kV",
+   "description": "Construct a new 500kV line from Farley (APC) to Tazewell substation, approximately 120 miles long. Construct a 5 breaker 500kV ring bus to loop in the Blacksmith - Talbot 500kV line, terminate the new Farley - Tazewell 500kV and Talbot #2 - Tazewell 500kV lines. Install a 500/230kV auto transformer to connect to the existing 230kV switchyard.",
+   "candidate_town": "Tazewell, GA",
+   "county": "Marion County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.64
+   }
+  },
+  "cost_usd": 2.2722000000000004e-05,
+  "latency_ms": 188
+ }
+}

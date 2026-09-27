@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Oasis",
+   "filing_state": "GA",
+   "project": "Smart Valve Installation",
+   "description": "Installation of Smart Valve devices inside the Eatonton Primary substation on the Branch - Oasis 230kV and Eatonton Primary - Oasis 230kV lines.",
+   "zone": "214",
+   "candidate": {
+    "name": "Oasis",
+    "kind": "place=hamlet",
+    "county": "Fannin County",
+    "state": "GA",
+    "lat": 34.9153586,
+    "lon": -84.4821495
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.45
+   }
+  },
+  "cost_usd": 2.0790000000000003e-05,
+  "latency_ms": 259
+ }
+}

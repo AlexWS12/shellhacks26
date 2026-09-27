@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Cameron Jct",
+   "project": "Cameron Jct \u2013 Cameron \u2013 St Matthews 46 kV Rebuild",
+   "description": "Rebuilding the 46 kV line between Cameron Jct and St Matthews. 9.8 miles.",
+   "candidate_town": "Cameron, SC",
+   "county": "Calhoun County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.65
+   }
+  },
+  "cost_usd": 1.8438000000000002e-05,
+  "latency_ms": 312
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Cartersville",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "CC - Project Chronos- Sk/Hyundai",
+   "description": "GPC will build a 230/25kV station named Two Run Ranch and loop it into the Cartersville - Pinson 230kV line to serve SK Battery/Hyundai and new load in the area.",
+   "zone": "211",
+   "candidate": {
+    "name": "Cartersville Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000",
+    "lat": 34.1799448,
+    "lon": -84.8106911,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.71
+   }
+  },
+  "cost_usd": 2.2722000000000004e-05,
+  "latency_ms": 695
+ }
+}

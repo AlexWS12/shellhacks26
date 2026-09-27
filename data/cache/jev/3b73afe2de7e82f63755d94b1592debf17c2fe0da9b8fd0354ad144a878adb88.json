@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Ohara",
+   "utility": "GPC",
+   "filing_state": "GA",
+   "project": "CC - Qts Fayetteville Transmission Needs",
+   "description": "Build a new 500/230kV substation (Ashley Park) splitting the Ohara - Union City 500kV line. Install two 500/230kV auto transformers at the Ashley Park station. At Ashley Park, the 500kV side will be a 4 - breaker ring bus, while the 230kV side will be a 2 - rung Breaker and a Half configuration. Build two new 230kV lines (~6 miles each) from Ashley Park to the high side of customer substations. Th",
+   "zone": "208",
+   "candidate": {
+    "name": "O'Hara Substation",
+    "operator": "",
+    "voltage": "500000",
+    "lat": 33.4819007,
+    "lon": -84.3673898,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.66
+   }
+  },
+  "cost_usd": 2.5662000000000003e-05,
+  "latency_ms": 307
+ }
+}

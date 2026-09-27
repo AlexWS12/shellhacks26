@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Ashley Park",
+   "filing_state": "GA",
+   "project": "CC - Qts Fayetteville Transmission Needs",
+   "description": "Build a new 500/230kV substation (Ashley Park) splitting the Ohara - Union City 500kV line. Install two 500/230kV auto transformers at the Ashley Park station. At Ashley Park, the 500kV side will be a 4 - breaker ring bus, while the 230kV side will be a 2 - rung Breaker and a Half configuration. Build two new 230kV lines (~6 miles each) from Ashley Park to the high side of customer substations. Th",
+   "zone": "208",
+   "candidate": {
+    "name": "Ashley Park",
+    "kind": "place=neighbourhood",
+    "county": "Fayette County",
+    "state": "GA",
+    "lat": 33.5073355,
+    "lon": -84.4768716
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.71
+   }
+  },
+  "cost_usd": 2.4990000000000003e-05,
+  "latency_ms": 687
+ }
+}

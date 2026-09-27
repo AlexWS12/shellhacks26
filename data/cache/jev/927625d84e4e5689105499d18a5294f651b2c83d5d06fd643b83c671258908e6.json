@@ -1,0 +1,42 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Villa Rica",
+   "utility": "GTC",
+   "filing_state": "GA",
+   "project": "GTC: Garrett Rd - V. Rica 230kV Line Reconductor (CC Net Im)",
+   "description": "GTC will reconductor the section from East Villa Rica Switching station to Garrett Rd with 160C 1351 ACSS on 11.5 miles of the Garrett Road - Villa Rica 230kV line. Additionally, the 2.5 miles section from East Villa Rica Switching Station to Villa Rica will be rebuilt with bundled 200C 1351 ACSS Martin.",
+   "zone": "201",
+   "candidate": {
+    "name": "Villa Rica Substation",
+    "operator": "",
+    "voltage": "500000;230000;115000;46000",
+    "lat": 33.7410224,
+    "lon": -84.8548652,
+    "state": "GA"
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in another state or region than the project describes."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.68
+   }
+  },
+  "cost_usd": 2.5620000000000002e-05,
+  "latency_ms": 445
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Oasis",
+   "filing_state": "GA",
+   "project": "North Spa 230kV Strategic Project",
+   "description": "This project includes the following scope of work: Build a new 230kV switching station north of Oasis in a ring bus configuration with 4 - breakers. Loop in the East Social Circle - Oasis (White) 230kV line. Build a new 230kV line to Cornish Mountain from North Spa. New 230kV line from Rockville 230kV will terminate in this station.",
+   "zone": "214",
+   "candidate": {
+    "name": "Oasis",
+    "kind": "place=hamlet",
+    "county": "Fannin County",
+    "state": "GA",
+    "lat": 34.9153586,
+    "lon": -84.4821495
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.74
+   }
+  },
+  "cost_usd": 2.3478000000000005e-05,
+  "latency_ms": 272
+ }
+}

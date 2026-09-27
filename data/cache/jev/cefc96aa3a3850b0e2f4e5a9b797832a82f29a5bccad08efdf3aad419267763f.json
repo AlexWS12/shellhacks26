@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Stevens Creek",
+   "filing_state": "SC",
+   "project": "Stevens Creek - Hooks 115kV/LR Plumb Branch 46kV Rebuilds",
+   "description": "9.5 miles. Scope includes rebuilding the 115 and 46 kV lines in this corridor SPDC.",
+   "zone": null,
+   "candidate": {
+    "name": "Stevens Creek",
+    "kind": "place=hamlet",
+    "county": "Columbia County",
+    "state": "GA",
+    "lat": 33.5606903,
+    "lon": -82.0565063
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is this substation, or is named after this community and the project area fits.",
+     "false": "The name only coincides; the project describes a different area or state."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.24
+   }
+  },
+  "cost_usd": 2.0958e-05,
+  "latency_ms": 264
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Fairburn",
+   "project": "CC - Gullatt Road Transmission Improvements",
+   "description": "Upstream Transmission improvements to serve a new customer station being built along the Morrow - Yates Common 115kV and Line Creek - Fairburn #2 115kV lines. Rebuild the Morrow - Yates Common 115kV line from Line Creek to the new Gullatt Road customer station. Rebuild the Line Creek - Fairburn #2 115kV line from Line Creek to the new Gullatt Road customer station. Remove the Owens Corning Tap Con",
+   "candidate_town": "Fairburn, GA",
+   "county": "Fulton County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.91
+   }
+  },
+  "cost_usd": 2.1672000000000002e-05,
+  "latency_ms": 314
+ }
+}
