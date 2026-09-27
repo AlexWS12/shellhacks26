@@ -51,7 +51,8 @@ class Advocate(Agent):
         other = "the first utility" if side == "dominion" else "the second utility"
         self.spec = AgentSpec("advocate_desc" if side == "dominion" else "advocate_ga", f"Advocate · {label}",
                               f"Prepares {label}'s interests (or {other}'s, in a pair without them) for the "
-                              "coordination meeting", ["gemini"], depends_on=["analyst"], engine="Gemini")
+                              "coordination meeting", ["gemini"], depends_on=["analyst"], engine="Gemini",
+                              roles=["advocate"])
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
@@ -74,7 +75,7 @@ class Advocate(Agent):
 
 class Mediator(Agent):
     spec = AgentSpec("mediator", "Mediator", "Neutral joint agenda: where the two sides align and conflict",
-                     ["gemini"], depends_on=["advocate_desc", "advocate_ga"], engine="Gemini")
+                     ["gemini"], depends_on=["advocate_desc", "advocate_ga"], engine="Gemini", roles=["mediator"])
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board

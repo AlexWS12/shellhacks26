@@ -1,32 +1,30 @@
 "use client";
 
-// Model setup: which AI model does each job, and what to try when it fails. Four steps: keys, jobs and models,
-// test, save. Saving writes config/models.local.json on the server. Keys never come back from the server, only
-// whether one is set and where. On a hosted server the whole screen needs the admin passcode, and keys can't be
-// entered here.
+// Setup · Models: which AI model does each job, and what to try when it fails. Three steps: keys, jobs and models,
+// test; Save is in the footer. Saving writes config/models.local.json on the server. Keys never come back from the
+// server, only whether one is set and where. On a hosted server this section needs the admin passcode, and keys
+// can't be entered here.
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { api, ApiError, setPasscode } from "@/lib/api";
-import { useFocusTrap } from "@/lib/focus";
+import { run, useRev } from "@/lib/run";
 import type { ModelList, SetupConfig, SetupProvider, SetupRef, SetupResult, SetupRole } from "@/lib/types";
-import { closeSetup, startRun, useUI } from "@/lib/ui";
+import { closeSetup, startRun, type SetupState } from "@/lib/ui";
 
-const STEPS = ["Keys", "Jobs and models", "Test", "Save"] as const;
-const keyOf = (r: SetupRef) => `${r.provider}/${r.model}`;
-const parseKey = (v: string): SetupRef => {
-  const i = v.indexOf("/");
-  return { provider: v.slice(0, i), model: v.slice(i + 1) };
-};
-const same = (a: SetupRef[], b: SetupRef[]) => a.length === b.length && a.every((x, i) => keyOf(x) === keyOf(b[i]));
+import { errText, keyOf, modelColors, parseKey, same } from "./common";
+import JobsView, { type Sel } from "./JobsView";
+import type { Go, ModelStatus, ModelStep } from "./types";
+
+const STEPS: { id: ModelStep; label: string }[] = [
+  { id: "keys", label: "1. Keys" }, { id: "jobs", label: "2. Jobs and models" }, { id: "test", label: "3. Test" },
+];
 const draftOf = (cfg: SetupConfig) => Object.fromEntries(cfg.roles.map((r) => [r.name, r.models.map((m) => ({ ...m }))]));
 
-function errText(e: unknown): string {
-  return e instanceof Error ? e.message : String(e);
-}
-
-export default function ModelSetup() {
-  const setupState = useUI((s) => s.setup);
+export default function ModelsSection({ setup, step, setStep, go, onStatus }: {
+  setup: SetupState; step: ModelStep; setStep: (s: ModelStep) => void; go: Go; onStatus: (s: ModelStatus) => void;
+}) {
+  useRev((s) => s.rev);
   const [cfg, setCfg] = useState<SetupConfig | null>(null);
   const [locked, setLocked] = useState<string | null>(null); // hosted: why the passcode is needed
   const [code, setCode] = useState("");
@@ -34,7 +32,6 @@ export default function ModelSetup() {
   const [lists, setLists] = useState<Record<string, ModelList>>({});
   const [results, setResults] = useState<Record<string, SetupResult>>({});
   const [testedAt, setTestedAt] = useState<string | null>(null);
-  const [step, setStep] = useState(0);
   const [busy, setBusy] = useState("");
   const [error, setError] = useState("");
   const [blocked, setBlocked] = useState<{ role: string; label: string; reason: string }[]>([]);
@@ -42,11 +39,15 @@ export default function ModelSetup() {
   const [keyIn, setKeyIn] = useState<Record<string, string>>({});
   const [jevHost, setJevHost] = useState("typesafe");
   const [keyNote, setKeyNote] = useState<Record<string, { ok: boolean; text: string }>>({});
-  const focused = useRef(false);
-
-  const focusRole = setupState?.focusRole ?? null;
-  const problems = setupState?.problems ?? [];
-  const problemRoles = new Set(problems.map((p) => p.role));
+  const agents = run.agentOrder.map((id) => run.agents[id]).filter(Boolean);
+  // Opened because a run was refused: pre-select the agent whose job had no working model.
+  const [sel, setSel] = useState<Sel>(() => {
+    const r = setup.focusRole;
+    const a = r ? agents.find((x) => x.roles?.includes(r)) : null;
+    return a ? { kind: "agent", id: a.id } : r ? { kind: "role", id: r } : null;
+  });
+  const problems = setup.problems;
+  const problemRoles = useMemo(() => new Set(problems.map((p) => p.role)), [problems]);
 
   async function loadLists(providers: SetupProvider[]) {
     const out: Record<string, ModelList> = {};
@@ -81,23 +82,11 @@ export default function ModelSetup() {
   useEffect(() => {
     void load();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  const box = useRef<HTMLDivElement>(null);
-  useFocusTrap(box, closeSetup);
-
-  // Opened because a run was refused: go straight to that job.
-  useEffect(() => {
-    if (!cfg || focused.current) return;
-    if (setupState?.step === "keys") {
-      focused.current = true;
-      return setStep(0);
-    }
-    if (!focusRole) return;
-    focused.current = true;
-    setStep(1);
-    requestAnimationFrame(() => document.getElementById(`role-${focusRole}`)?.scrollIntoView({ block: "center" }));
-  }, [cfg, focusRole, setupState?.step]);
 
   const providers = useMemo(() => Object.fromEntries((cfg?.providers ?? []).map((p) => [p.id, p])), [cfg]);
+  const roles = useMemo(() => Object.fromEntries((cfg?.roles ?? []).map((r) => [r.name, r])), [cfg]);
+  const colors = useMemo(() => modelColors([...new Set([...(cfg?.roles ?? []).flatMap((r) => r.default_models.map(keyOf)),
+    ...Object.values(draft).flat().map(keyOf)])]), [cfg, draft]);
   const dirty = cfg ? cfg.roles.some((r) => !same(draft[r.name] ?? [], r.models)) : false;
 
   const setChain = (role: string, chain: SetupRef[]) => {
@@ -208,19 +197,29 @@ export default function ModelSetup() {
   const needed = (cfg?.roles ?? []).filter((r) => !r.not_used);
   const noneWork = needed.filter((r) => statusOf(r) === "none");
   const backupFails = needed.filter((r) => statusOf(r) === "some");
+  const firstFails = needed.filter((r) => {
+    const f = draft[r.name]?.[0];
+    const res = f ? results[keyOf(f)] : undefined;
+    return Boolean(res && !res.ok && res.status !== "Off");
+  });
+  const tested = Object.keys(results).length > 0;
   const untested = (cfg?.roles ?? []).some((r) => statusOf(r) === "untested");
 
+  useEffect(() => {
+    onStatus({ noneWork: noneWork.length, backupFails: backupFails.length, tested });
+  }, [noneWork.length, backupFails.length, tested]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const foot = saved ? { cls: "good", text: `Saved. The next run uses these models${saved.changed.length ? ` (${saved.changed.length} job${saved.changed.length === 1 ? "" : "s"} changed from the defaults)` : " (the defaults)"}.` }
+    : firstFails.length || noneWork.length ? { cls: "fail", text: `${firstFails.length || noneWork.length} job${(firstFails.length || noneWork.length) > 1 ? "s try" : " tries"} a failing model first. Move a working model up before saving.` }
+      : backupFails.length ? { cls: "warn", text: `A backup is failing in ${backupFails.length} job${backupFails.length > 1 ? "s" : ""}. You can still save; the first working model is used.` }
+        : tested && !untested ? { cls: "good", text: "Every job has a working model." }
+          : { cls: "", text: dirty ? "Changes aren't saved yet. Saving tests any model not tested in the last few minutes." : "Test the models to see which jobs have a working one." };
+
   return (
-    <div className="modal-back" onMouseDown={(e) => e.target === e.currentTarget && closeSetup()}>
-      <div ref={box} className="modal setup" role="dialog" aria-modal="true" aria-labelledby="setup-title" tabIndex={-1}>
-        <div className="modal-head">
-          <h2 id="setup-title">Model setup</h2>
-          <button className="linkbtn" onClick={closeSetup} aria-label="Close">Close</button>
-        </div>
-        <p className="sub">
-          Choose which AI model does each job, and which backups to try if it fails. Keys stay on the server: this
-          screen only shows whether one is set.
-        </p>
+    <>
+      <div className="su-body">
+        <p className="sub">Choose which AI model does each job, and which backups to try if it fails. Keys stay on the server:
+          this screen only shows whether one is set.</p>
 
         {problems.length > 0 && (
           <div className="banner" role="alert">
@@ -230,7 +229,7 @@ export default function ModelSetup() {
                 <li key={reason}><b>{ps.map((p) => p.label).join(", ")}</b>: {reason}</li>
               ))}
             </ul>
-            {setupState?.canForce && (
+            {setup.canForce && (
               <div className="row2">
                 <button onClick={() => { closeSetup(); void startRun("live", true); }}>Run anyway</button>
                 <span className="note">Those models are only busy or over their limit right now. Their text will come from templates.</span>
@@ -252,16 +251,14 @@ export default function ModelSetup() {
           <p className="empty">{busy === "loading" ? "Loading…" : "Couldn't load the setup."}</p>
         ) : (
           <>
-            <div className="seg tabs" role="group" aria-label="Steps">
-              {STEPS.map((s, i) => (
-                <button key={s} aria-pressed={step === i} onClick={() => setStep(i)}>
-                  {i + 1}. {s}
-                </button>
-              ))}
+            <div className="seg su-steps" role="group" aria-label="Steps">
+              {STEPS.map((s) => <button key={s.id} aria-pressed={step === s.id} onClick={() => setStep(s.id)}>{s.label}</button>)}
             </div>
             {cfg.error && <p className="err-inline">{cfg.error}</p>}
+            {blocked.length > 0 && <ul className="fail">{blocked.map((b) => <li key={b.role}><b>{b.label}</b>: {b.reason}</li>)}</ul>}
+            {saved?.warnings.map((w) => <p key={w} className="note warn">{w}</p>)}
 
-            {step === 0 && (
+            {step === "keys" && (
               <div>
                 {cfg.mode === "hosted" && (
                   <p className="note">This is a hosted server: keys are set as environment variables by whoever runs it, not here.</p>
@@ -311,36 +308,17 @@ export default function ModelSetup() {
               </div>
             )}
 
-            {step === 1 && (
-              <div>
-                <p className="note">
-                  Each job tries its first model, then each backup in order. A backup can come from another provider,
-                  for example Gemini behind Jev for the quick decisions.
-                </p>
-                {[...new Set(cfg.roles.map((r) => r.group))].map((g) => (
-                  <section key={g}>
-                    <h3>{g}</h3>
-                    {cfg.roles.filter((r) => r.group === g).map((r) => (
-                      <RoleEditor key={r.name} role={r} chain={draft[r.name] ?? []} providers={providers} lists={lists}
-                        results={results} max={cfg.max_models_per_role} highlight={problemRoles.has(r.name) || r.name === focusRole}
-                        onChange={(c) => setChain(r.name, c)} />
-                    ))}
-                  </section>
-                ))}
-              </div>
+            {step === "jobs" && (
+              <JobsView agents={agents} roles={roles} draft={draft} results={results} lists={lists} providers={providers}
+                colors={colors} max={cfg.max_models_per_role} sel={sel} setSel={setSel} setChain={setChain}
+                replaceEverywhere={replaceEverywhere} problemRoles={problemRoles} />
             )}
 
-            {step === 2 && (
+            {step === "test" && (
               <div>
-                <div className="row2">
-                  <button className="primary" onClick={() => void testAll()} disabled={busy !== ""}>
-                    {busy === "testing" ? "Testing…" : "Test all"}
-                  </button>
-                  <span className="note">
-                    {testedAt ? `Last tested at ${testedAt}.` : "Checks every chosen model with its key: one tiny request each."}
-                  </span>
-                </div>
-                {Object.keys(results).length > 0 && (
+                <p className="note">{busy === "testing" ? "Testing every chosen model…"
+                  : testedAt ? `Last tested at ${testedAt}.` : "Checks every chosen model with its key: one tiny request each."}</p>
+                {tested && (
                   <div className="preview tests">
                     <table>
                       <thead><tr><th>Model</th><th>Used by</th><th>Result</th><th>Change it everywhere</th></tr></thead>
@@ -350,7 +328,7 @@ export default function ModelSetup() {
                           const users = cfg.roles.filter((r) => (draft[r.name] ?? []).some((x) => keyOf(x) === keyOf(m)));
                           return (
                             <tr key={keyOf(m)}>
-                              <td>{providers[m.provider]?.label ?? m.provider} · {m.model}</td>
+                              <td><i className="dot" style={{ background: colors[keyOf(m)] }} /> {providers[m.provider]?.label ?? m.provider} · {m.model}</td>
                               <td>{users.length === 1 ? users[0].label : `${users.length} jobs`}</td>
                               <td className={!res || res.status === "Off" ? "" : res.ok ? "good" : "fail"} title={res?.message || undefined}>
                                 {res ? res.plain : "Not tested yet"}
@@ -373,57 +351,31 @@ export default function ModelSetup() {
                     </table>
                   </div>
                 )}
-                <Summary noneWork={noneWork} backupFails={backupFails} untested={untested} tested={Object.keys(results).length > 0} />
+                <Summary noneWork={noneWork} backupFails={backupFails} untested={untested} tested={tested} />
               </div>
             )}
-
-            {step === 3 && (
-              <div>
-                <Summary noneWork={noneWork} backupFails={backupFails} untested={untested} tested={Object.keys(results).length > 0} />
-                {blocked.length > 0 && (
-                  <ul className="fail">{blocked.map((b) => <li key={b.role}><b>{b.label}</b>: {b.reason}</li>)}</ul>
-                )}
-                {saved ? (
-                  <div>
-                    <p className="ok-inline">
-                      Saved. The next run uses these models
-                      {saved.changed.length ? ` (${saved.changed.length} job${saved.changed.length === 1 ? "" : "s"} changed from the defaults)` : " (the defaults)"}.
-                    </p>
-                    {saved.warnings.map((w) => <p key={w} className="note warn">{w}</p>)}
-                    <div className="row2">
-                      <button className="primary" onClick={() => { closeSetup(); void startRun("live"); }}>Start a run</button>
-                      <button onClick={closeSetup}>Close</button>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="row2">
-                    <button className="primary" onClick={() => void save()} disabled={busy !== "" || noneWork.length > 0}>
-                      {busy === "saving" ? "Checking and saving…" : "Save"}
-                    </button>
-                    {cfg.local_file && <button onClick={() => void resetToDefaults()} disabled={busy !== ""}>Go back to the defaults</button>}
-                  </div>
-                )}
-                <p className="note">
-                  Saving checks any model not tested in the last few minutes. It stops if a job has no working model, but a
-                  failing backup is only a warning.{dirty ? "" : " Nothing has changed from what's saved."}
-                </p>
-              </div>
-            )}
-
             {error && <p className="err-inline" role="alert">{error}</p>}
-            <div className="row2 steps-nav">
-              {step > 0 && <button onClick={() => setStep(step - 1)}>Back</button>}
-              {step < STEPS.length - 1 && <button onClick={() => setStep(step + 1)}>Next: {STEPS[step + 1]}</button>}
-            </div>
           </>
         )}
       </div>
-    </div>
+      {cfg && !locked && (
+        <div className="su-foot">
+          <span className={`note ${foot.cls}`}>{foot.text}</span>
+          <span className="spacer" />
+          {cfg.local_file && <button onClick={() => void resetToDefaults()} disabled={busy !== ""}>Go back to the defaults</button>}
+          <button onClick={() => { setStep("test"); void testAll(); }} disabled={busy !== ""}>{busy === "testing" ? "Testing…" : "Test all"}</button>
+          {saved ? <button className="primary" onClick={() => go("run")}>Go to Run pipeline</button>
+            : <button className="primary" onClick={() => void save()} disabled={busy !== "" || noneWork.length > 0}>
+              {busy === "saving" ? "Checking and saving…" : "Save"}
+            </button>}
+        </div>
+      )}
+    </>
   );
 }
 
 function Summary({ noneWork, backupFails, untested, tested }: { noneWork: SetupRole[]; backupFails: SetupRole[]; untested: boolean; tested: boolean }) {
-  if (!tested) return <p className="note">Run the test to see which jobs have a working model.</p>;
+  if (!tested) return null;
   return (
     <div className="summary">
       {noneWork.length > 0 && (
@@ -434,73 +386,6 @@ function Summary({ noneWork, backupFails, untested, tested }: { noneWork: SetupR
       )}
       {noneWork.length === 0 && backupFails.length === 0 && !untested && <p className="good">Every job has a working model.</p>}
       {untested && <p className="note">Some models changed since the last test.</p>}
-    </div>
-  );
-}
-
-function RoleEditor({ role, chain, providers, lists, results, max, highlight, onChange }: {
-  role: SetupRole;
-  chain: SetupRef[];
-  providers: Record<string, SetupProvider>;
-  lists: Record<string, ModelList>;
-  results: Record<string, SetupResult>;
-  max: number;
-  highlight: boolean;
-  onChange: (chain: SetupRef[]) => void;
-}) {
-  // Every model a provider lists, plus whatever this job already uses (so a name missing from a list still shows).
-  const options = role.providers.map((pid) => {
-    const listed = (lists[pid]?.models ?? []).map((m) => m.id);
-    const own = [...chain, ...role.default_models].filter((r) => r.provider === pid).map((r) => r.model);
-    return { pid, ids: [...new Set([...listed, ...own])], listed: new Set(listed) };
-  });
-  const move = (i: number, d: number) => {
-    const next = [...chain];
-    [next[i], next[i + d]] = [next[i + d], next[i]];
-    onChange(next);
-  };
-  const add = () => {
-    const used = new Set(chain.map(keyOf));
-    for (const o of options) {
-      const id = o.ids.find((m) => !used.has(`${o.pid}/${m}`));
-      if (id) return onChange([...chain, { provider: o.pid, model: id }]);
-    }
-  };
-  return (
-    <div id={`role-${role.name}`} className={`role${highlight ? " focus" : ""}`}>
-      <div className="role-head">
-        <b>{role.label}</b>
-        {role.not_used && <span className="tag">Not needed right now</span>}
-        {!same(chain, role.default_models) && <span className="tag">Changed from the default</span>}
-      </div>
-      <p className="sub">{role.description}{role.not_used ? ` ${role.not_used}` : ""}</p>
-      <div className="chain">
-        {chain.map((ref, i) => {
-          const res = results[keyOf(ref)];
-          return (
-            <div key={`${i}-${keyOf(ref)}`} className="chain-row">
-              <span className="chain-label">{i === 0 ? "Try first" : `Backup ${i}`}</span>
-              <select aria-label={`${role.label}: ${i === 0 ? "first model" : `backup ${i}`}`} value={keyOf(ref)}
-                onChange={(e) => onChange(chain.map((x, j) => (j === i ? parseKey(e.target.value) : x)))}>
-                {options.map((o) => (
-                  <optgroup key={o.pid} label={`${providers[o.pid]?.label ?? o.pid}${providers[o.pid]?.key_present ? "" : " (no key yet)"}`}>
-                    {o.ids.map((m) => (
-                      <option key={m} value={`${o.pid}/${m}`}>{m}{o.listed.size && !o.listed.has(m) ? " (not in the list)" : ""}</option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-              <span className={`res ${!res || res.status === "Off" ? "" : res.ok ? "good" : "fail"}`} title={res?.message || undefined}>{res ? res.plain : ""}</span>
-              <span className="order">
-                <button aria-label="Move up" title="Try earlier" disabled={i === 0} onClick={() => move(i, -1)}>↑</button>
-                <button aria-label="Move down" title="Try later" disabled={i === chain.length - 1} onClick={() => move(i, 1)}>↓</button>
-                <button aria-label="Remove" title="Remove" disabled={chain.length === 1} onClick={() => onChange(chain.filter((_, j) => j !== i))}>✕</button>
-              </span>
-            </div>
-          );
-        })}
-        {chain.length < max && <button className="linkbtn" onClick={add}>+ Add a backup model</button>}
-      </div>
     </div>
   );
 }

@@ -30,10 +30,12 @@ const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
 const suggestCode = (name: string) =>
   name.split(/\s+/).filter((w) => /^[A-Za-z]/.test(w) && !/^(of|and|the|&)$/i.test(w)).map((w) => w[0]).join("").toUpperCase().slice(0, 8);
 
-export default function AddFiling({ start, onActivated, onChanged }: {
+export default function AddFiling({ start, onActivated, onChanged, inputId, onStep }: {
   start: SourceView | null; // resume an added source at its step
   onActivated: () => void;
   onChanged: () => void; // the list should reload
+  inputId: string; // the Setup modal's Upload button opens this file input
+  onStep: (step: number) => void;
 }) {
   const roles = useUI((s) => s.health?.models) ?? {};
   const [step, setStep] = useState<Step>(start ? (start.status === "review" || start.status === "active" ? 3 : 2) : 0);
@@ -56,6 +58,8 @@ export default function AddFiling({ start, onActivated, onChanged }: {
   const [error, setError] = useState("");
   const stop = useRef<(() => void) | null>(null);
 
+  const [over, setOver] = useState(false); // a file is being dragged over the drop zone
+  useEffect(() => onStep(step), [step]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     void api.admin.meta().then(setMeta).catch(() => undefined);
     return () => { stop.current?.(); setRetry(null); };
@@ -204,8 +208,13 @@ export default function AddFiling({ start, onActivated, onChanged }: {
         <div>
           <p className="sub">A PDF of another utility&apos;s construction plan, up to {meta?.max_upload_mb ?? 50} MB. Its projects are
             read by the AI reader, and you review every value against its page before anything reaches the map.</p>
-          <label className="field wide"><span>Filing (PDF)</span>
-            <input type="file" accept=".pdf,application/pdf" onChange={(e) => void pick(e.target.files?.[0])} disabled={busy} /></label>
+          <label className={`su-drop ${over ? "over" : ""}`}
+            onDragOver={(e) => { e.preventDefault(); setOver(true); }} onDragLeave={() => setOver(false)}
+            onDrop={(e) => { e.preventDefault(); setOver(false); void pick(e.dataTransfer.files?.[0]); }}>
+            <input id={inputId} type="file" accept=".pdf,application/pdf" onChange={(e) => void pick(e.target.files?.[0])} disabled={busy} />
+            <b>Drop the filing here</b>
+            <span>or click to choose a PDF, up to {meta?.max_upload_mb ?? 50} MB</span>
+          </label>
           {busy && <p className="note">Uploading and opening it…</p>}
         </div>
       )}

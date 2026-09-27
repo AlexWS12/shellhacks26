@@ -7,10 +7,10 @@ import { boot, useUI } from "@/lib/ui";
 
 import FailureModal from "./FailureModal";
 import Header from "./Header";
-import ModelSetup from "./ModelSetup";
 import Notices from "./Notices";
 import { Flyout, Rail, RailHandle } from "./Rail";
 import RightPanel from "./RightPanel";
+import Setup from "./Setup";
 
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
@@ -39,7 +39,7 @@ export default function TandemApp() {
           <RightPanel />
         </aside>
       </div>
-      {setupOpen && <ModelSetup />}
+      {setupOpen && <Setup />}
       <FailureModal />
       <Notices />
     </div>

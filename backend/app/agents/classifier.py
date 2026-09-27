@@ -34,7 +34,7 @@ def type_heuristic(p: Project) -> str:
 
 class Classifier(Agent):
     spec = AgentSpec("classifier", "Classifier", "Tags each project by kind of work", ["jev"],
-                     depends_on=["extract_desc", "extract_ga"], engine="Jev")
+                     depends_on=["extract_desc", "extract_ga"], engine="Jev", roles=["classify_type"])
 
     async def run(self, ctx: Ctx) -> str:
         projects = list(ctx.board.projects.values())

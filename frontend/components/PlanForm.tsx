@@ -11,10 +11,6 @@ import type { SubmissionView } from "@/lib/types";
 import { refreshAgents } from "@/lib/ui";
 
 type Kind = "spreadsheet" | "url";
-const TABS: { kind: Kind; label: string; accept?: string }[] = [
-  { kind: "spreadsheet", label: "Spreadsheet", accept: ".csv,.xlsx" },
-  { kind: "url", label: "Link" },
-];
 
 function toBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -25,9 +21,13 @@ function toBase64(file: File): Promise<string> {
   });
 }
 
-export default function PlanForm({ onDone }: { onDone: (msg: string) => void }) {
+// kind: picked in the Setup modal. formId: its footer's submit button targets this form. onState: what that button
+// needs to know (whether the form can be sent, and whether the column-matching step is showing its own buttons).
+export default function PlanForm({ kind, formId, onDone, onState }: {
+  kind: Kind; formId: string; onDone: (msg: string) => void;
+  onState: (s: { ready: boolean; busy: boolean; mapping: boolean }) => void;
+}) {
   const [menu, setMenu] = useState<SubmissionMenu | null>(null);
-  const [kind, setKind] = useState<Kind>("spreadsheet");
   const [owner, setOwner] = useState("");
   const [label, setLabel] = useState("");
   const [state, setState] = useState<"SC" | "GA">("SC");
@@ -93,8 +93,8 @@ export default function PlanForm({ onDone }: { onDone: (msg: string) => void }) 
     }
   }
 
-  const tab = TABS.find((t) => t.kind === kind)!;
-  const ready = owner.trim() && (kind === "url" ? url.trim() : file);
+  const ready = Boolean(owner.trim() && (kind === "url" ? url.trim() : file));
+  useEffect(() => onState({ ready, busy, mapping: Boolean(mapping) }), [ready, busy, mapping]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="planform">
@@ -127,14 +127,7 @@ export default function PlanForm({ onDone }: { onDone: (msg: string) => void }) 
             </div>
           </div>
         ) : (
-          <form onSubmit={(e) => void submit(e)}>
-            <div className="seg tabs" role="group" aria-label="Plan type">
-              {TABS.map((t) => (
-                <button key={t.kind} type="button" aria-pressed={kind === t.kind} onClick={() => { setKind(t.kind); setFile(null); }}>
-                  {t.label}
-                </button>
-              ))}
-            </div>
+          <form id={formId} onSubmit={(e) => void submit(e)}>
             <div className="fields">
               <label className="field"><span>Utility *</span>
                 <input ref={first} value={owner} onChange={(e) => setOwner(e.target.value)} placeholder="e.g. Santee Cooper" maxLength={80} /></label>
@@ -149,7 +142,7 @@ export default function PlanForm({ onDone }: { onDone: (msg: string) => void }) 
                   <input type="url" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://" /></label>
               ) : (
                 <label className="field wide"><span>File * (CSV or XLSX, up to {menu?.limits.max_mb ?? 20} MB)</span>
-                  <input key={kind} type="file" accept={tab.accept} onChange={(e) => setFile(e.target.files?.[0] ?? null)} /></label>
+                  <input type="file" accept=".csv,.xlsx" onChange={(e) => setFile(e.target.files?.[0] ?? null)} /></label>
               )}
             </div>
             {kind === "url" && (
@@ -158,9 +151,6 @@ export default function PlanForm({ onDone }: { onDone: (msg: string) => void }) 
                 its page number.{menu && !menu.gemini ? " No model is configured, so it will be saved but not read until one is." : ""}
               </p>
             )}
-            <div className="row2">
-              <button className="primary" type="submit" disabled={!ready || busy}>{busy ? "Saving…" : kind === "spreadsheet" ? "Upload and match columns" : "Save link"}</button>
-            </div>
           </form>
         )}
 

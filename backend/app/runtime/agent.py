@@ -23,10 +23,12 @@ class AgentSpec:
     kind: str = "agent"  # agent | tool (plain code, no judgment)
     engine: str = "Rules"  # the one label the UI shows: what powers this agent
     team: str = "core"  # core | research (drawn as its own group)
+    roles: list[str] = field(default_factory=list)  # the model jobs it calls (config/models.json), none for plain code
 
     def public(self) -> dict[str, Any]:
         return {"id": self.id, "name": self.name, "role": self.role, "actors": self.actors,
-                "depends_on": self.depends_on, "kind": self.kind, "engine": self.engine, "team": self.team}
+                "depends_on": self.depends_on, "kind": self.kind, "engine": self.engine, "team": self.team,
+                "roles": self.roles}
 
 
 LLM_ACTORS = {"gemini", "jev"}

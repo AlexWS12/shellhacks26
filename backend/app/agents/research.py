@@ -84,7 +84,8 @@ class ResearchScout(Agent):
             f"research_{category}", f"Scout · {LABEL[category]}",
             f"Finds other utilities' {WHAT[category]} projects near the river and places them",
             ["research_file", "osm", "jev"] + (["gemini"] if live else []),
-            engine="Research + Gemini" if live else "Research + Jev", team="research")
+            engine="Research + Gemini" if live else "Research + Jev", team="research",
+            roles=["research_search", "research_extract", "research_confirm"])
 
     async def run(self, ctx: Ctx) -> str:
         if self.category not in ctx.run.research:

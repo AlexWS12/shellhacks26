@@ -36,7 +36,8 @@ SPLIT_SCHEMA = {"type": "object", "properties": {"endpoints": {"type": "array", 
 
 class Geocoder(Agent):
     spec = AgentSpec("geocoder", "Geocoder", "Finds coordinates: surveyed points, OpenStreetMap, then towns",
-                     ["code", "osm", "jev", "gemini"], depends_on=["sample", "extract_desc", "extract_ga"], engine="OSM + Jev")
+                     ["code", "osm", "jev", "gemini"], depends_on=["sample", "extract_desc", "extract_ga"], engine="OSM + Jev",
+                     roles=["endpoint_split", "confirm_osm", "confirm_town", "confirm_place"])
 
     def __init__(self, only: set[str] | None = None, tag: str = "") -> None:
         self.only = only  # geocode only these projects (a source being activated); None = every project
