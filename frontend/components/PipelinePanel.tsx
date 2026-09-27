@@ -6,6 +6,7 @@ import { run, useRev } from "@/lib/run";
 import { useUI } from "@/lib/ui";
 
 import AgentGraph from "./AgentGraph";
+import SourcesMenu from "./SourcesMenu";
 
 export default function PipelinePanel() {
   useRev((s) => s.rev);
@@ -14,6 +15,7 @@ export default function PipelinePanel() {
   const results = useUI((s) => s.results);
   const [allChecks, setAllChecks] = useState(false);
   const [open, setOpen] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const unl = Object.keys(run.unlocated);
   const passed = run.reference.filter((r) => r.passed).length;
   const jev = run.judges["jev"];
@@ -34,7 +36,11 @@ export default function PipelinePanel() {
         </div>
       )}
       <div className="section">
-        <p className="label">Sources</p>
+        <p className="label">Sources
+          <button className="linkbtn addplan" onClick={() => setMenuOpen(true)} disabled={run.phase === "running"}
+            title="Add another utility's plan: spreadsheet, PDF or link">+ Add a plan</button>
+        </p>
+        {menuOpen && <SourcesMenu onClose={() => setMenuOpen(false)} />}
         {run.sourceOrder.length === 0 && <p className="empty">Dominion&apos;s project list, Georgia&apos;s IRP Vol. 3, and a surveyed benchmark set.</p>}
         {run.sourceOrder.map((id) => {
           const s = run.sources[id];

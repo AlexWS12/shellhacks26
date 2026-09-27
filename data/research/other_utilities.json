@@ -1,0 +1,2778 @@
+{
+ "generated": "2026-09-26",
+ "method": "Research agents searched public sources (owners' pages, regulator dockets, DOT project pages, official releases, news) for projects by owners other than Dominion Energy SC electric and Georgia Power electric, in the Augusta-Aiken and Savannah-Jasper-Beaufort areas, built or planned 2024-2034. Each record was then checked by independent fact-checkers (one reading the cited pages, one searching independently, a third breaking ties). Records not confirmed by a majority were dropped; dates and places not confirmed were set to unknown or removed. Quotes are verbatim from the cited pages.",
+ "area": [
+  "Augusta-Aiken: Aiken, Edgefield, McCormick, Barnwell (SC); Richmond, Columbia, McDuffie, Lincoln, Wilkes, Warren, Jefferson, Glascock, Taliaferro, Burke (GA)",
+  "Savannah-Jasper-Beaufort: Jasper, Beaufort, Hampton, Colleton, Allendale (SC); Chatham, Effingham, Bryan, Liberty, Bulloch, Evans, Screven (GA)"
+ ],
+ "timeline": "construction or completion 2024-2034",
+ "stats": {
+  "scouted": 101,
+  "researched": 50,
+  "verified": 44,
+  "after_merging": 30
+ },
+ "records": [
+  {
+   "category": "electric",
+   "utility": "DOE National Nuclear Security Administration / Amentum (with DC BLOX)",
+   "utility_kind": "federal agency landowner (DOE/NNSA) leasing to a private developer",
+   "name": "Savannah River Site Artificial Intelligence Infrastructure and Energy Generation Project",
+   "description": "Proposed 1 GW AI data center at the Savannah River Site with about 2 GW of its own on-site generation, natural gas first and nuclear later. NNSA picked Amentum on July 20, 2026 to negotiate a phased lease; no lease is final. DOE's 2025 program goal was operation by end of 2027; the 2026 notice sets no dates.",
+   "status": "planned",
+   "start": null,
+   "in_service": null,
+   "date_quote": "The information collected will be used to inform development, encourage private-public partnerships and enable the construction of AI infrastructure at select DOE sites with a target of commencing operation by the end of 2027.",
+   "places": [
+    {
+     "name": "Savannah River Site",
+     "kind": "facility",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.energy.gov/nnsa/articles/nnsa-selects-amentum-ai-data-center-and-energy-project-savannah-river-site",
+     "title": "NNSA Selects Amentum for AI Data Center and Energy Project at Savannah River Site (July 20, 2026)",
+     "publisher": "U.S. Department of Energy, National Nuclear Security Administration",
+     "quote": "The project includes a 1-gigawatt data center and approximately 2-gigawatts of on-site energy generation consisting of natural gas bridging to nuclear energy."
+    },
+    {
+     "url": "https://www.energy.gov/nnsa/articles/nnsa-seeks-proposals-ai-data-centers-energy-projects-savannah-river-site-0",
+     "title": "NNSA Seeks Proposals for AI Data Centers, Energy Projects at Savannah River Site (September 30, 2025)",
+     "publisher": "U.S. Department of Energy, National Nuclear Security Administration",
+     "quote": "NNSA has identified 10 tracts of land totaling 3,103 acres at SRS for AI infrastructure projects and seeks applications that integrate innovative energy generation and storage projects with AI data centers."
+    },
+    {
+     "url": "https://www.energy.gov/articles/doe-identifies-16-federal-sites-across-country-data-center-and-ai-infrastructure",
+     "title": "DOE Identifies 16 Federal Sites Across the Country for Data Center and AI Infrastructure Development (April 3, 2025)",
+     "publisher": "U.S. Department of Energy",
+     "quote": "The information collected will be used to inform development, encourage private-public partnerships and enable the construction of AI infrastructure at select DOE sites with a target of commencing operation by the end of 2027."
+    },
+    {
+     "url": "https://www.wrdw.com/2026/07/20/feds-look-build-massive-data-center-savannah-river-site/",
+     "title": "Feds look to build massive data center at Savannah River Site",
+     "publisher": "WRDW/WAGT",
+     "quote": "The proposal calls for a 1-gigawatt data center supported by about 2 gigawatts of on-site power generation, starting with natural gas and later shifting to nuclear energy."
+    },
+    {
+     "url": "https://hotaugusta.com/2026/07/23/amentum-plans-ai-powered-data-center-with-on-site-energy-at-savannah-river-site/",
+     "title": "Amentum Plans AI-Powered Data Center with On-Site Energy at Savannah River Site",
+     "publisher": "HOT 98.3 / Augusta Newsroom",
+     "quote": "DC BLOX joins as an infrastructure partner. Energy partners are also part of the group. The facility will start with natural gas power, then switch to advanced nuclear energy later."
+    },
+    {
+     "url": "https://www.wrhi.com/2025/07/doe-selects-savannah-river-site-in-south-carolina-for-ai-data-center-and-energy-infrastructure-development-202228",
+     "title": "DOE Selects Savannah River Site in South Carolina for AI Data Center and Energy Infrastructure Development",
+     "publisher": "WRHI",
+     "quote": "Construction on selected sites, including SRS, was initially projected to begin as early as late 2025, with targeted completion set for the end of 2027."
+    },
+    {
+     "url": "https://www.energy.gov/articles/doe-announces-site-selection-ai-data-center-and-energy-infrastructure-development-federal",
+     "title": "DOE Announces Site Selection for AI Data Center and Energy Infrastructure Development on Federal Lands",
+     "publisher": "U.S. Department of Energy",
+     "quote": "to move forward with plans to invite private sector partners to develop cutting edge AI data center and energy generation projects."
+    },
+    {
+     "url": "https://www.compute-atlas.com/facilities/srs-energy-generation-savannah-river-site-sc",
+     "title": "SRS Energy Generation, Savannah River Site, SC",
+     "publisher": "Compute Atlas",
+     "quote": "Announced as initially natural-gas-fired, with NNSA/Amentum stating a plan to transition to advanced/nuclear generation over time"
+    },
+    {
+     "url": "https://discoveryalert.com/analysis/savannah-river-ai-nuclear-deal-september-2026/",
+     "title": "Savannah River AI Nuclear Deal",
+     "publisher": "Discovery Alert",
+     "quote": "1-GW AI data center paired with approximately 2 GW of on-site power generation at the Savannah River Site"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "All six quotes appear on their cited pages. The NNSA July 20, 2026 notice confirms the project name, the Amentum selection, 1 GW plus about 2 GW of gas-to-nuclear generation, and that no lease is final. DC BLOX shows up only in the HOT 98.3 piece. WRHI puts SRS in Aiken, Allendale and Barnwell counties, SC, about 25 miles southeast of Augusta, which is inside the study area. I rejected the \"2027\" in-service date: it is DOE's April 2025 target for all its sites (the April 3, 2025 page does not name SRS), and WRHI calls it an initial projection that has already slipped (construction late 2025 did not happen; the partner was picked July 2026 instead of end of 2025). The 2026 NNSA and WRDW articles give no construction or operation dates, so in_service should be null. The category is also questionable: this is a data center with its own on-site power plant, not a DESC or Georgia Power transmission project.",
+     "The project is real. NNSA (July 20, 2026), Amentum and DC BLOX coverage confirm Amentum was picked to negotiate a phased lease for a 1 GW data center with about 2 GW of gas-then-nuclear generation at SRS in Aiken County, SC, and no lease is signed yet. All six quotes appear verbatim on their pages. The \"2027\" in-service date should be null: the end-2027 target comes from DOE's April 2025 notice covering many sites and a 2025 WRHI story calling it \"initially projected\", while NNSA, Amentum, DC BLOX, WRDW and later coverage all say no construction or completion date is set. The timeline check passes only because every date any source mentions (a 2025 start and 2027 completion, both dropped, and nuclear in the early 2030s) falls between 2024 and 2034.",
+     "in-service \"2027\" not confirmed, set to unknown"
+    ],
+    "merged_from": [
+     {
+      "name": "Savannah River Site AI Data Center and On-Site Energy Generation (Amentum)",
+      "in_service": null,
+      "start": null,
+      "sources": [
+       "https://www.energy.gov/nnsa/articles/nnsa-selects-amentum-ai-data-center-and-energy-project-savannah-river-site",
+       "https://www.wrhi.com/2025/07/doe-selects-savannah-river-site-in-south-carolina-for-ai-data-center-and-energy-infrastructure-development-202228",
+       "https://www.energy.gov/articles/doe-announces-site-selection-ai-data-center-and-energy-infrastructure-development-federal"
+      ]
+     },
+     {
+      "name": "Savannah River Site AI Infrastructure and Energy Generation Project",
+      "in_service": null,
+      "start": null,
+      "sources": [
+       "https://www.energy.gov/nnsa/articles/nnsa-selects-amentum-ai-data-center-and-energy-project-savannah-river-site",
+       "https://www.compute-atlas.com/facilities/srs-energy-generation-savannah-river-site-sc",
+       "https://www.wrhi.com/2025/07/doe-selects-savannah-river-site-in-south-carolina-for-ai-data-center-and-energy-infrastructure-development-202228",
+       "https://discoveryalert.com/analysis/savannah-river-ai-nuclear-deal-september-2026/"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "U.S. Army Corps of Engineers (J. Strom Thurmond Dam owner/operator), paid for by Southeastern Power Administration customers, work by the Tennessee Valley Authority",
+   "utility_kind": "federal agency hydropower plant (Corps of Engineers), customer-funded through a federal power marketing administration",
+   "name": "J. Strom Thurmond Powerhouse Generator Step-Up Transformer Repairs (SEPA Sub-Agreement 33)",
+   "description": "Repairs to the generator step-up transformers at the J. Strom Thurmond Dam powerhouse on the Savannah River. SEPA customers pay for it under Sub-Agreement 33 (signed Feb 2024; $4.8M shared with Hartwell, $2.725M approved for Thurmond), and TVA does the work under an interagency agreement. No work dates are published.",
+   "status": "planned",
+   "start": null,
+   "in_service": null,
+   "date_quote": "Sub-Agreement 33 was approved by the PRC and signed in February 2024 to provide $3.8 million of customer funds for the replacement of the Oxygen Diffuser System at Russell Powerhouse and $4.8 million for Generator Step-Up Transformer Repairs at Hartwell and J. Strom Thurmond Powerhouses.",
+   "places": [
+    {
+     "name": "J. Strom Thurmond Powerhouse",
+     "kind": "power_plant",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Columbia County, Georgia",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "McCormick County, South Carolina",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Savannah River",
+     "kind": "water_body",
+     "state": "GA",
+     "role": "along"
+    }
+   ],
+   "coordinates": [
+    {
+     "lat": 33.660833,
+     "lon": -82.199722,
+     "url": "https://en.wikipedia.org/wiki/J._Strom_Thurmond_Dam",
+     "quote": "33°39′39″N 82°11′59″W"
+    }
+   ],
+   "miles": null,
+   "cost_usd": 2725000,
+   "cost_quote": "Customer Funding Approval Summary ... J. Strom Thurmond.......$2,725,000",
+   "sources": [
+    {
+     "url": "https://www.energy.gov/sites/default/files/2025-07/FY24%20Annual%20Report%20-%20Cover%20to%20Cover.pdf",
+     "title": "2024 Annual Report - Southeastern Power Administration",
+     "publisher": "U.S. Department of Energy, Southeastern Power Administration",
+     "quote": "Sub-Agreement 33 was approved by the PRC and signed in February 2024 to provide $3.8 million of customer funds for the replacement of the Oxygen Diffuser System at Russell Powerhouse and $4.8 million for Generator Step-Up Transformer Repairs at Hartwell and J. Strom Thurmond Powerhouses."
+    },
+    {
+     "url": "https://www.energy.gov/sites/default/files/2025-07/FY24%20Annual%20Report%20-%20Cover%20to%20Cover.pdf",
+     "title": "2024 Annual Report - Southeastern Power Administration (Customer Funding Approval Summary)",
+     "publisher": "U.S. Department of Energy, Southeastern Power Administration",
+     "quote": "The work will be completed by the Tennessee Valley Authority under an interagency agreement."
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/J._Strom_Thurmond_Dam",
+     "title": "J. Strom Thurmond Dam",
+     "publisher": "Wikipedia",
+     "quote": "Columbia County, Georgia / McCormick County, South Carolina"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I extracted the SEPA FY24 PDF text (p. 9). Both quotes appear there word for word, the Customer Funding Approval Summary lists \"J. Strom Thurmond $2,725,000\", and p. 26 says the projects are \"owned and operated by the Corps of Engineers\". Wikipedia confirms the Columbia County GA / McCormick County SC location, the Savannah River and USACE as operator. Caveats: $2.725M is Thurmond's total approved funding and is only inferred to be its GSU share (the Hartwell/Thurmond numbers don't reconcile exactly to $4.8M). No source says which state the powerhouse is in (the \"GA\" tag is unverified). There are no work dates, so the 2024-2034 timeline rests only on the Feb 2024 funding and the future-tense \"will be completed\".",
+     "I extracted the text of SEPA's FY2024 annual report (pp. 8-9). Both SEPA quotes appear word for word. The report shows J. Strom Thurmond at $2,725,000 in its Customer Funding Approval Summary but does not break that total down, so reading all of it as the transformer work (cost_usd) is an inference. Wikipedia's infobox confirms the county and river quote and names the USACE as operator. Gridinfo/EIA data also lists USCE-Savannah District as operator but puts the plant at Clarks Hill, SC in McCormick County, so the powerhouse's state tag should likely be SC, not GA. No start or finish dates are published anywhere. The only timing evidence is the February 2024 funding and the report's future tense (\"will be completed\"), and that is why I place it in 2024-2034. This is generation equipment at a federal dam, not DESC or Georgia Power transmission work."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "MEAG Power and Oglethorpe Power (co-owners with Georgia Power and Dalton Utilities; operated by Southern Nuclear)",
+   "utility_kind": "municipal joint-action generation and transmission agency / electric generation cooperative (joint owners)",
+   "name": "Vogtle Electric Generating Plant Unit 4 (AP1000 reactor)",
+   "description": "A new AP1000 nuclear reactor at Plant Vogtle in Burke County, Georgia, near Waynesboro. It is the second of two new units, following Unit 3, which began service in July 2023. Unit 4 entered commercial operation on April 29, 2024. MEAG Power's share of Unit 4 is 250 MW, and Southern Nuclear operates the plant for the co-owners.",
+   "status": "completed",
+   "start": "2013-11-19",
+   "in_service": "2024-04-29",
+   "date_quote": "ATLANTA – April 29, 2024 – MEAG Power is pleased to announce that Unit 4 at Plant Vogtle entered commercial operation today.",
+   "places": [
+    {
+     "name": "Plant Vogtle",
+     "kind": "power_plant",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Burke County",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Waynesboro",
+     "kind": "town",
+     "state": "GA",
+     "role": "site"
+    }
+   ],
+   "coordinates": [
+    {
+     "lat": 33.14333,
+     "lon": -81.76056,
+     "url": "https://en.wikipedia.org/wiki/Vogtle_Electric_Generating_Plant",
+     "quote": "33°8′36″N 81°45′38″W / 33.14333°N 81.76056°W / 33.14333; -81.76056"
+    }
+   ],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.meagpower.org/wp-content/uploads/2026/09/Vogtle-Unit-4-COD-Final.pdf",
+     "title": "Plant Vogtle Nuclear Unit 4 Enters Commercial Operation",
+     "publisher": "MEAG Power",
+     "quote": "Unit 4 adds 250 MW of emissions-free generation capacity to MEAG Power’s portfolio. Together with Vogtle Unit 3, which entered commercial operation on July 31, 2023, MEAG Power has added 500 MW of clean energy to its portfolio"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Vogtle_Electric_Generating_Plant",
+     "title": "Vogtle Electric Generating Plant",
+     "publisher": "Wikipedia",
+     "quote": "Unit 4 entered commercial operation on April 29, 2024."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "The MEAG PDF contains the date_quote and the source quote word for word. It dates Unit 4 commercial operation to April 29, 2024, gives MEAG's 250 MW share and Unit 3's July 31, 2023 date, and names Southern Nuclear as operator for MEAG, Georgia Power, Oglethorpe and Dalton. Wikipedia has the exact quoted sentence, the location (Burke County, near Waynesboro), the owners, and \"Unit 4: November 19, 2013\" as the construction start. One caveat: this is a generating unit, not a transmission project.",
+     "I pulled the text out of the cited MEAG PDF and read the Wikipedia wikitext directly. Both quotes are there. Both sources say Unit 4 entered commercial operation on 2024-04-29, and Wikipedia's infobox and reactor table give its construction start as November 19, 2013. Wikipedia also puts the plant in Burke County near Waynesboro. The Georgia Power release confirms the co-owners (MEAG, Georgia Power, Oglethorpe, Dalton) and that Southern Nuclear operates it. Two caveats: this is a generating unit, not a transmission project, and the cited MEAG PDF sits under a 2026/09 upload path with a 2026-09-14 creation date. The original 2024 release is at /wp-content/uploads/2024/04/Vogtle-Unit-4-COD-Final-4.29.24.pdf, and its text is the same."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper",
+   "utility_kind": "state-owned electric utility",
+   "name": "Seaboard 230-115 kV Substation",
+   "description": "Santee Cooper is building a new 230/115 kV substation called Seaboard because its existing Varnville Substation has no room for more 230 kV line connections. Seaboard will anchor new 230 kV lines, including Seaboard to Indian Field and the rebuilt Yemassee line. It is listed under Active Projects, with completion due in 2027.",
+   "status": "planned",
+   "start": null,
+   "in_service": "2027",
+   "date_quote": "This project is scheduled to be completed in 2027.",
+   "places": [
+    {
+     "name": "Seaboard 230-115 kV Substation",
+     "kind": "substation",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Varnville Substation",
+     "kind": "substation",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Hampton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf",
+     "title": "Santee Cooper IRP 2025 Update, Appendix B: Transmission Projects (filed SCPSC Docket 2025-18-E, page 96 of 118)",
+     "publisher": "Santee Cooper",
+     "quote": "A new Seaboard 230-115 kV Substation will facilitate the addition of new 230 kV transmission lines to support future transmission network expansion plans. The existing Varnville Substation has space limitations and cannot accommodate additional 230 kV line terminals"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Varnville,_South_Carolina",
+     "title": "Varnville, South Carolina",
+     "publisher": "Wikipedia",
+     "quote": "Varnville is a town in Hampton County, South Carolina, United States."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "Confirmed in Santee Cooper's 2025 IRP Update (SCPSC Docket 2025-18-E, Appendix B, page 96 of 118, under ACTIVE PROJECTS). Both quotes appear word for word, the entry ends \"This project is scheduled to be completed in 2027\", and the Seaboard-Indian Field line (2028) and the Yemassee-Varnville rebuild ending at Seaboard (2030) match the description. The IRP never gives Seaboard's site or county. Hampton County comes from Seaboard relieving the Varnville Substation (and reusing the Varnville corridors) plus Wikipedia putting Varnville in Hampton County. Varnville Substation is the existing station Seaboard relieves, not where it is being built. \"planned\" is a loose label for a project the IRP lists as Active.",
+     "I checked Santee Cooper's 2025 IRP Update (SCPSC Docket 2025-18-E, page 96 of 118, under Active Projects). Both quotes appear there word for word apart from line breaks, including \"scheduled to be completed in 2027\", and the Wikipedia quote matches. The March 2025 SCRTP deck describes the same project as a new Varnville 230-115 kV substation next to the existing Varnville substation, which a PSC filing places in Hampton County, with in-service set for September 2028. Caveat: the March 2026 SCRTP deck lists only \"Varnville 230-115-69 kV Substation Upgrades\" (12/1/2028), and an August 2026 PSC filing (Docket 2026-216-E) runs the Indian Field line into the \"existing Varnville Substation\", so the separate Seaboard substation and its 2027 date may be out of date."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper",
+   "utility_kind": "state-owned electric utility",
+   "name": "Reconductor Purrysburg – McIntosh 230kV Tie Lines",
+   "description": "Santee Cooper plans to reconductor the 230 kV tie lines between Purrysburg in SC and McIntosh in GA. The work fixes thermal overloads during contingencies and adds transfer capability with neighboring utilities for scheduled transmission service. It is listed as an active project due to finish in 2026.",
+   "status": "under_construction",
+   "start": null,
+   "in_service": "2026",
+   "date_quote": "This project is scheduled to be completed in 2026.",
+   "places": [
+    {
+     "name": "Purrysburg",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf",
+     "title": "Santee Cooper Integrated Resource Plan 2025 Update, Appendix B: Transmission Projects (Active Projects), p. 88 (SCPSC Docket 2025-18-E, filed 2025-11-21, page 95 of 118)",
+     "publisher": "Santee Cooper (South Carolina Public Service Authority)",
+     "quote": "Reconductor Purrysburg – McIntosh 230kV Tie Lines This project is necessary to mitigate thermal loading under contingency conditions and increases transfer capability with neighboring utilities to support scheduled transmission service reservations. This project is scheduled to be completed in 2026."
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Purrysburg,_South_Carolina",
+     "title": "Purrysburg, South Carolina",
+     "publisher": "Wikipedia",
+     "quote": "Purrysburg is an unincorporated community in Jasper County, South Carolina."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "Confirmed in Santee Cooper's 2025 IRP Update, Appendix B, under \"Active Projects\" (document p. 88, which is page 95 of 118 in Docket 2025-18-E). The quote matches word for word, including the en dash, and gives completion in 2026. The Wikipedia quote also matches and puts Purrysburg in Jasper County, SC, which is in the study area. McIntosh appears only as the other endpoint with no state given, and no cited page says it is in Georgia or is a substation, so I marked it unsupported. The status \"under_construction\" is inferred from the \"Active Projects\" heading; the source never says it is under construction.",
+     "I found the IRP quote word for word (same en dash) in Santee Cooper's 2025 IRP Update, Appendix B, Active Projects. It is on document page 88, which carries the stamp SCPSC Docket 2025-18-E, page 95 of 118, and says \"scheduled to be completed in 2026\". The Wikipedia sentence also matches. The SCRTP deck of March 11, 2026 lists the project under Santee Cooper as Committed, dated 5/1/2026 in the table and December 2026 on its detail slide. SERTP 2011 calls it the \"McIntosh – Purrysburg (SCPSA) 230 kV\" line and puts the McIntosh substation in Georgia Power's East (Savannah) area; Plant McIntosh is in Effingham County, GA, and Purrysburg is in Jasper County, SC. One correction: no source says \"under construction\". The sources call it Active (IRP) or Committed (SCRTP).",
+     "places not confirmed and removed: McIntosh"
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper (South Carolina Public Service Authority)",
+   "utility_kind": "state-owned electric utility",
+   "name": "Aiken Number 3 to Mt. Zion 230 kV Transmission Lines and Mt. Zion Switching Station (SC PSC Docket 2024-61-E)",
+   "description": "Santee Cooper built two new 230 kV lines, about 16.2 miles, mostly in existing right-of-way from its Aiken No. 3 Substation west to a new Mt. Zion Switching Station near Sage Mill in Aiken County. It also expanded Aiken No. 3 and rebuilt part of the 115 kV line. The work serves a new data center customer of Aiken Electric Cooperative.",
+   "status": "completed",
+   "start": "2024-08",
+   "in_service": "2026-06-29",
+   "date_quote": "The purpose of this letter is to notify the Commission and Office of Regulatory Staff (\"ORS\") that the Aiken No. 3 to Mt. Zion 230 kV transmission lines and associated facilities entered commercial operation on June 29, 2026.",
+   "places": [
+    {
+     "name": "Aiken Number 3 Substation",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Mt. Zion 230kV Switching Station",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Aiken No. 1 Substation",
+     "kind": "substation",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Aiken County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Aiken",
+     "kind": "town",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Sage Mill delivery point",
+     "kind": "other",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Sage Mill Industrial Park",
+     "kind": "facility",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": 16.2,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/b63c06a3-fd8f-436c-9823-63b907e7845d",
+     "title": "Application for Certificate of Environmental Compatibility and Public Convenience and Necessity, Aiken Number 3 to Mt. Zion 230 kV Transmission Line (Docket 2024-61-E)",
+     "publisher": "Public Service Commission of South Carolina (filed by Santee Cooper)",
+     "quote": "The target date for construction to begin is August 2024, with an operational target date of Fall 2025."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/842d558c-e3ae-494d-93d5-8673299dcac5",
+     "title": "Notification of Commercial Operation, Docket No. 2024-61-E (July 17, 2026)",
+     "publisher": "Public Service Commission of South Carolina (filed by Santee Cooper)",
+     "quote": "the Aiken No. 3 to Mt. Zion 230 kV transmission lines and associated facilities entered commercial operation on June 29, 2026."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Order/f3daf477-c6ef-432a-bcaf-3893bcd510ca",
+     "title": "Order No. 2024-498, Order Granting Certificate of Environmental Compatibility and Public Convenience and Necessity",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "The new lines will be 16.2 miles in length and primarily utilize existing rights of way via the current 115 kV transmission line corridors."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/b1f6b365-cb9a-434a-bbe2-e618737c5d99",
+     "title": "Notice of Filing and Public Hearing, Docket Nos. 2024-61-E and 2024-63-E",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "Installation of two new 230 kV transmission lines within approximately 16.2 miles of existing right-of-way between the proposed Mt. Zion Switching Station and existing Aiken No. 3 Substation;"
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Web/Dockets/Detail/118917",
+     "title": "Docket 2024-61-E detail",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "Letter Providing Notification That the Aiken No. 3 to Mt. Zion 230 kV Transmission Lines and Associated Facilities Project Entered Commercial Operation on June 29, 2026"
+    },
+    {
+     "url": "https://www.postandcourier.com/aikenstandard/news/local-government/sc-public-service-commission-aiken-county-data-center/article_747ea372-dc9d-11ee-99d0-db16b2efd39a.html",
+     "title": "SC Public Service Commission, Aiken County data center power upgrades",
+     "publisher": "Aiken Standard / Post and Courier",
+     "quote": "a distance of 16.2 miles"
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/c86ca8d1-abb8-4fce-9231-6f2d42017f66",
+     "title": "Proposed Order Granting a Certificate of Environmental Compatibility and Public Convenience and Necessity, Docket No. 2024-61-E",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "The new lines will be 16.2 miles in length and primarily utilize existing right of way via the current 115 kV transmission line corridors."
+    },
+    {
+     "url": "https://www.burnsmcd.com/news/santee-cooper-transmission-expansion",
+     "title": "Burns & McDonnell Selected for EPC Services to Support Santee Cooper's Transmission Expansion in South Carolina",
+     "publisher": "Burns & McDonnell",
+     "quote": "The project, designed to support a new data center in Aiken County, reflects the knowledge and experience of Burns & McDonnell in delivering large-scale, complex power infrastructure projects. The firm broke ground in August 2024 and aims to complete the work by late 2025."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/4bb98b4f-a562-4038-9e51-5d95b6d001c9",
+     "title": "Exhibit C, Public Notice: Aiken No. 3 to Mt. Zion 230/115kV Transmission Line Rebuild Project",
+     "publisher": "Public Service Commission of South Carolina (docket filing by Santee Cooper)",
+     "quote": "the installation of two new 230 kV transmission lines within approximately 16.14 mile long of existing right-of-way (ROW) between the proposed Mt. Zion Switch Station and existing Aiken No. 3 Substation"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened all six cited pages and extracted the text from the four PDFs. Every quote appears as cited. Santee Cooper's July 17, 2026 letter (from its Deputy General Counsel) says the lines entered commercial operation on June 29, 2026. The application and the hearing notice give the 16.2 miles, the Aiken No. 1 work, the Aiken County / City of Aiken location and the Sage Mill delivery point. The notice names the data-center customer of Aiken Electric Cooperative, Order 2024-498 has the 16.2-mile right-of-way sentence, and the Post and Courier article places the data center in Sage Mill Industrial Park. One caveat: the start date 2024-08 comes from the application's target date ('August 2024'), not from a confirmed actual construction start. Aiken County SC is in the study area, and the work falls within 2024-2026.",
+     "I pulled the text out of the PSC PDFs and checked each quote word for word. The July 17, 2026 Santee Cooper letter says commercial operation began June 29, 2026. The application says construction was targeted for August 2024 and names Aiken as the municipality, and Burns & McDonnell says it broke ground in August 2024. Order 2024-498 and the hearing notice both give 16.2 miles, and the notice names the data center customer; the Aiken Standard puts it in Sage Mill Industrial Park. Two small caveats: the application lists the two lines separately at 16.04 and 16.14 miles, and a search snippet (not a page I opened) gave 16.4 miles, but every page I opened says 16.2."
+    ],
+    "merged_from": [
+     {
+      "name": "Aiken No. 3 to Mt. Zion 230/115 kV Transmission Line Rebuild Project",
+      "in_service": "2025",
+      "start": "2024-08",
+      "sources": [
+       "https://dms.psc.sc.gov/Attachments/Matter/b63c06a3-fd8f-436c-9823-63b907e7845d",
+       "https://dms.psc.sc.gov/Attachments/Matter/c86ca8d1-abb8-4fce-9231-6f2d42017f66",
+       "https://www.burnsmcd.com/news/santee-cooper-transmission-expansion"
+      ]
+     },
+     {
+      "name": "Aiken No. 3 to Mt. Zion 230/115 kV Transmission Line Rebuild and Mt. Zion 230 kV Switching Station",
+      "in_service": "2025",
+      "start": "2024-08",
+      "sources": [
+       "https://dms.psc.sc.gov/Attachments/Matter/c86ca8d1-abb8-4fce-9231-6f2d42017f66",
+       "https://dms.psc.sc.gov/Attachments/Matter/4bb98b4f-a562-4038-9e51-5d95b6d001c9",
+       "https://www.burnsmcd.com/news/santee-cooper-transmission-expansion"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Central Electric Power Cooperative, Inc. (serving member Aiken Electric Cooperative, Inc.)",
+   "utility_kind": "wholesale electric cooperative (generation and transmission cooperative)",
+   "name": "Mt. Zion to Customer Substations radial 230 kV lines (SC PSC Docket 2024-63-E)",
+   "description": "Central built two radial single-circuit 230 kV lines, about 1.5 miles long, in a new right-of-way. They run from Santee Cooper's new Mt. Zion switching station to substations owned by a data center customer of Aiken Electric Cooperative. The site is an industrial park just north of Aiken, SC. The customer paid the costs.",
+   "status": "completed",
+   "start": "2024-08",
+   "in_service": "2025-12-15",
+   "date_quote": "Central's feeder #1 and #2 lines from the Mt. Zion 230 kV Switching Station to Customer Substation #1 are scheduled to be energized and available for operation on or about December 15, 2025.",
+   "places": [
+    {
+     "name": "Mt. Zion 230 kV Switching Station",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Customer Substation #1",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Customer Substation #2",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Giant Tire Parkway",
+     "kind": "road",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Aiken County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": 1.5,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/65511419-0b42-42c9-aea9-53fdee09f911",
+     "title": "Docket No. 2024-63-E Status Report (letter of December 11, 2025)",
+     "publisher": "Robinson Gray Stepp & Laffitte for Central Electric Power Cooperative, filed with the Public Service Commission of South Carolina",
+     "quote": "Central is informed that construction of all facilities is substantially complete, including construction of both Santee Cooper's Mt. Zion 230 kV Switching Station and Central's 230kV feeder lines from the Mt. Zion Switching Station to Customer Substation #1 and Customer Substation #2."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/22620ad8-27bf-451b-8cea-29459466abaa",
+     "title": "Application of Central Electric Power Cooperative, Inc. for a Certificate of Environmental Compatibility and Public Convenience and Necessity (Docket 2024-63-E)",
+     "publisher": "Central Electric Power Cooperative, Inc. / Public Service Commission of South Carolina",
+     "quote": "Central anticipates beginning construction of the project in August of 2024, with an in-service date of Fall 2025."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/652ef6e3-543f-4e31-8c35-175566514c65",
+     "title": "Direct Testimony of William C. (Chris) Ware, P.E. on behalf of Central Electric Power Cooperative, Inc. (Docket 2024-63-E)",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "The Project is the construction of two 230kV lines in Aiken County, South Carolina in an industrial park just north of the city of Aiken to provide service to a consumer of Central member AEC."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/b1f6b365-cb9a-434a-bbe2-e618737c5d99",
+     "title": "Notice of Filing and Public Hearing, Docket Nos. 2024-61-E and 2024-63-E",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "The total length of Central's two 230 kV lines for which Central seeks approval to build is approximately 1.5 miles."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Web/Dockets/Detail/118919",
+     "title": "Docket 2024-63-E detail",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "Order Granting Certificate 2024-499, 7/23/2024"
+    },
+    {
+     "url": "https://www.postandcourier.com/aikenstandard/news/local-government/sc-public-service-commission-aiken-county-data-center/article_747ea372-dc9d-11ee-99d0-db16b2efd39a.html",
+     "title": "SC Public Service Commission / Aiken County data center transmission requests",
+     "publisher": "Aiken Standard (Post and Courier)",
+     "quote": "construction of two new 230 kilovolt power lines in new right-of-way between the Mount Zion switching station and a substation to be built on the company's property (a distance of 1.5 miles)."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Order/5daabae2-98ac-4af4-af24-e7ea1f09d0f0",
+     "title": "Docket No. 2024-63-E, Order No. 2024-499 (July 23, 2024)",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "3. The lines to be constructed by Central will be located in an industrial park just north of the City of Aiken and will run approximately 1.5 miles."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/c86ca8d1-abb8-4fce-9231-6f2d42017f66",
+     "title": "Docket No. 2024-61-E, Proposed Order Granting a Certificate (June 2024)",
+     "publisher": "Public Service Commission of South Carolina (DMS filing)",
+     "quote": "The Central portion of the project will provide connection between the new Santee Cooper Mt. Zion 230 kV switching station to the consumer's substation facilities that will be constructed by the consumer on its property. Central's lines will total 1.5 miles in length."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/33c282e0-59ca-4542-87ed-79e6399b43f7",
+     "title": "Docket No. 2024-63-E Proposed Order of Central Electric Power Cooperative",
+     "publisher": "Central Electric Power Cooperative, filed with the Public Service Commission of South Carolina",
+     "quote": "The Project is the construction of two 230kV lines in Aiken County, South Carolina in an industrial park just north of the city of Aiken to provide service to a consumer of Central member AEC."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/4bb98b4f-a562-4038-9e51-5d95b6d001c9",
+     "title": "Exhibit C Public Notice",
+     "publisher": "Santee Cooper / Central Electric Power Cooperative, filed with the Public Service Commission of South Carolina",
+     "quote": "Central Electric Power Cooperative, Inc. (\"Central\") will also file an application for Certificate before the Commission on February 14, 2024."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/23990751-0c8e-49c3-b15a-8bf794e1ef85",
+     "title": "Commission Directive, Docket No. 2024-63-E, June 20, 2024",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "I move that the Commission grant the Application of Central Electric Power Cooperative, Inc. (Central) for a Certificate of Environmental Compatibility and Public Convenience and Necessity for the Construction and Operation of Two Radial Single Circuit 230 kV Lines"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 0,
+    "notes": [
+     "I opened all six cited pages (PSC PDFs converted to text) and they confirm the project: Central's two radial 230 kV lines, about 1.5 mi, in Aiken County SC, running from Santee Cooper's Mt. Zion switching station to substations owned by an Aiken Electric Cooperative data-center customer, who agreed to pay the costs (Ware testimony). August 2024 is only the planned construction start (application), and Dec 15, 2025 is a scheduled energization \"on or about\" that date for feeders to Customer Substation #1, reported while construction was only \"substantially complete\". Five quotes appear word for word; the docket-page quote \"Order Granting Certificate 2024-499, 7/23/2024\" does not, because it stitches together cells from a table row (the facts in it are right). Sage Mill Industrial Park is only hedged in the Aiken Standard (\"publicly available information suggests\"), and the PSC filings say just \"an industrial park just north of the city of Aiken\".",
+     "I read the PDF text of the application, the Ware testimony, the joint notice and the Dec 11, 2025 status letter, plus the Post and Courier article. They confirm Central's two radial 230 kV lines in Aiken County, about 1.5 miles, construction planned for August 2024, energization scheduled on or about Dec 15, 2025, and that the customer pays the costs. Five of the six source quotes and the date_quote appear verbatim, but the docket-page quote \"Order Granting Certificate 2024-499, 7/23/2024\" is a condensed table row, not text on the page; the order number and date are correct. Also, \"completed\" goes further than the letter's \"substantially complete\" with energization only scheduled, and the Aug 2024 start is a planned date.",
+     "places not confirmed and removed: Sage Mill Industrial Park"
+    ],
+    "merged_from": [
+     {
+      "name": "Central Electric two radial 230 kV lines, Mt. Zion Switching Station to data center customer substations (PSC Docket 2024-63-E)",
+      "in_service": "2025-12-15",
+      "start": "2024-08",
+      "sources": [
+       "https://dms.psc.sc.gov/Attachments/Matter/65511419-0b42-42c9-aea9-53fdee09f911",
+       "https://dms.psc.sc.gov/Attachments/Matter/22620ad8-27bf-451b-8cea-29459466abaa",
+       "https://dms.psc.sc.gov/Attachments/Order/5daabae2-98ac-4af4-af24-e7ea1f09d0f0",
+       "https://dms.psc.sc.gov/Attachments/Matter/c86ca8d1-abb8-4fce-9231-6f2d42017f66",
+       "https://www.postandcourier.com/aikenstandard/news/local-government/sc-public-service-commission-aiken-county-data-center/article_747ea372-dc9d-11ee-99d0-db16b2efd39a.html"
+      ]
+     },
+     {
+      "name": "Two Radial Single Circuit 230 kV Lines, Mt. Zion Switching Station to Aiken Electric Cooperative customer substations",
+      "in_service": "2025-12-15",
+      "start": null,
+      "sources": [
+       "https://dms.psc.sc.gov/Attachments/Matter/65511419-0b42-42c9-aea9-53fdee09f911",
+       "https://dms.psc.sc.gov/Web/Dockets/Detail/118919",
+       "https://dms.psc.sc.gov/Attachments/Matter/33c282e0-59ca-4542-87ed-79e6399b43f7",
+       "https://dms.psc.sc.gov/Attachments/Matter/c86ca8d1-abb8-4fce-9231-6f2d42017f66",
+       "https://dms.psc.sc.gov/Attachments/Matter/4bb98b4f-a562-4038-9e51-5d95b6d001c9",
+       "https://dms.psc.sc.gov/Attachments/Matter/23990751-0c8e-49c3-b15a-8bf794e1ef85"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Central Electric Power Cooperative, Inc.",
+   "utility_kind": "generation and transmission electric cooperative",
+   "name": "Windsor-New Ellenton 115 kV Transmission Line",
+   "description": "New 115 kV line in Aiken County, SC, running from a substation near Windsor to one near New Ellenton. It links two existing transmission lines to improve reliability. The route crosses US 78 and SC 19. Right-of-way work runs through 2028, construction is set for 2028-2029, and the line should be in service in 2029.",
+   "status": "planned",
+   "start": "2028",
+   "in_service": "2029",
+   "date_quote": "Right of way acquisition activities will continue into 2028. Construction is scheduled for 2028 and 2029. The line is expected to be in service at some point in 2029.",
+   "places": [
+    {
+     "name": "Windsor",
+     "kind": "town",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "New Ellenton",
+     "kind": "town",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "U.S. Route 78",
+     "kind": "road",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "S.C. Highway 19",
+     "kind": "road",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Aiken County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://cepci.org/transmission-projects/",
+     "title": "Transmission Projects - Windsor-New Ellenton",
+     "publisher": "Central Electric Power Cooperative, Inc.",
+     "quote": "The Windsor-New Ellenton 115kV Transmission Line Project will connect two existing transmission lines in the New Ellenton and Windsor areas to strengthen system reliability and improve operational resiliency."
+    },
+    {
+     "url": "https://www.postandcourier.com/aikenstandard/news/local/aiken-county-trabbnsmission-line/article_764b851d-d40f-4508-946f-acdac2ae943f.html",
+     "title": "Windsor-New Ellenton transmission line project moving forward after pause following controversy",
+     "publisher": "Aiken Standard (Post and Courier)",
+     "quote": "The route for a 115-kilovolt transmission line from a substation in the Windsor area to a substation in the New Ellenton area has been chosen"
+    },
+    {
+     "url": "https://www.postandcourier.com/aikenstandard/news/local/aiken-county-trabbnsmission-line/article_764b851d-d40f-4508-946f-acdac2ae943f.html",
+     "title": "Windsor-New Ellenton transmission line project moving forward after pause following controversy",
+     "publisher": "Aiken Standard (Post and Courier)",
+     "quote": "U.S. Route 78 and S.C. Highway 19 are in the route's path."
+    },
+    {
+     "url": "https://www.postandcourier.com/aikenstandard/news/local-government/aiken-county-council-trainsmission-line-resolution/article_02f22642-3546-4ca6-ae8d-2aff64f83a8c.html",
+     "title": "Aiken County Council transmission line resolution",
+     "publisher": "Aiken Standard (Post and Courier)",
+     "quote": "a substation in the Windsor area to a substation in the New Ellenton area"
+    },
+    {
+     "url": "https://cepci.org/wp-content/uploads/2026/03/Final-Selected-Route-WNE.pdf",
+     "title": "Final Selected Route Windsor - New Ellenton",
+     "publisher": "Central Electric Power Cooperative, Inc.",
+     "quote": "Final Selected Route Windsor - New Ellenton"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened every cited source. The CEPCI project page confirms it is a Central Electric project and has the purpose quote word for word. Its schedule reads: right-of-way work Spring 2026 through 2028, construction 2028 through 2029, in service 2029. The Aiken Standard article has the route sentence, the US 78 / SC 19 sentence and the date_quote, which only changes \"right of way\" to a capital R. The council article (June 19, 2026) has the substation phrase and ties the project to Aiken County. The route-map PDF's title matches and its labels include WINDSOR, NEW ELLENTON, US-78 and SC-19. The start of 2028 means the construction start; right-of-way work begins earlier, in Spring 2026.",
+     "The CEPCI project page gives right of way work from Spring 2026 through 2028, construction 2028 through 2029, and in-service in 2029. The April 3, 2026 Aiken Standard article has the date_quote word for word (it reads \"...timeline for the transmission line, right of way acquisition...\") and also contains the route and US 78/SC 19 sentences. The June 2026 council article and the route-map PDF (labeled NEW ELLENTON, WINDSOR, US-78, SC-19 and titled \"Final Selected Route Windsor - New Ellenton\") back up the rest, so I found nothing to correct; the reporting also gives the length as up to 12 miles, but I didn't confirm that on a page I opened."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper",
+   "utility_kind": "state-owned electric utility",
+   "name": "Bluffton-Market Place 115kV Line #2: Phase 2 Buckingham-Hilton Head",
+   "description": "Santee Cooper is building a new 115 kV transmission line section in Beaufort County, SC, extending an existing 115 kV line from the Buckingham area of Bluffton to the Hilton Head Plantation area, adding capacity and reliability for Hilton Head Island. No new right-of-way is proposed.",
+   "status": "planned",
+   "start": "2027-04",
+   "in_service": "2028-06-01",
+   "date_quote": "The plan is to begin construction in late April 2027 and finish in late 2027. The project should be complete and in service by June 1, 2028.",
+   "places": [
+    {
+     "name": "Buckingham area in Bluffton",
+     "kind": "other",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Hilton Head plantation area",
+     "kind": "other",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Bluffton",
+     "kind": "town",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Hilton Head Island",
+     "kind": "town",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Beaufort County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/bluffton-market-place/",
+     "title": "Bluffton-Market Place 115kV Line #2: Phase 2 Buckingham-Hilton Head",
+     "publisher": "Santee Cooper",
+     "quote": "Santee Cooper is constructing a new line 115 kV line from the Bluffton area to Hilton Head Island in Beaufort County. This new line section will be extending an existing 115 kV line from the Buckingham area in Bluffton to the Hilton Head plantation area."
+    },
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/bluffton-market-place/",
+     "title": "Bluffton-Market Place 115kV Line #2: Phase 2 Buckingham-Hilton Head",
+     "publisher": "Santee Cooper",
+     "quote": "Santee Cooper plans to design and construct this transmission line over a 3-year period, starting in August 2025 and be in service by June 1, 2028. Design and permitting are underway and should concluded in 2026, with construction beginning in 2027."
+    },
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/",
+     "title": "Power Line Projects",
+     "publisher": "Santee Cooper",
+     "quote": "Varnville-Robertville 69kV Rebuild Bluffton-Market Place 115kV Line #2 Yemassee to the Varnville Area 230kV Project"
+    },
+    {
+     "url": "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf",
+     "title": "Santee Cooper IRP 2025 Update, Appendix B: Transmission Projects (filed with SCPSC, Docket # 2025-18-E, page 97 of 118)",
+     "publisher": "Santee Cooper",
+     "quote": "This project will establish a new 115 kV line from the Bluffton area to Hilton Head Island and terminate at the Hilton Head 115 kV Switching Station in Jasper County."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I downloaded the raw HTML of both Santee Cooper pages. All three quotes and the date_quote appear word for word. The project page also says \"No new right-of way is proposed currently\", and the index page lists the three project names on consecutive lines. The start of 2027-04 matches \"begin construction in late April 2027\" and the in-service date of 2028-06-01 matches \"June 1, 2028\" exactly. Note that the overall design and construct period starts in August 2025, so 2027-04 is the construction start only. Beaufort County, SC is in the study area.",
+     "I opened the Santee Cooper project page (and its bluffton-hilton-head alias) and the Power Line Projects list myself. All three quotes and the date_quote appear on them, along with \"late April 2027\" as the construction start, \"June 1, 2028\" in service, and no new right-of-way; the project is in Beaufort County SC, which is in the study area. Caveat: the start of 2027-04 is the construction start, since design itself began in August 2025, and I found no source outside Santee Cooper."
+    ],
+    "merged_from": [
+     {
+      "name": "Bluffton - Market Place #2 115 kV Line Phase 2",
+      "in_service": "2030",
+      "start": null,
+      "sources": [
+       "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper",
+   "utility_kind": "state-owned electric utility",
+   "name": "Yemassee to the Varnville Area 230kV Project",
+   "description": "New Santee Cooper 230 kV transmission line from the Varnville area to the Yemassee area in southern South Carolina to add capacity for load growth and improve reliability. Design and engineering run 2025-2026, construction 2027-2030, and in service by Dec 1, 2030. No new right-of-way is expected.",
+   "status": "planned",
+   "start": "2025-08",
+   "in_service": "2030-12-01",
+   "date_quote": "Santee Cooper plans to design and construct this transmission line over a 5-year period, starting in August 2025 and be in service by December 1, 2030.",
+   "places": [
+    {
+     "name": "Varnville",
+     "kind": "town",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Yemassee",
+     "kind": "town",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Hampton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/yemassee-varnville-area-230kv-project/",
+     "title": "Yemassee to the Varnville Area 230kV Project",
+     "publisher": "Santee Cooper",
+     "quote": "Santee Cooper is constructing a new line 230 kV line from the Varnville area to the Yemassee area in the southern part of South Carolina."
+    },
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/indian-field-varnville/",
+     "title": "Indian Field-Varnville 230kV Line",
+     "publisher": "Santee Cooper",
+     "quote": "new 230kV/115kV line from the Indian Field (St. George area) in Dorchester County to the Varnville substation in Hampton County."
+    },
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/",
+     "title": "Power Line Projects",
+     "publisher": "Santee Cooper",
+     "quote": "Santee Cooper is committed to delivering reliable power to all of our customers across the state. We invest in power projects that strengthen the grid and help maintain excellent reliability."
+    },
+    {
+     "url": "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf",
+     "title": "Santee Cooper IRP 2025 Update, Appendix B: Transmission Projects (SCPSC Docket 2025-18-E, page 97 of 118)",
+     "publisher": "Santee Cooper",
+     "quote": "This project will rebuild the existing Yemassee – Varnville 230 kV line as two parallel 230 kV circuits from the Yemassee 230 kV Switching Station to the new Seaboard 230-115 kV Substation (approximately 9 miles) along the existing transmission corridor."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "The Santee Cooper project page confirms the line, the Varnville-to-Yemassee route, the date_quote word for word (starts August 2025, in service December 1, 2030), 2027-2030 construction and no new right-of-way. All three source quotes appear on their pages. The project page itself names no county; Hampton County is supported only through the Indian Field-Varnville page, which puts the Varnville substation in Hampton County (in the Savannah-Jasper-Beaufort study area).",
+     "Santee Cooper's own project page confirms the new 230 kV line from the Varnville area to the Yemassee area. It says the work starts in August 2025 and should be in service by December 1, 2030, with construction in 2027-2030 and no new right-of-way expected, and the date_quote appears on it word for word. Hampton County is supported by Wikipedia (Varnville is in Hampton County, Yemassee in Hampton and Beaufort) and by the Indian Field page (\"Varnville substation in Hampton County\"), which puts the line in the Jasper/Beaufort/Hampton study area. All three cited quotes appear on their pages, and nothing needed correcting."
+    ],
+    "merged_from": [
+     {
+      "name": "Yemassee - Varnville 230 kV Line Rebuild",
+      "in_service": "2030",
+      "start": null,
+      "sources": [
+       "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper",
+   "utility_kind": "state-owned electric utility",
+   "name": "Indian Field-Varnville 230kV Line",
+   "description": "Santee Cooper plans a new 230kV/115kV transmission line from the Indian Field substation near St. George in Dorchester County to the Varnville substation in Hampton County. Design and permitting run through 2026, construction runs 2026 to 2028, and it is due in service by December 1, 2028.",
+   "status": "planned",
+   "start": "2026",
+   "in_service": "2028-12-01",
+   "date_quote": "2026-2028: Construction Window. The project should be complete and in service by December 1, 2028.",
+   "places": [
+    {
+     "name": "Indian Field",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Varnville",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "St. George",
+     "kind": "town",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Dorchester County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Hampton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/indian-field-varnville/",
+     "title": "Indian Field-Varnville 230kV Line",
+     "publisher": "Santee Cooper",
+     "quote": "Santee Cooper intends to construct a new 230kV/115kV line from the Indian Field (St. George area) in Dorchester County to the Varnville substation in Hampton County."
+    },
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/indian-field-varnville/",
+     "title": "Indian Field-Varnville 230kV Line",
+     "publisher": "Santee Cooper",
+     "quote": "Design and permitting are underway and should concluded in 2026, and construction could begin as soon late 2026 to early 2027. There are currently no planned service disruptions."
+    },
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/",
+     "title": "Power Line Projects",
+     "publisher": "Santee Cooper",
+     "quote": "Indian Field-Varnville 230kV Line"
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/c58031fc-a5e1-4008-bd33-5a893f4cdc4d",
+     "title": "Request for \"Like Facility\" Determination for Varnville-Indian Field 230kV Line (Docket 2026-216-E, filed August 17, 2026)",
+     "publisher": "Santee Cooper, filed with the Public Service Commission of South Carolina",
+     "quote": "The proposed Varnville – Indian Field 230 kV Line will run just over 40 miles, beginning at Santee Cooper's existing Varnville Substation and extending northeast through predominantly existing right-of-way to the Indian Field Substation."
+    },
+    {
+     "url": "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf",
+     "title": "Santee Cooper 2025 IRP Update, Appendix B: Transmission Projects (filed in SCPSC Docket 2025-18-E)",
+     "publisher": "Santee Cooper",
+     "quote": "The scope of this project includes the construction of a 230 kV transmission line (approximately 38 miles in length) from the Seaboard 230-115 kV Substation to the new Indian Field 230-115 kV Substation"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened both Santee Cooper pages. Every quote in the record, including date_quote, appears word for word, and the listing page names \"Indian Field-Varnville 230kV Line\". The project page gives a 2026-2028 construction window and \"in service by December 1, 2028\", so start 2026 and in-service 2028-12-01 both match. The line reaches Varnville in Hampton County, which is in the study area. Two small caveats: the page never calls Indian Field a substation (it says \"Indian Field (St. George area)\" and mentions \"St George substation\"), and it also says construction could start as late as early 2027. Neither caveat is a reason to reject the record.",
+     "I opened Santee Cooper's project page and it lists the line under Power Line Projects. The page gives the endpoints and counties, a \"2026-2028: Construction Window\", and in service \"by December 1, 2028\", and all the quoted text appears there. Varnville is in Hampton County, which is in the study area. Corrections: the page also says construction \"could begin as soon late 2026 to early 2027\", so the 2026 start is soft. A SC PSC filing dated Aug 17, 2026 describes the work as mostly a rebuild of existing 115 kV lines (just over 40 miles, through Colleton County too) rather than a wholly new line; its May 2027 date is for the Indian Field Substation, not the line."
+    ],
+    "merged_from": [
+     {
+      "name": "Varnville - Indian Field 230 kV Line",
+      "in_service": "2028-12",
+      "start": "2026",
+      "sources": [
+       "https://dms.psc.sc.gov/Attachments/Matter/c58031fc-a5e1-4008-bd33-5a893f4cdc4d",
+       "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper (South Carolina Public Service Authority), 50% co-owner with Dominion Energy South Carolina (50%)",
+   "utility_kind": "state-owned electric utility (joint project with an investor-owned electric utility)",
+   "name": "Canadys Station combined-cycle natural gas plant",
+   "description": "A new gas-fired combined-cycle power plant of about 2,180 MW, built as three 1x1 blocks. It goes on the site of DESC's retired Canadys coal plant in Colleton County. Santee Cooper and DESC each own half. The SC PSC approved it in June 2026, it is budgeted at $5 billion and it is expected online by mid-2033.",
+   "status": "planned",
+   "start": null,
+   "in_service": "2033",
+   "date_quote": "Dominion and Santee Cooper, a public power utility, expect to bring the Canadys project online by mid-2033.",
+   "places": [
+    {
+     "name": "Canadys Station",
+     "kind": "power_plant",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Colleton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": 5000000000,
+   "cost_quote": "Dominion Energy South Carolina and Santee Cooper's proposal to build a $5 billion, 2,180-MW gas-fired power plant was approved by state regulators",
+   "sources": [
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/10d20127-586e-489a-a45a-0fd4512a0b4b",
+     "title": "Exhibit D, Joint Public Notice, SC PSC Docket #2025-323-E",
+     "publisher": "Public Service Commission of South Carolina (filed by Santee Cooper and DESC)",
+     "quote": "jointly construct and operate an advanced class natural gas -fired combined cycle electric generating plant and associated facilities (\"Canadys Station\") with a net capacity of approximately 2,180 megawatts (\"MW\") at the location of a former coal -fired generation station owned by DESC in Colleton County, South Carolina."
+    },
+    {
+     "url": "https://www.santeecooper.com/community/generation-projects/canadys-station/",
+     "title": "Canadys Station",
+     "publisher": "Santee Cooper",
+     "quote": "Canadys Station will be located on the site of Dominion Energy's former coal-fired facility in Colleton County, essentially replacing a retired coal plant with a reliable, lower-emitting energy plant on an existing brownfield site."
+    },
+    {
+     "url": "https://newsroom.santeecooper.com/news/santee-cooper-board-approves-key-projects-to-meet-future-electric-demands/",
+     "title": "Santee Cooper Board Approves Key Projects to Meet Future Electric Demands",
+     "publisher": "Santee Cooper Newsroom",
+     "quote": "Based on current projections, Canadys Station will be operational in the early 2030s."
+    },
+    {
+     "url": "https://www.utilitydive.com/news/dominion-energy-santee-cooper-gas-power-plant/823004/",
+     "title": "Dominion Energy, Santee Cooper receive state approval for $5B gas project",
+     "publisher": "Utility Dive",
+     "quote": "Dominion and Santee Cooper, a public power utility, expect to bring the Canadys project online by mid-2033."
+    },
+    {
+     "url": "https://newsroom.santeecooper.com/news/Dominion-Energy-Santee-Cooper-Joint-Project-Receives-Key-Regulatory-Approval/",
+     "title": "Dominion Energy, Santee Cooper Joint Project Receives Key Regulatory Approval",
+     "publisher": "Santee Cooper Newsroom",
+     "quote": "The Public Service Commission of South Carolina voted Thursday to approve an application by Dominion Energy and Santee Cooper to jointly construct Canadys Station. The proposed natural gas combined-cycle generating facility in Colleton County is needed to serve South Carolina's rising demand for energy."
+    },
+    {
+     "url": "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf",
+     "title": "Santee Cooper 2025 IRP Update (SCPSC Docket 2025-18-E)",
+     "publisher": "Santee Cooper",
+     "quote": "Santee Cooper will own a 50 percent share, or approximately 1,000 MW. The Joint NGCC will be located on DESC's former Canadys Station site in Colleton County, South Carolina."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Order/88dd14bf-1335-452c-8741-d260e5b41f3d",
+     "title": "Order No. 2026-350, Docket No. 2025-323-E: Order Granting Certificate of Environmental Compatibility and Public Convenience and Necessity (June 12, 2026)",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "Joint Applicants seek a Certificate to construct and operate the Canadys Joint Resource, a 2,180 megawatts (MW) NGCC generating plant and a new jointly owned 230 kilovolt (kV) switchyard (Edisto River Switchyard) at the brownfield site of the former Canadys Steam Plant in Colleton County."
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/855a4689-2e14-44eb-9e54-f0c0281feea9",
+     "title": "Joint Application for Certificate of Environmental Compatibility and Public Convenience and Necessity, Docket No. 2025-323-E (filed December 15, 2025)",
+     "publisher": "Santee Cooper and Dominion Energy South Carolina (filed with SC PSC)",
+     "quote": "the Joint Applicants anticipate that the project will complete construction and commissioning activities, achieve commercial operation, and the facility be fully placed in commercial service by mid-2033."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "The PSC Exhibit D PDF (Docket 2025-323-E, filed Dec 15, 2025) matches the quote word for word. It names Santee Cooper and DESC as the joint applicants, gives the 50/50 ownership, 2,180 MW, three 1x1 blocks and the Colleton County site. The Santee Cooper page quote, the newsroom quote (\"early 2030s\") and the Utility Dive quote (\"online by mid-2033\", $5B, each owns half) were all found. The in_service value \"2033\" is supported only at year level. The small correction is that Utility Dive (June 16, 2026) says the PSC approved the project orally in May 2026 and issued the written order on June 12, 2026, so \"approved in June 2026\" refers to the written order.",
+     "I checked the PSC Exhibit D notice (docket 2025-323-E confirmed by search), Santee Cooper's project page and board release, the Dominion press release and Utility Dive. They confirm a 2,180 MW plant built as three 1x1 blocks and owned 50/50, on the former DESC coal site in Colleton County, at $5B, with the \"online by mid-2033\" quote, so in_service 2033 holds; all four quotes appear. One small precision point: the PSC voted on May 14, 2026 and issued its order on June 12, 2026, so \"approved in June 2026\" refers to the written order."
+    ],
+    "merged_from": [
+     {
+      "name": "Canadys Station joint natural gas combined-cycle plant",
+      "in_service": "2032",
+      "start": null,
+      "sources": [
+       "https://newsroom.santeecooper.com/news/Dominion-Energy-Santee-Cooper-Joint-Project-Receives-Key-Regulatory-Approval/",
+       "https://www.santeecooper.com/community/generation-projects/canadys-station/",
+       "https://www.santeecooper.com/About/Integrated-Resource-Plan/presentations/Santee-Cooper-2025-IRP-Update.pdf"
+      ]
+     },
+     {
+      "name": "Canadys Joint Resource (Canadys Station) combined cycle plant and Edisto River 230 kV Switchyard",
+      "in_service": "2033",
+      "start": null,
+      "sources": [
+       "https://dms.psc.sc.gov/Attachments/Order/88dd14bf-1335-452c-8741-d260e5b41f3d",
+       "https://dms.psc.sc.gov/Attachments/Matter/855a4689-2e14-44eb-9e54-f0c0281feea9",
+       "https://www.santeecooper.com/community/generation-projects/canadys-station/"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Palmetto Electric Cooperative",
+   "utility_kind": "electric cooperative",
+   "name": "Clarius Park Hardeeville substation and new 115 kV transmission line",
+   "description": "Palmetto Electric put a new substation inside the Clarius Park Hardeeville industrial park at Highway 17 and Highway 170. A new, dedicated 115 kV transmission line feeds it, with about 20 MW available now and room to grow to about 80 MW. Palmetto says the substation helped bring TS Conductor to Hardeeville, part of its 2025 work. No source gives an in-service date, the line's length or the cost.",
+   "status": "completed",
+   "start": null,
+   "in_service": null,
+   "date_quote": null,
+   "places": [
+    {
+     "name": "Clarius Park Hardeeville",
+     "kind": "facility",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "On-Site Palmetto Electric Substation",
+     "kind": "substation",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Hardeeville",
+     "kind": "town",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Highway 17",
+     "kind": "road",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Highway 170",
+     "kind": "road",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Jasper County",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.clariusparkhardeeville.com/",
+     "title": "Clarius Park Hardeeville",
+     "publisher": "Clarius Partners / Peakline Real Estate Funds (park developer)",
+     "quote": "featuring an on-site Palmetto Electric substation equipped with a new 115 KV transmission line and up to 70 MW of available power."
+    },
+    {
+     "url": "https://ourlinks.colliers.com/Document/File?id=YBHtUjvN",
+     "title": "Clarius Park Hardeeville park brochure (PDF)",
+     "publisher": "Colliers",
+     "quote": "On-Site Palmetto Electric Substation New 115 KV Transmission Line with up to ±80 MW Capacity"
+    },
+    {
+     "url": "https://palmetto.coop/annual-meeting",
+     "title": "Annual Meeting",
+     "publisher": "Palmetto Electric Cooperative",
+     "quote": "Palmetto Electric played a pivotal role in attracting TS Conductor to Hardeeville, made possible by a new substation designed to meet the company's advanced energy needs."
+    },
+    {
+     "url": "https://www.aol.com/news/palmetto-electrics-annual-meeting-draws-090213331.html",
+     "title": "Palmetto Electric's annual meeting draws 4,477 members",
+     "publisher": "Bluffton Today (via AOL)",
+     "quote": "Through Utility Tax Credits (UTC) and its partnership with the SC Power Team, Palmetto Electric provided funding to both large and small industries across southern Beaufort, Hampton and Jasper counties in 2025."
+    },
+    {
+     "url": "https://scbiz.com/new-134m-jasper-county-facility-will-help-meet-rising-power-needs/",
+     "title": "New $134M Jasper County facility will help meet rising power needs",
+     "publisher": "SC Biz News",
+     "quote": "a power substation with capacity up to 90 megawatts within the park boundary"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened every source and all five quotes appear on their pages. The brochure PDF, after redirect and text extraction, says 'On-Site Palmetto Electric Substation / New 115 KV Transmission Line with up to ±80 MW Capacity' and also '±20 MW available immediately, expandable to ±80 MW'. Palmetto's 2026 annual-meeting page and the Bluffton Today story say the new substation brought TS Conductor to Hardeeville, as part of 2025. No source gives a construction or energization date, so the 2024-2034 fit is an inference: a 'new substation designed' for TS Conductor, which announced in March 2025. The sources also disagree on capacity (70, ±80 and 90 MW), and none says who owns the 115 kV line, only that the substation is Palmetto's.",
+     "I opened all five cited pages and found every quote. For the Colliers brochure PDF I extracted the text with pdftotext, which also shows \"Dedicated 115-KV transmission line\", \"20 MW available immediately\", \"expandable to 80 MW\" and \"Highway 17 & Highway 170\". Palmetto's 2026 annual-meeting page credits the new substation as part of its 2025 work, and Clarius says the park was under construction in 2023 with Phase 1 done in 2025, so the build falls in the 2024-2034 window. No source gives an exact energization date. Sources disagree on capacity: the park website says 70 MW, the brochure 80 MW, and SC Biz, Business View and a Clarius building PDF 90 MW."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Excelsior EMC",
+   "utility_kind": "electric membership cooperative",
+   "name": "Pine Inn Substation (115 kV to 25 kV, 25 MVA)",
+   "description": "Excelsior EMC built a new distribution substation on the US 301 south corridor near I-16 in southern Bulloch County. It takes power from a 115 kV transmission line, steps it down to 25 kV through a 25 MVA transformer, and serves the Ecoplastic America plant and nearby customers. The co-op's newsletter reported it energized by November 2025.",
+   "status": "completed",
+   "start": null,
+   "in_service": "2025",
+   "date_quote": "After years of planning and construction, Excelsior EMC has energized the new Pine Inn Substation, located along the Highway 301 south corridor in Bulloch County.",
+   "places": [
+    {
+     "name": "Pine Inn Substation",
+     "kind": "substation",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Bulloch County",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "US Hwy 301",
+     "kind": "road",
+     "state": "GA",
+     "role": "along"
+    },
+    {
+     "name": "Interstate 16",
+     "kind": "road",
+     "state": "GA",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://excelsioremc.com/wp-content/uploads/2025/11/Nov25_prf3.pdf",
+     "title": "Excelsior EMC newsletter, November 2025 (Vol. 46, No. 9): New Pine Inn Substation Strengthens Service for Bulloch County",
+     "publisher": "Excelsior EMC",
+     "quote": "The Pine Inn Substation is powered by a 115,000-volt transmission line and steps voltage down to 25,000 volts for distribution. At the heart of the facility is a 25 MVA power transformer, providing ample capacity for current and future load in southern Bulloch County."
+    },
+    {
+     "url": "https://excelsioremc.com/wp-content/uploads/2025/05/May25_prf3.pdf",
+     "title": "Excelsior EMC newsletter, May 2025 (annual report letter)",
+     "publisher": "Excelsior EMC",
+     "quote": "Our four-year work plan outlines strategic initiatives, including the construction of a new substation to serve the Ecoplastic America facility and the growing needs along US Hwy 301 near Interstate 16."
+    },
+    {
+     "url": "https://excelsioremc.com/wp-content/uploads/2025/12/Dec25_prf6.pdf",
+     "title": "Excelsior EMC newsletter, December 2025 (year-end letter)",
+     "publisher": "Excelsior EMC",
+     "quote": "Another major milestone was the addition of the Pine Inn Substation, which now supports homes and businesses in that portion of Bulloch County, including one of our newest large loads, Ecoplastic America."
+    },
+    {
+     "url": "https://www.statesboroherald.com/local/excelsior-annual-meeting-more-capitol-credit-refunds-coming/",
+     "title": "Excelsior annual meeting: more capital credit refunds coming",
+     "publisher": "Statesboro Herald",
+     "quote": "Through its ongoing four-year construction work plan, Excelsior EMC energized the Pine Inn Substation, completed major line improvements near Gwinnett Crossing, Brooklet-Denmark Highway and Twin City"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I pulled the text out of all three Excelsior EMC PDFs, and every quote in the record appears in them word for word. The November 2025 newsletter (Vol. 46, No. 9) says Excelsior \"has energized\" the Pine Inn Substation on the Hwy 301 south corridor in Bulloch County and gives the 115 kV to 25 kV, 25 MVA details. The May 2025 letter links the new substation to Ecoplastic and to \"US Hwy 301 near Interstate 16\", and the December 2025 year-end letter names Pine Inn as a 2025 milestone. The Statesboro Herald sentence also matches (the page shows no date). Bulloch County, GA is in the Savannah-area study counties. The in-service year of 2025 is supported, and no source gives an exact energization date.",
+     "I pulled the text out of the three Excelsior EMC newsletter PDFs (Nov 2025 Vol. 46 No. 9, May 2025 annual report, Dec 2025 Vol. 46 No. 10) and fetched the Statesboro Herald article. All four quotes and the date quote appear word for word. The sources confirm it is an Excelsior EMC substation in Bulloch County, GA (inside the study area): 115 kV stepped down to 25 kV, a 25 MVA transformer, serving Ecoplastic America. The May 2025 letter still lists it as planned, and the Nov and Dec 2025 letters say it is energized, so an in-service year of 2025 holds. One caveat: Interstate 16 is only a nearby landmark ('along US Hwy 301 near Interstate 16'; the Ecoplastic plant is at 4822 Hwy 301 South in Register), so the 'along' role for I-16 is loose. The exact energization date is not given."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Oglethorpe Power Corporation",
+   "utility_kind": "electric generation cooperative",
+   "name": "Effingham Energy Facility CT Upgrades Project",
+   "description": "Oglethorpe Power proposed upgrading both combustion turbines at its Effingham Energy Facility in Rincon. The Advanced Gas Path upgrade adds about 23 MW, and the Low Load Turndown upgrade lets the units run at lower loads. Per the Georgia EPD draft permit narrative, construction was to begin by the end of 2024.",
+   "status": "planned",
+   "start": null,
+   "in_service": null,
+   "date_quote": "OPC expects to begin construction of the OPC Effingham Upgrades Project on or before December 31, 2024.",
+   "places": [
+    {
+     "name": "Effingham Energy Facility",
+     "kind": "power_plant",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Rincon",
+     "kind": "town",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Effingham",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://epd.georgia.gov/document/document/tv668257-narrative/download",
+     "title": "SIP Construction Permit and Title V Significant Modification Application Review, Effingham Energy Facility, TV-668257",
+     "publisher": "Georgia Environmental Protection Division",
+     "quote": "The proposed CT Upgrades Project would involve the implementation of two upgrades for OPC Effingham's two combustion turbines: the Advanced Gas Path (AGP) Upgrade and the Low Load Turndown (LLTD) Upgrade."
+    },
+    {
+     "url": "https://epd.georgia.gov/document/document/tv668257-narrative/download",
+     "title": "SIP Construction Permit and Title V Significant Modification Application Review, Effingham Energy Facility, TV-668257",
+     "publisher": "Georgia Environmental Protection Division",
+     "quote": "These changes would increase the capacity of the facility by approximately 23 MW, with variations for ambient temperatures."
+    }
+   ],
+   "verification": {
+    "verifiers": 3,
+    "confirmed": 2,
+    "quotes_found": 3,
+    "notes": [
+     "I read the Georgia EPD PDF narrative (TV-668257, Effingham Energy Facility, Rincon, Effingham County, GA). It confirms Oglethorpe Power's CT Upgrades Project (AGP plus LLTD, about 23 MW more capacity), and both source quotes and the date_quote appear word for word. The start date 2024-12-31 is overstated: the source only says construction would begin \"on or before December 31, 2024\", which is a deadline, so start should read \"by end of 2024\" or be null. This is a gas-turbine generation upgrade, not transmission work, and the draft narrative gives no completion date.",
+     "I opened the EPD narrative for TV-668257 and permit amendment 4911-103-0012-V-06-1, which was issued 10/26/2022 to Oglethorpe Power Corporation for 3440 McCall Road, Rincon, Effingham County. All three quotes appear word for word, and the plant was renamed the Bobby C. Smith Jr. Energy Facility in May 2023. The start date of 2024-12-31 is wrong: the source gives only a deadline, \"on or before December 31, 2024\", not a start date. So construction could have started in 2023 (outside 2024-2034) or not at all. I found no source confirming when, or whether, the work was built or finished.",
+     "I opened the EPD TV-668257 narrative PDF and permit amendment 4911-103-0012-V-06-1 (issued 10/26/2022; 3440 McCall Road, Rincon, Effingham County; parent company Oglethorpe Power Corporation). Both source quotes and the date quote appear on them word for word, but the source says construction would begin \"on or before December 31, 2024\". That is a deadline, not a start date, so start=2024-12-31 is unsupported; it should be \"2024\" at most. OPC's FY2024 10-K reports a major maintenance outage at the plant in the first half of 2024, and its summer capacity rose from 500 to 527 MW, which suggests the work happened in 2024 (within the timeline) and that status \"planned\" is probably out of date; the facility was also renamed Bobby C. Smith Jr. Energy Facility in May 2023, and this is a generation upgrade, not transmission work.",
+     "start \"2024-12-31\" not confirmed, set to unknown"
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Atlanta Gas Light Company",
+   "utility_kind": "natural gas local distribution company",
+   "name": "Augusta #3 Regulator Station Renewal (GA PSC GC-1 #19660)",
+   "description": "Atlanta Gas Light filed notice with the Georgia PSC that it would rebuild steel gas mains at its Augusta #3 regulator station next to the Kinder Morgan station in Hephzibah, Richmond County: 90 ft of 8-inch and 35 ft of 12-inch pipe, 125 ft in all. Construction window: June 25 to Sept 1, 2026. Completion not confirmed.",
+   "status": "unknown",
+   "start": "2026-06-25",
+   "in_service": "2026-09-01",
+   "date_quote": "Start Date: 2026-06-25 End Date: 2026-09-01",
+   "places": [
+    {
+     "name": "Hephzibah",
+     "kind": "town",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Richmond",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Kinder Morgan station and office",
+     "kind": "facility",
+     "state": "GA",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://psc.ga.gov/gc-1/gc1-detail/?gc1Id=19660",
+     "title": "GC1 Detail: Augusta #3 Regulator Station Renewal",
+     "publisher": "Georgia Public Service Commission",
+     "quote": "We will be renewing the 8\" steel main (90' total) and the 12\" steel main (35' total). The 8\" line has NOP of 140# and the 12\" line NOP is 290#. This location is beside the Kinder Morgan station and office in Hephzibah, Ga."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened PSC GC-1 #19660 and it matches the record. The company is Atlanta Gas Light Company and the title is \"Augusta #3 Regulator Station Renewal\", filed as a Reconstruction with a pipeline length of 125 feet. The affected county is Richmond, and the source quote appears word for word in the Comments section. The page gives the dates as \"2026-06-25T00:00:00\" and \"2026-09-01T00:00:00\", so the record's date_quote shortens them but the days are the same. The in_service date is really the planned construction end date. The page's only status is \"Accepted\", which refers to the filing, so completion is not confirmed.",
+     "I opened GA PSC GC-1 record #19660 myself. It is Atlanta Gas Light Company's notice \"Augusta #3 Regulator Station Renewal\": type Reconstruction, Affected County Richmond, Pipeline Length 125' feet, status Accepted, and the source quote appears word for word. Wikipedia places Hephzibah in southern Richmond County, which is in the study area. Two caveats. First, the page gives the dates as \"2026-06-25T00:00:00\" and \"2026-09-01T00:00:00\", so the date_quote leaves off the time part. Second, 2026-09-01 is the planned end of construction, not a confirmed in-service date, so status unknown is the right call."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Atlanta Gas Light",
+   "utility_kind": "natural gas distribution utility",
+   "name": "Sand Hills Renewal (GA PSC GC-1 #18682)",
+   "description": "Atlanta Gas Light filed with the Georgia PSC to reconstruct 9,051 feet of 3-inch plastic gas main at 15 psig in Richmond County, with work scheduled from June 2, 2025 to December 31, 2025. The filing was accepted. It does not say whether the work is finished.",
+   "status": "unknown",
+   "start": "2025-06-02",
+   "in_service": "2025-12-31",
+   "date_quote": "Start Date: 2025-06-02T00:00:00 End Date: 2025-12-31T00:00:00",
+   "places": [
+    {
+     "name": "Richmond County",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://psc.ga.gov/gc-1/gc1-detail/?gc1Id=18682",
+     "title": "GC1 Detail - GC1 # 18682",
+     "publisher": "Georgia Public Service Commission",
+     "quote": "Gas Company: Atlanta Gas Light Title: Sand Hills Renewal ... Construction Type: Reconstruction ... Pipeline Length: 9051 feet Pipeline Diameter: 3 Pipeline Type: Plastic Pressure: 15 psig Start Date: 2025-06-02T00:00:00 End Date: 2025-12-31T00:00:00 Affected Counties: Richmond ... Status: Accepted"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened the GA PSC GC1 #18682 page. It confirms Atlanta Gas Light, Sand Hills Renewal, Reconstruction, 9051 feet, 3-inch plastic, 15 psig, Start 2025-06-02, End 2025-12-31, affected county Richmond and status Accepted, so the quote matches apart from the elisions and a footnote marker in 'Pipeline Length 1'. Two caveats: 2025-12-31 is the scheduled construction end date, not a confirmed in-service date, and the page lists the Home County as Columbia, though the work itself is in Richmond.",
+     "I downloaded the raw Georgia PSC page for GC-1 #18682. It lists Gas Company Atlanta Gas Light, Title \"Sand Hills Renewal\", Reconstruction, 9051 feet, 3-inch plastic, 15 psig, Start Date 2025-06-02T00:00:00, End Date 2025-12-31T00:00:00, Affected Counties Richmond, Status Accepted, so every claim and date matches. Two small points: the page puts footnote markers after \"Pipeline Length\" and \"Affected Counties\", and the 2025-12-31 in-service value is really the filing's planned end date, not a confirmed completion. A web search turned up no other source for this filing."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Atlanta Gas Light Company",
+   "utility_kind": "natural gas distribution utility",
+   "name": "Regulator Station Blanchard Rd at Washington Rd (GA PSC GC-1 #18514)",
+   "description": "Atlanta Gas Light rebuilds a gas regulator station at Blanchard Road and Washington Road in Columbia County, Georgia. The work includes 1,600 feet of 3-inch plastic pipe at 60 psig. The filing sets a construction window of March 3 to December 31, 2025. It gives no cost and no coordinates.",
+   "status": "unknown",
+   "start": "2025-03-03",
+   "in_service": "2025-12-31",
+   "date_quote": "Start Date: 2025-03-03T00:00:00 End Date: 2025-12-31T00:00:00",
+   "places": [
+    {
+     "name": "Blanchard Rd",
+     "kind": "road",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Washington Rd",
+     "kind": "road",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Columbia",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://psc.ga.gov/gc-1/gc1-detail/?gc1Id=18514",
+     "title": "GC1 Detail Record #18514",
+     "publisher": "Georgia Public Service Commission",
+     "quote": "Gas Company: Atlanta Gas Light Title: Reg Station Blanchard Rd @ Washington Rd Home County: Columbia Construction Type: Reconstruction Pipeline Length: 1600 feet Pipeline Diameter: 3 Pipeline Type: Plastic Pressure: 60 psig Start Date: 2025-03-03T00:00:00 End Date: 2025-12-31T00:00:00 Status: Accepted"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 0,
+    "notes": [
+     "I opened the GA PSC GC1 #18514 page and checked the raw HTML. Every fact in the record is on the page: Atlanta Gas Light, \"Reg Station Blanchard Rd @ Washington Rd\", Home State Georgia, Home County Columbia (which is in the study area), Reconstruction, 1600 feet, 3-inch plastic pipe, 60 psig, Start 2025-03-03T00:00:00, End 2025-12-31T00:00:00, Status Accepted. The date_quote appears word for word. The source quote does not: it joins the fields together without marking the gaps. It leaves out \"Home State: Georgia\", \"Certificate Number:\", \"Submitted By\", \"Submission Date\", the footnote marker in \"Pipeline Length 1 :\", and \"Affected Counties 2 : Columbia Receipt Number: ...\" between End Date and Status. Also, 2025-12-31 is the end of the filed construction window, not a stated in-service date.",
+     "I opened the GA PSC GC-1 record #18514. It confirms Atlanta Gas Light, \"Reg Station Blanchard Rd @ Washington Rd\", Columbia County, Reconstruction, 1600 ft, 3-inch plastic pipe at 60 psig, Start 2025-03-03T00:00:00, End 2025-12-31T00:00:00, status Accepted, submitted 2025-02-19. A property listing places Blanchard Rd at Washington Rd in Evans, Columbia County, GA. The date_quote appears on the page word for word. The source quote does not: it joins fields together and leaves out fields that sit between them (Home State, Certificate Number, Submitted By, Submission Date, Affected Counties, Receipt Number), and the page reads \"Pipeline Length 1 :\" with a footnote marker. Also note in_service is really the end of the construction window, not a stated in-service date."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Dominion Energy South Carolina",
+   "utility_kind": "investor-owned electric and natural gas utility (natural gas distribution)",
+   "name": "Dominion Energy underground natural gas line under I-20 near Exit 5, North Augusta (Ordinance 2025-20 easement)",
+   "description": "Dominion Energy is putting in an underground natural gas line that runs south to north under I-20 near Exit 5 in North Augusta to serve neighborhoods north of the interstate. City Ordinance 2025-20 would give it a permanent easement across city land. SCDOT has already approved the I-20 crossing.",
+   "status": "under_construction",
+   "start": null,
+   "in_service": null,
+   "date_quote": "City staff told the North Augusta City Council at the Oct. 13 study session that an ordinance on second reading would grant Dominion Energy in South Carolina a permanent easement across city property near Exit 5 to place an underground natural gas line.",
+   "places": [
+    {
+     "name": "North Augusta",
+     "kind": "town",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Aiken County",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Exit 5",
+     "kind": "road",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Interstate 20",
+     "kind": "road",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://citizenportal.ai/articles/5938982/North-Augusta/Aiken-County/South-Carolina/Council-to-consider-permanent-easement-for-Dominion-Energy-natural-gas-line-near-Exit-5",
+     "title": "Council to consider permanent easement for Dominion Energy natural gas line near Exit 5",
+     "publisher": "Citizen Portal (citizenportal.ai), published 2025-10-14",
+     "quote": "City Administrator Jim Clifford said Dominion is installing an underground gas line running south to north to serve neighborhoods north of Interstate 20."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened the Citizen Portal article dated 2025-10-14, and both quotes appear on it word for word. It names Ordinance 2025-20, says DOT has given permission to cross under I-20, and says Dominion \"is installing\" the line. Aiken County shows up only in the page's location breadcrumb; the page gives no construction dates, and the easement had passed only first reading, so \"under_construction\" rests on that one \"is installing\" phrase. The article describes a neighborhood gas distribution line, not transmission.",
+     "I pulled the raw HTML of the Citizen Portal article dated 2025-10-14. Both quoted sentences appear there word for word, and the page names ordinance 2025-20, Dominion Energy in South Carolina, Exit 5, I-20, a DOT permit and Aiken County. I-20 Exit 5 is at US 25 in North Augusta (iExit/AARoads), and a second Citizen Portal article dated 2025-09-30 covers the first reading and the boring under I-20. Caveats: this is a gas distribution line, not transmission work. I found no source for a start or finish date, or for whether the second reading passed. \"Under construction\" rests only on \"is installing\" and an approved lay-down yard, so work in 2025 is likely but not confirmed."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper",
+   "utility_kind": "state-owned electric utility",
+   "name": "Varnville 230-115(-69) kV Substation (new substation / upgrades)",
+   "description": "Santee Cooper plans a new 230-115 kV substation at Varnville, on its own transmission land and adjacent acquired property next to the existing Varnville substation. The old site has no room for more 230 kV lines, and the plan is to move area 69 kV delivery points to 115 kV. The March 2026 list calls it substation upgrades, due 12/1/2028.",
+   "status": "planned",
+   "start": null,
+   "in_service": "2028-12-01",
+   "date_quote": "Varnville 230-115-69 kV Substation Upgrades                                    12/1/2028",
+   "places": [
+    {
+     "name": "Varnville 230-115-69 kV Substation",
+     "kind": "substation",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Varnville",
+     "kind": "town",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Hampton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.scrtp.com/assets/pdfs/meeting-archives/scrtp-meeting-2025-03-05-presentation.pdf",
+     "title": "South Carolina Regional Transmission Planning Stakeholder Meeting, March 5, 2025 (Santee Cooper Major Transmission Expansion Plans)",
+     "publisher": "South Carolina Regional Transmission Planning (SCRTP)",
+     "quote": "Construct a new Varnville 230-115 kV substation on existing Santee Cooper transmission property and property acquired adjacent to the existing Varnville 230-115-69 kV Substation. ... Project Status Planned ... Planned In-Service Date September 2028"
+    },
+    {
+     "url": "https://www.scrtp.com/assets/pdfs/meeting-archives/scrtp-meeting-2026-03-11-presentation.pdf",
+     "title": "South Carolina Regional Transmission Planning Stakeholder Meeting, March 11, 2026 (Santee Cooper Transmission Projects 2026-2030)",
+     "publisher": "South Carolina Regional Transmission Planning (SCRTP)",
+     "quote": "Varnville 230-115-69 kV Substation Upgrades                                    12/1/2028"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Varnville,_South_Carolina",
+     "title": "Varnville, South Carolina",
+     "publisher": "Wikipedia",
+     "quote": "Varnville is a town in Hampton County, South Carolina, United States."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I pulled the text out of both SCRTP PDFs. In the March 2025 deck, the Santee Cooper section has the Varnville 230-115 kV Substation page with the quoted description, a need statement matching the record's paraphrase (no room for more 230 kV terminals, converting 69 kV delivery points to 115 kV), status Planned and in-service September 2028 (its table says 9/30/2028). The March 2026 deck's Santee Cooper 'Transmission Projects 2026-2030' table has the exact line 'Varnville 230-115-69 kV Substation Upgrades 12/1/2028', which supports 2028-12-01; Wikipedia places Varnville in Hampton County, SC, which is in the study area. One caveat: the 2025 date (Sept 2028) differs from the 2026 date the record uses, and the 2026 list only calls it 'Upgrades', so the 'new substation' scope rests on the 2025 deck alone.",
+     "I extracted the text of both SCRTP PDFs and the quotes are there. The 2025 deck's Santee Cooper section describes the new Varnville 230-115 kV substation as Planned, in service September 2028 (9/30/2028 in its project list). The March 2026 deck lists \"Varnville 230-115-69 kV Substation Upgrades 12/1/2028\", which matches in_service 2028-12-01 exactly, so the date has moved since 2025. A SC PSC filing (dms.psc.sc.gov) places Santee Cooper's existing Varnville Substation in Hampton County, and Wikipedia confirms Varnville is in Hampton County, which is in the study area."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper",
+   "utility_kind": "state-owned electric utility",
+   "name": "Varnville-Robertville 69kV Rebuild (Varnville to Nixville tap 69 kV Rebuild to 115 kV)",
+   "description": "Santee Cooper is rebuilding an old 69 kV line and building a new 115 kV line on steel poles, in the right of way it already has, for about 6 miles from its Varnville Station to the Nixville tap. Construction was set for March to July 2026, with in-service listed for 12/1/2026.",
+   "status": "under_construction",
+   "start": "2026-03",
+   "in_service": "2026-12-01",
+   "date_quote": "Santee Cooper plans to construct this 6-mile transmission line over a 4-month period, starting around March 2026.",
+   "places": [
+    {
+     "name": "Varnville Station",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Nixville tap",
+     "kind": "other",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Hampton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": 6,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/varnville-robertville/",
+     "title": "Varnville-Robertville 69kV Rebuild",
+     "publisher": "Santee Cooper",
+     "quote": "This project involves rebuilding an older 69 kV transmission line and building a new 115 kV transmission with modern steel poles in existing right of way from Santee Cooper's Varnville Station to the Nixville tap."
+    },
+    {
+     "url": "https://www.scrtp.com/assets/pdfs/meeting-archives/scrtp-meeting-2025-03-05-presentation.pdf",
+     "title": "South Carolina Regional Transmission Planning Stakeholder Meeting, March 5, 2025 (Santee Cooper Committed Transmission Facilities)",
+     "publisher": "South Carolina Regional Transmission Planning (SCRTP)",
+     "quote": "Varnville to Nixville tap 69 kV Rebuild to 115 kV                                 12/1/2026"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Varnville,_South_Carolina",
+     "title": "Varnville, South Carolina",
+     "publisher": "Wikipedia",
+     "quote": "Varnville is a town in Hampton County, South Carolina, United States."
+    },
+    {
+     "url": "https://www.santeecooper.com/community/power-line-projects/",
+     "title": "Power Line Projects",
+     "publisher": "Santee Cooper",
+     "quote": "Varnville-Robertville 69kV Rebuild"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "The Santee Cooper project page has both quoted sentences word for word: 6 miles, a 4-month build starting around March 2026, construction ending in July 2026 and wrap-up by Dec. 23, 2026. The Santee Cooper \"Committed Transmission Facilities\" table in the SCRTP 3/5/2025 PDF lists \"Varnville to Nixville tap 69 kV Rebuild to 115 kV\" with in-service 12/1/2026. Hampton County is supported only indirectly: Wikipedia puts Varnville in Hampton County, but the Santee Cooper page never names the county.",
+     "Santee Cooper's project page describes the rebuild from Varnville Station to the Nixville tap: 6 miles, a 4-month build \"starting around March 2026\" that ends in July 2026, with wrap-up by Dec. 23, 2026. The page gives no in-service date. I extracted the SCRTP March 5, 2025 PDF myself, and its Santee Cooper \"Committed Transmission Facilities\" table lists \"Varnville to Nixville tap 69 kV Rebuild to 115 kV\" at 12/1/2026. Wikipedia places both Varnville and Nixville in Hampton County, SC, which is in the study area."
+    ],
+    "merged_from": [
+     {
+      "name": "Varnville-Robertville 69kV Rebuild",
+      "in_service": "2026-07",
+      "start": "2026-03",
+      "sources": [
+       "https://www.santeecooper.com/community/power-line-projects/varnville-robertville/",
+       "https://www.santeecooper.com/community/power-line-projects/varnville-robertville/",
+       "https://www.santeecooper.com/community/power-line-projects/"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper",
+   "utility_kind": "state-owned electric utility",
+   "name": "Purrysburg Station Improvements (incl. Purrysburg 230-115 kV transformer upgrade)",
+   "description": "Santee Cooper committed work at its Purrysburg 230-115 kV substation near the Savannah River: a transformer upgrade due 12/1/2025 (2025 list only) and broader station improvements due 6/1/2027 (2025 and 2026 lists). The slides give no scope, cost or county.",
+   "status": "planned",
+   "start": null,
+   "in_service": "2027-06-01",
+   "date_quote": "Upgrade Purrysburg 230-115 kV Transformer 12/1/2025 ... Purrysburg Station Improvements 6/1/2027",
+   "places": [
+    {
+     "name": "Purrysburg",
+     "kind": "substation",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Jasper County",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.scrtp.com/assets/pdfs/meeting-archives/scrtp-meeting-2025-03-05-presentation.pdf",
+     "title": "South Carolina Regional Transmission Planning Stakeholder Meeting, March 5, 2025 (Santee Cooper Major Transmission Expansion Plans, slide 50: Transmission Projects 2025-2029; slide 24: Committed Transmission Facilities)",
+     "publisher": "South Carolina Regional Transmission Planning (SCRTP) / Santee Cooper",
+     "quote": "Transmission Projects 2025-2029 ... Upgrade Purrysburg 230-115 kV Transformer 12/1/2025 ... Replace Bluffton-Purrysburg 230 kV limiting Elements 11/1/2026 ... Purrysburg Station Improvements 6/1/2027"
+    },
+    {
+     "url": "https://www.scrtp.com/assets/pdfs/meeting-archives/scrtp-meeting-2026-03-11-presentation.pdf",
+     "title": "South Carolina Regional Transmission Planning Stakeholder Meeting, March 11, 2026 (Santee Cooper Major Transmission Expansion Plans, slide 50: Transmission Projects 2026-2030; slide 24: Committed Transmission Facilities)",
+     "publisher": "South Carolina Regional Transmission Planning (SCRTP) / Santee Cooper",
+     "quote": "Committed Transmission Facilities Project Title In-service Date Reconductor Purrysburg - Mcintosh 230 kV tie lines 5/1/2026 ... Purrysburg Station Improvements 6/1/2027"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Purrysburg,_South_Carolina",
+     "title": "Purrysburg, South Carolina",
+     "publisher": "Wikipedia",
+     "quote": "Purrysburg is an unincorporated community in Jasper County, South Carolina."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I pulled the text out of both SCRTP PDFs. In the 2025 deck, slides 24 (Santee Cooper planning-models section) and 50 (Santee Cooper Major Transmission Expansion Plans) list \"Upgrade Purrysburg 230-115 kV Transformer 12/1/2025\" and \"Purrysburg Station Improvements 6/1/2027\". The 2026 deck has only the Station Improvements line at 6/1/2027, plus the Purrysburg-McIntosh reconductor on 5/1/2026. So the in_service date of 2027-06-01 matches exactly, and all quotes appear word for word. Caveats: the record merges two separate slide line items into one, and the slides give no county, so Jasper County comes from Wikipedia placing the Purrysburg community (on the Savannah River) in Jasper County; that it covers the substation is an inference.",
+     "I extracted the text of both SCRTP PDFs myself, and the Purrysburg lines sit in Santee Cooper's section. The 2025 deck (slides 24 and 50) lists \"Upgrade Purrysburg 230-115 kV Transformer 12/1/2025\" and \"Purrysburg Station Improvements 6/1/2027\"; the 2026 deck (slides 24 and 50) drops the transformer and keeps Station Improvements at 6/1/2027, so 2027-06-01 matches and all the quotes are there. Santee Cooper's 2023 DISIS report gave earlier dates (transformer 12/2025, station improvements 9/2026), which the newer lists replace. Wikipedia puts the Purrysburg community in Jasper County, but no source I found names the substation's county directly."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Elba Express Company, L.L.C. (a Kinder Morgan company)",
+   "utility_kind": "interstate natural gas pipeline",
+   "name": "Bridge Project (Elba Express Bridge Project)",
+   "description": "A planned pipeline of about 71 miles and 30 inches wide. It would run from the existing Elba Express pipeline in Screven County, GA, through Hampton County, SC, to Colleton County, SC. It would carry gas to the new Canadys combined-cycle plant planned by Santee Cooper and DESC, plus growing local demand.",
+   "status": "planned",
+   "start": "2028",
+   "in_service": "2030",
+   "date_quote": "Begin Construction — Anticipated Third Quarter 2028 Proposed In-Service Date — Second Quarter 2030",
+   "places": [
+    {
+     "name": "Screven County",
+     "kind": "county",
+     "state": "GA",
+     "role": "endpoint"
+    },
+    {
+     "name": "Canadys",
+     "kind": "power_plant",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Hampton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    },
+    {
+     "name": "Colleton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "along"
+    }
+   ],
+   "coordinates": [],
+   "miles": 71,
+   "cost_usd": 431000000,
+   "cost_quote": "The project is estimated to cost approximately $431 million.",
+   "sources": [
+    {
+     "url": "https://www.kindermorgan.com/WWWKM/media/Projects/documents/Bridge-Project-Fact-Sheet-01.pdf",
+     "title": "Bridge Project Fact Sheet",
+     "publisher": "Elba Express Company, L.L.C. (Kinder Morgan)",
+     "quote": "The project includes the construction of approximately 71 miles of 30-inch diameter pipeline extending from EEC’s existing pipeline system to Colleton County, South Carolina, along with new meter stations, and related facilities."
+    },
+    {
+     "url": "https://www.kindermorgan.com/WWWKM/media/Projects/documents/Project-Bridge.pdf",
+     "title": "Preliminary Project Location - Bridge Project (map)",
+     "publisher": "Elba Express Company, L.L.C. (Kinder Morgan)",
+     "quote": "Preliminary Project Location Bridge Project Screven County, Georgia Hampton & Colleton Counties South Carolina"
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Order/88dd14bf-1335-452c-8741-d260e5b41f3d",
+     "title": "Docket No. 2025-323-E, Order No. 2026-350 (June 12, 2026): Order Granting Certificate for Canadys Joint Resource",
+     "publisher": "Public Service Commission of South Carolina",
+     "quote": "The third precedent agreement will provide for construction of a pipeline expansion project running from the Elba Express pipeline near the Georgia-South Carolina border to the Site, which is known as the “Bridge Project.”"
+    },
+    {
+     "url": "https://www.kindermorgan.com/Operations/Projects",
+     "title": "Projects",
+     "publisher": "Kinder Morgan",
+     "quote": "Elba Express Company (EEC) is developing the Bridge Project (Bridge) to connect EEC's existing pipeline system to Colleton County, South Carolina."
+    },
+    {
+     "url": "https://www.kindermorgan.com/WWWKM/media/Projects/documents/Bridge-Project-Fact-Sheet.pdf",
+     "title": "Bridge Project Fact Sheet",
+     "publisher": "Kinder Morgan",
+     "quote": "The project includes the construction of approximately 71 miles of 30-inch diameter pipeline extending from EEC's existing pipeline system to Colleton County, South Carolina, along with new meter stations, and related facilities."
+    },
+    {
+     "url": "https://www.gpb.org/news/2026/05/21/land-always-gonna-be-changed-screven-county-farmers-fear-new-gas-pipelines-impact",
+     "title": "'Land is always gonna be changed': Screven County farmers fear new gas pipeline's impact",
+     "publisher": "Georgia Public Broadcasting (GPB)",
+     "quote": "The company seeks to build the Bridge Project, an estimated $430 million, 30-inch diameter pipeline that could siphon gas from the Elba Express Pipeline, already running through Screven County, to a proposed Dominion Energy power plant in Colleton County, S.C., about 70 miles away."
+    },
+    {
+     "url": "https://coastalconservationleague.org/news/coastal-conservation-league-obtains-map-of-gas-pipeline-planned-to-cross-the-savannah-river-and-parts-of-hampton-and-colleton-counties/",
+     "title": "Coastal Conservation League obtains map of gas pipeline planned to cross the Savannah River and parts of Hampton and Colleton Counties",
+     "publisher": "Coastal Conservation League",
+     "quote": "The Elba Bridge pipeline serving the Canadys plant would connect to the Elba Express pipeline in Screven County, Georgia, and it would require new polluting compressor stations to pressurize the gas."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened all four sources and extracted the text from the three PDFs. The fact sheet says Elba Express Company, LLC, a Kinder Morgan company, is building 71 miles of 30-inch pipe at about $431M, with construction beginning in Q3 2028 and in service in Q2 2030; the quote matches apart from \"--\" where the record has an em dash. The map title names Screven County, GA and Hampton and Colleton Counties, SC. PSC Order 2026-350 (Docket 2025-323-E, June 12, 2026) contains the quoted Bridge Project sentence and places the Canadys Joint Resource site (Santee Cooper/DESC) in Colleton County, and the Kinder Morgan Projects page carries the quoted sentence verbatim. The fact sheet itself never names Canadys; it only mentions a new gas-fired plant in Colleton County, so the Canadys link comes from the PSC order.",
+     "I opened the Kinder Morgan fact sheet PDF. It names Elba Express Company, LLC (a Kinder Morgan company) as the developer and gives about 71 miles of 30-inch pipe to Colleton County, SC, a cost of about $431M, construction starting Q3 2028 and in-service Q2 2030; the schedule uses \"--\" where the record's date quote has dashes. The map PDF, the Kinder Morgan Projects page, SC PSC Order 2026-350 (Docket 2025-323-E, June 12, 2026, which ties the pipeline to the former Canadys site in Colleton County) and a Coastal Conservation League page (Screven County, GA connection; route crosses the Savannah River into Hampton and Colleton) confirm the route and dates, and every cited quote appears on its page, so I found nothing to correct."
+    ],
+    "merged_from": [
+     {
+      "name": "Bridge Project (Elba Bridge natural gas pipeline)",
+      "in_service": "2030",
+      "start": "2029",
+      "sources": [
+       "https://www.kindermorgan.com/WWWKM/media/Projects/documents/Bridge-Project-Fact-Sheet.pdf",
+       "https://www.gpb.org/news/2026/05/21/land-always-gonna-be-changed-screven-county-farmers-fear-new-gas-pipelines-impact",
+       "https://coastalconservationleague.org/news/coastal-conservation-league-obtains-map-of-gas-pipeline-planned-to-cross-the-savannah-river-and-parts-of-hampton-and-colleton-counties/"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Southern Natural Gas Company, L.L.C. (equally owned by subsidiaries of Kinder Morgan, Inc. and Southern Company)",
+   "utility_kind": "interstate natural gas pipeline (FERC-regulated)",
+   "name": "South System Expansion 4 (SSE4): Wrens Compressor Station compressor unit addition",
+   "description": "Southern Natural Gas will add one new 6,130-hp gas-driven compressor unit (Centaur 50) at its existing Wrens Compressor Station in Jefferson County, GA, and retire three old units totaling 1,800 hp. The work is listed under SSE4 Phase II. FERC approved it July 31, 2026. No start date is given for the Wrens work itself.",
+   "status": "planned",
+   "start": null,
+   "in_service": "2029-11-01",
+   "date_quote": "Construction of Phase II is expected to begin after Phase I construction commences and has a planned in-service date of November 1, 2029.",
+   "places": [
+    {
+     "name": "Wrens Compressor Station",
+     "kind": "facility",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Jefferson County",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://elibrary.ferc.gov/eLibrary/filelist?accession_number=20260731-3085",
+     "title": "Order Issuing Certificates and Approving Abandonment, Tennessee Gas Pipeline Company, L.L.C., et al., 196 FERC ¶ 61,093 (Docket Nos. CP25-514-000, CP25-517-000), issued July 31, 2026",
+     "publisher": "Federal Energy Regulatory Commission",
+     "quote": "one new 6,130-hp natural gas-driven compressor unit at the Wrens Compressor Station in Jefferson County, Georgia, where three units, totaling 1,800 hp, will be abandoned;"
+    },
+    {
+     "url": "https://elibrary.ferc.gov/eLibrary/filelist?accession_number=20250703-5175",
+     "title": "South System Expansion 4 Project: Application for a Certificate of Public Convenience and Necessity (June 30, 2025), Docket No. CP25-517-000",
+     "publisher": "Southern Natural Gas Company, L.L.C. and Elba Express Company, L.L.C. (via FERC eLibrary)",
+     "quote": "Wrens Compressor Station: Located in Jefferson County, Georgia, installation of a new Centaur 50 compressor unit (totaling 6,130 HP) at existing compressor station site."
+    },
+    {
+     "url": "https://elibrary.ferc.gov/eLibrary/filelist?accession_number=20260908-5286",
+     "title": "South System Expansion 4 Project Implementation Plan and Request for Partial Notice to Proceed with Construction (September 8, 2026)",
+     "publisher": "Southern Natural Gas Company, L.L.C. and Elba Express Company, L.L.C. (via FERC eLibrary)",
+     "quote": "Companies anticipate that Project construction activities will begin in October 2026. The Companies plan to place Phase I facilities and Phase II facilities in service by November 2028 and November 2029, respectively."
+    },
+    {
+     "url": "https://www.kindermorgan.com/Operations/Projects/SSE4-Project-Page",
+     "title": "South System Expansion 4 (SSE4) Project",
+     "publisher": "Kinder Morgan",
+     "quote": "Assuming the timely receipt of all required permits and approvals, KMI expects to place the first phase of the project in service in the fourth quarter of 2028 and the second phase in the fourth quarter of 2029."
+    },
+    {
+     "url": "https://scienceforgeorgia.org/sse4-health-interactive/",
+     "title": "SSE4 Health Interactive",
+     "publisher": "Science for Georgia",
+     "quote": "the area around Wrens Compressor Station in Jefferson County contains several farms that grow everything from strawberries to soybeans to corn to cotton."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I pulled the files for all three FERC accessions through the eLibrary API. The July 31, 2026 order (196 FERC ¶ 61,093, CP25-514/CP25-517) contains the Wrens 6,130-hp / 1,800-hp quote word for word. The June 30, 2025 application Part 1 lists Wrens (a new Centaur 50, 6,130 HP) under SNG's Phase 2 compressor stations and contains the date_quote exactly, with a planned in-service date of November 1, 2029. The Sept 8, 2026 implementation plan, Kinder Morgan's page (Q4 2029) and Science for Georgia's page each contain their quotes. On ownership, Exhibit D of the application says a Kinder Morgan subsidiary owns 50% of SNG, and Science for Georgia names Southern Company as the other owner. Jefferson County, GA is in the study area, and no start date is given for the Wrens work itself.",
+     "I pulled each filing's documents through the FERC eLibrary API. The July 31, 2026 order (196 FERC ¶ 61,093, CP25-514/517) has the Wrens quote word for word. The June 30, 2025 application lists the Wrens Centaur 50 unit (6,130 HP, three units totaling 1,800 HP to be abandoned) under SNG's Phase 2 work and gives Phase II's planned in-service date as November 1, 2029, in the exact words of the date quote. The Sept 8, 2026 implementation plan, the Kinder Morgan Q4 2028/Q4 2029 page and the Science for Georgia sentence all match their quotes. Ownership holds: the application's Exhibit D shows a Kinder Morgan subsidiary with 50%, and Kinder Morgan's 2016 release says Southern Company Gas bought the other 50%. Wrens is in Jefferson County, GA, which is in the study area. No correction is needed; the order itself doesn't say which phase Wrens falls in, but the application does."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Elba Express Company, L.L.C. (Kinder Morgan subsidiary)",
+   "utility_kind": "interstate natural gas pipeline",
+   "name": "SSE4-Elba: new 15,900-hp compressor unit at Jefferson Compressor Station",
+   "description": "Elba Express will add one new 15,900-hp gas-driven compressor unit at its existing Jefferson Compressor Station in Jefferson County, GA. It is part of the SSE4 expansion that FERC approved on July 31, 2026. Elba Express builds nothing in Phase I, so this unit belongs to Phase II.",
+   "status": "planned",
+   "start": null,
+   "in_service": "2029",
+   "date_quote": "Completion and In-service dates are anticipated in phases with Phase 1 in 4th Quarter 2028 and Phase 2 in 4th Quarter 2029.",
+   "places": [
+    {
+     "name": "Jefferson Compressor Station",
+     "kind": "facility",
+     "state": "GA",
+     "role": "site"
+    },
+    {
+     "name": "Jefferson County",
+     "kind": "county",
+     "state": "GA",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://elibrary.ferc.gov/eLibrary/filelist?accession_number=20260731-3085",
+     "title": "Order Issuing Certificates and Approving Abandonment, 196 FERC 61,093 (Docket Nos. CP25-514-000, CP25-517-000), issued July 31, 2026",
+     "publisher": "Federal Energy Regulatory Commission",
+     "quote": "a new 15,900-hp natural gas-driven compressor unit at the existing Jefferson Compressor Station in Jefferson County, Georgia;"
+    },
+    {
+     "url": "https://elibrary.ferc.gov/eLibrary/filelist?accession_number=20260731-3085",
+     "title": "Order Issuing Certificates and Approving Abandonment, 196 FERC 61,093 (phasing and cost)",
+     "publisher": "Federal Energy Regulatory Commission",
+     "quote": "Specifically, Southern proposes to construct approximately 201 miles of pipeline looping, two new meter stations, and 239,650 hp of compression during Phase I.  Elba Express does not propose to construct any facilities during Phase I."
+    },
+    {
+     "url": "https://elibrary.ferc.gov/eLibrary/filelist?accession_number=20260731-3085",
+     "title": "Order Issuing Certificates and Approving Abandonment, 196 FERC 61,093 (Elba Express cost, covers Jefferson and Rincon units plus a Chatham County meter station)",
+     "publisher": "Federal Energy Regulatory Commission",
+     "quote": "Elba Express estimates the total cost of its portion of the SSE4 Project to be $160,000,000."
+    },
+    {
+     "url": "https://www.kindermorgan.com/WWWKM/media/Projects/documents/SSE4-Virtual-Open-House-Presentation_1.pdf",
+     "title": "South System Expansion 4 Project - Virtual Open House Presentation",
+     "publisher": "Kinder Morgan",
+     "quote": "Completion and In-service dates are anticipated in phases with Phase 1 in 4th Quarter 2028 and Phase 2 in 4th Quarter 2029."
+    },
+    {
+     "url": "https://pgjonline.com/news/2026/august/ferc-approves-5-b-kinder-morgan-pipeline-expansion-to-boost-southeast-gas-supply",
+     "title": "FERC approves $5-B Kinder Morgan pipeline expansion to boost Southeast gas supply",
+     "publisher": "Pipeline & Gas Journal",
+     "quote": "Elba Express, whose system runs through Georgia and South Carolina, would add two new compressor units and a meter station at a cost of about $160 million."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I downloaded the FERC order through the eLibrary API (CP25-514-000.docx, 196 FERC ¶ 61,093, issued July 31, 2026). All three FERC quotes appear word for word: the Jefferson County, GA unit, \"Elba Express does not propose to construct any facilities during Phase I,\" and the $160,000,000 cost. The Kinder Morgan open-house PDF has the Q4 2028 / Q4 2029 phase sentence, and the PGJ article has its quote. The Phase II assignment is inferred from \"no Phase I facilities,\" not stated outright. The order also requires in-service within three years (by July 31, 2029), which still fits \"2029\".",
+     "I downloaded the actual FERC order through the eLibrary API (accession 20260731-3085, 196 FERC ¶ 61,093, issued July 31, 2026). It lists Elba Express's new 15,900-hp unit at the existing Jefferson Compressor Station in Jefferson County, GA, says Elba Express builds nothing in Phase I, and gives its cost as $160,000,000. All three FERC quotes appear word for word, and the Kinder Morgan open-house PDF, the KM project page and the PGJ article match their quotes too. The PDF also calls EEC a Kinder Morgan subsidiary. The in-service year of 2029 is an inference, but a sound one: the order does not name a phase for the Jefferson unit, and since Elba Express builds nothing in Phase I, the unit falls in Phase II, which the PDF and the KM page both put in Q4 2029."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Southern Natural Gas Company, L.L.C. (owned equally by Kinder Morgan and Southern Company subsidiaries), with Elba Express Company, L.L.C. (Kinder Morgan)",
+   "utility_kind": "interstate natural gas pipeline",
+   "name": "South System Expansion 4 (SSE4) Project: South Main Line looping in Glascock, Jefferson and Richmond counties",
+   "description": "Brownfield expansion of the South Main Line: new pipeline loops next to the existing line plus compressor and meter station work, adding about 1.3 Bcf/d of capacity. Delivery points include Aiken, SC. The 291 miles and $3.5B cover the whole MS-AL-GA project. FERC approved it on 2026-07-31.",
+   "status": "planned",
+   "start": "2026",
+   "in_service": "2028",
+   "date_quote": "Pending necessary approvals and permits, the Project would commence construction activities in the 4th Quarter of 2026. Completion and In-service dates are anticipated in phases with Phase 1 in 4th Quarter 2028 and Phase 2 in 4th Quarter 2029.",
+   "places": [
+    {
+     "name": "Glascock County",
+     "kind": "county",
+     "state": "GA",
+     "role": "along"
+    },
+    {
+     "name": "Jefferson County",
+     "kind": "county",
+     "state": "GA",
+     "role": "along"
+    },
+    {
+     "name": "Richmond County",
+     "kind": "county",
+     "state": "GA",
+     "role": "along"
+    },
+    {
+     "name": "Aiken",
+     "kind": "town",
+     "state": "SC",
+     "role": "endpoint"
+    }
+   ],
+   "coordinates": [],
+   "miles": 291,
+   "cost_usd": 3500000000,
+   "cost_quote": "The approximately $3.5 billion project is designed to increase SNG's South Main Line capacity by approximately 1.3 Bcf/d",
+   "sources": [
+    {
+     "url": "https://www.kindermorgan.com/Operations/Projects/SSE4-Project-Page",
+     "title": "South System Expansion 4 Project",
+     "publisher": "Kinder Morgan",
+     "quote": "Assuming the timely receipt of all required permits and approvals, KMI expects to place the first phase of the project in service in the fourth quarter of 2028 and the second phase in the fourth quarter of 2029."
+    },
+    {
+     "url": "https://kindermorgan.com/getmedia/754010db-2fdd-4201-8c1f-0833a37ccbdb/FINAL-SSE4-Project-Fact-Sheet-2025-02-09.pdf",
+     "title": "South System Expansion 4 Project Fact Sheet",
+     "publisher": "Kinder Morgan / Southern Natural Gas Company",
+     "quote": "The SSE4 project will provide up to 1.3 billion cubic feet per day (Bcf/d) of additional firm natural gas capacity across the SNG south mainline facilities from receipt points as far west as Clarke County, Mississippi to various points along the SNG South System including Aiken, South Carolina and Savannah, Georgia."
+    },
+    {
+     "url": "https://kindermorgan.com/WWWKM/media/Projects/documents/South-System-Expansion-4-Project-FAQ-For-Website.pdf",
+     "title": "South System Expansion 4 Project Frequently-Asked Questions (as of August 11, 2025)",
+     "publisher": "Kinder Morgan / Southern Natural Gas Company",
+     "quote": "Pending necessary approvals and permits, the Project would commence construction activities in the 4th Quarter of 2026. Completion and In-service dates are anticipated in phases with Phase 1 in 4th Quarter 2028 and Phase 2 in 4th Quarter 2029."
+    },
+    {
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-03-07/html/2025-03703.htm",
+     "title": "Southern Natural Gas Company, LLC, Elba Express Company, LLC, Tennessee Gas Pipeline Company, LLC; Notice of Scoping Period ... for the Planned South System Expansion 4 Project (Docket PF25-1-000)",
+     "publisher": "Federal Register / FERC",
+     "quote": "Harris, Talbot, Upson, Crawford, Monroe, Bibb, Jones, Baldwin, Washington, Glascock, Jefferson, Richmond, Henry, Spalding, Effingham, and Chatham counties, Georgia"
+    },
+    {
+     "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-01/html/2026-13277.htm",
+     "title": "Notice of Availability of the Final Environmental Impact Statement for the Proposed Mississippi Crossing Project and South System Expansion 4 Project (Docket Nos. CP25-514-000, CP25-517-000)",
+     "publisher": "Federal Register / FERC",
+     "quote": "22 new gas pipeline loops, organized into 14 segments, totaling approximately 291 miles"
+    },
+    {
+     "url": "https://www.eia.gov/naturalgas/pipelines/eia-naturalgaspipelineprojects.xlsx",
+     "title": "U.S. natural gas pipeline projects (row: System Expansion 4 (SSE4) Project)",
+     "publisher": "U.S. Energy Information Administration",
+     "quote": "Phase 1 in-service late 2028; Phase 2 late 2029. Application filed 6/30/2025; Draft EIS 1/30/2026 (joint with Mississippi Crossing CP25-514); EIS issued 6-23-26 ; Final approval issued  7/31/2026."
+    },
+    {
+     "url": "https://www.wrdw.com/2025/02/10/gas-pipeline-company-pushes-plan-expansion-csra/",
+     "title": "What we know about gas pipeline expansion plans in CSRA",
+     "publisher": "WRDW News 12",
+     "quote": "Its plan would involve Washington, Glascock, Jefferson and Richmond counties."
+    },
+    {
+     "url": "https://www2.kindermorgan.com/Operations/Projects/SSE4-Project-Page",
+     "title": "South System Expansion 4 Project",
+     "publisher": "Kinder Morgan",
+     "quote": "The final EIS for the Project was issued on June 26, 2026. The FERC issued a certificate order authorizing the Project on July 31, 2026 (Docket No. CP25-514-000)."
+    },
+    {
+     "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/01/2026-13277.txt",
+     "title": "Tennessee Gas Pipeline Company, LLC, Southern Natural Gas Company, LLC, Elba Express Company, LLC; Notice of Availability of the Final Environmental Impact Statement for the Proposed Mississippi Crossing Project and South System Expansion 4 Project",
+     "publisher": "Federal Register (FERC)",
+     "quote": "Baldwin, Glascock, Jefferson, Richmond, Spalding, Henry, Lowndes, Burke, Screven, Cobb, Chatham, and Effingham counties, Georgia."
+    },
+    {
+     "url": "https://www.federalregister.gov/documents/full_text/text/2025/07/18/2025-13534.txt",
+     "title": "Tennessee Gas Pipeline Company, L.L.C., Southern Natural Gas Company, L.L.C. Elba Express Company, L.L.C.; Notice of Applications and Establishing Intervention Deadline",
+     "publisher": "Federal Register (FERC)",
+     "quote": "SNG proposes to: (1) construct 14 new continuous natural gas pipeline loops totaling approximately 291 miles, primarily along its existing South Main Line in Mississippi, Alabama, and Georgia"
+    },
+    {
+     "url": "https://www2.kindermorgan.com/getmedia/754010db-2fdd-4201-8c1f-0833a37ccbdb/FINAL-SSE4-Project-Fact-Sheet-2025-02-09.pdf",
+     "title": "South System Expansion 4 Project Fact Sheet",
+     "publisher": "Southern Natural Gas Company / Elba Express Company (Kinder Morgan)",
+     "quote": "Begin Construction — Anticipated 4th Quarter 2026"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "All 7 quotes appear on their cited pages. The KM fact sheet and the Aug 2025 FAQ confirm the owners (SNG split equally between KM and Southern Co subsidiaries, EEC a KM subsidiary), Aiken SC as a delivery point, construction in Q4 2026 and in-service Q4 2028/Q4 2029. The EIA row confirms final approval on 7/31/2026, and the June 26, 2026 FERC notice confirms 291 miles and lists Glascock, Jefferson and Richmond (plus Burke, Screven, Effingham and Chatham, all in the study area). Correction: Washington County GA appears only in the 2025 scoping notice and the WRDW article. The final FERC notice drops it from SSE4 (there Washington is a Mississippi county under MSX), so I marked it unsupported.",
+     "I opened all seven cited sources and every quote appears on its page. The Kinder Morgan fact sheet confirms the owners (SNG is owned equally by Kinder Morgan and Southern Company subsidiaries; Elba Express is a Kinder Morgan subsidiary), 1.3 Bcf/d, about $3.5B, and Aiken, SC as a delivery point. The FAQ and fact sheet confirm construction starting 4th Quarter 2026 and Phase 1 in service 4th Quarter 2028. The EIA row and PGJ both show FERC approval on 7/31/2026, and the July 2026 final EIS notice confirms 291 miles. One caution: the FERC 2025 scoping notice and WRDW list Washington County, GA, but the final EIS notice's Georgia county list does not include it. Glascock, Jefferson and Richmond appear in both notices. None of the notices lists any construction in SC, so Aiken is only a delivery point, not a place where work is done.",
+     "places not confirmed and removed: Washington County"
+    ],
+    "merged_from": [
+     {
+      "name": "South System Expansion 4 (SSE4) Project, FERC Docket CP25-517-000",
+      "in_service": "2028",
+      "start": "2026",
+      "sources": [
+       "https://www2.kindermorgan.com/Operations/Projects/SSE4-Project-Page",
+       "https://www.federalregister.gov/documents/full_text/text/2026/07/01/2026-13277.txt",
+       "https://www.federalregister.gov/documents/full_text/text/2025/07/18/2025-13534.txt",
+       "https://www2.kindermorgan.com/getmedia/754010db-2fdd-4201-8c1f-0833a37ccbdb/FINAL-SSE4-Project-Fact-Sheet-2025-02-09.pdf",
+       "https://www.wrdw.com/2025/02/10/gas-pipeline-company-pushes-plan-expansion-csra/"
+      ]
+     }
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Carolina Gas Transmission, LLC (BHE GT&S)",
+   "utility_kind": "interstate natural gas pipeline",
+   "name": "Aiken Compressor Expansion Project (ACE Project)",
+   "description": "Carolina Gas Transmission is adding a 6,248 hp compressor unit at its Southern Compressor Station in Aiken County, SC, and replacing about 0.33 miles of 16-inch gas pipe, for 73,000 Dth/d of firm service to three customers. It filed under its FERC blanket certificate in Sept 2023.",
+   "status": "completed",
+   "start": null,
+   "in_service": "2024",
+   "date_quote": "2024 Pipe Replacement and Compression 73,000 Dt",
+   "places": [
+    {
+     "name": "Southern Compressor Station",
+     "kind": "facility",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Aiken County",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": 0.33,
+   "cost_usd": 35254000,
+   "cost_quote": "The estimated, cost for the project is $35,254,000",
+   "sources": [
+    {
+     "url": "https://www.govinfo.gov/content/pkg/FR-2023-10-13/html/2023-22698.htm",
+     "title": "Carolina Gas Transmission, LLC; Notice of Request Under Blanket Authorization and Establishing Intervention and Protest Deadline (Docket No. CP23-549-000)",
+     "publisher": "Federal Register / Federal Energy Regulatory Commission (via GovInfo)",
+     "quote": "The Project consists of a new compressor unit at the Southern Compressor Station of 6,248 nominal horsepower and ancillary equipment, and the replacement of approximately 0.33 miles of existing 16-inch-diameter natural gas pipeline."
+    },
+    {
+     "url": "https://www.govinfo.gov/content/pkg/FR-2023-10-13/html/2023-22698.htm",
+     "title": "Carolina Gas Transmission, LLC; Notice of Request Under Blanket Authorization (CP23-549-000), filing date and capacity",
+     "publisher": "Federal Register / Federal Energy Regulatory Commission (via GovInfo)",
+     "quote": "Take notice that on September 28, 2023, Carolina Gas Transmission, LLC (Carolina Gas), 121 Moore Hopkins Lane, Columbia, SC 29210, filed in the above referenced docket"
+    },
+    {
+     "url": "https://dms.psc.sc.gov/Attachments/Matter/31fe8a18-4ee2-45dc-a615-327cdf1b6ce9",
+     "title": "Carolina Gas Transmission Company Overview (Aug 27, 2025), SC PSC ND-2025-52-G, page 9 'CGT Contracted Capacity and Expansions'",
+     "publisher": "Carolina Gas Transmission, filed with the Public Service Commission of South Carolina",
+     "quote": "2024 Pipe Replacement and Compression 73,000 Dt"
+    },
+    {
+     "url": "https://www.bhegts.com/our-businesses/CGT",
+     "title": "Carolina Gas Transmission",
+     "publisher": "BHE GT&S",
+     "quote": "CGT owns and operates nearly 1,500 miles of transmission pipeline, serving wholesale customers including power generators, large industrials, local distribution companies, municipalities, and energy marketers."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "The Federal Register notice (CP23-549-000) supports every detail I checked: Carolina Gas filed on Sept 28, 2023 under its blanket certificate for the ACE Project in Aiken County, with a 6,248 hp unit at the Southern Compressor Station, about 0.33 mi of 16-inch pipe replaced, 73,000 Dth/d for three customers, and a cost of $35,254,000; the BHE GT&S quote also matches. The in-service year of 2024 is my inference: page 9 of the SC PSC PDF has the row \"2024 / Pipe Replacement and Compression / 73,000 Dt\" in CGT's expansions table, but that table never names ACE, and the Federal Register notice gives no in-service date.",
+     "The GovInfo text of FR Doc 2023-22698 (CP23-549-000) confirms the whole record: Carolina Gas Transmission's ACE Project in Aiken County, SC, a 6,248 hp unit at the Southern Compressor Station, about 0.33 mi of 16-inch pipe replaced, 73,000 Dth/d for three customers, $35,254,000, filed Sept 28, 2023. Both FR quotes, the BHE GT&S quote and the PSC deck quote (page 9) appear verbatim. The \"2024\" in-service year is only inferred: page 9 lists \"2024 Pipe Replacement and Compression 73,000 Dt\" but never names ACE, and I found no FERC in-service notice."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "gas",
+   "utility": "Kinder Morgan",
+   "utility_kind": "interstate natural gas pipeline company (partnering with the data center developer)",
+   "name": "McCormick County data center natural gas pipeline (proposed)",
+   "description": "Proposed natural gas pipeline from Lincoln County into McCormick County, which now has no gas lines, to serve a gas-powered data center on Pollard Lumber land off Whitetown Road. The data center user would pay for it. Planners denied the rezoning and recommended a nine-month data center pause. No formal application had been filed.",
+   "status": "planned",
+   "start": null,
+   "in_service": null,
+   "date_quote": "The site would be 100% gas-powered, take six years to build, and use 300,000 to 500,000 gallons of water per day once operational.",
+   "places": [
+    {
+     "name": "Lincoln County",
+     "kind": "county",
+     "state": "GA",
+     "role": "endpoint"
+    },
+    {
+     "name": "McCormick County",
+     "kind": "county",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Whitetown Road",
+     "kind": "road",
+     "state": "SC",
+     "role": "site"
+    },
+    {
+     "name": "Main Street",
+     "kind": "road",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": 200000000,
+   "cost_quote": "Under the proposal, the pipeline would be 100% funded by the data center's user at a cost of $200 million to $280 million.",
+   "sources": [
+    {
+     "url": "https://www.wrdw.com/2026/08/12/hundreds-gather-debate-proposed-mccormick-county-data-center/",
+     "title": "Hundreds gather to debate proposed McCormick County data center",
+     "publisher": "WRDW News 12",
+     "quote": "Company officials stated that the project would bring a natural gas pipeline to the county in partnership with Kinder Morgan."
+    },
+    {
+     "url": "https://www.wrdw.com/2026/07/31/no-rezoning-no-data-center-mccormick-county-planners-side-with-residents-opposing-development/",
+     "title": "'No rezoning, no data center': McCormick County planners side with residents opposing development",
+     "publisher": "WRDW News 12",
+     "quote": "This proposal would include $200 million to build a natural gas pipeline from Lincoln County,\" Cook said."
+    }
+   ],
+   "verification": {
+    "verifiers": 3,
+    "confirmed": 2,
+    "quotes_found": 3,
+    "notes": [
+     "I opened both WRDW articles and all three quotes appear on them. The Aug 12 article supports the pipeline \"in partnership with Kinder Morgan\", the site between Whitetown Road and Main Street, \"no gas lines currently\", funding by the data center user, and the planners' denial, nine-month pause and missing formal application. It gives the cost as $200M to $280M, while the Jul 31 article gives $200M from Lincoln County (state not named, GA inferred) and mentions a separate $1.5B pipeline figure. The in_timeline flag is false because neither page gives a start or completion year (only \"six years to build\" for the data center) and the proposal was stalled.",
+     "I opened three WRDW pages (7/28, 7/31 and 8/12). All three quotes appear on them. The pages confirm the Kinder Morgan partnership, a pipeline \"from Lincoln County\" (the state is not named, but Lincoln County, GA borders McCormick), the site between Whitetown Road and Main Street, and funding of $200M to $280M paid by the data center user. The description is out of date: a WRDW story from 9/11/2026 reports that council approved the rezoning 3-2 and rejected the nine-month moratorium, and no source gives construction or in-service dates. The only timing is \"six years to build\", so the 2024-2034 fit is inferred, not stated.",
+     "I pulled the raw HTML of both WRDW articles, and all three quotes appear word for word (including the date_quote in the 8/12 article). Those articles support the Kinder Morgan partnership, a pipeline \"from Lincoln County\" paid for 100% by the data center user, and a site between Whitetown and Main Street. The source doesn't name the state, but Lincoln County, GA borders McCormick County and SC has no Lincoln County (Wikipedia), so GA is right. The source gives no dates, only a six-year build, so the timeline is inferred. Corrections: the description is out of date, because on 9/11/2026 County Council approved the rezoning 3-2 and killed the nine-month pause (WRDW 9/11). The cost is also reported as $200M–$280M (with a separate $1.5B figure in the 7/31 article), so 200000000 is only the low end."
+    ]
+   },
+   "found_in_round": 1,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper (South Carolina Public Service Authority)",
+   "utility_kind": "state-owned electric utility",
+   "name": "Bluffton Station Improvements (formerly \"Replace Bluffton-Purrysburg 230 kV limiting Elements\")",
+   "description": "Santee Cooper committed transmission project to replace equipment that limits the Bluffton-Purrysburg 230 kV circuit. The March 2025 SCRTP deck lists it under that name, and the March 2026 deck renames it Bluffton Station Improvements. Both decks give an in-service date of 11/1/2026. Neither deck states a cost or mileage.",
+   "status": "planned",
+   "start": null,
+   "in_service": "2026-11-01",
+   "date_quote": "Bluffton Station Improvements 11/1/2026",
+   "places": [
+    {
+     "name": "Bluffton",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    },
+    {
+     "name": "Purrysburg",
+     "kind": "substation",
+     "state": "SC",
+     "role": "endpoint"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://www.scrtp.com/assets/pdfs/meeting-archives/scrtp-meeting-2026-03-11-presentation.pdf",
+     "title": "South Carolina Regional Transmission Planning Stakeholder Meeting, March 11, 2026 (Santee Cooper section: Committed Transmission Facilities, slide 24; Transmission Projects 2026-2030, slide 50)",
+     "publisher": "South Carolina Regional Transmission Planning (SCRTP)",
+     "quote": "Committed Transmission Facilities Project Title In-service Date Reconductor Purrysburg - Mcintosh 230 kV tie lines 5/1/2026 Bluffton Station Improvements 11/1/2026"
+    },
+    {
+     "url": "https://www.scrtp.com/assets/pdfs/meeting-archives/scrtp-meeting-2025-03-05-presentation.pdf",
+     "title": "South Carolina Regional Transmission Planning Stakeholder Meeting, March 5, 2025 (Santee Cooper section: Committed Transmission Facilities; Transmission Projects 2025-2029)",
+     "publisher": "South Carolina Regional Transmission Planning (SCRTP)",
+     "quote": "Replace Bluffton-Purrysburg 230 kV limiting Elements 11/1/2026"
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "In the Santee Cooper section of both SCRTP decks I found both quotes word for word. The 2026 deck lists \"Bluffton Station Improvements 11/1/2026\" on slide 24 (Committed Transmission Facilities) and slide 50 (Transmission Projects 2026-2030). The 2025 deck lists \"Replace Bluffton-Purrysburg 230 kV limiting Elements 11/1/2026\". Neither deck says the project was renamed; I infer the rename from the matching date and the old name dropping out. Purrysburg is supported only by the 2025 title. Wikipedia places Bluffton in Beaufort County and Purrysburg in Jasper County on the Savannah River, so both are in the study area.",
+     "I pulled the text out of both SCRTP PDFs myself, since the web search budget was used up. Both quotes appear word for word. In the 2026 deck, \"Bluffton Station Improvements 11/1/2026\" is on slides 24 and 50, inside the Santee Cooper section. In the 2025 deck, \"Replace Bluffton-Purrysburg 230 kV limiting Elements 11/1/2026\" is on slides 24 and 50. Wikipedia puts Bluffton in Beaufort County, SC and Purrysburg in Jasper County, SC. One caveat: neither deck says the project was renamed. The \"formerly\" link is an inference, based on the same date and the old title missing from 2026. Also, the decks call it \"Committed\", not \"planned\"."
+    ]
+   },
+   "found_in_round": 2,
+   "accessed": "2026-09-26"
+  },
+  {
+   "category": "electric",
+   "utility": "Santee Cooper (South Carolina Public Service Authority)",
+   "utility_kind": "state-owned electric utility",
+   "name": "Hampton CC (Hampton County 1x1 natural gas combined-cycle plant)",
+   "description": "Proposed 1x1 natural gas combined-cycle plant (about 522 MW) that Santee Cooper would build in Hampton County, SC as its non-shared resource. Central's 2023 IRP models it online in 2031. Santee Cooper's January 2026 budget lists Hampton CC in its 10-year capital plan. No site, cost or firm date has been published.",
+   "status": "planned",
+   "start": null,
+   "in_service": "2031",
+   "date_quote": "In all scenarios evaluated, Santee Cooper takes 522 MW of CC capacity in 2031 as its NSR.",
+   "places": [
+    {
+     "name": "Hampton County",
+     "kind": "county",
+     "state": "SC",
+     "role": "site"
+    }
+   ],
+   "coordinates": [],
+   "miles": null,
+   "cost_usd": null,
+   "cost_quote": null,
+   "sources": [
+    {
+     "url": "https://cepci.org/wp-content/uploads/2024/12/2023-Central-IRP.pdf",
+     "title": "Central Electric Power Cooperative 2023 Integrated Resource Plan",
+     "publisher": "Central Electric Power Cooperative",
+     "quote": "At the end of the 180-day period, Santee Cooper presented to its Board a plan to build a 1x1 CCGT in Hampton County, South Carolina."
+    },
+    {
+     "url": "https://cepci.org/wp-content/uploads/2024/12/2023-Central-IRP.pdf",
+     "title": "Central Electric Power Cooperative 2023 Integrated Resource Plan",
+     "publisher": "Central Electric Power Cooperative",
+     "quote": "The EPA 111b Compliant portfolio still builds a new 600 MW CC in 2031 in addition to Santee Cooper's 522 MW Hampton CC, but those two units exist primarily for capacity, as they are restricted to running at low capacity factors."
+    },
+    {
+     "url": "https://www.scstatehouse.gov/CommitteeInfo/Ways&MeansMeetingHandouts/EconomicDevelopment/2026/Santee%20Cooper%20FY%2026-27%20Budget%20Presentation.pdf",
+     "title": "Santee Cooper, House Ways & Means Economic Development Budget Subcommittee (January 2026), 2026 Budget: 10-Year Capital Plan",
+     "publisher": "Santee Cooper (via South Carolina General Assembly)",
+     "quote": "1. Includes Canadys CC, Hampton CC, and Future Quick Starts."
+    }
+   ],
+   "verification": {
+    "verifiers": 2,
+    "confirmed": 2,
+    "quotes_found": 2,
+    "notes": [
+     "I opened both PDFs and extracted their text. All four quotes appear word for word: the date quote and the Hampton County and 111b quotes are on IRP pp. 70-71 and 98-99, and the footnote is on the capital-plan slide of the January 2026 Santee Cooper presentation. Central's IRP models the 522 MW Santee Cooper NSR in 2031, which supports the in-service year. The record leaves out that Central's IRP says Santee Cooper's own 2023 IRP Adjusted Preferred Plan does not assume the Hampton CCGT gets built. It is a generation plant rather than transmission work, but Hampton County, SC is inside the study area.",
+     "I opened both cited PDFs and extracted their text. The date quote and all three source quotes appear word for word in them: the Central 2023 IRP ties \"Santee Cooper's 522 MW Hampton CC\" to 2031, and the January 2026 Santee Cooper budget footnote reads \"Includes Canadys CC, Hampton CC, and Future Quick Starts\". Caveat: 2031 is only Central's modeling assumption. Santee Cooper's own 2023 IRP names no Hampton site, its 2024 and 2025 IRP updates never mention Hampton, and the 2025 update puts the next NGCC after the Canadys joint plant at 2035, so the date is soft and probably out of date, and \"proposed\" fits better than \"planned\"."
+    ]
+   },
+   "found_in_round": 2,
+   "accessed": "2026-09-26"
+  }
+ ],
+ "dropped": [
+  {
+   "name": "River Water 681-3G Switchgear Project",
+   "utility": "Savannah River Nuclear Solutions (DOE Savannah River Site), with Dominion Energy South Carolina replacing its transformers and switchgear",
+   "reason": "verifiers did not confirm: I opened the cited CAB PDF (SRNS-RP-2023-00963, dated Sept 26, 2023). The quote appears word for word on the \"River Water 681-3G Switchgear Project\" slide, as do the DESC/SRNS scope split, the 70-year-old transformers and \"Budget $6M Indirect Funded (Utility Pool) over 5 years\". The $6M sits under the SRNS scope bullet, so it may cover only part of the project. The briefing gives no start or compl",
+   "round": 1
+  },
+  {
+   "name": "Richard B. Russell Unit 5 Repair (strengthen the generator rotor, rim shrink, repair stator sole plates)",
+   "utility": "US Army Corps of Engineers (South Atlantic Division Hydropower Technical Services Center / Savannah District)",
+   "reason": "Outside the study area. Richard B. Russell Dam is in Abbeville County, SC and Elbert County, GA. Neither county is on the Augusta-Aiken or Savannah-Jasper-Beaufort study-area list. The DOE maintenance PDF also returned no readable text, so the Unit 5 details could not be confirmed.",
+   "round": 1
+  },
+  {
+   "name": "Russell Powerhouse Oxygen Diffuser System Replacement (SEPA Sub-Agreement 33)",
+   "utility": "US Army Corps of Engineers Savannah District, funded by Southeastern Power Administration customers; work by the Tennessee Valley Authority",
+   "reason": "Project is real (SEPA FY2024 Annual Report confirms Sub-Agreement 33, signed Feb 2024, $3.8M for Russell Powerhouse Oxygen Diffuser System replacement by TVA), but Richard B. Russell Dam sits on the Abbeville County, SC / Elbert County, GA border, and neither county is in the study area's list.",
+   "round": 1
+  },
+  {
+   "name": "Egypt Tap 46 kV Line Reroute",
+   "utility": "Georgia Transmission Corporation",
+   "reason": "verifiers did not confirm: The WSAV/Yahoo article (Oct 30, 2024, by Natasha Young) confirms that Georgia Transmission Corporation plans to reroute part of the existing Egypt Tap 46kV line in Effingham County. The plan is to build about 7.5 miles of new line that will initially operate at 46 kV, and the quote matches word for word; it only stops before \", following the preferred route shown on the attached map.\" The article ",
+   "round": 1
+  },
+  {
+   "name": "Savannah River Site 75 MW solar project (Stellar Renewable Power)",
+   "utility": "Stellar Renewable Power, LLC (developer) on U.S. Department of Energy land at the Savannah River Site",
+   "reason": "verifiers did not confirm: The DOE EM article is dated June 20, 2024. It confirms DOE picked Stellar Renewable Power, LLC to negotiate a land lease for 75 MW of solar, with possible battery storage, on at least 500 acres at SRS under Cleanup to Clean Energy, and the quote matches word for word. The page names only SRS in South Carolina, with no county (SRS lies in Aiken, Barnwell and Allendale counties, all in the study are",
+   "round": 1
+  },
+  {
+   "name": "Savannah River Site 75 MW solar project (Ameresco, Cleanup to Clean Energy)",
+   "utility": "U.S. Department of Energy (land lease) / Ameresco, Inc. (developer)",
+   "reason": "verifiers did not confirm: All three quotes appear word for word on the cited DOE pages. The two article URLs load the same July 18, 2024 article, which confirms that DOE picked Ameresco to negotiate a lease for 75 MW, with possible battery storage, on at least 500 acres at SRS, which it places in South Carolina. None of the pages gives a construction start or in-service date, and a lease selection is not construction, so t",
+   "round": 1
+  },
+  {
+   "name": "South System Expansion 4 (SSE4): added compression at the Elba Express Rincon Compressor Station, plus SSE4 facilities in Screven and Chatham counties",
+   "utility": "Southern Natural Gas Company / Elba Express Company (Kinder Morgan; SNG is owned equally by Kinder Morgan and Southern Company)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Bridge Project: about 71 miles of 30-inch gas pipeline from the Elba Express system to the Canadys plant site",
+   "utility": "Elba Express Company, LLC (Kinder Morgan), under contract to Dominion Energy and Santee Cooper",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Elba Island LNG optimization project (new condensate plant and liquid nitrogen vaporizers, about +0.4 mtpa)",
+   "utility": "Southern LNG Company / Elba Liquefaction (Kinder Morgan)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Hardeeville natural gas service expansion along Whyte Hardee Blvd/US 17, Garr Lane, Charles Street, Main Street, Martin Street and Boyd Street",
+   "utility": "Dominion Energy South Carolina (natural gas), with City of Hardeeville matching funds",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Relocation of the six-inch high-pressure gas supply main for the U.S. 301 North four-laning (about 8,200 ft of 6-inch steel main)",
+   "utility": "City of Statesboro natural gas system (contractor Southeast Connections LLC)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "U.S. Highway 301 North four-lane widening (1.7-mile segment)",
+   "utility": "Georgia Department of Transportation (contractor Reeves Construction)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Claxton natural gas line to Hyundai Motor Group Metaplant America (new tap on the Kinder Morgan Cypress line, 8 miles of 12-inch plus 4 miles of 8-inch steel)",
+   "utility": "City of Claxton natural gas system (with $9.8M from the Savannah Harbor I-16 Corridor Joint Development Authority)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Proposed Statesboro natural gas expansion along I-16 from the Hyundai Metaplant supply (Scenario 2: 12-inch line parallel to I-16 to Ash Branch Church Road, then 8-inch line to the U.S. 301 pipeline)",
+   "utility": "City of Statesboro natural gas system (possible cost share with City of Claxton)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "SR 4 / US 25 Business / 13th Street Bridge replacement over the Savannah River",
+   "utility": "Georgia DOT (GDOT)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "I-20 at Savannah River Bridge Replacements and widening to West Martintown Road (Exit 1)",
+   "utility": "GDOT and SCDOT (joint design-build; Superior Construction / WSP)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "SC 126 (Belvedere-Clearwater Road) widening, Old Sudlow Lake Rd to US 1/78 Jefferson Davis Hwy",
+   "utility": "SCDOT with Augusta Regional Transportation Study (ARTS)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Powderhouse Road Connector (Whiskey Road bypass), Phases 1 and 2",
+   "utility": "City of Aiken",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Hardy McManus Road widening with roundabouts at Dolphin Way, Aylesbury Drive and Halali Farm Road",
+   "utility": "Columbia County, GA",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "I-520 / Bobby Jones Expressway Exit 7 interchange improvements (Windsor Spring Rd and Peach Orchard Rd)",
+   "utility": "GDOT (contractor E.R. Snell Contractor Inc.)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "I-520 / Bobby Jones Expressway resurfacing, I-20 interchange to Exit 5 Deans Bridge Road",
+   "utility": "GDOT (contractor Reeves Construction Company)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Lewiston Road widening and I-20 Exit 190 diverging diamond interchange",
+   "utility": "Columbia County, GA",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Waynesboro Truck Route (west side, SR 24/SR 56 roundabout at Lover's Lane to SR 121/US 25)",
+   "utility": "GDOT (TIA program)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "SC 118 / Hitchcock Parkway improvements (Silver Bluff Rd to Jefferson Davis Hwy, five intersections, shared-use path)",
+   "utility": "SCDOT (contractor Reeves Construction)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "SC I-95 Improvements, Savannah River to US 278 (I-95 Widening MM 0-8, including new Savannah River bridges and an Exit 8 DDI)",
+   "utility": "SCDOT (contractor Webber-Ferrovial JV)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "SC I-95 Improvements from US 278 (Exit 8) to SC 336 (Exit 21)",
+   "utility": "SCDOT",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "US 17 Widening, SC-315 to Georgia State Line (Back River twin bridge as Phase 2)",
+   "utility": "SCDOT (contractor R.B. Baker Construction)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "US 278 Eastbound Bridge Replacement over Mackay and Skull Creeks (US 278 Corridor Improvements)",
+   "utility": "Beaufort County with SCDOT",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "SR 404 Spur at Talmadge Memorial Bridge (raising the Talmadge Bridge)",
+   "utility": "GDOT (contractor Kiewit Infrastructure South)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "CR 787 / Islands Expressway at Wilmington River Bascule Bridge Replacement (P.I. 0007128)",
+   "utility": "GDOT (contractor Prince Contracting, LLC)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "US 80/SR 26 (Ogeechee Road) widening and reconstruction, I-516 to Victory Drive, with bridge over CSX Railroad (521855-)",
+   "utility": "GDOT (contractor Astra Group, LLC)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Effingham Parkway, SR 30 to Blue Jay Road (2-lane roadway with 6 bridges, P.I. 0006700)",
+   "utility": "GDOT (contractor Balfour Beatty Infrastructure)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "I-16 Widening Phase 1, I-95 to east of the Hyundai Motor Group Metaplant corridor",
+   "utility": "GDOT",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "I-16 at Old Cuyler Road Interchange (new interchange with three multilane roundabouts)",
+   "utility": "GDOT",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Shaws Creek Water Treatment Plant (new 8 MGD plant)",
+   "utility": "City of Aiken (contractor Harper General Contractors)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Horse Creek Wastewater Treatment Plant expansion (20 to 26 MGD)",
+   "utility": "Aiken County (Aiken County Public Service Authority)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "J.B. Messerly Water Pollution Control Plant upgrades (clarifiers, aeration, screens, generator, bypass)",
+   "utility": "Augusta Utilities Department (Augusta-Richmond County; operator ESG)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "New Savannah Bluff Lock and Dam full repair (WRDA 2024)",
+   "utility": "U.S. Army Corps of Engineers (Savannah District)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Augusta Diversion Dam Update Project",
+   "utility": "City of Augusta, GA (FEMA Hazard Mitigation Grant Program, DR-4830 Hurricane Helene)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "South Augusta (Woodlake) Sewer Expansion Project",
+   "utility": "Augusta Utilities Department",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "McCladdie Drive / Johnson Drive / Granderson Road gravity sewer, lift station and force main",
+   "utility": "Columbia County Water Utility",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Vogtle Parkway (about 4 miles of new two-lane road, Cates Mead Road to Plant Vogtle front entrance, tying to SR 56 / Mike Padgett Hwy)",
+   "utility": "Georgia DOT (Transportation Investment Act, CSRA region)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Eisenhower Drive water main work",
+   "utility": "Augusta Utilities Department",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Plainview subdivision centralized wastewater (septic consolidation)",
+   "utility": "Warren County Board of Commissioners",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Purrysburg Water Treatment Plant Expansion (15 to 30 MGD)",
+   "utility": "Beaufort-Jasper Water & Sewer Authority (BJWSA)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Cherry Point Water Reclamation Facility Expansion (7.5 to 11.25 MGD)",
+   "utility": "Beaufort-Jasper Water & Sewer Authority (BJWSA); contractor Reeves Young",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Ocean Terminal Renovation (two 1,325-ft berths and container yard rebuild)",
+   "utility": "Georgia Ports Authority",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Savannah Container Terminal on Hutchinson Island (395 acres, three berths)",
+   "utility": "Georgia Ports Authority (USACE permit)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Industrial & Domestic (I&D) Water Treatment Plant Upgrade and Expansion ($146M)",
+   "utility": "City of Savannah Water Resources",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Effingham County Savannah River Surface Water Treatment Plant and Intake (23 MGD permitted, 12 MGD initial)",
+   "utility": "Effingham County, GA",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Effingham-to-Hyundai Metaplant Water Transmission Pipeline (about 18 miles)",
+   "utility": "Effingham County and Bryan County, GA",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Georgetown Water Reclamation Facility Expansion (2.45 to 3.45 MGD)",
+   "utility": "City of Savannah (design by Hazen and Sawyer)",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Reverse Osmosis Plant Expansion (4 to 6 MGD) with new brackish Middle Floridan well and second ASR well",
+   "utility": "Hilton Head Public Service District",
+   "reason": "over the research cap",
+   "round": 1
+  },
+  {
+   "name": "Tybee Island Beach Renourishment (1.3 million cubic yards of sand, $20M)",
+   "utility": "US Army Corps of Engineers, Savannah District, with City of Tybee Island",
+   "reason": "over the research cap",
+   "round": 1
+  }
+ ],
+ "curation": "Different scouts sometimes found the same project. Duplicates were merged by hand on 2026-09-26 (Claude): the record with the most precise date and most sources is kept, the others' sources are added to it, and their names and dates are listed under verification.merged_from, including any date that differs between sources."
+}

@@ -5,7 +5,8 @@ from typing import Any
 from app.config import SNAPSHOT_PATH
 from app.core.analysis import cost_block, shared_resources
 from app.core.models import RESEARCH_CATEGORIES, Check, Overlap, Project, ReferenceResult, ResearchProject, ThirdParty
-from app.core.overlap import Filters, distance_mi, find_overlaps, time_gap_days, weaker, windows_overlap
+from app.core.models import Confidence
+from app.core.overlap import CONF_ORDER, Filters, distance_mi, find_overlaps, time_gap_days, weaker, windows_overlap
 from app.core.research import nearby
 
 
@@ -20,6 +21,9 @@ class Dataset:
     briefs: dict[str, Any] = field(default_factory=dict)
     research: list[ResearchProject] = field(default_factory=list)
     research_selected: list[str] = field(default_factory=lambda: list(RESEARCH_CATEGORIES))
+    report: dict[str, Any] | None = None
+    agents: list[dict[str, Any]] = field(default_factory=list)  # the graph of the run that made this dataset
+    sources: list[dict[str, Any]] = field(default_factory=list)
 
 
 CURRENT = Dataset()
@@ -36,6 +40,8 @@ def load_snapshot(snap: dict[str, Any]) -> None:
         analyses=snap.get("analyses", {}), briefs=snap.get("briefs", {}),
         research=[ResearchProject(**r) for r in snap.get("research", [])],
         research_selected=snap.get("research_selected", list(RESEARCH_CATEGORIES)),
+        report=snap.get("report"),
+        agents=snap.get("agents") or [], sources=snap.get("sources") or [],
     )
 
 
@@ -50,9 +56,11 @@ def overlaps(f: Filters) -> list[Overlap]:
     return find_overlaps(list(CURRENT.projects.values()), f, CURRENT.sample_pairs)
 
 
-def others(ovs: list[Overlap]) -> list[ThirdParty]:
+def others(ovs: list[Overlap], min_conf: Confidence = "town") -> list[ThirdParty]:
     # Recomputed for whatever overlaps the filters produce, so the flags always match the list on screen.
-    return nearby(ovs, CURRENT.projects, CURRENT.research, CURRENT.research_selected)
+    # min_conf: the "Approx. locations" filter also drops links that rest on a town- or county-level location.
+    return [t for t in nearby(ovs, CURRENT.projects, CURRENT.research, CURRENT.research_selected)
+            if CONF_ORDER.index(t.confidence) <= CONF_ORDER.index(min_conf)]
 
 
 def pair_detail(a_id: str, b_id: str) -> dict[str, Any] | None:

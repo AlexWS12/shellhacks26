@@ -163,3 +163,29 @@ def test_malformed_records_are_skipped_not_fatal(tmp_path):
     p.write_text(json.dumps({"records": [RECORDS[0], {**RECORDS[1], "miles": "about ten"}, {"category": "gas"}]}), encoding="utf-8")
     records, meta = load_file(p)
     assert [r.name for r in records] == ["Jasper County Test Substation"] and meta["skipped"] == 2
+
+
+def test_county_center_only_when_nothing_finer_is_known():
+    from app.core.models import Endpoint, ResearchPlace
+    from app.core.research import place_center
+
+    town = Endpoint(name="Hardeeville", lat=32.28, lon=-81.08, method="geonames_town", confidence="town")
+    county = Endpoint(name="Jasper County", lat=32.44, lon=-81.03, method="county_centroid", confidence="town")
+    site = lambda n: ResearchPlace(name=n, kind="town", state="SC", role="site")  # noqa: E731
+    r = ResearchProject(id="x", category="electric", utility="U", name="x", places=[site("Hardeeville"), site("Jasper County")],
+                        endpoints=[town, county])
+    assert place_center(r) == (32.28, -81.08)
+    along = [ResearchPlace(name=n, kind="county", state="GA", role="along") for n in ("A County", "B County")]
+    r2 = ResearchProject(id="y", category="gas", utility="U", name="y", places=along, endpoints=[
+        Endpoint(name="A County", lat=33.0, lon=-82.0, method="county_centroid", confidence="town"),
+        Endpoint(name="B County", lat=33.2, lon=-82.4, method="county_centroid", confidence="town")])
+    assert place_center(r2) == (33.1, -82.2)  # a pipeline known only by the counties it crosses
+
+
+def test_approx_filter_also_drops_approximate_links(all_run):
+    from app.store import dataset
+
+    dataset.load_snapshot(all_run.board.to_snapshot())
+    everything = dataset.others(all_run.board.overlaps, "town")
+    precise = dataset.others(all_run.board.overlaps, "confirmed_osm")
+    assert everything and all(t.confidence == "town" for t in everything) and precise == []

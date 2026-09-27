@@ -20,6 +20,7 @@ GA_PDF = RAW_DIR / "2025_IRP_Volume_3_PUBLIC_DISCLOSURE.pdf"
 SAMPLE_XLSX = RAW_DIR / "Projects_Overlaps.xlsx"
 OVERRIDES_CSV = DATA_DIR / "overrides" / "locations.csv"
 RESEARCH_FILE = DATA_DIR / "research" / "other_utilities.json"
+SUBMISSIONS_DIR = DATA_DIR / "submissions"  # plans added in the Sources menu
 
 
 def env(name: str, default: str = "") -> str:

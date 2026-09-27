@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from datetime import date
 
 from app.core.models import Confidence, Overlap, Project
+from app.core.owners import owner_rank
 
 EARTH_RADIUS_MI = 3958.8
 OVERLAP_CUTOFF_MI = 25.0
@@ -95,24 +96,44 @@ def visible(p: Project, f: Filters) -> bool:
     return True
 
 
+CELL_DEG = 0.5  # bucket size: 0.5 deg of latitude is 34.5 mi, so neighbours within 25 mi are at most 1 cell away
+# (2 cells in longitude, which covers 25 mi up to 68 deg north). Distances are still computed exactly.
+
+
+def _cell(p: Project) -> tuple[int, int]:
+    return math.floor(p.lat / CELL_DEG), math.floor(p.lon / CELL_DEG)  # type: ignore[operator]
+
+
 def find_overlaps(projects: list[Project], f: Filters, sample_pairs: set[tuple[str, str]] | None = None) -> list[Overlap]:
-    # The only place overlaps get computed.
-    desc = [p for p in projects if p.utility == "DESC" and visible(p, f) and span_ok(p)]
-    ga = [p for p in projects if p.utility == "GA" and visible(p, f) and span_ok(p)]
+    # The only place overlaps get computed: every pair of projects from two different owners.
+    # Owners are ordered Dominion, Georgia, then submitted plans, so Dominion-Georgia pairs keep 'DESC-...|GA-...'.
+    # A project whose two ends are implausibly far apart is left out (span_ok): its center can't be trusted.
+    groups: dict[str, list[Project]] = {}
+    for p in projects:
+        if visible(p, f) and span_ok(p):
+            groups.setdefault(p.utility, []).append(p)
+    owners = sorted(groups, key=owner_rank)
     sample_pairs = sample_pairs or set()
     found: list[Overlap] = []
-    for a in desc:
-        for b in ga:
-            d = distance_mi((a.lat, a.lon), (b.lat, b.lon))  # type: ignore[arg-type]
-            if not is_overlap(d):
-                continue
-            gap = time_gap_days(date.fromisoformat(a.in_service_date), date.fromisoformat(b.in_service_date))
-            found.append(Overlap(
-                id="", project_a=a.id, project_b=b.id, distance_mi=round(d, 2), time_gap_days=gap,
-                windows_overlap=windows_overlap(a, b),
-                pair_confidence=weaker(a.location_confidence, b.location_confidence),
-                in_sponsor_sample=(a.id, b.id) in sample_pairs,
-            ))
+    for i, ua in enumerate(owners):
+        for ub in owners[i + 1:]:
+            cells: dict[tuple[int, int], list[Project]] = {}
+            for b in groups[ub]:
+                cells.setdefault(_cell(b), []).append(b)
+            for a in groups[ua]:
+                ca = _cell(a)
+                near = [b for dy in (-1, 0, 1) for dx in (-2, -1, 0, 1, 2) for b in cells.get((ca[0] + dy, ca[1] + dx), [])]
+                for b in near:
+                    d = distance_mi((a.lat, a.lon), (b.lat, b.lon))  # type: ignore[arg-type]
+                    if not is_overlap(d):
+                        continue
+                    gap = time_gap_days(date.fromisoformat(a.in_service_date), date.fromisoformat(b.in_service_date))
+                    found.append(Overlap(
+                        id="", project_a=a.id, project_b=b.id, distance_mi=round(d, 2), time_gap_days=gap,
+                        windows_overlap=windows_overlap(a, b),
+                        pair_confidence=weaker(a.location_confidence, b.location_confidence),
+                        in_sponsor_sample=(a.id, b.id) in sample_pairs,
+                    ))
     if f.sort == "gap":
         found.sort(key=lambda o: (o.time_gap_days, o.distance_mi, o.project_a, o.project_b))
     else:

@@ -3,7 +3,7 @@
 import { create } from "zustand";
 
 import type {
-  AgentSpec, Brief, Check, CostBlock, Overlap, Project, ReferenceResult, ResearchCategory, ResearchProject, RunEvent,
+  AgentSpec, Brief, Check, CostBlock, Overlap, Project, ReferenceResult, Report, ResearchCategory, ResearchProject, RunEvent,
   SourceSpec, ThirdParty, Written,
 } from "./types";
 
@@ -61,6 +61,7 @@ export interface RunData {
   research: Record<string, ResearchProject>; // other utilities' projects
   researchSelected: ResearchCategory[];
   thirdParty: ThirdParty[];
+  report: Report | null; // the Writer's final report
   log: { text: string; agent?: string }[];
   ticker: string;
   judges: Record<string, JudgeTotals>;
@@ -81,7 +82,7 @@ export interface RunData {
 const empty = (): RunData => ({
   runId: null, mode: null, replayOf: null, phase: "idle", ok: null, failMsg: "", lastSeq: -1,
   agents: {}, agentOrder: [], sources: {}, sourceOrder: [], projects: {}, unlocated: {}, checks: [], overlaps: [],
-  reference: [], analyses: {}, costs: {}, briefs: {}, research: {}, researchSelected: [], thirdParty: [], log: [], ticker: "Not started.", judges: {}, agentLog: {},
+  reference: [], analyses: {}, costs: {}, briefs: {}, research: {}, researchSelected: [], thirdParty: [], report: null, log: [], ticker: "Not started.", judges: {}, agentLog: {},
   thinking: {}, health: {}, handoffs: [], recent: {}, agentPos: {}, linkBorn: {}, stats: null, startTs: null, endTs: null, lastTs: null, totalCost: 0,
 });
 
@@ -251,6 +252,7 @@ export function apply(e: RunEvent): void {
       const s = run.sources[String(e.source_id)];
       if (s) {
         s.read = e.read as number;
+        if (typeof e.total === "number" && e.total > 0) s.total = e.total; // submitted plans learn their size while reading
         s.current = String(e.current ?? "");
       }
       run.ticker = String(e.current ?? run.ticker);
@@ -363,6 +365,10 @@ export function apply(e: RunEvent): void {
       moveTo(aid, t.overlap_id.split("|"), run.research[t.research_id]?.utility ?? "other utility");
       break;
     }
+    case "report.ready":
+      run.report = e.report as Report;
+      pushLog("Writer: the report is ready.", aid);
+      break;
     case "endpoint.rejected":
       if (aid) pushAgent(aid, { kind: "note", text: `Rejected ${e.endpoint} → ${e.candidate}` });
       break;
@@ -397,6 +403,7 @@ export function apply(e: RunEvent): void {
 export function hydrate(data: {
   projects: Project[]; checks: Check[]; reference: ReferenceResult[]; overlaps: Overlap[]; specs: AgentSpec[];
   research: { selected: ResearchCategory[]; records: ResearchProject[]; links: ThirdParty[] };
+  report: Report | null;
 }): void {
   Object.assign(run, empty(), { mode: "results", phase: "done", ticker: "Showing the latest finished run." });
   run.projects = Object.fromEntries(data.projects.map((p) => [p.id, p]));
@@ -409,5 +416,6 @@ export function hydrate(data: {
   run.research = Object.fromEntries(data.research.records.map((r) => [r.id, r]));
   run.researchSelected = data.research.selected;
   run.thirdParty = data.research.links;
+  run.report = data.report;
   bump();
 }

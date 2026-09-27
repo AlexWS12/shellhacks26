@@ -2,6 +2,7 @@
 
 import asyncio
 
+from app.agents.analysis import is_core
 from app.clients import gemini
 from app.core.analysis import fact_sheet
 from app.runtime.agent import Agent, AgentSpec, Ctx
@@ -50,7 +51,7 @@ class Advocate(Agent):
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
         utility = "Dominion Energy South Carolina" if self.side == "dominion" else "Georgia Power"
-        for o in b.overlaps[:TOP_BRIEFS]:
+        for o in [o for o in b.overlaps if is_core(o)][:TOP_BRIEFS]:
             a, g = b.projects[o.project_a], b.projects[o.project_b]
             f = fact_sheet(a, g, o, b.costs[o.id]["shared"])
             ctx.think(f"\n\n#{o.rank} {a.name} × {g.name}\n")
@@ -67,7 +68,7 @@ class Mediator(Agent):
 
     async def run(self, ctx: Ctx) -> str:
         b = ctx.board
-        for o in b.overlaps[:TOP_BRIEFS]:
+        for o in [o for o in b.overlaps if is_core(o)][:TOP_BRIEFS]:
             a, g = b.projects[o.project_a], b.projects[o.project_b]
             f = fact_sheet(a, g, o, b.costs[o.id]["shared"])
             sides = b.briefs.get(o.id, {})
@@ -81,4 +82,4 @@ class Mediator(Agent):
             b.briefs.setdefault(o.id, {})["mediator"] = {"text": text, "actor": actor}
             ctx.emit("brief.ready", overlap_id=o.id, brief=b.briefs[o.id])
             await asyncio.sleep(0)
-        return f"{min(TOP_BRIEFS, len(b.overlaps))} joint agenda items"
+        return f"{min(TOP_BRIEFS, sum(1 for o in b.overlaps if is_core(o)))} joint agenda items"

@@ -6,6 +6,7 @@ from typing import Any
 
 from app import config
 from app.core.models import Overlap, Project
+from app.core.owners import owner_name
 
 FIELD = {"new_line", "rebuild", "substation_construction"}
 
@@ -40,8 +41,9 @@ def cost_block(a: Project, b: Project, o: Overlap) -> dict[str, Any]:
     if config.COST_MOBILIZATION_SHARE > 0 and config.COST_SOURCE and o.windows_overlap and a.cost_total:
         block["savings"] = round(a.cost_total * config.COST_MOBILIZATION_SHARE)
         block["source"] = config.COST_SOURCE
-        block["statement"] = (f"If one mobilization is avoided, about {config.COST_MOBILIZATION_SHARE:.0%} of Dominion's "
-                              "public project cost, per the cited source. Dominion's side only; Georgia's cost is redacted.")
+        block["statement"] = (f"If one mobilization is avoided, about {config.COST_MOBILIZATION_SHARE:.0%} of "
+                              f"{owner_name(a)}'s public project cost, per the cited source. {owner_name(a)}'s side only; "
+                              f"{owner_name(b)}'s cost is not counted.")
     elif o.windows_overlap:
         block["statement"] = ("Both are under construction at the same time, so one mobilization and staging setup could "
                               "serve both. No dollar figure is shown until a cited mobilization share is configured.")

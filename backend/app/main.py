@@ -1,4 +1,6 @@
 import asyncio
+import base64
+import binascii
 import csv
 import io
 import json
@@ -6,20 +8,25 @@ import logging
 from contextlib import asynccontextmanager
 from typing import Literal
 
+import httpx
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 
 from app import config
-from app.clients import gemini, jev
+from app.clients import fetch, gemini, jev
 from app.core.models import Confidence
 from app.core.overlap import Filters
-from app.export import build_xlsx
-from app.pipeline import SOURCES, build_agents, run_live
+from app.core.sheets import FIELDS as SHEET_FIELDS
+from app.core.sheets import read_table, validate_mapping
+from app.core.sheets import suggest as suggest_columns
+from app.core.sheets import to_project as sheet_row
+from app.export import build_xlsx, owner_label, safe_cell
+from app.pipeline import build_pipeline, run_live
 from app.runtime.replay import recorded_runs, replay
 from app.runtime.run import RUNS, new_run, start_background
-from app.store import dataset, tiger
+from app.store import dataset, submissions, tiger
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 log = logging.getLogger("api")
@@ -67,8 +74,12 @@ def health() -> dict:
 
 
 @app.get("/api/agents")
-def agents() -> dict:
-    return {"agents": [a.spec.public() for a in build_agents()], "sources": SOURCES}
+def agents(of: Literal["next", "latest"] = "next") -> dict:
+    # next: the graph the next live run will use (saved plans now). latest: the graph of the dataset being shown.
+    if of == "latest" and dataset.CURRENT.agents:
+        return {"agents": dataset.CURRENT.agents, "sources": dataset.CURRENT.sources}
+    agents, sources = build_pipeline()
+    return {"agents": [a.spec.public() for a in agents], "sources": sources}
 
 
 @app.get("/api/projects")
@@ -110,7 +121,22 @@ def research(all_sponsors: bool = False, min_conf: Confidence = "town", hide_fin
     ovs = dataset.overlaps(filters(all_sponsors, min_conf, hide_finished, "distance"))
     return {"selected": dataset.CURRENT.research_selected,
             "records": [r.model_dump() for r in dataset.CURRENT.research],
-            "links": [t.model_dump() for t in dataset.others(ovs)]}
+            "links": [t.model_dump() for t in dataset.others(ovs, min_conf)]}
+
+
+@app.get("/api/report")
+def report() -> dict:
+    if not dataset.CURRENT.report:
+        raise HTTPException(404, "no report yet: run the pipeline")
+    return dataset.CURRENT.report
+
+
+@app.get("/api/report.md")
+def report_md() -> Response:
+    if not dataset.CURRENT.report:
+        raise HTTPException(404, "no report yet: run the pipeline")
+    return Response(dataset.CURRENT.report["markdown"], media_type="text/markdown; charset=utf-8",
+                    headers={"Content-Disposition": 'attachment; filename="Tandem_report.md"'})
 
 
 @app.get("/api/reference-test")
@@ -138,8 +164,8 @@ def export_csv(all_sponsors: bool = False, min_conf: Confidence = "town", hide_f
         near.setdefault(t.overlap_id, []).append(f"{research[t.research_id].utility}: {research[t.research_id].name}")
     for i, o in enumerate(ovs, start=1):
         a, b = dataset.CURRENT.projects[o.project_a], dataset.CURRENT.projects[o.project_b]
-        w.writerow([f"OVL_{i}", o.distance_mi, o.time_gap_days, "Dominion Energy South Carolina", a.id, a.name,
-                    "Georgia Power", b.id, b.name, o.pair_confidence, "; ".join(near.get(o.id, []))])
+        w.writerow([safe_cell(v) for v in (f"OVL_{i}", o.distance_mi, o.time_gap_days, owner_label(a), a.id, a.name,
+                    owner_label(b), b.id, b.name, o.pair_confidence, "; ".join(near.get(o.id, [])))])
     return Response(buf.getvalue(), media_type="text/csv",
                     headers={"Content-Disposition": 'attachment; filename="Tandem_overlaps.csv"'})
 
@@ -230,3 +256,117 @@ def agent_stats() -> dict:
 @app.get("/api/jev/status")
 def jev_status() -> dict:
     return {"provider": config.JEV_PROVIDER or "off", "live": jev.enabled()}
+
+
+# ---- Sources menu: plans people submit. Saved until removed; each ready one gets a Reader on every live run.
+
+class SubmissionIn(BaseModel):
+    owner: str
+    label: str | None = None
+    state: Literal["SC", "GA"] = "SC"
+    kind: Literal["spreadsheet", "pdf", "url"]
+    filename: str | None = None
+    content_b64: str | None = None  # spreadsheet or pdf
+    url: str | None = None  # link
+
+
+class MappingIn(BaseModel):
+    mapping: dict[str, str]
+
+
+def _preview(s: submissions.Submission) -> dict:
+    header, rows = read_table(submissions.file_of(s))
+    return {"columns": header, "rows": [["" if c is None else str(c)[:80] for c in r] for _, r in rows[:5]],
+            "total_rows": len(rows)}
+
+
+def _sniff(data: bytes, content_type: str, name: str) -> tuple[str, str]:
+    # (kind, extension) from the bytes, not the name alone.
+    low = name.lower()
+    if data[:5] == b"%PDF-":
+        return "pdf", ".pdf"
+    if data[:2] == b"PK" and (low.endswith(".xlsx") or "spreadsheet" in content_type):
+        return "spreadsheet", ".xlsx"
+    if low.endswith(".csv") or "text/csv" in content_type:
+        return "spreadsheet", ".csv"
+    if "html" in content_type or data.lstrip()[:15].lower().startswith((b"<!doctype html", b"<html")):
+        return "url", ".html"
+    raise ValueError("Use a CSV or XLSX spreadsheet, a PDF, or a link to a web page or PDF.")
+
+
+@app.get("/api/submissions")
+def list_submissions() -> dict:
+    return {"submissions": [s.model_dump() for s in submissions.list_all()],
+            "fields": {k: {"label": v[0], "required": v[1]} for k, v in SHEET_FIELDS.items()},
+            "limits": {"max_mb": submissions.MAX_BYTES // (1024 * 1024), "max_plans": submissions.MAX_SUBMISSIONS},
+            "gemini": gemini.enabled()}
+
+
+@app.post("/api/submissions")
+async def add_submission(req: SubmissionIn) -> dict:
+    try:
+        if req.kind == "url":
+            if not req.url:
+                raise ValueError("Paste a link.")
+            data, ctype, final = await fetch.download(req.url, submissions.MAX_BYTES)
+            name = final.rstrip("/").rsplit("/", 1)[-1] or "page"
+        else:
+            if not req.content_b64 or not req.filename:
+                raise ValueError("Choose a file.")
+            if len(req.content_b64) > submissions.MAX_BYTES * 4 // 3 + 4:
+                raise ValueError(f"Files up to {submissions.MAX_BYTES // (1024 * 1024)} MB.")
+            data, ctype, name = base64.b64decode(req.content_b64, validate=True), "", req.filename
+        kind, ext = _sniff(data, ctype, name)
+        if req.kind != "url" and kind != req.kind:
+            raise ValueError(f"That file looks like a {kind}, not a {req.kind}.")
+        columns: list[str] = []
+        if kind == "spreadsheet":  # check it parses before saving
+            tmp = config.SUBMISSIONS_DIR / f"_check{ext}"
+            tmp.parent.mkdir(parents=True, exist_ok=True)
+            tmp.write_bytes(data)
+            try:
+                columns, _ = read_table(tmp)
+            finally:
+                tmp.unlink(missing_ok=True)
+        s = submissions.create(req.owner, req.label, req.state, kind, name, data, ext, url=req.url, content_type=ctype,
+                               columns=columns)
+    except (ValueError, binascii.Error, httpx.HTTPError) as e:
+        raise HTTPException(400, str(e) or type(e).__name__)
+    out: dict = {"submission": s.model_dump()}
+    if s.kind == "spreadsheet":
+        out |= {"preview": _preview(s), "suggested": suggest_columns(s.columns)}
+    return out
+
+
+@app.get("/api/submissions/{sid}/preview")
+def submission_preview(sid: str) -> dict:
+    s = submissions.get(sid)
+    if not s or s.kind != "spreadsheet":
+        raise HTTPException(404, "no spreadsheet with that id")
+    return {"submission": s.model_dump(), "preview": _preview(s), "suggested": s.mapping or suggest_columns(s.columns)}
+
+
+@app.put("/api/submissions/{sid}/mapping")
+def submission_mapping(sid: str, req: MappingIn) -> dict:
+    s = submissions.get(sid)
+    if not s or s.kind != "spreadsheet":
+        raise HTTPException(404, "no spreadsheet with that id")
+    try:
+        mapping = validate_mapping(req.mapping, s.columns)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    header, rows = read_table(submissions.file_of(s))
+    results = [(i, *sheet_row(s, mapping, header, r, i)) for i, r in rows]
+    ok = sum(1 for _, p, _ in results if p)
+    if ok == 0:
+        raise HTTPException(400, "No row has both a project name and a readable in-service date with these columns.")
+    s = submissions.set_mapping(sid, mapping)
+    return {"submission": s.model_dump(), "rows": len(rows), "usable": ok,
+            "skipped": [f"row {i}: {why}" for i, p, why in results if not p][:8]}
+
+
+@app.delete("/api/submissions/{sid}")
+def remove_submission(sid: str) -> dict:
+    if not submissions.delete(sid):
+        raise HTTPException(404, "no plan with that id")
+    return {"ok": True}

@@ -10,7 +10,8 @@ export type Panel =
   | { kind: "pair"; a: string; b: string }
   | { kind: "project"; id: string }
   | { kind: "agent"; id: string }
-  | { kind: "research"; id: string };
+  | { kind: "research"; id: string }
+  | { kind: "report" };
 
 export type Camera = { kind: "us" } | { kind: "border" } | { kind: "river" } | { kind: "pair"; a: string; b: string } | { kind: "project"; id: string } | { kind: "point"; lon: number; lat: number };
 
@@ -158,15 +159,25 @@ export async function boot(): Promise<void> {
 export async function showLatestResults(): Promise<void> {
   const ui = useUI.getState();
   try {
-    const [projects, checks, reference, ov, graph, research] = await Promise.all([
+    const [projects, checks, reference, ov, graph, research, report] = await Promise.all([
       api.projects(), api.checks(), api.reference(), api.overlaps(ui.filters),
-      fetch(`${API}/api/agents`).then((r) => r.json() as Promise<{ agents: AgentSpec[] }>),
-      api.research(ui.filters),
+      fetch(`${API}/api/agents?of=latest`).then((r) => r.json() as Promise<{ agents: AgentSpec[] }>),
+      api.research(ui.filters), api.report(),
     ]);
-    hydrate({ projects, checks, reference, overlaps: ov.overlaps, specs: graph.agents, research });
+    hydrate({ projects, checks, reference, overlaps: ov.overlaps, specs: graph.agents, research, report });
     useUI.setState({ results: ov.overlaps, others: research.links, visibleProjects: ov.visible_projects, panel: { kind: "list" } });
     ui.flyTo({ kind: "border" });
   } catch (e) {
     useUI.setState({ error: String(e) });
+  }
+}
+
+export async function refreshAgents(): Promise<void> {
+  if (run.phase !== "idle") return; // the new Reader shows up in the next run's graph
+  try {
+    const graph = await fetch(`${API}/api/agents`).then((r) => r.json() as Promise<{ agents: AgentSpec[] }>);
+    setAgentSpecs(graph.agents);
+  } catch (e) {
+    useUI.setState({ error: `Can't reach the API (${e}).` });
   }
 }

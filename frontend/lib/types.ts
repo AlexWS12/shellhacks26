@@ -13,7 +13,9 @@ export interface Endpoint {
 
 export interface Project {
   id: string;
-  utility: "DESC" | "GA";
+  utility: string; // "DESC" | "GA" | a submitted owner's key
+  state?: string | null;
+  date_precision?: "day" | "month" | "year" | null;
   sponsor: string;
   name: string;
   description: string;
@@ -123,6 +125,7 @@ export interface SourceSpec {
   detail: string;
   file: string;
   total: number;
+  owner_key?: string; // submitted plans: the owner their projects carry in Project.utility
 }
 
 export interface PairDetail {
@@ -178,7 +181,10 @@ export interface ResearchProject {
   cost_quote: string | null;
   sources: Source[];
   found_by: string;
-  verification: { verifiers?: number; confirmed?: number; quotes_found?: number; notes?: string[]; note?: string };
+  verification: {
+    verifiers?: number; confirmed?: number; quotes_found?: number; notes?: string[]; note?: string;
+    merged_from?: { name: string; in_service: string | null; start: string | null; sources: string[] }[]; // same project, other scouts
+  };
 }
 
 export interface ThirdParty {
@@ -212,4 +218,67 @@ export interface RunEvent {
   agent_id?: string;
   actor?: string;
   [key: string]: unknown;
+}
+
+// The Writer's final report. Every number is from code; summary and next steps are prose (see actor).
+export interface ReportSide {
+  id: string;
+  name: string;
+  owner: string;
+  in_service: string;
+  status: string;
+  source: string;
+  date_precision: "day" | "month" | "year";
+}
+
+export interface ReportTop {
+  rank: number;
+  overlap_id: string;
+  distance_mi: number;
+  time_gap_days: number;
+  built_at_same_time: boolean | null;
+  location: Confidence;
+  benchmark_pair: boolean;
+  a: ReportSide;
+  b: ReportSide;
+  shared_level: string | null;
+  shared_items: string[];
+  timing: string | null;
+  a_cost: number | null;
+  savings: number | null;
+  cost_source: string | null;
+  analysis: Written | null;
+  joint_agenda: Written | null;
+  other_utilities: { owner: string; name: string; category: string; miles_to_a: number; miles_to_b: number; in_service: string | null; sources: number }[];
+}
+
+export interface Report {
+  title: string;
+  as_of: string;
+  owners: Record<string, number>;
+  counts: Record<string, number>;
+  research_categories: string[];
+  top: ReportTop[];
+  issues: { level: string; title: string; source: string }[];
+  method: string[];
+  summary: Written;
+  next_steps: Written;
+  markdown: string;
+}
+
+// A plan submitted in the Sources menu (see backend/app/store/submissions.py).
+export interface SubmissionView {
+  id: string;
+  owner: string;
+  label: string;
+  owner_key: string;
+  state: "SC" | "GA";
+  kind: "spreadsheet" | "pdf" | "url";
+  filename: string;
+  url: string | null;
+  size: number;
+  created: string;
+  columns: string[];
+  mapping: Record<string, string>;
+  status: "needs_mapping" | "ready";
 }

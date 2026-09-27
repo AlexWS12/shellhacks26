@@ -1,4 +1,4 @@
-// Faded start = Dominion work began before 2024, exact date not in the filing.
+// Faded start = the work began before its plan's first year; exact date not in the filing.
 
 import type { Project } from "@/lib/types";
 
@@ -9,7 +9,8 @@ function win(p: Project) {
   return { start: from ? d(from) : null, end: d(p.in_service_date), exact: Boolean(p.build_start) };
 }
 
-export default function Gantt({ a, b }: { a: Project; b: Project }) {
+export default function Gantt({ a, b, labels = ["Dominion", "Georgia"], colors = ["var(--desc)", "var(--gpc)"] }:
+  { a: Project; b: Project; labels?: [string, string]; colors?: [string, string] }) {
   const wa = win(a), wb = win(b);
   const all = [wa.start, wa.end, wb.start, wb.end].filter(Boolean) as Date[];
   const y0 = Math.min(...all.map((x) => x.getFullYear()));
@@ -47,10 +48,10 @@ export default function Gantt({ a, b }: { a: Project; b: Project }) {
         </g>
       ))}
       {overlap && <rect x={x(lo!)} y={4} width={x(hi) - x(lo!)} height={54} fill="var(--zone)" fillOpacity={0.14} />}
-      <text x={0} y={22}>Dominion</text>
-      {bar(wa, 12, "var(--desc)", "ga-a")}
-      <text x={0} y={48}>Georgia</text>
-      {bar(wb, 38, "var(--gpc)", "ga-b")}
+      <text x={0} y={22}>{labels[0].slice(0, 11)}</text>
+      {bar(wa, 12, colors[0], "ga-a")}
+      <text x={0} y={48}>{labels[1].slice(0, 11)}</text>
+      {bar(wb, 38, colors[1], "ga-b")}
     </svg>
   );
 }

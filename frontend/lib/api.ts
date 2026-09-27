@@ -1,4 +1,6 @@
-import type { Check, Health, Overlap, PairDetail, Project, ReferenceResult, ResearchCategory, ResearchProject, ThirdParty } from "./types";
+import type {
+  Check, Health, Overlap, PairDetail, Project, ReferenceResult, Report, ResearchCategory, ResearchProject, SubmissionView, ThirdParty,
+} from "./types";
 
 // Dev talks to localhost:8000. Production calls /api on the same domain.
 const DEFAULT_API = process.env.NODE_ENV === "development" ? "http://localhost:8000" : "";
@@ -8,6 +10,26 @@ async function get<T>(path: string): Promise<T> {
   const r = await fetch(`${API}${path}`);
   if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`);
   return (await r.json()) as T;
+}
+
+// For the Sources menu: errors carry the server's own message ("Choose a column for: ...").
+async function send<T>(method: string, path: string, body?: unknown): Promise<T> {
+  const r = await fetch(`${API}${path}`, {
+    method, headers: body ? { "content-type": "application/json" } : undefined, body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!r.ok) {
+    const detail = await r.json().then((j: { detail?: unknown }) => j.detail).catch(() => null);
+    throw new Error(typeof detail === "string" ? detail : `${path}: HTTP ${r.status}`);
+  }
+  return (await r.json()) as T;
+}
+
+export interface SubmissionPreview { columns: string[]; rows: string[][]; total_rows: number }
+export interface SubmissionMenu {
+  submissions: SubmissionView[];
+  fields: Record<string, { label: string; required: boolean }>;
+  limits: { max_mb: number; max_plans: number };
+  gemini: boolean;
 }
 
 export interface FilterState {
@@ -51,5 +73,20 @@ export const api = {
   },
   skip: (runId: string) => fetch(`${API}/api/runs/${runId}/skip`, { method: "POST" }),
   exportUrl: (f: FilterState, kind: "xlsx" | "csv") => `${API}/api/export.${kind}?${filterQuery(f)}`,
+  report: async (): Promise<Report | null> => {
+    const r = await fetch(`${API}/api/report`);
+    if (r.status === 404) return null; // no report yet (older run)
+    if (!r.ok) throw new Error(`/api/report: HTTP ${r.status}`);
+    return (await r.json()) as Report;
+  },
+  reportUrl: `${API}/api/report.md`,
+  submissions: () => get<SubmissionMenu>("/api/submissions"),
+  addSubmission: (body: Record<string, unknown>) =>
+    send<{ submission: SubmissionView; preview?: SubmissionPreview; suggested?: Record<string, string> }>("POST", "/api/submissions", body),
+  submissionPreview: (id: string) =>
+    get<{ submission: SubmissionView; preview: SubmissionPreview; suggested: Record<string, string> }>(`/api/submissions/${encodeURIComponent(id)}/preview`),
+  setMapping: (id: string, mapping: Record<string, string>) =>
+    send<{ submission: SubmissionView; rows: number; usable: number; skipped: string[] }>("PUT", `/api/submissions/${encodeURIComponent(id)}/mapping`, { mapping }),
+  removeSubmission: (id: string) => send<{ ok: boolean }>("DELETE", `/api/submissions/${encodeURIComponent(id)}`),
   eventsUrl: (runId: string) => `${API}/api/runs/${runId}/events`,
 };
