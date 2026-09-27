@@ -150,7 +150,7 @@ button.primary:hover:not(:disabled) { background: var(--accent-fill-hi); border-
 .sub { color: var(--muted); font-size: var(--fs-md); margin-top: var(--sp-0-5); }
 .sub.block { display: block; }
 .chipe { font-size: var(--fs-2xs); font-weight: 600; padding: 1px var(--sp-1-5); border-radius: var(--r-xs); border: 1px solid currentColor; color: var(--code); white-space: nowrap; }
-.chipe.jev { color: var(--jev); } .chipe.gemini { color: var(--gemini); }
+.chipe.jev { color: var(--jev); } .chipe.gemini, .chipe.claude, .chipe.openai { color: var(--gemini); }
 
 /* app frame */
 .app { display: grid; grid-template-rows: auto 1fr; height: 100vh; }

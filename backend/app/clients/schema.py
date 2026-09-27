@@ -57,3 +57,58 @@ def unexpected(value: Any, schema: dict[str, Any], path: str = "$") -> list[str]
         for i, v in enumerate(value):
             out += unexpected(v, schema["items"], f"{path}[{i}]")
     return out
+
+
+# Keywords the Claude and OpenAI structured-output modes reject or ignore. They're left out of what those providers
+# are sent; problems() still checks them on the reply.
+_CONSTRAINTS = {"minimum", "maximum", "exclusiveMinimum", "exclusiveMaximum", "multipleOf", "minLength", "maxLength",
+                "pattern", "format", "minItems", "maxItems", "uniqueItems"}
+
+
+def closed(schema: dict[str, Any], all_required: bool = False) -> dict[str, Any]:
+    # The schema as strict structured output needs it: every object closed (additionalProperties: false), a list of
+    # types as anyOf, no constraint keywords. all_required (OpenAI strict mode): every property is required, and one
+    # that wasn't may be null instead; without_added_nulls() takes those nulls out of the reply again.
+    s = {k: v for k, v in schema.items() if k not in _CONSTRAINTS}
+    t = s.get("type")
+    if isinstance(t, list):
+        common = {k: v for k, v in s.items() if k in ("description", "enum")}
+        by_type = {"object": ("properties", "required"), "array": ("items",)}
+        return {"anyOf": [{"type": "null"} if x == "null" else
+                          closed({**common, "type": x, **{k: s[k] for k in by_type.get(x, ()) if k in s}}, all_required)
+                          for x in t]}
+    if "properties" in s:
+        props = {k: closed(v, all_required) for k, v in s["properties"].items()}
+        required = list(s.get("required", []))
+        if all_required:
+            props = {k: v if k in required else _or_null(v) for k, v in props.items()}
+            required = list(props)
+        s = {**s, "properties": props, "required": required, "additionalProperties": False}
+    if "items" in s:
+        s["items"] = closed(s["items"], all_required)
+    return s
+
+
+def _or_null(s: dict[str, Any]) -> dict[str, Any]:
+    if s.get("type") == "null" or {"type": "null"} in s.get("anyOf", []):
+        return s
+    if "anyOf" in s:
+        return {**s, "anyOf": [*s["anyOf"], {"type": "null"}]}
+    return {"anyOf": [s, {"type": "null"}]}
+
+
+def _allows_null(s: dict[str, Any]) -> bool:
+    t = s.get("type")
+    return t == "null" or (isinstance(t, list) and "null" in t)
+
+
+def without_added_nulls(value: Any, schema: dict[str, Any]) -> Any:
+    # Undoes closed(all_required=True): a property the original schema made optional, and that can't be null there,
+    # is dropped when the reply set it to null.
+    if isinstance(value, dict) and "properties" in schema:
+        props, required = schema["properties"], set(schema.get("required", []))
+        return {k: without_added_nulls(v, props[k]) if k in props else v for k, v in value.items()
+                if not (v is None and k in props and k not in required and not _allows_null(props[k]))}
+    if isinstance(value, list) and "items" in schema:
+        return [without_added_nulls(v, schema["items"]) for v in value]
+    return value

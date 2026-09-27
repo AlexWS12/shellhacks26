@@ -14,7 +14,7 @@ from app.clients.base import Judgment
 class Verdict:
     value: Any  # float for noul (probability "true"), str for choice
     confidence: float
-    actor: str  # jev | gemini | heuristic | jev-mock
+    actor: str  # jev | gemini | claude | openai | heuristic | jev-mock
     latency_ms: int = 0
     cost_usd: float = 0.0
     cached: bool = False

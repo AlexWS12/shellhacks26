@@ -29,7 +29,7 @@ class AgentSpec:
                 "depends_on": self.depends_on, "kind": self.kind, "engine": self.engine, "team": self.team}
 
 
-LLM_ACTORS = {"gemini", "jev"}
+LLM_ACTORS = {"gemini", "claude", "openai", "jev"}
 
 
 class Ctx:
