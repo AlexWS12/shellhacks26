@@ -1,0 +1,14 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "highway",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": []
+}

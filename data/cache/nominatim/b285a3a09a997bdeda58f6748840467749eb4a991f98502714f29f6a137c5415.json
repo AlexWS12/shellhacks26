@@ -1,0 +1,43 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "grady",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 303535284,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 1073776,
+   "lat": "30.8670670",
+   "lon": "-84.2322943",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 12,
+   "importance": 0.5515614753302012,
+   "addresstype": "county",
+   "name": "Grady County",
+   "display_name": "Grady County, Georgia, United States",
+   "address": {
+    "county": "Grady County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.6760328",
+    "31.0789090",
+    "-84.3806883",
+    "-84.0729171"
+   ]
+  }
+ ]
+}

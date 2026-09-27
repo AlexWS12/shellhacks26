@@ -1,0 +1,73 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "cameron",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343940956,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 194126,
+   "lat": "33.5576546",
+   "lon": "-80.7145341",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.33749181912886295,
+   "addresstype": "town",
+   "name": "Cameron",
+   "display_name": "Cameron, Calhoun County, South Carolina, United States",
+   "address": {
+    "town": "Cameron",
+    "county": "Calhoun County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5436970",
+    "33.5723930",
+    "-80.7322780",
+    "-80.6977230"
+   ]
+  },
+  {
+   "place_id": 344014430,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154194435,
+   "lat": "32.5579515",
+   "lon": "-81.6737207",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Cameron",
+   "display_name": "Cameron, Screven County, Georgia, United States",
+   "address": {
+    "hamlet": "Cameron",
+    "county": "Screven County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5379515",
+    "32.5779515",
+    "-81.6937207",
+    "-81.6537207"
+   ]
+  }
+ ]
+}

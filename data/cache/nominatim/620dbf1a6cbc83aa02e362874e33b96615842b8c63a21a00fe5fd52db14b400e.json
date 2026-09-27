@@ -1,0 +1,168 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "glenwood springs",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341500961,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9442031,
+   "lat": "33.3017738",
+   "lon": "-83.4039621",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05338653467612722,
+   "addresstype": "road",
+   "name": "Glenwood Springs Road",
+   "display_name": "Glenwood Springs Road, Eatonton, Putnam County, Georgia, United States",
+   "address": {
+    "road": "Glenwood Springs Road",
+    "town": "Eatonton",
+    "county": "Putnam County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2973778",
+    "33.3072505",
+    "-83.4115418",
+    "-83.3970397"
+   ]
+  },
+  {
+   "place_id": 343422838,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9443065,
+   "lat": "33.3127901",
+   "lon": "-83.3956318",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338653467612722,
+   "addresstype": "road",
+   "name": "Old Glenwood Springs Road",
+   "display_name": "Old Glenwood Springs Road, Eatonton, Putnam County, Georgia, 31024, United States",
+   "address": {
+    "road": "Old Glenwood Springs Road",
+    "town": "Eatonton",
+    "county": "Putnam County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31024",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3077894",
+    "33.3167818",
+    "-83.3964518",
+    "-83.3928250"
+   ]
+  },
+  {
+   "place_id": 342377336,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9443390,
+   "lat": "33.3098680",
+   "lon": "-83.3937017",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05338653467612722,
+   "addresstype": "road",
+   "name": "Glenwood Springs Road",
+   "display_name": "Glenwood Springs Road, Eatonton, Putnam County, Georgia, 31024, United States",
+   "address": {
+    "road": "Glenwood Springs Road",
+    "town": "Eatonton",
+    "county": "Putnam County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31024",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3077894",
+    "33.3119537",
+    "-83.3963581",
+    "-83.3910516"
+   ]
+  },
+  {
+   "place_id": 341025279,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 480941450,
+   "lat": "34.1634192",
+   "lon": "-80.9414587",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05337333409628439,
+   "addresstype": "road",
+   "name": "Glenwood Springs Court",
+   "display_name": "Glenwood Springs Court, Brookhaven, Richland County, South Carolina, 31299, United States",
+   "address": {
+    "road": "Glenwood Springs Court",
+    "neighbourhood": "Brookhaven",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "31299",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.1629805",
+    "34.1637045",
+    "-80.9419252",
+    "-80.9411401"
+   ]
+  },
+  {
+   "place_id": 343208778,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 448066409,
+   "lat": "33.2602125",
+   "lon": "-83.4717583",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Glenwood Springs Road",
+   "display_name": "Glenwood Springs Road, Note, Putnam County, Georgia, United States",
+   "address": {
+    "road": "Glenwood Springs Road",
+    "hamlet": "Note",
+    "county": "Putnam County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2526081",
+    "33.2684427",
+    "-83.4808949",
+    "-83.4630470"
+   ]
+  }
+ ]
+}

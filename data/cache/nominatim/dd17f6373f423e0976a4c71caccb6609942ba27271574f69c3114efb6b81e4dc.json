@@ -1,0 +1,73 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "dawson",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 340203743,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 1026131,
+   "lat": "34.4077085",
+   "lon": "-84.1356771",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 12,
+   "importance": 0.553295860425173,
+   "addresstype": "county",
+   "name": "Dawson County",
+   "display_name": "Dawson County, Georgia, 30534, United States",
+   "address": {
+    "county": "Dawson County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30534",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.3340110",
+    "34.6178592",
+    "-84.3465125",
+    "-83.9570770"
+   ]
+  },
+  {
+   "place_id": 300031567,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 119443,
+   "lat": "31.7735001",
+   "lon": "-84.4465827",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.4706244289465857,
+   "addresstype": "town",
+   "name": "Dawson",
+   "display_name": "Dawson, Terrell County, Georgia, United States",
+   "address": {
+    "town": "Dawson",
+    "county": "Terrell County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.7559268",
+    "31.7896320",
+    "-84.4675710",
+    "-84.4220531"
+   ]
+  }
+ ]
+}

@@ -222,11 +222,12 @@ function PairView({ a, b }: { a: string; b: string }) {
 }
 
 function EndpointLine({ e }: { e: Endpoint }) {
-  if (e.lat == null) return <>{e.name} (not located)</>;
   const ev = e.evidence as Record<string, string | number>;
+  if (e.lat == null) return <>{e.name} (not located{ev.reason ? `: ${ev.reason}` : ""})</>;
   const how: Record<string, string> = {
     sponsor_file: "surveyed point", override: `verified by hand: ${ev.note ?? ""}`,
     overpass: `OpenStreetMap ${ev.osm_id ?? ""}, confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
+    nominatim: `OpenStreetMap search ${ev.osm_id ?? ""} (${ev.kind ?? ""}), confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
     geonames_town: `town ${ev.town ?? ""}, confirmed by ${ACTOR_LABEL[String(ev.judge)] ?? ev.judge}`,
   };
   return <>{e.name} <span className="mono">({e.lat.toFixed(3)}, {e.lon!.toFixed(3)})</span> · {how[e.method] ?? e.method}</>;

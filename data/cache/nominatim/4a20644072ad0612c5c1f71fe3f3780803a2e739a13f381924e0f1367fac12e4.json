@@ -1,0 +1,76 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "lick creek",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341230019,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 38251617,
+   "lat": "34.7296037",
+   "lon": "-82.0577576",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10671163271534292,
+   "addresstype": "stream",
+   "name": "Lick Creek",
+   "display_name": "Lick Creek, Woodruff, Spartanburg County, South Carolina, 29388, United States",
+   "address": {
+    "stream": "Lick Creek",
+    "town": "Woodruff",
+    "county": "Spartanburg County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29388",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.7273670",
+    "34.7314730",
+    "-82.0584850",
+    "-82.0575600"
+   ]
+  },
+  {
+   "place_id": 342513687,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 38260158,
+   "lat": "34.7355375",
+   "lon": "-82.0574265",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10671163271534292,
+   "addresstype": "stream",
+   "name": "Lick Creek",
+   "display_name": "Lick Creek, Spartanburg County, South Carolina, 29388, United States",
+   "address": {
+    "stream": "Lick Creek",
+    "county": "Spartanburg County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29388",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.7351280",
+    "34.7359030",
+    "-82.0575260",
+    "-82.0572200"
+   ]
+  }
+ ]
+}

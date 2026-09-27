@@ -1,0 +1,179 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "northside drive",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342258161,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1041727484,
+   "lat": "33.7728757",
+   "lon": "-84.4087963",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "Northside Drive Northwest",
+   "display_name": "Northside Drive Northwest, Bellwood, Bankhead, Atlanta, Fulton County, Georgia, 30332, United States",
+   "address": {
+    "road": "Northside Drive Northwest",
+    "neighbourhood": "Bellwood",
+    "suburb": "Bankhead",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30332",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7726620",
+    "33.7731488",
+    "-84.4089463",
+    "-84.4085666"
+   ]
+  },
+  {
+   "place_id": 341681503,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 533140868,
+   "lat": "33.7925292",
+   "lon": "-84.4078773",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "Northside Drive Northwest",
+   "display_name": "Northside Drive Northwest, Atlantic Station, Atlanta, Fulton County, Georgia, 30327, United States",
+   "address": {
+    "road": "Northside Drive Northwest",
+    "retail": "Atlantic Station",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30327",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7923223",
+    "33.7927362",
+    "-84.4078976",
+    "-84.4078569"
+   ]
+  },
+  {
+   "place_id": 342489217,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 360576963,
+   "lat": "33.7865578",
+   "lon": "-84.4073772",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "Northside Drive Northwest",
+   "display_name": "Northside Drive Northwest, Atlantic Station, Bankhead, Atlanta, Fulton County, Georgia, 30327, United States",
+   "address": {
+    "road": "Northside Drive Northwest",
+    "retail": "Atlantic Station",
+    "suburb": "Bankhead",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30327",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7862348",
+    "33.7868802",
+    "-84.4073846",
+    "-84.4073741"
+   ]
+  },
+  {
+   "place_id": 342172262,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1041727482,
+   "lat": "33.7731926",
+   "lon": "-84.4089589",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "Northside Drive Northwest",
+   "display_name": "Northside Drive Northwest, Bellwood, Bankhead, Atlanta, Fulton County, Georgia, 30327, United States",
+   "address": {
+    "road": "Northside Drive Northwest",
+    "neighbourhood": "Bellwood",
+    "suburb": "Bankhead",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30327",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7731488",
+    "33.7732363",
+    "-84.4089716",
+    "-84.4089463"
+   ]
+  },
+  {
+   "place_id": 341757788,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1314616459,
+   "lat": "33.7828281",
+   "lon": "-84.4075369",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "Northside Drive Northwest",
+   "display_name": "Northside Drive Northwest, Howell Station, Bankhead, Atlanta, Fulton County, Georgia, 30327, United States",
+   "address": {
+    "road": "Northside Drive Northwest",
+    "neighbourhood": "Howell Station",
+    "suburb": "Bankhead",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30327",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7826360",
+    "33.7830202",
+    "-84.4075379",
+    "-84.4075356"
+   ]
+  }
+ ]
+}

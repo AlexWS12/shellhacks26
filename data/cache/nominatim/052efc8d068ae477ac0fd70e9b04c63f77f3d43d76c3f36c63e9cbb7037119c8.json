@@ -1,0 +1,150 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "thumbs up",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342271161,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 270876033,
+   "lat": "33.7541147",
+   "lon": "-84.3684385",
+   "category": "amenity",
+   "type": "restaurant",
+   "place_rank": 30,
+   "importance": 7.908064393067854e-05,
+   "addresstype": "amenity",
+   "name": "Thumbs Up Diner",
+   "display_name": "Thumbs Up Diner, 14, Bradley Street Southeast, Cabbagetown, Old Fourth Ward, Atlanta, Fulton County, Georgia, 30312, United States",
+   "address": {
+    "amenity": "Thumbs Up Diner",
+    "house_number": "14",
+    "road": "Bradley Street Southeast",
+    "neighbourhood": "Cabbagetown",
+    "suburb": "Old Fourth Ward",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30312",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7539714",
+    "33.7542083",
+    "-84.3685816",
+    "-84.3682950"
+   ]
+  },
+  {
+   "place_id": 342562713,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 466099073,
+   "lat": "33.6788833",
+   "lon": "-84.4416707",
+   "category": "amenity",
+   "type": "restaurant",
+   "place_rank": 30,
+   "importance": 5.2330052643580036e-05,
+   "addresstype": "amenity",
+   "name": "Thumbs Up Diner",
+   "display_name": "Thumbs Up Diner, 1617, White Way, East Point, Fulton County, Georgia, 30344, United States",
+   "address": {
+    "amenity": "Thumbs Up Diner",
+    "house_number": "1617",
+    "road": "White Way",
+    "town": "East Point",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30344",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6788333",
+    "33.6789333",
+    "-84.4417207",
+    "-84.4416207"
+   ]
+  },
+  {
+   "place_id": 341149792,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1124318144,
+   "lat": "34.7824123",
+   "lon": "-82.3113091",
+   "category": "shop",
+   "type": "laundry",
+   "place_rank": 30,
+   "importance": 5.107423514148192e-05,
+   "addresstype": "shop",
+   "name": "Thumbs Up Coin Laundry",
+   "display_name": "Thumbs Up Coin Laundry, 210, North Main Street, Knollwood, Mauldin, Greenville County, South Carolina, 29662, United States",
+   "address": {
+    "shop": "Thumbs Up Coin Laundry",
+    "house_number": "210",
+    "road": "North Main Street",
+    "hamlet": "Knollwood",
+    "town": "Mauldin",
+    "county": "Greenville County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29662",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.7823400",
+    "34.7825068",
+    "-82.3114379",
+    "-82.3111928"
+   ]
+  },
+  {
+   "place_id": 342111872,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 992852182,
+   "lat": "34.0081005",
+   "lon": "-84.5266995",
+   "category": "amenity",
+   "type": "fast_food",
+   "place_rank": 30,
+   "importance": 3.500190737769158e-05,
+   "addresstype": "amenity",
+   "name": "Thumbs Up Express",
+   "display_name": "Thumbs Up Express, 2320, Canton Road Northeast, Powell Station, Cobb County, Georgia, 30066, United States",
+   "address": {
+    "amenity": "Thumbs Up Express",
+    "house_number": "2320",
+    "road": "Canton Road Northeast",
+    "neighbourhood": "Powell Station",
+    "county": "Cobb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30066",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0079816",
+    "34.0082193",
+    "-84.5267926",
+    "-84.5266064"
+   ]
+  }
+ ]
+}

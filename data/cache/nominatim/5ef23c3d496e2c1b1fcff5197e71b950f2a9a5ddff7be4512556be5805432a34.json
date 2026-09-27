@@ -1,0 +1,171 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "broadway",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 340410955,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 158366093,
+   "lat": "34.3060016",
+   "lon": "-78.8597457",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Broadway",
+   "display_name": "Broadway, Columbus County, North Carolina, 28431, United States",
+   "address": {
+    "hamlet": "Broadway",
+    "county": "Columbus County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28431",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.2860016",
+    "34.3260016",
+    "-78.8797457",
+    "-78.8397457"
+   ]
+  },
+  {
+   "place_id": 343214059,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 532092710,
+   "lat": "32.7767355",
+   "lon": "-83.6568338",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.0533981330586709,
+   "addresstype": "road",
+   "name": "Broadway",
+   "display_name": "Broadway, Tharpe Heights, Macon, Bibb County, Georgia, 31206, United States",
+   "address": {
+    "road": "Broadway",
+    "hamlet": "Tharpe Heights",
+    "city": "Macon",
+    "county": "Bibb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31206",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7737706",
+    "32.7797219",
+    "-83.6583075",
+    "-83.6554026"
+   ]
+  },
+  {
+   "place_id": 343027779,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 176739872,
+   "lat": "32.8184212",
+   "lon": "-83.6394653",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.0533981330586709,
+   "addresstype": "road",
+   "name": "Broadway",
+   "display_name": "Broadway, Macon, Bibb County, Georgia, 31207, United States",
+   "address": {
+    "road": "Broadway",
+    "city": "Macon",
+    "county": "Bibb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31207",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.8152191",
+    "32.8210240",
+    "-83.6400397",
+    "-83.6374640"
+   ]
+  },
+  {
+   "place_id": 342438008,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 893392409,
+   "lat": "32.7945799",
+   "lon": "-83.6438944",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.0533981330586709,
+   "addresstype": "road",
+   "name": "Broadway",
+   "display_name": "Broadway, Terra Cotta, Macon, Bibb County, Georgia, 31207, United States",
+   "address": {
+    "road": "Broadway",
+    "hamlet": "Terra Cotta",
+    "city": "Macon",
+    "county": "Bibb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31207",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7939730",
+    "32.7953500",
+    "-83.6450610",
+    "-83.6428300"
+   ]
+  },
+  {
+   "place_id": 343182469,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 995967222,
+   "lat": "32.7727145",
+   "lon": "-83.6588016",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.0533981330586709,
+   "addresstype": "road",
+   "name": "Broadway",
+   "display_name": "Broadway, Macon, Bibb County, Georgia, 31206, United States",
+   "address": {
+    "road": "Broadway",
+    "city": "Macon",
+    "county": "Bibb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31206",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7724359",
+    "32.7730107",
+    "-83.6589905",
+    "-83.6586340"
+   ]
+  }
+ ]
+}

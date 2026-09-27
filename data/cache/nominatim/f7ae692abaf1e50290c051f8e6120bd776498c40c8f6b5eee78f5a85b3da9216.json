@@ -1,0 +1,169 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "breaker",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 302565582,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 427692830,
+   "lat": "30.6260420",
+   "lon": "-81.4477701",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053386678110933054,
+   "addresstype": "road",
+   "name": "Breaker Drive",
+   "display_name": "Breaker Drive, Nassau County, Florida, 32034, United States",
+   "address": {
+    "road": "Breaker Drive",
+    "county": "Nassau County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32034",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.6247637",
+    "30.6267044",
+    "-81.4477791",
+    "-81.4469423"
+   ]
+  },
+  {
+   "place_id": 344374375,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1072208712,
+   "lat": "32.6251453",
+   "lon": "-80.1263391",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Breaker Lane",
+   "display_name": "Breaker Lane, Kiawah River, Johns Island, Charleston County, South Carolina, 29455, United States",
+   "address": {
+    "road": "Breaker Lane",
+    "neighbourhood": "Kiawah River",
+    "hamlet": "Johns Island",
+    "county": "Charleston County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29455",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6238368",
+    "32.6253385",
+    "-80.1275266",
+    "-80.1262013"
+   ]
+  },
+  {
+   "place_id": 341673892,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1212254917,
+   "lat": "34.3129494",
+   "lon": "-81.0337123",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533433333333333,
+   "addresstype": "road",
+   "name": "Breaker Lane",
+   "display_name": "Breaker Lane, Simpson, Fairfield County, South Carolina, 29180, United States",
+   "address": {
+    "road": "Breaker Lane",
+    "hamlet": "Simpson",
+    "county": "Fairfield County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29180",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.3095020",
+    "34.3162580",
+    "-81.0353929",
+    "-81.0320883"
+   ]
+  },
+  {
+   "place_id": 344631329,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12385447,
+   "lat": "33.3033173",
+   "lon": "-80.5479347",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533433333333333,
+   "addresstype": "road",
+   "name": "Breaker Pine Road",
+   "display_name": "Breaker Pine Road, Duncan Chapel, Dorchester County, South Carolina, 29018, United States",
+   "address": {
+    "road": "Breaker Pine Road",
+    "hamlet": "Duncan Chapel",
+    "county": "Dorchester County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29018",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3025267",
+    "33.3041750",
+    "-80.5527204",
+    "-80.5436940"
+   ]
+  },
+  {
+   "place_id": 345386178,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 32679455,
+   "lat": "34.7514372",
+   "lon": "-82.8551802",
+   "category": "highway",
+   "type": "path",
+   "place_rank": 27,
+   "importance": 0.040026000610360865,
+   "addresstype": "road",
+   "name": "Chain Breaker",
+   "display_name": "Chain Breaker, Pickens County, South Carolina, 29665, United States",
+   "address": {
+    "road": "Chain Breaker",
+    "county": "Pickens County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29665",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.7493608",
+    "34.7516000",
+    "-82.8584260",
+    "-82.8524905"
+   ]
+  }
+ ]
+}

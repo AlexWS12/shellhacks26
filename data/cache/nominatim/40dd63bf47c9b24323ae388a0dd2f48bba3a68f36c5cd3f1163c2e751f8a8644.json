@@ -1,0 +1,165 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "lower river",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 338079127,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 8561319356,
+   "lat": "34.8441101",
+   "lon": "-82.4005267",
+   "category": "waterway",
+   "type": "waterfall",
+   "place_rank": 20,
+   "importance": 0.1333969230182345,
+   "addresstype": "waterfall",
+   "name": "Lower Reedy River Falls",
+   "display_name": "Lower Reedy River Falls, Greenville, Greenville County, South Carolina, 29601, United States",
+   "address": {
+    "waterfall": "Lower Reedy River Falls",
+    "city": "Greenville",
+    "county": "Greenville County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29601",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.8440601",
+    "34.8441601",
+    "-82.4005767",
+    "-82.4004767"
+   ]
+  },
+  {
+   "place_id": 343621706,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 495205985,
+   "lat": "33.2353303",
+   "lon": "-81.5183715",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "dam",
+   "name": "D.O.E. Savannah River Par Pond Lower Dam",
+   "display_name": "D.O.E. Savannah River Par Pond Lower Dam, Barnwell County, South Carolina, United States",
+   "address": {
+    "dam": "D.O.E. Savannah River Par Pond Lower Dam",
+    "county": "Barnwell County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2325494",
+    "33.2373886",
+    "-81.5267167",
+    "-81.5130481"
+   ]
+  },
+  {
+   "place_id": 342883399,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 33469212,
+   "lat": "33.6142204",
+   "lon": "-85.2869786",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "dam",
+   "name": "Lower Little Tallapoosa River Watershed Structure Number 25 Dam",
+   "display_name": "Lower Little Tallapoosa River Watershed Structure Number 25 Dam, Carroll County, Georgia, 30182, United States",
+   "address": {
+    "dam": "Lower Little Tallapoosa River Watershed Structure Number 25 Dam",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30182",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6140690",
+    "33.6143680",
+    "-85.2871470",
+    "-85.2868070"
+   ]
+  },
+  {
+   "place_id": 341711374,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 8557266015,
+   "lat": "35.2929218",
+   "lon": "-82.3559022",
+   "category": "waterway",
+   "type": "waterfall",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "waterfall",
+   "name": "Lower Hungry River Falls",
+   "display_name": "Lower Hungry River Falls, Henderson County, North Carolina, 28724, United States",
+   "address": {
+    "waterfall": "Lower Hungry River Falls",
+    "county": "Henderson County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28724",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2928718",
+    "35.2929718",
+    "-82.3559522",
+    "-82.3558522"
+   ]
+  },
+  {
+   "place_id": 342962535,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358724383,
+   "lat": "33.5930959",
+   "lon": "-85.0319614",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "dam",
+   "name": "Lower Tallapoosa Structure 21 Dam",
+   "display_name": "Lower Tallapoosa Structure 21 Dam, Carroll County, Georgia, 30116, United States",
+   "address": {
+    "dam": "Lower Tallapoosa Structure 21 Dam",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30116",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5930459",
+    "33.5931459",
+    "-85.0320114",
+    "-85.0319114"
+   ]
+  }
+ ]
+}

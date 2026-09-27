@@ -1,0 +1,46 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "bayfront",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343538999,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 158550026,
+   "lat": "32.7421220",
+   "lon": "-79.9634237",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13340349050125885,
+   "addresstype": "hamlet",
+   "name": "Bayfront",
+   "display_name": "Bayfront, James Island, Charleston County, South Carolina, 29412, United States",
+   "address": {
+    "hamlet": "Bayfront",
+    "town": "James Island",
+    "county": "Charleston County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29412",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7221220",
+    "32.7621220",
+    "-79.9834237",
+    "-79.9434237"
+   ]
+  }
+ ]
+}

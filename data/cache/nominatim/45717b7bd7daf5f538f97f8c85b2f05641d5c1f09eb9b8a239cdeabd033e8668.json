@@ -1,0 +1,168 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "creek",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 345071193,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 488930735,
+   "lat": "34.0122035",
+   "lon": "-84.3414833",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10672693751430531,
+   "addresstype": "stream",
+   "name": "Creek",
+   "display_name": "Creek, Roswell, Fulton County, Georgia, 30077, United States",
+   "address": {
+    "stream": "Creek",
+    "city": "Roswell",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30077",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0105717",
+    "34.0138354",
+    "-84.3415454",
+    "-84.3414211"
+   ]
+  },
+  {
+   "place_id": 302682482,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 223930207,
+   "lat": "31.7785747",
+   "lon": "-84.7797146",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10671148317692833,
+   "addresstype": "stream",
+   "name": "Creek",
+   "display_name": "Creek, Cuthbert, Randolph County, Georgia, 31740, United States",
+   "address": {
+    "stream": "Creek",
+    "town": "Cuthbert",
+    "county": "Randolph County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31740",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.7770000",
+    "31.7807968",
+    "-84.7826146",
+    "-84.7774336"
+   ]
+  },
+  {
+   "place_id": 302682594,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 223930049,
+   "lat": "31.7519176",
+   "lon": "-84.7727167",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670666742961774,
+   "addresstype": "stream",
+   "name": "Creek",
+   "display_name": "Creek, Randolph County, Georgia, 31740, United States",
+   "address": {
+    "stream": "Creek",
+    "county": "Randolph County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31740",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.7516346",
+    "31.7519176",
+    "-84.7740219",
+    "-84.7714682"
+   ]
+  },
+  {
+   "place_id": 303062369,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 223930050,
+   "lat": "31.7438732",
+   "lon": "-84.7717570",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670666742961774,
+   "addresstype": "stream",
+   "name": "Creek",
+   "display_name": "Creek, Randolph County, Georgia, 39840, United States",
+   "address": {
+    "stream": "Creek",
+    "county": "Randolph County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "39840",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.7436152",
+    "31.7441488",
+    "-84.7722943",
+    "-84.7712109"
+   ]
+  },
+  {
+   "place_id": 343551199,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1409873757,
+   "lat": "32.9665677",
+   "lon": "-84.5025661",
+   "category": "tourism",
+   "type": "camp_site",
+   "place_rank": 30,
+   "importance": 3.500190737769158e-05,
+   "addresstype": "tourism",
+   "name": "Creek",
+   "display_name": "Creek, Dripping Rock Road, Upson County, Georgia, 30258, United States",
+   "address": {
+    "tourism": "Creek",
+    "road": "Dripping Rock Road",
+    "county": "Upson County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30258",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.9663440",
+    "32.9668788",
+    "-84.5029646",
+    "-84.5021629"
+   ]
+  }
+ ]
+}

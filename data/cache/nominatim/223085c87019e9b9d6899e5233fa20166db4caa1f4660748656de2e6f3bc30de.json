@@ -1,0 +1,134 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "huckleberry",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341588320,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153476187,
+   "lat": "35.2603463",
+   "lon": "-85.2110692",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Huckleberry",
+   "display_name": "Huckleberry, Hamilton County, East Tennessee, Tennessee, 37379, United States",
+   "address": {
+    "hamlet": "Huckleberry",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37379",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2403463",
+    "35.2803463",
+    "-85.2310692",
+    "-85.1910692"
+   ]
+  },
+  {
+   "place_id": 301258808,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358732032,
+   "lat": "30.4721719",
+   "lon": "-82.3631758",
+   "category": "place",
+   "type": "island",
+   "place_rank": 17,
+   "importance": 0.17334333333333332,
+   "addresstype": "island",
+   "name": "Huckleberry Island",
+   "display_name": "Huckleberry Island, Baker County, Florida, United States",
+   "address": {
+    "island": "Huckleberry Island",
+    "county": "Baker County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.1521719",
+    "30.7921719",
+    "-82.6831758",
+    "-82.0431758"
+   ]
+  },
+  {
+   "place_id": 301450414,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358688271,
+   "lat": "31.0046595",
+   "lon": "-82.5576372",
+   "category": "place",
+   "type": "island",
+   "place_rank": 17,
+   "importance": 0.17334333333333332,
+   "addresstype": "island",
+   "name": "Huckleberry Island",
+   "display_name": "Huckleberry Island, Ware County, Georgia, United States",
+   "address": {
+    "island": "Huckleberry Island",
+    "county": "Ware County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.6846595",
+    "31.3246595",
+    "-82.8776372",
+    "-82.2376372"
+   ]
+  },
+  {
+   "place_id": 299494686,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358688274,
+   "lat": "31.0463318",
+   "lon": "-82.3681864",
+   "category": "place",
+   "type": "island",
+   "place_rank": 17,
+   "importance": 0.17334333333333332,
+   "addresstype": "island",
+   "name": "Huckleberry Island",
+   "display_name": "Huckleberry Island, Ware County, Georgia, 32120, United States",
+   "address": {
+    "island": "Huckleberry Island",
+    "county": "Ware County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "32120",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.7263318",
+    "31.3663318",
+    "-82.6881864",
+    "-82.0481864"
+   ]
+  }
+ ]
+}

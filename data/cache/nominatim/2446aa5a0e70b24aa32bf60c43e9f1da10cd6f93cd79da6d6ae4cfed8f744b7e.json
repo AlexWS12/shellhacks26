@@ -1,0 +1,136 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "tributary",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341927890,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34841154,
+   "lat": "33.7129313",
+   "lon": "-84.6426467",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08005336003662163,
+   "addresstype": "neighbourhood",
+   "name": "Tributary",
+   "display_name": "Tributary, Douglasville, Douglas County, Georgia, United States",
+   "address": {
+    "neighbourhood": "Tributary",
+    "town": "Douglasville",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7101982",
+    "33.7162635",
+    "-84.6474312",
+    "-84.6370190"
+   ]
+  },
+  {
+   "place_id": 342651298,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1445429968,
+   "lat": "32.8944352",
+   "lon": "-80.0903672",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "residential",
+   "name": "Tributary",
+   "display_name": "Tributary, North Charleston, Charleston County, South Carolina, United States",
+   "address": {
+    "residential": "Tributary",
+    "city": "North Charleston",
+    "county": "Charleston County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.8934774",
+    "32.8956086",
+    "-80.0917032",
+    "-80.0892097"
+   ]
+  },
+  {
+   "place_id": 341526042,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1421504800,
+   "lat": "35.2789858",
+   "lon": "-80.9846311",
+   "category": "highway",
+   "type": "cycleway",
+   "place_rank": 27,
+   "importance": 0.040037501335164406,
+   "addresstype": "road",
+   "name": "Tributary",
+   "display_name": "Tributary, Sodyeco, Mecklenburg County, North Carolina, 28214, United States",
+   "address": {
+    "road": "Tributary",
+    "suburb": "Sodyeco",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28214",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2782142",
+    "35.2792378",
+    "-80.9862193",
+    "-80.9826296"
+   ]
+  },
+  {
+   "place_id": 342953151,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1421062716,
+   "lat": "35.2777839",
+   "lon": "-80.9872880",
+   "category": "highway",
+   "type": "cycleway",
+   "place_rank": 27,
+   "importance": 0.040037501335164406,
+   "addresstype": "road",
+   "name": "Tributary",
+   "display_name": "Tributary, Mecklenburg County, North Carolina, 28214, United States",
+   "address": {
+    "road": "Tributary",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28214",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2777300",
+    "35.2778619",
+    "-80.9875261",
+    "-80.9870602"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "dresden",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342657213,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154157137,
+   "lat": "33.3515055",
+   "lon": "-84.9185490",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Dresden",
+   "display_name": "Dresden, Coweta County, Georgia, United States",
+   "address": {
+    "hamlet": "Dresden",
+    "county": "Coweta County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3315055",
+    "33.3715055",
+    "-84.9385490",
+    "-84.8985490"
+   ]
+  }
+ ]
+}

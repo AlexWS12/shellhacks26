@@ -1,0 +1,162 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "goat rock",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 345781952,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 425320093,
+   "lat": "32.6095665",
+   "lon": "-85.0778226",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "dam",
+   "name": "Goat Rock Dam",
+   "display_name": "Goat Rock Dam, Harris County, Georgia, United States",
+   "address": {
+    "dam": "Goat Rock Dam",
+    "county": "Harris County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6094068",
+    "32.6097151",
+    "-85.0808813",
+    "-85.0769105"
+   ]
+  },
+  {
+   "place_id": 343179480,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 11284684451,
+   "lat": "32.6110714",
+   "lon": "-85.0742811",
+   "category": "water",
+   "type": "reservoir",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "reservoir",
+   "name": "Goat Rock Lake",
+   "display_name": "Goat Rock Lake, Harris County, Georgia, United States",
+   "address": {
+    "reservoir": "Goat Rock Lake",
+    "county": "Harris County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6110214",
+    "32.6111214",
+    "-85.0743311",
+    "-85.0742311"
+   ]
+  },
+  {
+   "place_id": 345862120,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 425320094,
+   "lat": "32.6095079",
+   "lon": "-85.0805559",
+   "category": "landuse",
+   "type": "industrial",
+   "place_rank": 24,
+   "importance": 0.08000999999999997,
+   "addresstype": "industrial",
+   "name": "Goat Rock Dam",
+   "display_name": "Goat Rock Dam, Lee County, Alabama, United States",
+   "address": {
+    "industrial": "Goat Rock Dam",
+    "county": "Lee County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6094068",
+    "32.6097151",
+    "-85.0808813",
+    "-85.0802300"
+   ]
+  },
+  {
+   "place_id": 341394079,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358952252,
+   "lat": "32.6070815",
+   "lon": "-85.0832694",
+   "category": "leisure",
+   "type": "park",
+   "place_rank": 24,
+   "importance": 0.08000999999999997,
+   "addresstype": "park",
+   "name": "Goat Rock Recreation Area",
+   "display_name": "Goat Rock Recreation Area, Lee County, Alabama, United States",
+   "address": {
+    "park": "Goat Rock Recreation Area",
+    "county": "Lee County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6070315",
+    "32.6071315",
+    "-85.0833194",
+    "-85.0832194"
+   ]
+  },
+  {
+   "place_id": 343483370,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1184871391,
+   "lat": "32.6174617",
+   "lon": "-85.0555762",
+   "category": "highway",
+   "type": "unclassified",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Goat Rock Road",
+   "display_name": "Goat Rock Road, Piney Grove, Harris County, Georgia, 31808, United States",
+   "address": {
+    "road": "Goat Rock Road",
+    "hamlet": "Piney Grove",
+    "county": "Harris County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31808",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6094200",
+    "32.6258984",
+    "-85.0744230",
+    "-85.0367336"
+   ]
+  }
+ ]
+}

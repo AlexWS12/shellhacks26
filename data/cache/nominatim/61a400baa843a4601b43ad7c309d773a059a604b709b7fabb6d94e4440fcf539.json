@@ -1,0 +1,47 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "camden industrial park",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 299625286,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 917829821,
+   "lat": "30.8387263",
+   "lon": "-81.6800799",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338329060807199,
+   "addresstype": "road",
+   "name": "Industrial Park",
+   "display_name": "Industrial Park, Kinlaw, Kingsland, Camden County, Georgia, 31458, United States",
+   "address": {
+    "road": "Industrial Park",
+    "hamlet": "Kinlaw",
+    "town": "Kingsland",
+    "county": "Camden County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31458",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.8381851",
+    "30.8396841",
+    "-81.6816630",
+    "-81.6783053"
+   ]
+  }
+ ]
+}

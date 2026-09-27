@@ -1,0 +1,163 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "farley",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 302662377,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 660021586,
+   "lat": "31.2224760",
+   "lon": "-85.1121188",
+   "category": "landuse",
+   "type": "industrial",
+   "place_rank": 24,
+   "importance": 0.40893382561531794,
+   "addresstype": "industrial",
+   "name": "Joseph M. Farley Nuclear Plant",
+   "display_name": "Joseph M. Farley Nuclear Plant, Houston County, Alabama, United States",
+   "address": {
+    "industrial": "Joseph M. Farley Nuclear Plant",
+    "county": "Houston County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2176141",
+    "31.2271750",
+    "-85.1193398",
+    "-85.1060707"
+   ]
+  },
+  {
+   "place_id": 302826551,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1289026759,
+   "lat": "31.2210789",
+   "lon": "-85.1105855",
+   "category": "landuse",
+   "type": "landfill",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "landfill",
+   "name": "Joseph M. Farley Spent Fuel Storage",
+   "display_name": "Joseph M. Farley Spent Fuel Storage, Houston County, Alabama, United States",
+   "address": {
+    "landfill": "Joseph M. Farley Spent Fuel Storage",
+    "county": "Houston County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2204381",
+    "31.2214216",
+    "-85.1118472",
+    "-85.1093228"
+   ]
+  },
+  {
+   "place_id": 342677661,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1306057573,
+   "lat": "33.1549459",
+   "lon": "-84.1143262",
+   "category": "landuse",
+   "type": "cemetery",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "cemetery",
+   "name": "Settle-Farley Family Cemetery",
+   "display_name": "Settle-Farley Family Cemetery, Lamar County, Georgia, United States",
+   "address": {
+    "cemetery": "Settle-Farley Family Cemetery",
+    "county": "Lamar County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.1545999",
+    "33.1552917",
+    "-84.1147310",
+    "-84.1139213"
+   ]
+  },
+  {
+   "place_id": 343028852,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1322980122,
+   "lat": "33.2785738",
+   "lon": "-83.4030844",
+   "category": "landuse",
+   "type": "cemetery",
+   "place_rank": 24,
+   "importance": 0.08002600061036085,
+   "addresstype": "cemetery",
+   "name": "Farley Cemetery",
+   "display_name": "Farley Cemetery, Putnam County, Georgia, United States",
+   "address": {
+    "cemetery": "Farley Cemetery",
+    "county": "Putnam County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2783377",
+    "33.2788097",
+    "-83.4033757",
+    "-83.4027931"
+   ]
+  },
+  {
+   "place_id": 342433768,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9269520,
+   "lat": "33.7042669",
+   "lon": "-84.5480244",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "Farley Avenue Southwest",
+   "display_name": "Farley Avenue Southwest, Sandtown, South Fulton, Fulton County, Georgia, 30331, United States",
+   "address": {
+    "road": "Farley Avenue Southwest",
+    "suburb": "Sandtown",
+    "town": "South Fulton",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30331",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7036750",
+    "33.7048490",
+    "-84.5486970",
+    "-84.5473580"
+   ]
+  }
+ ]
+}

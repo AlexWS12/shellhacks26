@@ -1,0 +1,75 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "lizard lope",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 302704876,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 7724823,
+   "lat": "31.2803703",
+   "lon": "-85.1233751",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05335803387502858,
+   "addresstype": "road",
+   "name": "Lizard Lope Road",
+   "display_name": "Lizard Lope Road, Columbia, Houston County, Alabama, 36319, United States",
+   "address": {
+    "road": "Lizard Lope Road",
+    "village": "Columbia",
+    "county": "Houston County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36319",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2764275",
+    "31.2826123",
+    "-85.1254385",
+    "-85.1195920"
+   ]
+  },
+  {
+   "place_id": 302739675,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9053342,
+   "lat": "31.6139302",
+   "lon": "-84.5196362",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533433333333333,
+   "addresstype": "road",
+   "name": "Lizard Lope Road",
+   "display_name": "Lizard Lope Road, Calhoun County, Georgia, United States",
+   "address": {
+    "road": "Lizard Lope Road",
+    "county": "Calhoun County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.5917086",
+    "31.6211177",
+    "-84.5349760",
+    "-84.5189761"
+   ]
+  }
+ ]
+}

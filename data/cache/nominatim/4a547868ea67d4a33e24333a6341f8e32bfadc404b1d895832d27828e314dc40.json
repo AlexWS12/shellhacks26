@@ -1,0 +1,102 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "lloyd shoals",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344318781,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1271633809,
+   "lat": "33.3299972",
+   "lon": "-83.8340046",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "dam",
+   "name": "Lloyd Shoals - North Saddle Dike",
+   "display_name": "Lloyd Shoals - North Saddle Dike, Jasper County, Georgia, United States",
+   "address": {
+    "dam": "Lloyd Shoals - North Saddle Dike",
+    "county": "Jasper County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3269572",
+    "33.3327358",
+    "-83.8345341",
+    "-83.8324018"
+   ]
+  },
+  {
+   "place_id": 344393580,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 674159021,
+   "lat": "33.3205972",
+   "lon": "-83.8412234",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "dam",
+   "name": "Lloyd Shoals Dam",
+   "display_name": "Lloyd Shoals Dam, Butts County, Georgia, United States",
+   "address": {
+    "dam": "Lloyd Shoals Dam",
+    "county": "Butts County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3201471",
+    "33.3210813",
+    "-83.8427186",
+    "-83.8392990"
+   ]
+  },
+  {
+   "place_id": 343079925,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1271633806,
+   "lat": "33.3191855",
+   "lon": "-83.8453001",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "dam",
+   "name": "Lloyd Shoals - Emergency Spillway Dam",
+   "display_name": "Lloyd Shoals - Emergency Spillway Dam, Butts County, Georgia, United States",
+   "address": {
+    "dam": "Lloyd Shoals - Emergency Spillway Dam",
+    "county": "Butts County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3185740",
+    "33.3198046",
+    "-83.8457100",
+    "-83.8449050"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "east walton",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343771399,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9010021,
+   "lat": "33.0918951",
+   "lon": "-83.2256872",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338803921568624,
+   "addresstype": "road",
+   "name": "East Walton Street",
+   "display_name": "East Walton Street, Milledgeville, Baldwin County, Georgia, 31061, United States",
+   "address": {
+    "road": "East Walton Street",
+    "town": "Milledgeville",
+    "county": "Baldwin County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31061",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.0909352",
+    "33.0926816",
+    "-83.2299059",
+    "-83.2214584"
+   ]
+  },
+  {
+   "place_id": 344323290,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9402511,
+   "lat": "33.5891770",
+   "lon": "-83.4725235",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053386359197375416,
+   "addresstype": "road",
+   "name": "East Walton Street",
+   "display_name": "East Walton Street, Madison, Morgan County, Georgia, 30650, United States",
+   "address": {
+    "road": "East Walton Street",
+    "town": "Madison",
+    "county": "Morgan County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30650",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5890410",
+    "33.5893130",
+    "-83.4726530",
+    "-83.4723940"
+   ]
+  },
+  {
+   "place_id": 303762050,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9394026,
+   "lat": "31.3758860",
+   "lon": "-84.1579809",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05338194781414508,
+   "addresstype": "road",
+   "name": "East Walton Street",
+   "display_name": "East Walton Street, Baconton, Mitchell County, Georgia, 31716, United States",
+   "address": {
+    "road": "East Walton Street",
+    "village": "Baconton",
+    "county": "Mitchell County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31716",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.3751827",
+    "31.3766085",
+    "-84.1624426",
+    "-84.1535156"
+   ]
+  }
+ ]
+}

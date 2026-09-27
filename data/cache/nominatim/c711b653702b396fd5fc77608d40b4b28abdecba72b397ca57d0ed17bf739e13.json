@@ -1,0 +1,168 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "mcmanus",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344050663,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 376613865,
+   "lat": "33.5749888",
+   "lon": "-82.1354438",
+   "category": "water",
+   "type": "lake",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "lake",
+   "name": "McManus Ponds",
+   "display_name": "McManus Ponds, Deerwood Estates, Evans, Columbia County, Georgia, United States",
+   "address": {
+    "lake": "McManus Ponds",
+    "hamlet": "Deerwood Estates",
+    "town": "Evans",
+    "county": "Columbia County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5743854",
+    "33.5756078",
+    "-82.1360044",
+    "-82.1349047"
+   ]
+  },
+  {
+   "place_id": 342725963,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358939065,
+   "lat": "33.2634506",
+   "lon": "-85.4249508",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "dam",
+   "name": "McManus Dam",
+   "display_name": "McManus Dam, Randolph County, Alabama, United States",
+   "address": {
+    "dam": "McManus Dam",
+    "county": "Randolph County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2634006",
+    "33.2635006",
+    "-85.4250008",
+    "-85.4249008"
+   ]
+  },
+  {
+   "place_id": 343922134,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 33564388,
+   "lat": "33.2641738",
+   "lon": "-85.4244981",
+   "category": "natural",
+   "type": "water",
+   "place_rank": 22,
+   "importance": 0.10670166857404438,
+   "addresstype": "water",
+   "name": "Mcmanus Pond",
+   "display_name": "Mcmanus Pond, West, Randolph County, Alabama, United States",
+   "address": {
+    "water": "Mcmanus Pond",
+    "hamlet": "West",
+    "county": "Randolph County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2631731",
+    "33.2651082",
+    "-85.4254382",
+    "-85.4228864"
+   ]
+  },
+  {
+   "place_id": 344472497,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1346849838,
+   "lat": "33.2574260",
+   "lon": "-81.9890638",
+   "category": "landuse",
+   "type": "cemetery",
+   "place_rank": 24,
+   "importance": 0.08006542687113753,
+   "addresstype": "cemetery",
+   "name": "McManus Family Cemetery",
+   "display_name": "McManus Family Cemetery, Augusta, Richmond County, Georgia, United States",
+   "address": {
+    "cemetery": "McManus Family Cemetery",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2573280",
+    "33.2575240",
+    "-81.9891584",
+    "-81.9889691"
+   ]
+  },
+  {
+   "place_id": 341538045,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 16666285,
+   "lat": "35.2079018",
+   "lon": "-80.7633953",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053404349584191615,
+   "addresstype": "road",
+   "name": "McManus Drive",
+   "display_name": "McManus Drive, Winterfield, Eastland, Charlotte, Mecklenburg County, North Carolina, 28212, United States",
+   "address": {
+    "road": "McManus Drive",
+    "neighbourhood": "Winterfield",
+    "suburb": "Eastland",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28212",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2076010",
+    "35.2082090",
+    "-80.7645820",
+    "-80.7622070"
+   ]
+  }
+ ]
+}

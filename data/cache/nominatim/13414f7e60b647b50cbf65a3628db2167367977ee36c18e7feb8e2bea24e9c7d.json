@@ -1,0 +1,145 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "santee city",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343490805,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12424862,
+   "lat": "33.5918021",
+   "lon": "-79.0204265",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Santee Drive",
+   "display_name": "Santee Drive, Jasmine Lake, Garden City Beach, Horry County, South Carolina, 29576, United States",
+   "address": {
+    "road": "Santee Drive",
+    "neighbourhood": "Jasmine Lake",
+    "village": "Garden City Beach",
+    "county": "Horry County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29576",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5911305",
+    "33.5927100",
+    "-79.0215766",
+    "-79.0194565"
+   ]
+  },
+  {
+   "place_id": 340907797,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 547520945,
+   "lat": "34.9306440",
+   "lon": "-80.8613625",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533620332646677,
+   "addresstype": "road",
+   "name": "Santee Court",
+   "display_name": "Santee Court, Sun City Carolina Lakes, Lancaster County, South Carolina, 29707, United States",
+   "address": {
+    "road": "Santee Court",
+    "residential": "Sun City Carolina Lakes",
+    "county": "Lancaster County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29707",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.9296904",
+    "34.9315590",
+    "-80.8615826",
+    "-80.8611938"
+   ]
+  },
+  {
+   "place_id": 340789523,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 16677190,
+   "lat": "35.2494536",
+   "lon": "-80.9021078",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053404349584191615,
+   "addresstype": "road",
+   "name": "Santee Street",
+   "display_name": "Santee Street, Thomasboro, Charlotte, Mecklenburg County, North Carolina, 28208, United States",
+   "address": {
+    "road": "Santee Street",
+    "suburb": "Thomasboro",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28208",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2491160",
+    "35.2498050",
+    "-80.9031810",
+    "-80.9010390"
+   ]
+  },
+  {
+   "place_id": 343269957,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 12145158704,
+   "lat": "33.9981455",
+   "lon": "-81.0161416",
+   "category": "shop",
+   "type": "hairdresser",
+   "place_rank": 30,
+   "importance": 6.700770580601233e-05,
+   "addresstype": "shop",
+   "name": "Soda City Barbers",
+   "display_name": "Soda City Barbers, Santee Avenue, Five Points, Columbia, Richland County, South Carolina, 29208, United States",
+   "address": {
+    "shop": "Soda City Barbers",
+    "road": "Santee Avenue",
+    "retail": "Five Points",
+    "suburb": "Five Points",
+    "town": "Five Points",
+    "city": "Columbia",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29208",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9980955",
+    "33.9981955",
+    "-81.0161916",
+    "-81.0160916"
+   ]
+  }
+ ]
+}

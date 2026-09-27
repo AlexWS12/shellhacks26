@@ -1,0 +1,43 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "atkinson",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 300800207,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 966038,
+   "lat": "31.3030105",
+   "lon": "-82.8839362",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 12,
+   "importance": 0.5515470675567089,
+   "addresstype": "county",
+   "name": "Atkinson County",
+   "display_name": "Atkinson County, Georgia, United States",
+   "address": {
+    "county": "Atkinson County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.1837253",
+    "31.4204320",
+    "-83.1414231",
+    "-82.6289943"
+   ]
+  }
+ ]
+}

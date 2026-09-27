@@ -1,0 +1,108 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "alcovy road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342985104,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 543481998,
+   "lat": "33.6172665",
+   "lon": "-83.8425662",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053387178606851264,
+   "addresstype": "road",
+   "name": "Alcovy Road",
+   "display_name": "Alcovy Road, Covington, Newton County, Georgia, 30014, United States",
+   "address": {
+    "road": "Alcovy Road",
+    "town": "Covington",
+    "county": "Newton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30014",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6163189",
+    "33.6182092",
+    "-83.8436793",
+    "-83.8414487"
+   ]
+  },
+  {
+   "place_id": 343057570,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 493464145,
+   "lat": "33.6159961",
+   "lon": "-83.8440689",
+   "category": "highway",
+   "type": "secondary",
+   "place_rank": 26,
+   "importance": 0.053387178606851264,
+   "addresstype": "road",
+   "name": "Alcovy Road",
+   "display_name": "Alcovy Road, Covington, Newton County, Georgia, 30014, United States",
+   "address": {
+    "road": "Alcovy Road",
+    "town": "Covington",
+    "county": "Newton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30014",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6156732",
+    "33.6163189",
+    "-83.8444585",
+    "-83.8436793"
+   ]
+  },
+  {
+   "place_id": 343050354,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1262975968,
+   "lat": "33.6279773",
+   "lon": "-83.8299282",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053387178606851264,
+   "addresstype": "road",
+   "name": "Alcovy Road",
+   "display_name": "Alcovy Road, Covington, Newton County, Georgia, 30054, United States",
+   "address": {
+    "road": "Alcovy Road",
+    "town": "Covington",
+    "county": "Newton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30054",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6277204",
+    "33.6282341",
+    "-83.8302207",
+    "-83.8296357"
+   ]
+  }
+ ]
+}

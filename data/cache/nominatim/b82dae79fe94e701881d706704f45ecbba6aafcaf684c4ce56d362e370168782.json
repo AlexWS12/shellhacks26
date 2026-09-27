@@ -1,0 +1,171 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "garrett road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342360350,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9413851,
+   "lat": "32.5593178",
+   "lon": "-84.8245144",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05339740825513081,
+   "addresstype": "road",
+   "name": "Garrett Road",
+   "display_name": "Garrett Road, Columbus, Muscogee County, Georgia, 31820, United States",
+   "address": {
+    "road": "Garrett Road",
+    "city": "Columbus",
+    "county": "Muscogee County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31820",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5478523",
+    "32.5700803",
+    "-84.8266773",
+    "-84.8238472"
+   ]
+  },
+  {
+   "place_id": 345787658,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9413849,
+   "lat": "32.5764257",
+   "lon": "-84.8281704",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05339740825513081,
+   "addresstype": "road",
+   "name": "Garrett Road",
+   "display_name": "Garrett Road, Midland, Columbus, Muscogee County, Georgia, 31820, United States",
+   "address": {
+    "road": "Garrett Road",
+    "neighbourhood": "Midland",
+    "city": "Columbus",
+    "county": "Muscogee County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31820",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5750110",
+    "32.5775076",
+    "-84.8293738",
+    "-84.8275450"
+   ]
+  },
+  {
+   "place_id": 343131494,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9413848,
+   "lat": "32.5729763",
+   "lon": "-84.8270214",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339740825513081,
+   "addresstype": "road",
+   "name": "Garrett Road",
+   "display_name": "Garrett Road, Midland, Columbus, Muscogee County, Georgia, 31820, United States",
+   "address": {
+    "road": "Garrett Road",
+    "neighbourhood": "Midland",
+    "city": "Columbus",
+    "county": "Muscogee County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31820",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5709217",
+    "32.5750110",
+    "-84.8273020",
+    "-84.8268423"
+   ]
+  },
+  {
+   "place_id": 342936583,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9413852,
+   "lat": "32.5374385",
+   "lon": "-84.8274075",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339740825513081,
+   "addresstype": "road",
+   "name": "Garrett Road",
+   "display_name": "Garrett Road, Columbus, Muscogee County, Georgia, 31820, United States",
+   "address": {
+    "road": "Garrett Road",
+    "city": "Columbus",
+    "county": "Muscogee County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31820",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5346454",
+    "32.5402309",
+    "-84.8275158",
+    "-84.8272847"
+   ]
+  },
+  {
+   "place_id": 342935763,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9316761,
+   "lat": "32.5836404",
+   "lon": "-84.8277069",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339740825513081,
+   "addresstype": "road",
+   "name": "Garrett Road",
+   "display_name": "Garrett Road, Harris County, Georgia, 31820, United States",
+   "address": {
+    "road": "Garrett Road",
+    "county": "Harris County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31820",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5836400",
+    "32.5836440",
+    "-84.8278550",
+    "-84.8275590"
+   ]
+  }
+ ]
+}

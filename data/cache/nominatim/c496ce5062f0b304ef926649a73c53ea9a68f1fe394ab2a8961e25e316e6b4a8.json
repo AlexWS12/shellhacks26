@@ -1,0 +1,76 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "aultman road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343147330,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9426022,
+   "lat": "32.5622532",
+   "lon": "-83.7388103",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533620332646677,
+   "addresstype": "road",
+   "name": "Aultman Road",
+   "display_name": "Aultman Road, Fort Valley, Peach County, Georgia, 31008, United States",
+   "address": {
+    "road": "Aultman Road",
+    "town": "Fort Valley",
+    "county": "Peach County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31008",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5464130",
+    "32.5780940",
+    "-83.7389310",
+    "-83.7387780"
+   ]
+  },
+  {
+   "place_id": 301515624,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9571265,
+   "lat": "31.5316224",
+   "lon": "-83.9594346",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533433333333333,
+   "addresstype": "road",
+   "name": "Aultman Road",
+   "display_name": "Aultman Road, Worth County, Georgia, 31789, United States",
+   "address": {
+    "road": "Aultman Road",
+    "county": "Worth County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31789",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.5268591",
+    "31.5316900",
+    "-83.9607076",
+    "-83.9535980"
+   ]
+  }
+ ]
+}

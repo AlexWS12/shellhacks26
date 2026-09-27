@@ -1,0 +1,44 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "harleyville",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343399172,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 194003,
+   "lat": "33.2146069",
+   "lon": "-80.4478745",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.3151525238377993,
+   "addresstype": "town",
+   "name": "Harleyville",
+   "display_name": "Harleyville, Dorchester County, South Carolina, United States",
+   "address": {
+    "town": "Harleyville",
+    "county": "Dorchester County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2023090",
+    "33.2220090",
+    "-80.4627650",
+    "-80.4322660"
+   ]
+  }
+ ]
+}

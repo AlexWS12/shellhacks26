@@ -1,0 +1,135 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "possum branch",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 301580900,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 846506159,
+   "lat": "30.8514046",
+   "lon": "-83.5615298",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670166857404438,
+   "addresstype": "stream",
+   "name": "Possum Branch",
+   "display_name": "Possum Branch, Brooks County, Georgia, United States",
+   "address": {
+    "stream": "Possum Branch",
+    "county": "Brooks County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.8346183",
+    "30.8669904",
+    "-83.5714938",
+    "-83.5585852"
+   ]
+  },
+  {
+   "place_id": 344034561,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 45311559,
+   "lat": "34.0612378",
+   "lon": "-78.5247058",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10669908674753946,
+   "addresstype": "stream",
+   "name": "Possum Branch",
+   "display_name": "Possum Branch, Ash, Brunswick County, North Carolina, 28420, United States",
+   "address": {
+    "stream": "Possum Branch",
+    "hamlet": "Ash",
+    "county": "Brunswick County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28420",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0578435",
+    "34.0647543",
+    "-78.5289614",
+    "-78.5212254"
+   ]
+  },
+  {
+   "place_id": 343431291,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 45299952,
+   "lat": "34.0610398",
+   "lon": "-78.5504497",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10669908674753946,
+   "addresstype": "stream",
+   "name": "Possum Branch",
+   "display_name": "Possum Branch, Brunswick County, North Carolina, 28420, United States",
+   "address": {
+    "stream": "Possum Branch",
+    "county": "Brunswick County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28420",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0607150",
+    "34.0623731",
+    "-78.5576457",
+    "-78.5434099"
+   ]
+  },
+  {
+   "place_id": 339203802,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 33491203,
+   "lat": "33.5885782",
+   "lon": "-85.1331588",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10669266727702752,
+   "addresstype": "stream",
+   "name": "Possum Branch",
+   "display_name": "Possum Branch, Carroll County, Georgia, 30118, United States",
+   "address": {
+    "stream": "Possum Branch",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30118",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5870650",
+    "33.5898500",
+    "-85.1359800",
+    "-85.1302920"
+   ]
+  }
+ ]
+}

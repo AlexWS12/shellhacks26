@@ -1,0 +1,170 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "first avenue",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 303224936,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1110386806,
+   "lat": "31.2224938",
+   "lon": "-85.3785910",
+   "category": "highway",
+   "type": "unclassified",
+   "place_rank": 26,
+   "importance": 0.05339485999847406,
+   "addresstype": "road",
+   "name": "First Avenue",
+   "display_name": "First Avenue, Dothan, Houston County, Alabama, 36302, United States",
+   "address": {
+    "road": "First Avenue",
+    "city": "Dothan",
+    "county": "Houston County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36302",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2212737",
+    "31.2226650",
+    "-85.3812852",
+    "-85.3746321"
+   ]
+  },
+  {
+   "place_id": 303409796,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 7724598,
+   "lat": "31.2199153",
+   "lon": "-85.3818020",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339485999847406,
+   "addresstype": "road",
+   "name": "First Avenue",
+   "display_name": "First Avenue, Dothan, Houston County, Alabama, 36301, United States",
+   "address": {
+    "road": "First Avenue",
+    "city": "Dothan",
+    "county": "Houston County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36301",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2185086",
+    "31.2213225",
+    "-85.3818369",
+    "-85.3817879"
+   ]
+  },
+  {
+   "place_id": 298200957,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 91649400,
+   "lat": "30.6382342",
+   "lon": "-81.4382832",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053386678110933054,
+   "addresstype": "road",
+   "name": "First Avenue",
+   "display_name": "First Avenue, Fernandina Beach, Nassau County, Florida, 32035, United States",
+   "address": {
+    "road": "First Avenue",
+    "town": "Fernandina Beach",
+    "county": "Nassau County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32035",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.6377041",
+    "30.6388031",
+    "-81.4383807",
+    "-81.4381495"
+   ]
+  },
+  {
+   "place_id": 301166231,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9093148,
+   "lat": "31.9902512",
+   "lon": "-80.8509207",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338453269245438,
+   "addresstype": "road",
+   "name": "First Avenue",
+   "display_name": "First Avenue, Tybee Island, Chatham County, Georgia, 31328, United States",
+   "address": {
+    "road": "First Avenue",
+    "village": "Tybee Island",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31328",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.9898275",
+    "31.9906597",
+    "-80.8511283",
+    "-80.8506834"
+   ]
+  },
+  {
+   "place_id": 340086270,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9462378,
+   "lat": "32.8841310",
+   "lon": "-81.6598647",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338138475623709,
+   "addresstype": "road",
+   "name": "First Avenue",
+   "display_name": "First Avenue, Hiltonia, Screven County, Georgia, 30467, United States",
+   "address": {
+    "road": "First Avenue",
+    "village": "Hiltonia",
+    "county": "Screven County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30467",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.8841260",
+    "32.8843579",
+    "-81.6614900",
+    "-81.6582269"
+   ]
+  }
+ ]
+}

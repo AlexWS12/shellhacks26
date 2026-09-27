@@ -1,0 +1,171 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "pittman road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 345042316,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 731060337,
+   "lat": "33.6412254",
+   "lon": "-84.5847216",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Pittman Road",
+   "display_name": "Pittman Road, Holly Brook, South Fulton, Fulton County, Georgia, 30349, United States",
+   "address": {
+    "road": "Pittman Road",
+    "hamlet": "Holly Brook",
+    "town": "South Fulton",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30349",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6402410",
+    "33.6428226",
+    "-84.5868230",
+    "-84.5830764"
+   ]
+  },
+  {
+   "place_id": 343167482,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1456287958,
+   "lat": "33.6436229",
+   "lon": "-84.5826202",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Pittman Road",
+   "display_name": "Pittman Road, Cliftondale, South Fulton, Fulton County, Georgia, 30349, United States",
+   "address": {
+    "road": "Pittman Road",
+    "suburb": "Cliftondale",
+    "town": "South Fulton",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30349",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6431903",
+    "33.6440560",
+    "-84.5828629",
+    "-84.5823786"
+   ]
+  },
+  {
+   "place_id": 342960867,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 16678038,
+   "lat": "35.2587049",
+   "lon": "-79.5991542",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05337071412222473,
+   "addresstype": "road",
+   "name": "Pittman Road",
+   "display_name": "Pittman Road, Seven Lakes, Moore County, North Carolina, 27376, United States",
+   "address": {
+    "road": "Pittman Road",
+    "town": "Seven Lakes",
+    "county": "Moore County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "27376",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2577270",
+    "35.2597640",
+    "-79.6006490",
+    "-79.5977340"
+   ]
+  },
+  {
+   "place_id": 341306335,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 16738919,
+   "lat": "34.5778395",
+   "lon": "-78.8826989",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Pittman Road",
+   "display_name": "Pittman Road, Bellamy, Robeson County, North Carolina, United States",
+   "address": {
+    "road": "Pittman Road",
+    "hamlet": "Bellamy",
+    "county": "Robeson County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.5739908",
+    "34.5823139",
+    "-78.8907574",
+    "-78.8742926"
+   ]
+  },
+  {
+   "place_id": 343385122,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 6264308,
+   "lat": "33.8202473",
+   "lon": "-85.6940447",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Pittman Road",
+   "display_name": "Pittman Road, Hollingsworth, Calhoun County, Alabama, 36207, United States",
+   "address": {
+    "road": "Pittman Road",
+    "hamlet": "Hollingsworth",
+    "county": "Calhoun County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36207",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8156570",
+    "33.8222870",
+    "-85.7000070",
+    "-85.6912410"
+   ]
+  }
+ ]
+}

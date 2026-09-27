@@ -1,0 +1,166 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "anniston",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 302339200,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 6528936,
+   "lat": "30.3202946",
+   "lon": "-81.5411937",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08007092774853129,
+   "addresstype": "residential",
+   "name": "The Commons on Anniston Road Apartments",
+   "display_name": "The Commons on Anniston Road Apartments, Jacksonville, Duval County, Florida, United States",
+   "address": {
+    "residential": "The Commons on Anniston Road Apartments",
+    "city": "Jacksonville",
+    "county": "Duval County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3190734",
+    "30.3212784",
+    "-81.5422096",
+    "-81.5360440"
+   ]
+  },
+  {
+   "place_id": 302414557,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 6503012,
+   "lat": "30.3102485",
+   "lon": "-81.5392278",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08007092774853129,
+   "addresstype": "residential",
+   "name": "Anniston Pines",
+   "display_name": "Anniston Pines, Jacksonville, Duval County, Florida, United States",
+   "address": {
+    "residential": "Anniston Pines",
+    "city": "Jacksonville",
+    "county": "Duval County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3089256",
+    "30.3124690",
+    "-81.5398551",
+    "-81.5386095"
+   ]
+  },
+  {
+   "place_id": 341895808,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 819278222,
+   "lat": "35.0262537",
+   "lon": "-80.6824592",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08004227435721367,
+   "addresstype": "residential",
+   "name": "Anniston Grove",
+   "display_name": "Anniston Grove, Union County, North Carolina, United States",
+   "address": {
+    "residential": "Anniston Grove",
+    "county": "Union County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0234171",
+    "35.0296654",
+    "-80.6862481",
+    "-80.6766123"
+   ]
+  },
+  {
+   "place_id": 341864991,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1108377444,
+   "lat": "35.0541487",
+   "lon": "-80.9407631",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08002869993133437,
+   "addresstype": "residential",
+   "name": "Anniston Chase",
+   "display_name": "Anniston Chase, Fort Mill, York County, South Carolina, United States",
+   "address": {
+    "residential": "Anniston Chase",
+    "town": "Fort Mill",
+    "county": "York County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0518754",
+    "35.0558638",
+    "-80.9435854",
+    "-80.9383485"
+   ]
+  },
+  {
+   "place_id": 342978087,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9191363,
+   "lat": "33.7516721",
+   "lon": "-84.3375713",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053412413977264026,
+   "addresstype": "road",
+   "name": "Anniston Avenue Southeast",
+   "display_name": "Anniston Avenue Southeast, Edgewood, Atlanta, DeKalb County, Georgia, 30317, United States",
+   "address": {
+    "road": "Anniston Avenue Southeast",
+    "neighbourhood": "Edgewood",
+    "city": "Atlanta",
+    "county": "DeKalb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30317",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7500836",
+    "33.7534050",
+    "-84.3375720",
+    "-84.3373014"
+   ]
+  }
+ ]
+}

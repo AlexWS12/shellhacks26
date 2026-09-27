@@ -1,0 +1,48 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "union pier",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342443996,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1433392301,
+   "lat": "32.7843360",
+   "lon": "-79.9255881",
+   "category": "landuse",
+   "type": "industrial",
+   "place_rank": 24,
+   "importance": 0.2636224323479305,
+   "addresstype": "industrial",
+   "name": "Union Pier Terminal",
+   "display_name": "Union Pier Terminal, 32, Ansonborough, Charleston, Charleston County, South Carolina, 29401, United States",
+   "address": {
+    "industrial": "Union Pier Terminal",
+    "house_number": "32",
+    "quarter": "Ansonborough",
+    "city": "Charleston",
+    "county": "Charleston County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29401",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7812028",
+    "32.7875618",
+    "-79.9281209",
+    "-79.9235946"
+   ]
+  }
+ ]
+}

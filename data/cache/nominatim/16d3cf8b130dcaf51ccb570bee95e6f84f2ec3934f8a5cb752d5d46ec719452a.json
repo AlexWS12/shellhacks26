@@ -1,0 +1,143 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "microsoft",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 340613097,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 557522978,
+   "lat": "35.1390706",
+   "lon": "-80.9226661",
+   "category": "office",
+   "type": "company",
+   "place_rank": 30,
+   "importance": 7.101625085827447e-05,
+   "addresstype": "office",
+   "name": "Microsoft",
+   "display_name": "Microsoft, 8055, Microsoft Way, Charlotte, Mecklenburg County, North Carolina, 28273, United States",
+   "address": {
+    "office": "Microsoft",
+    "house_number": "8055",
+    "road": "Microsoft Way",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28273",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.1386166",
+    "35.1395233",
+    "-80.9231428",
+    "-80.9217422"
+   ]
+  },
+  {
+   "place_id": 429112726,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1562013293,
+   "lat": "33.6392624",
+   "lon": "-84.5170240",
+   "category": "building",
+   "type": "yes",
+   "place_rank": 30,
+   "importance": 3.750133516437045e-05,
+   "addresstype": "building",
+   "name": "Microsoft",
+   "display_name": "Microsoft, Parkway Circle, East Point, Fulton County, Georgia, 30272, United States",
+   "address": {
+    "building": "Microsoft",
+    "road": "Parkway Circle",
+    "town": "East Point",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30272",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6374801",
+    "33.6410446",
+    "-84.5173408",
+    "-84.5167069"
+   ]
+  },
+  {
+   "place_id": 429112721,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1562013259,
+   "lat": "33.7181905",
+   "lon": "-84.5847771",
+   "category": "building",
+   "type": "yes",
+   "place_rank": 30,
+   "importance": 3.3181506065415694e-05,
+   "addresstype": "building",
+   "name": "Microsoft",
+   "display_name": "Microsoft, 6050, Fulton Industrial Boulevard Southwest, Atlanta, Fulton County, Georgia, 30336, United States",
+   "address": {
+    "building": "Microsoft",
+    "house_number": "6050",
+    "road": "Fulton Industrial Boulevard Southwest",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30336",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7179428",
+    "33.7184618",
+    "-84.5851863",
+    "-84.5843750"
+   ]
+  },
+  {
+   "place_id": 429112727,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1562013295,
+   "lat": "33.6412340",
+   "lon": "-84.5178274",
+   "category": "landuse",
+   "type": "industrial",
+   "place_rank": 24,
+   "importance": 0.08005233005264359,
+   "addresstype": "industrial",
+   "name": "Microsoft East Point Datacenter Campus",
+   "display_name": "Microsoft East Point Datacenter Campus, East Point, Fulton County, Georgia, United States",
+   "address": {
+    "industrial": "Microsoft East Point Datacenter Campus",
+    "town": "East Point",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6365329",
+    "33.6455474",
+    "-84.5196674",
+    "-84.5153431"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "west valdosta",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 297847997,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153914090,
+   "lat": "30.8157571",
+   "lon": "-83.3148748",
+   "category": "place",
+   "type": "locality",
+   "place_rank": 25,
+   "importance": 0.0667016685740444,
+   "addresstype": "locality",
+   "name": "West Valdosta",
+   "display_name": "West Valdosta, Valdosta, Lowndes County, Georgia, 31603, United States",
+   "address": {
+    "locality": "West Valdosta",
+    "city": "Valdosta",
+    "county": "Lowndes County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31603",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.8057571",
+    "30.8257571",
+    "-83.3248748",
+    "-83.3048748"
+   ]
+  }
+ ]
+}

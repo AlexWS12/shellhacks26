@@ -1,0 +1,134 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "eastover",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342407715,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 179834,
+   "lat": "35.0992190",
+   "lon": "-78.7882955",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.36902538090653614,
+   "addresstype": "city",
+   "name": "Eastover",
+   "display_name": "Eastover, Cumberland County, North Carolina, United States",
+   "address": {
+    "city": "Eastover",
+    "county": "Cumberland County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0626480",
+    "35.1357750",
+    "-78.8396550",
+    "-78.7409640"
+   ]
+  },
+  {
+   "place_id": 343351348,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 194007,
+   "lat": "33.8771147",
+   "lon": "-80.6922594",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.3668857539234569,
+   "addresstype": "town",
+   "name": "Eastover",
+   "display_name": "Eastover, Richland County, South Carolina, United States",
+   "address": {
+    "town": "Eastover",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8642680",
+    "33.8870460",
+    "-80.7059420",
+    "-80.6826580"
+   ]
+  },
+  {
+   "place_id": 344142475,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 158346048,
+   "lat": "35.0965534",
+   "lon": "-78.7839112",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.1333773395895323,
+   "addresstype": "hamlet",
+   "name": "Eastover",
+   "display_name": "Eastover, Cumberland County, North Carolina, United States",
+   "address": {
+    "hamlet": "Eastover",
+    "city": "Eastover",
+    "county": "Cumberland County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0765534",
+    "35.1165534",
+    "-78.8039112",
+    "-78.7639112"
+   ]
+  },
+  {
+   "place_id": 341453788,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154299900,
+   "lat": "35.1991751",
+   "lon": "-80.8189060",
+   "category": "place",
+   "type": "suburb",
+   "place_rank": 19,
+   "importance": 0.09078915819201436,
+   "addresstype": "suburb",
+   "name": "Eastover",
+   "display_name": "Eastover, Charlotte, Mecklenburg County, North Carolina, 28274, United States",
+   "address": {
+    "suburb": "Eastover",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28274",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.1791751",
+    "35.2191751",
+    "-80.8389060",
+    "-80.7989060"
+   ]
+  }
+ ]
+}

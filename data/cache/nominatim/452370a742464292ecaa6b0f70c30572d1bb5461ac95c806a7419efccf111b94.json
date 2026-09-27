@@ -1,0 +1,106 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "shoal creek",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343072398,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34469696,
+   "lat": "33.8676335",
+   "lon": "-83.6639637",
+   "category": "waterway",
+   "type": "river",
+   "place_rank": 19,
+   "importance": 0.14670166857404435,
+   "addresstype": "river",
+   "name": "Shoal Creek",
+   "display_name": "Shoal Creek, Walton County, Georgia, United States",
+   "address": {
+    "river": "Shoal Creek",
+    "county": "Walton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8653740",
+    "33.8705910",
+    "-83.6657680",
+    "-83.6613690"
+   ]
+  },
+  {
+   "place_id": 349152893,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34476916,
+   "lat": "33.8689245",
+   "lon": "-83.6348318",
+   "category": "waterway",
+   "type": "river",
+   "place_rank": 19,
+   "importance": 0.14670166857404435,
+   "addresstype": "river",
+   "name": "Shoal Creek",
+   "display_name": "Shoal Creek, Bradley, Walton County, Georgia, United States",
+   "address": {
+    "river": "Shoal Creek",
+    "hamlet": "Bradley",
+    "county": "Walton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8684660",
+    "33.8696830",
+    "-83.6376460",
+    "-83.6317930"
+   ]
+  },
+  {
+   "place_id": 343106924,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34444494,
+   "lat": "33.8765883",
+   "lon": "-83.6684748",
+   "category": "waterway",
+   "type": "river",
+   "place_rank": 19,
+   "importance": 0.14670166857404435,
+   "addresstype": "river",
+   "name": "Shoal Creek",
+   "display_name": "Shoal Creek, Gratis, Walton County, Georgia, 30656, United States",
+   "address": {
+    "river": "Shoal Creek",
+    "hamlet": "Gratis",
+    "city": "Gratis",
+    "county": "Walton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30656",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8752280",
+    "33.8777984",
+    "-83.6697094",
+    "-83.6674030"
+   ]
+  }
+ ]
+}

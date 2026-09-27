@@ -1,0 +1,44 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "clarksboro",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 339446413,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154034753,
+   "lat": "34.0412232",
+   "lon": "-83.4982174",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Clarksboro",
+   "display_name": "Clarksboro, Jackson County, Georgia, United States",
+   "address": {
+    "hamlet": "Clarksboro",
+    "county": "Jackson County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0212232",
+    "34.0612232",
+    "-83.5182174",
+    "-83.4782174"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "east roanoke",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 301998775,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9019352,
+   "lat": "31.7059341",
+   "lon": "-83.2476923",
+   "category": "highway",
+   "type": "secondary",
+   "place_rank": 26,
+   "importance": 0.05338521782253754,
+   "addresstype": "road",
+   "name": "East Roanoke Drive",
+   "display_name": "East Roanoke Drive, Fitzgerald, Ben Hill County, Georgia, 31750, United States",
+   "address": {
+    "road": "East Roanoke Drive",
+    "town": "Fitzgerald",
+    "county": "Ben Hill County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31750",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.7058905",
+    "31.7059760",
+    "-83.2516042",
+    "-83.2437804"
+   ]
+  },
+  {
+   "place_id": 342901812,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 19510404,
+   "lat": "35.0579750",
+   "lon": "-85.2615492",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05339850385290299,
+   "addresstype": "road",
+   "name": "Roanoke Avenue",
+   "display_name": "Roanoke Avenue, Avondale, Chattanooga, Hamilton County, East Tennessee, Tennessee, 37406, United States",
+   "address": {
+    "road": "Roanoke Avenue",
+    "hamlet": "Avondale",
+    "city": "Chattanooga",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37406",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0537433",
+    "35.0621902",
+    "-85.2638836",
+    "-85.2591985"
+   ]
+  },
+  {
+   "place_id": 342978683,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1122128160,
+   "lat": "35.0517058",
+   "lon": "-85.2649969",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05339850385290299,
+   "addresstype": "road",
+   "name": "Roanoke Avenue",
+   "display_name": "Roanoke Avenue, Bushtown, Ridgeside, Chattanooga, Hamilton County, East Tennessee, Tennessee, 37406, United States",
+   "address": {
+    "road": "Roanoke Avenue",
+    "hamlet": "Bushtown",
+    "village": "Ridgeside",
+    "city": "Chattanooga",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37406",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0496749",
+    "35.0537433",
+    "-85.2661212",
+    "-85.2638836"
+   ]
+  },
+  {
+   "place_id": 342938955,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 19510400,
+   "lat": "35.0437484",
+   "lon": "-85.2690272",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339850385290299,
+   "addresstype": "road",
+   "name": "Roanoke Avenue",
+   "display_name": "Roanoke Avenue, Bushtown, Ridgeside, Chattanooga, Hamilton County, East Tennessee, Tennessee, 37406, United States",
+   "address": {
+    "road": "Roanoke Avenue",
+    "hamlet": "Bushtown",
+    "village": "Ridgeside",
+    "city": "Chattanooga",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37406",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0420882",
+    "35.0454089",
+    "-85.2699395",
+    "-85.2681154"
+   ]
+  },
+  {
+   "place_id": 345516325,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 19510396,
+   "lat": "35.0732963",
+   "lon": "-85.2529163",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339850385290299,
+   "addresstype": "road",
+   "name": "Roanoke Avenue",
+   "display_name": "Roanoke Avenue, Boyce, Chattanooga, Hamilton County, East Tennessee, Tennessee, 37406, United States",
+   "address": {
+    "road": "Roanoke Avenue",
+    "hamlet": "Boyce",
+    "city": "Chattanooga",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37406",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0718090",
+    "35.0747835",
+    "-85.2537329",
+    "-85.2520996"
+   ]
+  }
+ ]
+}

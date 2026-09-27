@@ -1,0 +1,44 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "summer lake",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 345145004,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 545544632,
+   "lat": "34.0048260",
+   "lon": "-81.3227130",
+   "category": "water",
+   "type": "lake",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "lake",
+   "name": "Summer Lake",
+   "display_name": "Summer Lake, Lexington County, South Carolina, United States",
+   "address": {
+    "lake": "Summer Lake",
+    "county": "Lexington County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0028587",
+    "34.0066338",
+    "-81.3241152",
+    "-81.3196767"
+   ]
+  }
+ ]
+}

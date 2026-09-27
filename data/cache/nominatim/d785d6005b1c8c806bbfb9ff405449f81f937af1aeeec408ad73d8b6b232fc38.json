@@ -1,0 +1,45 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "middle fork",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342588487,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154302705,
+   "lat": "35.1173319",
+   "lon": "-82.8237443",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Middle Fork",
+   "display_name": "Middle Fork, Transylvania County, North Carolina, 28772, United States",
+   "address": {
+    "hamlet": "Middle Fork",
+    "county": "Transylvania County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28772",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0973319",
+    "35.1373319",
+    "-82.8437443",
+    "-82.8037443"
+   ]
+  }
+ ]
+}

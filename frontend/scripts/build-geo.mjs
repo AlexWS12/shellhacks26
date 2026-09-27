@@ -1,5 +1,6 @@
 // Builds the offline basemap layers from us-atlas (Census cartographic boundaries, public domain).
-// Output: public/geo/states.json (all states) and public/geo/counties_sc_ga.json (SC + GA counties).
+// Output: public/geo/states.json (all states), public/geo/counties_sc_ga.json (SC + GA counties),
+// and ../data/geo/states_sc_ga.json (SC + GA outlines for the backend).
 import { readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { feature, mesh } from "topojson-client";
@@ -14,6 +15,13 @@ const FOCUS = { "13": "Georgia", "45": "South Carolina" };
 const st = feature(states, states.objects.states);
 st.features = st.features.map((f) => ({ type: "Feature", properties: { name: f.properties.name, focus: String(f.id) in FOCUS }, geometry: round(f.geometry) }));
 writeFileSync("public/geo/states.json", JSON.stringify(st));
+// the backend ranks location candidates by state with these two outlines
+const ABBR = { Georgia: "GA", "South Carolina": "SC" };
+writeFileSync("../data/geo/states_sc_ga.json", JSON.stringify({
+  source: "us-atlas states-10m (US Census cartographic boundaries, public domain), via frontend/scripts/build-geo.mjs",
+  type: "FeatureCollection",
+  features: st.features.filter((f) => f.properties.name in ABBR).map((f) => ({ type: "Feature", properties: { state: ABBR[f.properties.name] }, geometry: f.geometry })),
+}));
 
 const borders = mesh(states, states.objects.states, (a, b) => a !== b);
 writeFileSync("public/geo/state_borders.json", JSON.stringify({ type: "FeatureCollection", features: [{ type: "Feature", properties: {}, geometry: round(borders) }] }));

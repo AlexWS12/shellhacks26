@@ -1,0 +1,45 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "webb",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 299594761,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 110385,
+   "lat": "31.2604534",
+   "lon": "-85.2732658",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.4332896429128263,
+   "addresstype": "village",
+   "name": "Webb",
+   "display_name": "Webb, Houston County, Alabama, 36376, United States",
+   "address": {
+    "village": "Webb",
+    "county": "Houston County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36376",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2238347",
+    "31.2896115",
+    "-85.3245441",
+    "-85.2551552"
+   ]
+  }
+ ]
+}

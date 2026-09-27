@@ -1,0 +1,76 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "adamsville",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342572469,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154075833,
+   "lat": "33.7592737",
+   "lon": "-84.5052090",
+   "category": "place",
+   "type": "quarter",
+   "place_rank": 20,
+   "importance": 0.31877743112977514,
+   "addresstype": "quarter",
+   "name": "Adamsville",
+   "display_name": "Adamsville, Atlanta, Fulton County, Georgia, 10331, United States",
+   "address": {
+    "quarter": "Adamsville",
+    "city": "Atlanta",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "10331",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7492737",
+    "33.7692737",
+    "-84.5152090",
+    "-84.4952090"
+   ]
+  },
+  {
+   "place_id": 343199940,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154181052,
+   "lat": "33.3754181",
+   "lon": "-82.3701250",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Adamsville",
+   "display_name": "Adamsville, McDuffie County, Georgia, 30808, United States",
+   "address": {
+    "hamlet": "Adamsville",
+    "county": "McDuffie County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30808",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3554181",
+    "33.3954181",
+    "-82.3901250",
+    "-82.3501250"
+   ]
+  }
+ ]
+}

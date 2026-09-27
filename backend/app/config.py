@@ -42,6 +42,7 @@ JEV_PROVIDER = env("JEV_PROVIDER")  # typesafe | openrouter | cloudflare | mock 
 # Geocoding
 OSM_LIVE = env("OSM_LIVE", "true").lower() == "true"  # fetch OSM live when there is no cache yet
 NOMINATIM_USER_AGENT = env("NOMINATIM_USER_AGENT", "tandem-shellhacks/0.1")
+NOMINATIM_BUDGET_S = env_float("NOMINATIM_BUDGET_S", 60.0)  # live lookup time per run (1 request/second)
 
 # Storage (Tiger Data = managed Postgres + TimescaleDB). Empty = no database, files only.
 DATABASE_URL = env("DATABASE_URL")

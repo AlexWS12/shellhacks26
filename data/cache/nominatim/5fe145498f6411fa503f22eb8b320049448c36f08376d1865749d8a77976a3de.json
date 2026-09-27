@@ -1,0 +1,141 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "sand bar ferry",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343239151,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 357114525,
+   "lat": "33.4390275",
+   "lon": "-81.9117810",
+   "category": "natural",
+   "type": "cliff",
+   "place_rank": 22,
+   "importance": 0.10672409323262376,
+   "addresstype": "cliff",
+   "name": "Sand Bar Ferry Bluff",
+   "display_name": "Sand Bar Ferry Bluff, Aiken County, South Carolina, 29842, United States",
+   "address": {
+    "cliff": "Sand Bar Ferry Bluff",
+    "county": "Aiken County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29842",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4389775",
+    "33.4390775",
+    "-81.9118310",
+    "-81.9117310"
+   ]
+  },
+  {
+   "place_id": 344091824,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 43791209,
+   "lat": "33.4487102",
+   "lon": "-81.9224098",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.05339876020447086,
+   "addresstype": "road",
+   "name": "Sand Bar Ferry Road",
+   "display_name": "Sand Bar Ferry Road, Marion Homes, Augusta, Richmond County, Georgia, 30901, United States",
+   "address": {
+    "road": "Sand Bar Ferry Road",
+    "hamlet": "Marion Homes",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30901",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4406824",
+    "33.4554183",
+    "-81.9289751",
+    "-81.9174598"
+   ]
+  },
+  {
+   "place_id": 343200033,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 858401469,
+   "lat": "33.4649358",
+   "lon": "-81.9433000",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.05339876020447086,
+   "addresstype": "road",
+   "name": "Sand Bar Ferry Road",
+   "display_name": "Sand Bar Ferry Road, Eastview, Augusta, Richmond County, Georgia, 30901, United States",
+   "address": {
+    "road": "Sand Bar Ferry Road",
+    "hamlet": "Eastview",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30901",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4637916",
+    "33.4660958",
+    "-81.9450660",
+    "-81.9415236"
+   ]
+  },
+  {
+   "place_id": 343167568,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 737416125,
+   "lat": "33.4679966",
+   "lon": "-81.9478933",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05339876020447086,
+   "addresstype": "road",
+   "name": "Sand Bar Ferry Road",
+   "display_name": "Sand Bar Ferry Road, Eastview, Augusta, Richmond County, Georgia, 30901, United States",
+   "address": {
+    "road": "Sand Bar Ferry Road",
+    "hamlet": "Eastview",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30901",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4676839",
+    "33.4682440",
+    "-81.9484169",
+    "-81.9474007"
+   ]
+  }
+ ]
+}

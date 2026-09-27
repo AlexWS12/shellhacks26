@@ -1,0 +1,77 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "banks crossing",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 347646908,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154050921,
+   "lat": "34.2567734",
+   "lon": "-83.4640511",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Banks Crossing",
+   "display_name": "Banks Crossing, Banks County, Georgia, 30529, United States",
+   "address": {
+    "hamlet": "Banks Crossing",
+    "county": "Banks County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30529",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.2367734",
+    "34.2767734",
+    "-83.4840511",
+    "-83.4440511"
+   ]
+  },
+  {
+   "place_id": 342613909,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 83442385,
+   "lat": "33.4714497",
+   "lon": "-84.4475102",
+   "category": "highway",
+   "type": "unclassified",
+   "place_rank": 26,
+   "importance": 0.053386731517509695,
+   "addresstype": "road",
+   "name": "Banks Crossing",
+   "display_name": "Banks Crossing, Cottonwood, Fayetteville, Fayette County, Georgia, 30214, United States",
+   "address": {
+    "road": "Banks Crossing",
+    "suburb": "Cottonwood",
+    "town": "Fayetteville",
+    "county": "Fayette County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30214",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4714345",
+    "33.4721768",
+    "-84.4496990",
+    "-84.4454479"
+   ]
+  }
+ ]
+}

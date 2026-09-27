@@ -67,12 +67,17 @@ class Validator(Agent):
                                      title="Not every Georgia project is Georgia Power's",
                                      detail="Owners in the Georgia plan: " + ", ".join(f"{k} {v}" for k, v in sponsors.most_common())
                                             + ". GPC and SAV (Georgia Power Savannah) are shown by default.", source="GA IRP Vol. 3, project list"))
-        for (name, _), group in self._duplicates(desc).items():
-            await self.report(ctx, Check(id=f"dup:{group[0].id}", level="info", rule="near_duplicate",
-                                         title="Same project name, several entries",
-                                         detail=f"'{name}' appears as {', '.join(p.source_ref for p in group)} with different "
-                                                "dates. Kept as separate projects.",
-                                         source="DESC project list"))
+        for label, group in [*self._duplicates(desc).items(), *self._duplicates(ga).items()]:
+            first = group[0]
+            entries = "; ".join(f"{p.source_ref} (in service {p.in_service_date}"
+                                + (f", ${p.cost_total:,}" if p.cost_total is not None else "") + ")" for p in group)
+            await self.report(ctx, Check(id=f"dup:{first.id}", level="info", rule="near_duplicate",
+                                         title="Near-duplicate project entries",
+                                         detail=f"'{first.name}' and {len(group) - 1} more with almost the same title: "
+                                                f"{entries}. The pipeline kept them as separate projects; they may be "
+                                                "phases of one job.",
+                                         source="DESC project list" if first.utility == "DESC" else "GA IRP Vol. 3",
+                                         project_id=first.id))
 
         flagged = 0
         sem = asyncio.Semaphore(8)
@@ -100,8 +105,11 @@ class Validator(Agent):
         return f"{len(b.checks)} checks ({flagged} semantic flags)"
 
     @staticmethod
-    def _duplicates(desc: list[Project]) -> dict[tuple[str, int], list[Project]]:
-        groups: dict[tuple[str, int], list[Project]] = {}
-        for p in desc:
-            groups.setdefault((re.sub(r"\s+", " ", p.name.lower()), 0), []).append(p)
+    def _duplicates(projects: list[Project]) -> dict[str, list[Project]]:
+        # Same title once work verbs, spacing and punctuation are ignored ("... 46kV Rebuilds" vs "... 46kV").
+        # Circuit numbers stay, so "#5" and "#6" are different projects.
+        groups: dict[str, list[Project]] = {}
+        for p in projects:
+            key = re.sub(r"\b(rebuilds?|construct(ion)?|upgrades?|replace(ment)?|reconductor)\b", "", p.name.lower())
+            groups.setdefault(re.sub(r"[^a-z0-9#]", "", key), []).append(p)
         return {k: v for k, v in groups.items() if len(v) > 1}

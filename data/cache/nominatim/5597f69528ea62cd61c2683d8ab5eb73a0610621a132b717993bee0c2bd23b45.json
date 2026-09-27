@@ -1,0 +1,168 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "south griffin",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342474201,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12465908,
+   "lat": "34.0601094",
+   "lon": "-80.0735617",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Griffin",
+   "display_name": "Griffin, Lynchburg, Lee County, South Carolina, 29080, United States",
+   "address": {
+    "road": "Griffin",
+    "village": "Lynchburg",
+    "county": "Lee County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29080",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0593010",
+    "34.0609290",
+    "-80.0742360",
+    "-80.0728740"
+   ]
+  },
+  {
+   "place_id": 300292773,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1010157626,
+   "lat": "31.7775694",
+   "lon": "-83.3960317",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "dam",
+   "name": "Alvin Griffin Irrigation Pond Dam South",
+   "display_name": "Alvin Griffin Irrigation Pond Dam South, Ben Hill County, Georgia, United States",
+   "address": {
+    "dam": "Alvin Griffin Irrigation Pond Dam South",
+    "county": "Ben Hill County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.7775442",
+    "31.7778689",
+    "-83.3970407",
+    "-83.3949764"
+   ]
+  },
+  {
+   "place_id": 343474888,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12393500,
+   "lat": "34.1945018",
+   "lon": "-79.7558655",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339068055237656,
+   "addresstype": "road",
+   "name": "South Griffin Street",
+   "display_name": "South Griffin Street, Florence, Florence County, South Carolina, 29502, United States",
+   "address": {
+    "road": "South Griffin Street",
+    "city": "Florence",
+    "county": "Florence County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29502",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.1924410",
+    "34.1965632",
+    "-79.7559847",
+    "-79.7557360"
+   ]
+  },
+  {
+   "place_id": 341830643,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 192499256,
+   "lat": "34.9719315",
+   "lon": "-81.8742626",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "South Griffin Mill Court",
+   "display_name": "South Griffin Mill Court, Brookfield Heights, Spartanburg, Spartanburg County, South Carolina, 29307, United States",
+   "address": {
+    "road": "South Griffin Mill Court",
+    "neighbourhood": "Brookfield Heights",
+    "city": "Spartanburg",
+    "county": "Spartanburg County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29307",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.9711310",
+    "34.9733020",
+    "-81.8753920",
+    "-81.8739470"
+   ]
+  },
+  {
+   "place_id": 341244745,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1360150942,
+   "lat": "34.4112599",
+   "lon": "-82.4709286",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "dam",
+   "name": "F W Griffin Pond Dam D-3148",
+   "display_name": "F W Griffin Pond Dam D-3148, Anderson County, South Carolina, 29656, United States",
+   "address": {
+    "dam": "F W Griffin Pond Dam D-3148",
+    "county": "Anderson County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29656",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.4108752",
+    "34.4116209",
+    "-82.4715328",
+    "-82.4703392"
+   ]
+  }
+ ]
+}

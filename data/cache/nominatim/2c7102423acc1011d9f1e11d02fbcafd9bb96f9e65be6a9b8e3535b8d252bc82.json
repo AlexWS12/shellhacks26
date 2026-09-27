@@ -1,0 +1,170 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "thornton road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341219499,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 16714123,
+   "lat": "35.2322621",
+   "lon": "-80.9071781",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053404349584191615,
+   "addresstype": "road",
+   "name": "Thornton Road",
+   "display_name": "Thornton Road, Westerly Hill, Ashley Park, Charlotte, Mecklenburg County, North Carolina, 28208, United States",
+   "address": {
+    "road": "Thornton Road",
+    "neighbourhood": "Westerly Hill",
+    "suburb": "Ashley Park",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28208",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2305930",
+    "35.2339380",
+    "-80.9089980",
+    "-80.9052510"
+   ]
+  },
+  {
+   "place_id": 342559474,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12102094,
+   "lat": "33.7738754",
+   "lon": "-81.4745976",
+   "category": "highway",
+   "type": "unclassified",
+   "place_rank": 26,
+   "importance": 0.05339075989929042,
+   "addresstype": "road",
+   "name": "Thornton Road",
+   "display_name": "Thornton Road, Aiken County, South Carolina, 29006, United States",
+   "address": {
+    "road": "Thornton Road",
+    "county": "Aiken County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29006",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7733640",
+    "33.7780970",
+    "-81.4805730",
+    "-81.4670880"
+   ]
+  },
+  {
+   "place_id": 343089292,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1076438821,
+   "lat": "33.7952871",
+   "lon": "-84.6378806",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.05337907454032193,
+   "addresstype": "road",
+   "name": "Thornton Road",
+   "display_name": "Thornton Road, Lithia Springs, Douglas County, Georgia, 30122, United States",
+   "address": {
+    "road": "Thornton Road",
+    "town": "Lithia Springs",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30122",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7941990",
+    "33.7963779",
+    "-84.6406290",
+    "-84.6351310"
+   ]
+  },
+  {
+   "place_id": 342559601,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1076438868,
+   "lat": "33.7868022",
+   "lon": "-84.6171570",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.05337907454032193,
+   "addresstype": "road",
+   "name": "Thornton Road",
+   "display_name": "Thornton Road, Lithia Springs, Douglas County, Georgia, 30168, United States",
+   "address": {
+    "road": "Thornton Road",
+    "town": "Lithia Springs",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30168",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7865403",
+    "33.7870610",
+    "-84.6178064",
+    "-84.6165089"
+   ]
+  },
+  {
+   "place_id": 339007876,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1076438893,
+   "lat": "33.7801313",
+   "lon": "-84.6075082",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.05337907454032193,
+   "addresstype": "road",
+   "name": "Thornton Road",
+   "display_name": "Thornton Road, Douglas County, Georgia, 30168, United States",
+   "address": {
+    "road": "Thornton Road",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30168",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7798059",
+    "33.7804567",
+    "-84.6077001",
+    "-84.6073163"
+   ]
+  }
+ ]
+}

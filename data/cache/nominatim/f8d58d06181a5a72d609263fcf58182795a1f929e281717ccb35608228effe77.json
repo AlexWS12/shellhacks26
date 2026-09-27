@@ -1,0 +1,168 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "dyer road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341984262,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9073601,
+   "lat": "34.9171919",
+   "lon": "-85.2672835",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05338311818112455,
+   "addresstype": "road",
+   "name": "Dyer Road",
+   "display_name": "Dyer Road, Lytle, Fort Oglethorpe, Walker County, Georgia, 30707, United States",
+   "address": {
+    "road": "Dyer Road",
+    "hamlet": "Lytle",
+    "town": "Fort Oglethorpe",
+    "county": "Walker County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30707",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.9171340",
+    "34.9182520",
+    "-85.2738923",
+    "-85.2606724"
+   ]
+  },
+  {
+   "place_id": 341522006,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9074211,
+   "lat": "33.6345704",
+   "lon": "-84.9899860",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Dyer Road",
+   "display_name": "Dyer Road, Carroll County, Georgia, 30116, United States",
+   "address": {
+    "road": "Dyer Road",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30116",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6297006",
+    "33.6388950",
+    "-84.9933300",
+    "-84.9889260"
+   ]
+  },
+  {
+   "place_id": 342017312,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9493258,
+   "lat": "34.9356015",
+   "lon": "-83.8830593",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Dyer Road",
+   "display_name": "Dyer Road, Towns County, Georgia, 30582, United States",
+   "address": {
+    "road": "Dyer Road",
+    "county": "Towns County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30582",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.9353550",
+    "34.9356320",
+    "-83.8833430",
+    "-83.8829570"
+   ]
+  },
+  {
+   "place_id": 343940098,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9155736,
+   "lat": "33.4540916",
+   "lon": "-84.9007169",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05335325322346834,
+   "addresstype": "road",
+   "name": "Dyer Road",
+   "display_name": "Dyer Road, Plant Yates, Coweta County, Georgia, 30275, United States",
+   "address": {
+    "road": "Dyer Road",
+    "industrial": "Plant Yates",
+    "county": "Coweta County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30275",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4505810",
+    "33.4595600",
+    "-84.9066400",
+    "-84.8962685"
+   ]
+  },
+  {
+   "place_id": 344032907,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1070736935,
+   "lat": "33.4473534",
+   "lon": "-84.9064212",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533433333333333,
+   "addresstype": "road",
+   "name": "Dyer Road",
+   "display_name": "Dyer Road, Coweta County, Georgia, 30275, United States",
+   "address": {
+    "road": "Dyer Road",
+    "county": "Coweta County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30275",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4445162",
+    "33.4505810",
+    "-84.9066512",
+    "-84.9051500"
+   ]
+  }
+ ]
+}

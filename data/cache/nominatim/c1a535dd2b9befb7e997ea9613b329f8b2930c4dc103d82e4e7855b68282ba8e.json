@@ -1,0 +1,137 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "pond fork",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341377842,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34513248,
+   "lat": "34.2494774",
+   "lon": "-83.7396206",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670166857404438,
+   "addresstype": "stream",
+   "name": "Pond Fork",
+   "display_name": "Pond Fork, Frontier Trail, Hall County, Georgia, 30575, United States",
+   "address": {
+    "stream": "Pond Fork",
+    "hamlet": "Frontier Trail",
+    "county": "Hall County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30575",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.2454240",
+    "34.2526830",
+    "-83.7434980",
+    "-83.7362520"
+   ]
+  },
+  {
+   "place_id": 338034922,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34493080,
+   "lat": "34.2429575",
+   "lon": "-83.7270388",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670166857404438,
+   "addresstype": "stream",
+   "name": "Pond Fork",
+   "display_name": "Pond Fork, Jarrett, Hall County, Georgia, 30575, United States",
+   "address": {
+    "stream": "Pond Fork",
+    "hamlet": "Jarrett",
+    "county": "Hall County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30575",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.2405670",
+    "34.2446370",
+    "-83.7300270",
+    "-83.7247010"
+   ]
+  },
+  {
+   "place_id": 341241947,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34474029,
+   "lat": "34.2382225",
+   "lon": "-83.7225516",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670166857404438,
+   "addresstype": "stream",
+   "name": "Pond Fork",
+   "display_name": "Pond Fork, Hall County, Georgia, 30575, United States",
+   "address": {
+    "stream": "Pond Fork",
+    "county": "Hall County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30575",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.2375630",
+    "34.2405670",
+    "-83.7247010",
+    "-83.7196650"
+   ]
+  },
+  {
+   "place_id": 341439346,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34480737,
+   "lat": "34.2230557",
+   "lon": "-83.6779468",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10669536659800104,
+   "addresstype": "stream",
+   "name": "Pond Fork",
+   "display_name": "Pond Fork, Jackson County, Georgia, 30575, United States",
+   "address": {
+    "stream": "Pond Fork",
+    "county": "Jackson County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30575",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.2180580",
+    "34.2281550",
+    "-83.6788060",
+    "-83.6768760"
+   ]
+  }
+ ]
+}

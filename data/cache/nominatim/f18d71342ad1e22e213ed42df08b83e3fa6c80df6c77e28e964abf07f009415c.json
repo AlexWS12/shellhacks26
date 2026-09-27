@@ -1,0 +1,111 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "hickory level",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342927207,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 192356896,
+   "lat": "35.0386140",
+   "lon": "-82.0196327",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053378589303425615,
+   "addresstype": "road",
+   "name": "Level Branch Drive",
+   "display_name": "Level Branch Drive, Sugar Ridge Commons, Hickory Hills, Spartanburg County, South Carolina, 20303, United States",
+   "address": {
+    "road": "Level Branch Drive",
+    "neighbourhood": "Sugar Ridge Commons",
+    "hamlet": "Hickory Hills",
+    "county": "Spartanburg County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "20303",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0383970",
+    "35.0388310",
+    "-82.0196800",
+    "-82.0195855"
+   ]
+  },
+  {
+   "place_id": 343868734,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9074761,
+   "lat": "33.7070451",
+   "lon": "-84.9628212",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Hickory Level Road",
+   "display_name": "Hickory Level Road, Hickory Falls, Villa Rica, Carroll County, Georgia, 30180, United States",
+   "address": {
+    "road": "Hickory Level Road",
+    "residential": "Hickory Falls",
+    "town": "Villa Rica",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30180",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6892270",
+    "33.7180270",
+    "-84.9790990",
+    "-84.9386141"
+   ]
+  },
+  {
+   "place_id": 343797745,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 13252950597,
+   "lat": "33.6789761",
+   "lon": "-84.9992916",
+   "category": "shop",
+   "type": "convenience",
+   "place_rank": 30,
+   "importance": 9.99999999995449e-06,
+   "addresstype": "shop",
+   "name": "Hickory Level Grocery",
+   "display_name": "Hickory Level Grocery, Sandhill-Hickory Level Road, Sand Hill, Carroll County, Georgia, 30116, United States",
+   "address": {
+    "shop": "Hickory Level Grocery",
+    "road": "Sandhill-Hickory Level Road",
+    "hamlet": "Sand Hill",
+    "county": "Carroll County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30116",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6789261",
+    "33.6790261",
+    "-84.9993416",
+    "-84.9992416"
+   ]
+  }
+ ]
+}

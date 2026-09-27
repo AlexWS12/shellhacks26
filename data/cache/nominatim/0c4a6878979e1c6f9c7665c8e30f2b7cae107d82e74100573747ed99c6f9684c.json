@@ -1,0 +1,43 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "talbot",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343501750,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 1073929,
+   "lat": "32.6984691",
+   "lon": "-84.5054040",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 12,
+   "importance": 0.5527746941597433,
+   "addresstype": "county",
+   "name": "Talbot County",
+   "display_name": "Talbot County, Georgia, United States",
+   "address": {
+    "county": "Talbot County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5184841",
+    "32.8835950",
+    "-84.7031630",
+    "-84.2862460"
+   ]
+  }
+ ]
+}

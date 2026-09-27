@@ -1,0 +1,113 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "factory shoals",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 339297119,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 245571337,
+   "lat": "33.7235505",
+   "lon": "-84.6502419",
+   "category": "building",
+   "type": "school",
+   "place_rank": 30,
+   "importance": 5.3360036621607044e-05,
+   "addresstype": "building",
+   "name": "Factory Shoals Middle School",
+   "display_name": "Factory Shoals Middle School, 3301, Shoals School Road, Douglasville, Douglas County, Georgia, 30135, United States",
+   "address": {
+    "building": "Factory Shoals Middle School",
+    "house_number": "3301",
+    "road": "Shoals School Road",
+    "town": "Douglasville",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30135",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7228326",
+    "33.7242559",
+    "-84.6510960",
+    "-84.6494008"
+   ]
+  },
+  {
+   "place_id": 345398408,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358778867,
+   "lat": "33.7237899",
+   "lon": "-84.6548254",
+   "category": "amenity",
+   "type": "school",
+   "place_rank": 30,
+   "importance": 5.3360036621607044e-05,
+   "addresstype": "amenity",
+   "name": "Factory Shoals Elementary School",
+   "display_name": "Factory Shoals Elementary School, Shoals School Road, Douglasville, Douglas County, Georgia, United States",
+   "address": {
+    "amenity": "Factory Shoals Elementary School",
+    "road": "Shoals School Road",
+    "town": "Douglasville",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7237399",
+    "33.7238399",
+    "-84.6548754",
+    "-84.6547754"
+   ]
+  },
+  {
+   "place_id": 339050385,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 969454158,
+   "lat": "33.5827918",
+   "lon": "-84.4721099",
+   "category": "shop",
+   "type": "department_store",
+   "place_rank": 30,
+   "importance": 3.500190737769158e-05,
+   "addresstype": "shop",
+   "name": "Burlington",
+   "display_name": "Burlington, 6425, Old National Highway, Flat Shoals Estates, College Park, Fulton County, Georgia, 30349, United States",
+   "address": {
+    "shop": "Burlington",
+    "house_number": "6425",
+    "road": "Old National Highway",
+    "neighbourhood": "Flat Shoals Estates",
+    "town": "College Park",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30349",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5823330",
+    "33.5831323",
+    "-84.4724897",
+    "-84.4717296"
+   ]
+  }
+ ]
+}

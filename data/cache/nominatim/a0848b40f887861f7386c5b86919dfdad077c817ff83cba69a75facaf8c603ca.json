@@ -1,0 +1,173 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "stonewall tell road",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342516148,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1444515092,
+   "lat": "33.6036902",
+   "lon": "-84.5516004",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.0533838063630121,
+   "addresstype": "road",
+   "name": "Stonewall Tell Road",
+   "display_name": "Stonewall Tell Road, Stonewall, South Fulton, Fulton County, Georgia, 30349, United States",
+   "address": {
+    "road": "Stonewall Tell Road",
+    "hamlet": "Stonewall",
+    "town": "South Fulton",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30349",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6021682",
+    "33.6051754",
+    "-84.5524700",
+    "-84.5507930"
+   ]
+  },
+  {
+   "place_id": 342440644,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1357849978,
+   "lat": "33.6456827",
+   "lon": "-84.5901852",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Stonewall Tell Road",
+   "display_name": "Stonewall Tell Road, Tell, South Fulton, Fulton County, Georgia, 30349, United States",
+   "address": {
+    "road": "Stonewall Tell Road",
+    "suburb": "Tell",
+    "town": "South Fulton",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30349",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6402410",
+    "33.6498930",
+    "-84.5946550",
+    "-84.5868230"
+   ]
+  },
+  {
+   "place_id": 342454990,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1148201067,
+   "lat": "33.6502966",
+   "lon": "-84.5948119",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Stonewall Tell Road",
+   "display_name": "Stonewall Tell Road, Tell, South Fulton, Fulton County, Georgia, United States",
+   "address": {
+    "road": "Stonewall Tell Road",
+    "suburb": "Tell",
+    "town": "South Fulton",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6498930",
+    "33.6506938",
+    "-84.5949898",
+    "-84.5946550"
+   ]
+  },
+  {
+   "place_id": 342456578,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1450457121,
+   "lat": "33.6864176",
+   "lon": "-84.6002090",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Stonewall Tell Road",
+   "display_name": "Stonewall Tell Road, South Fulton, Fulton County, Georgia, 30349, United States",
+   "address": {
+    "road": "Stonewall Tell Road",
+    "town": "South Fulton",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30349",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6862653",
+    "33.6865698",
+    "-84.6002328",
+    "-84.6001852"
+   ]
+  },
+  {
+   "place_id": 416875466,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1510227833,
+   "lat": "33.6625305",
+   "lon": "-84.5923110",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Stonewall Tell Road",
+   "display_name": "Stonewall Tell Road, Enon, South Fulton, Fulton County, Georgia, 30349, United States",
+   "address": {
+    "road": "Stonewall Tell Road",
+    "hamlet": "Enon",
+    "town": "South Fulton",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30349",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6624090",
+    "33.6626520",
+    "-84.5923330",
+    "-84.5922890"
+   ]
+  }
+ ]
+}

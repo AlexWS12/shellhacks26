@@ -1,0 +1,175 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "truman parkway",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344468558,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1137801332,
+   "lat": "32.0255971",
+   "lon": "-81.0865771",
+   "category": "highway",
+   "type": "motorway",
+   "place_rank": 26,
+   "importance": 0.05340147631036847,
+   "addresstype": "road",
+   "name": "Harry Truman Parkway",
+   "display_name": "Harry Truman Parkway, Daffin Heights, Savannah, Chatham County, Georgia, 31404, United States",
+   "address": {
+    "road": "Harry Truman Parkway",
+    "neighbourhood": "Daffin Heights",
+    "city": "Savannah",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31404",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.0229509",
+    "32.0282536",
+    "-81.0881303",
+    "-81.0850460"
+   ]
+  },
+  {
+   "place_id": 302249402,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 244502213,
+   "lat": "31.9781303",
+   "lon": "-81.1354140",
+   "category": "highway",
+   "type": "motorway",
+   "place_rank": 26,
+   "importance": 0.05340147631036847,
+   "addresstype": "road",
+   "name": "Harry Truman Parkway",
+   "display_name": "Harry Truman Parkway, White Bluff, Windsor Forest, Savannah, Chatham County, Georgia, 31409, United States",
+   "address": {
+    "road": "Harry Truman Parkway",
+    "quarter": "White Bluff",
+    "hamlet": "Windsor Forest",
+    "city": "Savannah",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31409",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.9771642",
+    "31.9789318",
+    "-81.1387672",
+    "-81.1320970"
+   ]
+  },
+  {
+   "place_id": 344466082,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1148428665,
+   "lat": "32.0372817",
+   "lon": "-81.0772949",
+   "category": "highway",
+   "type": "motorway",
+   "place_rank": 26,
+   "importance": 0.05340147631036847,
+   "addresstype": "road",
+   "name": "Harry Truman Parkway",
+   "display_name": "Harry Truman Parkway, Oakland Park, Savannah, Chatham County, Georgia, 31404, United States",
+   "address": {
+    "road": "Harry Truman Parkway",
+    "neighbourhood": "Oakland Park",
+    "city": "Savannah",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31404",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.0364252",
+    "32.0384637",
+    "-81.0795157",
+    "-81.0752129"
+   ]
+  },
+  {
+   "place_id": 344571750,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 87906521,
+   "lat": "32.0465489",
+   "lon": "-81.0687392",
+   "category": "highway",
+   "type": "motorway",
+   "place_rank": 26,
+   "importance": 0.05340147631036847,
+   "addresstype": "road",
+   "name": "Harry Truman Parkway",
+   "display_name": "Harry Truman Parkway, Savannah, Chatham County, Georgia, 31404, United States",
+   "address": {
+    "road": "Harry Truman Parkway",
+    "city": "Savannah",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31404",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.0440723",
+    "32.0490991",
+    "-81.0694085",
+    "-81.0685961"
+   ]
+  },
+  {
+   "place_id": 344421690,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1160439060,
+   "lat": "32.0505116",
+   "lon": "-81.0691084",
+   "category": "highway",
+   "type": "motorway",
+   "place_rank": 26,
+   "importance": 0.05340147631036847,
+   "addresstype": "road",
+   "name": "Harry Truman Parkway",
+   "display_name": "Harry Truman Parkway, Gordonston, Savannah, Chatham County, Georgia, 31404, United States",
+   "address": {
+    "road": "Harry Truman Parkway",
+    "neighbourhood": "Gordonston",
+    "city": "Savannah",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31404",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.0490991",
+    "32.0518135",
+    "-81.0697918",
+    "-81.0687031"
+   ]
+  }
+ ]
+}

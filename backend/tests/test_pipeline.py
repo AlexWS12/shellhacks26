@@ -1,27 +1,8 @@
 import io
 
 import openpyxl
-import pytest
 
-from app import config
 from app.core.sample import OVERLAP_HEADERS, PROJECT_HEADERS
-from app.runtime.executor import execute
-from app.runtime.run import new_run
-
-
-@pytest.fixture(scope="module")
-def finished_run(tmp_path_factory):
-    import asyncio
-
-    from app.pipeline import SOURCES, build_agents
-
-    config.GEMINI_API_KEY = ""
-    config.JEV_PROVIDER = ""
-    config.OSM_LIVE = False
-    run = new_run("live")
-    run.pace = 0
-    asyncio.run(execute(run, build_agents(), SOURCES))
-    return run
 
 
 def test_run_completes(finished_run):

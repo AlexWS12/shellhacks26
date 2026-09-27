@@ -1,0 +1,165 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "gills creek",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 339752289,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 278737149,
+   "lat": "33.9162837",
+   "lon": "-80.9901211",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.1507975276546128,
+   "addresstype": "stream",
+   "name": "Gills Creek",
+   "display_name": "Gills Creek, Richland County, South Carolina, United States",
+   "address": {
+    "stream": "Gills Creek",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9079713",
+    "33.9425043",
+    "-81.0165947",
+    "-80.9809246"
+   ]
+  },
+  {
+   "place_id": 339973082,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1040894380,
+   "lat": "33.9487151",
+   "lon": "-80.9876416",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.1507975276546128,
+   "addresstype": "stream",
+   "name": "Gills Creek",
+   "display_name": "Gills Creek, Columbia, Richland County, South Carolina, 29209, United States",
+   "address": {
+    "stream": "Gills Creek",
+    "city": "Columbia",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29209",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9425984",
+    "33.9556686",
+    "-80.9899368",
+    "-80.9818446"
+   ]
+  },
+  {
+   "place_id": 342522931,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1040894381,
+   "lat": "33.9425514",
+   "lon": "-80.9871450",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.1507975276546128,
+   "addresstype": "stream",
+   "name": "Gills Creek",
+   "display_name": "Gills Creek, Richland County, South Carolina, 29209, United States",
+   "address": {
+    "stream": "Gills Creek",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29209",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9425043",
+    "33.9425984",
+    "-80.9871633",
+    "-80.9871267"
+   ]
+  },
+  {
+   "place_id": 337412969,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 47612255,
+   "lat": "34.7261233",
+   "lon": "-80.6245758",
+   "category": "waterway",
+   "type": "river",
+   "place_rank": 19,
+   "importance": 0.14670166857404435,
+   "addresstype": "river",
+   "name": "Gills Creek",
+   "display_name": "Gills Creek, Lancaster County, South Carolina, United States",
+   "address": {
+    "river": "Gills Creek",
+    "county": "Lancaster County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.7257050",
+    "34.7265415",
+    "-80.6257152",
+    "-80.6234365"
+   ]
+  },
+  {
+   "place_id": 339733416,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 134838118,
+   "lat": "33.9810832",
+   "lon": "-80.9776678",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.1067336743724727,
+   "addresstype": "stream",
+   "name": "Gills Creek",
+   "display_name": "Gills Creek, Millwood, Columbia, Richland County, South Carolina, United States",
+   "address": {
+    "stream": "Gills Creek",
+    "hamlet": "Millwood",
+    "city": "Columbia",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9604623",
+    "33.9974942",
+    "-80.9809396",
+    "-80.9661673"
+   ]
+  }
+ ]
+}

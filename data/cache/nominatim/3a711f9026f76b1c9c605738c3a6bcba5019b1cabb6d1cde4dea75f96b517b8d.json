@@ -1,0 +1,46 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "trae lane",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343682719,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9188309,
+   "lat": "33.7663266",
+   "lon": "-84.6063313",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05337907454032193,
+   "addresstype": "road",
+   "name": "Trae Lane",
+   "display_name": "Trae Lane, Douglasville, Douglas County, Georgia, 30122, United States",
+   "address": {
+    "road": "Trae Lane",
+    "town": "Douglasville",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30122",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7636731",
+    "33.7684140",
+    "-84.6065130",
+    "-84.6046030"
+   ]
+  }
+ ]
+}

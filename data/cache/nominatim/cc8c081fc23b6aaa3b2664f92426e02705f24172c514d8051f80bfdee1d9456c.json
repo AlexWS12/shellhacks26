@@ -1,0 +1,45 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "skc",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342389439,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34770711,
+   "lat": "33.6194138",
+   "lon": "-83.8148953",
+   "category": "landuse",
+   "type": "industrial",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "industrial",
+   "name": "SKC Films",
+   "display_name": "SKC Films, Covington, Newton County, Georgia, United States",
+   "address": {
+    "industrial": "SKC Films",
+    "town": "Covington",
+    "county": "Newton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6169686",
+    "33.6217320",
+    "-83.8204233",
+    "-83.8094521"
+   ]
+  }
+ ]
+}

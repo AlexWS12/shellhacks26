@@ -1,0 +1,167 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "ashley park",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 340796802,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154140488,
+   "lat": "35.2348634",
+   "lon": "-80.8909278",
+   "category": "place",
+   "type": "suburb",
+   "place_rank": 19,
+   "importance": 0.14673768291752495,
+   "addresstype": "suburb",
+   "name": "Ashley Park",
+   "display_name": "Ashley Park, Charlotte, Mecklenburg County, North Carolina, 28208, United States",
+   "address": {
+    "suburb": "Ashley Park",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28208",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2148634",
+    "35.2548634",
+    "-80.9109278",
+    "-80.8709278"
+   ]
+  },
+  {
+   "place_id": 342774909,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 474075445,
+   "lat": "33.3908012",
+   "lon": "-84.7643828",
+   "category": "landuse",
+   "type": "retail",
+   "place_rank": 24,
+   "importance": 0.08005441596093688,
+   "addresstype": "retail",
+   "name": "Ashley Park",
+   "display_name": "Ashley Park, Newnan, Coweta County, Georgia, United States",
+   "address": {
+    "retail": "Ashley Park",
+    "town": "Newnan",
+    "county": "Coweta County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3863347",
+    "33.3949945",
+    "-84.7670021",
+    "-84.7612379"
+   ]
+  },
+  {
+   "place_id": 340470219,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 11824383295,
+   "lat": "35.2943017",
+   "lon": "-81.2681394",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08004383077744713,
+   "addresstype": "neighbourhood",
+   "name": "Ashley Park",
+   "display_name": "Ashley Park, Bessemer City, Gaston County, North Carolina, 28016, United States",
+   "address": {
+    "neighbourhood": "Ashley Park",
+    "town": "Bessemer City",
+    "county": "Gaston County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28016",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2843017",
+    "35.3043017",
+    "-81.2781394",
+    "-81.2581394"
+   ]
+  },
+  {
+   "place_id": 343467464,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 6550292621,
+   "lat": "33.7650534",
+   "lon": "-78.9571413",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08003750133516438,
+   "addresstype": "neighbourhood",
+   "name": "Ashley Park",
+   "display_name": "Ashley Park, Carolina Forest, Horry County, South Carolina, United States",
+   "address": {
+    "neighbourhood": "Ashley Park",
+    "village": "Carolina Forest",
+    "county": "Horry County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7550534",
+    "33.7750534",
+    "-78.9671413",
+    "-78.9471413"
+   ]
+  },
+  {
+   "place_id": 342471984,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153836202,
+   "lat": "33.5073355",
+   "lon": "-84.4768716",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08003750133516438,
+   "addresstype": "neighbourhood",
+   "name": "Ashley Park",
+   "display_name": "Ashley Park, Fayette County, Georgia, 30214, United States",
+   "address": {
+    "neighbourhood": "Ashley Park",
+    "county": "Fayette County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30214",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4973355",
+    "33.5173355",
+    "-84.4868716",
+    "-84.4668716"
+   ]
+  }
+ ]
+}

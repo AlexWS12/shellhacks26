@@ -1,0 +1,171 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "hill view",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343137583,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 901341416,
+   "lat": "33.5922667",
+   "lon": "-81.7688645",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08005742656595709,
+   "addresstype": "residential",
+   "name": "Hill View Manor",
+   "display_name": "Hill View Manor, Graniteville, Aiken County, South Carolina, United States",
+   "address": {
+    "residential": "Hill View Manor",
+    "town": "Graniteville",
+    "county": "Aiken County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5914213",
+    "33.5944348",
+    "-81.7694061",
+    "-81.7679493"
+   ]
+  },
+  {
+   "place_id": 340756097,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 16693695,
+   "lat": "35.1434498",
+   "lon": "-80.8249612",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053404349584191615,
+   "addresstype": "road",
+   "name": "South Hill View Drive",
+   "display_name": "South Hill View Drive, SouthPark, Charlotte, Mecklenburg County, North Carolina, 28210, United States",
+   "address": {
+    "road": "South Hill View Drive",
+    "suburb": "SouthPark",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28210",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.1421300",
+    "35.1435140",
+    "-80.8250566",
+    "-80.8236719"
+   ]
+  },
+  {
+   "place_id": 342436621,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9242197,
+   "lat": "33.9865002",
+   "lon": "-84.3548300",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339218509193557,
+   "addresstype": "road",
+   "name": "View Hill Court",
+   "display_name": "View Hill Court, Sandy Springs, Fulton County, Georgia, 30350, United States",
+   "address": {
+    "road": "View Hill Court",
+    "city": "Sandy Springs",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30350",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9864980",
+    "33.9866600",
+    "-84.3552570",
+    "-84.3543700"
+   ]
+  },
+  {
+   "place_id": 341206386,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12517185,
+   "lat": "34.8093508",
+   "lon": "-82.6045498",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053385474174105406,
+   "addresstype": "road",
+   "name": "Hill View Court",
+   "display_name": "Hill View Court, Botany Park, Easley, Pickens County, South Carolina, 29640, United States",
+   "address": {
+    "road": "Hill View Court",
+    "hamlet": "Botany Park",
+    "town": "Easley",
+    "county": "Pickens County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29640",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.8088460",
+    "34.8098724",
+    "-82.6048360",
+    "-82.6042964"
+   ]
+  },
+  {
+   "place_id": 300771186,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 251157002,
+   "lat": "31.8313306",
+   "lon": "-81.5785101",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053385420767528766,
+   "addresstype": "road",
+   "name": "Hill View Circle",
+   "display_name": "Hill View Circle, Hinesville, Liberty County, Georgia, 31313, United States",
+   "address": {
+    "road": "Hill View Circle",
+    "town": "Hinesville",
+    "county": "Liberty County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31313",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.8311397",
+    "31.8327385",
+    "-81.5797048",
+    "-81.5768100"
+   ]
+  }
+ ]
+}

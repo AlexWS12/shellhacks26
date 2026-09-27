@@ -1,0 +1,107 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "edenwood",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343240551,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153976948,
+   "lat": "33.9537650",
+   "lon": "-81.0598155",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13338441672388798,
+   "addresstype": "hamlet",
+   "name": "Edenwood",
+   "display_name": "Edenwood, Cayce, Lexington County, South Carolina, 29033, United States",
+   "address": {
+    "hamlet": "Edenwood",
+    "town": "Cayce",
+    "county": "Lexington County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29033",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9337650",
+    "33.9737650",
+    "-81.0798155",
+    "-81.0398155"
+   ]
+  },
+  {
+   "place_id": 343165415,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154307474,
+   "lat": "33.4145831",
+   "lon": "-82.0215059",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08006542687113753,
+   "addresstype": "neighbourhood",
+   "name": "Edenwood",
+   "display_name": "Edenwood, Windsor Springs Estates, Augusta, Richmond County, Georgia, 30906, United States",
+   "address": {
+    "neighbourhood": "Edenwood",
+    "hamlet": "Windsor Springs Estates",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30906",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4045831",
+    "33.4245831",
+    "-82.0315059",
+    "-82.0115059"
+   ]
+  },
+  {
+   "place_id": 342038989,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1456159801,
+   "lat": "34.0505855",
+   "lon": "-84.7942934",
+   "category": "landuse",
+   "type": "residential",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "residential",
+   "name": "Edenwood",
+   "display_name": "Edenwood, Paulding County, Georgia, United States",
+   "address": {
+    "residential": "Edenwood",
+    "county": "Paulding County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.0473159",
+    "34.0538739",
+    "-84.7975992",
+    "-84.7891688"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "cavender drive",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341948133,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9540388,
+   "lat": "34.7294377",
+   "lon": "-85.0013674",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533620332646677,
+   "addresstype": "road",
+   "name": "Cavender Drive",
+   "display_name": "Cavender Drive, Whitfield County, Georgia, 30720, United States",
+   "address": {
+    "road": "Cavender Drive",
+    "county": "Whitfield County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30720",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.7293709",
+    "34.7295239",
+    "-85.0047187",
+    "-84.9980156"
+   ]
+  }
+ ]
+}

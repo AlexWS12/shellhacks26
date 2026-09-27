@@ -1,0 +1,105 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "oostanaula",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 339775375,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153807937,
+   "lat": "34.4814762",
+   "lon": "-85.0143897",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Oostanaula",
+   "display_name": "Oostanaula, Gordon County, Georgia, 30703, United States",
+   "address": {
+    "hamlet": "Oostanaula",
+    "county": "Gordon County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30703",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.4614762",
+    "34.5014762",
+    "-85.0343897",
+    "-84.9943897"
+   ]
+  },
+  {
+   "place_id": 339758276,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9267479,
+   "lat": "34.4862255",
+   "lon": "-85.0149531",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Oostanaula",
+   "display_name": "Oostanaula, Gordon County, Georgia, 30703, United States",
+   "address": {
+    "road": "Oostanaula",
+    "hamlet": "Oostanaula",
+    "county": "Gordon County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30703",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.4816017",
+    "34.4907001",
+    "-85.0159469",
+    "-85.0145709"
+   ]
+  },
+  {
+   "place_id": 341413281,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 3857491,
+   "lat": "34.4355403",
+   "lon": "-85.0445604",
+   "category": "waterway",
+   "type": "river",
+   "place_rank": 18,
+   "importance": 0.35263345776344923,
+   "addresstype": "river",
+   "name": "Oostanaula River",
+   "display_name": "Oostanaula River, Gordon County, Georgia, United States",
+   "address": {
+    "river": "Oostanaula River",
+    "county": "Gordon County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.2539830",
+    "34.5776932",
+    "-85.1774494",
+    "-84.9030270"
+   ]
+  }
+ ]
+}

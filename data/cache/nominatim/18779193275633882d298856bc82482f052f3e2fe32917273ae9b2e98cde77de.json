@@ -1,0 +1,160 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "buzzard roost",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344135481,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358711591,
+   "lat": "34.6703655",
+   "lon": "-84.2421386",
+   "category": "natural",
+   "type": "peak",
+   "place_rank": 18,
+   "importance": 0.16000999999999999,
+   "addresstype": "peak",
+   "name": "Buzzard Roost",
+   "display_name": "Buzzard Roost, Fannin County, Georgia, United States",
+   "address": {
+    "peak": "Buzzard Roost",
+    "county": "Fannin County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.6703155",
+    "34.6704155",
+    "-84.2421886",
+    "-84.2420886"
+   ]
+  },
+  {
+   "place_id": 339120215,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 357801069,
+   "lat": "35.2181405",
+   "lon": "-83.9671305",
+   "category": "natural",
+   "type": "peak",
+   "place_rank": 18,
+   "importance": 0.16000999999999999,
+   "addresstype": "peak",
+   "name": "Buzzard Roost",
+   "display_name": "Buzzard Roost, Graham County, North Carolina, United States",
+   "address": {
+    "peak": "Buzzard Roost",
+    "county": "Graham County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2180905",
+    "35.2181905",
+    "-83.9671805",
+    "-83.9670805"
+   ]
+  },
+  {
+   "place_id": 340732958,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358716695,
+   "lat": "32.9670734",
+   "lon": "-84.5365906",
+   "category": "natural",
+   "type": "peak",
+   "place_rank": 18,
+   "importance": 0.16000999999999999,
+   "addresstype": "peak",
+   "name": "Buzzard Roost",
+   "display_name": "Buzzard Roost, Meriwether County, Georgia, United States",
+   "address": {
+    "peak": "Buzzard Roost",
+    "county": "Meriwether County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.9670234",
+    "32.9671234",
+    "-84.5366406",
+    "-84.5365406"
+   ]
+  },
+  {
+   "place_id": 340795219,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 357806874,
+   "lat": "35.2020422",
+   "lon": "-83.0268054",
+   "category": "natural",
+   "type": "peak",
+   "place_rank": 18,
+   "importance": 0.16000999999999999,
+   "addresstype": "peak",
+   "name": "Buzzard Roost",
+   "display_name": "Buzzard Roost, Jackson County, North Carolina, United States",
+   "address": {
+    "peak": "Buzzard Roost",
+    "county": "Jackson County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2019922",
+    "35.2020922",
+    "-83.0268554",
+    "-83.0267554"
+   ]
+  },
+  {
+   "place_id": 299161724,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 34489307,
+   "lat": "31.8802617",
+   "lon": "-83.2566765",
+   "category": "natural",
+   "type": "wetland",
+   "place_rank": 22,
+   "importance": 0.10667666666666664,
+   "addresstype": "wetland",
+   "name": "Buzzard Roost",
+   "display_name": "Buzzard Roost, Wilcox County, Georgia, United States",
+   "address": {
+    "wetland": "Buzzard Roost",
+    "county": "Wilcox County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.8770540",
+    "31.8831734",
+    "-83.2597451",
+    "-83.2537958"
+   ]
+  }
+ ]
+}

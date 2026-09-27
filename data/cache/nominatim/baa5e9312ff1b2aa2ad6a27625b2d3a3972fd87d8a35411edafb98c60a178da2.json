@@ -1,0 +1,80 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "coit",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344346381,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 10013895051,
+   "lat": "33.9157248",
+   "lon": "-83.9994602",
+   "category": "office",
+   "type": "yes",
+   "place_rank": 30,
+   "importance": 3.500190737769158e-05,
+   "addresstype": "office",
+   "name": "Coit",
+   "display_name": "Coit, Scenic Highway, Lawrenceville, Gwinnett County, Georgia, 30045, United States",
+   "address": {
+    "office": "Coit",
+    "road": "Scenic Highway",
+    "city": "Lawrenceville",
+    "county": "Gwinnett County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30045",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9156748",
+    "33.9157748",
+    "-83.9995102",
+    "-83.9994102"
+   ]
+  },
+  {
+   "place_id": 344453172,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 547949914,
+   "lat": "33.9802269",
+   "lon": "-81.0406335",
+   "category": "landuse",
+   "type": "industrial",
+   "place_rank": 24,
+   "importance": 0.08005108339055464,
+   "addresstype": "industrial",
+   "name": "Coit Gas Turbine Peaking Plant",
+   "display_name": "Coit Gas Turbine Peaking Plant, 300, Olympia, Columbia, Richland County, South Carolina, 29201, United States",
+   "address": {
+    "industrial": "Coit Gas Turbine Peaking Plant",
+    "house_number": "300",
+    "suburb": "Olympia",
+    "city": "Columbia",
+    "county": "Richland County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29201",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9800521",
+    "33.9804383",
+    "-81.0410100",
+    "-81.0404530"
+   ]
+  }
+ ]
+}

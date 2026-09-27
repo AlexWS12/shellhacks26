@@ -1,0 +1,73 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "colerain",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 303567799,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153980334,
+   "lat": "30.8330106",
+   "lon": "-81.9006672",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Colerain",
+   "display_name": "Colerain, Camden County, Georgia, United States",
+   "address": {
+    "hamlet": "Colerain",
+    "county": "Camden County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.8130106",
+    "30.8530106",
+    "-81.9206672",
+    "-81.8806672"
+   ]
+  },
+  {
+   "place_id": 340239863,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153945816,
+   "lat": "34.7237430",
+   "lon": "-81.7978783",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Colerain",
+   "display_name": "Colerain, Union County, South Carolina, United States",
+   "address": {
+    "hamlet": "Colerain",
+    "county": "Union County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.7037430",
+    "34.7437430",
+    "-81.8178783",
+    "-81.7778783"
+   ]
+  }
+ ]
+}

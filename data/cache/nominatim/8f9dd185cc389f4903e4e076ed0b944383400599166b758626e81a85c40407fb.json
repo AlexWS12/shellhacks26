@@ -1,0 +1,141 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "east dalton",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342853377,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 120613078,
+   "lat": "35.0619079",
+   "lon": "-85.3016542",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339850385290299,
+   "addresstype": "road",
+   "name": "Dalton",
+   "display_name": "Dalton, North Chattanooga, Chattanooga, Hamilton County, East Tennessee, Tennessee, 37405, United States",
+   "address": {
+    "road": "Dalton",
+    "suburb": "North Chattanooga",
+    "city": "Chattanooga",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37405",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0613672",
+    "35.0623779",
+    "-85.3020240",
+    "-85.3016298"
+   ]
+  },
+  {
+   "place_id": 343201428,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 43809311,
+   "lat": "35.2314898",
+   "lon": "-84.3102039",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670166857404438,
+   "addresstype": "stream",
+   "name": "Dalton Branch",
+   "display_name": "Dalton Branch, Monroe County, East Tennessee, Tennessee, 37314, United States",
+   "address": {
+    "stream": "Dalton Branch",
+    "county": "Monroe County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37314",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2311520",
+    "35.2337160",
+    "-84.3136040",
+    "-84.3076120"
+   ]
+  },
+  {
+   "place_id": 342884054,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 43824734,
+   "lat": "35.2323702",
+   "lon": "-84.3155108",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670166857404438,
+   "addresstype": "stream",
+   "name": "Dalton Branch",
+   "display_name": "Dalton Branch, Cataska, Monroe County, East Tennessee, Tennessee, 37314, United States",
+   "address": {
+    "stream": "Dalton Branch",
+    "hamlet": "Cataska",
+    "county": "Monroe County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37314",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2309200",
+    "35.2323770",
+    "-84.3172470",
+    "-84.3143590"
+   ]
+  },
+  {
+   "place_id": 342932091,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 43812242,
+   "lat": "35.2326409",
+   "lon": "-84.2926557",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10667666666666664,
+   "addresstype": "stream",
+   "name": "Dalton Branch",
+   "display_name": "Dalton Branch, Monroe County, East Tennessee, Tennessee, United States",
+   "address": {
+    "stream": "Dalton Branch",
+    "county": "Monroe County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2302200",
+    "35.2367170",
+    "-84.3076120",
+    "-84.2790350"
+   ]
+  }
+ ]
+}

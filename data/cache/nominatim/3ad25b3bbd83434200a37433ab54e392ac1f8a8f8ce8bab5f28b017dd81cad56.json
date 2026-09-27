@@ -1,0 +1,167 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "scout",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343840402,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 2354876174,
+   "lat": "33.7599918",
+   "lon": "-84.3027200",
+   "category": "amenity",
+   "type": "pub",
+   "place_rank": 30,
+   "importance": 5.771953917749321e-05,
+   "addresstype": "amenity",
+   "name": "Scout",
+   "display_name": "Scout, 321, West Hill Street, Oakhurst, Decatur, DeKalb County, Georgia, 30030, United States",
+   "address": {
+    "amenity": "Scout",
+    "house_number": "321",
+    "road": "West Hill Street",
+    "neighbourhood": "Oakhurst",
+    "town": "Decatur",
+    "county": "DeKalb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30030",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7599418",
+    "33.7600418",
+    "-84.3027700",
+    "-84.3026700"
+   ]
+  },
+  {
+   "place_id": 344136922,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 357089469,
+   "lat": "32.3596409",
+   "lon": "-80.6976071",
+   "category": "place",
+   "type": "island",
+   "place_rank": 17,
+   "importance": 0.1733827901121538,
+   "addresstype": "island",
+   "name": "Scout Island",
+   "display_name": "Scout Island, Port Royal, Beaufort County, South Carolina, 29905, United States",
+   "address": {
+    "island": "Scout Island",
+    "village": "Port Royal",
+    "county": "Beaufort County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29905",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.0396409",
+    "32.6796409",
+    "-81.0176071",
+    "-80.3776071"
+   ]
+  },
+  {
+   "place_id": 344169595,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358991749,
+   "lat": "33.5217754",
+   "lon": "-85.6666260",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.13337083466849772,
+   "addresstype": "dam",
+   "name": "Boy Scout Dam",
+   "display_name": "Boy Scout Dam, Cleburne County, Alabama, United States",
+   "address": {
+    "dam": "Boy Scout Dam",
+    "county": "Cleburne County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5217254",
+    "33.5218254",
+    "-85.6666760",
+    "-85.6665760"
+   ]
+  },
+  {
+   "place_id": 342843116,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 31123016,
+   "lat": "34.3973159",
+   "lon": "-84.0693906",
+   "category": "water",
+   "type": "reservoir",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "reservoir",
+   "name": "Girl Scout Camp Echo Lake",
+   "display_name": "Girl Scout Camp Echo Lake, Dawson County, Georgia, United States",
+   "address": {
+    "reservoir": "Girl Scout Camp Echo Lake",
+    "county": "Dawson County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.3963569",
+    "34.3982536",
+    "-84.0697257",
+    "-84.0688819"
+   ]
+  },
+  {
+   "place_id": 303981087,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 361988331,
+   "lat": "31.7834296",
+   "lon": "-84.6444211",
+   "category": "water",
+   "type": "lake",
+   "place_rank": 20,
+   "importance": 0.1333433333333333,
+   "addresstype": "lake",
+   "name": "Flint River Girl Scout Lake",
+   "display_name": "Flint River Girl Scout Lake, Randolph County, Georgia, United States",
+   "address": {
+    "lake": "Flint River Girl Scout Lake",
+    "county": "Randolph County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.7818062",
+    "31.7851076",
+    "-84.6473877",
+    "-84.6431176"
+   ]
+  }
+ ]
+}

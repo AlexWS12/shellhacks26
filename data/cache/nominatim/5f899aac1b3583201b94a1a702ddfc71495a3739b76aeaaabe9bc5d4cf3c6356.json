@@ -1,0 +1,73 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "rockville",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343338001,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 193348,
+   "lat": "32.6007382",
+   "lon": "-80.1948193",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.34731627116286135,
+   "addresstype": "town",
+   "name": "Rockville",
+   "display_name": "Rockville, Charleston County, South Carolina, United States",
+   "address": {
+    "town": "Rockville",
+    "county": "Charleston County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5954020",
+    "32.6085880",
+    "-80.2019890",
+    "-80.1843140"
+   ]
+  },
+  {
+   "place_id": 342959270,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154297495,
+   "lat": "33.3276362",
+   "lon": "-83.2187677",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.18554865524912875,
+   "addresstype": "hamlet",
+   "name": "Rockville",
+   "display_name": "Rockville, Putnam County, Georgia, United States",
+   "address": {
+    "hamlet": "Rockville",
+    "county": "Putnam County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3076362",
+    "33.3476362",
+    "-83.2387677",
+    "-83.1987677"
+   ]
+  }
+ ]
+}

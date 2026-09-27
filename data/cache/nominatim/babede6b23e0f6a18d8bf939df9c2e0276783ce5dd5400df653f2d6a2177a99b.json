@@ -1,0 +1,76 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "slappey drive",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342033101,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9155435,
+   "lat": "33.4342689",
+   "lon": "-84.6593304",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Slappey Drive",
+   "display_name": "Slappey Drive, Coweta County, Georgia, 30277, United States",
+   "address": {
+    "road": "Slappey Drive",
+    "county": "Coweta County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30277",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4337283",
+    "33.4343449",
+    "-84.6605604",
+    "-84.6578033"
+   ]
+  },
+  {
+   "place_id": 339710892,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9439099,
+   "lat": "32.2841281",
+   "lon": "-83.4836521",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05336833524071104,
+   "addresstype": "road",
+   "name": "Slappey Drive",
+   "display_name": "Slappey Drive, Hawkinsville, Pulaski County, Georgia, 31036, United States",
+   "address": {
+    "road": "Slappey Drive",
+    "town": "Hawkinsville",
+    "county": "Pulaski County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31036",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2837484",
+    "32.2845078",
+    "-83.4836846",
+    "-83.4836196"
+   ]
+  }
+ ]
+}

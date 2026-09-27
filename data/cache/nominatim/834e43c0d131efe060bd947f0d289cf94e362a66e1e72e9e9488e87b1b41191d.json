@@ -1,0 +1,74 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "brumbley creek",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 303791075,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 711202179,
+   "lat": "30.8823104",
+   "lon": "-84.1441595",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10669266727702752,
+   "addresstype": "stream",
+   "name": "Brumbley Creek",
+   "display_name": "Brumbley Creek, Grady County, Georgia, United States",
+   "address": {
+    "stream": "Brumbley Creek",
+    "county": "Grady County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.8682983",
+    "30.8957491",
+    "-84.1509173",
+    "-84.1392658"
+   ]
+  },
+  {
+   "place_id": 303529802,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 711202180,
+   "lat": "30.9016368",
+   "lon": "-84.1515919",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10669266727702752,
+   "addresstype": "stream",
+   "name": "Brumbley Creek",
+   "display_name": "Brumbley Creek, Grady County, Georgia, 31728, United States",
+   "address": {
+    "stream": "Brumbley Creek",
+    "county": "Grady County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31728",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.8958854",
+    "30.9075183",
+    "-84.1526968",
+    "-84.1501877"
+   ]
+  }
+ ]
+}

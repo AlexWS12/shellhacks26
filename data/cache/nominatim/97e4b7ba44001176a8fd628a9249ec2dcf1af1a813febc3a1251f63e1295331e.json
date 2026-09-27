@@ -1,0 +1,164 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "mountain view",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 339157980,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154114741,
+   "lat": "33.6417761",
+   "lon": "-84.3902038",
+   "category": "place",
+   "type": "locality",
+   "place_rank": 25,
+   "importance": 0.2521482229732802,
+   "addresstype": "locality",
+   "name": "Mountain View",
+   "display_name": "Mountain View, Coxs Crossing, Clayton County, Georgia, 30321, United States",
+   "address": {
+    "locality": "Mountain View",
+    "hamlet": "Coxs Crossing",
+    "county": "Clayton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30321",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6317761",
+    "33.6517761",
+    "-84.4002038",
+    "-84.3802038"
+   ]
+  },
+  {
+   "place_id": 342094459,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154018308,
+   "lat": "34.2595455",
+   "lon": "-83.8990688",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13337083466849772,
+   "addresstype": "hamlet",
+   "name": "Mountain View",
+   "display_name": "Mountain View, Hall County, Georgia, 30504, United States",
+   "address": {
+    "hamlet": "Mountain View",
+    "county": "Hall County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30504",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.2395455",
+    "34.2795455",
+    "-83.9190688",
+    "-83.8790688"
+   ]
+  },
+  {
+   "place_id": 337941990,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154341532,
+   "lat": "35.2509474",
+   "lon": "-82.7031797",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13337083466849772,
+   "addresstype": "hamlet",
+   "name": "Mountain View",
+   "display_name": "Mountain View, Transylvania County, North Carolina, 28768, United States",
+   "address": {
+    "hamlet": "Mountain View",
+    "county": "Transylvania County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28768",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2309474",
+    "35.2709474",
+    "-82.7231797",
+    "-82.6831797"
+   ]
+  },
+  {
+   "place_id": 340016866,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154282659,
+   "lat": "35.2434692",
+   "lon": "-81.2864698",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Mountain View",
+   "display_name": "Mountain View, Gaston County, North Carolina, United States",
+   "address": {
+    "hamlet": "Mountain View",
+    "county": "Gaston County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.2234692",
+    "35.2634692",
+    "-81.3064698",
+    "-81.2664698"
+   ]
+  },
+  {
+   "place_id": 340661478,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 722063714,
+   "lat": "35.0880818",
+   "lon": "-81.9292870",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08003500190737771,
+   "addresstype": "neighbourhood",
+   "name": "Mountain View",
+   "display_name": "Mountain View, Spartanburg County, South Carolina, United States",
+   "address": {
+    "neighbourhood": "Mountain View",
+    "county": "Spartanburg County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0864050",
+    "35.0898025",
+    "-81.9311535",
+    "-81.9274575"
+   ]
+  }
+ ]
+}

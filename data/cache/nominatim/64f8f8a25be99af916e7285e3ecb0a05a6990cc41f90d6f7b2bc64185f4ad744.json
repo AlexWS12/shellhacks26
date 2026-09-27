@@ -1,0 +1,165 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "hammond",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343366515,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 158623999,
+   "lat": "33.9051713",
+   "lon": "-78.8533584",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Hammond",
+   "display_name": "Hammond, Horry County, South Carolina, United States",
+   "address": {
+    "hamlet": "Hammond",
+    "county": "Horry County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8851713",
+    "33.9251713",
+    "-78.8733584",
+    "-78.8333584"
+   ]
+  },
+  {
+   "place_id": 340954923,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154348457,
+   "lat": "34.1395965",
+   "lon": "-80.5842481",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Hammond",
+   "display_name": "Hammond, Kershaw County, South Carolina, United States",
+   "address": {
+    "hamlet": "Hammond",
+    "county": "Kershaw County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.1195965",
+    "34.1595965",
+    "-80.6042481",
+    "-80.5642481"
+   ]
+  },
+  {
+   "place_id": 341279632,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154022248,
+   "lat": "34.5545532",
+   "lon": "-82.6004099",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Hammond",
+   "display_name": "Hammond, Anderson County, South Carolina, 29621, United States",
+   "address": {
+    "hamlet": "Hammond",
+    "county": "Anderson County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29621",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.5345532",
+    "34.5745532",
+    "-82.6204099",
+    "-82.5804099"
+   ]
+  },
+  {
+   "place_id": 342403766,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154297724,
+   "lat": "33.9253798",
+   "lon": "-84.3674264",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08005885175860224,
+   "addresstype": "neighbourhood",
+   "name": "Hammond",
+   "display_name": "Hammond, Sandy Springs, Fulton County, Georgia, 30328, United States",
+   "address": {
+    "neighbourhood": "Hammond",
+    "city": "Sandy Springs",
+    "county": "Fulton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30328",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.9153798",
+    "33.9353798",
+    "-84.3774264",
+    "-84.3574264"
+   ]
+  },
+  {
+   "place_id": 300893620,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9025378,
+   "lat": "31.2103917",
+   "lon": "-83.2440291",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053384369420920084,
+   "addresstype": "road",
+   "name": "Hammond",
+   "display_name": "Hammond, Nashville, Berrien County, Georgia, 31639, United States",
+   "address": {
+    "road": "Hammond",
+    "village": "Nashville",
+    "county": "Berrien County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31639",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2101495",
+    "31.2106339",
+    "-83.2440655",
+    "-83.2439927"
+   ]
+  }
+ ]
+}

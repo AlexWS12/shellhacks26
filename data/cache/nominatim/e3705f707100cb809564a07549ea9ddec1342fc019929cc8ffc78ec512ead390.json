@@ -1,0 +1,174 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "riverport",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 341654505,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 19486663,
+   "lat": "35.0766345",
+   "lon": "-85.2718886",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339850385290299,
+   "addresstype": "road",
+   "name": "Riverport Road",
+   "display_name": "Riverport Road, Riverside Park, Chattanooga, Hamilton County, East Tennessee, Tennessee, 37045, United States",
+   "address": {
+    "road": "Riverport Road",
+    "hamlet": "Riverside Park",
+    "city": "Chattanooga",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37045",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0718847",
+    "35.0811947",
+    "-85.2718974",
+    "-85.2704804"
+   ]
+  },
+  {
+   "place_id": 341738815,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 136782817,
+   "lat": "35.0815208",
+   "lon": "-85.2681901",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339850385290299,
+   "addresstype": "road",
+   "name": "Riverport Road",
+   "display_name": "Riverport Road, Boyce, Chattanooga, Hamilton County, East Tennessee, Tennessee, 37045, United States",
+   "address": {
+    "road": "Riverport Road",
+    "hamlet": "Boyce",
+    "city": "Chattanooga",
+    "county": "Hamilton County",
+    "region": "East Tennessee",
+    "state": "Tennessee",
+    "ISO3166-2-lvl4": "US-TN",
+    "postcode": "37045",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0811636",
+    "35.0818071",
+    "-85.2704804",
+    "-85.2658852"
+   ]
+  },
+  {
+   "place_id": 343474584,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 268543933,
+   "lat": "33.8578726",
+   "lon": "-79.0828943",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053388838788433625,
+   "addresstype": "road",
+   "name": "Riverport Drive",
+   "display_name": "Riverport Drive, Rivertown Row, Conway, Horry County, South Carolina, 29562, United States",
+   "address": {
+    "road": "Riverport Drive",
+    "neighbourhood": "Rivertown Row",
+    "city": "Conway",
+    "county": "Horry County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29562",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8568564",
+    "33.8584332",
+    "-79.0836892",
+    "-79.0817574"
+   ]
+  },
+  {
+   "place_id": 343385365,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 810132320,
+   "lat": "32.2113210",
+   "lon": "-81.0758351",
+   "category": "highway",
+   "type": "unclassified",
+   "place_rank": 26,
+   "importance": 0.05336541924162658,
+   "addresstype": "road",
+   "name": "Riverport Parkway",
+   "display_name": "Riverport Parkway, Hardeeville, Jasper County, South Carolina, United States",
+   "address": {
+    "road": "Riverport Parkway",
+    "village": "Hardeeville",
+    "county": "Jasper County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.2113125",
+    "32.2122777",
+    "-81.0796511",
+    "-81.0718327"
+   ]
+  },
+  {
+   "place_id": 341209218,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 943059667,
+   "lat": "34.6928292",
+   "lon": "-82.3213120",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.0533620332646677,
+   "addresstype": "road",
+   "name": "Riverport Drive",
+   "display_name": "Riverport Drive, Hartridge Manor, Greenville County, South Carolina, 29680, United States",
+   "address": {
+    "road": "Riverport Drive",
+    "neighbourhood": "Hartridge Manor",
+    "county": "Greenville County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29680",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.6919910",
+    "34.6936465",
+    "-82.3220614",
+    "-82.3205915"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "kathleen area",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343579715,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 18635744,
+   "lat": "32.4497914",
+   "lon": "-83.5165383",
+   "category": "leisure",
+   "type": "nature_reserve",
+   "place_rank": 24,
+   "importance": 0.08000999999999997,
+   "addresstype": "nature_reserve",
+   "name": "Oaky Woods Wildlife Management Area",
+   "display_name": "Oaky Woods Wildlife Management Area, 801, Bonaire, Houston County, Georgia, 30147, United States",
+   "address": {
+    "nature_reserve": "Oaky Woods Wildlife Management Area",
+    "house_number": "801",
+    "town": "Bonaire",
+    "county": "Houston County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30147",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.3636455",
+    "32.5105999",
+    "-83.5798821",
+    "-83.4826519"
+   ]
+  },
+  {
+   "place_id": 343773327,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1355840410,
+   "lat": "32.4497914",
+   "lon": "-83.5165383",
+   "category": "leisure",
+   "type": "nature_reserve",
+   "place_rank": 24,
+   "importance": 0.08000999999999997,
+   "addresstype": "nature_reserve",
+   "name": "Oaky Woods Wildlife Management Area",
+   "display_name": "Oaky Woods Wildlife Management Area, 801, Bonaire, Houston County, Georgia, 30147, United States",
+   "address": {
+    "nature_reserve": "Oaky Woods Wildlife Management Area",
+    "house_number": "801",
+    "town": "Bonaire",
+    "county": "Houston County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30147",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.3890852",
+    "32.5105999",
+    "-83.5798821",
+    "-83.4826519"
+   ]
+  },
+  {
+   "place_id": 342877626,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1355840411,
+   "lat": "32.3873351",
+   "lon": "-83.5462754",
+   "category": "leisure",
+   "type": "nature_reserve",
+   "place_rank": 24,
+   "importance": 0.08000999999999997,
+   "addresstype": "nature_reserve",
+   "name": "Oaky Woods Wildlife Management Area",
+   "display_name": "Oaky Woods Wildlife Management Area, 801, Houston County, Georgia, 30147, United States",
+   "address": {
+    "nature_reserve": "Oaky Woods Wildlife Management Area",
+    "house_number": "801",
+    "county": "Houston County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30147",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.3636455",
+    "32.4118040",
+    "-83.5615133",
+    "-83.5237450"
+   ]
+  }
+ ]
+}

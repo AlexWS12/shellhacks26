@@ -1,0 +1,75 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "echeconnee",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343022591,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153924933,
+   "lat": "32.6851436",
+   "lon": "-83.7004620",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Echeconnee",
+   "display_name": "Echeconnee, Houston County, Georgia, 31216, United States",
+   "address": {
+    "hamlet": "Echeconnee",
+    "county": "Houston County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31216",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6651436",
+    "32.7051436",
+    "-83.7204620",
+    "-83.6804620"
+   ]
+  },
+  {
+   "place_id": 342951322,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154343877,
+   "lat": "32.7201432",
+   "lon": "-83.7568517",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13339813305867093,
+   "addresstype": "hamlet",
+   "name": "Echeconnee Acres",
+   "display_name": "Echeconnee Acres, Macon, Bibb County, Georgia, United States",
+   "address": {
+    "hamlet": "Echeconnee Acres",
+    "city": "Macon",
+    "county": "Bibb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.7001432",
+    "32.7401432",
+    "-83.7768517",
+    "-83.7368517"
+   ]
+  }
+ ]
+}

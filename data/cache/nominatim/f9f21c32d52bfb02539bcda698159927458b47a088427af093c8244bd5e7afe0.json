@@ -1,0 +1,44 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "wellston",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342994039,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 119990,
+   "lat": "32.6200973",
+   "lon": "-83.6065680",
+   "category": "boundary",
+   "type": "administrative",
+   "place_rank": 16,
+   "importance": 0.520289035327092,
+   "addresstype": "city",
+   "name": "Warner Robins",
+   "display_name": "Warner Robins, Houston County, Georgia, United States",
+   "address": {
+    "city": "Warner Robins",
+    "county": "Houston County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5227150",
+    "32.6663890",
+    "-83.7477540",
+    "-83.5758660"
+   ]
+  }
+ ]
+}

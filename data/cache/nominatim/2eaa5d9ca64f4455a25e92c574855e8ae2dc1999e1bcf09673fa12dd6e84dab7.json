@@ -1,0 +1,180 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "north spa",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343218595,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12151328,
+   "lat": "32.9298178",
+   "lon": "-80.0549186",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339039826047147,
+   "addresstype": "road",
+   "name": "Spa Road",
+   "display_name": "Spa Road, Ashley Heights, North Charleston, Charleston County, South Carolina, 29418, United States",
+   "address": {
+    "road": "Spa Road",
+    "neighbourhood": "Ashley Heights",
+    "city": "North Charleston",
+    "county": "Charleston County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29418",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.9279438",
+    "32.9316464",
+    "-80.0566006",
+    "-80.0543550"
+   ]
+  },
+  {
+   "place_id": 341779217,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 938352015,
+   "lat": "35.0522694",
+   "lon": "-83.1970350",
+   "category": "tourism",
+   "type": "hotel",
+   "place_rank": 30,
+   "importance": 0.04539457909600718,
+   "addresstype": "tourism",
+   "name": "Old Edwards Inn and Spa",
+   "display_name": "Old Edwards Inn and Spa, 445, Main Street, Highlands, Macon County, North Carolina, 28741, United States",
+   "address": {
+    "tourism": "Old Edwards Inn and Spa",
+    "house_number": "445",
+    "road": "Main Street",
+    "town": "Highlands",
+    "county": "Macon County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28741",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0521530",
+    "35.0524014",
+    "-83.1971637",
+    "-83.1968686"
+   ]
+  },
+  {
+   "place_id": 340647208,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 836907829,
+   "lat": "35.1905870",
+   "lon": "-80.7758145",
+   "category": "shop",
+   "type": "beauty",
+   "place_rank": 30,
+   "importance": 7.101625085827447e-05,
+   "addresstype": "shop",
+   "name": "Studio M - Salon & Spa",
+   "display_name": "Studio M - Salon & Spa, 5124, Monroe Road, Eastfield, Charlotte, Mecklenburg County, North Carolina, 28205, United States",
+   "address": {
+    "shop": "Studio M - Salon & Spa",
+    "house_number": "5124",
+    "road": "Monroe Road",
+    "hamlet": "Eastfield",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28205",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.1905071",
+    "35.1906669",
+    "-80.7758961",
+    "-80.7757329"
+   ]
+  },
+  {
+   "place_id": 340706313,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 11630774478,
+   "lat": "35.1744973",
+   "lon": "-80.8394582",
+   "category": "shop",
+   "type": "beauty",
+   "place_rank": 30,
+   "importance": 7.101625085827447e-05,
+   "addresstype": "shop",
+   "name": "Myers Park Spa & Nails",
+   "display_name": "Myers Park Spa & Nails, Selwyn Avenue, Myers Park, Charlotte, Mecklenburg County, North Carolina, 28209, United States",
+   "address": {
+    "shop": "Myers Park Spa & Nails",
+    "road": "Selwyn Avenue",
+    "suburb": "Myers Park",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28209",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.1744473",
+    "35.1745473",
+    "-80.8395082",
+    "-80.8394082"
+   ]
+  },
+  {
+   "place_id": 340704084,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 9550362702,
+   "lat": "35.1605528",
+   "lon": "-80.8492485",
+   "category": "shop",
+   "type": "beauty",
+   "place_rank": 30,
+   "importance": 7.101625085827447e-05,
+   "addresstype": "shop",
+   "name": "Decor Nails and Spa",
+   "display_name": "Decor Nails and Spa, Park Road, Parkdale, Charlotte, Mecklenburg County, North Carolina, 28209, United States",
+   "address": {
+    "shop": "Decor Nails and Spa",
+    "road": "Park Road",
+    "suburb": "Parkdale",
+    "city": "Charlotte",
+    "county": "Mecklenburg County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28209",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.1605028",
+    "35.1606028",
+    "-80.8492985",
+    "-80.8491985"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "switch way",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342413033,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9193905,
+   "lat": "33.7535466",
+   "lon": "-84.5876494",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05337907454032193,
+   "addresstype": "road",
+   "name": "Switch Way",
+   "display_name": "Switch Way, Mableton, Douglas County, Georgia, 30122, United States",
+   "address": {
+    "road": "Switch Way",
+    "town": "Mableton",
+    "county": "Douglas County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30122",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7525471",
+    "33.7552567",
+    "-84.5901798",
+    "-84.5855240"
+   ]
+  },
+  {
+   "place_id": 342502919,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1024772798,
+   "lat": "33.7554012",
+   "lon": "-84.5853601",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05337907454032193,
+   "addresstype": "road",
+   "name": "Switch Way",
+   "display_name": "Switch Way, Mableton, Cobb County, Georgia, 30122, United States",
+   "address": {
+    "road": "Switch Way",
+    "town": "Mableton",
+    "county": "Cobb County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30122",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.7552567",
+    "33.7555436",
+    "-84.5855240",
+    "-84.5851945"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "jefferson street",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 301465788,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 10878776,
+   "lat": "30.3296749",
+   "lon": "-81.6659923",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.05340426108186462,
+   "addresstype": "road",
+   "name": "Jefferson Street",
+   "display_name": "Jefferson Street, LaVilla, Brooklyn, Jacksonville, Duval County, Florida, 32202, United States",
+   "address": {
+    "road": "Jefferson Street",
+    "neighbourhood": "LaVilla",
+    "hamlet": "Brooklyn",
+    "city": "Jacksonville",
+    "county": "Duval County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32202",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3282391",
+    "30.3311094",
+    "-81.6663991",
+    "-81.6655821"
+   ]
+  },
+  {
+   "place_id": 298165425,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 550349707,
+   "lat": "30.3344456",
+   "lon": "-81.6646165",
+   "category": "highway",
+   "type": "primary",
+   "place_rank": 26,
+   "importance": 0.05340426108186462,
+   "addresstype": "road",
+   "name": "Jefferson Street",
+   "display_name": "Jefferson Street, LaVilla, Jacksonville, Duval County, Florida, 32202, United States",
+   "address": {
+    "road": "Jefferson Street",
+    "neighbourhood": "LaVilla",
+    "city": "Jacksonville",
+    "county": "Duval County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32202",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3340686",
+    "30.3348220",
+    "-81.6647261",
+    "-81.6645046"
+   ]
+  },
+  {
+   "place_id": 301630226,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 47283331,
+   "lat": "30.3351575",
+   "lon": "-81.6644103",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05340426108186462,
+   "addresstype": "road",
+   "name": "Jefferson Street",
+   "display_name": "Jefferson Street, LaVilla, Jacksonville, Duval County, Florida, 32202, United States",
+   "address": {
+    "road": "Jefferson Street",
+    "neighbourhood": "LaVilla",
+    "city": "Jacksonville",
+    "county": "Duval County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32202",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3348220",
+    "30.3354930",
+    "-81.6645046",
+    "-81.6643160"
+   ]
+  }
+ ]
+}

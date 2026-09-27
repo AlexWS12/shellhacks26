@@ -1,0 +1,166 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "crooked creek",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342989193,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 18407198,
+   "lat": "33.2645625",
+   "lon": "-83.2712186",
+   "category": "boundary",
+   "type": "census",
+   "place_rank": 25,
+   "importance": 0.23992860907835414,
+   "addresstype": "census",
+   "name": "Crooked Creek",
+   "display_name": "Crooked Creek, Putnam County, Georgia, United States",
+   "address": {
+    "census": "Crooked Creek",
+    "village": "Crooked Creek",
+    "county": "Putnam County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2426910",
+    "33.2869940",
+    "-83.2931250",
+    "-83.2481650"
+   ]
+  },
+  {
+   "place_id": 342984120,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 5936014844,
+   "lat": "33.2604726",
+   "lon": "-83.2613951",
+   "category": "place",
+   "type": "village",
+   "place_rank": 19,
+   "importance": 0.23992860907835414,
+   "addresstype": "village",
+   "name": "Crooked Creek",
+   "display_name": "Crooked Creek, Putnam County, Georgia, United States",
+   "address": {
+    "village": "Crooked Creek",
+    "county": "Putnam County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.2404726",
+    "33.2804726",
+    "-83.2813951",
+    "-83.2413951"
+   ]
+  },
+  {
+   "place_id": 300819136,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1025879878,
+   "lat": "31.9187325",
+   "lon": "-81.1214329",
+   "category": "waterway",
+   "type": "river",
+   "place_rank": 19,
+   "importance": 0.14673480964370178,
+   "addresstype": "river",
+   "name": "Crooked Creek",
+   "display_name": "Crooked Creek, Savannah, Chatham County, Georgia, United States",
+   "address": {
+    "river": "Crooked Creek",
+    "city": "Savannah",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.9018136",
+    "31.9277438",
+    "-81.1297490",
+    "-81.1179545"
+   ]
+  },
+  {
+   "place_id": 342943401,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153815439,
+   "lat": "32.6473561",
+   "lon": "-85.3571677",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13338834897383076,
+   "addresstype": "hamlet",
+   "name": "Crooked Creek",
+   "display_name": "Crooked Creek, Opelika, Lee County, Alabama, 36801, United States",
+   "address": {
+    "hamlet": "Crooked Creek",
+    "town": "Opelika",
+    "county": "Lee County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36801",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6273561",
+    "32.6673561",
+    "-85.3771677",
+    "-85.3371677"
+   ]
+  },
+  {
+   "place_id": 300784158,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1022368299,
+   "lat": "31.9939478",
+   "lon": "-81.2230604",
+   "category": "waterway",
+   "type": "tidal_channel",
+   "place_rank": 20,
+   "importance": 0.13337309147783624,
+   "addresstype": "tidal_channel",
+   "name": "Crooked Creek",
+   "display_name": "Crooked Creek, Georgetown, Chatham County, Georgia, 31419, United States",
+   "address": {
+    "tidal_channel": "Crooked Creek",
+    "town": "Georgetown",
+    "county": "Chatham County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31419",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.9930176",
+    "31.9968087",
+    "-81.2244034",
+    "-81.2198019"
+   ]
+  }
+ ]
+}

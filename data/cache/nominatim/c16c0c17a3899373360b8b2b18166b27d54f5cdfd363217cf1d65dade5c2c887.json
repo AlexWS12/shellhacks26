@@ -1,0 +1,140 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "fenwick street",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342390203,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9451261,
+   "lat": "33.4781959",
+   "lon": "-81.9956777",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339876020447086,
+   "addresstype": "road",
+   "name": "Fenwick Street",
+   "display_name": "Fenwick Street, Hillside Park, Augusta, Richmond County, Georgia, 30904, United States",
+   "address": {
+    "road": "Fenwick Street",
+    "hamlet": "Hillside Park",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30904",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4754320",
+    "33.4816998",
+    "-82.0035110",
+    "-81.9873694"
+   ]
+  },
+  {
+   "place_id": 343441818,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 364426905,
+   "lat": "33.4717789",
+   "lon": "-81.9753626",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339876020447086,
+   "addresstype": "road",
+   "name": "Fenwick Street",
+   "display_name": "Fenwick Street, Augusta, Richmond County, Georgia, 30901, United States",
+   "address": {
+    "road": "Fenwick Street",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30901",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4708032",
+    "33.4727635",
+    "-81.9781858",
+    "-81.9725365"
+   ]
+  },
+  {
+   "place_id": 342486035,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9451263,
+   "lat": "33.4669316",
+   "lon": "-81.9614120",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05339876020447086,
+   "addresstype": "road",
+   "name": "Fenwick Street",
+   "display_name": "Fenwick Street, Augusta, Richmond County, Georgia, 30901, United States",
+   "address": {
+    "road": "Fenwick Street",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30901",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4667575",
+    "33.4671007",
+    "-81.9619024",
+    "-81.9609233"
+   ]
+  },
+  {
+   "place_id": 339985988,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 318070743,
+   "lat": "33.5299726",
+   "lon": "-81.8516093",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05339075989929042,
+   "addresstype": "road",
+   "name": "Fenwick Street",
+   "display_name": "Fenwick Street, Langley, Aiken County, South Carolina, 29822, United States",
+   "address": {
+    "road": "Fenwick Street",
+    "village": "Langley",
+    "county": "Aiken County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29822",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.5299718",
+    "33.5311860",
+    "-81.8531313",
+    "-81.8500396"
+   ]
+  }
+ ]
+}

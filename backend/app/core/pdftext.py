@@ -1,4 +1,4 @@
-# Uses pdftotext if it's installed, otherwise the text cache (so Windows works without poppler).
+# Reads the committed text cache first; runs pdftotext only for a PDF with no cache yet.
 
 import hashlib
 import shutil
@@ -25,14 +25,15 @@ def _sha(path: Path) -> str:
 def read_pdf(path: Path) -> PdfText:
     sha = _sha(path)
     cached = TEXT_CACHE / f"{sha}.txt"
-    if shutil.which("pdftotext"):
-        out = subprocess.run(["pdftotext", "-layout", str(path), "-"], capture_output=True, check=True).stdout
-        text, method = out.decode("utf-8", errors="replace"), "pdftotext"
-        if not cached.exists():
-            TEXT_CACHE.mkdir(parents=True, exist_ok=True)
-            cached.write_text(text, encoding="utf-8")
-    elif cached.exists():
+    # Cache first: the committed text came from poppler and the parsers are tested against it.
+    # Other pdftotext builds (e.g. xpdf in Git Bash) lay pages out differently.
+    if cached.exists():
         text, method = cached.read_text(encoding="utf-8"), "cache"
+    elif shutil.which("pdftotext"):
+        out = subprocess.run(["pdftotext", "-enc", "UTF-8", "-layout", str(path), "-"], capture_output=True, check=True).stdout
+        text, method = out.decode("utf-8", errors="replace"), "pdftotext"
+        TEXT_CACHE.mkdir(parents=True, exist_ok=True)
+        cached.write_text(text, encoding="utf-8")
     else:
         raise RuntimeError(f"pdftotext is not installed and there is no text cache for {path.name} ({cached})")
     pages = text.split("\f")

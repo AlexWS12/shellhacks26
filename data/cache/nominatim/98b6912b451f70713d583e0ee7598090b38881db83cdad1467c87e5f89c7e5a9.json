@@ -1,0 +1,165 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "st helena",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344917589,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 357120243,
+   "lat": "32.3868607",
+   "lon": "-80.5606622",
+   "category": "place",
+   "type": "island",
+   "place_rank": 17,
+   "importance": 0.3378692872294172,
+   "addresstype": "island",
+   "name": "Saint Helena Island",
+   "display_name": "Saint Helena Island, Beaufort County, South Carolina, 29920, United States",
+   "address": {
+    "island": "Saint Helena Island",
+    "county": "Beaufort County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29920",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.0668607",
+    "32.7068607",
+    "-80.8806622",
+    "-80.2406622"
+   ]
+  },
+  {
+   "place_id": 342691436,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 730884480,
+   "lat": "32.4348383",
+   "lon": "-80.6746666",
+   "category": "landuse",
+   "type": "cemetery",
+   "place_rank": 24,
+   "importance": 0.08005660105287248,
+   "addresstype": "cemetery",
+   "name": "St. Helena Cemetery",
+   "display_name": "St. Helena Cemetery, Beaufort, Beaufort County, South Carolina, United States",
+   "address": {
+    "cemetery": "St. Helena Cemetery",
+    "town": "Beaufort",
+    "county": "Beaufort County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.4344781",
+    "32.4352081",
+    "-80.6752165",
+    "-80.6741316"
+   ]
+  },
+  {
+   "place_id": 341144720,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 368394983,
+   "lat": "32.4546345",
+   "lon": "-80.4403817",
+   "category": "natural",
+   "type": "bay",
+   "place_rank": 22,
+   "importance": 0.10667666666666664,
+   "addresstype": "bay",
+   "name": "Saint Helena Sound",
+   "display_name": "Saint Helena Sound, Beaufort County, South Carolina, United States",
+   "address": {
+    "bay": "Saint Helena Sound",
+    "county": "Beaufort County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.4545845",
+    "32.4546845",
+    "-80.4404317",
+    "-80.4403317"
+   ]
+  },
+  {
+   "place_id": 342254153,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1347195964,
+   "lat": "33.4125531",
+   "lon": "-82.0435348",
+   "category": "landuse",
+   "type": "religious",
+   "place_rank": 24,
+   "importance": 0.08006542687113753,
+   "addresstype": "religious",
+   "name": "Convent of Saint Helena",
+   "display_name": "Convent of Saint Helena, Mayfair, Augusta, Richmond County, Georgia, United States",
+   "address": {
+    "religious": "Convent of Saint Helena",
+    "hamlet": "Mayfair",
+    "city": "Augusta",
+    "county": "Richmond County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4102868",
+    "33.4149313",
+    "-82.0464508",
+    "-82.0420885"
+   ]
+  },
+  {
+   "place_id": 426094175,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1550665219,
+   "lat": "34.8841777",
+   "lon": "-83.4089748",
+   "category": "landuse",
+   "type": "cemetery",
+   "place_rank": 24,
+   "importance": 0.08002600061036085,
+   "addresstype": "cemetery",
+   "name": "Saint Helena Catholic Church Columbarium",
+   "display_name": "Saint Helena Catholic Church Columbarium, Clayton, Rabun County, Georgia, United States",
+   "address": {
+    "cemetery": "Saint Helena Catholic Church Columbarium",
+    "town": "Clayton",
+    "county": "Rabun County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.8840940",
+    "34.8843591",
+    "-83.4092224",
+    "-83.4087312"
+   ]
+  }
+ ]
+}

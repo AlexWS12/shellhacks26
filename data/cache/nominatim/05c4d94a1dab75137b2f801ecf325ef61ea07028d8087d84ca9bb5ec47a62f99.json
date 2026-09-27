@@ -1,0 +1,45 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "cornish mountain",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343067460,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 358683505,
+   "lat": "33.6734475",
+   "lon": "-83.8137912",
+   "category": "natural",
+   "type": "peak",
+   "place_rank": 18,
+   "importance": 0.16000999999999999,
+   "addresstype": "peak",
+   "name": "Cornish Mountain",
+   "display_name": "Cornish Mountain, Newton County, Georgia, 30053, United States",
+   "address": {
+    "peak": "Cornish Mountain",
+    "county": "Newton County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30053",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6733975",
+    "33.6734975",
+    "-83.8138412",
+    "-83.8137412"
+   ]
+  }
+ ]
+}

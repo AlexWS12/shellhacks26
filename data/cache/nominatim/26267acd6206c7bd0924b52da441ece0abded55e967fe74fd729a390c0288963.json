@@ -1,0 +1,163 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "yates",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 343392138,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 154290900,
+   "lat": "33.4634470",
+   "lon": "-84.8949385",
+   "category": "place",
+   "type": "locality",
+   "place_rank": 25,
+   "importance": 0.06668658655680171,
+   "addresstype": "locality",
+   "name": "Yates",
+   "display_name": "Yates, Coweta County, Georgia, 30275, United States",
+   "address": {
+    "locality": "Yates",
+    "county": "Coweta County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30275",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4534470",
+    "33.4734470",
+    "-84.9049385",
+    "-84.8849385"
+   ]
+  },
+  {
+   "place_id": 341897144,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 357809628,
+   "lat": "35.0123055",
+   "lon": "-84.0679653",
+   "category": "natural",
+   "type": "peak",
+   "place_rank": 18,
+   "importance": 0.16000999999999999,
+   "addresstype": "peak",
+   "name": "Yates Top",
+   "display_name": "Yates Top, Cherokee County, North Carolina, United States",
+   "address": {
+    "peak": "Yates Top",
+    "county": "Cherokee County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "35.0122555",
+    "35.0123555",
+    "-84.0680153",
+    "-84.0679153"
+   ]
+  },
+  {
+   "place_id": 344288863,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 158652843,
+   "lat": "34.9348758",
+   "lon": "-79.7975572",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13337083466849772,
+   "addresstype": "hamlet",
+   "name": "Yates Hill",
+   "display_name": "Yates Hill, Richmond County, North Carolina, 28379, United States",
+   "address": {
+    "hamlet": "Yates Hill",
+    "county": "Richmond County",
+    "state": "North Carolina",
+    "ISO3166-2-lvl4": "US-NC",
+    "postcode": "28379",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.9148758",
+    "34.9548758",
+    "-79.8175572",
+    "-79.7775572"
+   ]
+  },
+  {
+   "place_id": 340066206,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153598460,
+   "lat": "33.3678932",
+   "lon": "-85.2321683",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13336833524071104,
+   "addresstype": "hamlet",
+   "name": "Yates Crossroads",
+   "display_name": "Yates Crossroads, Heard County, Georgia, United States",
+   "address": {
+    "hamlet": "Yates Crossroads",
+    "county": "Heard County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.3478932",
+    "33.3878932",
+    "-85.2521683",
+    "-85.2121683"
+   ]
+  },
+  {
+   "place_id": 342862781,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1279370374,
+   "lat": "33.4595762",
+   "lon": "-84.9082442",
+   "category": "waterway",
+   "type": "dam",
+   "place_rank": 20,
+   "importance": 0.1333580338750286,
+   "addresstype": "dam",
+   "name": "Plant Yates Ash Pond #2 Dam",
+   "display_name": "Plant Yates Ash Pond #2 Dam, Coweta County, Georgia, 30275, United States",
+   "address": {
+    "dam": "Plant Yates Ash Pond #2 Dam",
+    "county": "Coweta County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "30275",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.4586630",
+    "33.4602921",
+    "-84.9087247",
+    "-84.9074936"
+   ]
+  }
+ ]
+}

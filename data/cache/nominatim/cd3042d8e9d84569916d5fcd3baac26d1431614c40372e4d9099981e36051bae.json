@@ -1,0 +1,163 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "killian",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 344422646,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 818424286,
+   "lat": "32.5666980",
+   "lon": "-81.2651824",
+   "category": "highway",
+   "type": "track",
+   "place_rank": 26,
+   "importance": 0.0533433333333333,
+   "addresstype": "road",
+   "name": "Killian",
+   "display_name": "Killian, Jasper County, South Carolina, United States",
+   "address": {
+    "road": "Killian",
+    "county": "Jasper County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.5657833",
+    "32.5707385",
+    "-81.2753320",
+    "-81.2562643"
+   ]
+  },
+  {
+   "place_id": 342293354,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 11171483,
+   "lat": "33.8766873",
+   "lon": "-84.1133396",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08005168154421298,
+   "addresstype": "neighbourhood",
+   "name": "Killian Hill Manor",
+   "display_name": "Killian Hill Manor, Mountain Park, Gwinnett County, Georgia, United States",
+   "address": {
+    "neighbourhood": "Killian Hill Manor",
+    "town": "Mountain Park",
+    "county": "Gwinnett County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8721214",
+    "33.8811336",
+    "-84.1194820",
+    "-84.1068998"
+   ]
+  },
+  {
+   "place_id": 343244415,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 11165560,
+   "lat": "33.8882066",
+   "lon": "-84.1140232",
+   "category": "landuse",
+   "type": "religious",
+   "place_rank": 24,
+   "importance": 0.08005168154421298,
+   "addresstype": "religious",
+   "name": "Killian Hill Baptist Church",
+   "display_name": "Killian Hill Baptist Church, Luxomni, Lilburn, Gwinnett County, Georgia, United States",
+   "address": {
+    "religious": "Killian Hill Baptist Church",
+    "suburb": "Luxomni",
+    "town": "Lilburn",
+    "county": "Gwinnett County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8857144",
+    "33.8900909",
+    "-84.1164426",
+    "-84.1118048"
+   ]
+  },
+  {
+   "place_id": 343250169,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 11143471,
+   "lat": "33.8527177",
+   "lon": "-84.0747109",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08004274738689247,
+   "addresstype": "neighbourhood",
+   "name": "Killian Ridge",
+   "display_name": "Killian Ridge, Gwinnett County, Georgia, United States",
+   "address": {
+    "neighbourhood": "Killian Ridge",
+    "county": "Gwinnett County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8483156",
+    "33.8571236",
+    "-84.0786159",
+    "-84.0704323"
+   ]
+  },
+  {
+   "place_id": 343899702,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 11142766,
+   "lat": "33.8636919",
+   "lon": "-84.0836084",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08004274738689247,
+   "addresstype": "neighbourhood",
+   "name": "Killian Woods",
+   "display_name": "Killian Woods, Gwinnett County, Georgia, United States",
+   "address": {
+    "neighbourhood": "Killian Woods",
+    "county": "Gwinnett County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.8611194",
+    "33.8663122",
+    "-84.0863621",
+    "-84.0811908"
+   ]
+  }
+ ]
+}

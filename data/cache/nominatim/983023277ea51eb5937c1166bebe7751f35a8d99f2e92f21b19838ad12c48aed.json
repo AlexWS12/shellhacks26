@@ -1,0 +1,168 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "hatch",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 300939397,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 840331486,
+   "lat": "31.9322466",
+   "lon": "-82.3444512",
+   "category": "landuse",
+   "type": "industrial",
+   "place_rank": 24,
+   "importance": 0.4196979736104267,
+   "addresstype": "industrial",
+   "name": "Hatch Nuclear Power Plant",
+   "display_name": "Hatch Nuclear Power Plant, Appling County, Georgia, United States",
+   "address": {
+    "industrial": "Hatch Nuclear Power Plant",
+    "county": "Appling County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.9272073",
+    "31.9379008",
+    "-82.3510587",
+    "-82.3351050"
+   ]
+  },
+  {
+   "place_id": 300791854,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1289549480,
+   "lat": "31.9282281",
+   "lon": "-82.3431782",
+   "category": "landuse",
+   "type": "landfill",
+   "place_rank": 24,
+   "importance": 0.0800477355611505,
+   "addresstype": "landfill",
+   "name": "Hatch Spent Fuel Storage",
+   "display_name": "Hatch Spent Fuel Storage, Appling County, Georgia, United States",
+   "address": {
+    "landfill": "Hatch Spent Fuel Storage",
+    "county": "Appling County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.9273989",
+    "31.9290573",
+    "-82.3434467",
+    "-82.3429098"
+   ]
+  },
+  {
+   "place_id": 303447005,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 10872624,
+   "lat": "30.3287480",
+   "lon": "-81.5314525",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.05340426108186462,
+   "addresstype": "road",
+   "name": "Hatch Road",
+   "display_name": "Hatch Road, Jacksonville, Duval County, Florida, 32225, United States",
+   "address": {
+    "road": "Hatch Road",
+    "city": "Jacksonville",
+    "county": "Duval County",
+    "state": "Florida",
+    "ISO3166-2-lvl4": "US-FL",
+    "postcode": "32225",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "30.3286890",
+    "30.3288070",
+    "-81.5320840",
+    "-81.5308210"
+   ]
+  },
+  {
+   "place_id": 300872393,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 9002580,
+   "lat": "31.7899988",
+   "lon": "-82.3517607",
+   "category": "highway",
+   "type": "trunk",
+   "place_rank": 26,
+   "importance": 0.053384540321965324,
+   "addresstype": "road",
+   "name": "Hatch Parkway North",
+   "display_name": "Hatch Parkway North, Clay Homes, Baxley, Appling County, Georgia, 51513, United States",
+   "address": {
+    "road": "Hatch Parkway North",
+    "neighbourhood": "Clay Homes",
+    "town": "Baxley",
+    "county": "Appling County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "51513",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.7872430",
+    "31.7929630",
+    "-82.3517634",
+    "-82.3506870"
+   ]
+  },
+  {
+   "place_id": 341255381,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 12424943,
+   "lat": "34.8406232",
+   "lon": "-82.4312856",
+   "category": "highway",
+   "type": "residential",
+   "place_rank": 26,
+   "importance": 0.053370834668497714,
+   "addresstype": "road",
+   "name": "Hatch Street",
+   "display_name": "Hatch Street, Mountain View Homes, Greenville, Greenville County, South Carolina, 29611, United States",
+   "address": {
+    "road": "Hatch Street",
+    "hamlet": "Mountain View Homes",
+    "city": "Greenville",
+    "county": "Greenville County",
+    "state": "South Carolina",
+    "ISO3166-2-lvl4": "US-SC",
+    "postcode": "29611",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "34.8394450",
+    "34.8417860",
+    "-82.4322530",
+    "-82.4303360"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "north opelika",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 342860834,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153760210,
+   "lat": "32.6698551",
+   "lon": "-85.4005026",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13338834897383076,
+   "addresstype": "hamlet",
+   "name": "North Gate",
+   "display_name": "North Gate, Opelika, Lee County, Alabama, 36801, United States",
+   "address": {
+    "hamlet": "North Gate",
+    "town": "Opelika",
+    "county": "Lee County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36801",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6498551",
+    "32.6898551",
+    "-85.4205026",
+    "-85.3805026"
+   ]
+  },
+  {
+   "place_id": 342873071,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153540764,
+   "lat": "32.6737440",
+   "lon": "-85.3860576",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13338834897383076,
+   "addresstype": "hamlet",
+   "name": "North Hills",
+   "display_name": "North Hills, Opelika, Lee County, Alabama, 36801, United States",
+   "address": {
+    "hamlet": "North Hills",
+    "town": "Opelika",
+    "county": "Lee County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36801",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6537440",
+    "32.6937440",
+    "-85.4060576",
+    "-85.3660576"
+   ]
+  },
+  {
+   "place_id": 342900718,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 153623095,
+   "lat": "32.6548554",
+   "lon": "-85.4510595",
+   "category": "place",
+   "type": "hamlet",
+   "place_rank": 20,
+   "importance": 0.13338834897383076,
+   "addresstype": "hamlet",
+   "name": "North Auburn",
+   "display_name": "North Auburn, Opelika, Lee County, Alabama, United States",
+   "address": {
+    "hamlet": "North Auburn",
+    "town": "Opelika",
+    "county": "Lee County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6348554",
+    "32.6748554",
+    "-85.4710595",
+    "-85.4310595"
+   ]
+  },
+  {
+   "place_id": 342876481,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "node",
+   "osm_id": 10813944033,
+   "lat": "32.7091036",
+   "lon": "-85.3149347",
+   "category": "place",
+   "type": "neighbourhood",
+   "place_rank": 24,
+   "importance": 0.08005501564049741,
+   "addresstype": "neighbourhood",
+   "name": "North Industrial Park",
+   "display_name": "North Industrial Park, Opelika, Lee County, Alabama, United States",
+   "address": {
+    "neighbourhood": "North Industrial Park",
+    "town": "Opelika",
+    "county": "Lee County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6991036",
+    "32.7191036",
+    "-85.3249347",
+    "-85.3049347"
+   ]
+  },
+  {
+   "place_id": 342861139,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 7787371,
+   "lat": "32.6613069",
+   "lon": "-85.3369145",
+   "category": "highway",
+   "type": "tertiary",
+   "place_rank": 26,
+   "importance": 0.05338834897383074,
+   "addresstype": "road",
+   "name": "North Uniroyal Road",
+   "display_name": "North Uniroyal Road, West Ridge, Opelika, Lee County, Alabama, 36801, United States",
+   "address": {
+    "road": "North Uniroyal Road",
+    "hamlet": "West Ridge",
+    "town": "Opelika",
+    "county": "Lee County",
+    "state": "Alabama",
+    "ISO3166-2-lvl4": "US-AL",
+    "postcode": "36801",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "32.6428168",
+    "32.6716130",
+    "-85.3407246",
+    "-85.3270400"
+   ]
+  }
+ ]
+}

@@ -1,19 +1,22 @@
-# Source order: override > sponsor sample > OSM substation > town.
-# Fuzzy matches (OSM, towns) get confirmed by the judge.
+# Source order: override > benchmark points > OSM substation > GeoNames town > Nominatim > unlocated.
+# Fuzzy matches get confirmed by the judge. Code rejects a match that puts one project's two ends
+# more than MAX_SPAN_MI apart, then looks again near the end it trusts more.
 
 import asyncio
 
 from app import config
-from app.clients import gemini, overpass
+from app.clients import gemini, nominatim, overpass
 from app.core.endpoints import clean_endpoint, looks_awkward, split_endpoints
 from app.core.models import Check, Endpoint, Project
 from app.core.normalize import norm_key
-from app.core.overlap import center
-from app.core.places import OsmIndex, Place, Towns, load_overrides, sponsor_points, strip_generic
+from app.core.overlap import center, distance_mi
+from app.core.places import OsmIndex, Place, States, Towns, load_overrides, sponsor_points, variants
 from app.core.sample import match_projects
 from app.runtime.agent import Agent, AgentSpec, Ctx
 
 ACCEPT = 0.5
+MAX_SPAN_MI = 100.0  # longer than any single line or tie in either plan
+STRENGTH = {"override": 0, "sponsor_file": 0, "overpass": 1, "nominatim": 2, "geonames_town": 2}
 SPLIT_SCHEMA = {"type": "object", "properties": {"endpoints": {"type": "array", "items": {"type": "string"}, "maxItems": 2},
                                                  "note": {"type": "string"}}, "required": ["endpoints"]}
 
@@ -41,7 +44,9 @@ class Geocoder(Agent):
                 out["summary"] = f"{len(features)} named substations in SC + GA ({source})"
             elif not out["summary"]:
                 out["summary"] = "no OpenStreetMap data (OSM_LIVE is off)"
-        self.osm = OsmIndex(features or [])
+        nominatim.start_budget(config.NOMINATIM_BUDGET_S)
+        self.states = States()
+        self.osm = OsmIndex(features or [], self.states)
         self.towns, self.overrides, self.points = Towns(), load_overrides(), sponsor_points(b.sample)
         self.by_sample = {pid: ref for ref, pid in b.sample_map.items()}
 
@@ -65,22 +70,32 @@ class Geocoder(Agent):
         await asyncio.gather(*(one(p) for p in list(b.projects.values())))
         un = [p for p in b.projects.values() if p.lat is None]
         conf = lambda c: sum(1 for p in b.projects.values() if p.location_confidence == c)  # noqa: E731
+        why = {"no endpoint names in the title": 0, "a candidate was found but rejected": 0, "no source had the name": 0}
+        for p in un:
+            if not p.endpoints:
+                why["no endpoint names in the title"] += 1
+            elif any("rejected" in t for e in p.endpoints for t in e.evidence.get("tried", [])):
+                why["a candidate was found but rejected"] += 1
+            else:
+                why["no source had the name"] += 1
         unlocated_check = Check(
             id="geo:unlocated", level="warn", rule="unlocated", title="Projects with no location yet",
-            detail=f"{len(un)} projects have endpoints that no source could place. "
-                   + "They stay off the map and out of the overlap math.",
+            detail=f"{len(un)} projects have endpoints that no source could place: "
+                   + ", ".join(f"{n} {k}" for k, n in why.items() if n)
+                   + ". They stay off the map and out of the overlap math. Each one lists what was tried.",
             source="Geocoder output")
         b.checks.append(unlocated_check)  # the validator runs in parallel, so report it here
         ctx.emit("check.found", check=unlocated_check.model_dump())
         ctx.log(f"Geocoder: {conf('verified')} at surveyed points, {conf('confirmed_osm')} confirmed in OSM, "
-                f"{conf('town') + conf('partial')} at town level, {len(un)} unlocated.")
+                f"{conf('town') + conf('partial')} at town level, {len(un)} unlocated. "
+                "Method: OpenStreetMap via Overpass, each match checked against the filing.")
         return f"{placed} placed, {len(un)} unlocated"
 
     @staticmethod
     def reason(p: Project) -> str:
         if not p.endpoints:
             return "no endpoint names found in the project title"
-        return "no source matched: " + ", ".join(e.name for e in p.endpoints)
+        return " | ".join(f"{e.name}: {e.evidence.get('reason', 'not tried')}" for e in p.endpoints if e.lat is None)
 
     async def locate_project(self, ctx: Ctx, p: Project) -> None:
         state = "SC" if p.utility == "DESC" else "GA"
@@ -91,13 +106,17 @@ class Geocoder(Agent):
             p.endpoints = [Endpoint(name=pt.name, lat=pt.lat, lon=pt.lon,
                                     method="sponsor_file" if pt.lat is not None else "none",
                                     confidence="verified" if pt.lat is not None else "unlocated",
-                                    evidence={"ref_id": ref, "file": "Projects_Overlaps.xlsx"})
+                                    evidence={"ref_id": ref, "file": "Projects_Overlaps.xlsx"} | ({} if pt.lat is not None else {
+                                        "tried": ["benchmark file: no coordinates for this endpoint"],
+                                        "reason": "no coordinates in the benchmark file; left unlocated so the center "
+                                                  "matches the benchmark's own"}))
                            for pt in (sp.a, sp.b) if pt.name]
         else:
             names = split_endpoints(p.name)
             if looks_awkward(p.name, names) and gemini.enabled():
                 names = await self.gemini_split(ctx, p, names)
-            p.endpoints = [await self.locate_endpoint(ctx, p, n, state) for n in names]
+            eps = [await self.locate_endpoint(ctx, p, n, state) for n in names]
+            p.endpoints = await self.check_span(ctx, p, eps, state)
         c = center([(e.lat, e.lon) for e in p.endpoints])
         p.lat, p.lon = (c if c else (None, None))
         located = {e.confidence for e in p.endpoints if e.lat is not None}
@@ -124,43 +143,74 @@ class Geocoder(Agent):
             return names
         return fallback
 
-    async def locate_endpoint(self, ctx: Ctx, p: Project, name: str, state: str) -> Endpoint:
+    async def check_span(self, ctx: Ctx, p: Project, eps: list[Endpoint], state: str) -> list[Endpoint]:
+        located = [e for e in eps if e.lat is not None]
+        if len(located) != 2:
+            return eps
+        a, b = located
+        d = distance_mi((a.lat, a.lon), (b.lat, b.lon))  # type: ignore[arg-type]
+        if d <= MAX_SPAN_MI:
+            return eps
+        # drop the weaker match; between equals, the one outside the filing's state
+        rank = lambda e: (STRENGTH.get(e.method, 3), self.states.state_of(e.lat, e.lon) != state)  # noqa: E731
+        weak, keep = (a, b) if rank(a) > rank(b) else (b, a)
+        if STRENGTH.get(weak.method, 3) == 0:
+            return eps  # both from verified sources: leave it for a human
+        ctx.emit("endpoint.rejected", project_id=p.id, endpoint=weak.name, candidate=weak.evidence.get("matched", ""),
+                 actor="code")
+        ctx.log(f"Geocoder: {weak.name} -> {weak.evidence.get('matched')} is {d:.0f} mi from {keep.name}, "
+                f"too far for one project. Looking again near {keep.name}.")
+        note = f"{weak.evidence.get('matched')} rejected by code: {d:.0f} mi from {keep.name} (limit {MAX_SPAN_MI:.0f})"
+        again = await self.locate_endpoint(ctx, p, weak.name, state, near=(keep.lat, keep.lon), prior=[note])  # type: ignore[arg-type]
+        return [again if e is weak else e for e in eps]
+
+    def _far(self, lat: float, lon: float, near: tuple[float, float] | None) -> bool:
+        return near is not None and distance_mi((lat, lon), near) > MAX_SPAN_MI
+
+    async def locate_endpoint(self, ctx: Ctx, p: Project, name: str, state: str,
+                              near: tuple[float, float] | None = None, prior: list[str] | None = None) -> Endpoint:
+        tried: list[str] = list(prior or [])
         key = norm_key(name)
-        for k in dict.fromkeys([key, strip_generic(key)]):
-            if not k:
-                continue
+        keys, exact = variants(key), variants(key, strip=False)
+        for k in keys:
             if (o := self.overrides.get(f"{k}|{state}")) is not None:
                 return self._ep(name, o, "override", "verified", o.extra)
-            if (s := self.points.get(k)) is not None:
+            if (s := self.points.get(k)) is not None and not self._far(s.lat, s.lon, near):
                 return self._ep(name, s, "sponsor_file", "verified", s.extra)
-        seen: set[str] = set()
-        for score, f, via in [c for k in dict.fromkeys([key, strip_generic(key)]) for c in self.osm.candidates(k)]:
-            if f["osm_id"] in seen:
-                continue
-            seen.add(f["osm_id"])
-            candidate = {k2: f[k2] for k2 in ("name", "operator", "voltage", "lat", "lon")}
-            # Extra fields only for plants/switches and non-name matches, so plain substation judgments stay cached.
+
+        cands = [c for c in self.osm.candidates(key, state) if not self._far(c[1]["lat"], c[1]["lon"], near)]
+        if not cands:
+            tried.append("OpenStreetMap: no substation by that name" + (" nearby" if near else ""))
+        for score, f, via in cands:
+            same = f.get("state") == state
+            candidate = {**{k2: f[k2] for k2 in ("name", "operator", "voltage", "lat", "lon")},
+                         "state": f.get("state") or "outside SC/GA"}
             if f.get("power", "substation") != "substation":
                 candidate["power"] = f["power"]
             if via != "name":
                 candidate["matched_on"] = {"alt_name": f.get("alt_names"), "ref": f.get("ref"), "name_part": f["name"],
                                            "operator+name": f"{f['operator']} {f['name']}"}.get(via)
+            exact = score == 1.0 and via in ("name", "alt_name")
             v = await ctx.ask_noul(
                 "Is this OpenStreetMap substation the endpoint the filing names?", f"{name} → {f['name']}",
-                {"endpoint": name, "utility": p.sponsor, "state": state, "project": p.name,
+                {"endpoint": name, "utility": p.sponsor, "filing_state": state, "project": p.name,
                  "description": p.description[:400], "zone": p.zone, "candidate": candidate},
-                true="Same facility: the name matches and the operator, voltage and area are consistent with the project.",
-                false="A different facility, e.g. a similarly named substation of another utility or in the wrong area.",
-                heuristic=lambda s=score, via=via: 0.85 if s == 1.0 and via in ("name", "alt_name") else 0.4,
+                true="Same facility: the name matches and the operator, voltage and state are consistent with the project.",
+                false="A different facility, e.g. a similarly named substation of another utility or in another state "
+                      "or region than the project describes.",
+                heuristic=lambda e=exact, m=same: (0.85 if m else 0.45) if e else (0.4 if m else 0.25),
                 project_id=p.id)
             if v.value >= ACCEPT:
                 return self._ep(name, Place(f["lat"], f["lon"], f["name"], {}), "overpass", "confirmed_osm",
                                 {"osm_id": f["osm_id"], "osm_name": f["name"], "operator": f["operator"],
-                                 "osm_match": via, "judge": v.actor, "p_match": round(float(v.value), 3)})
-        for k in dict.fromkeys([key, strip_generic(key)]):
-            town = self.towns.find(k, state) if k else None
-            if town is None:
-                continue
+                                 "osm_match": via, "candidate_state": f.get("state"), "judge": v.actor,
+                                 "p_match": round(float(v.value), 3)})
+            tried.append(f"OpenStreetMap {f['name']} ({f.get('state') or 'outside SC/GA'}): rejected by {v.actor}")
+
+        towns = [(k, t) for k in keys if k and (t := self.towns.find(k, state)) and not self._far(t.lat, t.lon, near)]
+        if not towns:
+            tried.append(f"GeoNames: no town by that name in {state}")
+        for k, town in towns[:1]:
             v = await ctx.ask_noul(
                 "Is this town a fair approximate location for the endpoint?", f"{name} → {town.label}",
                 {"endpoint": name, "project": p.name, "description": p.description[:400],
@@ -168,13 +218,54 @@ class Geocoder(Agent):
                 true="The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
                 false="The name only shares a word with the town or clearly refers to something elsewhere "
                       "(e.g. 'Union Pier' is not Union, SC).",
-                heuristic=lambda: 0.75 if k == key else 0.55, project_id=p.id)
+                heuristic=lambda k=k: 0.75 if k in exact else 0.55, project_id=p.id)
             if v.value >= ACCEPT:
                 return self._ep(name, town, "geonames_town", "town",
                                 {"town": town.label, "county": town.extra.get("county"), "judge": v.actor,
                                  "p_match": round(float(v.value), 3)})
             ctx.emit("endpoint.rejected", project_id=p.id, endpoint=name, candidate=town.label, actor=v.actor)
-        return Endpoint(name=name)
+            tried.append(f"GeoNames {town.label}: rejected by {v.actor}")
+
+        found = await self.nominatim(ctx, p, name, key, keys, state, near, tried)
+        if found is not None:
+            return found
+        return Endpoint(name=name, evidence={"tried": tried, "reason": "; ".join(tried)})
+
+    async def nominatim(self, ctx: Ctx, p: Project, name: str, key: str, keys: list[str], state: str,
+                        near: tuple[float, float] | None, tried: list[str]) -> Endpoint | None:
+        async with ctx.tool("nominatim_search", {"q": key}, actor="osm") as out:
+            results, source = await nominatim.search(key)
+            out["summary"] = f"{len(results)} places or substations ({source})"
+        if source in ("off", "error", "budget"):
+            tried.append("Nominatim: " + {"off": "not queried (offline)", "error": "request failed",
+                                          "budget": "skipped, this run's lookup time was used up"}[source])
+            return None
+        for r in results:
+            r["state"] = self.states.state_of(r["lat"], r["lon"])
+        named = [r for r in results if norm_key(r["name"]) in keys and not self._far(r["lat"], r["lon"], near)]
+        named.sort(key=lambda r: (r["state"] != state, r["kind"] != "power=substation"))
+        if not named:
+            tried.append("Nominatim: no place or substation by that name" + (" nearby" if near else ""))
+        for r in named[:2]:
+            same = r["state"] == state
+            sub = r["kind"] == "power=substation"
+            v = await ctx.ask_noul(
+                "Is this OpenStreetMap place a fair approximate location for the endpoint?",
+                f"{name} → {r['display_name'][:60]}",
+                {"endpoint": name, "filing_state": state, "project": p.name, "description": p.description[:400],
+                 "zone": p.zone, "candidate": {"name": r["name"], "kind": r["kind"], "county": r["county"],
+                                               "state": r["state"] or "outside SC/GA", "lat": r["lat"], "lon": r["lon"]}},
+                true="The endpoint is this substation, or is named after this community and the project area fits.",
+                false="The name only coincides; the project describes a different area or state.",
+                heuristic=lambda m=same, s=sub: (0.8 if s else 0.7) if m else 0.45, project_id=p.id)
+            if v.value >= ACCEPT:
+                return self._ep(name, Place(r["lat"], r["lon"], r["display_name"], {}), "nominatim",
+                                "confirmed_osm" if sub else "town",
+                                {"osm_id": r["osm_id"], "kind": r["kind"], "county": r["county"],
+                                 "candidate_state": r["state"], "judge": v.actor, "p_match": round(float(v.value), 3)})
+            ctx.emit("endpoint.rejected", project_id=p.id, endpoint=name, candidate=r["display_name"][:80], actor=v.actor)
+            tried.append(f"Nominatim {r['name']} ({r['state'] or 'outside SC/GA'}): rejected by {v.actor}")
+        return None
 
     @staticmethod
     def _ep(name: str, place: Place, method: str, confidence: str, evidence: dict) -> Endpoint:

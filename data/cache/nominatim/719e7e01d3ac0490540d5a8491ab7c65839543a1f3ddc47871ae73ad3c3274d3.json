@@ -1,0 +1,166 @@
+{
+ "provider": "nominatim",
+ "version": "v1",
+ "payload": {
+  "q": "kettle creek",
+  "viewbox": "-85.7,35.3,-78.4,30.3",
+  "bounded": 1,
+  "countrycodes": "us",
+  "format": "jsonv2",
+  "addressdetails": 1,
+  "limit": 5
+ },
+ "response": [
+  {
+   "place_id": 300969954,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 803029182,
+   "lat": "31.2639468",
+   "lon": "-82.3601079",
+   "category": "waterway",
+   "type": "canal",
+   "place_rank": 20,
+   "importance": 0.13337083466849772,
+   "addresstype": "canal",
+   "name": "Kettle Creek",
+   "display_name": "Kettle Creek, Jamestown, Ware County, Georgia, 31501, United States",
+   "address": {
+    "canal": "Kettle Creek",
+    "village": "Jamestown",
+    "county": "Ware County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31501",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2638062",
+    "31.2640917",
+    "-82.3621655",
+    "-82.3580506"
+   ]
+  },
+  {
+   "place_id": 343095903,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "relation",
+   "osm_id": 14383720,
+   "lat": "33.6896170",
+   "lon": "-82.8856560",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 21,
+   "importance": 0.12000999999999995,
+   "addresstype": "stream",
+   "name": "Kettle Creek",
+   "display_name": "Kettle Creek, Wilkes County, Georgia, United States",
+   "address": {
+    "stream": "Kettle Creek",
+    "county": "Wilkes County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "33.6554241",
+    "33.7832660",
+    "-82.9225650",
+    "-82.8122368"
+   ]
+  },
+  {
+   "place_id": 300867707,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 803029173,
+   "lat": "31.2458119",
+   "lon": "-82.3835020",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670416800183105,
+   "addresstype": "stream",
+   "name": "Kettle Creek",
+   "display_name": "Kettle Creek, Waycross, Ware County, Georgia, United States",
+   "address": {
+    "stream": "Kettle Creek",
+    "town": "Waycross",
+    "county": "Ware County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2205451",
+    "31.2638062",
+    "-82.4026450",
+    "-82.3621655"
+   ]
+  },
+  {
+   "place_id": 303451406,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 803029162,
+   "lat": "31.1896236",
+   "lon": "-82.4045578",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10670166857404438,
+   "addresstype": "stream",
+   "name": "Kettle Creek",
+   "display_name": "Kettle Creek, Emerson Park, Ware County, Georgia, United States",
+   "address": {
+    "stream": "Kettle Creek",
+    "hamlet": "Emerson Park",
+    "county": "Ware County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.1752531",
+    "31.2092674",
+    "-82.4184746",
+    "-82.4041456"
+   ]
+  },
+  {
+   "place_id": 300859223,
+   "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 1001797846,
+   "lat": "31.2118708",
+   "lon": "-82.4054822",
+   "category": "waterway",
+   "type": "stream",
+   "place_rank": 22,
+   "importance": 0.10669266727702752,
+   "addresstype": "stream",
+   "name": "Kettle Creek",
+   "display_name": "Kettle Creek, Waycross, Ware County, Georgia, 31503, United States",
+   "address": {
+    "stream": "Kettle Creek",
+    "town": "Waycross",
+    "county": "Ware County",
+    "state": "Georgia",
+    "ISO3166-2-lvl4": "US-GA",
+    "postcode": "31503",
+    "country": "United States",
+    "country_code": "us"
+   },
+   "boundingbox": [
+    "31.2096231",
+    "31.2143342",
+    "-82.4065502",
+    "-82.4049363"
+   ]
+  }
+ ]
+}
