@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Buzzard Roost",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Adamsville - Buzzard Roost 230kV Rebuild And Jumper Upgrade",
+   "description": "Rebuild the line sections from Adamsville to Boat Rock Road (8.08 miles) on the Adamsville - Buzzard Roost 230kV line with 200C 1351 ACSS Martin conductor. Replace the AAC 750 jumper on the line at Adamsville with (2) 1590 AAC jumper. Replace 1590 AAC jumpers at Bakers Ferry and Boat Rock with (2) 1590 AAC jumpers. Replace 1600A line switches at Boat Rock with 3000A switches.",
+   "zone": "208",
+   "candidate": {
+    "name": "Buzzard Roost Dam Substation",
+    "operator": "",
+    "voltage": "44000",
+    "lat": 34.16889,
+    "lon": -81.9025522
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.15
+   }
+  },
+  "cost_usd": 2.5788000000000004e-05,
+  "latency_ms": 207
+ }
+}

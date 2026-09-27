@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Magnolia",
+   "utility": "SAV",
+   "state": "GA",
+   "project": "SAV: Magnolia - Truman Parkway 115kV Rebuild",
+   "description": "Rebuild 3 miles of the Magnolia - Truman Parkway 115kV from 75C 927 ACAR to 200C 1351 ACSS Martin conductor or higher rated conductor. Upgrade 1200A switches at Magnolia substation to 2000A switches and jumpers at Truman Parkway.",
+   "zone": "219",
+   "candidate": {
+    "name": "Magnolia Substation",
+    "operator": "Georgia Power",
+    "voltage": "115000;46000;13800",
+    "lat": 32.0226869,
+    "lon": -81.0861807
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.86
+   }
+  },
+  "cost_usd": 2.3688000000000004e-05,
+  "latency_ms": 273
+ }
+}

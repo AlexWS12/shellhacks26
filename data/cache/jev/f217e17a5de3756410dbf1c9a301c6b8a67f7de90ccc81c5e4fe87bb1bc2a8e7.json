@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "SAV: CC - Hyundai Motors Savannah Aka. Project Ea",
+   "description": "Construct a new Hyundai 230kV substation with an eight element 230kV ring bus and four 230/25kV banks. Construct a new Newton Rd 230kV substation with a five element 230kV ring bus and loop through the Little Ogeechee - Meldrim Black and White 230kV lines. Build two new 230kV lines connecting from Hyundai - Newton Rd (12 miles) and Hyundai - Meldrim (10 miles). At Meldrim, add a breaker to accommodate for the new Hyundai line. Install a 115/25kV bank at Interstate Centre and build a new 115kV line from Interstate Centre - Hyundai (2.3 miles) for bridge power."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "substation_construction",
+    "confidence": 0.99,
+    "probabilities": {
+     "substation_construction": 0.99,
+     "new_line": 0.0,
+     "rebuild": 0.0,
+     "other": 0.01,
+     "in_substation_equipment": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.6838000000000003e-05,
+  "latency_ms": 358
+ }
+}

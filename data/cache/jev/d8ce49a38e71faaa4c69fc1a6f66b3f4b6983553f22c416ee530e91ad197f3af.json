@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Eatonton Primary",
+   "project": "GTC: Eatonton Primary (035591) - Lick Creek 115kV Rebuild",
+   "description": "Rebuild approximately 7.5 miles Eatonton Primary - Lick Creek 115kV line section with 100C 795 ACSR conductor.",
+   "candidate_town": "Eatonton, GA",
+   "county": "Putnam County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  },
+  "cost_usd": 1.953e-05,
+  "latency_ms": 191
+ }
+}

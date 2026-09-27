@@ -44,10 +44,11 @@ export function fmtDate(iso: string | null | undefined): string {
 
 export const plural = (n: number, word: string) => `${n.toLocaleString()} ${word}${n === 1 ? "" : "s"}`;
 
+// one engine token per decider, defined in app/globals.css
 export function engineColor(engine: string): string {
-  if (engine.includes("Jev") && engine.includes("Gemini")) return "var(--accent)";
+  if (engine.includes("Jev") && engine.includes("Gemini")) return "var(--mixed)";
   if (engine.includes("Jev")) return "var(--jev)";
   if (engine.includes("Gemini")) return "var(--gemini)";
-  if (engine.includes("OSM")) return "var(--desc)";
-  return "var(--faint)";
+  if (engine.includes("OSM")) return "var(--osm)";
+  return "var(--code)";
 }

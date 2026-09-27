@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Summerville",
+   "project": "Summerville 115kV Loop: Rebuild",
+   "description": "Replacing several wood pole sections on the Summerville 115 kV Loop that have reached the end of life.",
+   "candidate_town": "Summerville, SC",
+   "county": "Dorchester County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  },
+  "cost_usd": 1.8186000000000002e-05,
+  "latency_ms": 454
+ }
+}

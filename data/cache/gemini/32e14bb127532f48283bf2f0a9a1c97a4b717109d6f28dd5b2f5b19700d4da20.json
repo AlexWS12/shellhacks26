@@ -1,0 +1,12 @@
+{
+ "provider": "gemini",
+ "version": "gemini-v1",
+ "payload": {
+  "model": "gemini-3.8-flash",
+  "system": "You write one short paragraph for a transmission planner about two nearby planned projects from different utilities. Use ONLY the facts given. Do not introduce any number that is not in the facts. 3 to 5 sentences, plain language, no headings, no bullet points.",
+  "prompt": "Facts (JSON):\n{'distance_mi': 0.84, 'time_gap_days': 517, 'windows_overlap': True, 'location_confidence': 'confirmed_osm', 'shared': {'timing': 'concurrent', 'items': ['crews', 'equipment and cranes', 'staging/laydown yards', 'outage coordination'], 'level': 'high', 'types': ['rebuild', 'rebuild']}, 'dominion': {'utility': 'Dominion Energy South Carolina', 'name': 'St George - Sumter 230kV Tie: Rebuild Line from Santee Substation - Duke/Progress Energy Tie', 'type': 'rebuild', 'status': 'Planned', 'in_service': '2025-12-31', 'build_start': '2024-01-01', 'description': 'Rebuild Line from Santee Substation - Duke/Progress Energy Tie.', 'need': 'Grid hardening.', 'cost': 4000000, 'source': '2024-2028-2million-and-above-project-descriptions.pdf p.29 (ID 6809 M)'}, 'georgia': {'utility': 'Georgia (SAV)', 'name': 'SAV: Goshen (SAV) - Kraft 115kV Line Rebuild', 'type': 'rebuild', 'status': 'Planned', 'in_service': '2027-06-01', 'build_start': '2024-06-01', 'description': 'Rebuild 9.3 miles of Goshen - Kraft 115kV line from Kraft - Godley J - Rice Hope from 100C 795 ACSR Drake to 200C 1351 ACSS Martin.', 'need': '', 'cost': None, 'source': '2025_IRP_Volume_3_PUBLIC_DISCLOSURE.pdf p.313 (TEAMS 20785, zone 219)'}}"
+ },
+ "response": {
+  "text": "Dominion Energy South Carolina and Georgia (SAV) have planned line rebuild projects located 0.84 miles apart. Dominion plans to rebuild the St George - Sumter 230kV Tie for grid hardening at a cost of 4000000 between 2024-01-01 and 2025-12-31. Georgia (SAV) plans to rebuild 9.3 miles of the Goshen - Kraft 115kV line between 2024-06-01 and 2027-06-01. Because their construction windows overlap concurrently with a time gap of 517 days, there is a high opportunity to share crews, equipment and cranes, staging/laydown yards, and outage coordination."
+ }
+}

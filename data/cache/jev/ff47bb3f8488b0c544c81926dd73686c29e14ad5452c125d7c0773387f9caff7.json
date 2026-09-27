@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Midway",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Pond Fork - Midway 115kV Line",
+   "description": "GTC: Construct approximately 6 miles of 115kV line with minimum 170C 1351 ACSS conductor from Gillsville Tap Junction to Pond Fork, utilizing the existing GTC owned portion of the North Jackson - Lawrence Smith 46kV ROW. At Pond Fork, install a second 230/115kV 400MVA auto transformer and terminate the Pond Fork - Midway 115kV line.",
+   "zone": "212",
+   "candidate": {
+    "name": "Midway Substation",
+    "operator": "",
+    "voltage": "115000;12470",
+    "lat": 32.0576578,
+    "lon": -85.5186145
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.61
+   }
+  },
+  "cost_usd": 2.4402000000000005e-05,
+  "latency_ms": 271
+ }
+}

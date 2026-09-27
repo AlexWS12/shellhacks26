@@ -1,0 +1,31 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "project": "Scout 230 kV Sub and Fold-in: Construct",
+   "description": "Construct 230kV Transmission Line for Scout Customer Substation and modify VCS1 and Killian terminals.",
+   "need": "Load growth."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  },
+  "cost_usd": 1.6632000000000003e-05,
+  "latency_ms": 472
+ }
+}

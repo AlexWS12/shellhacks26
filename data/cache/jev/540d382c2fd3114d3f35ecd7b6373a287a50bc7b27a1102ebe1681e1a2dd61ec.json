@@ -1,0 +1,31 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "project": "Church Creek - Ritter 230kV - Replace 38 Large Angles and Dead Ends",
+   "description": "Replace 6.5 miles of aging conductor.",
+   "need": "Replacing approximately 38 guyed wooden structures due to recent failures in the fiberglass strain insulators along this line. Structures to be changed out are dead ends/large angles."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.56
+   }
+  },
+  "cost_usd": 1.7640000000000004e-05,
+  "latency_ms": 490
+ }
+}

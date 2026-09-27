@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "MEAG: Aultman Road - Fort Valley #1 115 kV Rebuild",
+   "description": "Rebuild approximately 8 miles of the Aultman Road - Fort Valley #1 115kV line with 200C 1351 ACSS conductor."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "rebuild",
+    "confidence": 1.0,
+    "probabilities": {
+     "rebuild": 1.0,
+     "other": 0.0,
+     "new_line": 0.0,
+     "in_substation_equipment": 0.0,
+     "substation_construction": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.1672000000000002e-05,
+  "latency_ms": 220
+ }
+}

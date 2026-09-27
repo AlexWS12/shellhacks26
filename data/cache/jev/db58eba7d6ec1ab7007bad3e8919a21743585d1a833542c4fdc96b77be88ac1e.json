@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "GTC: Heard County - Tenaska 500kV (Second Line)",
+   "description": "GTC: Build a second Heard County - Tenaska 500kV line, 0.8 miles, with 100C (3) 1113 ACSR Bluejay conductors. Add a 500kV breaker at Heard County. GPC: Add a 500kV breaker at Tenaska."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "new_line",
+    "confidence": 0.73,
+    "probabilities": {
+     "substation_construction": 0.0,
+     "other": 0.07,
+     "in_substation_equipment": 0.01,
+     "rebuild": 0.13,
+     "new_line": 0.79
+    }
+   }
+  },
+  "cost_usd": 2.3100000000000002e-05,
+  "latency_ms": 179
+ }
+}

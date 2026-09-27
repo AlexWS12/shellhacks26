@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Fitzgerald",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Fitzgerald - Pitts 115 kV Line Rebuild",
+   "description": "Rebuild approximately 26.14 miles of the Fitzgerald - Pitts 115kV line with 200C 1351 ACSS.",
+   "zone": "214",
+   "candidate": {
+    "name": "Fitzgerald Substation",
+    "operator": "",
+    "voltage": "115000;46000",
+    "lat": 31.7293346,
+    "lon": -83.2924114
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.69
+   }
+  },
+  "cost_usd": 2.1840000000000004e-05,
+  "latency_ms": 215
+ }
+}

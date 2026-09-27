@@ -1,0 +1,70 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "agent": "Reader \u00b7 GA",
+   "role": "Reads the ten-year plan table and joins each row to its project page",
+   "running_s": 2.0,
+   "records": "56/208",
+   "recent_events": [
+    "project.extracted: ",
+    "source.progress: TEAMS 20066: SAV: Boulevard - Deptford 115kV Reconductor",
+    "project.extracted: ",
+    "source.progress: TEAMS 19966: SAV: CC - Big Ogeechee 500/230kV (CC Network Improvements)",
+    "project.extracted: ",
+    "source.progress: TEAMS 20277: SAV: Mcintosh - Purrysburg 230kV Reactors"
+   ]
+  },
+  "questions": {
+   "stuck": {
+    "type": "noul",
+    "instructions": "Is this pipeline agent stuck, i.e. not making progress on its job?",
+    "criteria": {
+     "true": "Its counters stopped moving, it repeats the same step, or it keeps failing the same way.",
+     "false": "Recent events show it moving through its records or steps."
+    }
+   },
+   "progress": {
+    "type": "score",
+    "instructions": "How far along is this agent in its job?",
+    "criteria": [
+     "Not started",
+     "Started",
+     "About halfway",
+     "Nearly done",
+     "Done"
+    ]
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "stuck": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "progress": {
+    "type": "score",
+    "score": 1.04,
+    "confidence": 0.96,
+    "legend": {
+     "0": "Not started",
+     "1": "Started",
+     "2": "About halfway",
+     "3": "Nearly done",
+     "4": "Done"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.95,
+     "2": 0.03,
+     "3": 0.01,
+     "4": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.4150000000000004e-05,
+  "latency_ms": 229
+ }
+}

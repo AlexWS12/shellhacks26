@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Barnesville #1",
+   "utility": "GTC",
+   "state": "GA",
+   "project": "GTC: Barnesville Primary-Barnesville #1 115kV Reconductor",
+   "description": "Rebuild approximately 4.53 miles of the Barnesville Primary - Barnesville #1 segment on the Barnesville Primary - Lamar County Industrial 115kV line.",
+   "zone": "213",
+   "candidate": {
+    "name": "Barnesville Primary Substation",
+    "operator": "Georgia Power",
+    "voltage": "230000;115000;69000",
+    "lat": 33.0320694,
+    "lon": -84.2012582
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.75
+   }
+  },
+  "cost_usd": 2.2974000000000004e-05,
+  "latency_ms": 231
+ }
+}

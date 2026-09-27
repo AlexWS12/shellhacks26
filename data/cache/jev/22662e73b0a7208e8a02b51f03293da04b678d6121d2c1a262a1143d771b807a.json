@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "Possum Branch - Yates Common 115kV Rebuild (Yates To Clem)",
+   "description": "Rebuild 11.2 miles of 100C 477 ACSR with 200C 1334 T13 ACCR Martin or 200C 1351.0 ACSS between Yates Common to Oak Mountain. Replace limiting elements along the line."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "rebuild",
+    "confidence": 1.0,
+    "probabilities": {
+     "rebuild": 1.0,
+     "in_substation_equipment": 0.0,
+     "new_line": 0.0,
+     "other": 0.0,
+     "substation_construction": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.2890000000000003e-05,
+  "latency_ms": 258
+ }
+}

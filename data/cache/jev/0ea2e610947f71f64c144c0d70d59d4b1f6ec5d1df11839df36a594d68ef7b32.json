@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "Harleyville 115KV Transmission Tap \u2013 Construct (1.4 miles)",
+   "description": "Extend the 115 kV line from the Blue Circle tap to the Harleyville substation to provide 115 kV service."
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "new_line",
+    "confidence": 0.82,
+    "probabilities": {
+     "rebuild": 0.08,
+     "new_line": 0.86,
+     "other": 0.06,
+     "in_substation_equipment": 0.0,
+     "substation_construction": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.1294000000000003e-05,
+  "latency_ms": 216
+ }
+}

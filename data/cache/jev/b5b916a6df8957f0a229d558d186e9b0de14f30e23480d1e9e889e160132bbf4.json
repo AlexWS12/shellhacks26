@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Yemassee",
+   "project": "Yemassee\u2013 Ritter 230kV #1 & #2: Construct SPDC with B-1272",
+   "description": "Construct Ritter \u2013 Yemassee 230kV #1 and #2 SPDC with B1272 ACSR on both sides. Convert the existing Ritter \u2013 Yemassee 230 kV to 115 kV operation. Convert and add terminals at Ritter and Yemassee. Add 230 kV bus tie at Ritter and upgrade the Yemassee 230 kV bus tie.",
+   "candidate_town": "Yemassee, SC",
+   "county": "Hampton County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.96
+   }
+  },
+  "cost_usd": 2.1336000000000004e-05,
+  "latency_ms": 264
+ }
+}

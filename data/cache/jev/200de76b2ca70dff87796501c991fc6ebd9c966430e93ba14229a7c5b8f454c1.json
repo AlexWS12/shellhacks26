@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Yemassee",
+   "utility": "DESC",
+   "state": "SC",
+   "project": "Yemassee\u2013 Ritter 230kV #1 & #2: Construct SPDC with B-1272",
+   "description": "Construct Ritter \u2013 Yemassee 230kV #1 and #2 SPDC with B1272 ACSR on both sides. Convert the existing Ritter \u2013 Yemassee 230 kV to 115 kV operation. Convert and add terminals at Ritter and Yemassee. Add 230 kV bus tie at Ritter and upgrade the Yemassee 230 kV bus tie.",
+   "zone": null,
+   "candidate": {
+    "name": "Yemassee Substation",
+    "operator": "South Carolina Electric & Gas Company",
+    "voltage": "230000",
+    "lat": 32.6974259,
+    "lon": -80.8637929
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.89
+   }
+  },
+  "cost_usd": 2.4066000000000003e-05,
+  "latency_ms": 199
+ }
+}

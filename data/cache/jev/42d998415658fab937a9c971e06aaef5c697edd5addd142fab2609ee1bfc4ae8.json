@@ -1,0 +1,31 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "project": "Summerville 115kV Loop: Rebuild",
+   "description": "Replacing several wood pole sections on the Summerville 115 kV Loop that have reached the end of life.",
+   "need": "This project is required to address end of life and maintenance issues."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  "cost_usd": 1.6968e-05,
+  "latency_ms": 541
+ }
+}

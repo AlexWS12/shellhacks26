@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "N Dublin",
+   "utility": "GPC",
+   "state": "GA",
+   "project": "Gordon-N Dublin 115kV (Gordon-Engl Mci J) Rebuild",
+   "description": "Rebuild the Gordon - Engelhard McIntyre J of the Gordon - North Dublin 115kV line from 100C 336.4 ACSR (2.81 miles) Linnet and 75C 4/0 F Copper/CW (3.18 miles) to 200C ACSS 795 conductor.",
+   "zone": "214",
+   "candidate": {
+    "name": "Dublin Primary Substation",
+    "operator": "",
+    "voltage": "115000",
+    "lat": 32.5406038,
+    "lon": -82.8945494
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.63
+   }
+  },
+  "cost_usd": 2.373e-05,
+  "latency_ms": 195
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "title": "GTC: Lizard Lope - Westover 115 kV New Line",
+   "description": "Construct two new 115kV stations, Lizard Lope and Westover, and build a new 19.8 miles of 115kV line from Lizard Lope to Gillionville"
+  },
+  "questions": {
+   "q": {
+    "type": "choice",
+    "instructions": "What kind of work is this project?",
+    "criteria": {
+     "new_line": "Builds a new transmission line on new right-of-way.",
+     "rebuild": "Rebuilds, reconductors or upgrades an existing line along its existing corridor.",
+     "substation_construction": "Builds a new substation or expands one (new yard, banks, ring bus, fold-ins).",
+     "in_substation_equipment": "Replaces or adds equipment inside an existing substation (breakers, relays, transformers, reactors, switch houses) with little field work outside the fence.",
+     "other": "Anything else."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "choice",
+    "choice": "new_line",
+    "confidence": 0.79,
+    "probabilities": {
+     "substation_construction": 0.13,
+     "new_line": 0.83,
+     "rebuild": 0.0,
+     "in_substation_equipment": 0.0,
+     "other": 0.04
+    }
+   }
+  },
+  "cost_usd": 2.1966000000000003e-05,
+  "latency_ms": 229
+ }
+}

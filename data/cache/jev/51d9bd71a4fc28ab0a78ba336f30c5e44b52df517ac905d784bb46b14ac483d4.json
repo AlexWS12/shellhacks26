@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Sandersville #1",
+   "project": "GTC: Gordon - Sandersville #1 115kV Line Rebuild",
+   "description": "Rebuild the 1.87 miles of Sandersville #1 - Sandersville #6 line section of the Gordon - Sandersville #1 115kV line from 100C ACSR 336 conductor to 100C ACSR 795 conductor.",
+   "candidate_town": "Sandersville, GA",
+   "county": "Washington County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.94
+   }
+  },
+  "cost_usd": 2.0454e-05,
+  "latency_ms": 231
+ }
+}

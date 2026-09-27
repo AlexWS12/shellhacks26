@@ -1,0 +1,31 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "project": "Williams-Summerville 230kV: Upgrade to SPDC B1272 ACSR",
+   "description": "Rebuild the section of the Williams - Summerville 230 kV line from Ladson Jct to Williams. Line to upgraded to B-1272 and designed for a future second circuit. Approximately 10 miles.",
+   "need": "This project is needed to improve system performance and to meet NERC TPL and internal DESC Planning Criteria for reliability."
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Does the stated project need contradict the project description?",
+    "criteria": {
+     "true": "The need talks about equipment or work that the description and title never mention (likely copied from another project).",
+     "false": "The need is generic (load growth, reliability, end of life) or matches the described work."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.08
+   }
+  },
+  "cost_usd": 1.8900000000000002e-05,
+  "latency_ms": 443
+ }
+}

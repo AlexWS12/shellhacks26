@@ -1,0 +1,70 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "agent": "Reader \u00b7 GA",
+   "role": "Reads the ten-year plan table and joins each row to its project page",
+   "running_s": 4.0,
+   "records": "124/208",
+   "recent_events": [
+    "project.extracted: ",
+    "source.progress: TEAMS 21062: Ashley Park-Wansley 500kV",
+    "project.extracted: ",
+    "source.progress: TEAMS 10222: Blakely Primary - Huckleberry 115kV Rebuild",
+    "project.extracted: ",
+    "source.progress: TEAMS 21047: Broadway - Echeconnee 115 kV Line Rebuild"
+   ]
+  },
+  "questions": {
+   "stuck": {
+    "type": "noul",
+    "instructions": "Is this pipeline agent stuck, i.e. not making progress on its job?",
+    "criteria": {
+     "true": "Its counters stopped moving, it repeats the same step, or it keeps failing the same way.",
+     "false": "Recent events show it moving through its records or steps."
+    }
+   },
+   "progress": {
+    "type": "score",
+    "instructions": "How far along is this agent in its job?",
+    "criteria": [
+     "Not started",
+     "Started",
+     "About halfway",
+     "Nearly done",
+     "Done"
+    ]
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "stuck": {
+    "type": "noul",
+    "noul": 0.18
+   },
+   "progress": {
+    "type": "score",
+    "score": 2.03,
+    "confidence": 0.86,
+    "legend": {
+     "0": "Not started",
+     "1": "Started",
+     "2": "About halfway",
+     "3": "Nearly done",
+     "4": "Done"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.07,
+     "2": 0.84,
+     "3": 0.09,
+     "4": 0.0
+    }
+   }
+  },
+  "cost_usd": 2.3562000000000002e-05,
+  "latency_ms": 240
+ }
+}

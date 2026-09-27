@@ -1,0 +1,33 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Washington",
+   "project": "MEAG: Ray Place Rd - Washington (Washington - Washington 3)",
+   "description": "MEAG will rebuild the Ray Place Rd - Washington 115kV line with 100C 1351 ACSR conductor (total 1.2 Miles) between Washington and Washington 3. Replace jumpers at Washington.",
+   "candidate_town": "Washington, GA",
+   "county": "Wilkes County"
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this town a fair approximate location for the endpoint?",
+    "criteria": {
+     "true": "The endpoint is named after this town (e.g. 'Bluffton' substation near Bluffton, SC).",
+     "false": "The name only shares a word with the town or clearly refers to something elsewhere (e.g. 'Union Pier' is not Union, SC)."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.89
+   }
+  },
+  "cost_usd": 1.9194000000000003e-05,
+  "latency_ms": 351
+ }
+}

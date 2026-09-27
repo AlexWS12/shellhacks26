@@ -1,0 +1,41 @@
+{
+ "provider": "jev",
+ "version": "jev-v1",
+ "payload": {
+  "state": {
+   "endpoint": "Burton",
+   "utility": "DESC",
+   "state": "SC",
+   "project": "Burton-St Helena 115kV: Rebuild Burton-Frogmore Transmission Section",
+   "description": "Replace wooden structures with Self Supporting Steel Structures and restring with 1272 ACSR conductor for the Burton \u2013 Frogmore Transmission section.",
+   "zone": null,
+   "candidate": {
+    "name": "Burton Substation",
+    "operator": "South Carolina Electric & Gas Company",
+    "voltage": "230000",
+    "lat": 32.4364883,
+    "lon": -80.7210159
+   }
+  },
+  "questions": {
+   "q": {
+    "type": "noul",
+    "instructions": "Is this OpenStreetMap substation the endpoint the filing names?",
+    "criteria": {
+     "true": "Same facility: the name matches and the operator, voltage and area are consistent with the project.",
+     "false": "A different facility, e.g. a similarly named substation of another utility or in the wrong area."
+    }
+   }
+  }
+ },
+ "response": {
+  "answers": {
+   "q": {
+    "type": "noul",
+    "noul": 0.54
+   }
+  },
+  "cost_usd": 2.1210000000000002e-05,
+  "latency_ms": 245
+ }
+}
