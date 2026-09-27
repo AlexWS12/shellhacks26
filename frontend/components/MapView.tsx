@@ -454,11 +454,15 @@ export default function MapView() {
     }
 
     const unsubRev = useRev.subscribe(refresh);
+    // the column grid changes when the left rail's panel opens or closes
+    const resize = new ResizeObserver(() => map.resize());
+    resize.observe(el.current);
     const unsubUI = useUI.subscribe((s, prev) => {
       if (s.results !== prev.results || s.others !== prev.others || s.filters !== prev.filters || s.panel !== prev.panel || s.health !== prev.health || s.year !== prev.year) refresh();
       if (s.camera !== prev.camera) moveCamera(map, s.camera);
     });
     return () => {
+      resize.disconnect();
       unsubRev();
       unsubUI();
       cancelAnimationFrame(raf);
