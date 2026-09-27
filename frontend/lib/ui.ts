@@ -15,6 +15,9 @@ export type Panel =
   | { kind: "research"; id: string }
   | { kind: "report" };
 
+// Tabs of the opportunity detail panel. The choice stays while stepping between opportunities.
+export type PairTab = "overview" | "money" | "meeting" | "evidence";
+
 export type Camera = { kind: "us" } | { kind: "border" } | { kind: "river" } | { kind: "pair"; a: string; b: string } | { kind: "project"; id: string } | { kind: "point"; lon: number; lat: number };
 
 export type RailTab = "sources" | "agents" | "bench" | "issues" | "activity";
@@ -66,6 +69,8 @@ const SETUP_SEEN_KEY = "tandem.setupSeen";
 interface UIState {
   setup: SetupState | null; // open when not null
   panel: Panel;
+  pairTab: PairTab;
+  setPairTab: (t: PairTab) => void;
   filters: FilterState;
   results: Overlap[] | null; // from the API after a run
   others: ThirdParty[] | null; // other utilities near those results, from the API
@@ -102,6 +107,8 @@ let requests = 0; // only the newest filter request wins
 export const useUI = create<UIState>((set, get) => ({
   setup: null,
   panel: { kind: "list" },
+  pairTab: "overview",
+  setPairTab: (pairTab) => set({ pairTab }),
   filters: { allSponsors: false, townLevel: true, hideFinished: false, sort: "distance", chip: "all", q: "" },
   results: null,
   others: null,

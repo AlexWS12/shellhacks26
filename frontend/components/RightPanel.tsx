@@ -8,15 +8,15 @@ import {
   ACTOR_LABEL, CONF_LABEL, TYPE_LABEL, fmtDate, gapLabel, money, plural, shortName, statedDate, utilityName,
 } from "@/lib/format";
 import { run, useRev } from "@/lib/run";
-import type { CostEstimate, Endpoint, Overlap, PairDetail, Project, ThirdParty, Tier, Written } from "@/lib/types";
+import type { Brief, CostBlock, CostEstimate, Endpoint, Overlap, PairDetail, Project, Shared, ThirdParty, Tier, Written } from "@/lib/types";
 import {
-  approxDate, colorOf, costKind, dateWord, gapText, legendSources, ownerName, ownerShort, ownStyle, serviceDate, shapeOf, showsStatus,
+  approxDate, colorOf, costKind, dateWord, gapText, legendSources, ownerName, ownerShort, ownStyle, serviceDate, shapeOf,
   useSources, whereFrom,
 } from "@/lib/owners";
-import { useUI } from "@/lib/ui";
+import { type PairTab, useUI } from "@/lib/ui";
 import { KIND_LABEL, kindOf } from "@/lib/utilityIcons";
 
-import Gantt from "./Gantt";
+import Gantt, { overlapText } from "./Gantt";
 import UtilityIcon from "./UtilityIcon";
 
 const Chip = ({ a }: { a: string }) => <i className={`chipe ${a.startsWith("jev") ? "jev" : a}`}>{ACTOR_LABEL[a] ?? a}</i>;
@@ -70,22 +70,16 @@ function Mk({ p }: { p: Project }) {
 
 const BASIS = { filed: "from the filing", published: "published, quote checked", benchmark: "modeled" } as const;
 
-// Georgia's costs are redacted in its filing, so its projects get a published or modeled estimate.
-function CostRow({ p, e }: { p: Project; e: CostEstimate | null }) {
-  return (
-    <tr><td>{ownerShort(p)} project cost {e && <span className="basis">{BASIS[e.basis]}</span>}</td>
-      <td>{e ? money(e.amount) : costKind(p) === "redacted" ? "redacted" : "not stated"}</td></tr>
-  );
-}
-
-function sideName(overlapId: string, i: 0 | 1): string {
-  const p = run.projects[overlapId.split("|")[i]];
-  return p ? ownerShort(p) : i === 0 ? "the first project" : "the second project";
-}
-
-const days = (n: number | null, approx: boolean) => (n == null ? "date unknown" : `${approx ? "≈ " : ""}${n.toLocaleString()} d`);
-
+// From a list: the detail panel starts on Overview.
 function open(o: Overlap) {
+  useUI.getState().setPairTab("overview");
+  go(o);
+}
+
+// Step to another opportunity; the detail panel keeps its tab. dir picks the card's slide.
+let slide: -1 | 0 | 1 = 0;
+function go(o: Overlap, dir: -1 | 0 | 1 = 0) {
+  slide = dir;
   useUI.getState().setPanel({ kind: "pair", a: o.project_a, b: o.project_b });
   useUI.getState().flyTo({ kind: "pair", a: o.project_a, b: o.project_b });
 }
@@ -105,6 +99,20 @@ const SORTS: { id: SortId; label: string; cmp: (x: Overlap, y: Overlap) => numbe
   { id: "gap", label: "Soonest", cmp: (x, y) => x.time_gap_days - y.time_gap_days || x.distance_mi - y.distance_mi },
   { id: "strength", label: "Strongest", cmp: (x, y) => Number(y.windows_overlap === true) - Number(x.windows_overlap === true) || x.distance_mi - y.distance_mi },
 ];
+
+// The opportunities as the list shows them: filtered by chip and search, sorted. The detail panel steps through
+// the same order.
+function useShownOverlaps(): { overlaps: Overlap[]; shown: Overlap[] } {
+  const filters = useUI((s) => s.filters);
+  const overlaps = useOverlaps();
+  const q = filters.q.trim().toLowerCase();
+  const chip = CHIPS.find((c) => c.id === filters.chip) ?? CHIPS[0];
+  const sort = SORTS.find((x) => x.id === filters.sort) ?? SORTS[0];
+  const shown = overlaps.filter((o) => chip.test(o) && matches(o, q));
+  // active pairs stay on top whatever the sort, same as the server's ranking
+  if (run.phase === "done") shown.sort((x, y) => Number(Boolean(x.finished)) - Number(Boolean(y.finished)) || sort.cmp(x, y) || x.rank - y.rank);
+  return { overlaps, shown };
+}
 
 function matches(o: Overlap, q: string): boolean {
   if (!q) return true;
@@ -173,7 +181,7 @@ function Kpis() {
 function OpportunityList() {
   const { filters, setFilters } = useUI();
   const keySources = legendSources(useSources((st) => st.list), Object.values(run.projects));
-  const overlaps = useOverlaps();
+  const { overlaps, shown } = useShownOverlaps();
   const near = byOverlap(useOthers());
 
   if (run.phase === "idle") {
@@ -185,12 +193,6 @@ function OpportunityList() {
     );
   }
   const done = run.phase === "done";
-  const q = filters.q.trim().toLowerCase();
-  const chip = CHIPS.find((c) => c.id === filters.chip) ?? CHIPS[0];
-  const sort = SORTS.find((x) => x.id === filters.sort) ?? SORTS[0];
-  const shown = overlaps.filter((o) => chip.test(o) && matches(o, q));
-  // active pairs stay on top whatever the sort, same as the server's ranking
-  if (done) shown.sort((x, y) => Number(Boolean(x.finished)) - Number(Boolean(y.finished)) || sort.cmp(x, y) || x.rank - y.rank);
 
   return (
     <div className="opps">
@@ -297,10 +299,23 @@ function insight(o: Overlap, timing: string): string {
   return `Their in-service dates are about ${Math.round(years)} years apart, so crews won't overlap. The value is shared information: surveys, right-of-way records, and designing the later project around the earlier one.`;
 }
 
+const TABS: { id: PairTab; label: string }[] = [
+  { id: "overview", label: "Overview" }, { id: "money", label: "Savings" },
+  { id: "meeting", label: "Meeting" }, { id: "evidence", label: "Evidence" },
+];
+const DOTS = 7; // at most this many dots, centered on the current opportunity
+
+const savingsRange = (c: CostBlock | undefined): string | null =>
+  c && "savings_high" in c && c.savings_high != null ? `${c.savings_low ? money(c.savings_low) : "$0"}–${money(c.savings_high)}` : null;
+
+// Opportunity detail: a pinned summary card with the neighbors peeking in (step with ‹ ›, the dots, ← → or J / K),
+// then four tabs. The tab stays while stepping, so Savings can be compared across pairs.
 function PairView({ a, b }: { a: string; b: string }) {
   const id = `${a}|${b}`;
   const local = run.costs[id];
   const allOthers = useOthers();
+  const { shown } = useShownOverlaps();
+  const tab = useUI((s) => s.pairTab);
   const [fetched, setFetched] = useState<{ id: string; data: PairDetail } | null>(null);
   useEffect(() => {
     if (run.costs[id]) return; // already have it from events
@@ -315,99 +330,206 @@ function PairView({ a, b }: { a: string; b: string }) {
   const pa: Project | undefined = own ? run.projects[a] : remote?.a ?? run.projects[a];
   const pb: Project | undefined = own ? run.projects[b] : remote?.b ?? run.projects[b];
   const o: Overlap | undefined = [...run.overlaps, ...(useUI.getState().results ?? [])].find((x) => x.id === id) ?? remote?.overlap;
-  if (!pa || !pb || !o) return <div className="detail"><Back /><p className="empty">Loading…</p></div>;
-  const listed = (run.phase === "done" ? useUI.getState().results : null) ?? run.overlaps;
-  const rank = listed.find((x) => x.id === id)?.rank || o.rank;
-  const cost = own ? local : remote?.cost;
-  const shared = own ? local?.shared : remote?.shared;
-  const analysis = own ? run.analyses[id] : remote?.analysis ?? run.analyses[id];
-  const brief = own ? run.briefs[id] : remote?.brief ?? run.briefs[id];
+  const i = shown.findIndex((x) => x.id === id);
+  const prev = i > 0 ? shown[i - 1] : null;
+  const next = i >= 0 && i < shown.length - 1 ? shown[i + 1] : null;
+
+  const onKey = (e: React.KeyboardEvent) => {
+    if ((e.target as HTMLElement).closest("input, textarea, select, [contenteditable='true'], [role='tab']")) return;
+    const k = e.key.toLowerCase();
+    if ((k === "arrowleft" || k === "k") && prev) { e.preventDefault(); go(prev, -1); }
+    if ((k === "arrowright" || k === "j") && next) { e.preventDefault(); go(next, 1); }
+  };
+
+  const detail = {
+    cost: own ? local : remote?.cost,
+    shared: own ? local?.shared : remote?.shared,
+    analysis: own ? run.analyses[id] : remote?.analysis ?? run.analyses[id],
+    brief: own ? run.briefs[id] : remote?.brief ?? run.briefs[id],
+    links: allOthers.some((t) => t.overlap_id === id) ? allOthers.filter((t) => t.overlap_id === id) : remote?.others ?? [],
+  };
+  const waiting = !own && !remote;
 
   return (
-    <div className="detail">
-      <Back />
-      <p className="label">Opportunity {rank ? `#${rank}` : ""}{o.in_sponsor_sample && <span className="count c-accent">benchmark pair</span>}</p>
-      <div className="pair">
-        <div className="pj own" style={ownStyle(pa)}>
-          <b>{pa.name}</b>{ownerName(pa)}{pa.status && showsStatus(pa) ? ` · ${pa.status}` : ""}<br />{dateWord(pa)} {serviceDate(pa, fmtDate)}
-        </div>
-        <div className="pj own" style={ownStyle(pb)}>
-          <b>{pb.name}</b>{ownerName(pb)}{pb.status && showsStatus(pb) ? ` · ${pb.status}` : ""}<br />{dateWord(pb)} {serviceDate(pb, fmtDate)}
-        </div>
+    <div className="oc" tabIndex={-1} onKeyDown={onKey}>
+      <div className="oc-top">
+        <Back />
+        <span className="spacer" />
+        {o && <span className="label">#{i >= 0 ? i + 1 : o.rank}{i >= 0 && ` of ${shown.length}`}</span>}
       </div>
-      <div className="hero"><span className="big">{o.distance_mi.toFixed(2)}</span><span>miles apart at the closest points</span></div>
-      {o.center_mi != null && <div className="sub" title="Center = midpoint of each project's located ends.">{o.center_mi.toFixed(2)} mi center to center</div>}
-      <div className="sub">{gapText(o.time_gap_days, pa, pb)} days between in-service dates · {CONF_LABEL[o.pair_confidence]}</div>
-      {o.finished && <p className="note">At least one of these projects is already in service, so crews, equipment and outage timing can&apos;t be shared.</p>}
-      {slackNote(o) && <p className="note">{slackNote(o)}</p>}
-
-      <h3>Build windows</h3>
-      <Gantt a={pa} b={pb} labels={[ownerShort(pa), ownerShort(pb)]} colors={[colorOf(pa), colorOf(pb)]} />
-      <p className="note">Highlighted band = both under construction. A faded start means the work began before 2024.</p>
-
-      <h3>Estimated savings</h3>
-      {cost && "savings_high" in cost ? (
+      {!pa || !pb || !o ? <p className="empty oc-body">Loading…</p> : (
         <>
-          <table className="kv"><tbody>
-            <CostRow p={pa} e={cost.a} />
-            <CostRow p={pb} e={cost.b} />
-            {cost.savings_high != null && (
-              <tr><td>Possible savings <span className="basis">assumption</span></td>
-                <td>{cost.savings_low ? money(cost.savings_low) : "$0"} to {money(cost.savings_high)}</td></tr>
-            )}
-          </tbody></table>
-          <p className="note">{cost.statement}
-            {cost.check && <> <Chip a={cost.check.actor} />{cost.check.p >= 0.5 ? "judged" : "didn't judge"} sharing worth raising between the two utilities ({Math.round(cost.check.p * 100)}%).</>}</p>
-          {[cost.a, cost.b].map((e) => e && e.basis !== "filed" && (
-            <p className="note" key={e.project_id}>{ownerShort(run.projects[e.project_id] ?? pa)}: {e.method}
-              {e.quote && <> “{e.quote}” <a href={e.source} target="_blank" rel="noreferrer">{e.source_title || "source"}</a></>}</p>
-          ))}
-        </>
-      ) : cost ? <p className="empty">This replay predates the savings calculator. Run again to see cost estimates.</p>
-        : <p className="empty">Waiting for the savings calculator.</p>}
-
-      <OthersNearby links={allOthers.some((t) => t.overlap_id === id)
-        ? allOthers.filter((t) => t.overlap_id === id) : remote?.others ?? []} />
-
-      <h3>What they could share</h3>
-      {shared ? (
-        <p className="share">
-          {shared.tier && <span className="sub block">{TIER_LABEL[shared.tier]}</span>}
-          <b className={shared.level === "high" ? "c-zone" : "c-ink"}>
-            {shared.level === "high" ? "Strong" : shared.level === "medium" ? "Moderate" : "Limited"}
-          </b>{" "}
-          · {shared.items.join(", ")}
-          <span className="sub block">
-            {TYPE_LABEL[shared.types[0]] ?? shared.types[0]} + {TYPE_LABEL[shared.types[1]] ?? shared.types[1]}
-            {shared.timing === "unknown" ? " · timing undecided" : `, ${shared.timing} build windows`}
-          </span>
-        </p>
-      ) : <p className="empty">Waiting for the savings calculator.</p>}
-
-      <h3>Analysis</h3>
-      {analysis ? (
-        <>
-          <p className="written">{analysis.text}</p>
-          <div className="by"><Chip a={analysis.actor} />{analysis.actor === "gemini" ? "Written by Gemini from the filing text" : "Template from the computed facts"}
-            {analysis.unsupported_numbers?.length ? <span className="fail">check numbers: {analysis.unsupported_numbers.join(", ")}</span> : null}</div>
-        </>
-      ) : <p className="written">{insight(o, shared?.timing ?? "unknown")}</p>}
-
-      {brief && (brief.dominion || brief.mediator) && (
-        <>
-          <h3>Meeting prep</h3>
-          {brief.dominion && <div className="brief"><div className="who" style={{ color: colorOf(pa) }}>{ownerShort(pa)} advocate <Chip a={brief.dominion.actor} /></div>{brief.dominion.text}</div>}
-          {brief.georgia && <div className="brief"><div className="who" style={{ color: colorOf(pb) }}>{ownerShort(pb)} advocate <Chip a={brief.georgia.actor} /></div>{brief.georgia.text}</div>}
-          {brief.mediator && <div className="brief"><div className="who c-ink">Mediator: joint agenda <Chip a={brief.mediator.actor} /></div>{brief.mediator.text}</div>}
+          <div className="oc-stage">
+            {prev && <i className="oc-peek l" aria-hidden="true" />}
+            {next && <i className="oc-peek r" aria-hidden="true" />}
+            <div key={id} className={`oc-card ${slide < 0 ? "from-l" : slide > 0 ? "from-r" : ""}`}
+              style={{ "--a": colorOf(pa), "--b": colorOf(pb) } as React.CSSProperties}>
+              <div className="oc-conn" aria-hidden="true"><Mk p={pa} /><i className="oc-line" /><Mk p={pb} /></div>
+              <div className="oc-names">
+                <div><b>{pa.name}</b><span>{ownerName(pa)} · {serviceDate(pa, fmtDate)}</span></div>
+                <div><b>{pb.name}</b><span>{ownerName(pb)} · {serviceDate(pb, fmtDate)}</span></div>
+              </div>
+              <div className="oc-dist"><b>{o.distance_mi.toFixed(2)}</b><span>mi apart</span><Action o={o} /></div>
+            </div>
+            <button className="oc-arrow l" onClick={() => prev && go(prev, -1)} disabled={!prev} aria-label="Previous opportunity">‹</button>
+            <button className="oc-arrow r" onClick={() => next && go(next, 1)} disabled={!next} aria-label="Next opportunity">›</button>
+          </div>
+          {i >= 0 && shown.length > 1 && <Dots shown={shown} i={i} />}
+          <PairTabs />
+          <div className="oc-body" role="tabpanel" id={`oc-panel-${tab}`} aria-labelledby={`oc-tab-${tab}`}>
+            {waiting ? <p className="empty">Loading…</p>
+              : tab === "overview" ? <PairOverview o={o} pa={pa} pb={pb} {...detail} />
+              : tab === "money" ? <PairSavings pa={pa} pb={pb} cost={detail.cost} />
+              : tab === "meeting" ? <PairMeeting pa={pa} pb={pb} brief={detail.brief} />
+              : <PairEvidence pa={pa} pb={pb} />}
+          </div>
         </>
       )}
+    </div>
+  );
+}
 
-      <h3>From the filings</h3>
-      <div className="quote">{pa.description}</div>
-      <div className="quote">{pb.description}</div>
+function Dots({ shown, i }: { shown: Overlap[]; i: number }) {
+  const start = Math.max(0, Math.min(i - Math.floor(DOTS / 2), shown.length - DOTS));
+  return (
+    <div className="oc-dots">
+      {shown.slice(start, start + DOTS).map((x, k) => (
+        <button key={x.id} className={`oc-dot ${start + k === i ? "on" : ""}`} aria-label={`Opportunity ${start + k + 1}`}
+          aria-current={start + k === i} onClick={() => start + k !== i && go(x, start + k < i ? -1 : 1)} />
+      ))}
+    </div>
+  );
+}
 
-      <h3>Where this came from</h3>
-      <div className="prov"><Provenance p={pa} /><Provenance p={pb} /></div>
+function PairTabs() {
+  const tab = useUI((s) => s.pairTab);
+  const setTab = useUI((s) => s.setPairTab);
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const onKey = (e: React.KeyboardEvent, k: number) => {
+    const to = e.key === "ArrowRight" ? (k + 1) % TABS.length : e.key === "ArrowLeft" ? (k - 1 + TABS.length) % TABS.length
+      : e.key === "Home" ? 0 : e.key === "End" ? TABS.length - 1 : -1;
+    if (to < 0) return;
+    e.preventDefault();
+    setTab(TABS[to].id);
+    refs.current[to]?.focus();
+  };
+  return (
+    <div className="oc-tabs" role="tablist" aria-label="Opportunity details">
+      {TABS.map((t, k) => (
+        <button key={t.id} ref={(el) => { refs.current[k] = el; }} id={`oc-tab-${t.id}`} role="tab" className="oc-tab"
+          aria-selected={tab === t.id} aria-controls={`oc-panel-${t.id}`} tabIndex={tab === t.id ? 0 : -1}
+          onClick={() => setTab(t.id)} onKeyDown={(e) => onKey(e, k)}>{t.label}</button>
+      ))}
+    </div>
+  );
+}
+
+function Stat({ label, value, text }: { label: string; value: string; text?: boolean }) {
+  return <div className="oc-stat"><span>{label}</span><b className={text ? "text" : ""}>{value}</b></div>;
+}
+
+function PairOverview({ o, pa, pb, cost, shared, analysis, links }: {
+  o: Overlap; pa: Project; pb: Project; cost?: CostBlock; shared?: Shared; analysis?: Written | null; links: ThirdParty[];
+}) {
+  const first = links.map((t) => run.research[t.research_id]).find(Boolean);
+  return (
+    <div className="oc-stack">
+      <div className="oc-stats">
+        <Stat label="In-service gap" value={`${gapText(o.time_gap_days, pa, pb)} days`} />
+        <Stat label="Location" value={CONF_LABEL[o.pair_confidence]} text />
+        <Stat label="Center to center" value={o.center_mi != null ? `${o.center_mi.toFixed(2)} mi` : "—"} />
+        <Stat label="Savings" value={savingsRange(cost) ?? "—"} />
+      </div>
+      {(o.finished || slackNote(o) || o.in_sponsor_sample) && (
+        <div>
+          {o.in_sponsor_sample && <p className="note c-accent">One of Sperry&apos;s benchmark pairs.</p>}
+          {o.finished && <p className="note">At least one of these projects is already in service, so crews, equipment and outage timing can&apos;t be shared.</p>}
+          {slackNote(o) && <p className="note">{slackNote(o)}</p>}
+        </div>
+      )}
+      <div>
+        <p className="label">Build windows</p>
+        <Gantt a={pa} b={pb} colors={[colorOf(pa), colorOf(pb)]} />
+        <p className="oc-caption">{overlapText(pa, pb)}</p>
+      </div>
+      {shared && (
+        <div>
+          <p className="label">Could share</p>
+          <div className="oc-pills">{shared.items.map((x) => <span key={x} className="oc-pill">{x}</span>)}</div>
+          {shared.tier && <p className="oc-caption">{TIER_LABEL[shared.tier]}</p>}
+        </div>
+      )}
+      <div className={`oc-analysis ${analysis?.actor === "gemini" ? "gemini" : ""}`}>
+        <p>{analysis ? analysis.text : insight(o, shared?.timing ?? "unknown")}</p>
+        <div className="oc-byline">
+          {analysis?.actor === "gemini" ? "Written by Gemini from the filing text" : "From the computed facts"}
+          {analysis?.unsupported_numbers?.length ? <span className="fail"> · check numbers: {analysis.unsupported_numbers.join(", ")}</span> : null}
+        </div>
+      </div>
+      {first && (
+        <button className="oc-others" onClick={() => useUI.getState().setPanel({ kind: "research", id: first.id })}>
+          {plural(links.length, "other owner")} nearby: <b>{first.name}</b>{links.length > 1 && ` and ${links.length - 1} more`} ›
+        </button>
+      )}
+    </div>
+  );
+}
+
+// Georgia's costs are redacted in its filing, so its projects get a published or modeled estimate.
+function CostLine({ p, e }: { p: Project; e: CostEstimate | null }) {
+  return (
+    <>
+      <span>{ownerShort(p)} cost{e && <> · <small>{BASIS[e.basis]}</small></>}</span>
+      <span className="num">{e ? money(e.amount) : costKind(p) === "redacted" ? "redacted" : "not stated"}</span>
+    </>
+  );
+}
+
+function PairSavings({ pa, pb, cost }: { pa: Project; pb: Project; cost?: CostBlock }) {
+  if (!cost) return <p className="empty">Waiting for the savings calculator.</p>;
+  if (!("savings_high" in cost)) return <p className="empty">This replay predates the savings calculator. Run again to see cost estimates.</p>;
+  return (
+    <div className="oc-stack tight">
+      <div>
+        <div className="oc-big">{savingsRange(cost) ?? "—"}</div>
+        <div className="oc-caption">possible savings · team assumption</div>
+      </div>
+      <div className="oc-costs"><CostLine p={pa} e={cost.a} /><CostLine p={pb} e={cost.b} /></div>
+      <div>
+        <p className="note">{cost.statement}
+          {cost.check && <> <Chip a={cost.check.actor} />{cost.check.p >= 0.5 ? "judged" : "didn't judge"} sharing worth raising between the two utilities ({Math.round(cost.check.p * 100)}%).</>}</p>
+        {[cost.a, cost.b].map((e) => e && e.basis !== "filed" && (
+          <p className="note" key={e.project_id}>{ownerShort(run.projects[e.project_id] ?? pa)}: {e.method}
+            {e.quote && <> “{e.quote}” <a href={e.source} target="_blank" rel="noreferrer">{e.source_title || "source"}</a></>}</p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PairMeeting({ pa, pb, brief }: { pa: Project; pb: Project; brief?: Brief | null }) {
+  if (!brief || !(brief.dominion || brief.georgia || brief.mediator)) {
+    return <p className="empty">The advocates and the mediator prepare the top opportunities only.</p>;
+  }
+  return (
+    <div className="oc-stack tight">
+      {brief.dominion && <div className="brief"><div className="who" style={{ color: colorOf(pa) }}>{ownerShort(pa)} advocate <Chip a={brief.dominion.actor} /></div>{brief.dominion.text}</div>}
+      {brief.georgia && <div className="brief"><div className="who" style={{ color: colorOf(pb) }}>{ownerShort(pb)} advocate <Chip a={brief.georgia.actor} /></div>{brief.georgia.text}</div>}
+      {brief.mediator && <div className="brief"><div className="who c-ink">Mediator · joint agenda <Chip a={brief.mediator.actor} /></div>{brief.mediator.text}</div>}
+    </div>
+  );
+}
+
+function PairEvidence({ pa, pb }: { pa: Project; pb: Project }) {
+  return (
+    <div className="oc-stack tight">
+      {[pa, pb].map((p) => (
+        <div key={p.id} className="oc-quote" style={ownStyle(p)}>{p.description}<span>{whereFrom(p)} ↗</span></div>
+      ))}
+      <div>
+        <p className="label">Where this came from</p>
+        <div className="prov"><Provenance p={pa} /><Provenance p={pb} /></div>
+      </div>
     </div>
   );
 }
@@ -508,37 +630,6 @@ function AgentView({ id }: { id: string }) {
         </div>
       ))}
     </div>
-  );
-}
-
-function OthersNearby({ links }: { links: ThirdParty[] }) {
-  const selected = run.researchSelected;
-  return (
-    <>
-      <h3>Other utilities nearby</h3>
-      {links.length === 0 && (
-        <p className="empty">
-          {selected.length ? "No other owner's project from the research is under 25 mi from both." : "The research team was off for this run."}
-        </p>
-      )}
-      {links.map((t) => {
-        const r = run.research[t.research_id];
-        if (!r) return null;
-        return (
-          <div key={t.research_id} className={`other cat-${r.category}`} role="button" tabIndex={0}
-            onClick={() => useUI.getState().setPanel({ kind: "research", id: r.id })}
-            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), useUI.getState().setPanel({ kind: "research", id: r.id }))}>
-            <div><span className="catname"><UtilityIcon kind={kindOf(r)} /> {KIND_LABEL[kindOf(r)]}</span> · {r.utility}</div>
-            <b>{r.name}</b>
-            <div>
-              <span className="num">{t.dist_a_mi.toFixed(1)}</span> mi from {sideName(t.overlap_id, 0)}&apos;s, <span className="num">{t.dist_b_mi.toFixed(1)}</span> mi from
-              {" "}{sideName(t.overlap_id, 1)}&apos;s · in service {statedDate(r.in_service)} ({days(t.gap_a_days, t.approx_date)} / {days(t.gap_b_days, t.approx_date)})
-            </div>
-          </div>
-        );
-      })}
-      {links.length > 0 && <p className="note">Under 25 mi from both project centers. Day gaps compare in-service dates; ≈ means the source gives only a year or month.</p>}
-    </>
   );
 }
 
